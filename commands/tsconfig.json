@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "outDir": "_publish",
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "noImplicitUseStrict": false,
+        "strictNullChecks": true,
+    },
+    "references": [
+        {"path": "../objects" }
+    ]
+}
