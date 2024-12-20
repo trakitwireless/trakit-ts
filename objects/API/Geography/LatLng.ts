@@ -1,4 +1,5 @@
 ﻿import { double } from '../Types';
+import * as Planet from './Planet';
 
 /// <summary>
 /// 

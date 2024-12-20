@@ -1,6 +1,7 @@
 ﻿import { ILatLng, LatLng } from './LatLng';
 import { double, JsonObject } from '../Types';
 import { ISerializable } from '../Interfaces/ISerializable';
+import * as Planet from './Planet';
 
 /// <summary>
 /// A boundary on the globe
