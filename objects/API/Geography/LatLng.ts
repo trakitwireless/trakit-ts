@@ -1,4 +1,5 @@
-﻿import { double } from '../Types';
+﻿import '../Constants'
+import { double } from '../Types';
 import * as Planet from './Planet';
 
 /// <summary>
@@ -44,16 +45,16 @@ export class LatLng implements ILatLng {
 	/// <param name="latlng"></param>
 	/// <returns>Distance in meters</returns>
 	public distanceTo(latlng: LatLng): double {
-		let lat1 = this.lat * Planet.DEGREES_TO_RADIANS,
-			lat2 = latlng.lat * Planet.DEGREES_TO_RADIANS,
-			lng1 = this.lng * Planet.DEGREES_TO_RADIANS,
-			lng2 = latlng.lng * Planet.DEGREES_TO_RADIANS,
+		let lat1 = this.lat * DEGREES_TO_RADIANS,
+			lat2 = latlng.lat * DEGREES_TO_RADIANS,
+			lng1 = this.lng * DEGREES_TO_RADIANS,
+			lng2 = latlng.lng * DEGREES_TO_RADIANS,
 			dLat = lat2 - lat1,
 			dLng = lng2 - lng1,
-			sin_dLat_half = Math.Pow(Math.Sin(dLat / 2), 2),  // minor optimization
-			sin_dLng_half = Math.Pow(Math.Sin(dLng / 2), 2),  // minor optimization
-			distance = sin_dLat_half + Math.Cos(lat1) * Math.Cos(lat2) * sin_dLng_half;
-		return ((2 * Math.Atan2(Math.Sqrt(distance), Math.Sqrt(1 - distance))) * Planet.EARTH_RADIUS);
+			sin_dLat_half = POW(SIN(dLat / 2), 2),  // minor optimization
+			sin_dLng_half = POW(SIN(dLng / 2), 2),  // minor optimization
+			distance = sin_dLat_half + COS(lat1) * COS(lat2) * sin_dLng_half;
+		return ((2 * ATAN2(SQRT(distance), SQRT(1 - distance))) * Planet.EARTH_RADIUS);
 	}
 	/// <summary>
 	/// Calculates the starting bearing across the surface of the globe from the current coordinate to the given coordinate
@@ -64,11 +65,11 @@ export class LatLng implements ILatLng {
 		if (Planet.latitudeIsPole(this.lat)) {  // starting at one of the poles
 			return this.lat > 0 ? 180 : 0;
 		} else {
-				double lat1 = Planet.normalizeLatitude(this.lat) * Planet.DEGREES_TO_RADIANS,
-				lat2 = Planet.normalizeLatitude(latlng.lat) * Planet.DEGREES_TO_RADIANS,
-				dLng = (latlng.lng - this.lng) * Planet.DEGREES_TO_RADIANS,
-				cos_lat2 = Math.Cos(lat2),    // minor optimization
-				bearing = Math.Atan2(Math.Sin(dLng) * cos_lat2, Math.Cos(lat1) * Math.Sin(lat2) - Math.Sin(lat1) * cos_lat2 * Math.Cos(dLng)) * Planet.RADIANS_TO_DEGREES;
+				double lat1 = Planet.normalizeLatitude(this.lat) * DEGREES_TO_RADIANS,
+				lat2 = Planet.normalizeLatitude(latlng.lat) * DEGREES_TO_RADIANS,
+				dLng = (latlng.lng - this.lng) * DEGREES_TO_RADIANS,
+				cos_lat2 = COS(lat2),    // minor optimization
+				bearing = ATAN2(SIN(dLng) * cos_lat2, COS(lat1) * SIN(lat2) - SIN(lat1) * cos_lat2 * COS(dLng)) * RADIANS_TO_DEGREES;
 			return (bearing + 360) % 360;
 		}
 	}
@@ -80,12 +81,12 @@ export class LatLng implements ILatLng {
 	/// <returns></returns>
 	public translateTo(double meters, double bearing): LatLng {
 			double distance = meters / Planet.EARTH_RADIUS,
-			heading = bearing * Planet.DEGREES_TO_RADIANS,
-			lat1 = lat * Planet.DEGREES_TO_RADIANS,
-			lng1 = lng * Planet.DEGREES_TO_RADIANS,
-			lat2 = Math.Asin(Math.Sin(lat1) * Math.Cos(distance) + Math.Cos(lat1) * Math.Sin(distance) * Math.Cos(heading)),
-			lng2 = lng1 + Math.Atan2(Math.Sin(heading) * Math.Sin(distance) * Math.Cos(lat1), Math.Cos(distance) - Math.Sin(lat1) * Math.Sin(lat2));
-		return new LatLng(lat2 * Planet.RADIANS_TO_DEGREES, lng2 * Planet.RADIANS_TO_DEGREES);
+			heading = bearing * DEGREES_TO_RADIANS,
+			lat1 = lat * DEGREES_TO_RADIANS,
+			lng1 = lng * DEGREES_TO_RADIANS,
+			lat2 = ASIN(SIN(lat1) * COS(distance) + COS(lat1) * SIN(distance) * COS(heading)),
+			lng2 = lng1 + ATAN2(SIN(heading) * SIN(distance) * COS(lat1), COS(distance) - SIN(lat1) * SIN(lat2));
+		return new LatLng(lat2 * RADIANS_TO_DEGREES, lng2 * RADIANS_TO_DEGREES);
 	}
 	/// <summary>
 	/// Returns true if this coordinate is not NaN and not zero-zero.
