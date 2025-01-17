@@ -58,11 +58,10 @@ var SQRT = MATH.sqrt;
 var TAN = MATH.tan;
 /**
  * Does fast 32bit uint multiplication (from C++).  Used mostly in ASM.
- * @param {!number} a
- * @param {!number} b
- * @return {!number}
- */
-var IMUL = MATH["imul"] || function imul(a, b) {
+ * @param a
+ * @param b
+ **/
+var IMUL = MATH["imul"] || function imul(a: number, b: number): number {
 	var ah = (a >>> 16) & 0xffff;
 	var al = a & 0xffff;
 	var bh = (b >>> 16) & 0xffff;
@@ -79,42 +78,25 @@ var DEGREES_TO_RADIANS = PI / 180;	// degrees to radians: value * (pi / 180)
 
 /**
  * Clips a number to the specified minimum and maximum values.
- * @param {!number} n	The number to clip
- * @param {!number} min	Minimum allowable value
- * @param {!number} max	Maximum allowable value
- * @return {!number} Clipped value
- */
-var CLIP = function(n, min, max) {
+ * @param n	The number to clip
+ * @param min	Minimum allowable value
+ * @param max	Maximum allowable value
+ **/
+function CLIP(n: number, min: number, max: number): number {
 	return MIN(MAX(n, min), max);
-};
+}
 /**
  * Calculates the Pythagorean length of a triangle given the length of the other two sides.
- * @param {!number} width
- * @param {!number} height
- * @return {!number}
- */
-function PYTHAGORA(width, height) {
+ * @param width
+ * @param height
+ **/
+function PYTHAGORA(width: number, height: number): number {
 	return SQRT(ABS(width * width) + ABS(height * height));
 }
 /**
  * Parses a base-10 integer number from the given value.
- * @param {?} value
- * @return {!number}
+ * @param value
  **/
-function ID(value) {
+function ID(value: any): number {
 	return INT(value, 10);
-}
-/**
- * Creates a Date object out of the given value.
- * @param {string|number|Date=} value
- * @return {!Date}
- */
-function DATE(value) {
-	return new Date(
-		value instanceof Date
-			? value.valueOf()
-			: IS_NUMBER(value)
-				? value
-				: Date.parse(String(value))
-	);
 }

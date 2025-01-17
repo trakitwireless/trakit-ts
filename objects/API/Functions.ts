@@ -46,7 +46,6 @@ function IS_FUNCTION(value: any): value is Function {
  * @param value The variable to check
  */
 function OBJECT_TYPE(value: any): string {
-function OBJECT_TYPE(value: any): string {
 	return Object.prototype.toString.call(value).slice(8, -1);
 }
 /**
