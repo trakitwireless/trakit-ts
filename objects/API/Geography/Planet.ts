@@ -1,4 +1,6 @@
-﻿import { double, int } from '../Types';
+﻿import '../Constants';
+import '../Functions';
+import { double, int } from '../Types';
 
 // Hiigara
 export const EARTH_RADIUS: double = 6378137;  // meters
@@ -15,10 +17,9 @@ export const MAX_TILE_LNG: double = 180;
 //#region Geography methods
 /**
  * Checks to see if a given latitude is at one of the poles
- * @param {!number} lat
- * @return {!boolean}
- */
-function LATITUDE_IS_POLE(lat: double): double {
+ * @param lat
+ **/
+function LATITUDE_IS_POLE(lat: double): boolean {
     return ROUND_TO(COS(lat * DEGREES_TO_RADIANS), 9) === 0;
 }
 /**

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "ESNext",
+        "module": "AMD",
         "outDir": "_publish",
         "sourceMap": true,
         "strict": true,
@@ -10,4 +10,7 @@
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
     },
+    "files": [
+        "./build.ts",
+    ],
 }
