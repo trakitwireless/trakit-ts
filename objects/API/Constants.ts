@@ -1,80 +1,77 @@
-﻿
+﻿/** @type {Function} */
+const SET_TIMER = setTimeout;
 /** @type {Function} */
-var SET_TIMER = setTimeout;
+const SET_EVERY = setInterval;
 /** @type {Function} */
-var SET_EVERY = setInterval;
+const CLEAR_TIMER = clearTimeout;
 /** @type {Function} */
-var CLEAR_TIMER = clearTimeout;
+const CLEAR_EVERY = clearInterval;
 /** @type {Function} */
-var CLEAR_EVERY = clearInterval;
+const INT = parseInt;
 /** @type {Function} */
-var INT = parseInt;
-/** @type {Function} */
-var FLOAT = parseFloat;
-
-
+const FLOAT = parseFloat;
 
 /** @type {Object} */
-var MATH = Math;
+const MATH = Math;
 /** @type {number} */
-var PI = MATH.PI;
+const PI = MATH.PI;
 /** @type {number} */
-var HALF_PI = PI / 2;
+const HALF_PI = PI / 2;
 /** @type {Function} */
-var ABS = MATH.abs;
+const ABS = MATH.abs;
 /** @type {Function} */
-var ACOS = MATH.acos;
+const ACOS = MATH.acos;
 /** @type {Function} */
-var ASIN = MATH.asin;
+const ASIN = MATH.asin;
 /** @type {Function} */
-var ATAN = MATH.atan;
+const ATAN = MATH.atan;
 /** @type {Function} */
-var ATAN2 = MATH.atan2;
+const ATAN2 = MATH.atan2;
 /** @type {Function} */
-var CEIL = MATH.ceil;
+const CEIL = MATH.ceil;
 /** @type {Function} */
-var COS = MATH.cos;
+const COS = MATH.cos;
 /** @type {Function} */
-var EXP = MATH.exp;
+const EXP = MATH.exp;
 /** @type {Function} */
-var FLOOR = MATH.floor;
+const FLOOR = MATH.floor;
 /** @type {Function} */
-var LOG = MATH.log;
+const LOG = MATH.log;
 /** @type {Function} */
-var MAX = MATH.max;
+const MAX = MATH.max;
 /** @type {Function} */
-var MIN = MATH.min;
+const MIN = MATH.min;
 /** @type {Function} */
-var POW = MATH.pow;
+const POW = MATH.pow;
 /** @type {Function} */
-var RANDOM = MATH.random;
+const RANDOM = MATH.random;
 /** @type {Function} */
-var ROUND = MATH.round;
+const ROUND = MATH.round;
 /** @type {Function} */
-var SIN = MATH.sin;
+const SIN = MATH.sin;
 /** @type {Function} */
-var SQRT = MATH.sqrt;
+const SQRT = MATH.sqrt;
 /** @type {Function} */
-var TAN = MATH.tan;
+const TAN = MATH.tan;
 /**
  * Does fast 32bit uint multiplication (from C++).  Used mostly in ASM.
  * @param a
  * @param b
  **/
-var IMUL = MATH["imul"] || function imul(a: number, b: number): number {
-	var ah = (a >>> 16) & 0xffff;
-	var al = a & 0xffff;
-	var bh = (b >>> 16) & 0xffff;
-	var bl = b & 0xffff;
+const IMUL = MATH["imul"] || function imul(a: number, b: number): number {
+	const ah = (a >>> 16) & 0xffff;
+	const al = a & 0xffff;
+	const bh = (b >>> 16) & 0xffff;
+	const bl = b & 0xffff;
 	// the shift by 0 fixes the sign on the high part
 	// the final |0 converts the unsigned value into a signed value
 	return ((al * bl) + (((ah * bl + al * bh) << 16) >>> 0) | 0);
 };
 
 /** @type {number} */
-var RADIANS_TO_DEGREES = 180 / PI;	// radians to degrees: value * (180 / pi)
+const RADIANS_TO_DEGREES = 180 / PI;	// radians to degrees: value * (180 / pi)
 /** @type {number} */
-var DEGREES_TO_RADIANS = PI / 180;	// degrees to radians: value * (pi / 180)
+const DEGREES_TO_RADIANS = PI / 180;	// degrees to radians: value * (pi / 180)
 
 /**
  * Clips a number to the specified minimum and maximum values.

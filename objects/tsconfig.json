@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "AMD",
+        "module": "ESNext",
         "outDir": "_publish",
         "sourceMap": true,
         "strict": true,

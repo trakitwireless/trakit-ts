@@ -110,10 +110,9 @@ const QUOTATIONS = [
 
 /**
  * Creates a searchable/coded string based on a user inputted string.  Quotation marks, apostrophes, and accents are removed.
- * @param input 
- * @returns The codified representation of the input
+ * @param input
  **/
-export function CODIFIER(input:string) {
+export function codify(input: string): string {
 	if (!IS_STRING(input)) throw new TypeError("input value is not a string");
 	var dash = true,
 		output = "";
