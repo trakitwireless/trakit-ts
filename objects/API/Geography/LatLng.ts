@@ -1,4 +1,4 @@
-﻿import '../Constants'
+﻿import { ATAN2, COS, DEGREES_TO_RADIANS, POW, SIN, SQRT } from '../Constants';
 import { double } from '../Types';
 import * as Planet from './Planet';
 
@@ -65,11 +65,11 @@ export class LatLng implements ILatLng {
 		if (Planet.latitudeIsPole(this.lat)) {  // starting at one of the poles
 			return this.lat > 0 ? 180 : 0;
 		} else {
-				double lat1 = Planet.normalizeLatitude(this.lat) * DEGREES_TO_RADIANS,
-				lat2 = Planet.normalizeLatitude(latlng.lat) * DEGREES_TO_RADIANS,
-				dLng = (latlng.lng - this.lng) * DEGREES_TO_RADIANS,
-				cos_lat2 = COS(lat2),    // minor optimization
-				bearing = ATAN2(SIN(dLng) * cos_lat2, COS(lat1) * SIN(lat2) - SIN(lat1) * cos_lat2 * COS(dLng)) * RADIANS_TO_DEGREES;
+				const lat1 = Planet.normalizeLatitude(this.lat) * DEGREES_TO_RADIANS,
+					lat2 = Planet.normalizeLatitude(latlng.lat) * DEGREES_TO_RADIANS,
+					dLng = (latlng.lng - this.lng) * DEGREES_TO_RADIANS,
+					cos_lat2 = COS(lat2),    // minor optimization
+					bearing = ATAN2(SIN(dLng) * cos_lat2, COS(lat1) * SIN(lat2) - SIN(lat1) * cos_lat2 * COS(dLng)) * RADIANS_TO_DEGREES;
 			return (bearing + 360) % 360;
 		}
 	}
@@ -79,8 +79,8 @@ export class LatLng implements ILatLng {
 	/// <param name="meters">Distance</param>
 	/// <param name="bearing">Bearing in degrees (not radians)</param>
 	/// <returns></returns>
-	public translateTo(double meters, double bearing): LatLng {
-			double distance = meters / Planet.EARTH_RADIUS,
+	public translateTo(meters: double, bearing: double): LatLng {
+			const distance = meters / Planet.EARTH_RADIUS,
 			heading = bearing * DEGREES_TO_RADIANS,
 			lat1 = lat * DEGREES_TO_RADIANS,
 			lng1 = lng * DEGREES_TO_RADIANS,

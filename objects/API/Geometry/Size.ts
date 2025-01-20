@@ -3,7 +3,21 @@
 /// <summary>
 /// Dimensions on a flat surface
 /// </summary>
-export class Size {
+export interface ISize {
+	/// <summary>
+	/// Width
+	/// </summary>
+	width: double;
+	/// <summary>
+	/// Height
+	/// </summary>
+	height: double;
+}
+
+/// <summary>
+/// Dimensions on a flat surface
+/// </summary>
+export class Size implements ISize {
 	/// <summary>
 	/// Width
 	/// </summary>
@@ -12,4 +26,9 @@ export class Size {
 	/// Height
 	/// </summary>
 	public height: double = NaN;
+
+	constructor(width: double, height: double) {
+		this.width = width;
+		this.height = height;
+	}
 }

@@ -1,5 +1,7 @@
-﻿import { ABS } from "./API/Constants";
-import { codify } from "./API/Codifier";
+﻿import { codify } from "./API/Codifier";
+import { Point, } from "./API/Geometry/Point";
+import { Size, } from "./API/Geometry/Size";
+import { Square, } from "./API/Geometry/Square";
 
 const version = (5.0);
 
@@ -9,5 +11,11 @@ const namespaces = {
         codify,
     },
     encoding: {},
+    geometry: {
+        Point,
+        Size,
+        Square,
+    },
+    geography: {},
 };
 export default namespaces;

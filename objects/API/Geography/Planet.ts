@@ -1,5 +1,5 @@
-﻿import '../Constants';
-import '../Functions';
+﻿import { COS, DEGREES_TO_RADIANS } from '../Constants';
+import { IS_NAN, IS_NUMBER, ROUND_TO } from '../Functions';
 import { double, int } from '../Types';
 
 // Hiigara
@@ -29,8 +29,7 @@ function LATITUDE_IS_POLE(lat: double): boolean {
  * @param {number=} edge
  * @return {!number}
  */
-function LATITUDE_NORMALIZED(latitude, edge) {
-	if (IS_NAN(edge)) edge = 90;
+function LATITUDE_NORMALIZED(latitude: number, edge: number = 90): number {
 	return IS_NUMBER(latitude)
 		? latitude > edge
 			? edge

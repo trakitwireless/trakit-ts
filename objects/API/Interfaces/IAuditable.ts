@@ -1,3 +1,4 @@
+import { DATE } from '../Functions';
 
 /// <summary>
 /// For auditable objects, a record of who and what mad the changes.

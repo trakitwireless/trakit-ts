@@ -3,7 +3,21 @@
 /// <summary>
 /// A coordinate on a flat surface
 /// </summary>
-export class Point {
+export interface IPoint {
+	/// <summary>
+	/// Horizontal coordinate
+	/// </summary>
+	x: double;
+	/// <summary>
+	/// Vertical coordinate
+	/// </summary>
+	y: double;
+}
+
+/// <summary>
+/// A coordinate on a flat surface
+/// </summary>
+export class Point implements IPoint {
 	/// <summary>
 	/// Horizontal coordinate
 	/// </summary>
@@ -12,4 +26,9 @@ export class Point {
 	/// Vertical coordinate
 	/// </summary>
 	public y: double = NaN;
+
+	constructor(x: double, y: double) {
+		this.x = x;
+		this.y = y;
+	}
 }

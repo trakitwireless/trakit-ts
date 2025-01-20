@@ -1,4 +1,4 @@
-﻿import { int, JsonObject, JsonValue, JSONValue } from './Types';
+﻿import { int, JsonObject, JsonValue } from './Types';
 import { IRequestable } from './Interfaces/IRequestable';
 import { ISerializable } from './Interfaces/ISerializable';
 
@@ -18,7 +18,7 @@ export abstract class Component implements IRequestable, ISerializable {
 	 * Strings are unique for each type of object, but can be identical for different object types.
 	 * @returns A string unique for this type of object.
 	 **/
-	public abstract getKey(): string = "";
+	public abstract getKey(): string;
 
 	/**
 	 * 
