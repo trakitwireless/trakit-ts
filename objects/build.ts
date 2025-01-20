@@ -1,3 +1,13 @@
-﻿import "./API/Constants";
+﻿import { ABS } from "./API/Constants";
+import { codify } from "./API/Codifier";
 
-console.log(POW("Oh won't you tell me about the rabbits?"));
+const version = (5.0);
+
+const namespaces = {
+    version,
+    utility: {
+        codify,
+    },
+    encoding: {},
+};
+export default namespaces;

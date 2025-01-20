@@ -1,4 +1,4 @@
-﻿import "./Functions";
+﻿import { IS_STRING } from "./Functions";
 
 /**
  * A mapping for non-accented lower-case characters.

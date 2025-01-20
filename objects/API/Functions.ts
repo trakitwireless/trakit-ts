@@ -1,10 +1,10 @@
-﻿import "./Constants";
+﻿import { POW, ROUND } from "./Constants";
 
 /**
  * Checks for both null and undefined
  * @param value The variable to check
  */
-function IS_NOTHING(value: any): value is null | undefined {
+export function IS_NOTHING(value: any): value is null | undefined {
 	return value === null
 		|| typeof value === "undefined";
 }
@@ -12,7 +12,7 @@ function IS_NOTHING(value: any): value is null | undefined {
  * Checks to see if the given parameter is a number object or number literal.
  * @param value The variable to check
  */
-function IS_BOOLEAN(value: any): value is boolean {
+export function IS_BOOLEAN(value: any): value is boolean {
 	return typeof value === "boolean"
 		|| value instanceof Boolean;
 }
@@ -21,7 +21,7 @@ function IS_BOOLEAN(value: any): value is boolean {
  * @param value The variable to check
  * @return
  */
-function IS_NUMBER(value: any): value is number {
+export function IS_NUMBER(value: any): value is number {
 	return typeof value === "number"
 		|| value instanceof Number;
 }
@@ -29,7 +29,7 @@ function IS_NUMBER(value: any): value is number {
  * Checks to see if the given parameter is a number object or number literal.
  * @param value The variable to check
  */
-function IS_STRING(value: any): value is string {
+export function IS_STRING(value: any): value is string {
 	return typeof value === "string"
 		|| value instanceof String;
 }
@@ -37,7 +37,7 @@ function IS_STRING(value: any): value is string {
  * Checks to see if the given parameter is a function from this window or another.
  * @param value The variable to check
  */
-function IS_FUNCTION(value: any): value is Function {
+export function IS_FUNCTION(value: any): value is Function {
 	return typeof value === "function"
 		|| value instanceof Function;
 }
@@ -45,7 +45,7 @@ function IS_FUNCTION(value: any): value is Function {
  * Returns the name of the given value's type.
  * @param value The variable to check
  */
-function OBJECT_TYPE(value: any): string {
+export function OBJECT_TYPE(value: any): string {
 	return Object.prototype.toString.call(value).slice(8, -1);
 }
 /**
@@ -54,7 +54,7 @@ function OBJECT_TYPE(value: any): string {
  * @param value The variable to check
  * @return {boolean}
  */
-function IS_NAN(value: any): value is number {
+export function IS_NAN(value: any): value is number {
 	return isNaN(value)
 		|| !IS_NUMBER(value);
 }
@@ -65,7 +65,7 @@ function IS_NAN(value: any): value is number {
  * @param value The variable to check
  * @return {boolean}
  */
-function IS_AN(value: any): value is number {
+export function IS_AN(value: any): value is number {
 	return !IS_NAN(value);
 }
 
@@ -74,7 +74,7 @@ function IS_AN(value: any): value is number {
  * @param number The number to be rounded
  * @param places The number of decimal places.  Default is 0.
  */
-function ROUND_TO(number: number, places?: number): number {
+export function ROUND_TO(number: number, places?: number): number {
 	let power = POW(10, places || 0);
 	return ROUND(number * power) / power;
 }
@@ -83,7 +83,7 @@ function ROUND_TO(number: number, places?: number): number {
  * Creates a Date object out of the given value.
  * @param value
  **/
-function DATE(value?: string | number | Date): Date {
+export function DATE(value?: string | number | Date): Date {
 	return new Date(
 		value instanceof Date
 			? value.valueOf()
