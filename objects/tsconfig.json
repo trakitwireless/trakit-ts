@@ -2,15 +2,20 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "outDir": "_publish",
+        "moduleResolution": "node",
+        "declaration": true, // Optionally generate types
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "isolatedModules": true,
+
+        "outDir": "./_publish",  // Output directory
         "sourceMap": true,
+
         "strict": true,
         "noImplicitAny": true,
         "noImplicitOverride": true,
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
     },
-    "files": [
-        "./build.ts",
-    ],
+    "files": ["./build.ts"],
 }
