@@ -1,20 +1,13 @@
-﻿import { ATAN2, COS, DEGREES_TO_RADIANS, POW, SIN, SQRT } from '../Constants';
-import { double } from '../Types';
-import * as Planet from './Planet';
+﻿import {
+	ATAN2,
+	COS,
+	DEGREES_TO_RADIANS,
+	POW,
+	SIN,
+	SQRT
+} from '../Constants';
+import { ILatLng } from './Interfaces';
 
-/// <summary>
-/// 
-/// </summary>
-export interface ILatLng {
-	/// <summary>
-	/// Latitude
-	/// </summary>
-	lat: double;
-	/// <summary>
-	/// Longitude
-	/// </summary>
-	lng: double;
-}
 
 /// <summary>
 /// A coordinate on the Earth.
@@ -28,13 +21,13 @@ export class LatLng implements ILatLng {
 	/// <summary>
 	/// Latitude
 	/// </summary>
-	public readonly lat: double;
+	public readonly lat: number;
 	/// <summary>
 	/// Longitude
 	/// </summary>
-	public readonly lng: double;
+	public readonly lng: number;
 
-	constructor(lat: double, lng: double) {
+	constructor(lat: number, lng: number) {
 		this.lat = lat;
 		this.lng = lng;
 	}
@@ -44,7 +37,7 @@ export class LatLng implements ILatLng {
 	/// </summary>
 	/// <param name="latlng"></param>
 	/// <returns>Distance in meters</returns>
-	public distanceTo(latlng: LatLng): double {
+	public distanceTo(latlng: LatLng): number {
 		let lat1 = this.lat * DEGREES_TO_RADIANS,
 			lat2 = latlng.lat * DEGREES_TO_RADIANS,
 			lng1 = this.lng * DEGREES_TO_RADIANS,
@@ -61,7 +54,7 @@ export class LatLng implements ILatLng {
 	/// </summary>
 	/// <param name="latlng"></param>
 	/// <returns>Bearing in degrees (not radians)</returns>
-	public bearingTo(latlng: LatLng): double {
+	public bearingTo(latlng: LatLng): number {
 		if (Planet.latitudeIsPole(this.lat)) {  // starting at one of the poles
 			return this.lat > 0 ? 180 : 0;
 		} else {
@@ -79,7 +72,7 @@ export class LatLng implements ILatLng {
 	/// <param name="meters">Distance</param>
 	/// <param name="bearing">Bearing in degrees (not radians)</param>
 	/// <returns></returns>
-	public translateTo(meters: double, bearing: double): LatLng {
+	public translateTo(meters: number, bearing: number): LatLng {
 			const distance = meters / Planet.EARTH_RADIUS,
 			heading = bearing * DEGREES_TO_RADIANS,
 			lat1 = lat * DEGREES_TO_RADIANS,
