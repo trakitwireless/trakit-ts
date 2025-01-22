@@ -1,7 +1,28 @@
-﻿import { codify } from "./API/Codifier";
+﻿"use strict";
+
+import { PYTHAGORA, } from "./API/Functions";
+import { codify } from "./API/Codifier";
 import { Point, } from "./API/Geometry/Point";
+import { Radial } from "./API/Geometry/Radial";
 import { Size, } from "./API/Geometry/Size";
-import { Square, } from "./API/Geometry/Square";
+import { Rectangle, } from "./API/Geometry/Rectangle";
+import {
+    PATH_LENGTH,
+    PATH_PEUCKER,
+    POINT_ANGLE,
+    POINT_DISTANCE,
+    //POINT_FARTHEST,
+    POINT_ORTHOGONAL,
+    POINT_VECTOR,
+    POLY_AREA,
+    POLY_CONTAINS,
+    POLY_PEUCKER,
+    POLY_WRAPPER,
+    RADIAL_CIRCUMFERENCE,
+    RADIAL_AREA,
+    RADIAL_BADOIU_CLARKSON,
+    RADIAL_OVERLAP_RECTANGLE,
+ } from "./API/Geometry/Functions";
 
 const version = (5.0);
 
@@ -11,10 +32,32 @@ const namespaces = {
         codify,
     },
     encoding: {},
+    /**
+     * A utility library exposing algorithms for a flat plane.
+     **/
+    drawing: {
+        "pathLength": PATH_LENGTH,
+        "pathReduce": PATH_PEUCKER,
+        "pointAngle": POINT_ANGLE,
+        "pointDistance": POINT_DISTANCE,
+        //	"pointFarthest": POINT_FARTHEST,
+        "pointOrthogonal": POINT_ORTHOGONAL,
+        "pointPythagora": PYTHAGORA,
+        "pointVector": POINT_VECTOR,
+        "polyArea": POLY_AREA,
+        "polyContains": POLY_CONTAINS,
+        "polyReduce": POLY_PEUCKER,
+        "polyWrapper": POLY_WRAPPER,
+        "radialCircumference": RADIAL_CIRCUMFERENCE,
+        "radialArea": RADIAL_AREA,
+        "radialSmallest": RADIAL_BADOIU_CLARKSON,
+        "radialOverlapsRectangle": RADIAL_OVERLAP_RECTANGLE,
+    },
     geometry: {
         Point,
+        Radial,
+        Rectangle,
         Size,
-        Square,
     },
     geography: {},
 };

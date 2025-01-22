@@ -72,28 +72,3 @@ export const IMUL = MATH["imul"] || function imul(a: number, b: number): number 
 export const RADIANS_TO_DEGREES = 180 / PI;	// radians to degrees: value * (180 / pi)
 /** @type {number} */
 export const DEGREES_TO_RADIANS = PI / 180;	// degrees to radians: value * (pi / 180)
-
-/**
- * Clips a number to the specified minimum and maximum values.
- * @param n	The number to clip
- * @param min	Minimum allowable value
- * @param max	Maximum allowable value
- **/
-export function CLIP(n: number, min: number, max: number): number {
-	return MIN(MAX(n, min), max);
-}
-/**
- * Calculates the Pythagorean length of a triangle given the length of the other two sides.
- * @param width
- * @param height
- **/
-export function PYTHAGORA(width: number, height: number): number {
-	return SQRT(ABS(width * width) + ABS(height * height));
-}
-/**
- * Parses a base-10 integer number from the given value.
- * @param value
- **/
-export function ID(value: any): number {
-	return INT(value, 10);
-}
