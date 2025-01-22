@@ -1,31 +1,57 @@
-﻿import { ABS, ATAN2, COS, DEGREES_TO_RADIANS, PI, RADIANS_TO_DEGREES, SIN, } from '../Constants';
-import { DOUGLASPEUCKER, FILTER_BY_BOOLEAN_ARRAY, PYTHAGORA, } from '../Functions';
-import { IPoint, Point, } from './Point';
-import { IRadial, Radial, } from './Radial';
-import { IRectangle, Rectangle, } from './Rectangle';
+﻿import {
+	ABS,
+	ATAN2,
+	SIN,
+	COS,
+	PI,
+	DEGREES_TO_RADIANS,
+	RADIANS_TO_DEGREES,
+} from '../Constants';
+import {
+	DOUGLASPEUCKER,
+	FILTER_BY_BOOLEAN_ARRAY,
+	PYTHAGORA,
+} from '../Functions';
+import {
+	IPoint,
+	IRadial,
+	IRectangle,
+	IRectangle_clone,
+} from './Interfaces';
 
+//#region Point helpers
 /**
- * Calculates the orthogonal height of a triangle.
-	The orthogonal height is calculated by drawing a line between the firstPoint and lastPoint, then getting the length
-	of a line drawn up from the line to the midPoint at a 90 degree angle.
- * @param firstX	Left-most point's X coordinate of the triangle
- * @param firstY	Left-most point's Y coordinate of the triangle
- * @param midX		Top-most point's X coordinate of the triangle
- * @param midY		Top-most point's Y coordinate of the triangle
- * @param lastX		Right-most point's X coordinate of the triangle
- * @param lastY		Right-most point's Y coordinate of the triangle
+ * Calculates the starting angle (in degrees) between two Points using the top as zero.  Does not return negative values.
+ * @param starting	Starting coordinate
+ * @param ending	Other coordinate
+ * @returns A number between 0 and 360.
  **/
-export function POINT_ORTHOGONAL(firstX: number, firstY: number, midX: number, midY: number, lastX: number, lastY: number): number {
-	var length = POINT_DISTANCE(firstX, firstY, lastX, lastY);
-	return length > 0
-		? POLY_AREA([
-			{ x: firstX, y: firstY },
-			{ x: midX, y: midY },
-			{ x: lastX, y: lastY },
-		]) / length * 2
-		: POINT_DISTANCE(firstX, firstY, midX, midY);
+export function POINT_ANGLE(
+	starting: IPoint,
+	ending: IPoint
+): number {
+	var angle = 0.0;
+	if (starting.x !== ending.x || starting.y !== ending.y) {
+		angle = ATAN2(ending.y - starting.y, ending.x - starting.x)
+			* RADIANS_TO_DEGREES
+			+ 90;	// top as zero
+	}
+	return (angle + 360) % 360;	// make sure no negative numbers
 }
-
+/**
+ * Calculates the distance between two points using Pythagorean theorem.
+ * @param starting	Starting coordinate
+ * @param ending	Other coordinate
+ **/
+export function POINT_DISTANCE(
+	starting: IPoint,
+	ending: IPoint
+): number {
+	return PYTHAGORA(
+		ending.x - starting.x,
+		ending.y - starting.y
+	);
+}
 /**
  * Sorts points by left-most, then by top-most.
  **/
@@ -40,49 +66,6 @@ export function POINT_SORT(a: IPoint, b: IPoint): number {
 					? 1
 					: 0;
 }
-
-/**
- * Calculates the distance between two points using Pythagorean theorem.
- * @param startingX	Starting X coordinate
- * @param startingY	Starting Y coordinate
- * @param endingX	Other X coordinate
- * @param endingY	Other Y coordinate
- **/
-export function POINT_DISTANCE(
-	startingX: number,
-	startingY: number,
-	endingX: number,
-	endingY: number
-): number {
-	return PYTHAGORA(
-		endingX - startingX,
-		endingY - startingY
-	);
-}
-
-/**
- * Calculates the starting angle (in degrees) between two Points using the top as zero.  Does not return negative values.
- * @param startingX	Starting X coordinate
- * @param startingY	Starting Y coordinate
- * @param endingX	Other X coordinate
- * @param endingY	Other Y coordinate
- * @returns A number between 0 and 360.
- **/
-export function POINT_ANGLE(
-	startingX: number,
-	startingY: number,
-	endingX: number,
-	endingY: number
-): number {
-	var angle = 0.0;
-	if (startingX !== endingX || startingY !== endingY) {
-		angle = ATAN2(endingY - startingY, endingX - startingX)
-			* RADIANS_TO_DEGREES
-			+ 90;	// top as zero
-	}
-	return (angle + 360) % 360;	// make sure no negative numbers
-}
-
 /**
  * Calculates the vector which can be used to find the point based on the given direction and distance
  * @param distance
@@ -95,7 +78,85 @@ export function POINT_VECTOR(distance: number, degrees: number): IPoint {
 		y: SIN(radians) * distance,
 	};
 }
+//#endregion Point helpers
 
+//#region Path helpers
+/**
+ * Calculates the total length of the given path
+ * @param path	The array of points representing a path
+ * @return {!number}
+ **/
+export function PATH_LENGTH(path: IPoint[]): number {
+	var value = 0.0,
+		i = 0,
+		l = path.length - 1,
+		p1 = path[i],
+		p2 = p1;
+	for (; i < l; i++) {
+		p1 = path[i];
+		p2 = path[i + 1];
+		value += PYTHAGORA(p2.x - p1.x, p2.y - p1.y);
+	}
+	return value;
+}
+/**
+ * Calculates the orthogonal height of a triangle. The orthogonal height is
+ * calculated by drawing a line between the firstPoint and lastPoint, then
+ * getting the length of a line drawn up from the line to the midPoint at a 90
+ * degree angle.
+ * @param first		Left-most coordinate of the triangle
+ * @param mid		Top-most coordinate of the triangle
+ * @param last		Right-most coordinate of the triangle
+ **/
+export function PATH_ORTHOGONAL(
+	first: IPoint,
+	mid: IPoint,
+	last: IPoint
+): number {
+	var length = POINT_DISTANCE(first, last);
+	return length > 0
+		? POLY_AREA([first, mid, last]) / length * 2
+		: POINT_DISTANCE(first, mid);
+}
+/**
+ * Performs a Douglas-Peucker path reduction based on the given tolerance.
+ * @param path	The array of points representing a path
+ * @param tolerance		Orthogonal height threshold for candidate points.  Default is 0.
+ * @return {!Array.<Point>}
+ **/
+export function PATH_PEUCKER(path: IPoint[], tolerance: number = 0) {
+	if (path.length < 3) {
+		return path.slice();
+	} else {
+		if (!(tolerance > 0)) tolerance = 0;
+
+		return path.filter(
+			FILTER_BY_BOOLEAN_ARRAY,
+			DOUGLASPEUCKER(path, PATH_PEUCKER_FILTER, tolerance)
+		);
+	}
+}
+/**
+ * 
+ * @param firstPoint
+ * @param midPoint
+ * @param lastPoint
+ * @return {number}
+ **/
+export function PATH_PEUCKER_FILTER(
+	firstPoint: IPoint,
+	midPoint: IPoint,
+	lastPoint: IPoint
+): number {
+	return PATH_ORTHOGONAL(
+		firstPoint,
+		midPoint,
+		lastPoint
+	);
+}
+//#endregion Path helpers
+
+//#region Polygon helpers
 /**
  * Calculates the total area occupied by the given path.  Treats non-closed paths as closed paths.
  * @param path	The array of points representing a path
@@ -116,26 +177,88 @@ export function POLY_AREA(path: IPoint[]): number {
 	}
 	return ABS(value / 2);
 }
-
 /**
- * Calculates the total length of the given path
- * @param path	The array of points representing a path
- * @return {!number}
+ * A utility export function to determine if a given point is inside the given polygon path.
+ * @param poly	The array of points represents the path of the polygon.
+ * @param dot	The coordinate of the point to be checked.
+ * @return {!boolean}
  **/
-export function PATH_LENGTH(path: IPoint[]): number {
-	var value = 0.0,
+export function POLY_CONTAINS(poly: IPoint[], dot:IPoint): boolean {
+	var path = poly.slice(),
 		i = 0,
-		l = path.length - 1,
-		p1 = path[i],
-		p2 = p1;
-	for (; i < l; i++) {
-		p1 = path[i];
-		p2 = path[i + 1];
-		value += PYTHAGORA(p2.x - p1.x, p2.y - p1.y);
+		l = path.length,
+		j = l - 1,
+		inside = false;
+	if (path[i].x === path[j].x && path[i].y === path[j].y) {
+		path.pop();
+		l = path.length;
+		j = l - 1;
 	}
-	return value;
+	if (RECTANGLE_CONTAINS_POINT(RECTANGLE_FROM_POINTS(path), dot)) {
+		for (; i < l; j = i++) {
+			var pointA = path[i],
+				pointB = path[j];
+			if (
+				(pointA.y > dot.y) != (pointB.y > dot.y)
+				&& dot.x < (pointB.x - pointA.x) * (dot.y - pointA.y) / (pointB.y - pointA.y) + pointA.x
+			) {
+				inside = !inside;
+			}
+		}
+	}
+	return inside;
 }
+/**
+ * Performs a Douglas-Peucker path reduction on a polygon for the given tolerance.
+ * The start/end points are variable and the end point is trimmed from the result.
+ * @param path	The array of points representing a path
+ * @param tolerance		Orthogonal height threshold for candidate points.  Default is 0.
+ * @return {!Array.<Point>}
+ **/
+export function POLY_PEUCKER(path: IPoint[], tolerance: number = 0) {
+	let points = [...path],
+		length = path.length;
+	if (length < 3) {
+		return points;
+	} else {
+		var widest = 0.0,
+			startIndex = 0,
+			endIndex = 0;
+		if (!(tolerance > 0)) tolerance = 0.0;
 
+		// find the widest part of the polygon (starting point is the only necessary bit)
+		for (var i = 0; i < length; i++) {
+			var point = points[i];
+			for (var j = i + 1; j < length; j++) {
+				var candidate = points[j],
+					distance = POINT_DISTANCE(point, candidate);
+				if (distance > widest) {
+					startIndex = i;
+					endIndex = j;
+					widest = distance;
+				}
+			}
+		}
+
+		// re-order the points with the new starting point (faster method)
+		points = points.splice(startIndex, length).concat(points);
+
+		// make sure start and end points are identical
+		if (POINT_DISTANCE(points[0], points[length - 1]) > 0) length = points.push(points[0]);
+
+		// reduce the polygon's points
+		points = points.filter(
+			FILTER_BY_BOOLEAN_ARRAY,
+			DOUGLASPEUCKER(points, PATH_PEUCKER_FILTER, tolerance)
+		);
+
+		// trim end point if the same as start point
+		length = points.length;
+		if (POINT_DISTANCE(points[0], points[length - 1]) <= 0) points.pop();
+
+		return points;
+	}
+}
 /**
  * Wraps the given points into a polygonal path.  The given points do not need to be a path.  The returned path is not closed.
  * @param points	The array of points on which to create the non-closed path
@@ -152,8 +275,8 @@ export function POLY_WRAPPER(points: IPoint[]): IPoint[] {
 			smallestAngle = 360.0;
 		for (var j = 0, c = candidates.length; j < c; j++) {
 			var candidate = candidates[j],
-				angle = POINT_ANGLE(point.x, point.y, candidate.x, candidate.y),
-				distance = POINT_DISTANCE(point.x, point.y, candidate.x, candidate.y);
+				angle = POINT_ANGLE(point, candidate),
+				distance = POINT_DISTANCE(point, candidate);
 			if (candidate === point) continue;	// edge case; the candidate is the comparison point during the first loop.  This case does not happen after that.
 			//	console.log("candidate " + j + ": " + candidate.toString() + " @ " + angle + "/" + distance);
 
@@ -179,146 +302,15 @@ export function POLY_WRAPPER(points: IPoint[]): IPoint[] {
 	}
 	return path;
 }
+//#endregion Polygon helpers
 
-/**
- * A utility export function to determine if a given point is inside the given polygon path.
- * @param poly	The array of points represents the path of the polygon.
- * @param pointX		X coordinate of the point to be checked.
- * @param pointY		Y coordinate of the point to be checked.
- * @return {!boolean}
- **/
-export function POLY_CONTAINS(poly: IPoint[], pointX: number, pointY: number): boolean {
-	var path = poly.slice(),
-		i = 0,
-		l = path.length,
-		j = l - 1,
-		inside = false;
-	if (path[i].x === path[j].x && path[i].y === path[j].y) {
-		path.pop();
-		l = path.length;
-		j = l - 1;
-	}
-	if ((new Rectangle(path)).contains(new Point(pointX, pointY))) {
-		for (; i < l; j = i++) {
-			var pointA = path[i],
-				pointB = path[j];
-			if (
-				(pointA.y > pointY) != (pointB.y > pointY)
-				&& pointX < (pointB.x - pointA.x) * (pointY - pointA.y) / (pointB.y - pointA.y) + pointA.x
-			) {
-				inside = !inside;
-			}
-		}
-	}
-	return inside;
-}
-
-/**
- * 
- * @param firstPoint
- * @param midPoint
- * @param lastPoint
- * @return {number}
- **/
-export function POINT_PEUCKER_FILTER(
-	firstPoint: IPoint,
-	midPoint: IPoint,
-	lastPoint: IPoint
-): number {
-	return POINT_ORTHOGONAL(
-		firstPoint.x,
-		firstPoint.y,
-		midPoint.x,
-		midPoint.y,
-		lastPoint.x,
-		lastPoint.y
-	);
-}
-
-/**
- * Performs a Douglas-Peucker path reduction based on the given tolerance.
- * @param path	The array of points representing a path
- * @param tolerance		Orthogonal height threshold for candidate points.  Default is 0.
- * @return {!Array.<Point>}
- **/
-export function PATH_PEUCKER(path: IPoint[], tolerance: number = 0) {
-	if (path.length < 3) {
-		return path.slice();
-	} else {
-		if (!(tolerance > 0)) tolerance = 0;
-
-		return path.filter(
-			FILTER_BY_BOOLEAN_ARRAY,
-			DOUGLASPEUCKER(path, POINT_PEUCKER_FILTER, tolerance)
-		);
-	}
-}
-
-/**
- * Performs a Douglas-Peucker path reduction on a polygon for the given tolerance.
- * The start/end points are variable and the end point is trimmed from the result.
- * @param path	The array of points representing a path
- * @param tolerance		Orthogonal height threshold for candidate points.  Default is 0.
- * @return {!Array.<Point>}
- **/
-export function POLY_PEUCKER(path: IPoint[], tolerance:number=0) {
-	let points = [...path],
-		length = path.length;
-	if (length < 3) {
-		return points;
-	} else {
-		var widest = 0.0,
-			startIndex = 0,
-			endIndex = 0;
-		if (!(tolerance > 0)) tolerance = 0.0;
-
-		// find the widest part of the polygon (starting point is the only necessary bit)
-		for (var i = 0; i < length; i++) {
-			var point = points[i];
-			for (var j = i + 1; j < length; j++) {
-				var candidate = points[j],
-					distance = POINT_DISTANCE(point.x, point.y, candidate.x, candidate.y);
-				if (distance > widest) {
-					startIndex = i;
-					endIndex = j;
-					widest = distance;
-				}
-			}
-		}
-
-		// re-order the points with the new starting point (faster method)
-		points = points.splice(startIndex, length).concat(points);
-
-		// make sure start and end points are identical
-		if (POINT_DISTANCE(points[0].x, points[0].y, points[length - 1].x, points[length - 1].y) > 0) length = points.push(points[0]);
-
-		// reduce the polygon's points
-		points = points.filter(
-			FILTER_BY_BOOLEAN_ARRAY,
-			DOUGLASPEUCKER(points, POINT_PEUCKER_FILTER, tolerance)
-		);
-
-		// trim end point if the same as start point
-		length = points.length;
-		if (POINT_DISTANCE(points[0].x, points[0].y, points[length - 1].x, points[length - 1].y) <= 0) points.pop();
-
-		return points;
-	}
-}
-/**
- * Calculates the circumference of a circle based on the given radius.
- * @param radius		
- * @return {!number}
- **/
-export function RADIAL_CIRCUMFERENCE(radius:number):number {
-	return 2 * PI * radius;
-}
+//#region Radial helpers
 /**
  * Calculates the area of a circle based on the given radius.
  * @param radius		
  * @return {!number}
  **/
-export function RADIAL_AREA(radius:number):number {
+export function RADIAL_AREA(radius: number): number {
 	return PI * (radius * radius);
 }
 /**
@@ -328,28 +320,31 @@ export function RADIAL_AREA(radius:number):number {
  * @return {!Radial}
  **/
 export function RADIAL_BADOIU_CLARKSON(points: IPoint[], iterations: number): IRadial {
-	var centre = points[0],
-		radius = 0.0,
-		l = points.length;
+	let centre = points[0],
+		radius = 0;
 	// short-circuit for special cases
-	if (l === 1) {
-		return {
-			x: centre.x,
-			y: centre.y,
-			r: radius,
-		};
-	} else if (l === 2) {
-		return new Rectangle(centre, points[1]).toRadial(false);
+	switch (points.length) {
+		case 1:
+			return {
+				x: centre.x,
+				y: centre.y,
+				r: radius,
+			};
+		case 2:
+			return RECTANGLE_TO_RADIAL(
+				RECTANGLE_FROM_POINTS(points),
+				false
+			);
 	}
 	// long-circuit
 	if (!iterations) iterations = 10000;
 
-	for (var iter = 0; iter < iterations; iter++) {
+	for (let iter = 0; iter < iterations; iter++) {
 		var winner = points[0],
 			max = 0.0;
-		for (var i = 0; i < l; i++) {
+		for (let i = 0; i < points.length; i++) {
 			var point = points[i],
-				distance = POINT_DISTANCE(centre.x, centre.y, point.x, point.y);
+				distance = POINT_DISTANCE(centre, point);
 			if (distance > max) {
 				winner = point;
 				max = distance;
@@ -369,22 +364,119 @@ export function RADIAL_BADOIU_CLARKSON(points: IPoint[], iterations: number): IR
 	};
 }
 /**
+ * Calculates the circumference of a circle based on the given radius.
+ * @param radius		
+ * @return {!number}
+ **/
+export function RADIAL_CIRCUMFERENCE(radius: number): number {
+	return 2 * PI * radius;
+}
+/**
+ * Creates an {@link IRectangle} which contains the given list of {@link IPoint}s.
+ * @param dots 
+ */
+export function RECTANGLE_FROM_POINTS(dots: IPoint[]):IRectangle {
+	let left = NaN,
+		top = NaN,
+		right = NaN,
+		bottom = NaN;
+	for (let i = 0; i < dots.length; i++) {
+		const x = dots[i].x,
+			y = dots[i].y;
+		if (!(x > left)) left = x;
+		if (!(x < right)) right = x;
+		if (!(y > top)) top = y;
+		if (!(y < bottom)) bottom = y;
+	}
+	return {
+		left,
+		top,
+		right,
+		bottom,
+	};
+}
+/**
  * Returns true if the given {@link Radial} overlaps the given {@link Rectangle}.
- * @param }	radial
- * @param }	rectangle
+ * @param circle
+ * @param rect
  * @return {!boolean}
  **/
-export function RADIAL_OVERLAP_RECTANGLE(radial: IRadial, rectangle: IRectangle): boolean {
-	var tall = new Rectangle(rectangle),
-		wide = new Rectangle(rectangle);
-	tall.top -= radial.r;
-	tall.bottom += radial.r;
-	wide.left -= radial.r;
-	wide.right += radial.r;
-	return tall.contains(radial)
-		|| wide.contains(radial)
-		|| POINT_DISTANCE(radial.x, radial.y, rectangle.left, rectangle.top) <= radial.r
-		|| POINT_DISTANCE(radial.x, radial.y, rectangle.right, rectangle.top) <= radial.r
-		|| POINT_DISTANCE(radial.x, radial.y, rectangle.left, rectangle.bottom) <= radial.r
-		|| POINT_DISTANCE(radial.x, radial.y, rectangle.right, rectangle.bottom) <= radial.r
+export function RADIAL_OVERLAP_RECTANGLE(circle: IRadial, rect: IRectangle): boolean {
+	var tall = IRectangle_clone(rect),
+		wide = IRectangle_clone(rect);
+	tall.top -= circle.r;
+	tall.bottom += circle.r;
+	wide.left -= circle.r;
+	wide.right += circle.r;
+	return RECTANGLE_CONTAINS_POINT(tall, circle)
+		|| RECTANGLE_CONTAINS_POINT(wide, circle)
+		|| POINT_DISTANCE(circle, { x: rect.left, y: rect.top }) <= circle.r
+		|| POINT_DISTANCE(circle, { x: rect.right, y: rect.top }) <= circle.r
+		|| POINT_DISTANCE(circle, { x: rect.left, y: rect.bottom }) <= circle.r
+		|| POINT_DISTANCE(circle, { x: rect.right, y: rect.bottom }) <= circle.r
 }
+//#endregion Radial helpers
+
+//#region Rectangle helpers
+/**
+ * 
+ * @param rect 
+ */
+export function RECTANGLE_CENTRE(rect: IRectangle): IPoint {
+	return {
+		x: rect.left + ((rect.right - rect.left) / 2),
+		y: rect.top + ((rect.bottom - rect.top) / 2),
+	}
+}
+/**
+ * Determines if the given {@link IPoint} is contained by the given {@link Rectangle}.
+ * @param rect 
+ * @param dot 
+ * @returns 
+ */
+export function RECTANGLE_CONTAINS_POINT(rect: IRectangle, dot: IPoint): boolean {
+	return !(
+		dot.y < rect.top
+		|| dot.x < rect.left
+		|| dot.x > rect.right
+		|| dot.y > rect.bottom
+	);
+}
+/**
+ * 
+ * @param rect 
+ * @param clip 
+ */
+export function RECTANGLE_TO_RADIAL(rect: IRectangle, clip: boolean): IRadial {
+	const centre = RECTANGLE_CENTRE(rect),
+		width = rect.right - rect.left,
+		height = rect.bottom - rect.top;
+	return {
+		x: centre.x,
+		y: centre.y,
+		r: !clip ?
+			POINT_DISTANCE(
+				centre,
+				{
+					x: rect.left,
+					y: rect.top,
+				}
+			)
+			: width > height
+				? POINT_DISTANCE(
+					centre,
+					{
+						x: rect.left,
+						y: rect.top + (height / 2),
+					}
+				)
+				: POINT_DISTANCE(
+					centre,
+					{
+						x: rect.left + (width / 2),
+						y: rect.top,
+					}
+				)
+	}
+}
+//#endregion Rectangle helpers
