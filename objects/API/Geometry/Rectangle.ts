@@ -1,51 +1,27 @@
 ﻿
 import { ABS, } from '../Constants';
-import { IS_AN, IS_NAN, IS_NUMBER, IS_STRING, ROUND_TO, } from '../Functions';
-import { POINT_DISTANCE, POINT_VECTOR, } from './Functions';
-import { IPoint, IPoint_instanceOf, Point, } from './Point';
+import {
+	IS_AN,
+	IS_NAN,
+	IS_NUMBER,
+	IS_STRING,
+	ROUND_TO,
+} from '../Functions';
+import {
+	IPoint,
+	IPoint_instanceOf,
+	IRectangle,
+	IRectangle_instanceOf,
+	RectangleExpansion,
+} from './Interfaces';
+import {
+	POINT_DISTANCE,
+	POINT_VECTOR,
+	RECTANGLE_CONTAINS_POINT,
+} from './Functions';
+import { Point, } from './Point';
 import { Radial, } from './Radial';
 import { Size, } from './Size';
-
-/**
- * A rectangular boundary on a flat surface.
- **/
-export interface IRectangle {
-	/**
-	 * Left-most horizontal coordinate
-	 **/
-	left: number;
-	/**
-	 * Highest vertical coordinate.
-	 **/
-	top: number;
-	/**
-	 * Right-most horizontal coordinate
-	 **/
-	right: number;
-	/**
-	 * Lowest vertical coordinate
-	 **/
-	bottom: number;
-}
-
-/**
- * Returns true if the given rect conforms to the {@link Rectangle} interface.
- * @param rect	
- **/
-export function IRectangle_instanceOf(rect: any): rect is IRectangle {
-	return !!rect
-		&& IS_NUMBER(rect.top)
-		&& IS_NUMBER(rect.left)
-		&& IS_NUMBER(rect.bottom)
-		&& IS_NUMBER(rect.right);
-}
-
-/**
- * The types used to extend a {@link Rectangle}'s edges.
- **/
-type RectangleExpansion = IPoint
-	| IRectangle
-	| (IPoint | IRectangle | RectangleExpansion)[];
 
 /**
  * A four-sided box on a flat surface.
@@ -174,12 +150,7 @@ export class Rectangle implements IRectangle {
 	 * @param dot
 	 **/
 	contains(dot: IPoint): boolean {
-		return !(
-			dot.y < this.top
-			|| dot.x < this.left
-			|| dot.x > this.right
-			|| dot.y > this.bottom
-		);
+		return RECTANGLE_CONTAINS_POINT(this, dot);
 	}
 	/**
 	 * Determines if the given {@link IRectangle} is overlaps this {@link Rectangle} in any way
@@ -374,23 +345,26 @@ export class Rectangle implements IRectangle {
 			centre.y,
 			!clip ?
 				POINT_DISTANCE(
-					centre.x,
-					centre.y,
-					this.left,
-					this.top
+					centre,
+					{
+						x: this.left,
+						y: this.top,
+					}
 				)
 				: this.width > this.height
 					? POINT_DISTANCE(
-						centre.x,
-						centre.y,
-						this.left,
-						this.top + (this.height / 2)
+						centre,
+						{
+							x: this.left,
+							y: this.top + (this.height / 2),
+						}
 					)
 					: POINT_DISTANCE(
-						centre.x,
-						centre.y,
-						this.left + (this.width / 2),
-						this.top
+						centre,
+						{
+							x: this.left + (this.width / 2),
+							y: this.top,
+						}
 					)
 		);
 	}

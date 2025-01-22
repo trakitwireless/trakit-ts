@@ -1,29 +1,8 @@
-﻿import { IS_NUMBER, ROUND_TO, } from '../Functions';
-
-/**
- * Dimensions on a flat surface.
- **/
-export interface ISize {
-	/**
-	 * Width.
-	 **/
-	width: number;
-	/**
-	 * Height.
-	 **/
-	height: number;
-}
-
-/**
- * Returns true if the given size conforms to the {@link Size} interface.
- * @param size	
- * @returns 
- **/
-export function ISize_instanceOf(size: any): size is ISize {
-	return !!size
-		&& IS_NUMBER(size.width)
-		&& IS_NUMBER(size.height);
-}
+﻿import { ROUND_TO, } from '../Functions';
+import {
+	ISize,
+	ISize_instanceOf,
+} from './Interfaces';
 
 /**
  * Dimensions on a flat surface.

@@ -1,32 +1,15 @@
 ﻿import { FLOAT, } from '../Constants';
-import { IS_NUMBER, ROUND_TO, } from '../Functions';
-import { POINT_DISTANCE, POINT_VECTOR, POINT_ANGLE, } from './Functions';
+import { ROUND_TO, } from '../Functions';
+import {
+	IPoint,
+	IPoint_instanceOf,
+} from './Interfaces';
+import {
+	POINT_DISTANCE,
+	POINT_VECTOR,
+	POINT_ANGLE,
+} from './Functions';
 import { Radial, } from './Radial';
-
-/**
- * A coordinate on a flat surface.
- **/
-export interface IPoint {
-	/**
-	 * Horizontal coordinate.
-	 **/
-	x: number;
-	/**
-	 * Vertical coordinate.
-	 **/
-	y: number;
-}
-
-/**
- * Returns true if the given point conforms to the {@link IPoint} interface.
- * @param point	
- * @returns 
- **/
-export function IPoint_instanceOf(point: any): point is IPoint {
-	return !!point
-		&& IS_NUMBER(point.x)
-		&& IS_NUMBER(point.y);
-}
 
 /**
  * A coordinate on a flat surface.
@@ -101,14 +84,14 @@ export class Point implements IPoint {
 	 * @param point	The other {@link Point} to compare
 	 **/
 	distanceTo(point: IPoint): number {
-		return POINT_DISTANCE(this.x, this.y, point.x, point.y);
+		return POINT_DISTANCE(this, point);
 	}
 	/**
 	 * Calculates the angle (in degrees) to the given {@link Point}.
 	 * @param point
 	 **/
 	angleTo(point: IPoint): number {
-		return POINT_ANGLE(this.x, this.y, point.x, point.y);
+		return POINT_ANGLE(this, point);
 	}
 
 	/**

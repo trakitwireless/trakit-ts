@@ -1,50 +1,21 @@
 ﻿import { FLOAT, } from '../Constants';
 import { POINT_DISTANCE, POINT_VECTOR, } from './Functions';
-import { IS_AN, IS_NUMBER, ROUND_TO, } from '../Functions';
-import { IPoint, IPoint_instanceOf, Point, } from './Point';
+import { IS_AN, ROUND_TO, } from '../Functions';
+import {
+	IPoint,
+	IPoint_instanceOf,
+	IRadial,
+	IRadial_instanceOf,
+	RadialExpansion,
+} from './Interfaces';
+import { Point, } from './Point';
 import { Size, } from './Size';
 import { Rectangle, } from './Rectangle';
 
 /**
  * A boundary on a flat surface based on a centre point and a radius.
  **/
-export interface IRadial {
-	/**
-	 * Left coordinate.
-	 **/
-	x: number;
-	/**
-	 * Top coordinate.
-	 **/
-	y: number;
-	/**
-	 * Radial distance.
-	 **/
-	r: number;
-}
-
-/**
- * The types used to extend a {@link Radial}'s radius.
- **/
-type RadialExpansion = IPoint
-	| IRadial
-	| (IPoint | IRadial | RadialExpansion)[];
-
-/**
- * Returns true if the given radial conforms to the {@link IRadial} interface.
- * @param radial	
- * @returns 
- **/
-export function IRadial_instanceOf(radial: any): radial is IRadial {
-	return !!radial
-		&& IS_NUMBER(radial.width)
-		&& IS_NUMBER(radial.height);
-}
-
-/**
- * A boundary on a flat surface based on a centre point and a radius.
- **/
-export class Radial implements IRadial {
+export class Radial implements IRadial, IPoint {
 	/**
 	 * Returns a new {@link Radial} from the given object.
 	 * @param object	
@@ -127,14 +98,14 @@ export class Radial implements IRadial {
 	 * @param point
 	 **/
 	contains(point: IPoint): boolean {
-		return POINT_DISTANCE(this.x, this.y, point.x, point.y) <= this.r;
+		return POINT_DISTANCE(this, point) <= this.r;
 	}
 	/**
 	 * Determines if the given {@link IRadial} is overlaps this {@link Radial} in any way
 	 * @param circle
 	 **/
 	overlaps(circle: IRadial): boolean {
-		return POINT_DISTANCE(this.x, this.y, circle.x, circle.y) <= this.r + circle.r;
+		return POINT_DISTANCE(this, circle) <= this.r + circle.r;
 	}
 
 	/**
@@ -164,9 +135,9 @@ export class Radial implements IRadial {
 			const centre = this.getCentre();
 			let distance;
 			if (IRadial_instanceOf(object)) {
-				if ((distance = POINT_DISTANCE(centre.x, centre.y, object.x, object.y) + object.r) > this.r) this.r = distance;
+				if ((distance = POINT_DISTANCE(centre, object) + object.r) > this.r) this.r = distance;
 			} else if (IPoint_instanceOf(object)) {
-				if ((distance = POINT_DISTANCE(centre.x, centre.y, object.x, object.y)) > this.r) this.r = distance;
+				if ((distance = POINT_DISTANCE(centre, object)) > this.r) this.r = distance;
 			}
 		}
 	}

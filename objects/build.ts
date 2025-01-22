@@ -12,7 +12,7 @@ import {
     POINT_ANGLE,
     POINT_DISTANCE,
     //POINT_FARTHEST,
-    POINT_ORTHOGONAL,
+    PATH_ORTHOGONAL,
     POINT_VECTOR,
     POLY_AREA,
     POLY_CONTAINS,
@@ -37,11 +37,11 @@ const namespaces = {
      **/
     drawing: {
         "pathLength": PATH_LENGTH,
+        "pathOrthogonal": PATH_ORTHOGONAL,
         "pathReduce": PATH_PEUCKER,
         "pointAngle": POINT_ANGLE,
         "pointDistance": POINT_DISTANCE,
         //	"pointFarthest": POINT_FARTHEST,
-        "pointOrthogonal": POINT_ORTHOGONAL,
         "pointPythagora": PYTHAGORA,
         "pointVector": POINT_VECTOR,
         "polyArea": POLY_AREA,
