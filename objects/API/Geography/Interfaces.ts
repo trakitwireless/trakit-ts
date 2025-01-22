@@ -1,7 +1,5 @@
 ﻿import { IS_NUMBER, } from '../Functions';
-import { Radial, } from './Radial';
 import { LatLngBounds, } from './LatLngBounds';
-import { Size, } from './Size';
 
 //#region LatLng
 /**
@@ -65,7 +63,7 @@ export interface ILatLngBounds {
 }
 
 /**
- * Returns true if the given box conforms to the {@link LatLngBounds} interface.
+ * Returns true if the given box conforms to the {@link ILatLngBounds} interface.
  * @param box	
  **/
 export function ILatLngBounds_instanceOf(box: any): box is ILatLngBounds {
@@ -96,41 +94,3 @@ export type LatLngBoundsExpansion = ILatLng
 	| ILatLngBounds
 	| (ILatLng | ILatLngBounds | LatLngBoundsExpansion)[];
 //#endregion LatLngBounds
-
-//#region Size
-/**
- * Dimensions on a flat surface.
- **/
-export interface ISize {
-	/**
-	 * Width.
-	 **/
-	width: number;
-	/**
-	 * Height.
-	 **/
-	height: number;
-}
-
-/**
- * Returns true if the given size conforms to the {@link Size} interface.
- * @param size	
- * @returns 
- **/
-export function ISize_instanceOf(size: any): size is ISize {
-	return !!size
-		&& IS_NUMBER(size.width)
-		&& IS_NUMBER(size.height);
-}
-/**
- * 
- * @param size	
- * @returns 
- **/
-export function ISize_clone(size: ISize): ISize {
-	return {
-		width: size.width,
-		height: size.height,
-	};
-}
-//#endregion Size
