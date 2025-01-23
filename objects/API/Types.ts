@@ -1,23 +1,23 @@
 ﻿/**
  * "#rrggbb" | "rgb(r, g, b)" | "rgba(r, g, b, a)";
- **/
+ */
 export type colour = string;
 /**
  * lowercase-letters-numbers-and-single-hyphens-only
- **/
+ */
 export type codified = string;
 
 /**
  * 
- **/
+ */
 export type JsonObject = { [key: string]: JsonValue };
 /**
  * 
- **/
+ */
 export type JsonArray = JsonValue[];
 /**
  * 
- **/
+ */
 export type JsonValue =
   | null
   | boolean
@@ -29,51 +29,51 @@ export type JsonValue =
 
 /**
  * 
- **/
+ */
 export type byte = number;
 /**
  * 
- **/
+ */
 export type int = number;
 /**
  * 
- **/
+ */
 export type uint = number;
 /**
  * 
- **/
+ */
 export type short = number;
 /**
  * 
- **/
+ */
 export type ushort = number;
 /**
  * 
- **/
+ */
 export type long = number;
 /**
  * 
- **/
+ */
 export type ulong = number;
 /**
  * 
- **/
+ */
 export type float = number;
 /**
  * 
- **/
+ */
 export type single = number;
 /**
  * 
- **/
+ */
 export type double = number;
 
 /**
  * Does a deep copy of values from one object to another
- * @param {!Object} target
- * @param {!Object} source
- * @param {boolean=} goDeep
- * @return {!Object} target
+ * @param target
+ * @param source
+ * @param goDeep
+ * @return target
  */
 export function merge(target: object, source: object, goDeep: boolean = false) {
   const keys = Object.keys(source);
@@ -86,8 +86,8 @@ export function merge(target: object, source: object, goDeep: boolean = false) {
 }
 /**
  * Used internally by MERGE_OBJECTS
- * @param {?} value
- * @param {!boolean} goDeep
+ * @param value
+ * @param goDeep
  */
 function MERGE_INTERNAL(value: any, goDeep: boolean): any {
   if (value instanceof Array) return value.map(function (object) { return MERGE_INTERNAL(object, goDeep); });

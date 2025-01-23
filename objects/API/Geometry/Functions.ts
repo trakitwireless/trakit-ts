@@ -25,7 +25,7 @@ import {
  * @param starting	Starting coordinate
  * @param ending	Other coordinate
  * @returns A number between 0 and 360.
- **/
+ */
 export function POINT_ANGLE(
 	starting: IPoint,
 	ending: IPoint
@@ -42,7 +42,7 @@ export function POINT_ANGLE(
  * Calculates the distance between two points using Pythagorean theorem.
  * @param starting	Starting coordinate
  * @param ending	Other coordinate
- **/
+ */
 export function POINT_DISTANCE(
 	starting: IPoint,
 	ending: IPoint
@@ -54,7 +54,7 @@ export function POINT_DISTANCE(
 }
 /**
  * Sorts points by left-most, then by top-most.
- **/
+ */
 export function POINT_SORT(a: IPoint, b: IPoint): number {
 	return a.x < b.x
 		? -1
@@ -70,7 +70,7 @@ export function POINT_SORT(a: IPoint, b: IPoint): number {
  * Calculates the vector which can be used to find the point based on the given direction and distance
  * @param distance
  * @param degrees
- **/
+ */
 export function POINT_VECTOR(distance: number, degrees: number): IPoint {
 	var radians = (degrees - 90) * DEGREES_TO_RADIANS;
 	return {
@@ -84,8 +84,7 @@ export function POINT_VECTOR(distance: number, degrees: number): IPoint {
 /**
  * Calculates the total length of the given path
  * @param path	The array of points representing a path
- * @return {!number}
- **/
+ * */
 export function PATH_LENGTH(path: IPoint[]): number {
 	var value = 0.0,
 		i = 0,
@@ -107,7 +106,7 @@ export function PATH_LENGTH(path: IPoint[]): number {
  * @param first		Left-most coordinate of the triangle
  * @param mid		Top-most coordinate of the triangle
  * @param last		Right-most coordinate of the triangle
- **/
+ */
 export function PATH_ORTHOGONAL(
 	first: IPoint,
 	mid: IPoint,
@@ -122,8 +121,7 @@ export function PATH_ORTHOGONAL(
  * Performs a Douglas-Peucker path reduction based on the given tolerance.
  * @param path	The array of points representing a path
  * @param tolerance		Orthogonal height threshold for candidate points.  Default is 0.
- * @return {!Array.<Point>}
- **/
+ * */
 export function PATH_PEUCKER(path: IPoint[], tolerance: number = 0) {
 	if (path.length < 3) {
 		return path.slice();
@@ -141,8 +139,7 @@ export function PATH_PEUCKER(path: IPoint[], tolerance: number = 0) {
  * @param firstPoint
  * @param midPoint
  * @param lastPoint
- * @return {number}
- **/
+ * */
 function PATH_PEUCKER_FILTER(
 	firstPoint: IPoint,
 	midPoint: IPoint,
@@ -160,8 +157,7 @@ function PATH_PEUCKER_FILTER(
 /**
  * Calculates the total area occupied by the given path.  Treats non-closed paths as closed paths.
  * @param path	The array of points representing a path
- * @return {!number}
- **/
+ * */
 export function POLY_AREA(path: IPoint[]): number {
 	var points = path.slice(),
 		value = 0.0,
@@ -181,8 +177,7 @@ export function POLY_AREA(path: IPoint[]): number {
  * A utility export function to determine if a given point is inside the given polygon path.
  * @param poly	The array of points represents the path of the polygon.
  * @param dot	The coordinate of the point to be checked.
- * @return {!boolean}
- **/
+ * */
 export function POLY_CONTAINS(poly: IPoint[], dot:IPoint): boolean {
 	var path = poly.slice(),
 		i = 0,
@@ -213,8 +208,7 @@ export function POLY_CONTAINS(poly: IPoint[], dot:IPoint): boolean {
  * The start/end points are variable and the end point is trimmed from the result.
  * @param path	The array of points representing a path
  * @param tolerance		Orthogonal height threshold for candidate points.  Default is 0.
- * @return {!Array.<Point>}
- **/
+ * */
 export function POLY_PEUCKER(path: IPoint[], tolerance: number = 0) {
 	let points = [...path],
 		length = path.length;
@@ -262,8 +256,8 @@ export function POLY_PEUCKER(path: IPoint[], tolerance: number = 0) {
 /**
  * Wraps the given points into a polygonal path.  The given points do not need to be a path.  The returned path is not closed.
  * @param points	The array of points on which to create the non-closed path
- * @return {!Array.<Point>}		Non-closed path.
- **/
+ * @return Non-closed path.
+ */
 export function POLY_WRAPPER(points: IPoint[]): IPoint[] {
 	var candidates = points.slice().sort(POINT_SORT),
 		point = candidates[0],	// first point is the comparison point, but it is not removed from candidates array
@@ -308,8 +302,7 @@ export function POLY_WRAPPER(points: IPoint[]): IPoint[] {
 /**
  * Calculates the area of a circle based on the given radius.
  * @param radius		
- * @return {!number}
- **/
+ * */
 export function RADIAL_AREA(radius: number): number {
 	return PI * (radius * radius);
 }
@@ -317,8 +310,7 @@ export function RADIAL_AREA(radius: number): number {
  * Solves the Minimum Enclosing Circle problem using Badoiu Clarkson's algorithm.
  * @param points	The array of points on which to create the Radial
  * @param iterations	The higher the iterations the slower and more accurate the Radial. Default is 10,000.
- * @return {!Radial}
- **/
+ * */
 export function RADIAL_BADOIU_CLARKSON(points: IPoint[], iterations: number): IRadial {
 	let centre = points[0],
 		radius = 0;
@@ -366,8 +358,7 @@ export function RADIAL_BADOIU_CLARKSON(points: IPoint[], iterations: number): IR
 /**
  * Calculates the circumference of a circle based on the given radius.
  * @param radius		
- * @return {!number}
- **/
+ * */
 export function RADIAL_CIRCUMFERENCE(radius: number): number {
 	return 2 * PI * radius;
 }
@@ -399,8 +390,7 @@ export function RECTANGLE_FROM_POINTS(dots: IPoint[]):IRectangle {
  * Returns true if the given {@link Radial} overlaps the given {@link Rectangle}.
  * @param circle
  * @param rect
- * @return {!boolean}
- **/
+ * */
 export function RADIAL_OVERLAP_RECTANGLE(circle: IRadial, rect: IRectangle): boolean {
 	var tall = IRectangle_clone(rect),
 		wide = IRectangle_clone(rect);

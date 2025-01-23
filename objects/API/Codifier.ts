@@ -2,7 +2,7 @@
 
 /**
  * A mapping for non-accented lower-case characters.
- **/
+ */
 const DIACRITICS = {
 	'\u2c65': "a", '\u00e0': "a", '\u00e1': "a", '\u00e2': "a", '\u00e3': "a",
 	'\u00e4': "a", '\u00e5': "a", '\u0101': "a", '\u0103': "a", '\u0105': "a",
@@ -100,7 +100,7 @@ const DIACRITICS = {
 };
 /**
  * A list of UTF8 quotation marks and apostrophes.
- **/
+ */
 const QUOTATIONS = [
 	'\u0022', '\u0027', '\u005e', '\u0060', '\u00ab', '\u00b4',
 	'\u00bb', '\u02ba', '\u02dd', '\u02ee', '\u02f6', '\u05f2',
@@ -111,7 +111,7 @@ const QUOTATIONS = [
 /**
  * Creates a searchable/coded string based on a user inputted string.  Quotation marks, apostrophes, and accents are removed.
  * @param input
- **/
+ */
 export function codify(input: string): string {
 	if (!IS_STRING(input)) throw new TypeError("input value is not a string");
 	var dash = true,

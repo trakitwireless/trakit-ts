@@ -4,15 +4,15 @@ import { LatLngBounds, } from './LatLngBounds';
 //#region LatLng
 /**
  * A coordinate on the Earth.
- **/
+ */
 export interface ILatLng {
 	/**
 	 * Latitude.
-	 **/
+	 */
 	lat: number;
 	/**
 	 * Longitude.
-	 **/
+	 */
 	lng: number;
 }
 
@@ -20,7 +20,7 @@ export interface ILatLng {
  * Returns true if the given pin conforms to the {@link ILatLng} interface.
  * @param pin	
  * @returns 
- **/
+ */
 export function ILatLng_instanceOf(pin: any): pin is ILatLng {
 	return !!pin
 		&& IS_NUMBER(pin.x)
@@ -30,7 +30,7 @@ export function ILatLng_instanceOf(pin: any): pin is ILatLng {
  * 
  * @param dot	
  * @returns 
- **/
+ */
 export function ILatLng_clone(dot: ILatLng): ILatLng {
 	return {
 		lat: dot.lat,
@@ -42,7 +42,7 @@ export function ILatLng_clone(dot: ILatLng): ILatLng {
 //#region LatLngBounds
 /**
  * A rectangular boundary on a flat surface.
- **/
+ */
 export interface ILatLngBounds {
 	/// <summary>
 	/// Northern latitude
@@ -65,7 +65,7 @@ export interface ILatLngBounds {
 /**
  * Returns true if the given box conforms to the {@link ILatLngBounds} interface.
  * @param box	
- **/
+ */
 export function ILatLngBounds_instanceOf(box: any): box is ILatLngBounds {
 	return !!box
 		&& IS_NUMBER(box.north)
@@ -77,7 +77,7 @@ export function ILatLngBounds_instanceOf(box: any): box is ILatLngBounds {
  * 
  * @param box	
  * @returns 
- **/
+ */
 export function ILatLngBounds_clone(box: ILatLngBounds): ILatLngBounds {
 	return {
 		west: box.west,
@@ -89,7 +89,7 @@ export function ILatLngBounds_clone(box: ILatLngBounds): ILatLngBounds {
 
 /**
  * The types used to extend a {@link LatLngBounds}'s edges.
- **/
+ */
 export type LatLngBoundsExpansion = ILatLng
 	| ILatLngBounds
 	| (ILatLng | ILatLngBounds | LatLngBoundsExpansion)[];

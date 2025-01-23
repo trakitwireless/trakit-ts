@@ -18,16 +18,15 @@ export const MAX_TILE_LNG: double = 180;
 /**
  * Checks to see if a given latitude is at one of the poles
  * @param lat
- **/
+ */
 function LATITUDE_IS_POLE(lat: double): boolean {
     return ROUND_TO(COS(lat * DEGREES_TO_RADIANS), 9) === 0;
 }
 /**
  * Normalizes a latitude value between +/- 90.
  * Values of greater than 90 are returned as 90, and values less than -90 are returned as -90.
- * @param {!number} latitude
- * @param {number=} edge
- * @return {!number}
+ * @param latitude
+ * @param edge
  */
 function LATITUDE_NORMALIZED(latitude: number, edge: number = 90): number {
 	return IS_NUMBER(latitude)
@@ -41,8 +40,7 @@ function LATITUDE_NORMALIZED(latitude: number, edge: number = 90): number {
 /**
  * Normalizes a longitude value between +/- 180.
  * Values of greater than 180 are returned as a negative difference of 360, and values less than -180 are returned as a positive difference of 360.
- * @param {!number} longitude
- * @return {!number}
+ * @param longitude
  */
 function LONGITUDE_NORMALIZED(longitude) {
 	return IS_NUMBER(longitude)
@@ -54,12 +52,11 @@ function LONGITUDE_NORMALIZED(longitude) {
 
 /**
  * Calculates the distance between two coordinates on a sphere.
- * @param {!number} aLat		The starting latitude
- * @param {!number} aLng		The starting longitude
- * @param {!number} bLat		The ending latitude
- * @param {!number} bLng		The ending longitude
- * @param {number=} radius	The equatorial radius.  Default is {@link geography.earthRadius}.
- * @return {!number}
+ * @param aLat		The starting latitude
+ * @param aLng		The starting longitude
+ * @param bLat		The ending latitude
+ * @param bLng		The ending longitude
+ * @param radius	The equatorial radius.  Default is {@link geography.earthRadius}.
  */
 function LATLNG_DISTANCE(aLat, aLng, bLat, bLng, radius) {
 	if (IS_NAN(radius)) radius = EARTH_RADIUS;
@@ -78,11 +75,10 @@ function LATLNG_DISTANCE(aLat, aLng, bLat, bLng, radius) {
 }
 /**
  * Calculates the distance between two coordinates on a Bessel 1841 ellipsoid.
- * @param {!number} aLat		The starting latitude
- * @param {!number} aLng		The starting longitude
- * @param {!number} bLat		The ending latitude
- * @param {!number} bLng		The ending longitude
- * @return {!number}
+ * @param aLat		The starting latitude
+ * @param aLng		The starting longitude
+ * @param bLat		The ending latitude
+ * @param bLng		The ending longitude
  */
 function LATLNG_DISTANCE_VINCENTY(aLat, aLng, bLat, bLng) {
 	var L = (bLng - aLng) * DEGREES_TO_RADIANS,
@@ -137,11 +133,11 @@ function LATLNG_DISTANCE_VINCENTY(aLat, aLng, bLat, bLng) {
 }
 /**
  * Bearing from coordinate A to coordinate B in degrees from North
- * @param {!number} aLat		The starting latitude
- * @param {!number} aLng		The starting longitude
- * @param {!number} bLat		The ending latitude
- * @param {!number} bLng		The ending longitude
- * @return {!number}		Degrees from North
+ * @param aLat		The starting latitude
+ * @param aLng		The starting longitude
+ * @param bLat		The ending latitude
+ * @param bLng		The ending longitude
+ * @return Degrees from North
  */
 function LATLNG_ANGLE(aLat, aLng, bLat, bLng) {
 	//	if (aLat >= 90 || bLat <= -90) return 180;	// shortcut of PI * RADIANS_TO_DEGREES; RADIANS_TO_DEGREES = 180 / PI; so this is "PI * 180 / PI" = 180;
@@ -162,14 +158,14 @@ function LATLNG_ANGLE(aLat, aLng, bLat, bLng) {
  * Calculates the orthogonal height of a triangle.
 	The orthogonal height is calculated by drawing a line between the coordinate A and coordinate B, then getting the length
 	of a line drawn up from the line to the mid coordinate at a 90 degree angle.
- * @param {!number} aLat		Left-most coordinate's latitude on the great circle
- * @param {!number} aLng		Left-most coordinate's longitude on the great circle
- * @param {!number} midLat	Top-most coordinate's latitude
- * @param {!number} midLng	Top-most coordinate's longitude
- * @param {!number} bLat		Right-most coordinate's latitude on the great circle
- * @param {!number} bLng		Right-most coordinate's longitude on the great circle
- * @param {number=} radius	The equatorial radius.  Default is {@link geography.earthRadius}.
- * @return {!number}		Value is negative when distance is to the right, and positive when distance to the left.
+ * @param aLat		Left-most coordinate's latitude on the great circle
+ * @param aLng		Left-most coordinate's longitude on the great circle
+ * @param midLat	Top-most coordinate's latitude
+ * @param midLng	Top-most coordinate's longitude
+ * @param bLat		Right-most coordinate's latitude on the great circle
+ * @param bLng		Right-most coordinate's longitude on the great circle
+ * @param radius	The equatorial radius.  Default is {@link geography.earthRadius}.
+ * @return Value is negative when distance is to the right, and positive when distance to the left.
  */
 function LATLNG_GREAT_CIRCLE(aLat, aLng, midLat, midLng, bLat, bLng, radius) {
 	if (IS_NAN(radius)) radius = EARTH_RADIUS;
@@ -211,13 +207,12 @@ function LATLNG_GREAT_CIRCLE(aLat, aLng, midLat, midLng, bLat, bLng, radius) {
 }
 /**
  * Calculates the final coordinate based on the given starting coordinate and vector
- * @param {!number} lat		The staring latitude
- * @param {!number} lng		The staring longitude
- * @param {!number} meters	The distance away from this LatLng
- * @param {!number} bearing	The direction in which to calculate the new position in degrees from North
- * @param {number=} radius	The equatorial radius. Default is {@link geography.earthRadius}.
+ * @param lat		The staring latitude
+ * @param lng		The staring longitude
+ * @param meters	The distance away from this LatLng
+ * @param bearing	The direction in which to calculate the new position in degrees from North
+ * @param radius	The equatorial radius. Default is {@link geography.earthRadius}.
  * @throws {Error}			Either latitude or longitude is NaN
- * @return {!LatLng}
  */
 function LATLNG_TRANSLATE(lat, lng, meters, bearing, radius) {
 	//console.info(lat, lng, meters, bearing, radius);
@@ -239,12 +234,11 @@ function LATLNG_TRANSLATE(lat, lng, meters, bearing, radius) {
 }
 /**
  * Calculates the mid-point between to given coordinate
- * @param {!number} aLat		Left-most coordinate's latitude on the great circle
- * @param {!number} aLng		Left-most coordinate's longitude on the great circle
- * @param {!number} bLat		Right-most coordinate's latitude on the great circle
- * @param {!number} bLng		Right-most coordinate's longitude on the great circle
+ * @param aLat		Left-most coordinate's latitude on the great circle
+ * @param aLng		Left-most coordinate's longitude on the great circle
+ * @param bLat		Right-most coordinate's latitude on the great circle
+ * @param bLng		Right-most coordinate's longitude on the great circle
  * @throws {Error}			Either latitude or longitude is NaN
- * @return {!LatLng}
  */
 function LATLNG_MIDPOINT(aLat, aLng, bLat, bLng) {
 	var lat1 = aLat * DEGREES_TO_RADIANS,
@@ -261,9 +255,8 @@ function LATLNG_MIDPOINT(aLat, aLng, bLat, bLng) {
 
 /**
  * Calculates the length of the given route.
- * @param {!Array.<LatLng>} route		
- * @param {number=} radius			The equatorial radius.  Default is {@link geography.earthRadius}.
- * @return {!number}
+ * @param route		
+ * @param radius			The equatorial radius.  Default is {@link geography.earthRadius}.
  */
 function ROUTE_LENGTH(route, radius) {
 	var coords = route.slice(),
@@ -279,12 +272,12 @@ function ROUTE_LENGTH(route, radius) {
 /**
  * An internal function which populates an array of indexes to keep when filtering.
  * @deprecated
- * @param {!Array.<LatLng>} source		The array of coordinates representing a path
- * @param {!number} firstIndex		The index of the first LatLng in this pass to use for calculation
- * @param {!number} lastIndex			The index of the last LatLng in this pass to use for calculation
- * @param {!Int8Array} keepIndexes		The array of indexes representing coordinates from the source which are kept in this pass
- * @param {!number} tolerance			The distance in meters used as a filter for removing coordinates
- * @return {!Int8Array} keepIndexes
+ * @param source		The array of coordinates representing a path
+ * @param firstIndex		The index of the first LatLng in this pass to use for calculation
+ * @param lastIndex			The index of the last LatLng in this pass to use for calculation
+ * @param keepIndexes		The array of indexes representing coordinates from the source which are kept in this pass
+ * @param tolerance			The distance in meters used as a filter for removing coordinates
+ * @return keepIndexes
  */
 function LATLNG_PEUCKER_INTERNAL(source, firstIndex, lastIndex, keepIndexes, tolerance) {
 	// the first and last points are always kept; this is a result of either being at either end of the original path
@@ -322,10 +315,9 @@ function LATLNG_PEUCKER_INTERNAL(source, firstIndex, lastIndex, keepIndexes, tol
 
 /**
  * 
- * @param {LatLng} firstPoint
- * @param {LatLng} midPoint
- * @param {LatLng} lastPoint
- * @return {number}
+ * @param firstPoint
+ * @param midPoint
+ * @param lastPoint
  */
 function ROUTE_PEUCKER_FILTER(firstPoint, midPoint, lastPoint) {
 	return ABS(LATLNG_GREAT_CIRCLE(
@@ -340,9 +332,8 @@ function ROUTE_PEUCKER_FILTER(firstPoint, midPoint, lastPoint) {
 }
 /**
  * Performs a Douglas-Peucker path reduction based on the given tolerance.
- * @param {!Array.<LatLng>} route		The array of coordinates representing a path
- * @param {number=} tolerance			Distance (in meters) threshold for candidate coordinates.  Default is 0.
- * @return {!Array.<LatLng>}
+ * @param route		The array of coordinates representing a path
+ * @param tolerance			Distance (in meters) threshold for candidate coordinates.  Default is 0.
  */
 function ROUTE_PEUCKER(route, tolerance) {
 	var length = route.length;
@@ -374,8 +365,8 @@ function ROUTE_PEUCKER(route, tolerance) {
 }
 
 /**
- * @param {!number} value
- * @param {!number} factor			
+ * @param value
+ * @param factor			
  */
 function ROUTE_ENCODE_CHAR(value, factor) {
 	var chars = [],
@@ -393,9 +384,8 @@ function ROUTE_ENCODE_CHAR(value, factor) {
 /**
  * An implementation of Google's Encoded Polyline Algorithm format.
  * https://developers.google.com/maps/documentation/utilities/polylinealgorithm
- * @param {!Array.<LatLng>} route		The array of coordinates representing a path.
- * @param {number=} precision			Optional number of decimal places to use to calculate the results.  Default is 5.
- * @return {!string}
+ * @param route		The array of coordinates representing a path.
+ * @param precision			Optional number of decimal places to use to calculate the results.  Default is 5.
  */
 function ROUTE_ENCODE(route, precision) {
 	var factor = POW(10, precision || 5),
@@ -411,9 +401,8 @@ function ROUTE_ENCODE(route, precision) {
 /**
  * An implementation of Google's Decoded Polyline Algorithm format.
  * https://developers.google.com/maps/documentation/utilities/polylinealgorithm
- * @param {!string} route			The encoded string which represents the coordinates in a path.
- * @param {number=} precision			Optional number of decimal places used to recalculate the results.  Default is 5.
- * @return {!Array.<LatLng>}
+ * @param route			The encoded string which represents the coordinates in a path.
+ * @param precision			Optional number of decimal places used to recalculate the results.  Default is 5.
  */
 function ROUTE_DECODE(route, precision) {
 	var index = 0,
@@ -446,8 +435,8 @@ function ROUTE_DECODE(route, precision) {
 /**
  * Finds the widest section of the given route.
  * This is useful for path reduction and reorientation.
- * @param {!Array.<LatLng>} route		The array of coordinates representing a path
- * @return {!Array.<number>}			An array of three items; the first is the widest distance, and the others are the start and end index within the given route.
+ * @param route		The array of coordinates representing a path
+ * @return An array of three items; the first is the widest distance, and the others are the start and end index within the given route.
  */
 function GEOFENCE_WIDEST(route) {
 	var widest = 0.0,
@@ -479,9 +468,8 @@ function GEOFENCE_WIDEST(route) {
 /**
  * Performs a Douglas-Peucker path reduction on a polygon for the given tolerance.
 	The start/end coordinates are variable and the end coordinate is trimmed from the result.
- * @param {!Array.<LatLng>} route		The array of coordinates representing a path
- * @param {number=} tolerance			Distance (in meters) threshold for candidate coordinates.  Default is 0.
- * @return {!Array.<LatLng>}
+ * @param route		The array of coordinates representing a path
+ * @param tolerance			Distance (in meters) threshold for candidate coordinates.  Default is 0.
  */
 function GEOFENCE_PEUCKER(route, tolerance) {
 	var coords = [].concat(route),
@@ -517,10 +505,9 @@ function GEOFENCE_PEUCKER(route, tolerance) {
 
 /**
  * Calculates the total area occupied by the given geofence.
- * @param {!Array.<LatLng>} route		The array of coordinates representing a geofence.
- * @param {number=} radius			The equatorial radius.  Default is {@link geography.earthRadius}.
+ * @param route		The array of coordinates representing a geofence.
+ * @param radius			The equatorial radius.  Default is {@link geography.earthRadius}.
  * @throws {Error}					Not enough coordinates
- * @return {!number}
  */
 function GEOFENCE_AREA(route, radius) {
 	if (IS_NAN(radius)) radius = EARTH_RADIUS;
@@ -557,13 +544,12 @@ function GEOFENCE_AREA(route, radius) {
 
 /**
  * Calculates the area of a triangle on a sphere. Always returns positive value, even if triangle is inside-out.
- * @param {!number} aLat
- * @param {!number} aLng
- * @param {!number} bLat
- * @param {!number} bLng
- * @param {!number} cLat
- * @param {!number} cLng
- * @return {!number}
+ * @param aLat
+ * @param aLng
+ * @param bLat
+ * @param bLng
+ * @param cLat
+ * @param cLng
  */
 function TRIANGLE_AREA_RADIANS(aLat, aLng, bLat, bLng, cLat, cLng) {
 	var distanceAB = LATLNG_DISTANCE(aLat, aLng, bLat, bLng, 1),	// radius is 1 because I don't want the value in meters, I need it in radians
@@ -581,13 +567,12 @@ function TRIANGLE_AREA_RADIANS(aLat, aLng, bLat, bLng, cLat, cLng) {
 }
 /**
  * Calculates whether a triangle is inside-out.  Returns 1 for valid triangles, and -1 for invalid (inside-out).
- * @param {!number} aLat
- * @param {!number} aLng
- * @param {!number} bLat
- * @param {!number} bLng
- * @param {!number} cLat
- * @param {!number} cLng
- * @return {!number}
+ * @param aLat
+ * @param aLng
+ * @param bLat
+ * @param bLng
+ * @param cLat
+ * @param cLng
  */
 function TRIANGLE_INSIDE_OUT(aLat, aLng, bLat, bLng, cLat, cLng) {
 	var aLatRad = aLat * DEGREES_TO_RADIANS,
@@ -811,10 +796,9 @@ ns.googleDist = Gj.$f;
 
 /**
  * A utility function to determine if a given coordinate is inside the given geofence.
- * @param {!Array.<LatLng>} route	The array of coordinates represents the path of the polygon.
- * @param {!number} lat			Latitude of the coordinate to be checked.
- * @param {!number} lng			Longitude of the coordinate to be checked.
- * @return {!boolean}
+ * @param route	The array of coordinates represents the path of the polygon.
+ * @param lat			Latitude of the coordinate to be checked.
+ * @param lng			Longitude of the coordinate to be checked.
  */
 function GEOFENCE_CONTAINS(route, lat, lng) {
 	lat = LATITUDE_NORMALIZED(lat);
@@ -826,8 +810,8 @@ function GEOFENCE_CONTAINS(route, lat, lng) {
  * Wraps the given coordinates into a polygonal path.
  * The given coordinates do not need to be a path.
  * The returned path is not closed.
- * @param {!Array.<LatLng>} coordinates		The array of coordinates on which to create the non-closed path
- * @return {!Array.<LatLng>}				Non-closed path.
+ * @param coordinates		The array of coordinates on which to create the non-closed path
+ * @return Non-closed path.
  */
 function GEOFENCE_WRAPPER(coordinates) {
 	throw "not implemented";
@@ -835,8 +819,7 @@ function GEOFENCE_WRAPPER(coordinates) {
 
 /**
  * Calculates the spherical-cap area occupied by the given radial distance.
- * @param {!number} radius	The distance from the centre of the circle to any point along the edge.
- * @return {!number}
+ * @param radius	The distance from the centre of the circle to any point along the edge.
  */
 function SPHERECAP_AREA(radius) {
 	/*var b = EARTH_RADIUS,

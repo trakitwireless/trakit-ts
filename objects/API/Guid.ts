@@ -32,33 +32,32 @@ const GUID_TEMPLATE: string[] = (
 
 /**
  * Used to help construct GUIDs by inserting the last 3 milliseconds of "now" as hex
- * @param {!Array.<string>} array	GUID array
- * @param {!string} number		Hex value take from the "now" milliseconds
- * @param {!number} index		Current index of the array
- * @return {!Array.<string>} array
+ * @param array	GUID array
+ * @param char		Hex value take from the "now" milliseconds
+ * @param index		Current index of the array
+ * @return array
  */
-function GUID_HELPER(array, number, index) {
-	array[index + 26] = number;
-	return array;
+function GUID_HELPER(array: string[], char: string, index: number) {
+    array[index + 26] = char;
+    return array;
 }
 
 /**
  * Delivers a GUID-like string with a mixed in location/refresh unique seed
- * @return {!string}
  */
 export function guid() {
-    var i = 0,
-        l = 36,
-        random = i,
+    const l = 36,
         guid = (new Date)
             .valueOf()
             .toString(16)
             .substring(1)
             .split("")
             .reduce(GUID_HELPER, [...GUID_TEMPLATE]);
-    for (; i < l; i++) if (guid[i] === " ") {
-        random = MATH.random() * 16 | 0;
-        guid[i] = (i !== 19 ? random : random & 0x3 | 0x8).toString(16);
+    for (let i = 0; i < l; i++) {
+        if (guid[i] === " ") {
+            let random = MATH.random() * 16 | 0;
+            guid[i] = (i !== 19 ? random : random & 0x3 | 0x8).toString(16);
+        }
     }
     return guid.join("");
 }

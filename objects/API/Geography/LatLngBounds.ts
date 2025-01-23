@@ -73,7 +73,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	/**
 	 * 
 	 * @param object 
-	 **/
+	 */
 	private __expander(object: LatLngBoundsExpansion): void {
 		if (object instanceof Array) {
 			object.forEach(this.__expander, this);
@@ -150,14 +150,14 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * Extends the boundary to envelop the given point(s) but does not automatically
 	 *		validate. This comes in efficient when doing many operations on a single
 	 *		PointBounds
-	 **/
+	 */
 	expand(latlngs: LatLngBoundsExpansion) {
 		this.__expander(latlngs);
 		return this;
 	}
 	/**
 	 * Extends the boundary to envelop the given point(s) and automatically validates
-	 **/
+	 */
 	extend(latlngs: LatLngBoundsExpansion):this {
 		this.__expander(latlngs);
 		return this.validate();
@@ -165,7 +165,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 
 	/**
 	 * Checks if a {@link LatLng} is contained within this boundary.
-	 * @param {!LatLng} pin	The point to check
+	 * @param pin	The point to check
 	 */
 	contains(pin: ILatLng) :boolean{
 		this.validate();
@@ -188,8 +188,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * Checks if a {@link LatLngBounds} is contained within this boundary.
 	 * @expose
 	 * @this {LatLngBounds}
-	 * @param {!LatLngBounds} bounds	The other boundary to check
-	 * @return {!boolean}
+	 * @param bounds	The other boundary to check
 	 */
 	encloses(bounds: ILatLngBounds):boolean {
 		this.validate();
@@ -213,7 +212,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	/**
 	 * Checks if a {@link LatLngBounds} overlaps this boundary.
 	 * Also returns true if either boundary's {@link LatLngBounds#encloses} returns true.
-	 * @param {!LatLngBounds} other	The other boundary to check
+	 * @param other	The other boundary to check
 	 */
 	overlaps(other: ILatLngBounds) :boolean{
 		this.validate();

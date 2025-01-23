@@ -80,7 +80,7 @@ export const MAX_TILE_LNG: number = 180;
 /**
  * Checks to see if a given latitude is at one of the poles.
  * @param latitude
- **/
+ */
 export function LATITUDE_IS_POLE(latitude: number): boolean {
 	return ROUND_TO(COS(latitude * DEGREES_TO_RADIANS), 9) === 0;
 }

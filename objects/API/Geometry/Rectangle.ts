@@ -25,11 +25,11 @@ import { Size, } from './Size';
 
 /**
  * A four-sided box on a flat surface.
- **/
+ */
 export class Rectangle implements IRectangle {
 	/**
 	 * Returns a new {@link Radial} from the given object.
-	 **/
+	 */
 	static fromObject(rectangle: any): IRectangle {
 		rectangle = rectangle || {};
 		const hasLeft = IS_AN(rectangle.left),
@@ -64,27 +64,27 @@ export class Rectangle implements IRectangle {
 
 	/**
 	 * Left-most horizontal coordinate
-	 **/
+	 */
 	left: number = NaN;
 	/**
 	 * Highest vertical coordinate.
-	 **/
+	 */
 	top: number = NaN;
 	/**
 	 * Right-most horizontal coordinate
-	 **/
+	 */
 	right: number = NaN;
 	/**
 	 * Lowest vertical coordinate
-	 **/
+	 */
 	bottom: number = NaN;
 	/**
 	 * The absolute width of this Rectangle.
-	 **/
+	 */
 	public get width(): number { return this.right - this.left; }
 	/**
 	 * The absolute height of this Rectangle.
-	 **/
+	 */
 	public get height(): number { return this.bottom - this.top; }
 
 	constructor(...args: RectangleExpansion[]) {
@@ -95,7 +95,7 @@ export class Rectangle implements IRectangle {
 	 * Validates the boundary and returns a string representation
 	 * @param delimiter	The boundary is delimited by a comma (,) by default, but you can override with your own value (optional)
 	 * @returns A string in the format of "left,top,right,bottom".
-	 **/
+	 */
 	toString(delimiter: string = ","): string {
 		this.validate();
 		return [this.left, this.top, this.right, this.bottom].join(delimiter ?? "");
@@ -103,7 +103,7 @@ export class Rectangle implements IRectangle {
 	/**`
 	 * Creates a literal of this {@link Rectangle}.
 	 * Used internally by {@link JSON.stringify}.
-	 **/
+	 */
 	toJSON(): IRectangle {
 		this.validate();
 		return {
@@ -118,7 +118,7 @@ export class Rectangle implements IRectangle {
 	 * Compares this Rectangle to another to see if they are equal.
 	 * @param rect	The other Rectangle to compare.
 	 * @param precision	The degree of precision to use; default is full precision.
-	 **/
+	 */
 	equals(rect: IRectangle, precision: number = 18): rect is IRectangle {
 		this.validate();
 		return IRectangle_instanceOf(rect)
@@ -129,7 +129,7 @@ export class Rectangle implements IRectangle {
 	}
 	/**
 	 * Checks to see if the bounds are valid (not inside-out).
-	 **/
+	 */
 	isValid(): boolean {
 		return !(
 			this.top > this.bottom
@@ -140,7 +140,7 @@ export class Rectangle implements IRectangle {
 	}
 	/**
 	 * Checks to see if the bounds are valid, and that the corners are different coordinates.
-	 **/
+	 */
 	isEmpty(): boolean {
 		return this.isValid()
 			&& this.width + this.height === 0;
@@ -148,14 +148,14 @@ export class Rectangle implements IRectangle {
 	/**
 	 * Determines if the given {@link IPoint} is contained by this {@link Rectangle}.
 	 * @param dot
-	 **/
+	 */
 	contains(dot: IPoint): boolean {
 		return RECTANGLE_CONTAINS_POINT(this, dot);
 	}
 	/**
 	 * Determines if the given {@link IRectangle} is overlaps this {@link Rectangle} in any way
 	 * @param rect
-	 **/
+	 */
 	overlaps(rect: IRectangle): boolean {
 		// if the rectangle does not overlap then one of these conditions is always met
 		// if one of these conditions is not met, then it must overlap
@@ -169,14 +169,14 @@ export class Rectangle implements IRectangle {
 	
 	/**
 	 * Validates the boundary and creates a duplicate of this {@link Rectangle}.
-	 **/
+	 */
 	copy(): Rectangle {
 		this.validate();
 		return new Rectangle(this);
 	}
 	/**
 	 * Returns the {@link Point} at the centre.
-	 **/
+	 */
 	getCentre(): Point {
 		this.validate();
 		return new Point(
@@ -186,35 +186,35 @@ export class Rectangle implements IRectangle {
 	}
 	/**
 	 * Validates the boundary and creates a {@link Size} representation.
-	 **/
+	 */
 	getSize(): Size {
 		this.validate();
 		return new Size(this.width, this.height);
 	}
 	/**
 	 * Returns the {@link Point} at the top-most/left-most corner.
-	 **/
+	 */
 	getTopLeft(): Point {
 		this.validate();
 		return new Point(this.left, this.top);
 	}
 	/**
 	 * Returns the {@link Point} at the top-most/right-most corner.
-	 **/
+	 */
 	getTopRight(): Point {
 		this.validate();
 		return new Point(this.right, this.top);
 	}
 	/**
 	 * Returns the {@link Point} at the bottom-most/left-most corner.
-	 **/
+	 */
 	getBottomLeft(): Point {
 		this.validate();
 		return new Point(this.left, this.bottom);
 	}
 	/**
 	 * Returns the {@link Point} at the bottom-most/right-most corner.
-	 **/
+	 */
 	getBottomRight(): Point {
 		this.validate();
 		return new Point(this.right, this.bottom);
@@ -223,7 +223,7 @@ export class Rectangle implements IRectangle {
 	/**
 	 * Worker function that actually extends the boundary to envelop the given point(s)/boundary(s).
 	 * @param object	The objects used to extend the boundary
-	 **/
+	 */
 	private __expander(object: RectangleExpansion) {
 		if (object instanceof Array) {
 			object.forEach(this.__expander, this);
@@ -243,7 +243,7 @@ export class Rectangle implements IRectangle {
 	 * Validates the boundary by ensuring the top value is less than the bottom value,
 	 * and the left value is less than the right value.
 	 * Also adjusts the width and height values.
-	 **/
+	 */
 	validate(): this {
 		var top = this.top,
 			left = this.left,
@@ -259,7 +259,7 @@ export class Rectangle implements IRectangle {
 	 * Extends the boundary to envelop the given point(s) but does not automatically validate.
 	 * This comes in efficient when doing many operations on a single {@link Rectangle}.
 	 * @param object	The objects used to extend the boundary
-	 **/
+	 */
 	expand(object: RectangleExpansion): this {
 		this.__expander(object);
 		return this;
@@ -267,7 +267,7 @@ export class Rectangle implements IRectangle {
 	/**
 	 * Extends the boundary to envelop the given point(s) and automatically validates
 	 * @param object	The objects used to extend the boundary
-	 **/
+	 */
 	extend(object: RectangleExpansion): this {
 		this.__expander(object);
 		return this.validate();
@@ -283,7 +283,7 @@ export class Rectangle implements IRectangle {
 	 * @param width
 	 * @param height
 	 * @param direction
-	 **/
+	 */
 	grow(width: number = 0, height: number = 0, direction: string = ""): this {
 		if (!IS_NUMBER(width)) width = 0;
 		if (!IS_NUMBER(height)) height = 0;
@@ -311,7 +311,7 @@ export class Rectangle implements IRectangle {
 	/**
 	 * Creates a new {@link Rectangle} offset by the given amounts.
 	 * @param dot
-	 **/
+	 */
 	toOffset(dot: IPoint): Rectangle {
 		this.validate();
 		return new Rectangle(
@@ -329,14 +329,14 @@ export class Rectangle implements IRectangle {
 	 * Creates a new {@link Rectangle} at the given angle and distance.
 	 * @param distance
 	 * @param degrees
-	 **/
+	 */
 	toTranslated(distance: number, degrees: number): Rectangle {
 		return this.toOffset(POINT_VECTOR(distance, degrees));
 	}
 	/**
 	 * Validates the boundary and returns a {@link Radial}.
 	 * @param clip	If true, [()], if false ([]).
-	 **/
+	 */
 	toRadial(clip: boolean = false): Radial {
 		this.validate();
 		var centre = this.getCentre();

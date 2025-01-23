@@ -72,7 +72,7 @@ export class LatLng implements ILatLng {
 	}
 	/**
 	 * Returns a new LatLng at the half-way point between this and the given LatLng.
-	 * @param {!LatLng} pin	The other coordinate.
+	 * @param pin	The other coordinate.
 	 * @throws {Error}	Either latitude or longitude is NaN
 	 */
 	toBetween(pin: ILatLng): LatLng {
@@ -100,7 +100,7 @@ export class LatLng implements ILatLng {
 	 * Returns a string representation of this {@link LatLng}.
 	 * @param delimiter	The boundary is delimited by a comma (,) by default, but you can override with your own value.
 	 * @returns A string in the format of "lat,lng".
-	 **/
+	 */
 	toString(delimiter: string = ","): string {
 		return [ROUND_TO(this.lat, 8), ROUND_TO(this.lng, 8)].join(delimiter ?? "");
 	}
@@ -128,7 +128,7 @@ export class LatLng implements ILatLng {
 	}
 	/**
 	 * Creates a square LatLngBounds centred around this LatLng.
-	 * @param {!number} radius	The closest distance (in meters) from this coordinate to the edges of the new LatLngBounds.
+	 * @param radius	The closest distance (in meters) from this coordinate to the edges of the new LatLngBounds.
 	 */
 	toBounds(radius: number): LatLngBounds {
 		var distance = PYTHAGORA(radius, radius);
@@ -139,8 +139,8 @@ export class LatLng implements ILatLng {
 	}
 	/**
 	 * Compares this LatLng to another to see if they are equivalent.
-	 * @param {LatLng} other		The other LatLng to compare
-	 * @param {number=} tolerance	Distance tolerance before considering two nearly identical coordinates to be equal.
+	 * @param other		The other LatLng to compare
+	 * @param tolerance	Distance tolerance before considering two nearly identical coordinates to be equal.
 	 */
 	equals(other: ILatLng, tolerance: number = MAX_SAME_DISTANCE) {
 		return ILatLng_instanceOf(other)
