@@ -23,6 +23,26 @@ import {
     RADIAL_BADOIU_CLARKSON,
     RADIAL_OVERLAP_RECTANGLE,
  } from "./API/Geometry/Functions";
+import {
+    EARTH_RADIUS,
+    LATITUDE_NORMALIZED,
+    LONGITUDE_NORMALIZED,
+    ROUTE_LENGTH,
+    ROUTE_PEUCKER,
+    ROUTE_ENCODE,
+    ROUTE_DECODE,
+    LATLNG_ANGLE,
+    LATLNG_DISTANCE,
+    LATLNG_MIDPOINT,
+    LATLNG_GREAT_CIRCLE,
+    LATLNG_TRANSLATE,
+    LATLNG_DISTANCE_VINCENTY,
+    GEOFENCE_AREA,
+    GEOFENCE_CONTAINS,
+    GEOFENCE_PEUCKER,
+    GEOFENCE_WIDEST,
+//  SPHERECAP_AREA,
+ } from "./API/Geography/Functions";
 
 const version = (5.0);
 
@@ -59,6 +79,31 @@ const namespaces = {
         Rectangle,
         Size,
     },
-    geography: {},
+    geography: {
+	"earthRadius": EARTH_RADIUS,
+
+	"clampLat": LATITUDE_NORMALIZED,
+	"clampLng": LONGITUDE_NORMALIZED,
+
+	"pathLength": ROUTE_LENGTH,
+	"pathReduce": ROUTE_PEUCKER,
+	"pathEncode": ROUTE_ENCODE,
+	"pathDecode": ROUTE_DECODE,
+
+	"pointAngle": LATLNG_ANGLE,
+	"pointDistance": LATLNG_DISTANCE,
+	"pointMiddle": LATLNG_MIDPOINT,
+	"pointOrthogonal": LATLNG_GREAT_CIRCLE,
+	"pointTranslate": LATLNG_TRANSLATE,
+	"pointVincenty": LATLNG_DISTANCE_VINCENTY,
+
+	"polyArea": GEOFENCE_AREA,
+	"polyContains": GEOFENCE_CONTAINS,
+	"polyReduce": GEOFENCE_PEUCKER,
+	"polyWidest": GEOFENCE_WIDEST,
+//	"polyWrapper": GEOFENCE_WRAPPER,
+
+//	"radialArea": SPHERECAP_AREA,
+    },
 };
 export default namespaces;
