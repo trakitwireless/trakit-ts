@@ -73,7 +73,7 @@ export type double = number;
  * @param target
  * @param source
  * @param goDeep
- * @return target
+ * @returns target
  */
 export function merge(target: object, source: object, goDeep: boolean = false) {
   const keys = Object.keys(source);

@@ -137,7 +137,7 @@ function LATLNG_DISTANCE_VINCENTY(aLat, aLng, bLat, bLng) {
  * @param aLng		The starting longitude
  * @param bLat		The ending latitude
  * @param bLng		The ending longitude
- * @return Degrees from North
+ * @returns Degrees from North
  */
 function LATLNG_ANGLE(aLat, aLng, bLat, bLng) {
 	//	if (aLat >= 90 || bLat <= -90) return 180;	// shortcut of PI * RADIANS_TO_DEGREES; RADIANS_TO_DEGREES = 180 / PI; so this is "PI * 180 / PI" = 180;
@@ -165,7 +165,7 @@ function LATLNG_ANGLE(aLat, aLng, bLat, bLng) {
  * @param bLat		Right-most coordinate's latitude on the great circle
  * @param bLng		Right-most coordinate's longitude on the great circle
  * @param radius	The equatorial radius.  Default is {@link geography.earthRadius}.
- * @return Value is negative when distance is to the right, and positive when distance to the left.
+ * @returns Value is negative when distance is to the right, and positive when distance to the left.
  */
 function LATLNG_GREAT_CIRCLE(aLat, aLng, midLat, midLng, bLat, bLng, radius) {
 	if (IS_NAN(radius)) radius = EARTH_RADIUS;
@@ -277,7 +277,7 @@ function ROUTE_LENGTH(route, radius) {
  * @param lastIndex			The index of the last LatLng in this pass to use for calculation
  * @param keepIndexes		The array of indexes representing coordinates from the source which are kept in this pass
  * @param tolerance			The distance in meters used as a filter for removing coordinates
- * @return keepIndexes
+ * @returns keepIndexes
  */
 function LATLNG_PEUCKER_INTERNAL(source, firstIndex, lastIndex, keepIndexes, tolerance) {
 	// the first and last points are always kept; this is a result of either being at either end of the original path
@@ -436,7 +436,7 @@ function ROUTE_DECODE(route, precision) {
  * Finds the widest section of the given route.
  * This is useful for path reduction and reorientation.
  * @param route		The array of coordinates representing a path
- * @return An array of three items; the first is the widest distance, and the others are the start and end index within the given route.
+ * @returns An array of three items; the first is the widest distance, and the others are the start and end index within the given route.
  */
 function GEOFENCE_WIDEST(route) {
 	var widest = 0.0,
@@ -811,7 +811,7 @@ function GEOFENCE_CONTAINS(route, lat, lng) {
  * The given coordinates do not need to be a path.
  * The returned path is not closed.
  * @param coordinates		The array of coordinates on which to create the non-closed path
- * @return Non-closed path.
+ * @returns Non-closed path.
  */
 function GEOFENCE_WRAPPER(coordinates) {
 	throw "not implemented";

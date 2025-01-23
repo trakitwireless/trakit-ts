@@ -35,7 +35,7 @@ const GUID_TEMPLATE: string[] = (
  * @param array	GUID array
  * @param char		Hex value take from the "now" milliseconds
  * @param index		Current index of the array
- * @return array
+ * @returns array
  */
 function GUID_HELPER(array: string[], char: string, index: number) {
     array[index + 26] = char;

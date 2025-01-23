@@ -256,7 +256,7 @@ export function POLY_PEUCKER(path: IPoint[], tolerance: number = 0) {
 /**
  * Wraps the given points into a polygonal path.  The given points do not need to be a path.  The returned path is not closed.
  * @param points	The array of points on which to create the non-closed path
- * @return Non-closed path.
+ * @returns Non-closed path.
  */
 export function POLY_WRAPPER(points: IPoint[]): IPoint[] {
 	var candidates = points.slice().sort(POINT_SORT),
