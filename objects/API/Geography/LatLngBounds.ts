@@ -1,51 +1,72 @@
-﻿import { ILatLng, LatLng } from './LatLng';
-import { double, JsonObject } from '../Types';
+﻿import {
+	ILatLng,
+	ILatLng_instanceOf,
+	ILatLngBounds_instanceOf,
+	LatLngBoundsExpansion,
+} from './Interfaces';
+import { LatLng, } from './LatLng';
+import { JsonObject } from '../Types';
 import { ISerializable } from '../Interfaces/ISerializable';
-import * as Planet from './Planet';
+import {
+	LATITUDE_NORMALIZED,
+	LATLNG_ANGLE,
+	LATLNG_DISTANCE,
+	LATLNG_GREAT_CIRCLE,
+	LATLNG_MIDPOINT,
+	LATLNG_TRANSLATE,
+	LONGITUDE_NORMALIZED,
+	MAX_SAME_DISTANCE
+} from './Functions';
+import {
+	IS_AN,
+	IS_NAN,
+	ROUND_TO,
+} from '../Functions';
+import { ABS, } from '../Constants';
 
-/// <summary>
-/// A boundary on the globe
-/// </summary>
+/**
+ * A boundary on the globe
+ */
 export interface ILatLngBounds {
-	/// <summary>
-	/// Northern latitude
-	/// </summary>
-	north: double;
-	/// <summary>
-	/// Eastern longitude
-	/// </summary>
-	east: double;
-	/// <summary>
-	/// Southern latitude
-	/// </summary>
-	south: double;
-	/// <summary>
-	/// Western longitude
-	/// </summary>
-	west: double;
+	/**
+	 * Northern latitude
+	 */
+	north: number;
+	/**
+	 * Eastern longitude
+	 */
+	east: number;
+	/**
+	 * Southern latitude
+	 */
+	south: number;
+	/**
+	 * Western longitude
+	 */
+	west: number;
 }
-/// <summary>
-/// A boundary on the globe
-/// </summary>
+/**
+ * A boundary on the globe
+ */
 export class LatLngBounds implements ILatLngBounds, ISerializable {
-	/// <summary>
-	/// Northern latitude
-	/// </summary>
-	public north: double = NaN;
-	/// <summary>
-	/// Eastern longitude
-	/// </summary>
-	public east: double = NaN;
-	/// <summary>
-	/// Southern latitude
-	/// </summary>
-	public south: double = NaN;
-	/// <summary>
-	/// Western longitude
-	/// </summary>
-	public west: double = NaN;
+	/**
+	 * Northern latitude
+	 */
+	north: number = NaN;
+	/**
+	 * Eastern longitude
+	 */
+	east: number = NaN;
+	/**
+	 * Southern latitude
+	 */
+	south: number = NaN;
+	/**
+	 * Western longitude
+	 */
+	west: number = NaN;
 
-	constructor(...args: ILatLng[] | ILatLngBounds[] | ILatLng[][] | ILatLngBounds[][]) {
+	constructor(...args: LatLngBoundsExpansion[]) {
 		args.forEach(a => this.__expander(a));
 	}
 
@@ -53,45 +74,73 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * 
 	 * @param object 
 	 **/
-	__expander(object: ILatLng | ILatLngBounds | ILatLng[] | ILatLngBounds[]): void {
-		if (object instanceof Array || typeof object.forEach === "function") {
+	private __expander(object: LatLngBoundsExpansion): void {
+		if (object instanceof Array) {
 			object.forEach(this.__expander, this);
-		} else if (object) {
-			if (object instanceof LatLngBounds || IS_AN(object.north) && IS_AN(object.east) && IS_AN(object.south) && IS_AN(object.west)) {
-				var north = LATITUDE_NORMALIZED(object.north),
-					east = LONGITUDE_NORMALIZED(object.east),
-					south = LATITUDE_NORMALIZED(object.south),
-					west = LONGITUDE_NORMALIZED(object.west);
-				if (east > this.east || IS_NAN(this.east)) this.east = east;
-				if (west < this.west || IS_NAN(this.west)) this.west = west;
-				//	if (north > this.north || IS_NAN(this.north)) this.north = north;
-				if (IS_NAN(this.north) || (north > this.north && (this.east === east || this.west === west))) this.north = north;
-				else if (IS_AN(north)) {
-					var distance = LATLNG_GREAT_CIRCLE(this.north, this.west, north, east, this.north, this.east);
-					if (distance > 0) this.north = LATLNG_TRANSLATE(north, east, distance, 0, EARTH_RADIUS).lat;
+		} else if (ILatLngBounds_instanceOf(object)) {
+			const north = LATITUDE_NORMALIZED(object.north),
+				east = LONGITUDE_NORMALIZED(object.east, north),
+				south = LATITUDE_NORMALIZED(object.south),
+				west = LONGITUDE_NORMALIZED(object.west, south);
+			if (east > this.east || IS_NAN(this.east)) this.east = east;
+			if (west < this.west || IS_NAN(this.west)) this.west = west;
+			//	if (north > this.north || IS_NAN(this.north)) this.north = north;
+			if (IS_NAN(this.north) || (north > this.north && (this.east === east || this.west === west))) {
+				this.north = north;
+			} else if (IS_AN(north)) {
+				const pin = { lat: north, lng: east },
+					distance = LATLNG_GREAT_CIRCLE(
+						this.getNorthWest(),
+						pin,
+						this.getNorthEast()
+					);
+				if (distance > 0) {
+					this.north = LATLNG_TRANSLATE(pin, distance, 0).lat;
 				}
-				//	if (south < this.south || IS_NAN(this.south)) this.south = south;
-				if (IS_NAN(this.south) || (south < this.south && (this.east === east || this.west === west))) this.south = south;
-				else if (IS_AN(south)) {
-					var distance = LATLNG_GREAT_CIRCLE(this.south, this.east, south, west, this.south, this.west);
-					if (distance > 0) this.south = LATLNG_TRANSLATE(south, west, distance, 180, EARTH_RADIUS).lat;
+			}
+			if (IS_NAN(this.south) || (south < this.south && (this.east === east || this.west === west))) {
+				this.south = south;
+			} else if (IS_AN(south)) {
+				const pin = { lat: south, lng: west },
+					distance = LATLNG_GREAT_CIRCLE(
+						this.getSouthEast(),
+						pin,
+						this.getSouthWest()
+					);
+				if (distance > 0) {
+					this.south = LATLNG_TRANSLATE(pin, distance, 180).lat;
 				}
-			} else if (object instanceof LatLng || IS_AN(object.lat) && IS_AN(object.lng)) {
-				var lat = LATITUDE_NORMALIZED(object.lat),
-					lng = LONGITUDE_NORMALIZED(object.lng);
-				if (lng > this.east || IS_NAN(this.east)) this.east = lng;
-				if (lng < this.west || IS_NAN(this.west)) this.west = lng;
-				//	if (lat > this.north || IS_NAN(this.north)) this.north = lat;
-				if (IS_NAN(this.north) || (lat > this.north && (this.east === lng || this.west === lng))) this.north = lat;
-				else if (IS_AN(lat)) {
-					var distance = LATLNG_GREAT_CIRCLE(this.north, this.west, lat, lng, this.north, this.east);
-					if (distance > 0) this.north = LATLNG_TRANSLATE(lat, lng, distance, 0, EARTH_RADIUS).lat;
+			}
+		} else if (ILatLng_instanceOf(object)) {
+			const lat = LATITUDE_NORMALIZED(object.lat),
+				lng = LONGITUDE_NORMALIZED(object.lng, lat);
+			if (lng > this.east || IS_NAN(this.east)) this.east = lng;
+			if (lng < this.west || IS_NAN(this.west)) this.west = lng;
+			if (IS_NAN(this.north) || (lat > this.north && (this.east === lng || this.west === lng))) {
+				this.north = lat;
+			} else if (IS_AN(lat)) {
+				const pin = { lat, lng },
+					distance = LATLNG_GREAT_CIRCLE(
+						this.getNorthWest(),
+						pin,
+						this.getNorthEast()
+					);
+				if (distance > 0) {
+					this.north = LATLNG_TRANSLATE(pin, distance, 0).lat;
 				}
-				//	if (lat < this.south || IS_NAN(this.south)) this.south = lat;
-				if (IS_NAN(this.south) || (lat < this.south && (this.east === lng || this.west === lng))) this.south = lat;
-				else if (IS_AN(lat)) {
-					var distance = LATLNG_GREAT_CIRCLE(this.south, this.east, lat, lng, this.south, this.west);
-					if (distance > 0) this.south = LATLNG_TRANSLATE(lat, lng, distance, 180, EARTH_RADIUS).lat;
+			}
+			//	if (lat < this.south || IS_NAN(this.south)) this.south = lat;
+			if (IS_NAN(this.south) || (lat < this.south && (this.east === lng || this.west === lng))) {
+				this.south = lat;
+			} else if (IS_AN(lat)) {
+				const pin = { lat, lng },
+					distance = LATLNG_GREAT_CIRCLE(
+						this.getSouthEast(),
+						pin,
+						this.getSouthWest()
+					);
+				if (distance > 0) {
+					this.south = LATLNG_TRANSLATE(pin, distance, 180).lat;
 				}
 			}
 		}
@@ -102,30 +151,38 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 *		validate. This comes in efficient when doing many operations on a single
 	 *		PointBounds
 	 **/
-	public expand(latlngs: ILatLng | ILatLngBounds | ILatLng[] | ILatLngBounds[]) {
+	expand(latlngs: LatLngBoundsExpansion) {
 		this.__expander(latlngs);
 		return this;
 	}
 	/**
 	 * Extends the boundary to envelop the given point(s) and automatically validates
 	 **/
-	public extend(latlngs: ILatLng | ILatLngBounds | ILatLng[] | ILatLngBounds[]) {
+	extend(latlngs: LatLngBoundsExpansion):this {
 		this.__expander(latlngs);
 		return this.validate();
 	}
 
 	/**
 	 * Checks if a {@link LatLng} is contained within this boundary.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @param {!LatLng} latlng	The point to check
-	 * @return {!boolean}
+	 * @param {!LatLng} pin	The point to check
 	 */
-	public contains(latlng: ILatLng) {
-		return LONGITUDE_NORMALIZED(latlng.lng) + 360 <= LONGITUDE_NORMALIZED(this.east) + 360
-			&& LONGITUDE_NORMALIZED(latlng.lng) + 360 >= LONGITUDE_NORMALIZED(this.west) + 360
-			&& LATLNG_GREAT_CIRCLE(this.north, this.west, latlng.lat, latlng.lng, this.north, this.east) <= 0
-			&& LATLNG_GREAT_CIRCLE(this.south, this.west, latlng.lat, latlng.lng, this.south, this.east) >= 0;
+	contains(pin: ILatLng) :boolean{
+		this.validate();
+		const lat = LATITUDE_NORMALIZED(pin.lat),
+			lng = LONGITUDE_NORMALIZED(pin.lng, lat) + 360;
+		return lng <= LONGITUDE_NORMALIZED(this.east) + 360
+			&& lng >= LONGITUDE_NORMALIZED(this.west) + 360
+			&& LATLNG_GREAT_CIRCLE(
+				this.getNorthWest(),
+				{ lat, lng },
+				this.getNorthEast()
+			) <= 0
+			&& LATLNG_GREAT_CIRCLE(
+				this.getSouthWest(),
+				{ lat, lng },
+				this.getSouthEast()
+			) >= 0;
 	}
 	/**
 	 * Checks if a {@link LatLngBounds} is contained within this boundary.
@@ -134,116 +191,127 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * @param {!LatLngBounds} bounds	The other boundary to check
 	 * @return {!boolean}
 	 */
-	public encloses(bounds: ILatLngBounds) {
-		return LONGITUDE_NORMALIZED(bounds.east) + 360 <= LONGITUDE_NORMALIZED(this.east) + 360
-			&& LONGITUDE_NORMALIZED(bounds.west) + 360 >= LONGITUDE_NORMALIZED(this.west) + 360
-			&& LATLNG_GREAT_CIRCLE(this.north, this.west, bounds.north, bounds.west, this.north, this.east) <= 0
-			&& LATLNG_GREAT_CIRCLE(this.south, this.west, bounds.south, bounds.east, this.south, this.east) >= 0;
-	};
+	encloses(bounds: ILatLngBounds):boolean {
+		this.validate();
+		const north = LATITUDE_NORMALIZED(bounds.north),
+			east = LONGITUDE_NORMALIZED(bounds.east, north) + 360,
+			south = LATITUDE_NORMALIZED(bounds.south),
+			west = LONGITUDE_NORMALIZED(bounds.west, south) + 360;
+		return east <= LONGITUDE_NORMALIZED(this.east) + 360
+			&& west >= LONGITUDE_NORMALIZED(this.west) + 360
+			&& LATLNG_GREAT_CIRCLE(
+				this.getNorthWest(),
+				{ lat: bounds.north, lng: bounds.west },
+				this.getNorthEast()
+			) <= 0
+			&& LATLNG_GREAT_CIRCLE(
+				this.getSouthWest(),
+				{ lat: bounds.south, lng: bounds.east },
+				this.getSouthEast()
+			) >= 0;
+	}
 	/**
 	 * Checks if a {@link LatLngBounds} overlaps this boundary.
 	 * Also returns true if either boundary's {@link LatLngBounds#encloses} returns true.
-	 * @expose
-	 * @this {LatLngBounds}
 	 * @param {!LatLngBounds} other	The other boundary to check
-	 * @return {!boolean}
 	 */
-	public overlaps(other: ILatLngBounds) {
-		var bounds = new LatLngBounds(other);
-		return this.isValid()
-			&& bounds.isValid()
-			&& (
-				this.contains(bounds.getNorthEast())
-				|| this.contains(bounds.getNorthWest())
-				|| this.contains(bounds.getSouthWest())
-				|| this.contains(bounds.getSouthEast())
-				|| bounds.encloses(this)
-			);
-	}
-	public getCentre(): LatLng {
-		return LATLNG_TRANSLATE(
-			this.north,
-			this.east,
-			LATLNG_DISTANCE(this.north, this.east, this.south, this.west) / 2,
-			LATLNG_ANGLE(this.north, this.east, this.south, this.west),
-			EARTH_RADIUS
+	overlaps(other: ILatLngBounds) :boolean{
+		this.validate();
+		const bounds = new LatLngBounds(other);
+		return (
+			this.contains(bounds.getNorthEast())
+			|| this.contains(bounds.getNorthWest())
+			|| this.contains(bounds.getSouthWest())
+			|| this.contains(bounds.getSouthEast())
+			|| bounds.encloses(this)
 		);
 	}
-	public getNorthEast(): LatLng { return new LatLng(this.north, this.east); }
-	public getNorthWest(): LatLng { return new LatLng(this.north, this.west); }
-	public getSouthEast(): LatLng { return new LatLng(this.south, this.east); }
-	public getSouthWest(): LatLng { return new LatLng(this.south, this.west); }
+	/**
+	 * 
+	 */
+	getCentre(): LatLng {
+		const ne = this.getNorthEast(),
+			sw = this.getSouthWest(),
+			centre = LATLNG_TRANSLATE(
+				ne,
+				LATLNG_DISTANCE(ne, sw) / 2,
+				LATLNG_ANGLE(ne, sw)
+			);
+		return new LatLng(centre.lat, centre.lng);
+	}
+	/**
+	 * 
+	 */
+	getNorthEast(): LatLng { return new LatLng(this.north, this.east); }
+	/**
+	 * 
+	 */
+	getNorthWest(): LatLng { return new LatLng(this.north, this.west); }
+	/**
+	 * 
+	 */
+	getSouthEast(): LatLng { return new LatLng(this.south, this.east); }
+	/**
+	 * 
+	 */
+	getSouthWest(): LatLng { return new LatLng(this.south, this.west); }
 	/**
 	 * The mid-point coordinate between the north east and north west corners.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {!LatLng}
 	 */
-	public getNorthMiddle() {
-		return LATLNG_MIDPOINT(this.north, this.east, this.north, this.west);
+	getNorthMiddle(): LatLng {
+		const latlng = LATLNG_MIDPOINT(this.getNorthEast(), this.getNorthWest());
+		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * The mid-point coordinate between the south east and south west corners.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {!LatLng}
 	 */
-	public getSouthMiddle() {
-		return LATLNG_MIDPOINT(this.south, this.east, this.south, this.west);
+	getSouthMiddle():LatLng {
+		const latlng = LATLNG_MIDPOINT(this.getSouthEast(), this.getSouthWest());
+		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * The mid-point coordinate between the north east and north west corners.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {!LatLng}
 	 */
-	public getEastMiddle() {
-		return LATLNG_MIDPOINT(this.north, this.east, this.south, this.east);
+	getEastMiddle() :LatLng{
+		const latlng = LATLNG_MIDPOINT(this.getNorthEast(), this.getSouthEast());
+		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * The mid-point coordinate between the south east and south west corners.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {!LatLng}
 	 */
-	public getWestMiddle() {
-		return LATLNG_MIDPOINT(this.north, this.west, this.south, this.west);
+	getWestMiddle():LatLng {
+		const latlng = LATLNG_MIDPOINT(this.getNorthWest(), this.getSouthWest());
+		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * The distance in meters between the north-east corner and the south-west corner.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {!number}
 	 */
-	public getDiagonalDistance() {
-		return LATLNG_DISTANCE(this.north, this.east, this.south, this.west);
+	getDiagonalDistance() :number{
+		return LATLNG_DISTANCE(this.getNorthEast(), this.getSouthWest());
 	}
 	/**
 	 * The distance in meters between the north-most border and the south-most border.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {!number}
 	 */
-	public getLatitudinalDistance() {
-		return LATLNG_DISTANCE(this.north, this.east, this.south, this.east);
+	getLatitudinalDistance() :number{
+		return LATLNG_DISTANCE(this.getNorthEast(), this.getSouthEast());
 	}
 	/**
 	 * The distance in meters between the east-most and the west-most points along the border closest to the equator.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {!number}
 	 */
-	public getLongitudinalDistance() {
+	getLongitudinalDistance():number {
 		return ABS(this.north) < ABS(this.south)
-			? LATLNG_DISTANCE(this.north, this.east, this.north, this.west)
-			: LATLNG_DISTANCE(this.south, this.east, this.south, this.west);
+			? LATLNG_DISTANCE(this.getNorthEast(), this.getNorthWest())
+			: LATLNG_DISTANCE(this.getSouthEast(), this.getSouthWest());
 	}
 
-	public validate(): this {
-		var north = LATITUDE_NORMALIZED(this.north),
-			east = LONGITUDE_NORMALIZED(this.east),
+	/**
+	 * 
+	 */
+	validate(): this {
+		const north = LATITUDE_NORMALIZED(this.north),
+			east = LONGITUDE_NORMALIZED(this.east, north),
 			south = LATITUDE_NORMALIZED(this.south),
-			west = LONGITUDE_NORMALIZED(this.west);
+			west = LONGITUDE_NORMALIZED(this.west, south);
 		this.north = north > south ? north : south;
 		this.south = south < north ? south : north;
 		this.east = east > west ? east : west;
@@ -251,7 +319,10 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 		return this;
 	}
 
-	public isValid(): bool {
+	/**
+	 * 
+	 */
+	isValid(): boolean {
 		return this.north >= this.south
 			&& this.east >= this.west
 			&& !(
@@ -261,22 +332,21 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 				&& ABS(this.east) > 180
 			);
 	}
-	public isEmpty(): bool {
+	/**
+	 * 
+	 */
+	isEmpty(): boolean {
 		return this.isValid()
 			&& (
-				LATLNG_DISTANCE(this.north, this.east, this.north, this.west) < MAX_SAME_DISTANCE
-				|| LATLNG_DISTANCE(this.north, this.east, this.south, this.east) < MAX_SAME_DISTANCE
+				LATLNG_DISTANCE(this.getNorthEast(), this.getNorthWest()) < MAX_SAME_DISTANCE
+				|| LATLNG_DISTANCE(this.getNorthEast(), this.getSouthEast()) < MAX_SAME_DISTANCE
 			);
 	}
 
-
 	/**
 	 * Creates a literal of this object.  Used internally by {@link JSON.stringify}.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @return {{north:number,east:number,south:number,west:number}|null}
 	 */
-	public toJSON() {
+	toJSON() {
 		this.validate();
 		return IS_NAN(this.north)
 			|| IS_NAN(this.east)
@@ -290,7 +360,18 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 				"west": ROUND_TO(this.west, 8),
 			};
 	}
-	public fromJSON(object: JsonObject) {
-		
+	/**
+	 * 
+	 * @param object 
+	 */
+	fromJSON(object: JsonObject): LatLngBounds {
+		const bounds = new LatLngBounds();
+		if (ILatLngBounds_instanceOf(object)) {
+			bounds.east = object.east;
+			bounds.north = object.north;
+			bounds.west = object.west;
+			bounds.south = object.south;
+		}
+		return bounds.validate();
 	}
 }

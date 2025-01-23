@@ -43,15 +43,19 @@ import {
     GEOFENCE_WIDEST,
 //  SPHERECAP_AREA,
  } from "./API/Geography/Functions";
+import { LatLng } from "./API/Geography/LatLng";
+import { LatLngBounds } from "./API/Geography/LatLngBounds";
 
-const version = (5.0);
+const version = (5.01);
 
 const namespaces = {
     version,
+
     utility: {
         codify,
     },
     encoding: {},
+
     /**
      * A utility library exposing algorithms for a flat plane.
      **/
@@ -73,6 +77,11 @@ const namespaces = {
         "radialSmallest": RADIAL_BADOIU_CLARKSON,
         "radialOverlapsRectangle": RADIAL_OVERLAP_RECTANGLE,
     },
+    Point,
+    Radial,
+    Rectangle,
+    Size,
+
     geometry: {
         Point,
         Radial,
@@ -80,30 +89,32 @@ const namespaces = {
         Size,
     },
     geography: {
-	"earthRadius": EARTH_RADIUS,
+        "earthRadius": EARTH_RADIUS,
 
-	"clampLat": LATITUDE_NORMALIZED,
-	"clampLng": LONGITUDE_NORMALIZED,
+        "clampLat": LATITUDE_NORMALIZED,
+        "clampLng": LONGITUDE_NORMALIZED,
 
-	"pathLength": ROUTE_LENGTH,
-	"pathReduce": ROUTE_PEUCKER,
-	"pathEncode": ROUTE_ENCODE,
-	"pathDecode": ROUTE_DECODE,
+        "pathLength": ROUTE_LENGTH,
+        "pathReduce": ROUTE_PEUCKER,
+        "pathEncode": ROUTE_ENCODE,
+        "pathDecode": ROUTE_DECODE,
 
-	"pointAngle": LATLNG_ANGLE,
-	"pointDistance": LATLNG_DISTANCE,
-	"pointMiddle": LATLNG_MIDPOINT,
-	"pointOrthogonal": LATLNG_GREAT_CIRCLE,
-	"pointTranslate": LATLNG_TRANSLATE,
-	"pointVincenty": LATLNG_DISTANCE_VINCENTY,
+        "pointAngle": LATLNG_ANGLE,
+        "pointDistance": LATLNG_DISTANCE,
+        "pointMiddle": LATLNG_MIDPOINT,
+        "pointOrthogonal": LATLNG_GREAT_CIRCLE,
+        "pointTranslate": LATLNG_TRANSLATE,
+        "pointVincenty": LATLNG_DISTANCE_VINCENTY,
 
-	"polyArea": GEOFENCE_AREA,
-	"polyContains": GEOFENCE_CONTAINS,
-	"polyReduce": GEOFENCE_PEUCKER,
-	"polyWidest": GEOFENCE_WIDEST,
-//	"polyWrapper": GEOFENCE_WRAPPER,
+        "polyArea": GEOFENCE_AREA,
+        "polyContains": GEOFENCE_CONTAINS,
+        "polyReduce": GEOFENCE_PEUCKER,
+        "polyWidest": GEOFENCE_WIDEST,
+        //	"polyWrapper": GEOFENCE_WRAPPER,
 
-//	"radialArea": SPHERECAP_AREA,
+        //	"radialArea": SPHERECAP_AREA,
     },
+    LatLng,
+    LatLngBounds
 };
 export default namespaces;

@@ -44,22 +44,22 @@ export function ILatLng_clone(dot: ILatLng): ILatLng {
  * A rectangular boundary on a flat surface.
  **/
 export interface ILatLngBounds {
-	/**
-	 * Left-most horizontal coordinate
-	 **/
-	left: number;
-	/**
-	 * Highest vertical coordinate.
-	 **/
-	top: number;
-	/**
-	 * Right-most horizontal coordinate
-	 **/
-	right: number;
-	/**
-	 * Lowest vertical coordinate
-	 **/
-	bottom: number;
+	/// <summary>
+	/// Northern latitude
+	/// </summary>
+	north: number;
+	/// <summary>
+	/// Eastern longitude
+	/// </summary>
+	east: number;
+	/// <summary>
+	/// Southern latitude
+	/// </summary>
+	south: number;
+	/// <summary>
+	/// Western longitude
+	/// </summary>
+	west: number;
 }
 
 /**
@@ -68,10 +68,10 @@ export interface ILatLngBounds {
  **/
 export function ILatLngBounds_instanceOf(box: any): box is ILatLngBounds {
 	return !!box
-		&& IS_NUMBER(box.top)
-		&& IS_NUMBER(box.left)
-		&& IS_NUMBER(box.bottom)
-		&& IS_NUMBER(box.right);
+		&& IS_NUMBER(box.north)
+		&& IS_NUMBER(box.west)
+		&& IS_NUMBER(box.south)
+		&& IS_NUMBER(box.west);
 }
 /**
  * 
@@ -80,10 +80,10 @@ export function ILatLngBounds_instanceOf(box: any): box is ILatLngBounds {
  **/
 export function ILatLngBounds_clone(box: ILatLngBounds): ILatLngBounds {
 	return {
-		left: box.left,
-		top: box.top,
-		right: box.right,
-		bottom: box.bottom,
+		west: box.west,
+		north: box.north,
+		east: box.east,
+		south: box.south,
 	};
 }
 
