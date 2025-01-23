@@ -1,10 +1,10 @@
 ﻿import { ABS, FLOAT, ROUND, } from "./Constants";
-import { IS_NUMBER, } from "./Functions";
+import { IS_NUMBER,ZERO_PADDED, } from "./Functions";
 
 /**
  * An object which represents an interval of time.
  * @constructor
- * @param {string|number=} duration		A time-span formatted string, or a number representing milliseconds
+ * @param duration		A time-span formatted string, or a number representing milliseconds
  * @property {!number} days				Days component of the time-span.
  * @property {!number} hours				Hours component of the time-span.
  * @property {!number} minutes			Minutes component of the time-span.
@@ -121,7 +121,7 @@ export class TimeSpan {
 	/**
 	 * Parses the time-span into a serialized TimeSpan string.
 	 * The format follows the {@link trakit.json.duration} definition.
-	 * @param {string=} format	Use format strings like "HH:mm" for just hours and minutes.  Valid flags are d, h, H, m, s, and f.  If you use 
+	 * @param format	Use format strings like "HH:mm" for just hours and minutes.  Valid flags are d, h, H, m, s, and f.  If you use 
 	 */
 	toString(format: string = "") {
 		if (format) {
@@ -158,14 +158,12 @@ export class TimeSpan {
 	 * Same as {@link TimeSpan#toString}.
 	 * @expose
 	 * @this {TimeSpan}
-	 * @return {!string}
 	 */
 	toJSON = toString;
 	/**
 	 * Gets the comparable value of this time-span as total milliseconds.
 	 * @override
 	 * @this {TimeSpan}
-	 * @return {!number}
 	 */
 	valueOf() {
 		return this.__total;
@@ -174,9 +172,8 @@ export class TimeSpan {
 	 * Adds the given value to the current time-span.
 	 * @expose
 	 * @this {TimeSpan}
-	 * @param {TimeSpan|string|number} duration	A time-span formatted string, or a number representing milliseconds
-	 * @param {boolean=} subtract				When true, the value is subtracted from the time-span instead of added.
-	 * @return {!number}
+	 * @param duration	A time-span formatted string, or a number representing milliseconds
+	 * @param subtract				When true, the value is subtracted from the time-span instead of added.
 	 */
 	add(duration: TimeSpan | string | number, subtract: boolean = false) {
 		if (IS_NUMBER(duration)) {
@@ -233,9 +230,8 @@ export class TimeSpan {
 	 * Subtracts the given value from the time-span.
 	 * @expose
 	 * @this {TimeSpan}
-	 * @param {TimeSpan|string|number} duration	A time-span formatted string, or a number representing milliseconds
-	 * @param {boolean=} add					When true, the value is added from the time-span instead of subtracted.
-	 * @return {!number}
+	 * @param duration	A time-span formatted string, or a number representing milliseconds
+	 * @param add					When true, the value is added from the time-span instead of subtracted.
 	 */
 	subtract(duration: TimeSpan | string | number, add: boolean = false) {
 		return this.add(duration, !add);
@@ -245,10 +241,9 @@ export class TimeSpan {
 /**
  * Parses a serialized TimeSpan into a number representing the total seconds.
  * For example the string "1.07:42:03.467" equals 114123.467, which is 1 day, 7 hours, 42 minutes, 3 seconds, and 467 milliseconds.
- * @param {string} duration	A valid timespan string.  The format is [-]( d | [d.]hh:mm[:ss[.fff]] )
- * @return {number}
+ * @param duration	A valid timespan string.  The format is [-]( d | [d.]hh:mm[:ss[.fff]] )
  */
-export function TIMESPAN_SECONDS(duration:string|number) {
+export function parseTime(duration: TimeSpan | string | number): number {
 	/*
 	var days = 0, hours = 0, minutes = 0, seconds = 0, milli = 0;
 	if (duration = String(duration).trim()) {
@@ -274,10 +269,9 @@ export function TIMESPAN_SECONDS(duration:string|number) {
 /**
  * Parses a number representing the total seconds into a serialized TimeSpan string.
  * For example the number 114123.467 would be serialized as "1.07:42:03.467".
- * @param {number} value		Use a decimal to show milliseconds.
- * @return {string}			"1.07:42:03.467"
+ * @param value		Use a decimal to show milliseconds.
  */
-export function TIMESPAN_STRING(value) {
+export function stringifyTime(value: number): string {
 	/*
 	var days = 0, hours = days, minutes = hours, seconds = minutes;
 	while (value >= 24 * 60 * 60 && ++days) value -= 24 * 60 * 60;

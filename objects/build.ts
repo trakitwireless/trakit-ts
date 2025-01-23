@@ -1,14 +1,19 @@
 ﻿"use strict";
 
 import { codify, } from "./API/Codifier";
-import { numberGroups, } from "./API/Files";
 import {
+    fileSize,
+    numberGroups,
+} from "./API/Files";
+import {
+    douglasPeucker,
+    fromPassword,
     IS_NAN,
     IS_NOTHING,
-    fromPassword,
-    toPassword,
+    phoneNumber,
     PYTHAGORA,
     ROUND_TO,
+    toPassword,
 } from "./API/Functions";
 import { Point, } from "./API/Geometry/Point";
 import { Radial } from "./API/Geometry/Radial";
@@ -54,12 +59,18 @@ import {
 import { LatLng, } from "./API/Geography/LatLng";
 import { LatLngBounds, } from "./API/Geography/LatLngBounds";
 import { guid, } from "./API/Guid";
+import { SearchPattern, } from "./API/SearchPattern";
+import {
+    parseTime,
+    stringifyTime,
+    TimeSpan,
+} from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
 import { merge, } from "./API/Types";
 
 const version = (5.01);
 
-const namespaces = {
+export default {
     version,
 
     utility: {
@@ -69,25 +80,25 @@ const namespaces = {
         "isNaN": IS_NAN,
         "roundTo": ROUND_TO,
         "merge": merge,
-        "arrayOfType": ARRAY_OF_TYPE,
-        "parseTime": TIMESPAN_SECONDS,
-        "stringifyTime": TIMESPAN_STRING,
-        "parseSearch": SEARCH_PARSE,
-        "douglasPeucker": DOUGLASPEUCKER_T,
+        parseTime,
+        stringifyTime,
+        douglasPeucker,
         numberGroups,
         toPassword,
         fromPassword,
-        "fileSize": FILESIZE_HELPER,
-        "timezones": TIMEZONES,
-        "phoneNumber": PHONE_PARSE,
+        fileSize,
+        //"timezones": TIMEZONES,
+        phoneNumber,
     },
+    SearchPattern,
+    TimeSpan,
     Timezone,
 
     encoding: {},
 
     /**
      * A utility library exposing algorithms for a flat plane.
-     **/
+     */
     drawing: {
         "pathLength": PATH_LENGTH,
         "pathOrthogonal": PATH_ORTHOGONAL,
@@ -142,4 +153,3 @@ const namespaces = {
     LatLng,
     LatLngBounds
 };
-export default namespaces;

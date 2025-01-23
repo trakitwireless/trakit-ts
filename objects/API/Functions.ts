@@ -27,7 +27,6 @@ export function IS_BOOLEAN(value: any): value is boolean {
 /**
  * Checks to see if the given parameter is a number object or number literal.
  * @param value The variable to check
- * @return
  */
 export function IS_NUMBER(value: any): value is number {
 	return typeof value === "number"
@@ -60,7 +59,6 @@ export function OBJECT_TYPE(value: any): string {
  * Similar to {@code key|isNaN}, it checks to see if the given parameter is not a number object, not a number literal, and that it is {@code value|NaN}.
  * This method will return  {@code value|true} for values: {@code value|""}, {@code value|"1234"}, {@code value|null}, {@code value|undefined}, {@code value|true}, and {@code value|false}.
  * @param value The variable to check
- * @return {boolean}
  */
 export function IS_NAN(value: any): value is number {
 	return isNaN(value)
@@ -71,7 +69,6 @@ export function IS_NAN(value: any): value is number {
  * Checks to see if the given parameter is a number object, or number literal, and that it is not {@code value|NaN}.
  * This method will return  {@code value|false} for values: {@code value|""}, {@code value|"1234"}, {@code value|null}, {@code value|undefined}, {@code value|true}, and {@code value|false}.
  * @param value The variable to check
- * @return {boolean}
  */
 export function IS_AN(value: any): value is number {
 	return !IS_NAN(value);
@@ -91,7 +88,7 @@ export function ROUND_TO(number: number, places?: number): number {
  * @param n	The number to clip
  * @param min	Minimum allowable value
  * @param max	Maximum allowable value
- **/
+ */
 export function CLIP(n: number, min: number, max: number): number {
 	return MIN(MAX(n, min), max);
 }
@@ -99,14 +96,14 @@ export function CLIP(n: number, min: number, max: number): number {
  * Calculates the Pythagorean length of a triangle given the length of the other two sides.
  * @param width
  * @param height
- **/
+ */
 export function PYTHAGORA(width: number, height: number): number {
 	return SQRT(ABS(width * width) + ABS(height * height));
 }
 /**
  * Parses a base-10 integer number from the given value.
  * @param value
- **/
+ */
 export function ID(value: any): number {
 	return INT(value, 10);
 }
@@ -114,7 +111,7 @@ export function ID(value: any): number {
 /**
  * Creates a Date object out of the given value.
  * @param value
- **/
+ */
 export function DATE(value?: string | number | Date): Date {
 	return new Date(
 		value instanceof Date
@@ -194,6 +191,31 @@ export function DOUGLASPEUCKER<TCoord>(
 	// array of indexes to keep from the source
 	return keepers;
 }
+/**
+ * An implementation of the {@link https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm|Ramer-Douglas-Peucker} path reduction algorithm.
+ * The source array should be more than two items in length, otherwise reduction is pointless.
+ * The callback function returns a number (greater than zero) as the triangle height as defiend by three points; first point, middle point, and last point.
+ * The "kink" threshold is set using the tolerance argument which must be a number greater than or equal to zero.
+ * @template TCoord
+ * @param source						Array of coordinates of type "T".
+ * @param triangleHeight	Callback which performs a triangle height calculation between first point, middle point, and last point.
+ * @param tolerance						The "kink" threshold
+ */
+export function douglasPeucker<TCoord>(
+	source: TCoord[],
+	triangleHeight: DouglasPeukerOrthogonal<TCoord>,
+	tolerance: number
+): TCoord[] {
+	if (!Array.isArray(source)) throw new TypeError("source is not an Array.");
+	if (!IS_FUNCTION(triangleHeight)) throw new TypeError("triangleHeight is not an Function.");
+	if (!IS_AN(tolerance) || tolerance < 0) throw new TypeError("tolerance is not an Number or less than zero.");
+	return source.length < 3
+		? [...source]
+		: source.filter(
+			FILTER_BY_BOOLEAN_ARRAY,
+			DOUGLASPEUCKER(source, triangleHeight, tolerance)
+		);
+}
 
 /**
  * Given as the first argument to {@link Array#filter} where the second argument is a {@link boolean[]}.
@@ -206,11 +228,6 @@ export function FILTER_BY_BOOLEAN_ARRAY(this: boolean[], object: unknown, index:
 	return this[index];
 }
 
-
-
-
-
-
 /**
  * The key used for encoding/decoding Provider passwords.
  * @const
@@ -219,7 +236,7 @@ export function FILTER_BY_BOOLEAN_ARRAY(this: boolean[], object: unknown, index:
 const PASSWORD_KEY = INT("33", 36); //111
 /**
  * Encodes the given string as a Provider password.
- **/
+ */
 export function toPassword(value: string): string {
 	return escape(value.split("").reduce(function (encoded, char) {
 		return encoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
@@ -227,10 +244,66 @@ export function toPassword(value: string): string {
 }
 /**
  * Decodes the given Provider password as a human readable value.
- **/
+ */
 export function fromPassword(value: string): string {
 	return unescape(value).split("").reduce(function (decoded, char) {
 		return decoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
 	}, "");
 }
-//#endregion
+
+
+/**
+ * For validating phone numbers using the 1 prefix (ie: 14161234567)
+ */
+const PHONE_ELEVEN = 1e10;
+/**
+ * For validating phone number ranges.
+ * This is the lowest possible 9-digit phone numnber.
+ */
+const PHONE_LOWEST = 2e9;
+/**
+ * For validating phone number ranges.
+ * This is the highest possible 9-digit phone numnber.
+ */
+const PHONE_HIGHEST = 999e7;
+/**
+ * Parses the input and returns a valid phone number prefixed by 1, or NaN if invalid.
+ * @param phone
+ * */
+export function phoneNumber(phone: string | number): number {
+	let number = ID(phone);
+	if (number) {
+		const eleven = number > PHONE_ELEVEN;
+		if (eleven) number -= PHONE_ELEVEN;
+		if (number <= PHONE_LOWEST || number >= PHONE_HIGHEST) number = NaN;
+		if (eleven && number) number += PHONE_ELEVEN;
+	}
+	return number || NaN;
+}
+
+
+/**
+ * Internal method for returning a string representation of the given number, padded with zeros.
+ * @param num
+ * @param length
+ * @param decimals
+ * @param radix
+ */
+export function ZERO_PADDED(
+	num: number,
+	length: number,
+	decimals: number = 0,
+	radix: number = 10
+): string {
+	const strings = num.toString(radix).split(".");
+	if (decimals && strings.length === 1) {
+		strings.push("0");
+	}
+	if (strings[0].length < length) {
+		strings[0] = "0".repeat(length - strings[0].length) + strings[0];
+	}
+	if (strings[1] && strings[1].length < decimals) {
+		strings[1] += "0".repeat(decimals - strings[1].length);
+	}
+	return strings.join(".");
+}

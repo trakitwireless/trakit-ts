@@ -1,5 +1,6 @@
 {
   "name": "trakit-ts",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

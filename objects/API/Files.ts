@@ -1,7 +1,9 @@
 ﻿import {
 	ABS,
 	MAX,
+	MIN,
 } from "./Constants";
+import { IS_NAN, ROUND_TO } from "./Functions";
 
 /**
  * An array of filesize suffixes where the index in the array represents the "level" of size.
@@ -26,32 +28,37 @@ const FILESIZE_SUFFIX = [
 ];
 
 /**
+ * 
+ */
+const DELIMITER: string = ",",
+	DECIMAL: string = ".";
+
+/**
  * Groups digits of a number together to make a more human readable version.
- * @param {!number} number The number to be prettified
- * @param {number=} size				Quantity of digits per number group.  The default is 3.
- * @param {string=} delimiter			Character(s) to use to divide the integer groups.  The detauls is ",".
- * @param {string=} decimalDelimiter	Character(s) to use to divide the decimal groups.  The detauls is same as delimiter.
- * @param {string=} point			Character(s) to use to divide the integer groups from the decimal groups. The detauls is ".".
+ * @param number The number to be prettified
+ * @param size				Quantity of digits per number group.  The default is 3.
+ * @param delimiter			Character(s) to use to divide the integer groups.  The detauls is ",".
+ * @param decimalDelimiter	Character(s) to use to divide the decimal groups.  The detauls is same as delimiter.
+ * @param point			Character(s) to use to divide the integer groups from the decimal groups. The detauls is ".".
  * @throws {TypeError}				size must be greater than zero
- * @return {!string}
  */
 export function numberGroups(
 	number: number,
 	size: number = 3,
-	delimiter: string = ",",
+	delimiter: string = DELIMITER,
 	decimalDelimiter: string = delimiter,
-	point: string = "."
+	point: string = DECIMAL
 ) {
 	if (!(size > 0)) throw new TypeError("size must be greater than zero.");
 	const neg = number < 0 ? "-" : "",
 		splits = ABS(number).toString().split("."),
 		ints: string[] = [],
 		decs: string[] = [];
-	for (var i = splits[0].length; i > 0; i -= size) {
+	for (let i = splits[0].length; i > 0; i -= size) {
 		ints.unshift(splits[0].slice(MAX(0, i - size), i));
 	}
 	if (splits.length > 1) {
-		for (var i = 0, l = splits[1].length; i < l; i += size) {
+		for (let i = 0, l = splits[1].length; i < l; i += size) {
 			decs.push(splits[1].slice(i, i + size));
 		}
 	}
@@ -62,4 +69,40 @@ export function numberGroups(
 				? (point ?? "") + decs.join(decimalDelimiter)
 				: ""
 		);
+}
+
+/**
+ * Creates a more human readable string representation of the filesize.
+ * @param bytes
+ * @param places				The number of decimal places.  Default is 1.
+ * @param maxScale			Largest size-scale to use for representing the file-size.  Default is 2 (Megabyte), can be a value between 0 (Byte) and 6 (Exabyte).
+ * @param groupSize			Quantity of digits per number group.  The default is 3.
+ * @param groupDelimiter		Character(s) to use to divide the integer groups.  The detauls is ",".
+ * @param decimalDelimiter	Character(s) to use to divide the decimal groups.  The detauls is same as delimiter.
+ * @param point				Character(s) to use to divide the integer groups from the decimal groups. The detauls is ".".
+ * */
+export function fileSize(
+	bytes: number,
+	places: number = 0,
+	maxScale: number = 4,
+	groupSize: number = 3,
+	groupDelimiter: string = DELIMITER,
+	decimalDelimiter: string = groupDelimiter,
+	point: string = DECIMAL,
+) {
+	let level = 0;
+	if (bytes) {
+		maxScale = MIN(maxScale, FILESIZE_SUFFIX.length - 1);
+		while (level < maxScale && bytes > 1024) {
+			bytes /= 1024;
+			level++;
+		}
+	}
+	return numberGroups(
+		ROUND_TO(bytes, places),
+		groupSize,
+		groupDelimiter,
+		decimalDelimiter,
+		point
+	) + " " + FILESIZE_SUFFIX[level];
 }
