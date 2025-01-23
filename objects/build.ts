@@ -1,7 +1,15 @@
 ﻿"use strict";
 
-import { PYTHAGORA, } from "./API/Functions";
-import { codify } from "./API/Codifier";
+import { codify, } from "./API/Codifier";
+import { numberGroups, } from "./API/Files";
+import {
+    IS_NAN,
+    IS_NOTHING,
+    fromPassword,
+    toPassword,
+    PYTHAGORA,
+    ROUND_TO,
+} from "./API/Functions";
 import { Point, } from "./API/Geometry/Point";
 import { Radial } from "./API/Geometry/Radial";
 import { Size, } from "./API/Geometry/Size";
@@ -43,8 +51,11 @@ import {
     GEOFENCE_WIDEST,
 //  SPHERECAP_AREA,
  } from "./API/Geography/Functions";
-import { LatLng } from "./API/Geography/LatLng";
-import { LatLngBounds } from "./API/Geography/LatLngBounds";
+import { LatLng, } from "./API/Geography/LatLng";
+import { LatLngBounds, } from "./API/Geography/LatLngBounds";
+import { guid, } from "./API/Guid";
+import { Timezone, } from "./API/Timezone";
+import { merge, } from "./API/Types";
 
 const version = (5.01);
 
@@ -53,7 +64,25 @@ const namespaces = {
 
     utility: {
         codify,
+        guid,
+        "isNothing": IS_NOTHING,
+        "isNaN": IS_NAN,
+        "roundTo": ROUND_TO,
+        "merge": merge,
+        "arrayOfType": ARRAY_OF_TYPE,
+        "parseTime": TIMESPAN_SECONDS,
+        "stringifyTime": TIMESPAN_STRING,
+        "parseSearch": SEARCH_PARSE,
+        "douglasPeucker": DOUGLASPEUCKER_T,
+        numberGroups,
+        toPassword,
+        fromPassword,
+        "fileSize": FILESIZE_HELPER,
+        "timezones": TIMEZONES,
+        "phoneNumber": PHONE_PARSE,
     },
+    Timezone,
+
     encoding: {},
 
     /**
@@ -83,10 +112,6 @@ const namespaces = {
     Size,
 
     geometry: {
-        Point,
-        Radial,
-        Rectangle,
-        Size,
     },
     geography: {
         "earthRadius": EARTH_RADIUS,

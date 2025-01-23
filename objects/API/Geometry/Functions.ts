@@ -143,7 +143,7 @@ export function PATH_PEUCKER(path: IPoint[], tolerance: number = 0) {
  * @param lastPoint
  * @return {number}
  **/
-export function PATH_PEUCKER_FILTER(
+function PATH_PEUCKER_FILTER(
 	firstPoint: IPoint,
 	midPoint: IPoint,
 	lastPoint: IPoint

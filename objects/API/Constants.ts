@@ -1,4 +1,20 @@
 ﻿/**
+ * Used as the default value for timezones.
+ * @type {!string}
+ */
+const DEFAULT_TIMEZONE = "utc";
+/**
+ * Used as the default value for timezones.
+ * @type {!string}
+ */
+const DEFAULT_FORMAT_DATE = "MMM d, yyyy";
+/**
+ * Used as the default value for timezones.
+ * @type {!string}
+ */
+const DEFAULT_FORMAT_TIME = "h:mm:ss tt";
+
+/**
  * Timer methods that get used many places.
  */
 export const
@@ -49,3 +65,12 @@ export const
 	HALF_PI = PI / 2,
 	RADIANS_TO_DEGREES = 180 / PI,
 	DEGREES_TO_RADIANS = PI / 180;
+
+/**
+ * 
+ */
+export const
+	WIN = globalThis,
+	DOC = WIN.document,
+	LOC = WIN.location;
+	

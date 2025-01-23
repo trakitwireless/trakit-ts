@@ -1,4 +1,12 @@
-﻿import { ABS, INT, MAX, MIN, POW, ROUND, SQRT } from "./Constants";
+﻿import {
+	ABS,
+	INT,
+	MAX,
+	MIN,
+	POW,
+	ROUND,
+	SQRT,
+} from "./Constants";
 
 /**
  * Checks for both null and undefined
@@ -197,3 +205,32 @@ export function DOUGLASPEUCKER<TCoord>(
 export function FILTER_BY_BOOLEAN_ARRAY(this: boolean[], object: unknown, index: number) {
 	return this[index];
 }
+
+
+
+
+
+
+/**
+ * The key used for encoding/decoding Provider passwords.
+ * @const
+ * @type {!number}
+ */
+const PASSWORD_KEY = INT("33", 36); //111
+/**
+ * Encodes the given string as a Provider password.
+ **/
+export function toPassword(value: string): string {
+	return escape(value.split("").reduce(function (encoded, char) {
+		return encoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
+	}, ""));
+}
+/**
+ * Decodes the given Provider password as a human readable value.
+ **/
+export function fromPassword(value: string): string {
+	return unescape(value).split("").reduce(function (decoded, char) {
+		return decoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
+	}, "");
+}
+//#endregion
