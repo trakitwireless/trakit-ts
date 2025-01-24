@@ -1,74 +1,74 @@
 
 
-	/// <summary>
-	/// Parameters used to create or update an <see cref="ReportResult"/>.
-	/// </summary>
+	/**
+	 * Parameters used to create or update an <see cref="ReportResult"/>.
+	 */
 	export class ParamReportResultMerge extends ParamMergeSubscribable {
-		/// <summary>
-		/// The unique identifier of the <see cref="ReportResult"/> you want to update.
-		/// Leave this as <c>null</c> when creating a new <see cref="ReportResult"/>.
-		/// </summary>
+		/**
+		 * The unique identifier of the <see cref="ReportResult"/> you want to update.
+		 * Leave this as <c>null</c> when creating a new <see cref="ReportResult"/>.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The <see cref="Company"/> to which this <see cref="ReportResult"/> belongs.
-		/// After creation, this value is read-only.
-		/// </summary>
+		/**
+		 * The <see cref="Company"/> to which this <see cref="ReportResult"/> belongs.
+		 * After creation, this value is read-only.
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// Name for the <see cref="ReportResult"/>.
-		/// </summary>
+		/**
+		 * Name for the <see cref="ReportResult"/>.
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes for the <see cref="ReportResult"/>.
-		/// </summary>
+		/**
+		 * Notes for the <see cref="ReportResult"/>.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// A collection of other names this person might go by.
-		/// Use the object key like a name identifier.
-		/// Example keys: Initials, Nickname, Maiden Name, etc.
-		/// </summary>
+		/**
+		 * A collection of other names this person might go by.
+		 * Use the object key like a name identifier.
+		 * Example keys: Initials, Nickname, Maiden Name, etc.
+		 */
 		public otherNames: Map<string, string>;
-		/// <summary>
-		/// Email addresses
-		/// Use the object key like a name of the address.
-		/// Example keys: Home, Work, Support, Old, etc.
-		/// </summary>
+		/**
+		 * Email addresses
+		 * Use the object key like a name of the address.
+		 * Example keys: Home, Work, Support, Old, etc.
+		 */
 		public emails: Map<string, string>;
-		/// <summary>
-		/// Phone numbers.
-		/// Use the object key like a name of the phone number.
-		/// Example keys: Mobile, Fax, Home, Office, etc.
-		/// </summary>
+		/**
+		 * Phone numbers.
+		 * Use the object key like a name of the phone number.
+		 * Example keys: Mobile, Fax, Home, Office, etc.
+		 */
 		public phones: Map<string, ulong?>;
-		/// <summary>
-		/// Mailing addresses
-		/// Use the object key like a name of the address.
-		/// Example keys: Home, Work, Park, etc.
-		/// </summary>
+		/**
+		 * Mailing addresses
+		 * Use the object key like a name of the address.
+		 * Example keys: Home, Work, Park, etc.
+		 */
 		public addresses: Map<string, string>;
-		/// <summary>
-		/// Websites and other online resources
-		/// Use the object key like a name of the address.
-		/// Example keys: Downloads, Support, FTP, etc.
-		/// </summary>
+		/**
+		 * Websites and other online resources
+		 * Use the object key like a name of the address.
+		 * Example keys: Downloads, Support, FTP, etc.
+		 */
 		public urls: Map<string, Uri>;
-		/// <summary>
-		/// Date information
-		/// Use the object key like a name of the date.
-		/// Example keys: Birthday, Started Date, Retired On, etc.
-		/// </summary>
+		/**
+		 * Date information
+		 * Use the object key like a name of the date.
+		 * Example keys: Birthday, Started Date, Retired On, etc.
+		 */
 		public dates: Map<string, Date?>;
-		/// <summary>
-		/// Uncategorized information
-		/// Use the object keys and values however you'd like.
-		/// </summary>
+		/**
+		 * Uncategorized information
+		 * Use the object keys and values however you'd like.
+		 */
 		public options: Map<string, string>;
-		/// <summary>
-		/// A list of roles they play in the <see cref="Company"/>.
-		/// </summary>
+		/**
+		 * A list of roles they play in the <see cref="Company"/>.
+		 */
 		public roles: string[] = [];
-		/// <summary>
-		/// <see cref="Picture"/>s of this <see cref="ReportResult"/>.
-		/// </summary>
+		/**
+		 *  <see cref="Picture"/>s of this <see cref="ReportResult"/>.
+		 */
 		public pictures: ulong[] = [];
 	}

@@ -1,20 +1,20 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="user"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="user"/>.
+	 */
 	export abstract class ReqUserList extends Request implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return  deleted <see cref="User"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return  deleted <see cref="User"/>s.
+		 */
 		public includeDeleted: boolean = false;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqUserListByCompany extends ReqUserList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}

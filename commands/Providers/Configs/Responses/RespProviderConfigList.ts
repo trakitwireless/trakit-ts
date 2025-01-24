@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="providerConfigs"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="providerConfigs"/>.
+	 */
 	export abstract class RespProviderConfigList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ProviderConfig"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ProviderConfig"/>s.
+		 */
 		public providerConfigs: ProviderConfig[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespProviderConfigListByCompany extends RespProviderConfigList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

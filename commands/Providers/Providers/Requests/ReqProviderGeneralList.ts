@@ -1,47 +1,47 @@
 ﻿
 
-	/// <summary>
-	/// Gets a list of <see cref="ProviderGeneral"/>s.
-	/// </summary>
+	/**
+	 * Gets a list of <see cref="ProviderGeneral"/>s.
+	 */
 	export abstract class ReqProviderGeneralList extends Request implements IReqIDeletable, IReqISuspendable {
-		/// <summary>
-		/// When true, the command will also return suspended <see cref="ProviderGeneral"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return suspended <see cref="ProviderGeneral"/>s.
+		 */
 		public includeSuspended: boolean = false;
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="ProviderGeneral"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="ProviderGeneral"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}
 
-	/// <summary>
-	/// Gets the list of <see cref="ProviderGeneral"/>s for the specified <see cref="Company"/>.
-	/// </summary>
+	/**
+	 * Gets the list of <see cref="ProviderGeneral"/>s for the specified <see cref="Company"/>.
+	 */
 	export class ReqProviderGeneralListByCompany extends ReqProviderGeneralList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}
-	/// <summary>
-	/// Gets the list of <see cref="ProviderGeneral"/>s for the specified <see cref="Company"/> only if the <see cref="ProviderGeneralGeneral.labels"/> matches all of the given <see cref="Parameters.labels"/>.
-	/// </summary>
+	/**
+	 * Gets the list of <see cref="ProviderGeneral"/>s for the specified <see cref="Company"/> only if the <see cref="ProviderGeneralGeneral.labels"/> matches all of the given <see cref="Parameters.labels"/>.
+	 */
 	export class ReqProviderGeneralListByCompanyAndLabels extends ReqProviderGeneralListByCompany implements IReqListByLabels {
-		/// <summary>
-		/// The parsed labels given as input.
-		/// </summary>
-		/// <seealso cref="ProviderGeneral.labels"/>
+		/**
+		 * The parsed labels given as input.
+		 * {@link ProviderGeneral.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// Gets the list of <see cref="ProviderGeneral"/>s for the specified <see cref="Company"/> only if one of the specified <see cref="ProviderGeneralGeneral.references"/> fields match.
-	/// If no references are specified, it will match any <see cref="ProviderGeneral"/> with no references.
-	/// If a reference value is null, it will match any <see cref="ProviderGeneral"/> without that reference key.
-	/// </summary>
+	/**
+	 * Gets the list of <see cref="ProviderGeneral"/>s for the specified <see cref="Company"/> only if one of the specified <see cref="ProviderGeneralGeneral.references"/> fields match.
+	 * If no references are specified, it will match any <see cref="ProviderGeneral"/> with no references.
+	 * If a reference value is null, it will match any <see cref="ProviderGeneral"/> without that reference key.
+	 */
 	export class ReqProviderGeneralListByCompanyAndRefPairs extends ReqProviderGeneralListByCompany implements IReqListByReferences {
-		/// <summary>
-		/// The parsed references given as input.
-		/// </summary>
-		/// <seealso cref="ProviderGeneralGeneral.references"/>
+		/**
+		 * The parsed references given as input.
+		 * {@link ProviderGeneralGeneral.references}
+		 */
 		public references: Map<string, string>;
 	}

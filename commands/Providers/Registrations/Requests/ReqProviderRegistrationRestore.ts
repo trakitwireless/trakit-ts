@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="ProviderRegistration"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="ProviderRegistration"/>.
+	 */
 	export class ReqProviderRegistrationRestore extends ReqProviderRegistration { }

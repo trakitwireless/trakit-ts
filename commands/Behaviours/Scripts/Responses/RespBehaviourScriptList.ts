@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="behaviourScripts"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="behaviourScripts"/>.
+	 */
 	export abstract class RespBehaviourScriptList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="BehaviourScript"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="BehaviourScript"/>s.
+		 */
 		public behaviourScripts: BehaviourScript[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespBehaviourScriptListByCompany extends RespBehaviourScriptList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

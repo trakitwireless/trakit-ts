@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="ProviderControl"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="ProviderControl"/>.
+	 */
 	export class ReqProviderControlGet extends ReqProvider implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="ProviderControl"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="ProviderControl"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

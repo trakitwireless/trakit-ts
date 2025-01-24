@@ -1,7 +1,7 @@
 ﻿
 
 
-	/// <summary>
-	/// Deletes an existing <see cref="Place"/>.
-	/// </summary>
+	/**
+	 * Deletes an existing <see cref="Place"/>.
+	 */
 	export class ReqPlaceDelete extends ReqPlace { }

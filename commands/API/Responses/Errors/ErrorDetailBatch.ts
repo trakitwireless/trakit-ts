@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// For batch commands, these are the errors thrown by the sub-command.
-	/// </summary>
+	/**
+	 * For batch commands, these are the errors thrown by the sub-command.
+	 */
 	export class ErrorDetailBatch extends ErrorDetail {
-		/// <summary>
-		/// Index-presevered list of sub-command errors.
-		/// </summary>
+		/**
+		 * Index-presevered list of sub-command errors.
+		 */
 		public errors: Response[] = [];
 	}

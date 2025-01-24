@@ -1,18 +1,17 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the <see cref="formTemplate"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="formTemplate"/> object.
+	 */
 	export abstract class ReqFormTemplate extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="FormTemplate"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="FormTemplate"/>.
+		 */
 		public formTemplate: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.formTemplate?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.formTemplate?.id.toString() ?? "";
 	}

@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="CompanyReseller"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="CompanyReseller"/>.
+	 */
 	export class ReqCompanyResellerGet extends ReqCompany implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="CompanyReseller"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="CompanyReseller"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

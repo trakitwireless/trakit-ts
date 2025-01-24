@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="User"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="User"/>.
+	 */
 	export class ReqUserRestore extends ReqUser { }

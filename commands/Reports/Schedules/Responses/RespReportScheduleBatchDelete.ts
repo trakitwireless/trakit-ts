@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="reportSchedule"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="reportSchedule"/>.
+	 */
 	export class RespReportScheduleBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="ReportSchedule"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="ReportSchedule"/>.
+		 */
 		public reportSchedules: RespIdDeleted[] = [];
 	}

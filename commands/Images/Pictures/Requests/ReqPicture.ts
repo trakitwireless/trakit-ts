@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="picture"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="picture"/> object.
+	 */
 	export abstract class ReqPicture extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="Picture"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="Picture"/>.
+		 */
 		public picture: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.picture?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.picture?.id.toString() ?? "";
 	}

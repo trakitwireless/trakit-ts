@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="provider"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="provider"/> object.
+	 */
 	export abstract class ReqProvider extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="Provider"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="Provider"/>.
+		 */
 		public provider: ParamIdentifier;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.provider?.id ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.provider?.id ?? "";
 	}

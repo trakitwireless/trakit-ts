@@ -1,12 +1,12 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the <see cref="formResult"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="formResult"/>.
+	 */
 	export class RespFormResultDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="FormResult"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="FormResult"/>.
+		 */
 		public formResult: RespIdDeleted;
 	}

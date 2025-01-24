@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerConfig"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerConfig"/>.
+	 */
 	export class RespProviderConfigDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="ProviderConfig"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="ProviderConfig"/>.
+		 */
 		public providerConfig: RespIdDeleted;
 	}

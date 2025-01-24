@@ -1,17 +1,17 @@
 ﻿
-	/// <summary>
-	/// For unhandled exceptions, a full stack trace may be given.
-	/// </summary>
-	/// <remarks>
-	/// Only available for some of the beta services.
-	/// </remarks>
+	/**
+	 * For unhandled exceptions, a full stack trace may be given.
+	 *  <remarks>
+	 * Only available for some of the beta services.
+	 *  </remarks>
+	 */
 	export class ErrorDetailStack extends ErrorDetail {
-		/// <summary>
-		/// Exception message.
-		/// </summary>
+		/**
+		 * Exception message.
+		 */
 		public message: string = "";
-		/// <summary>
-		/// The full stack trace if available.
-		/// </summary>
+		/**
+		 * The full stack trace if available.
+		 */
 		public stack: string = "";
 	}

@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="assetGeneral"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="assetGeneral"/>.
+	 */
 	export class RespAssetGeneralGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Asset"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Asset"/>.
+		 */
 		public assetGeneral: AssetGeneral;
 	}

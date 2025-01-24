@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Deletes multiple <see cref="DispatchJob"/>s.
-	/// </summary>
+	/**
+	 * Deletes multiple <see cref="DispatchJob"/>s.
+	 */
 	export class ReqDispatchJobBatchDelete extends Request {
-		/// <summary>
-		/// List of <see cref="DispatchJob.id"/>s to delete.
-		/// </summary>
+		/**
+		 * List of <see cref="DispatchJob.id"/>s to delete.
+		 */
 		public dispatchJobs: ParamId[] = [];
 	}

@@ -1,41 +1,41 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="assetDispatches"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="assetDispatches"/>.
+	 */
 	export abstract class RespAssetDispatchList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="AssetDispatch"/>es.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="AssetDispatch"/>es.
+		 */
 		public assetDispatches: AssetDispatch[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespAssetDispatchListByCompany extends RespAssetDispatchList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespAssetDispatchListByCompanyAndLabels extends RespAssetDispatchListByCompany {
-		/// <summary>
-		/// The labels given as input.
-		/// </summary>
-		/// <seealso cref="AssetGeneral.labels"/>
+		/**
+		 * The labels given as input.
+		 * {@link AssetGeneral.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespAssetDispatchListByCompanyAndRefPairs extends RespAssetDispatchListByCompany {
-		/// <summary>
-		/// The reference string given as input.
-		/// </summary>
-		/// <seealso cref="AssetGeneral.references"/>
+		/**
+		 * The reference string given as input.
+		 * {@link AssetGeneral.references}
+		 */
 		public references: Map<string, string>;
 	}

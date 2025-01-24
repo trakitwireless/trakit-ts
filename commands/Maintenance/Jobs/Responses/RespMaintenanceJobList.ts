@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="maintenanceJobs"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="maintenanceJobs"/>.
+	 */
 	export abstract class RespMaintenanceJobList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="MaintenanceJob"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="MaintenanceJob"/>s.
+		 */
 		public maintenanceJobs: MaintenanceJob[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespMaintenanceJobListByCompany extends RespMaintenanceJobList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="maintenanceJob"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="maintenanceJob"/>.
+	 */
 	export class RespMaintenanceJobGet extends Response {
-		/// <summary>
-		/// The requested <see cref="MaintenanceJob"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="MaintenanceJob"/>.
+		 */
 		public maintenanceJob: MaintenanceJob;
 	}

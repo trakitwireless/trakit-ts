@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// These are the errors/warnings taken from the output of some other system.
-	/// </summary>
+	/**
+	 * These are the errors/warnings taken from the output of some other system.
+	 */
 	export class ErrorDetailExternals extends ErrorDetail {
-		/// <summary>
-		/// List of errors.
-		/// </summary>
+		/**
+		 * List of errors.
+		 */
 		public errors: string[] = [];
-		/// <summary>
-		/// List of warnings.
-		/// </summary>
+		/**
+		 * List of warnings.
+		 */
 		public warnings: string[] = [];
-		/// <summary>
-		/// List of messages.
-		/// </summary>
+		/**
+		 * List of messages.
+		 */
 		public messages: string[] = [];
 	}

@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="Provider"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="Provider"/>.
+	 */
 	export class ReqProviderRestore extends ReqProvider { }

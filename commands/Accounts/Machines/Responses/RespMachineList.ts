@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="machines"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="machines"/>.
+	 */
 	export abstract class RespMachineList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Machine"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Machine"/>s.
+		 */
 		public machines: Machine[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespMachineListByCompany extends RespMachineList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

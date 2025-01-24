@@ -1,35 +1,35 @@
 ﻿
 
-	/// <summary>
-	/// Parameter values for creating a new or updating an existing <see cref="PasswordPolicy"/>.
-	/// </summary>
+	/**
+	 * Parameter values for creating a new or updating an existing <see cref="PasswordPolicy"/>.
+	 */
 	export class ParamPasswordPolicy extends ParamMerge {
-		/// <summary>
-		/// The minimum number of characters required.
-		/// </summary>
+		/**
+		 * The minimum number of characters required.
+		 */
 		public minimumLength: byte = NaN;
-		/// <summary>
-		/// Do passwords require alphabetical characters.
-		/// </summary>
+		/**
+		 * Do passwords require alphabetical characters.
+		 */
 		public includeLetters: boolean = false;
-		/// <summary>
-		/// Do passwords require numeric characters.
-		/// </summary>
+		/**
+		 * Do passwords require numeric characters.
+		 */
 		public includeNumbers: boolean = false;
-		/// <summary>
-		/// Do passwords require upper-case and lower-case letters.
-		/// </summary>
+		/**
+		 * Do passwords require upper-case and lower-case letters.
+		 */
 		public includeUpperLower: boolean = false;
-		/// <summary>
-		/// Do passwords require non-alphanumeric characters.
-		/// </summary>
+		/**
+		 * Do passwords require non-alphanumeric characters.
+		 */
 		public includeSpecial: boolean = false;
-		/// <summary>
-		/// Defines how passwords expire.
-		/// </summary>
+		/**
+		 * Defines how passwords expire.
+		 */
 		public expireMode?: PasswordExpiryMode;
-		/// <summary>
-		/// The threshold for expiry (in days).
-		/// </summary>
+		/**
+		 * The threshold for expiry (in days).
+		 */
 		public expireThreshold: byte = NaN;  
 	}

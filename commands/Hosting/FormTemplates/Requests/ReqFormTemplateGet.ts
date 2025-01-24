@@ -1,12 +1,12 @@
 ﻿
 
 
-	/// <summary>
-	/// Gets details of the specified <see cref="FormTemplate"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="FormTemplate"/>.
+	 */
 	export class ReqFormTemplateGet extends ReqFormTemplate implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="FormTemplate"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="FormTemplate"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

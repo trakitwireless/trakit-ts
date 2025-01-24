@@ -1,22 +1,22 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the requested <see cref="formResults"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="formResults"/>.
+	 */
 	export abstract class RespFormResultList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="FormResult"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="FormResult"/>s.
+		 */
 		public formResults: FormResult[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespFormResultListByCompany extends RespFormResultList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

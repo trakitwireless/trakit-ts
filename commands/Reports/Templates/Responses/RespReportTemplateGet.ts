@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="reportTemplate"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="reportTemplate"/>.
+	 */
 	export class RespReportTemplateGet extends Response {
-		/// <summary>
-		/// The requested <see cref="ReportTemplate"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="ReportTemplate"/>.
+		 */
 		public reportTemplate: ReportTemplate;
 	}

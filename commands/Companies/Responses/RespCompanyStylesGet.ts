@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="companyStyles"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="companyStyles"/>.
+	 */
 	export class RespCompanyStylesGet extends Response {
-		/// <summary>
-		/// The requested <see cref="CompanyStyles"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="CompanyStyles"/>.
+		 */
 		public companyStyles: CompanyStyles;
 	}

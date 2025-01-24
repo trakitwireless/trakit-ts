@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="document"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="document"/>.
+	 */
 	export class RespDocumentGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Document"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Document"/>.
+		 */
 		public document: Document;
 	}

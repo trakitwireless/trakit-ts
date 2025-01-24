@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Suspends an existing <see cref="Asset"/>.
-	/// </summary>
+	/**
+	 * Suspends an existing <see cref="Asset"/>.
+	 */
 	export class ReqAssetSuspend extends ReqAsset { }

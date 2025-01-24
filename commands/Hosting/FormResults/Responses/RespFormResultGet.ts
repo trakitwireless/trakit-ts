@@ -1,12 +1,12 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the <see cref="formResult"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="formResult"/>.
+	 */
 	export class RespFormResultGet extends Response {
-		/// <summary>
-		/// The requested <see cref="FormResult"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="FormResult"/>.
+		 */
 		public formResult: FormResult;
 	}

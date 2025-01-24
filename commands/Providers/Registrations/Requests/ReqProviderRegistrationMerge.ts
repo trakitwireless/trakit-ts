@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="ProviderRegistration"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="ProviderRegistration"/>.
+	 */
 	export class ReqProviderRegistrationMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="ProviderRegistration"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="ProviderRegistration"/>.
+		 */
 		public providerRegistration: ParamProviderRegistrationMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.providerRegistration?.code ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.providerRegistration?.code ?? "";
 	}

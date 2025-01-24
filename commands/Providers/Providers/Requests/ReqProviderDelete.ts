@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Deletes an existing <see cref="Provider"/>.
-	/// </summary>
+	/**
+	 * Deletes an existing <see cref="Provider"/>.
+	 */
 	export class ReqProviderDelete extends ReqProvider { }

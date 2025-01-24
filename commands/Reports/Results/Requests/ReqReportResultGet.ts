@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="ReportResult"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="ReportResult"/>.
+	 */
 	export class ReqReportResultGet extends ReqReportResult implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="ReportResult"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="ReportResult"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

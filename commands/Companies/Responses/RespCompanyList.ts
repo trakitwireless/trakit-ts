@@ -1,31 +1,31 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="companies"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="companies"/>.
+	 */
 	export abstract class RespCompanyList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Company"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Company"/>s.
+		 */
 		public companies: Company[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespCompanyListByCompany extends RespCompanyList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespCompanyListByCompanyAndRefPairs extends RespCompanyListByCompany implements IReqListByReferences {
-		/// <summary>
-		/// The parsed references given as input.
-		/// </summary>
-		/// <seealso cref="CompanyGeneral.references"/>
+		/**
+		 * The parsed references given as input.
+		 * {@link CompanyGeneral.references}
+		 */
 		public references: Map<string, string>;
 	}

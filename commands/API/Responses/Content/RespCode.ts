@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the id of the <see cref="ProviderRegistration"/> requested/created.
-	/// </summary>
+	/**
+	 * A container for the id of the <see cref="ProviderRegistration"/> requested/created.
+	 */
 	export class RespCode {
-		/// <summary>
-		/// Identifier given as input for the command.
-		/// </summary>
+		/**
+		 * Identifier given as input for the command.
+		 */
 		public code: string = "";
 	}

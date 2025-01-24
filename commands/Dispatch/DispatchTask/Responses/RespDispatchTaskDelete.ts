@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="dispatchTask"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="dispatchTask"/>.
+	 */
 	export class RespDispatchTaskDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="DispatchTask"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="DispatchTask"/>.
+		 */
 		public dispatchTask: RespIdDeleted;
 	}

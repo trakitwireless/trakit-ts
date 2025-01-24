@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="DispatchJob"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="DispatchJob"/>.
+	 */
 	export class ReqDispatchJobGet extends ReqDispatchJob implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="DispatchJob"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="DispatchJob"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

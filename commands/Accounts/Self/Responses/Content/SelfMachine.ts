@@ -1,12 +1,12 @@
 ﻿
 
-	/// <summary>
-	/// A container for the details of the <see cref="Machine"/> requested.
-	/// </summary>
+	/**
+	 * A container for the details of the <see cref="Machine"/> requested.
+	 */
 	export class SelfMachine extends Machine {
-		/// <summary>
-		/// A list of groups to which this machine account belongs.
-		/// </summary>
-		/// <seealso cref="UserGroup.id" />
+		/**
+		 * A list of groups to which this machine account belongs.
+		 * {@link UserGroup.id}
+		 */
 		new public groups: UserGroup[] = [];
 	}

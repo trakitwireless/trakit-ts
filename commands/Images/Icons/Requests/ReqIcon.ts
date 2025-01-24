@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="icon"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="icon"/> object.
+	 */
 	export abstract class ReqIcon extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="Icon"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="Icon"/>.
+		 */
 		public icon: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.icon?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.icon?.id.toString() ?? "";
 	}

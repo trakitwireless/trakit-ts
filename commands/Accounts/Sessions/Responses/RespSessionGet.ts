@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="User"/> of the current session.
-	/// </summary>
+	/**
+	 * A container for the <see cref="User"/> of the current session.
+	 */
 	export class RespSessionGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Session"/> details.
-		/// </summary>
+		/**
+		 * The requested <see cref="Session"/> details.
+		 */
 		public session: Session;
 	}

@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// For delete/restore commands, this contains the id, owning <see cref="Company.parent"/>, and deleted state.
-	/// </summary>
+	/**
+	 * For delete/restore commands, this contains the id, owning <see cref="Company.parent"/>, and deleted state.
+	 */
 	export class RespParentDeleted extends RespId {
-		/// <summary>
-		/// Identifier of the <see cref="Company">parent</see> to which the <see cref="Company"/> is a child.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company">parent</see> to which the <see cref="Company"/> is a child.
+		 */
 		public parent: ulong = NaN;
-		/// <summary>
-		/// Flag showing if the object is deleted.
-		/// </summary>
+		/**
+		 * Flag showing if the object is deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Object version keys used to validate synchronization for all object properties.
-		/// </summary>
+		/**
+		 * Object version keys used to validate synchronization for all object properties.
+		 */
 		public v: uint[] = [];
 	}

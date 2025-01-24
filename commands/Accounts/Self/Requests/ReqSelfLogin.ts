@@ -1,20 +1,20 @@
 ﻿
 
-	/// <summary>
-	/// A container class used to house the login identifying a <see cref="User"/>.
-	/// Used specifically to get session details.
-	/// </summary>
+	/**
+	 * A container class used to house the login identifying a <see cref="User"/>.
+	 * Used specifically to get session details.
+	 */
 	export class ReqSelfLogin extends Request {
-		/// <summary>
-		/// The <see cref="User"/>'s login.
-		/// </summary>
+		/**
+		 * The <see cref="User"/>'s login.
+		 */
 		public username: string = "";
-		/// <summary>
-		/// The <see cref="User"/>'s password.
-		/// </summary>
+		/**
+		 * The <see cref="User"/>'s password.
+		 */
 		public password: string = "";
-		/// <summary>
-		/// A string to identify the User-Agent of the login request.
-		/// </summary>
+		/**
+		 * A string to identify the User-Agent of the login request.
+		 */
 		public userAgent: string = "";
 	}

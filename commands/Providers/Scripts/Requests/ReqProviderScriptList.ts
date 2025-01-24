@@ -1,20 +1,20 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="providerScript"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="providerScript"/>.
+	 */
 	export abstract class ReqProviderScriptList extends Request implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return  deleted <see cref="ProviderScript"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return  deleted <see cref="ProviderScript"/>s.
+		 */
 		public includeDeleted: boolean = false;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqProviderScriptListByCompany extends ReqProviderScriptList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}

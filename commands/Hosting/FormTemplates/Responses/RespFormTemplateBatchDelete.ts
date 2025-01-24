@@ -1,12 +1,12 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the <see cref="formTemplate"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="formTemplate"/>.
+	 */
 	export class RespFormTemplateBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="FormTemplate"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="FormTemplate"/>.
+		 */
 		public formTemplates: RespIdDeleted[] = [];
 	}

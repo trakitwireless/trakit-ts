@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// For delete/restore commands, this contains the <see cref="Asset.id"/>, owning <see cref="Company.id"/>, and deleted state.
-	/// </summary>
+	/**
+	 * For delete/restore commands, this contains the <see cref="Asset.id"/>, owning <see cref="Company.id"/>, and deleted state.
+	 */
 	export class RespAssetDelete extends Response {
-		/// <summary>
-		/// 
-		/// </summary>
+		/**
+		 *  
+		 */
 		public asset: RespIdDeleted;
 	}

@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Deletes an existing <see cref="Picture"/>.
-	/// </summary>
+	/**
+	 * Deletes an existing <see cref="Picture"/>.
+	 */
 	export class ReqPictureDelete extends ReqPicture { }

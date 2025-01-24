@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="contacts"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="contacts"/>.
+	 */
 	export abstract class RespContactList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Contact"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Contact"/>s.
+		 */
 		public contacts: Contact[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespContactListByCompany extends RespContactList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

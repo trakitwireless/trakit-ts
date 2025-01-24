@@ -1,16 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// 
-	/// </summary>
+	/**
+	 *  
+	 */
 	public static class Polyline {
-		/// <summary>
-		/// 
-		/// </summary>
+		/**
+		 *  
+		 */
 		public const byte DEFAULT_PRECISION = 6;
 
-		/// <summary>
-		/// A C# implementation to encode a polyline 			Action<int> encode = (diff) => {
+		/**
+		 * A C# implementation to encode a polyline 			Action<int> encode = (diff) => {
 				int shifted = diff << 1;
 				if (diff < 0) shifted = ~shifted;
 				while (shifted >= 0x20) {
@@ -32,8 +32,8 @@
 			}
 			return encodedPoints.toString();
 		}
-		/// <summary>
-		/// A C# implementation to decode a polyline 
+		/**
+		 * A C# implementation to decode a polyline 
 			var polylineChars = encodedPoints.ToCharArray();
 			int index = 0,
 				currentLat = 0,

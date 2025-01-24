@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="document"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="document"/> object.
+	 */
 	export abstract class ReqDocument extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="Document"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="Document"/>.
+		 */
 		public document: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.document?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.document?.id.toString() ?? "";
 	}

@@ -1,21 +1,21 @@
 ﻿
 
 
-	/// <summary>
-	/// Gets details of the specified <see cref="formResult"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="formResult"/>.
+	 */
 	export abstract class ReqFormResultList extends Request implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return  deleted <see cref="FormResult"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return  deleted <see cref="FormResult"/>s.
+		 */
 		public includeDeleted: boolean = false;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqFormResultListByCompany extends ReqFormResultList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}

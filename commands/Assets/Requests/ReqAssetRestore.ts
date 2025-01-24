@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="Asset"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="Asset"/>.
+	 */
 	export class ReqAssetRestore extends ReqAsset { }

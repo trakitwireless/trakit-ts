@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="DispatchTask"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="DispatchTask"/>.
+	 */
 	export class ReqDispatchTaskRestore extends ReqDispatchTask { }

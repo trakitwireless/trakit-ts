@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="providerRegistrations"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="providerRegistrations"/>.
+	 */
 	export abstract class RespProviderRegistrationList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ProviderRegistration"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ProviderRegistration"/>s.
+		 */
 		public providerRegistrations: ProviderRegistration[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespProviderRegistrationListByCompany extends RespProviderRegistrationList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

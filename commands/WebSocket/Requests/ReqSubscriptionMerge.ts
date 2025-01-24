@@ -1,9 +1,9 @@
 ﻿
 
-	/// <summary>
-	/// The types of subscriptions available 		/// <summary>
-		/// The list of subscription types you want to receive.
-		/// </summary>
-		/// <seealso cref="SubscriptionType"/>
+	/**
+	 * The types of subscriptions available 		/**
+		 * The list of subscription types you want to receive.
+		 * {@link SubscriptionType}
+		 */
 		public subscriptionTypes: SubscriptionType[] = [];
 	}

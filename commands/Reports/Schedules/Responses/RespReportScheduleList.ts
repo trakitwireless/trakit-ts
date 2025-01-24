@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="reportSchedules"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="reportSchedules"/>.
+	 */
 	export abstract class RespReportScheduleList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ReportSchedule"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ReportSchedule"/>s.
+		 */
 		public reportSchedules: ReportSchedule[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespReportScheduleListByCompany extends RespReportScheduleList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

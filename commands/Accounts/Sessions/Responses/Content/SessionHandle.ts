@@ -1,25 +1,25 @@
 
 
-	/// <summary>
-	/// A container class used to house the "handle" identifying a <see cref="Session"/>.
-	/// </summary>
+	/**
+	 * A container class used to house the "handle" identifying a <see cref="Session"/>.
+	 */
 	export class SessionHandle {
-		/// <summary>
-		/// A "handle" identifying a resource.
-		/// </summary>
+		/**
+		 * A "handle" identifying a resource.
+		 */
 		public handle: string = "";
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this object belongs
-		/// </summary>
-		/// <seealso cref="Company.id"/>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this object belongs
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// The <see cref="User"/> to which the <see cref="Session"/> belongs.
-		/// </summary>
-		/// <seealso cref="User.login" />
+		/**
+		 * The <see cref="User"/> to which the <see cref="Session"/> belongs.
+		 * {@link User.login}
+		 */
 		public login: string = "";
-		/// <summary>
-		/// A timestamp for when the <see cref="Session"/> will expire.
-		/// </summary>
+		/**
+		 * A timestamp for when the <see cref="Session"/> will expire.
+		 */
 		public expiry: Date = DATE();
 	}

@@ -1,28 +1,28 @@
 ﻿
 
-	/// <summary>
-	/// Parameters used to create or update an <see cref="UserGroup"/>.
-	/// </summary>
+	/**
+	 * Parameters used to create or update an <see cref="UserGroup"/>.
+	 */
 	export class ParamUserGroupMerge extends ParamMergeSubscribable {
-		/// <summary>
-		/// The unique identifier of the <see cref="UserGroup"/> you want to update.
-		/// </summary>
+		/**
+		 * The unique identifier of the <see cref="UserGroup"/> you want to update.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The company to which this <see cref="UserGroup"/> belongs.
-		/// After creation, this value is read-only.
-		/// </summary>
+		/**
+		 * The company to which this <see cref="UserGroup"/> belongs.
+		 * After creation, this value is read-only.
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// Name for the <see cref="UserGroup"/>.
-		/// </summary>
+		/**
+		 * Name for the <see cref="UserGroup"/>.
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes for the <see cref="UserGroup"/>.
-		/// </summary>
+		/**
+		 * Notes for the <see cref="UserGroup"/>.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// List of permissions assigned to members of this <see cref="UserGroup"/>.
-		/// </summary>
+		/**
+		 * List of permissions assigned to members of this <see cref="UserGroup"/>.
+		 */
 		public permissions: ParamPermission[] = [];
 	}

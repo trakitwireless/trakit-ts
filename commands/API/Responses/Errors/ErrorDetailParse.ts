@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// These are the details of an exception while trying to parse the JSON input.
-	/// </summary>
+	/**
+	 * These are the details of an exception while trying to parse the JSON input.
+	 */
 	export class ErrorDetailParse extends ErrorDetail {
-		/// <summary>
-		/// The line number in the input string.
-		/// </summary>
+		/**
+		 * The line number in the input string.
+		 */
 		public line: int = NaN;
-		/// <summary>
-		/// The character on which the failure occurred.
-		/// </summary>
+		/**
+		 * The character on which the failure occurred.
+		 */
 		public column: int = NaN;
-		/// <summary>
-		/// The last sucessfully parsed object.
-		/// </summary>
+		/**
+		 * The last sucessfully parsed object.
+		 */
 		public after: string = "";
 	}

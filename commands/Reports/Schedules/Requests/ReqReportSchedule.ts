@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="reportSchedule"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="reportSchedule"/> object.
+	 */
 	export abstract class ReqReportSchedule extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="ReportSchedule"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="ReportSchedule"/>.
+		 */
 		public reportSchedule: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.reportSchedule?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.reportSchedule?.id.toString() ?? "";
 	}

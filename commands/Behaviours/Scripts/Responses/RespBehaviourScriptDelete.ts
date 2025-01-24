@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="behaviourScript"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="behaviourScript"/>.
+	 */
 	export class RespBehaviourScriptDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="BehaviourScript"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="BehaviourScript"/>.
+		 */
 		public behaviourScript: RespIdDeleted;
 	}

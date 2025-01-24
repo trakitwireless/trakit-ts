@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="assetMessage"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="assetMessage"/>.
+	 */
 	export class RespAssetMessageBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="AssetMessage"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="AssetMessage"/>.
+		 */
 		public assetMessages: RespIdDeleted[] = [];
 	}

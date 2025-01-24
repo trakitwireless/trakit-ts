@@ -1,18 +1,17 @@
 ﻿
 
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="FormResult"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="FormResult"/>.
+	 */
 	export class ReqFormResultMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="FormResult"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="FormResult"/>.
+		 */
 		public formResult: ParamFormResultMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.formResult?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.formResult?.id?.toString() ?? "";
 	}

@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="MaintenanceJob"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="MaintenanceJob"/>.
+	 */
 	export class ReqMaintenanceJobMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="MaintenanceJob"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="MaintenanceJob"/>.
+		 */
 		public maintenanceJob: ParamMaintenanceJobMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.maintenanceJob?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.maintenanceJob?.id?.toString() ?? "";
 	}

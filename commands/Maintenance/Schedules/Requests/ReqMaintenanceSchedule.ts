@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="maintenanceSchedule"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="maintenanceSchedule"/> object.
+	 */
 	export abstract class ReqMaintenanceSchedule extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="MaintenanceSchedule"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="MaintenanceSchedule"/>.
+		 */
 		public maintenanceSchedule: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.maintenanceSchedule?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.maintenanceSchedule?.id.toString() ?? "";
 	}

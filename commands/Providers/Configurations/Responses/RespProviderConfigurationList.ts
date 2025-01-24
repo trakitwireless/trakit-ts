@@ -1,23 +1,23 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="providerConfigurations"/>.
-	/// </summary>
-	[Obsolete("Use RespProviderConfigList instead")]
+	/**
+	 * A container for the requested <see cref="providerConfigurations"/>.
+	 * @deprecated Use RespProviderConfigList instead
+	 */
 	export abstract class RespProviderConfigurationList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ProviderConfiguration"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ProviderConfiguration"/>s.
+		 */
 		public providerConfigurations: ProviderConfiguration[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
-	[Obsolete("Use RespProviderConfigListByCompany instead")]
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 * @deprecated Use RespProviderConfigListByCompany instead
+	 */
 	export class RespProviderConfigurationListByCompany extends RespProviderConfigurationList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="DispatchTask"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="DispatchTask"/>.
+	 */
 	export class ReqDispatchTaskMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="DispatchTask"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="DispatchTask"/>.
+		 */
 		public dispatchTask: ParamDispatchTaskMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.dispatchTask?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.dispatchTask?.id?.toString() ?? "";
 	}

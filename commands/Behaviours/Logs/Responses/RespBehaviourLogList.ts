@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="behaviourLogs"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="behaviourLogs"/>.
+	 */
 	export abstract class RespBehaviourLogList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="BehaviourLog"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="BehaviourLog"/>s.
+		 */
 		public behaviourLogs: BehaviourLog[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespBehaviourLogListByCompany extends RespBehaviourLogList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

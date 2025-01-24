@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="AssetMessage"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="AssetMessage"/>.
+	 */
 	export class ReqAssetMessageGet extends ReqAssetMessage implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="AssetMessage"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="AssetMessage"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

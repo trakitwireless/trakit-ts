@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="dispatchTask"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="dispatchTask"/>.
+	 */
 	export class RespDispatchTaskGet extends Response {
-		/// <summary>
-		/// The requested <see cref="DispatchTask"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="DispatchTask"/>.
+		 */
 		public dispatchTask: DispatchTask;
 	}

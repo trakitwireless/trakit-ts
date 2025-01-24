@@ -1,48 +1,48 @@
 ﻿
 
-	/// <summary>
-	/// Parameters used to create or update an <see cref="Company"/>.
-	/// </summary>
+	/**
+	 * Parameters used to create or update an <see cref="Company"/>.
+	 */
 	export class ParamCompanyMerge extends ParamMergeSubscribable {
-		/// <summary>
-		/// Unique identifier of the Company.
-		/// </summary>
+		/**
+		 * Unique identifier of the Company.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The unique identifier of this company's parent organization.	
-		/// </summary>
+		/**
+		 * The unique identifier of this company's parent organization.	
+		 */
 		public parent: ulong = NaN;
-		/// <summary>
-		/// The organizational name.
-		/// </summary>
+		/**
+		 * The organizational name.
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes.
-		/// </summary>
+		/**
+		 * Notes.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Name/value collections of custom fields used to refer to external systems.
-		/// If the value is null, the references are removed from the <see cref="Company"/>.
-		/// </summary>
+		/**
+		 * Name/value collections of custom fields used to refer to external systems.
+		 * If the value is null, the references are removed from the <see cref="Company"/>.
+		 */
 		public references: Map<string, string>;
-		/// <summary>
-		/// The list of Contacts from this and other companies broken down by contact role.
-		/// </summary>
+		/**
+		 * The list of Contacts from this and other companies broken down by contact role.
+		 */
 		public directory: Map<string, ulong[]>;
-		/// <summary>
-		/// The styles for labels added to Assets, Places, and other things.
-		/// </summary>
+		/**
+		 * The styles for labels added to Assets, Places, and other things.
+		 */
 		public labels: Map<string, LabelStyle>;
-		/// <summary>
-		/// The styles for status tags added to Assets.
-		/// </summary>
+		/**
+		 * The styles for status tags added to Assets.
+		 */
 		public tags: Map<string, LabelStyle>;
-		/// <summary>
-		/// The session lifetime policy.
-		/// </summary>
+		/**
+		 * The session lifetime policy.
+		 */
 		public sessionPolicy: ParamSessionPolicy;
-		/// <summary>
-		/// The password complexity and expiry policy.
-		/// </summary>
+		/**
+		 * The password complexity and expiry policy.
+		 */
 		public passwordPolicy: ParamPasswordPolicy;
 	}

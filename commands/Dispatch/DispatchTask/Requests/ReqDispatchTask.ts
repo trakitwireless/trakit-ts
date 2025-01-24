@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="dispatchTask"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="dispatchTask"/> object.
+	 */
 	export abstract class ReqDispatchTask extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="DispatchTask"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="DispatchTask"/>.
+		 */
 		public dispatchTask: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.dispatchTask?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.dispatchTask?.id.toString() ?? "";
 	}

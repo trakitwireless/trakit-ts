@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="contact"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="contact"/>.
+	 */
 	export class RespContactGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Contact"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Contact"/>.
+		 */
 		public contact: Contact;
 	}

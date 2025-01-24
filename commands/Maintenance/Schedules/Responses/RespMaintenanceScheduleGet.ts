@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="maintenanceSchedule"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="maintenanceSchedule"/>.
+	 */
 	export class RespMaintenanceScheduleGet extends Response {
-		/// <summary>
-		/// The requested <see cref="MaintenanceSchedule"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="MaintenanceSchedule"/>.
+		 */
 		public maintenanceSchedule: MaintenanceSchedule;
 	}

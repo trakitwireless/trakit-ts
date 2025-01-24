@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="assetAdvanced"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="assetAdvanced"/>.
+	 */
 	export class RespAssetAdvancedGet extends Response {
-		/// <summary>
-		/// The requested <see cref="AssetAdvanced"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="AssetAdvanced"/>.
+		 */
 		public assetAdvanced: AssetAdvanced;
 	}

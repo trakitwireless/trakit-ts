@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="UserGroup"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="UserGroup"/>.
+	 */
 	export class ReqUserGroupRestore extends ReqUserGroup { }

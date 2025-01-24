@@ -1,20 +1,20 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="behaviourLog"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="behaviourLog"/>.
+	 */
 	export abstract class ReqBehaviourLogList extends Request implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return  deleted <see cref="BehaviourLog"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return  deleted <see cref="BehaviourLog"/>s.
+		 */
 		public includeDeleted: boolean = false;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqBehaviourLogListByCompany extends ReqBehaviourLogList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}

@@ -1,12 +1,12 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the <see cref="place"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="place"/>.
+	 */
 	export class RespPlaceBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="Place"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="Place"/>.
+		 */
 		public places: RespIdDeleted[] = [];
 	}

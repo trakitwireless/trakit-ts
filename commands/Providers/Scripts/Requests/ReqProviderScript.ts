@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerScript"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerScript"/> object.
+	 */
 	export abstract class ReqProviderScript extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="ProviderScript"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="ProviderScript"/>.
+		 */
 		public providerScript: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.providerScript?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.providerScript?.id.toString() ?? "";
 	}

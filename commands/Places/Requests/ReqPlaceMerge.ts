@@ -1,18 +1,17 @@
 ﻿
 
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="Place"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="Place"/>.
+	 */
 	export class ReqPlaceMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="Place"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="Place"/>.
+		 */
 		public place: ParamPlaceMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.place?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.place?.id?.toString() ?? "";
 	}

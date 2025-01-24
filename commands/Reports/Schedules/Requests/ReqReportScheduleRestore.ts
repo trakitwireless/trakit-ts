@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="ReportSchedule"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="ReportSchedule"/>.
+	 */
 	export class ReqReportScheduleRestore extends ReqReportSchedule { }

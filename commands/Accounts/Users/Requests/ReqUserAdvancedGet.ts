@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="UserAdvanced"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="UserAdvanced"/>.
+	 */
 	export class ReqUserAdvancedGet extends ReqUser implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="UserAdvanced"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="UserAdvanced"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

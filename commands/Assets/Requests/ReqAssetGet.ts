@@ -1,19 +1,19 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="Asset"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="Asset"/>.
+	 */
 	export class ReqAssetGet extends ReqAsset implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="Asset"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="Asset"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
-		/// <summary>
-		/// When true, the command will also return <see cref="AssetMessage"/>s for the asset.
-		/// </summary>
+		/**
+		 * When true, the command will also return <see cref="AssetMessage"/>s for the asset.
+		 */
 		public includeMessages: boolean = false;
-		/// <summary>
-		/// When true, the command will also return <see cref="DispatchTask"/>s for the asset.
-		/// </summary>
+		/**
+		 * When true, the command will also return <see cref="DispatchTask"/>s for the asset.
+		 */
 		public includeTasks: boolean = false;
 	}

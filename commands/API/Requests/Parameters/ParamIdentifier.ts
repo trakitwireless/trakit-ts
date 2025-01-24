@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container class used to house the string identifying a <see cref="Provider"/>.
-	/// </summary>
+	/**
+	 * A container class used to house the string identifying a <see cref="Provider"/>.
+	 */
 	export class ParamIdentifier {
-		/// <summary>
-		/// The <see cref="Provider"/>'s identifier.
-		/// </summary>
+		/**
+		 * The <see cref="Provider"/>'s identifier.
+		 */
 		public id: string = "";
 	}

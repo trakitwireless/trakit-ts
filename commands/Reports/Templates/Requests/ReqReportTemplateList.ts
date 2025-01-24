@@ -1,20 +1,20 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="reportTemplate"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="reportTemplate"/>.
+	 */
 	export abstract class ReqReportTemplateList extends Request implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return  deleted <see cref="ReportTemplate"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return  deleted <see cref="ReportTemplate"/>s.
+		 */
 		public includeDeleted: boolean = false;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqReportTemplateListByCompany extends ReqReportTemplateList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}

@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="UserGroup"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="UserGroup"/>.
+	 */
 	export class ReqUserGroupMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="UserGroup"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="UserGroup"/>.
+		 */
 		public userGroup: ParamUserGroupMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.userGroup?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.userGroup?.id?.toString() ?? "";
 	}

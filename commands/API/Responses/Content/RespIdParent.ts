@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container for the id and the requested/created <see cref="Company.parent"/>.
-	/// </summary>
+	/**
+	 * A container for the id and the requested/created <see cref="Company.parent"/>.
+	 */
 	export class RespIdParent extends RespId {
-		/// <summary>
-		/// Identifier of the parent to which this company belongs
-		/// </summary>
+		/**
+		 * Identifier of the parent to which this company belongs
+		 */
 		public parent: ulong = NaN;
 	}

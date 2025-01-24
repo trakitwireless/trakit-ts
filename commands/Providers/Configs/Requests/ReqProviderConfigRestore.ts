@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Restores a deleted <see cref="ProviderConfig"/>.
-	/// </summary>
+	/**
+	 * Restores a deleted <see cref="ProviderConfig"/>.
+	 */
 	export class ReqProviderConfigRestore extends ReqProviderConfig { }

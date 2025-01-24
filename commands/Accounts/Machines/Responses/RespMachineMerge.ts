@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container for the <see cref="machine"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="machine"/>.
+	 */
 	export class RespMachineMerge extends Response {
-		/// <summary>
-		/// An object which contains the <c>id</c> and <c>company</c> keys when there is no error.
-		/// </summary>
+		/**
+		 * An object which contains the <c>id</c> and <c>company</c> keys when there is no error.
+		 */
 		public machine: RespIdCompany;
 	}

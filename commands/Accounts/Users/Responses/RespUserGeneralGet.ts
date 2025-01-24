@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="userGeneral"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="userGeneral"/>.
+	 */
 	export class RespUserGeneralGet extends Response {
-		/// <summary>
-		/// The requested <see cref="User"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="User"/>.
+		 */
 		public userGeneral: UserGeneral;
 	}

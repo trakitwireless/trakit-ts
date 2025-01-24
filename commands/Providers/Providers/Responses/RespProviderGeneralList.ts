@@ -1,30 +1,30 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="providerGenerals"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="providerGenerals"/>.
+	 */
 	export abstract class RespProviderGeneralList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ProviderGeneral"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ProviderGeneral"/>s.
+		 */
 		public providerGenerals: ProviderGeneral[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespProviderGeneralListByCompany extends RespProviderGeneralList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespProviderGeneralListByConfig extends RespProviderGeneralList {
-		/// <summary>
-		/// Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
+		 */
 		public config: RespId;
 	}

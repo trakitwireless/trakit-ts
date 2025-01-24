@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="icon"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="icon"/>.
+	 */
 	export class RespIconGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Icon"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Icon"/>.
+		 */
 		public icon: Icon;
 	}

@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="maintenanceJob"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="maintenanceJob"/>.
+	 */
 	export class RespMaintenanceJobBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="MaintenanceJob"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="MaintenanceJob"/>.
+		 */
 		public maintenanceJobs: RespIdDeleted[] = [];
 	}

@@ -1,14 +1,14 @@
 ﻿
-	/// <summary>
-	/// For suspend/revive commands, this contains the id, version keys, owning <see cref="Company.id"/>, and suspended state.
-	/// </summary>
+	/**
+	 * For suspend/revive commands, this contains the id, version keys, owning <see cref="Company.id"/>, and suspended state.
+	 */
 	export class RespIdSuspended extends RespIdCompany {
-		/// <summary>
-		/// Flag showing if the object is suspended.
-		/// </summary>
+		/**
+		 * Flag showing if the object is suspended.
+		 */
 		public suspended: boolean = false;
-		/// <summary>
-		/// Object version keys used to validate synchronization for all object properties.
-		/// </summary>
+		/**
+		 * Object version keys used to validate synchronization for all object properties.
+		 */
 		public v: uint[] = [];
 	}

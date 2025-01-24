@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="company"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="company"/>.
+	 */
 	export class RespCompanyDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="Company"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="Company"/>.
+		 */
 		public company: RespIdDeleted;
 	}

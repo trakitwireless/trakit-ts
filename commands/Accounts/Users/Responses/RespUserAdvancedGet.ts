@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="userAdvanced"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="userAdvanced"/>.
+	 */
 	export class RespUserAdvancedGet extends Response {
-		/// <summary>
-		/// The requested <see cref="UserAdvanced"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="UserAdvanced"/>.
+		 */
 		public userAdvanced: UserAdvanced;
 	}

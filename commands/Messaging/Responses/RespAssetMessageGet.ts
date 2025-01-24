@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="assetMessage"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="assetMessage"/>.
+	 */
 	export class RespAssetMessageGet extends Response {
-		/// <summary>
-		/// The requested <see cref="AssetMessage"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="AssetMessage"/>.
+		 */
 		public assetMessage: AssetMessage;
 	}

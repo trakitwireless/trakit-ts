@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerScript"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerScript"/>.
+	 */
 	export class RespProviderScriptGet extends Response {
-		/// <summary>
-		/// The requested <see cref="ProviderScript"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="ProviderScript"/>.
+		 */
 		public providerScript: ProviderScript;
 	}

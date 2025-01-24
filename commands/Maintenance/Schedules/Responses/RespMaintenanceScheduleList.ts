@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="maintenanceSchedules"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="maintenanceSchedules"/>.
+	 */
 	export abstract class RespMaintenanceScheduleList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="MaintenanceSchedule"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="MaintenanceSchedule"/>s.
+		 */
 		public maintenanceSchedules: MaintenanceSchedule[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespMaintenanceScheduleListByCompany extends RespMaintenanceScheduleList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

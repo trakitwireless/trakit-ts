@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container class used to house the key identifying a <see cref="Machine"/>.
-	/// </summary>
+	/**
+	 * A container class used to house the key identifying a <see cref="Machine"/>.
+	 */
 	export class ParamKey {
-		/// <summary>
-		/// The <see cref="Machine"/>'s login.
-		/// </summary>
+		/**
+		 * The <see cref="Machine"/>'s login.
+		 */
 		public key: string = "";
 	}

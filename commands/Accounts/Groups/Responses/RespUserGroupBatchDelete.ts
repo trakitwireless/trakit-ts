@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="userGroup"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="userGroup"/>.
+	 */
 	export class RespUserGroupBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="UserGroup"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="UserGroup"/>.
+		 */
 		public userGroups: RespIdDeleted[] = [];
 	}

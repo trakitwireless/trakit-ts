@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="CompanyPolicies"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="CompanyPolicies"/>.
+	 */
 	export class ReqCompanyPoliciesGet extends ReqCompany implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="CompanyPolicies"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="CompanyPolicies"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

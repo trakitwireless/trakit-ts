@@ -1,28 +1,28 @@
 ﻿
 
-	/// <summary>
-	/// Parameter values for creating a new or updating an existing <see cref="SessionPolicy"/>.
-	/// </summary>
+	/**
+	 * Parameter values for creating a new or updating an existing <see cref="SessionPolicy"/>.
+	 */
 	export class ParamSessionPolicy extends ParamMerge {
-		/// <summary>
-		/// The list of applications users are allowed to use to create sessions.
-		/// </summary>
+		/**
+		 * The list of applications users are allowed to use to create sessions.
+		 */
 		public applications: string[] = [];
-		/// <summary>
-		/// Restrict session creation to only the provided IPv4 ranges (		/// <summary>
-		/// Defines the behaviour of the system when a user creates multiple sessions.
-		/// </summary>
+		/**
+		 * Restrict session creation to only the provided IPv4 ranges (		/**
+		 * Defines the behaviour of the system when a user creates multiple sessions.
+		 */
 		public multiUser?: SessionMultiUser;
-		/// <summary>
-		/// Defines whether a session should be automatically killed when the connection breaks.
-		/// </summary>
+		/**
+		 * Defines whether a session should be automatically killed when the connection breaks.
+		 */
 		public idleAllowed: boolean = false;
-		/// <summary>
-		/// The lifetime duration of a session in minutes.
-		/// </summary>
+		/**
+		 * The lifetime duration of a session in minutes.
+		 */
 		public expireTimeout: ushort = NaN;
-		/// <summary>
-		/// The maximum number of sessions allowed per user.
-		/// </summary>
+		/**
+		 * The maximum number of sessions allowed per user.
+		 */
 		public maxSessions: byte = NaN;
 	}

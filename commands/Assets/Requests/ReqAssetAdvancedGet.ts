@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="AssetAdvanced"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="AssetAdvanced"/>.
+	 */
 	export class ReqAssetAdvancedGet extends ReqAsset implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="AssetAdvanced"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="AssetAdvanced"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

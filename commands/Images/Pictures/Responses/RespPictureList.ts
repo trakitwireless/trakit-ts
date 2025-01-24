@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="pictures"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="pictures"/>.
+	 */
 	export abstract class RespPictureList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Picture"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Picture"/>s.
+		 */
 		public pictures: Picture[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespPictureListByCompany extends RespPictureList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

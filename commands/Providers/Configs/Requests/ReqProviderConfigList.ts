@@ -1,20 +1,20 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="providerConfig"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="providerConfig"/>.
+	 */
 	export abstract class ReqProviderConfigList extends Request implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return  deleted <see cref="ProviderConfig"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return  deleted <see cref="ProviderConfig"/>s.
+		 */
 		public includeDeleted: boolean = false;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqProviderConfigListByCompany extends ReqProviderConfigList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}

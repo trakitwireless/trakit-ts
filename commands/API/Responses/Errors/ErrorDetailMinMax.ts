@@ -1,20 +1,20 @@
 ﻿
-	/// <summary>
-	/// These are the details of when a value needed to be within a certain range, and was not.
-	/// </summary>
+	/**
+	 * These are the details of when a value needed to be within a certain range, and was not.
+	 */
 	export class ErrorDetailMinMax<T> : ErrorDetail where T : struct {
-		/// <summary>
-		/// Minimum possible value.
-		/// </summary>
+		/**
+		 * Minimum possible value.
+		 */
 		public min?: T;
-		/// <summary>
-		/// Maximum possible value.
-		/// </summary>
+		/**
+		 * Maximum possible value.
+		 */
 		public max?: T;
 	}
 
-	/// <summary>
-	/// These are the details of when a value needed to be within a certain range, and was not.
-	/// </summary>
+	/**
+	 * These are the details of when a value needed to be within a certain range, and was not.
+	 */
 	export class ErrorDetailMinMax extends ErrorDetailMinMax<double> {
 	}

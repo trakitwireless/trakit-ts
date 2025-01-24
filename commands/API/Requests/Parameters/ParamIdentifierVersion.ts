@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container class used to house the string identifying a <see cref="Provider"/>.
-	/// </summary>
+	/**
+	 * A container class used to house the string identifying a <see cref="Provider"/>.
+	 */
 	export class ParamIdentifierVersion extends ParamIdentifier {
-		/// <summary>
-		/// Requested version key(s).
-		/// </summary>
+		/**
+		 * Requested version key(s).
+		 */
 		public v: int[] = [];
 	}

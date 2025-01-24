@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="behaviour"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="behaviour"/>.
+	 */
 	export class RespBehaviourGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Behaviour"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Behaviour"/>.
+		 */
 		public behaviour: Behaviour;
 	}

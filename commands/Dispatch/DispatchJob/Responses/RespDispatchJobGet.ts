@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="dispatchJob"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="dispatchJob"/>.
+	 */
 	export class RespDispatchJobGet extends Response {
-		/// <summary>
-		/// The requested <see cref="DispatchJob"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="DispatchJob"/>.
+		 */
 		public dispatchJob: DispatchJob;
 	}

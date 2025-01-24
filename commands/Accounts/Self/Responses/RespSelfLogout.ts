@@ -1,15 +1,15 @@
 
 
-	/// <summary>
-	/// The response for a logout operation which is always successful.
-	/// </summary>
+	/**
+	 * The response for a logout operation which is always successful.
+	 */
 	export class RespSelfLogout extends Response {
-		/// <summary>
-		/// Your old, no longer valid, session identifier.
-		/// </summary>
+		/**
+		 * Your old, no longer valid, session identifier.
+		 */
 		public ghostId: string = "";
-		/// <summary>
-		/// The timestamp from when your session expired.
-		/// </summary>
+		/**
+		 * The timestamp from when your session expired.
+		 */
 		public expiry: Date = DATE();
 	}

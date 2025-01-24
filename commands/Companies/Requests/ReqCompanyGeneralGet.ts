@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="CompanyGeneral"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="CompanyGeneral"/>.
+	 */
 	export class ReqCompanyGeneralGet extends ReqCompany implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="CompanyGeneral"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="CompanyGeneral"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

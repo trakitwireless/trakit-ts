@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="behaviour"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="behaviour"/> object.
+	 */
 	export abstract class ReqBehaviour extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="Behaviour"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="Behaviour"/>.
+		 */
 		public behaviour: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.behaviour?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.behaviour?.id.toString() ?? "";
 	}

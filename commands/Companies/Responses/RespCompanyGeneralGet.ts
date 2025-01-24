@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="companyGeneral"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="companyGeneral"/>.
+	 */
 	export class RespCompanyGeneralGet extends Response {
-		/// <summary>
-		/// The requested <see cref="CompanyGeneral"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="CompanyGeneral"/>.
+		 */
 		public companyGeneral: CompanyGeneral;
 	}

@@ -1,41 +1,41 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="companyStyless"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="companyStyless"/>.
+	 */
 	export abstract class RespCompanyStylesList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="CompanyStyles"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="CompanyStyles"/>s.
+		 */
 		public companyStyless: CompanyStyles[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyStylesListByCompany extends RespCompanyStylesList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyStylesListByCompanyAndLabels extends RespCompanyStylesListByCompany {
-		/// <summary>
-		/// The labels given as input.
-		/// </summary>
-		/// <seealso cref="CompanyStyles.labels"/>
+		/**
+		 * The labels given as input.
+		 * {@link CompanyStyles.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyStylesListByCompanyAndRefPairs extends RespCompanyStylesListByCompany {
-		/// <summary>
-		/// The reference string given as input.
-		/// </summary>
-		/// <seealso cref="CompanyStyles.references"/>
+		/**
+		 * The reference string given as input.
+		 * {@link CompanyStyles.references}
+		 */
 		public references: Map<string, string>;
 	}

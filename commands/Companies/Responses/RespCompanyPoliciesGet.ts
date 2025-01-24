@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="companyPolicies"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="companyPolicies"/>.
+	 */
 	export class RespCompanyPoliciesGet extends Response {
-		/// <summary>
-		/// The requested <see cref="CompanyPolicies"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="CompanyPolicies"/>.
+		 */
 		public companyPolicies: CompanyPolicies;
 	}

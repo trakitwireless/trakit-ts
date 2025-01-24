@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="User"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="User"/>.
+	 */
 	export class ReqUserMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="User"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="User"/>.
+		 */
 		public user: ParamUserMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.user?.login ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.user?.login ?? "";
 	}

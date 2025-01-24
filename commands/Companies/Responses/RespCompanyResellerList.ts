@@ -1,41 +1,41 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="companyResellers"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="companyResellers"/>.
+	 */
 	export abstract class RespCompanyResellerList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="CompanyReseller"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="CompanyReseller"/>s.
+		 */
 		public companyResellers: CompanyReseller[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyResellerListByCompany extends RespCompanyResellerList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyResellerListByCompanyAndLabels extends RespCompanyResellerListByCompany {
-		/// <summary>
-		/// The labels given as input.
-		/// </summary>
-		/// <seealso cref="CompanyReseller.labels"/>
+		/**
+		 * The labels given as input.
+		 * {@link CompanyReseller.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyResellerListByCompanyAndRefPairs extends RespCompanyResellerListByCompany {
-		/// <summary>
-		/// The reference string given as input.
-		/// </summary>
-		/// <seealso cref="CompanyReseller.references"/>
+		/**
+		 * The reference string given as input.
+		 * {@link CompanyReseller.references}
+		 */
 		public references: Map<string, string>;
 	}

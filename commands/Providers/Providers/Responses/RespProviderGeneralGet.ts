@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerGeneral"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerGeneral"/>.
+	 */
 	export class RespProviderGeneralGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Provider"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Provider"/>.
+		 */
 		public providerGeneral: ProviderGeneral;
 	}

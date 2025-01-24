@@ -1,41 +1,41 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="companyGenerals"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="companyGenerals"/>.
+	 */
 	export abstract class RespCompanyGeneralList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="CompanyGeneral"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="CompanyGeneral"/>s.
+		 */
 		public companyGenerals: CompanyGeneral[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyGeneralListByCompany extends RespCompanyGeneralList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyGeneralListByCompanyAndLabels extends RespCompanyGeneralListByCompany {
-		/// <summary>
-		/// The labels given as input.
-		/// </summary>
-		/// <seealso cref="CompanyGeneral.labels"/>
+		/**
+		 * The labels given as input.
+		 * {@link CompanyGeneral.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyGeneralListByCompanyAndRefPairs extends RespCompanyGeneralListByCompany {
-		/// <summary>
-		/// The reference string given as input.
-		/// </summary>
-		/// <seealso cref="CompanyGeneral.references"/>
+		/**
+		 * The reference string given as input.
+		 * {@link CompanyGeneral.references}
+		 */
 		public references: Map<string, string>;
 	}

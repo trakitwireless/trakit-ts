@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="asset"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="asset"/> object.
+	 */
 	export abstract class ReqAsset extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="Asset"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="Asset"/>.
+		 */
 		public asset: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.asset?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.asset?.id.toString() ?? "";
 	}

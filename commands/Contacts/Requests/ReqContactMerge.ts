@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="Contact"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="Contact"/>.
+	 */
 	export class ReqContactMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="Contact"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="Contact"/>.
+		 */
 		public contact: ParamContactMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.contact?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.contact?.id?.toString() ?? "";
 	}

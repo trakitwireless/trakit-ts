@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerRegistration"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerRegistration"/> object.
+	 */
 	export abstract class ReqProviderRegistration extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="ProviderRegistration"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="ProviderRegistration"/>.
+		 */
 		public providerRegistration: ParamCode;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.providerRegistration?.code.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.providerRegistration?.code.toString() ?? "";
 	}

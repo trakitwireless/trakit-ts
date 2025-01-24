@@ -4,23 +4,23 @@
 
 
 	public static class Text {
-		/// <summary>
-		/// The full ISO8601 date/time string with seconds and milliseconds.
-		/// All date/time stamps in the Trak-iT APIs are given in UTC unless otherwise specified.
-		/// </summary>
+		/**
+		 * The full ISO8601 date/time string with seconds and milliseconds.
+		 * All date/time stamps in the Trak-iT APIs are given in UTC unless otherwise specified.
+		 */
 		public const string DATETIME_FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ss.fffZ";
-		/// <summary>
-		/// 
-		/// </summary>
+		/**
+		 *  
+		 */
 		public const string DATE_FORMAT = "yyyy-MM-ddZ";
-		/// <summary>
-		/// 
-		/// </summary>
+		/**
+		 *  
+		 */
 		public const string TIME_FORMAT = "HH:mm:ss.fff";
 
-		/// <summary>
-		/// A list of accented characters that need to be swapped for non-accented characters.
-		/// </summary>
+		/**
+		 * A list of accented characters that need to be swapped for non-accented characters.
+		 */
 		static readonly Map<char, string> DIACRITICS = new Map<char, string>() {
 			{'\u2c65', "a"}, {'\u2c66', "t"}, {'\u2c68', "h"}, {'\u2c6a', "k"}, {'\u2c6c', "z"}, {'\u2c73', "w"},
 			{'\u2c76', "h"}, {'\u008c', "oe"}, {'\u009c', "oe"}, {'\u00df', "s"}, {'\u00e0', "a"}, {'\u00e1', "a"},
@@ -93,9 +93,9 @@
 			{'\u24e2', "s"}, {'\u24e3', "t"}, {'\u24e4', "u"}, {'\u24e5', "v"}, {'\u24e6', "w"}, {'\u24e7', "x"},
 			{'\u24e8', "y"}, {'\u24e9', "z"}, {'\u2c61', "l"},
 		};
-		/// <summary>
-		/// A list of quotation marks and apostrophes to be removed.
-		/// </summary>
+		/**
+		 * A list of quotation marks and apostrophes to be removed.
+		 */
 		static readonly char[] QUOTATIONS = new char[] {
 			'\u0022', '\u0027', '\u005e', '\u0060', '\u00ab', '\u00b4',
 			'\u00bb', '\u02ba', '\u02dd', '\u02ee', '\u02f6', '\u05f2',
@@ -103,11 +103,11 @@
 			'\u2036', '\u3003', '\uff02',
 		};
 
-		/// <summary>
-		/// Gets a codified value of the specified string.
-		/// </summary>
-		/// <param name="val">String value to be codified.</param>
-		/// <returns>String value that represents codified value of the specified string.</returns>
+		/**
+		 * Gets a codified value of the specified string.
+		 *  <param name="val">String value to be codified.</param>
+		 *  <returns>String value that represents codified value of the specified string.</returns>
+		 */
 		public static string Codify(string val) {
 			var output = new StringBuilder();
 			boolean dash = !string.IsNullOrEmpty(val = val?.Trim());
@@ -127,14 +127,14 @@
 			return output.toString(0, dash && output.Length > 0 ? output.Length - 1 : output.Length);
 		}
 
-		/// <summary>
-		/// Returns a plural version of the given word.
-		/// </summary>
-		/// <remarks>
-		/// This obviously doesn't work for every word imaginable, but covers the standard object names in the Trak-iT APIs.
-		/// </remarks>
-		/// <param name="word"></param>
-		/// <returns></returns>
+		/**
+		 * Returns a plural version of the given word.
+		 *  <remarks>
+		 * This obviously doesn't work for every word imaginable, but covers the standard object names in the Trak-iT APIs.
+		 *  </remarks>
+		 *  <param name="word"></param>
+		 */
+		
 		public static string Plural(string word)
 			=> word.EndsWith("y")
 				? word.Substring(0, word.Length - 1) + "ies" // company  => companies

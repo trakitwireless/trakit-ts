@@ -1,12 +1,12 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the <see cref="place"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="place"/>.
+	 */
 	export class RespPlaceGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Place"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Place"/>.
+		 */
 		public place: Place;
 	}

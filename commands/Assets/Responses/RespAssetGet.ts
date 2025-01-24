@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="asset"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="asset"/>.
+	 */
 	export class RespAssetGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Asset"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Asset"/>.
+		 */
 		public asset: Asset;
 	}

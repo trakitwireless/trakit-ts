@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerControl"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerControl"/>.
+	 */
 	export class RespProviderControlGet extends Response {
-		/// <summary>
-		/// The requested <see cref="ProviderControl"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="ProviderControl"/>.
+		 */
 		public providerControl: ProviderControl;
 	}

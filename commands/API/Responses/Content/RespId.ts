@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container for the id of the object requested.
-	/// </summary>
+	/**
+	 * A container for the id of the object requested.
+	 */
 	export class RespId {
-		/// <summary>
-		/// Identifier given as input for the command.
-		/// </summary>
+		/**
+		 * Identifier given as input for the command.
+		 */
 		public id: ulong = NaN;
 	}

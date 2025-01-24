@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="Company"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="Company"/>.
+	 */
 	export class ReqCompanyMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="Company"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="Company"/>.
+		 */
 		public company: ParamCompanyMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.company?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.company?.id?.toString() ?? "";
 	}

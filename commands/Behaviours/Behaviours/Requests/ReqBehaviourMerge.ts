@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="Behaviour"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="Behaviour"/>.
+	 */
 	export class ReqBehaviourMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="Behaviour"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="Behaviour"/>.
+		 */
 		public behaviour: ParamBehaviourMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.behaviour?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.behaviour?.id?.toString() ?? "";
 	}

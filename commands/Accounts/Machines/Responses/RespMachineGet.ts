@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="machine"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="machine"/>.
+	 */
 	export class RespMachineGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Machine"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Machine"/>.
+		 */
 		public machine: Machine;
 	}

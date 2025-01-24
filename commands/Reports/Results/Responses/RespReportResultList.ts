@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="reportResults"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="reportResults"/>.
+	 */
 	export abstract class RespReportResultList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ReportResult"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ReportResult"/>s.
+		 */
 		public reportResults: ReportResult[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespReportResultListByCompany extends RespReportResultList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container for the login of the <see cref="User"/> requested/created.
-	/// </summary>
+	/**
+	 * A container for the login of the <see cref="User"/> requested/created.
+	 */
 	export class RespLogin {
-		/// <summary>
-		/// The <see cref="User"/>'s login.
-		/// </summary>
+		/**
+		 * The <see cref="User"/>'s login.
+		 */
 		public login: string = "";
 	}

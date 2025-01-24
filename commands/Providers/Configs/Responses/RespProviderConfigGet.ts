@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerConfig"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerConfig"/>.
+	 */
 	export class RespProviderConfigGet extends Response {
-		/// <summary>
-		/// The requested <see cref="ProviderConfig"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="ProviderConfig"/>.
+		 */
 		public providerConfig: ProviderConfig;
 	}

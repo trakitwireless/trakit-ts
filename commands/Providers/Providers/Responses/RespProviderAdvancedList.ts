@@ -1,30 +1,30 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="providerAdvanceds"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="providerAdvanceds"/>.
+	 */
 	export abstract class RespProviderAdvancedList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ProviderAdvanced"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ProviderAdvanced"/>s.
+		 */
 		public providerAdvanceds: ProviderAdvanced[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespProviderAdvancedListByCompany extends RespProviderAdvancedList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespProviderAdvancedListByConfig: RespProviderAdvancedList {
-		/// <summary>
-		/// Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
+		 */
 		public config: RespId;
 	}

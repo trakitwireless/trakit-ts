@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="reportResult"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="reportResult"/>.
+	 */
 	export class RespReportResultDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="ReportResult"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="ReportResult"/>.
+		 */
 		public reportResult: RespIdDeleted;
 	}

@@ -1,12 +1,12 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerConfiguration"/>.
-	/// </summary>
-	[Obsolete("Use RespProviderConfigGet instead")]
+	/**
+	 * A container for the <see cref="providerConfiguration"/>.
+	 * @deprecated Use RespProviderConfigGet instead
+	 */
 	export class RespProviderConfigurationGet extends Response {
-		/// <summary>
-		/// The requested <see cref="ProviderConfiguration"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="ProviderConfiguration"/>.
+		 */
 		public providerConfiguration: ProviderConfiguration;
 	}

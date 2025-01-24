@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="reportSchedule"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="reportSchedule"/>.
+	 */
 	export class RespReportScheduleGet extends Response {
-		/// <summary>
-		/// The requested <see cref="ReportSchedule"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="ReportSchedule"/>.
+		 */
 		public reportSchedule: ReportSchedule;
 	}

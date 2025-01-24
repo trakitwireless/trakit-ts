@@ -1,12 +1,12 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="ProviderConfiguration"/>.
-	/// </summary>
-	[Obsolete("Use ReqProviderConfigGet instead")]
+	/**
+	 * Gets details of the specified <see cref="ProviderConfiguration"/>.
+	 * @deprecated Use ReqProviderConfigGet instead
+	 */
 	export class ReqProviderConfigurationGet extends ReqProviderConfiguration implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="ProviderConfiguration"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="ProviderConfiguration"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// These are the details when a number of things create the exception.
-	/// </summary>
+	/**
+	 * These are the details when a number of things create the exception.
+	 */
 	export class ErrorDetailCount extends ErrorDetail {
-		/// <summary>
-		/// The number of items that failed, or number of items preventing success.
-		/// </summary>
+		/**
+		 * The number of items that failed, or number of items preventing success.
+		 */
 		public count: int = NaN;
 	}

@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="Icon"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="Icon"/>.
+	 */
 	export class ReqIconMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="Icon"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="Icon"/>.
+		 */
 		public icon: ParamIconMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.icon?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.icon?.id?.toString() ?? "";
 	}

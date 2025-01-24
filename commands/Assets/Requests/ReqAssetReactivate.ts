@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Reactivates a suspended <see cref="Asset"/>.
-	/// </summary>
+	/**
+	 * Reactivates a suspended <see cref="Asset"/>.
+	 */
 	export class ReqAssetReactivate extends ReqAsset { }

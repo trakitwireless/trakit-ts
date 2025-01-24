@@ -1,41 +1,41 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="companyPolicies"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="companyPolicies"/>.
+	 */
 	export abstract class RespCompanyPoliciesList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="CompanyPolicies"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="CompanyPolicies"/>s.
+		 */
 		public companyPolicies: CompanyPolicies[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyPoliciesListByCompany extends RespCompanyPoliciesList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyPoliciesListByCompanyAndLabels extends RespCompanyPoliciesListByCompany {
-		/// <summary>
-		/// The labels given as input.
-		/// </summary>
-		/// <seealso cref="CompanyPolicies.labels"/>
+		/**
+		 * The labels given as input.
+		 * {@link CompanyPolicies.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyPoliciesListByCompanyAndRefPairs extends RespCompanyPoliciesListByCompany {
-		/// <summary>
-		/// The reference string given as input.
-		/// </summary>
-		/// <seealso cref="CompanyPolicies.references"/>
+		/**
+		 * The reference string given as input.
+		 * {@link CompanyPolicies.references}
+		 */
 		public references: Map<string, string>;
 	}

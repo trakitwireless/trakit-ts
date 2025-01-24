@@ -1,11 +1,11 @@
 ﻿
-	/// <summary>
-	/// A container class used to house the "code" identifying a resource.
-	/// </summary>
+	/**
+	 * A container class used to house the "code" identifying a resource.
+	 */
 	export class ParamCode {
-		/// <summary>
-		/// A "code" identifying a resource.
-		/// </summary>
-		/// <override required="always" />
+		/**
+		 * A "code" identifying a resource.
+		 *  <override required="always" />
+		 */
 		public code: string = "";
 	}

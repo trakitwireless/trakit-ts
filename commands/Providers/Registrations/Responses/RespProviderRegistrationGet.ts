@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerRegistration"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="providerRegistration"/>.
+	 */
 	export class RespProviderRegistrationGet extends Response {
-		/// <summary>
-		/// The requested <see cref="ProviderRegistration"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="ProviderRegistration"/>.
+		 */
 		public providerRegistration: ProviderRegistration;
 	}

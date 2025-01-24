@@ -1,30 +1,30 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="providerControls"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="providerControls"/>.
+	 */
 	export abstract class RespProviderControlList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="ProviderControl"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="ProviderControl"/>s.
+		 */
 		public providerControls: ProviderControl[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespProviderControlListByCompany extends RespProviderControlList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespProviderControlListByConfig: RespProviderControlList {
-		/// <summary>
-		/// Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
+		 */
 		public config: RespId;
 	}

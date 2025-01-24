@@ -1,15 +1,15 @@
 ﻿
 
-	/// <summary>
-	/// Allows a <see cref="User"/> to change their own password.
-	/// </summary>
+	/**
+	 * Allows a <see cref="User"/> to change their own password.
+	 */
 	export class ReqSelfPassword extends Request {
-		/// <summary>
-		/// Your current password, as verification that you are the proper account owner.
-		/// </summary>
+		/**
+		 * Your current password, as verification that you are the proper account owner.
+		 */
 		public current: string = "";
-		/// <summary>
-		/// Your new password must conform to your company's <see cref="PasswordPolicy">password policy</see>.
-		/// </summary>
+		/**
+		 * Your new password must conform to your company's <see cref="PasswordPolicy">password policy</see>.
+		 */
 		public password: string = "";
 	}

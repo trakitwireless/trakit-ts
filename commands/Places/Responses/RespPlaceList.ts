@@ -1,22 +1,22 @@
 ﻿
 
 
-	/// <summary>
-	/// A container for the requested <see cref="places"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="places"/>.
+	 */
 	export abstract class RespPlaceList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Place"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Place"/>s.
+		 */
 		public places: Place[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespPlaceListByCompany extends RespPlaceList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

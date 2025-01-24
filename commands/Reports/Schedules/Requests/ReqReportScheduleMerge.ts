@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="ReportSchedule"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="ReportSchedule"/>.
+	 */
 	export class ReqReportScheduleMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="ReportSchedule"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="ReportSchedule"/>.
+		 */
 		public reportSchedule: ParamReportScheduleMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.reportSchedule?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.reportSchedule?.id?.toString() ?? "";
 	}

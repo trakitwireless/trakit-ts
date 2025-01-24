@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="Machine"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="Machine"/>.
+	 */
 	export class ReqMachineMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="Machine"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="Machine"/>.
+		 */
 		public machine: ParamMachineMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.machine?.key ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.machine?.key ?? "";
 	}

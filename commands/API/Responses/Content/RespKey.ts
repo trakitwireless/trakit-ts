@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container for the key of the <see cref="Machine"/> requested/created.
-	/// </summary>
+	/**
+	 * A container for the key of the <see cref="Machine"/> requested/created.
+	 */
 	export class RespKey {
-		/// <summary>
-		/// The <see cref="Machine"/>'s key.
-		/// </summary>
+		/**
+		 * The <see cref="Machine"/>'s key.
+		 */
 		public key: string = "";
 	}

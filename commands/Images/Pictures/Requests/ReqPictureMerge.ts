@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// Creates a new or updates an existing <see cref="Picture"/>.
-	/// </summary>
+	/**
+	 * Creates a new or updates an existing <see cref="Picture"/>.
+	 */
 	export class ReqPictureMerge extends Request implements IReqSingle {
-		/// <summary>
-		/// Parameters given to create or update a <see cref="Picture"/>.
-		/// </summary>
+		/**
+		 * Parameters given to create or update a <see cref="Picture"/>.
+		 */
 		public picture: ParamPictureMerge;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.picture?.id?.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.picture?.id?.toString() ?? "";
 	}

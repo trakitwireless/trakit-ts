@@ -1,41 +1,41 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="assets"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="assets"/>.
+	 */
 	export abstract class RespAssetList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Asset"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Asset"/>s.
+		 */
 		public assets: Asset[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespAssetListByCompany extends RespAssetList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// Contains the codified <see cref="Company.labels"/> keys used to filter the collection.
-	/// </summary>
+	/**
+	 * Contains the codified <see cref="Company.labels"/> keys used to filter the collection.
+	 */
 	export class RespAssetListByCompanyAndLabels extends RespAssetListByCompany {
-		/// <summary>
-		/// The parsed labels given as input.
-		/// </summary>
-		/// <seealso cref="AssetGeneral.labels"/>
+		/**
+		 * The parsed labels given as input.
+		 * {@link AssetGeneral.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// Contains the <see cref="AssetGeneral.references"/> used to filter the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="AssetGeneral.references"/> used to filter the collection.
+	 */
 	export class RespAssetListByCompanyAndRefPairs extends RespAssetListByCompany {
-		/// <summary>
-		/// The parsed references given as input.
-		/// </summary>
-		/// <seealso cref="AssetGeneral.references"/>
+		/**
+		 * The parsed references given as input.
+		 * {@link AssetGeneral.references}
+		 */
 		public references: Map<string, string>;
 	}

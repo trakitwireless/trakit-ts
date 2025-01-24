@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="documents"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="documents"/>.
+	 */
 	export abstract class RespDocumentList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Document"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Document"/>s.
+		 */
 		public documents: Document[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespDocumentListByCompany extends RespDocumentList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

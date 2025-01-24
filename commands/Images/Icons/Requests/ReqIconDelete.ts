@@ -1,6 +1,6 @@
 ﻿
 
-	/// <summary>
-	/// Deletes an existing <see cref="Icon"/>.
-	/// </summary>
+	/**
+	 * Deletes an existing <see cref="Icon"/>.
+	 */
 	export class ReqIconDelete extends ReqIcon { }

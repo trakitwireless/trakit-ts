@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="user"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="user"/>.
+	 */
 	export class RespUserDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="User"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="User"/>.
+		 */
 		public user: RespIdDeleted;
 	}

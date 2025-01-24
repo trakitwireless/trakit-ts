@@ -1,10 +1,10 @@
 
-	/// <summary>
-	/// 
-	/// </summary>
+	/**
+	 *  
+	 */
 	export interface IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return deleted objects.
-		/// </summary>
+		/**
+		 * When true, the command will also return deleted objects.
+		 */
 		boolean includeDeleted;
 	}

@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="companyDirectory"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="companyDirectory"/>.
+	 */
 	export class RespCompanyDirectoryGet extends Response {
-		/// <summary>
-		/// The requested <see cref="CompanyDirectory"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="CompanyDirectory"/>.
+		 */
 		public companyDirectory: CompanyDirectory;
 	}

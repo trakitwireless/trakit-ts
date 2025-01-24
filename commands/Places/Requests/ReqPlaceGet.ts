@@ -1,12 +1,12 @@
 ﻿
 
 
-	/// <summary>
-	/// Gets details of the specified <see cref="Place"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="Place"/>.
+	 */
 	export class ReqPlaceGet extends ReqPlace implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return a deleted <see cref="Place"/> (if it exists).
-		/// </summary>
+		/**
+		 * When true, the command will also return a deleted <see cref="Place"/> (if it exists).
+		 */
 		public includeDeleted: boolean = false;
 	}

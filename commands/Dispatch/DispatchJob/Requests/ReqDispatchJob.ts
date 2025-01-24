@@ -1,17 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="dispatchJob"/> object.
-	/// </summary>
+	/**
+	 * A container for the <see cref="dispatchJob"/> object.
+	 */
 	export abstract class ReqDispatchJob extends Request implements IReqSingle {
-		/// <summary>
-		/// An object to contain the "id" of the <see cref="DispatchJob"/>.
-		/// </summary>
+		/**
+		 * An object to contain the "id" of the <see cref="DispatchJob"/>.
+		 */
 		public dispatchJob: ParamId;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.dispatchJob?.id.toString() ?? "";
+		/**
+		 *  
+		 */
+public string GetKey() => this.dispatchJob?.id.toString() ?? "";
 	}

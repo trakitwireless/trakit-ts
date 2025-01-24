@@ -1,41 +1,41 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="companyDirectorys"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="companyDirectorys"/>.
+	 */
 	export abstract class RespCompanyDirectoryList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="CompanyDirectory"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="CompanyDirectory"/>s.
+		 */
 		public companyDirectorys: CompanyDirectory[] = [];
 	}
 
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyDirectoryListByCompany extends RespCompanyDirectoryList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyDirectoryListByCompanyAndLabels extends RespCompanyDirectoryListByCompany {
-		/// <summary>
-		/// The labels given as input.
-		/// </summary>
-		/// <seealso cref="CompanyDirectory.labels"/>
+		/**
+		 * The labels given as input.
+		 * {@link CompanyDirectory.labels}
+		 */
 		public labels: string[] = [];
 	}
-	/// <summary>
-	/// A container owner <see cref="Company"/> of the collection.
-	/// </summary>
+	/**
+	 * A container owner <see cref="Company"/> of the collection.
+	 */
 	export class RespCompanyDirectoryListByCompanyAndRefPairs extends RespCompanyDirectoryListByCompany {
-		/// <summary>
-		/// The reference string given as input.
-		/// </summary>
-		/// <seealso cref="CompanyDirectory.references"/>
+		/**
+		 * The reference string given as input.
+		 * {@link CompanyDirectory.references}
+		 */
 		public references: Map<string, string>;
 	}

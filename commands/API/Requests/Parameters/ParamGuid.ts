@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A container class used to house the guid identifying a resource.
-	/// </summary>
+	/**
+	 * A container class used to house the guid identifying a resource.
+	 */
 	export class ParamGuid {
-		/// <summary>
-		/// The global unique identifier.
-		/// </summary>
+		/**
+		 * The global unique identifier.
+		 */
 		public guid: string = "";
 	}

@@ -1,41 +1,41 @@
 
 
-	/// <summary>
-	/// Parameter values for updating the <see cref="DispatchStep"/> for a <see cref="DispatchJob"/>.
-	/// </summary>
+	/**
+	 * Parameter values for updating the <see cref="DispatchStep"/> for a <see cref="DispatchJob"/>.
+	 */
 	export class ParamDispatchStepMerge extends ParamMergeSubscribable {
-		/// <summary>
-		/// The identifier of the step.
-		/// Identifiers are unique to a <see cref="DispatchJob"/>, but are not unique system-wide.
-		/// </summary>
+		/**
+		 * The identifier of the step.
+		 * Identifiers are unique to a <see cref="DispatchJob"/>, but are not unique system-wide.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// A name for the work needed to be performed.
-		/// </summary>
+		/**
+		 * A name for the work needed to be performed.
+		 */
 		public name: string = "";
-		/// <summary>
-		/// The optional estimated time of arrival for the asset.
-		/// </summary>
+		/**
+		 * The optional estimated time of arrival for the asset.
+		 */
 		public eta: Date = DATE();
-		/// <summary>
-		/// The optional expected duration of the work for this step.
-		/// </summary>
+		/**
+		 * The optional expected duration of the work for this step.
+		 */
 		public duration?: TimeSpan;
-		/// <summary>
-		/// An optional place which can be used as a template instead of providing lat/long coordinates and a street address.
-		/// </summary>
-		/// <seealso cref="Place.id" />
+		/**
+		 * An optional place which can be used as a template instead of providing lat/long coordinates and a street address.
+		 * {@link Place.id}
+		 */
 		public place: ulong = NaN;
-		/// <summary>
-		/// The street address of where the step must be completed.
-		/// </summary>
+		/**
+		 * The street address of where the step must be completed.
+		 */
 		public address: string = "";
-		/// <summary>
-		/// The lat/long coordinates of where the step must be <see cref="DispatchStepStatus.completed"/>.
-		/// </summary>
+		/**
+		 * The lat/long coordinates of where the step must be <see cref="DispatchStepStatus.completed"/>.
+		 */
 		public latlng: LatLng;
-		/// <summary>
-		/// When true, will mean a signature is required to complete this <see cref="DispatchStep"/>.
-		/// </summary>
+		/**
+		 * When true, will mean a signature is required to complete this <see cref="DispatchStep"/>.
+		 */
 		public signature: boolean = false;
 	}

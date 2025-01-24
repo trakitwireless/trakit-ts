@@ -1,86 +1,86 @@
 ﻿
-	/// <summary>
-	/// <see cref="ErrorDetail"/>s are identified for deserialization using <see cref="ErrorDetail.kind"/>.
-	/// </summary>
+	/**
+	 *  <see cref="ErrorDetail"/>s are identified for deserialization using <see cref="ErrorDetail.kind"/>.
+	 */
 	public enum ErrorDetailType {
-		/// <summary>
-		/// These are the details of an exception while trying to parse the JSON input.
-		/// </summary>
+		/**
+		 * These are the details of an exception while trying to parse the JSON input.
+		 */
 		parse,
-		/// <summary>
-		/// For unhandled exceptions, a full stack trace may be given.
-		/// </summary>
+		/**
+		 * For unhandled exceptions, a full stack trace may be given.
+		 */
 		stack,
-		/// <summary>
-		/// Details for how long a resource is locked, or if a command cannot be executed right away, how long until it can be executed.
-		/// </summary>
+		/**
+		 * Details for how long a resource is locked, or if a command cannot be executed right away, how long until it can be executed.
+		 */
 		locked,
-		/// <summary>
-		/// Details of a command or session being throttled.
-		/// </summary>
+		/**
+		 * Details of a command or session being throttled.
+		 */
 		throttled,
-		/// <summary>
-		/// These are the details when a number of things create the exception.
-		/// </summary>
+		/**
+		 * These are the details when a number of things create the exception.
+		 */
 		count,
-		/// <summary>
-		/// These are the details of when a value needed to be within a certain range, and was not.
-		/// </summary>
+		/**
+		 * These are the details of when a value needed to be within a certain range, and was not.
+		 */
 		minMax,
-		/// <summary>
-		/// These are the details of an input or format exception.
-		/// </summary>
+		/**
+		 * These are the details of an input or format exception.
+		 */
 		input,
-		/// <summary>
-		/// These are the details of an enum input that failed to parse.
-		/// </summary>
+		/**
+		 * These are the details of an enum input that failed to parse.
+		 */
 		@enum,
-		/// <summary>
-		/// These are the details of a phone number input that failed to parse.
-		/// </summary>
+		/**
+		 * These are the details of a phone number input that failed to parse.
+		 */
 		phone,
-		/// <summary>
-		/// These details contain a list of bad keys, labels or tags, or parameter names that caused the failure.
-		/// </summary>
+		/**
+		 * These details contain a list of bad keys, labels or tags, or parameter names that caused the failure.
+		 */
 		badKeys,
-		/// <summary>
-		/// These details contain unique identifiers that caused the failure.
-		/// </summary>
+		/**
+		 * These details contain unique identifiers that caused the failure.
+		 */
 		badIds,
-		/// <summary>
-		/// These details contain array indexes that caused the failure.
-		/// </summary>
+		/**
+		 * These details contain array indexes that caused the failure.
+		 */
 		badIndexes,
-		/// <summary>
-		/// Details of a permission escallation error thrown when modifying a resource or user that would grant the following extra permissions.
-		/// </summary>
+		/**
+		 * Details of a permission escallation error thrown when modifying a resource or user that would grant the following extra permissions.
+		 */
 		escalation,
-		/// <summary>
-		/// These are the errors/warnings taken from the output of some other system.
-		/// </summary>
+		/**
+		 * These are the errors/warnings taken from the output of some other system.
+		 */
 		externals,
-		/// <summary>
-		/// Details for how a circular <see cref="Company"/> tree would have been created.
-		/// </summary>
+		/**
+		 * Details for how a circular <see cref="Company"/> tree would have been created.
+		 */
 		parent,
-		/// <summary>
-		/// Details for how many and which <see cref="User"/>s are still in the <see cref="UserGroup"/>.
-		/// </summary>
+		/**
+		 * Details for how many and which <see cref="User"/>s are still in the <see cref="UserGroup"/>.
+		 */
 		userGroupInUse,
-		/// <summary>
-		/// Details for how many and which <see cref="Asset"/>s and <see cref="User"/>s are still using this <see cref="Contact"/>.
-		/// </summary>
+		/**
+		 * Details for how many and which <see cref="Asset"/>s and <see cref="User"/>s are still using this <see cref="Contact"/>.
+		 */
 		contactInUse,
-		/// <summary>
-		/// Details for how many and which <see cref="FormResult"/>s are still using this <see cref="FormTemplate"/>.
-		/// </summary>
+		/**
+		 * Details for how many and which <see cref="FormResult"/>s are still using this <see cref="FormTemplate"/>.
+		 */
 		formTemplateInUse,
-		/// <summary>
-		/// For batch commands, these are the errors thrown by the sub-command.
-		/// </summary>
+		/**
+		 * For batch commands, these are the errors thrown by the sub-command.
+		 */
 		batch,
-		/// <summary>
-		/// Details about why the request failed an authentication process when a <see cref="Machine.secret"/> is used.
-		/// </summary>
+		/**
+		 * Details about why the request failed an authentication process when a <see cref="Machine.secret"/> is used.
+		 */
 		secret,
 	}

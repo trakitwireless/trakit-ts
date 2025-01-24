@@ -1,33 +1,33 @@
 ﻿
 
-	/// <summary>
-	/// Details of a command or session being throttled.
-	/// </summary>
+	/**
+	 * Details of a command or session being throttled.
+	 */
 	export class ErrorDetailThrottled extends ErrorDetail {
-		/// <summary>
-		/// The session identifier being throttled.
-		/// </summary>
+		/**
+		 * The session identifier being throttled.
+		 */
 		public ghostId: string = "";
-		/// <summary>
-		/// The <see cref="User"/> being throttled.
-		/// </summary>
+		/**
+		 * The <see cref="User"/> being throttled.
+		 */
 		public login: string = "";
-		/// <summary>
-		/// The client IP address.
-		/// </summary>
+		/**
+		 * The client IP address.
+		 */
 		public ip: string = "";
-		/// <summary>
-		/// The name of the WebSocket command, or the RESTful route.
-		/// </summary>
+		/**
+		 * The name of the WebSocket command, or the RESTful route.
+		 */
 		public command: string = "";
-		/// <summary>
-		/// How many times this command was invoked during the window.
-		/// Alternatively, can be the maximum number of times this command can be invoked (like creating a session).
-		/// </summary>
+		/**
+		 * How many times this command was invoked during the window.
+		 * Alternatively, can be the maximum number of times this command can be invoked (like creating a session).
+		 */
 		public count: int = NaN;
-		/// <summary>
-		/// The size of the window.
-		/// If this throttled command has no window (ie; creating too many sessions) this value is null.
-		/// </summary>
+		/**
+		 * The size of the window.
+		 * If this throttled command has no window (ie; creating too many sessions) this value is null.
+		 */
 		public timeout?: TimeSpan;
 	}

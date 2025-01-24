@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="dashcams"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="dashcams"/>.
+	 */
 	export abstract class RespDashcamList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="Dashcam"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="Dashcam"/>s.
+		 */
 		public dashcams: Dashcam[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespDashcamListByCompany extends RespDashcamList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

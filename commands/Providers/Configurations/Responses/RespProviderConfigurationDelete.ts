@@ -1,12 +1,12 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="providerConfiguration"/>.
-	/// </summary>
-	[Obsolete("Use RespProviderConfigDelete instead")]
+	/**
+	 * A container for the <see cref="providerConfiguration"/>.
+	 * @deprecated Use RespProviderConfigDelete instead
+	 */
 	export class RespProviderConfigurationDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="ProviderConfiguration"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="ProviderConfiguration"/>.
+		 */
 		public providerConfiguration: RespIdDeleted;
 	}

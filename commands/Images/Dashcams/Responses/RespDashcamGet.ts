@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="dashcam"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="dashcam"/>.
+	 */
 	export class RespDashcamGet extends Response {
-		/// <summary>
-		/// The requested <see cref="Dashcam"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="Dashcam"/>.
+		 */
 		public dashcam: Dashcam;
 	}

@@ -1,30 +1,30 @@
 ﻿
 
-	/// <summary>
-	/// Gets details of the specified <see cref="assetMessage"/>.
-	/// </summary>
+	/**
+	 * Gets details of the specified <see cref="assetMessage"/>.
+	 */
 	export abstract class ReqAssetMessageList extends Request implements IReqIDeletable {
-		/// <summary>
-		/// When true, the command will also return  deleted <see cref="AssetMessage"/>s.
-		/// </summary>
+		/**
+		 * When true, the command will also return  deleted <see cref="AssetMessage"/>s.
+		 */
 		public includeDeleted: boolean = false;
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqAssetMessageListByCompany extends ReqAssetMessageList implements IReqListByCompany {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: ParamId;
 	}
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class ReqAssetMessageListByAsset extends ReqAssetMessageList implements IReqListByAsset {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public asset: ParamId;
 	}

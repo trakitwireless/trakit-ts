@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="provider"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="provider"/>.
+	 */
 	export class RespProviderBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="Provider"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="Provider"/>.
+		 */
 		public providers: RespIdendifierDeleted[] = [];
 	}

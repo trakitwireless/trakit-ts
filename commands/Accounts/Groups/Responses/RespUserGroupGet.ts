@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="userGroup"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="userGroup"/>.
+	 */
 	export class RespUserGroupGet extends Response {
-		/// <summary>
-		/// The requested <see cref="UserGroup"/>.
-		/// </summary>
+		/**
+		 * The requested <see cref="UserGroup"/>.
+		 */
 		public userGroup: UserGroup;
 	}

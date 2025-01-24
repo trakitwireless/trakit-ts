@@ -1,14 +1,14 @@
 ﻿
-	/// <summary>
-	/// For delete/restore commands, this contains the id, version keys, owning <see cref="Company.id"/>, and deleted state.
-	/// </summary>
+	/**
+	 * For delete/restore commands, this contains the id, version keys, owning <see cref="Company.id"/>, and deleted state.
+	 */
 	export abstract class RespIdDeleted extends RespIdCompany {
-		/// <summary>
-		/// Flag showing if the object is deleted.
-		/// </summary>
+		/**
+		 * Flag showing if the object is deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Object version keys used to validate synchronization for all object properties.
-		/// </summary>
+		/**
+		 * Object version keys used to validate synchronization for all object properties.
+		 */
 		public v: uint[] = [];
 	}

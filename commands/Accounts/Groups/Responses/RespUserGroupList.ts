@@ -1,21 +1,21 @@
 ﻿
 
-	/// <summary>
-	/// A container for the requested <see cref="userGroups"/>.
-	/// </summary>
+	/**
+	 * A container for the requested <see cref="userGroups"/>.
+	 */
 	export abstract class RespUserGroupList extends Response {
-		/// <summary>
-		/// The list of requested <see cref="UserGroup"/>s.
-		/// </summary>
+		/**
+		 * The list of requested <see cref="UserGroup"/>s.
+		 */
 		public userGroups: UserGroup[] = [];
 	}
 
-	/// <summary>
-	/// Contains the <see cref="Company.id"/> of the collection.
-	/// </summary>
+	/**
+	 * Contains the <see cref="Company.id"/> of the collection.
+	 */
 	export class RespUserGroupListByCompany extends RespUserGroupList {
-		/// <summary>
-		/// Identifier of the <see cref="Company"/> to which this collection belongs.
-		/// </summary>
+		/**
+		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 */
 		public company: RespId;
 	}

@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="behaviour"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="behaviour"/>.
+	 */
 	export class RespBehaviourDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="Behaviour"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="Behaviour"/>.
+		 */
 		public behaviour: RespIdDeleted;
 	}

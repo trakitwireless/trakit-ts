@@ -1,11 +1,11 @@
 ﻿
 
-	/// <summary>
-	/// A container for the <see cref="picture"/>.
-	/// </summary>
+	/**
+	 * A container for the <see cref="picture"/>.
+	 */
 	export class RespPictureBatchDelete extends Response {
-		/// <summary>
-		/// Details about deleting/restoring the requested <see cref="Picture"/>.
-		/// </summary>
+		/**
+		 * Details about deleting/restoring the requested <see cref="Picture"/>.
+		 */
 		public pictures: RespIdDeleted[] = [];
 	}
