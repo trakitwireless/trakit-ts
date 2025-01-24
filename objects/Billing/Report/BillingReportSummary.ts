@@ -1,29 +1,29 @@
 ﻿
-	/// <summary>
-	/// Summarized bill per target.
-	/// </summary>
+	/**
+	 * Summarized bill per target.
+	 */
 	export class BillingReportSummary implements INamed {
-		/// <summary>
-		/// The target company to which this summary instance belongs.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The target company to which this summary instance belongs.
+		 * {@link Company.id}
+		 */
 		public target: ulong = NaN;
-		/// <summary>
-		/// The target company's parent.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The target company's parent.
+		 * {@link Company.id}
+		 */
 		public parent: ulong = NaN;
-		/// <summary>
-		/// Target's name.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * Target's name.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes about the target.
-		/// </summary>
+		/**
+		 * Notes about the target.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Summary contains totals per type of hosting (services and licenses) for this target
-		/// </summary>
+		/**
+		 * Summary contains totals per type of hosting (services and licenses) for this target
+		 */
 		public hosting: BillingReportHostingSummary[] = [];
 	}

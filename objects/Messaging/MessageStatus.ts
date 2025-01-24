@@ -1,30 +1,30 @@
 ﻿
-	/// <summary>
-	/// Memos have a lifetime and each status represents a memos's progress through it's life.
-	/// </summary>
+	/**
+	 * Memos have a lifetime and each status represents a memos's progress through it's life.
+	 */
 	export enum MessageStatus {
-		/// <summary>
-		/// Waiting to be sent.
-		/// </summary>
+		/**
+		 * Waiting to be sent.
+		 */
 		created,
-		/// <summary>
-		/// Sent or received.
-		/// </summary>
+		/**
+		 * Sent or received.
+		 */
 		processed,
-		/// <summary>
-		/// Failed to send.
-		/// </summary>
+		/**
+		 * Failed to send.
+		 */
 		failed,
-		/// <summary>
-		/// Failed to send because too many memos were sent.
-		/// </summary>
+		/**
+		 * Failed to send because too many memos were sent.
+		 */
 		throttled,
-		/// <summary>
-		/// Memo sent, but returned with error from receiving server.
-		/// </summary>
+		/**
+		 * Memo sent, but returned with error from receiving server.
+		 */
 		bounceback,
-		/// <summary>
-		/// Memo has been responded to or acknowledged by the recipient.
-		/// </summary>
+		/**
+		 * Memo has been responded to or acknowledged by the recipient.
+		 */
 		acknowledged,
 	}

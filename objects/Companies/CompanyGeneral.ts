@@ -1,51 +1,50 @@
 
 
-	/// <summary>
-	/// General details about a company.
-	/// </summary>
+	/**
+	 * General details about a company.
+	 */
 	export class CompanyGeneral extends Component implements IIdUlong, INamed, IAmCompany, IDeletable {
-		/// <summary>
-		/// Unique identifier of the Company.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * Unique identifier of the Company.
+		 * {@link Company.id}
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The unique identifier of this company's parent organization.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The unique identifier of this company's parent organization.
+		 * {@link Company.id}
+		 */
 		public parent: ulong = NaN;
-		/// <summary>
-		/// The organizational name.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The organizational name.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes.
-		/// </summary>
+		/**
+		 * Notes.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Name/value collections of custom fields used to refer to external systems.
-		/// </summary>
-		/// <override max-count="10">
-		/// <keys max-length="20" />
-		/// <values max-length="100" />
-		/// </override>
+		/**
+		 * Name/value collections of custom fields used to refer to external systems.
+		 *  <override max-count="10">
+		 *  <keys max-length="20" />
+		 *  <values max-length="100" />
+		 *  </override>
+		 */
 		public references: Map<string, string>;
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		public since: Date = DATE();
 	}

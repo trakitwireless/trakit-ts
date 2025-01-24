@@ -2,46 +2,46 @@
 
 
 
-	/// <summary>
-	/// This tree-like structure is given to the script processor for the device type so that the device can follow a program.
-	/// </summary>
-	[Obsolete("Use ProviderScriptBlock instead")]
+	/**
+	 * This tree-like structure is given to the script processor for the device type so that the device can follow a program.
+	 * @deprecated Use ProviderScriptBlock instead
+	 */
 	export class ProviderConfigurationNode {
-		/// <summary>
-		/// Indicates that this configuration is an advanced property and should only be set by someone who knows what they're doing.
-		/// </summary>
+		/**
+		 * Indicates that this configuration is an advanced property and should only be set by someone who knows what they're doing.
+		 */
 		public boolean isAdvanced = true;
-		/// <summary>
-		/// Unique identifier of the value being mapped.
-		/// </summary>
+		/**
+		 * Unique identifier of the value being mapped.
+		 */
 		public string id = string.Empty;
-		/// <summary>
-		/// The value being set.
-		/// </summary>
+		/**
+		 * The value being set.
+		 */
 		public value: object = null;
-		/// <summary>
-		/// The minimum possible value for this confugration node.
-		/// </summary>
+		/**
+		 * The minimum possible value for this confugration node.
+		 */
 		public min: object = null;
-		/// <summary>
-		/// The maximum possible value for this confugration node.
-		/// </summary>
+		/**
+		 * The maximum possible value for this confugration node.
+		 */
 		public max: object = null;
-		/// <summary>
-		/// Type hint used by the script processor to help format the value.
-		/// </summary>
+		/**
+		 * Type hint used by the script processor to help format the value.
+		 */
 		public type: string = "";
-		/// <summary>
-		/// Unit hint used to help the script processor format the value.
-		/// </summary>
-		/// <override type="Vorgon.Units" />
+		/**
+		 * Unit hint used to help the script processor format the value.
+		 *  <override type="Vorgon.Units" />
+		 */
 		public unit: string = "";
-		/// <summary>
-		/// Description of what this configuration does when mapped to a device.
-		/// </summary>
+		/**
+		 * Description of what this configuration does when mapped to a device.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Child configuration nodes.
-		/// </summary>
+		/**
+		 * Child configuration nodes.
+		 */
 		public nodes: Map<string, ProviderConfigurationNode>;
 	}

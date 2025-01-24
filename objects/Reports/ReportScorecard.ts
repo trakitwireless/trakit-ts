@@ -1,21 +1,21 @@
 ﻿
 
 
-	/// <summary>
-	/// Scorecard generated from the results of this report.
-	/// </summary>
+	/**
+	 * Scorecard generated from the results of this report.
+	 */
 	export class ReportScorecard {
-		/// <summary>
-		/// The asset to which this scorecard belongs.
-		/// </summary>
-		/// <seealso cref="Asset.id" />
+		/**
+		 * The asset to which this scorecard belongs.
+		 * {@link Asset.id}
+		 */
 		public asset: ulong = NaN;
-		/// <summary>
-		/// Final score calculated based on scorecard rules.
-		/// </summary>
+		/**
+		 * Final score calculated based on scorecard rules.
+		 */
 		public score: double = NaN;
-		/// <summary>
-		/// Points per rule
-		/// </summary>
+		/**
+		 * Points per rule
+		 */
 		public rulePoints: Map<string, double>;
 	}

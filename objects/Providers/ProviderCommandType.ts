@@ -1,38 +1,38 @@
 ﻿
-	/// <summary>
-	/// The kind of command for the device/modem.
-	/// </summary>
+	/**
+	 * The kind of command for the device/modem.
+	 */
 	export enum ProviderCommandType {
-		/// <summary>
-		/// If the type of command has not yet been determined, or there was an error determining its type.
-		/// </summary>
+		/**
+		 * If the type of command has not yet been determined, or there was an error determining its type.
+		 */
 		unknown,
-		/// <summary>
-		/// Configuration
-		/// </summary>
+		/**
+		 * Configuration
+		 */
 		config,
-		/// <summary>
-		/// Geofence
-		/// </summary>
+		/**
+		 * Geofence
+		 */
 		geofence,
-		/// <summary>
-		/// Dispatch Job
-		/// </summary>
+		/**
+		 * Dispatch Job
+		 */
 		dispatch,
-		/// <summary>
-		/// GPS report
-		/// </summary>
+		/**
+		 * GPS report
+		 */
 		gps,
-		/// <summary>
-		/// Status report
-		/// </summary>
+		/**
+		 * Status report
+		 */
 		status,
-		/// <summary>
-		/// Control output wire
-		/// </summary>
+		/**
+		 * Control output wire
+		 */
 		output,
-		/// <summary>
-		/// Custom (modem specific) message
-		/// </summary>
+		/**
+		 * Custom (modem specific) message
+		 */
 		custom,
 	}

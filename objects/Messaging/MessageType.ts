@@ -1,34 +1,34 @@
 ﻿
-	/// <summary>
-	/// The kind of protocol used for this memo.
-	/// </summary>
+	/**
+	 * The kind of protocol used for this memo.
+	 */
 	export enum MessageType {
-		/// <summary>
-		/// If the type of memo has not yet been determined, or there was an error determining its type.
-		/// </summary>
+		/**
+		 * If the type of memo has not yet been determined, or there was an error determining its type.
+		 */
 		unknown,
-		/// <summary>
-		/// Short Message Service (text message)
-		/// </summary>
+		/**
+		 * Short Message Service (text message)
+		 */
 		sms,
-		/// <summary>
-		/// Email
-		/// </summary>
+		/**
+		 * Email
+		 */
 		email,
-		/// <summary>
-		/// Garmin/Magellan/etc (Personal Navigation Device)
-		/// </summary>
+		/**
+		 * Garmin/Magellan/etc (Personal Navigation Device)
+		 */
 		pnd,
-		/// <summary>
-		/// Google Cloud Message
-		/// </summary>
+		/**
+		 * Google Cloud Message
+		 */
 		gcm,
-		/// <summary>
-		/// Apple Push Notification Service
-		/// </summary>
+		/**
+		 * Apple Push Notification Service
+		 */
 		apn,
-		/// <summary>
-		/// WebSocket alert message
-		/// </summary>
+		/**
+		 * WebSocket alert message
+		 */
 		socket,
 	}

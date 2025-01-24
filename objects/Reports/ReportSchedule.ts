@@ -1,69 +1,68 @@
 
 
-	/// <summary>
-	/// Determines when and how often a report schedule runs automatically.
-	/// </summary>
+	/**
+	 * Determines when and how often a report schedule runs automatically.
+	 */
 	export class ReportSchedule extends Component implements IIdUlong, INamed, IEnabled, IBelongCompany, IDeletable {
-		/// <summary>
-		/// Unique identifier
-		/// </summary>
+		/**
+		 * Unique identifier
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The company to which this report belongs
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which this report belongs
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// A reference to the Template used to create this result.
-		/// </summary>
-		/// <seealso cref="ReportTemplate.id" />
+		/**
+		 * A reference to the Template used to create this result.
+		 * {@link ReportTemplate.id}
+		 */
 		public template: ulong = NaN;
-		/// <summary>
-		/// Login of the user who has ownership of this report schedule.
-		/// </summary>
-		/// <seealso cref="User.login" />
-		/// <override max-length="254" format="email" />
+		/**
+		 * Login of the user who has ownership of this report schedule.
+		 * {@link User.login}
+		 *  <override max-length="254" format="email" />
+		 */
 		public owner: string = "";
-		/// <summary>
-		/// Name of this report.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * Name of this report.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes about this report.
-		/// </summary>
+		/**
+		 * Notes about this report.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Indicates whether this schedule is allowed to run.
-		/// </summary>
+		/**
+		 * Indicates whether this schedule is allowed to run.
+		 */
 		public enabled: boolean = false;
-		/// <summary>
-		/// The recurring schedule to generate report results.
-		/// </summary>
+		/**
+		 * The recurring schedule to generate report results.
+		 */
 		public repetition: ReportRecurrence;
-		/// <summary>
-		/// Specified parameters for the report logic, targeted Assets, and filtering Places.
-		/// </summary>
+		/**
+		 * Specified parameters for the report logic, targeted Assets, and filtering Places.
+		 */
 		public options: ReportOptions;
-		/// <summary>
-		/// A list of users and a targeting expression for assets which receive report results notifications.
-		/// </summary>
+		/**
+		 * A list of users and a targeting expression for assets which receive report results notifications.
+		 */
 		public notify: ReportNotifications;
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		public since: Date = DATE();
 	}

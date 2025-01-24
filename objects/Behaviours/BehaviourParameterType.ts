@@ -1,22 +1,22 @@
 ﻿
-	/// <summary>
-	/// Possible data-types given to BehaviourParameters.
-	/// </summary>
+	/**
+	 * Possible data-types given to BehaviourParameters.
+	 */
 	export enum BehaviourParameterType {
-		/// <summary>
-		/// True or false.
-		/// </summary>
+		/**
+		 * True or false.
+		 */
 		booleanean,
-		/// <summary>
-		/// Numeric value (signed double-precision floating point number).
-		/// </summary>
+		/**
+		 * Numeric value (signed double-precision floating point number).
+		 */
 		number,
-		/// <summary>
-		/// Text.
-		/// </summary>
+		/**
+		 * Text.
+		 */
 		text,
-		/// <summary>
-		/// Object or array literal.
-		/// </summary>
+		/**
+		 * Object or array literal.
+		 */
 		json,
 	}

@@ -1,32 +1,31 @@
 ﻿
 
-	/// <summary>
-	/// The colours and styles used by this company to tag and label Assets, Places, and other things.
-	/// </summary>
+	/**
+	 * The colours and styles used by this company to tag and label Assets, Places, and other things.
+	 */
 	export class CompanyStyles extends Component implements IIdUlong, IAmCompany {
-		/// <summary>
-		/// Unique identifier of the Company.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * Unique identifier of the Company.
+		 * {@link Company.id}
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The unique identifier of this company's parent organization.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The unique identifier of this company's parent organization.
+		 * {@link Company.id}
+		 */
 		public parent: ulong = NaN;
-		/// <summary>
-		/// The styles for labels added to Assets, Places, and other things.
-		/// </summary>
+		/**
+		 * The styles for labels added to Assets, Places, and other things.
+		 */
 		public labels: Map<string, LabelStyle>;
-		/// <summary>
-		/// The styles for status tags added to Assets.
-		/// </summary>
+		/**
+		 * The styles for status tags added to Assets.
+		 */
 		public tags: Map<string, LabelStyle>;
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 	}

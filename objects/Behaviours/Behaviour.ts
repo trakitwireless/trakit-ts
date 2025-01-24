@@ -7,50 +7,50 @@ import { byte, JsonObject, ulong } from "../API/Types";
 import { BehaviourParameter } from "./BehaviourParameter";
 import { BehaviourParameterType } from "./BehaviourParameterType";
 
-/// <summary>
-/// The applied behaviour which includes all parameters and targets specific assets.
-/// </summary>
+/**
+ * The applied behaviour which includes all parameters and targets specific assets.
+*/
 export class Behaviour extends Component implements IIdUlong, INamed, IBelongCompany, IDeletable {
-	/// <summary>
-	/// Unique identifier of this behaviour.
-	/// </summary>
+	/**
+	 * Unique identifier of this behaviour.
+	 */
 	public id: ulong = NaN;
-	/// <summary>
-	/// The company to which this behaviour belongs.
-	/// </summary>
-	/// <seealso cref="Company.id" />
+	/**
+	 * The company to which this behaviour belongs.
+	 * {@link Company.id}
+	 */
 	public company: ulong = NaN;
-	/// <summary>
-	/// The script which this behaviour implements.
-	/// </summary>
-	/// <seealso cref="BehaviourScript.id" />
+	/**
+	 * The script which this behaviour implements.
+	 * {@link BehaviourScript.id}
+	 */
 	public script: ulong = NaN;
-	/// <summary>
-	/// The name of this behaviour.
-	/// </summary>
-	/// <override max-length="100" />
+	/**
+	 * The name of this behaviour.
+	 *  <override max-length="100" />
+	 */
 	public name: string = "";
-	/// <summary>
-	/// Notes.
-	/// </summary>
+	/**
+	 * Notes.
+	 */
 	public notes: string = "";
-	/// <summary>
-	/// The priority flag allows you to define an execution order for all behaviours for a provider.
-	/// </summary>
+	/**
+	 * The priority flag allows you to define an execution order for all behaviours for a provider.
+	 */
 	public priority: byte = 255;
-	/// <summary>
-	/// The search pattern used to target the assets which will embed this behaviour in their execution context.
-	/// </summary>
-	/// <override type="System.String" format="expression" />
+	/**
+	 * The search pattern used to target the assets which will embed this behaviour in their execution context.
+	 *  <override type="System.String" format="expression" />
+	 */
 	public targets: string = "";
-	/// <summary>
-	/// A search pattern used to filter the providers which can implement this behaviour.
-	/// </summary>
-	/// <override type="System.String" format="expression" />
+	/**
+	 * A search pattern used to filter the providers which can implement this behaviour.
+	 *  <override type="System.String" format="expression" />
+	 */
 	public filters: string = "";
-	/// <summary>
-	/// The list of defined variable name/value pairs for the script requires.
-	/// </summary>
+	/**
+	 * The list of defined variable name/value pairs for the script requires.
+	 */
 	public parameters: Map<string, BehaviourParameter> = new Map;
 
 
@@ -60,11 +60,10 @@ export class Behaviour extends Component implements IIdUlong, INamed, IBelongCom
 	}
 
 	// IRequestable
-	/// <summary>
-	/// The <see cref="id"/> is the key.
-	/// </summary>
-	/// <returns></returns>
-	public getKey(): string { return this.id.toString(); }
+	/**
+	 * The <see cref="id"/> is the key.
+	 */
+public getKey(): string { return this.id.toString(); }
 
 	public override toJSON(): JsonObject {
 		var object: JsonObject = {
@@ -105,12 +104,12 @@ export class Behaviour extends Component implements IIdUlong, INamed, IBelongCom
 	}
 
 	// IDeletable
-	/// <summary>
-	/// Indicates whether this object was deleted.
-	/// </summary>
+	/**
+	 * Indicates whether this object was deleted.
+	 */
 	public deleted: boolean = false;
-	/// <summary>
-	/// Timestamp from the action that deleted or suspended this object.
-	/// </summary>
+	/**
+	 * Timestamp from the action that deleted or suspended this object.
+	 */
 	public since: Date = DATE();
 }

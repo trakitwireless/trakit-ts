@@ -1,49 +1,49 @@
 ﻿
-	/// <summary>
-	/// The server used for notification and conversational email messages sent and received by the system.
-	/// </summary>
+	/**
+	 * The server used for notification and conversational email messages sent and received by the system.
+	 */
 	export class NotificationServerEmail {
-		/// <summary>
-		/// The type of incoming protocol to use (IMAP or POP3).
-		/// </summary>
+		/**
+		 * The type of incoming protocol to use (IMAP or POP3).
+		 */
 		public incomingType: string = "";
-		/// <summary>
-		/// The domain or IP address of the incoming email server.
-		/// </summary>
+		/**
+		 * The domain or IP address of the incoming email server.
+		 */
 		public incomingAddress: string = "";
-		/// <summary>
-		/// The port number of the incoming email server.
-		/// </summary>
+		/**
+		 * The port number of the incoming email server.
+		 */
 		public incomingPort: ushort = NaN;
-		/// <summary>
-		/// The username used to login to the incoming email server.
-		/// </summary>
+		/**
+		 * The username used to login to the incoming email server.
+		 */
 		public incomingLogin: string = "";
-		/// <summary>
-		/// Is the incoming email server 		/// <summary>
-		/// IMAP message sequence number so only recent messages are retrieved.
-		/// </summary>
+		/**
+		 * Is the incoming email server 		/**
+		 * IMAP message sequence number so only recent messages are retrieved.
+		 */
 		public incomingMessageNumber: uint = NaN;
-		/// <summary>
-		/// The type of outgoing protocol to use (only SMTP).
-		/// </summary>
+		/**
+		 * The type of outgoing protocol to use (only SMTP).
+		 */
 		public outgoingType: string = "";
-		/// <summary>
-		/// The domain or IP address of the outgoing email server.
-		/// </summary>
+		/**
+		 * The domain or IP address of the outgoing email server.
+		 */
 		public outgoingAddress: string = "";
-		/// <summary>
-		/// The port number of the outgoing email server.
-		/// </summary>
+		/**
+		 * The port number of the outgoing email server.
+		 */
 		public outgoingPort: ushort = NaN;
-		/// <summary>
-		/// The username used to login to the outgoing email server.
-		/// </summary>
+		/**
+		 * The username used to login to the outgoing email server.
+		 */
 		public outgoingLogin: string = "";
-		/// <summary>
-		/// Is the outgoing email server 		/// <summary>
-		/// An optional field which can be set as the "sent from" and/or "reply-to" address.
-		/// </summary>
-		/// <override format="email" />
+		/**
+		 * Is the outgoing email server 		/**
+		 * An optional field which can be set as the "sent from" and/or "reply-to" address.
+		 *  <override format="email" />
+		 */
 		public outgoingReplyTo: string = "";
 	}

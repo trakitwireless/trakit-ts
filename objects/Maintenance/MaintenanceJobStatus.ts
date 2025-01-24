@@ -1,22 +1,22 @@
 ﻿
-	/// <summary>
-	/// The lifetime of a Maintenance Job
-	/// </summary>
+	/**
+	 * The lifetime of a Maintenance Job
+	 */
 	export enum MaintenanceJobStatus {
-		/// <summary>
-		/// The work will need to be performed soon.
-		/// </summary>
+		/**
+		 * The work will need to be performed soon.
+		 */
 		pending,
-		/// <summary>
-		/// The work was scheduled, but not yet done.
-		/// </summary>
+		/**
+		 * The work was scheduled, but not yet done.
+		 */
 		pastdue,
-		/// <summary>
-		/// Work is completed.
-		/// </summary>
+		/**
+		 * Work is completed.
+		 */
 		completed,
-		/// <summary>
-		/// The job was cancelled or was not necessary.
-		/// </summary>
+		/**
+		 * The job was cancelled or was not necessary.
+		 */
 		cancelled,
 	}

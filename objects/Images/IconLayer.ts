@@ -1,34 +1,34 @@
 ﻿
-	/// <summary>
-	/// The layers of the map used to visualize the icon.
-	/// </summary>
+	/**
+	 * The layers of the map used to visualize the icon.
+	 */
 	export enum IconLayer {
-		/// <summary>
-		/// An SVG only layer just above the roads used for solid Places and accuracy radius fill.
-		/// </summary>
+		/**
+		 * An SVG only layer just above the roads used for solid Places and accuracy radius fill.
+		 */
 		fills,
-		/// <summary>
-		/// An HTML only layer intended for use by an icon's drop-shadow.
-		/// </summary>
+		/**
+		 * An HTML only layer intended for use by an icon's drop-shadow.
+		 */
 		shadows,
-		/// <summary>
-		/// An SVG only layer intended for use by shape and accuracy radius outlines.
-		/// </summary>
+		/**
+		 * An SVG only layer intended for use by shape and accuracy radius outlines.
+		 */
 		outlines,
-		/// <summary>
-		/// An HTML only layer intended for use by an icon's main images.
-		/// </summary>
+		/**
+		 * An HTML only layer intended for use by an icon's main images.
+		 */
 		markers,
-		/// <summary>
-		/// An HTML only layer intended for use by an icon's label.
-		/// </summary>
+		/**
+		 * An HTML only layer intended for use by an icon's label.
+		 */
 		labels,
-		/// <summary>
-		/// An SVG only layer for special drawing controls.  Icons should not use this layer.
-		/// </summary>
+		/**
+		 * An SVG only layer for special drawing controls.  Icons should not use this layer.
+		 */
 		drawings,
-		/// <summary>
-		/// An HTML only layer for special drawing controls.  Icons should not use this layer.
-		/// </summary>
+		/**
+		 * An HTML only layer for special drawing controls.  Icons should not use this layer.
+		 */
 		edits,
 	}

@@ -1,19 +1,19 @@
 ﻿
-	/// <summary>
-	/// Billing breakdown per target company.
-	/// </summary>
+	/**
+	 * Billing breakdown per target company.
+	 */
 	export class BillingReportBreakdown {
-		/// <summary>
-		/// The target company to which this breakdown instance belongs.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The target company to which this breakdown instance belongs.
+		 * {@link Company.id}
+		 */
 		public target: ulong = NaN;
-		/// <summary>
-		/// Individual amounts billed per targeted assets.
-		/// </summary>
+		/**
+		 * Individual amounts billed per targeted assets.
+		 */
 		public services: BillingReportServiceBreakdown[] = [];
-		/// <summary>
-		/// Individual amounts for licensing per targeted providers.
-		/// </summary>
+		/**
+		 * Individual amounts for licensing per targeted providers.
+		 */
 		public licenses: BillingReportLicenseBreakdown[] = [];
 	}

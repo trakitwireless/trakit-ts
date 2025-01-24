@@ -1,27 +1,27 @@
 ﻿
 
 
-	/// <summary>
-	/// A single- or multiple-choice input control.
-	/// </summary>
+	/**
+	 * A single- or multiple-choice input control.
+	 */
 	export class FormFieldChoice extends FormFieldBase {
-		/// <summary>
-		/// Just <see cref="FormFieldType.choice"/> control type.
-		/// </summary>
+		/**
+		 * Just <see cref="FormFieldType.choice"/> control type.
+		 */
 		protected override FormFieldType[] supported => new[] {
 			FormFieldType.choice,
 			FormFieldType.dropdown,
 		};
-		/// <summary>
-		/// The list of choices available and their values.
-		/// </summary>
+		/**
+		 * The list of choices available and their values.
+		 */
 		public choices: Map<string, string>;
-		/// <summary>
-		/// Minimum number of choices that must be selected.
-		/// </summary>
+		/**
+		 * Minimum number of choices that must be selected.
+		 */
 		public minimum: byte = NaN;
-		/// <summary>
-		/// Maximum number of choices that must be selected.
-		/// </summary>
+		/**
+		 * Maximum number of choices that must be selected.
+		 */
 		public maximum: byte = NaN;
 	}

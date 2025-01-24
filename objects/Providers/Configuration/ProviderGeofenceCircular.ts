@@ -1,18 +1,18 @@
 ﻿
 
 
-	/// <summary>
-	/// A geofence defined by a centre coordinate and a threshold value to indicate the boundary around that point.
-	/// </summary>
-	/// <override skip="false" name="" />
-	[Obsolete]
+	/**
+	 * A geofence defined by a centre coordinate and a threshold value to indicate the boundary around that point.
+	 *  <override skip="false" name="" />
+	 * @deprecated
+	 */
 	export class ProviderGeofenceCircular extends GeofenceType {
-		/// <summary>
-		/// The smallest possible radius for this geofence.
-		/// </summary>
+		/**
+		 * The smallest possible radius for this geofence.
+		 */
 		public minRadius: uint = NaN;
-		/// <summary>
-		/// The largest possible radius for this geofence.
-		/// </summary>
+		/**
+		 * The largest possible radius for this geofence.
+		 */
 		public maxRadius: uint = NaN;
 	}

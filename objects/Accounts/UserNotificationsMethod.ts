@@ -1,19 +1,19 @@
 ﻿
-	/// <summary>
-	/// The types of alerts used.
-	/// </summary>
-	/// <override name="NotificationMethod" />
+	/**
+	 * The types of alerts used.
+	 *  <override name="NotificationMethod" />
+	 */
 	export enum UserNotificationsMethod {
-		/// <summary>
-		/// A separate message sent across the WebSocket.
-		/// </summary>
+		/**
+		 * A separate message sent across the WebSocket.
+		 */
 		popup,
-		/// <summary>
-		/// A text message (SMS).
-		/// </summary>
+		/**
+		 * A text message (SMS).
+		 */
 		sms,
-		/// <summary>
-		/// Carrier pigeon.
-		/// </summary>
+		/**
+		 * Carrier pigeon.
+		 */
 		email,
 	}

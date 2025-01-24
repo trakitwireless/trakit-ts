@@ -1,26 +1,26 @@
 ﻿
-	/// <summary>
-	/// The lifetime of building a <see cref="BillingReport"/>.
-	/// </summary>
+	/**
+	 * The lifetime of building a <see cref="BillingReport"/>.
+	 */
 	export enum BillingReportStatus {
-		/// <summary>
-		/// The <see cref="BillingReport"/> has been requested, but not yet begun processing.
-		/// </summary>
+		/**
+		 * The <see cref="BillingReport"/> has been requested, but not yet begun processing.
+		 */
 		created,
-		/// <summary>
-		/// The <see cref="BillingReport"/> is waiting for required resources to begin processing.
-		/// </summary>
+		/**
+		 * The <see cref="BillingReport"/> is waiting for required resources to begin processing.
+		 */
 		queued,
-		/// <summary>
-		/// The <see cref="BillingReport"/> is currently being processed.
-		/// </summary>
+		/**
+		 * The <see cref="BillingReport"/> is currently being processed.
+		 */
 		running,
-		/// <summary>
-		/// The <see cref="BillingReport"/> is available for retrieval.
-		/// </summary>
+		/**
+		 * The <see cref="BillingReport"/> is available for retrieval.
+		 */
 		completed,
-		/// <summary>
-		/// There was an error processing the <see cref="BillingReport"/>; see the <see cref="BillingReport.error"/> for a description.
-		/// </summary>
+		/**
+		 * There was an error processing the <see cref="BillingReport"/>; see the <see cref="BillingReport.error"/> for a description.
+		 */
 		failed,
 	}

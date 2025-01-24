@@ -1,30 +1,30 @@
 ﻿
-	/// <summary>
-	/// Progress lifetime of command for the device/modem.
-	/// </summary>
+	/**
+	 * Progress lifetime of command for the device/modem.
+	 */
 	export enum ProviderCommandStatus {
-		/// <summary>
-		/// The new command has been created, but not yet sent to the provider.
-		/// </summary>
+		/**
+		 * The new command has been created, but not yet sent to the provider.
+		 */
 		created,
-		/// <summary>
-		/// Command was processed and sent to the provider.
-		/// </summary>
+		/**
+		 * Command was processed and sent to the provider.
+		 */
 		pending,
-		/// <summary>
-		/// Provider is taking some action related to this command. eg. Checking in for config update or getting tasks list.
-		/// </summary>
+		/**
+		 * Provider is taking some action related to this command. eg. Checking in for config update or getting tasks list.
+		 */
 		inProgress,
-		/// <summary>
-		/// Command was successfully processed by the provider.
-		/// </summary>
+		/**
+		 * Command was successfully processed by the provider.
+		 */
 		completed,
-		/// <summary>
-		/// Something went wrong while trying to send or process the command.
-		/// </summary>
+		/**
+		 * Something went wrong while trying to send or process the command.
+		 */
 		failed,
-		/// <summary>
-		/// Sending of the new command was halted by a user.
-		/// </summary>
+		/**
+		 * Sending of the new command was halted by a user.
+		 */
 		cancelled,
 	}

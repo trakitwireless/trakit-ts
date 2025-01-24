@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// An automatically generated notification sent to a user by the system.
-	/// </summary>
+	/**
+	 * An automatically generated notification sent to a user by the system.
+	 */
 	export class AssetAlert extends MessageBase {
-		/// <summary>
-		/// The priority for which this message must send.
-		/// </summary>
+		/**
+		 * The priority for which this message must send.
+		 */
 		public priority: AlertPriority;
 	}

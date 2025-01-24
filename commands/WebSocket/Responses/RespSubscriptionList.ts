@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// Gets the list of current subscriptions for your current session.
-	/// </summary>
+	/**
+	 * Gets the list of current subscriptions for your current session.
+	 */
 	export class RespSubscriptionList extends Response {
-		/// <summary>
-		/// The list of your current subscription types.
-		/// </summary>
+		/**
+		 * The list of your current subscription types.
+		 */
 		public subscriptions: Subscription[] = [];
 	}

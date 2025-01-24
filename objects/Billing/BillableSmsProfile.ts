@@ -1,15 +1,15 @@
 ﻿
-	/// <summary>
-	/// Description of a tiered SMS messaging limit
-	/// </summary>
+	/**
+	 * Description of a tiered SMS messaging limit
+	 */
 	export class BillableSmsProfile {
-		/// <summary>
-		/// The maximum number of messages sent per cycle
-		/// </summary>
+		/**
+		 * The maximum number of messages sent per cycle
+		 */
 		public limit: uint = NaN;
-		/// <summary>
-		/// Cost per SMS message sent.
-		/// Received messages are free.
-		/// </summary>
+		/**
+		 * Cost per SMS message sent.
+		 * Received messages are free.
+		 */
 		public amount: double = NaN;
 	}

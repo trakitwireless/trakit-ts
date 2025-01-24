@@ -1,59 +1,58 @@
 
 
-	/// <summary>
-	/// The configured script loaded onto the provider over-the-air to control it's reporting schedule and behaviour.
-	/// </summary>
+	/**
+	 * The configured script loaded onto the provider over-the-air to control it's reporting schedule and behaviour.
+	 */
 	export class ProviderConfig extends Component implements IIdUlong, INamed, IBelongCompany, IDeletable {
-		/// <summary>
-		/// Unique identifier of this configuration.
-		/// </summary>
+		/**
+		 * Unique identifier of this configuration.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The company to which this configuration belongs.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which this configuration belongs.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// The script which this configuration implements.
-		/// </summary>
-		/// <seealso cref="ProviderScript.id" />
+		/**
+		 * The script which this configuration implements.
+		 * {@link ProviderScript.id}
+		 */
 		public script: ulong = NaN;
-		/// <summary>
-		/// The nickname given to this configuration
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The nickname given to this configuration
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Simple details about how the providers are expected to behave.
-		/// </summary>
+		/**
+		 * Simple details about how the providers are expected to behave.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// The list of defined variable name/value pairs that the script requires.
-		/// </summary>
+		/**
+		 * The list of defined variable name/value pairs that the script requires.
+		 */
 		public parameters: Map<string, string>;
-		/// <summary>
-		/// A search pattern used to filter which Places' geometry are used as geofences.
-		/// Use null to disable.
-		/// Use "*" to match all the Places the Provider's Asset can match.
-		/// Or use "#123456" or "label:term" like other Place search patterns.
-		/// </summary>
-		/// <override type="System.String" format="expression" />
+		/**
+		 * A search pattern used to filter which Places' geometry are used as geofences.
+		 * Use null to disable.
+		 * Use "*" to match all the Places the Provider's Asset can match.
+		 * Or use "#123456" or "label:term" like other Place search patterns.
+		 *  <override type="System.String" format="expression" />
+		 */
 		public geofences: string = "";
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		public since: Date = DATE();
 	}

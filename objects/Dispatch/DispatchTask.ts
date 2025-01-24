@@ -1,124 +1,123 @@
 
 
-	/// <summary>
-	/// A task assigned to an asset which represents a coordinate on the map which must be visited.
-	/// </summary>
-	[Obsolete("Use DispatchJob instead")]
+	/**
+	 * A task assigned to an asset which represents a coordinate on the map which must be visited.
+	 * @deprecated Use DispatchJob instead
+	 */
 	export class DispatchTask extends Component implements IIdUlong, IBelongCompany, IBelongAsset, IDeletable {
-		/// <summary>
-		/// Unique identifier of this task.
-		/// </summary>
+		/**
+		 * Unique identifier of this task.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The company to which this task belongs.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which this task belongs.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// The asset to which this task belongs.
-		/// </summary>
-		/// <seealso cref="Asset.id" />
+		/**
+		 * The asset to which this task belongs.
+		 * {@link Asset.id}
+		 */
 		public asset: ulong = NaN;
-		/// <summary>
-		/// The name of this task or the work needed to be performed.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The name of this task or the work needed to be performed.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Name/value collections of custom fields used to refer to external systems.
-		/// </summary>
-		/// <override max-count="10">
-		/// <keys max-length="20" />
-		/// <values max-length="100" />
-		/// </override>
+		/**
+		 * Name/value collections of custom fields used to refer to external systems.
+		 *  <override max-count="10">
+		 *  <keys max-length="20" />
+		 *  <values max-length="100" />
+		 *  </override>
+		 */
 		public references: Map<string, string>;
-		/// <summary>
-		/// An optional place which can be used as a template instead of providing lat/long coordinates and a street address.
-		/// </summary>
-		/// <seealso cref="Place.id" />
+		/**
+		 * An optional place which can be used as a template instead of providing lat/long coordinates and a street address.
+		 * {@link Place.id}
+		 */
 		public place: ulong = NaN;
-		/// <summary>
-		/// The street address of where the task must be completed.
-		/// </summary>
-		/// <override max-length="500" />
+		/**
+		 * The street address of where the task must be completed.
+		 *  <override max-length="500" />
+		 */
 		public address: string = "";
-		/// <summary>
-		/// The lat/long coordinates of where the task must be completed.
-		/// </summary>
+		/**
+		 * The lat/long coordinates of where the task must be completed.
+		 */
 		public latlng: LatLng;
-		/// <summary>
-		/// The progress of this task.
-		/// </summary>
+		/**
+		 * The progress of this task.
+		 */
 		public status: DispatchTaskStatus;
-		/// <summary>
-		/// When this task was created.
-		/// </summary>
+		/**
+		 * When this task was created.
+		 */
 		public created: Date = DATE();
-		/// <summary>
-		/// The optional estimated time of arrival for the asset.
-		/// </summary>
+		/**
+		 * The optional estimated time of arrival for the asset.
+		 */
 		public eta: Date = DATE();
-		/// <summary>
-		/// The optional expected duration of the work for this task.
-		/// </summary>
+		/**
+		 * The optional expected duration of the work for this task.
+		 */
 		public duration?: TimeSpan;
-		/// <summary>
-		/// The date/time stamp of when the asset arrived at this task.
-		/// </summary>
+		/**
+		 * The date/time stamp of when the asset arrived at this task.
+		 */
 		public arrived: Date = DATE();
-		/// <summary>
-		/// The date/time stamp of when this task was completed.
-		/// </summary>
+		/**
+		 * The date/time stamp of when this task was completed.
+		 */
 		public completed: Date = DATE();
-		/// <summary>
-		/// Instructions (filled out by dispatcher) for the field-employee to help them completed the task.
-		/// </summary>
+		/**
+		 * Instructions (filled out by dispatcher) for the field-employee to help them completed the task.
+		 */
 		public instructions: string = "";
-		/// <summary>
-		/// Indicates whether the task has a signature.
-		/// </summary>
+		/**
+		 * Indicates whether the task has a signature.
+		 */
 		public signature: boolean = false;
-		/// <summary>
-		/// The name of the person who signed the task's completion.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The name of the person who signed the task's completion.
+		 *  <override max-length="100" />
+		 */
 		public signatory: string = "";
-		/// <summary>
-		/// Notes about the status of the work filled in by field-employee.
-		/// </summary>
+		/**
+		 * Notes about the status of the work filled in by field-employee.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// A list of hosted <see cref="Document"/> identifiers attached to this task.
-		/// </summary>
-		/// <override max-count="10">
-		/// <values>
-		/// <seealso cref="Document.id" />
-		/// </values>
-		/// </override>
+		/**
+		 * A list of hosted <see cref="Document"/> identifiers attached to this task.
+		 *  <override max-count="10">
+		 *  <values>
+		 * {@link Document.id}
+		 *  </values>
+		 *  </override>
+		 */
 		public attachments: ulong[] = [];
-		/// <summary>
-		/// Either the user's login, or provider's identifier that changed this task
-		/// </summary>
+		/**
+		 * Either the user's login, or provider's identifier that changed this task
+		 */
 		public updatedBy: string = "";
-		/// <summary>
-		/// Timestamp from the last change made to this task
-		/// </summary>
+		/**
+		 * Timestamp from the last change made to this task
+		 */
 		public updatedUtc: Date = DATE();
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		public since: Date = DATE();
 	}

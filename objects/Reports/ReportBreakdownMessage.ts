@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// Message information used in this report.
-	/// </summary>
+	/**
+	 * Message information used in this report.
+	 */
 	export class ReportBreakdownMessage extends ReportBreakdown {
-		/// <summary>
-		/// The Message used.
-		/// </summary>
+		/**
+		 * The Message used.
+		 */
 		public message: AssetMessage;
 	}

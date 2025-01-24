@@ -1,22 +1,22 @@
 ﻿
-	/// <summary>
-	/// The type of logged message.
-	/// </summary>
+	/**
+	 * The type of logged message.
+	 */
 	export enum BehaviourLogType {
-		/// <summary>
-		/// Used for general information messages.
-		/// </summary>
+		/**
+		 * Used for general information messages.
+		 */
 		log,
-		/// <summary>
-		/// Used for more important messages.
-		/// </summary>
+		/**
+		 * Used for more important messages.
+		 */
 		info,
-		/// <summary>
-		/// Used for warnings.
-		/// </summary>
+		/**
+		 * Used for warnings.
+		 */
 		warn,
-		/// <summary>
-		/// Used for errors.
-		/// </summary>
+		/**
+		 * Used for errors.
+		 */
 		err,
 	}

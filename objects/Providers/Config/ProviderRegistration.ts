@@ -1,93 +1,92 @@
 
 
-	/// <summary>
-	/// The temporary reference to a device whose ownership is pending.
-	/// </summary>
+	/**
+	 * The temporary reference to a device whose ownership is pending.
+	 */
 	export class ProviderRegistration implements IRequestable implements INamed, IBelongCompany, IDeletable {
-		/// <summary>
-		/// A unique six digit code.
-		/// </summary>
-		/// <override length="6" />
+		/**
+		 * A unique six digit code.
+		 *  <override length="6" />
+		 */
 		public code: string = "";
-		/// <summary>
-		/// The company to which the device will belong.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which the device will belong.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// A nickname given to the device once it has been provisioned.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * A nickname given to the device once it has been provisioned.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes!
-		/// </summary>
+		/**
+		 * Notes!
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// The password programmed on the device used to ensure the system is the only client authorized to make changes.
-		/// </summary>
-		/// <override max-length="50" />
+		/**
+		 * The password programmed on the device used to ensure the system is the only client authorized to make changes.
+		 *  <override max-length="50" />
+		 */
 		public password: string = "";
-		/// <summary>
-		/// The unique identifier the user who generated this registration.
-		/// </summary>
-		/// <seealso cref="User.login" />
-		/// <override max-length="254" format="email" />
+		/**
+		 * The unique identifier the user who generated this registration.
+		 * {@link User.login}
+		 *  <override max-length="254" format="email" />
+		 */
 		public user: string = "";
-		/// <summary>
-		/// The predefined configuration this device will use.
-		/// </summary>
-		/// <seealso cref="ProviderConfig.id" />
-		/// <seealso cref="ProviderConfiguration.id" />
+		/**
+		 * The predefined configuration this device will use.
+		 * {@link ProviderConfig.id}
+		 * {@link ProviderConfiguration.id}
+		 */
 		public config: ulong = NaN;
-		/// <summary>
-		/// The kind of protocol this device supports.
-		/// </summary>
+		/**
+		 * The kind of protocol this device supports.
+		 */
 		public kind: ProviderType;
-		/// <summary>
-		/// Date/time stamp of when this registration began.
-		/// </summary>
+		/**
+		 * Date/time stamp of when this registration began.
+		 */
 		public since: Date = DATE();
-		/// <summary>
-		/// Date/time stamp of when this registration ended successfully.
-		/// </summary>
+		/**
+		 * Date/time stamp of when this registration ended successfully.
+		 */
 		public completed: Date = DATE();
-		/// <summary>
-		/// The expiry date for this registration.
-		/// </summary>
+		/**
+		 * The expiry date for this registration.
+		 */
 		public expires: Date = DATE();
-		/// <summary>
-		/// The unique identifier of the device that completed this registration.
-		/// </summary>
-		/// <seealso cref="Provider.id" />
-		/// <override max-length="50" />
+		/**
+		 * The unique identifier of the device that completed this registration.
+		 * {@link Provider.id}
+		 *  <override max-length="50" />
+		 */
 		public identifier: string = "";
-		/// <summary>
-		/// The Asset for which this device will provide data.
-		/// </summary>
-		/// <seealso cref="Asset.id" />
+		/**
+		 * The Asset for which this device will provide data.
+		 * {@link Asset.id}
+		 */
 		public asset: ulong = NaN;
-		/// <summary>
-		/// The phone number of the device being provisioned.
-		/// This is set by the user for long-term registrations, or by the client during serial port setup.
-		/// </summary>
-		/// <override format="phone" />
+		/**
+		 * The phone number of the device being provisioned.
+		 * This is set by the user for long-term registrations, or by the client during serial port setup.
+		 *  <override format="phone" />
+		 */
 		public phoneNumber: ulong = NaN;
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public string GetKey() => this.code;
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public string GetKey() => this.code;
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public boolean? deleted => this.expires < Date.UtcNow;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		Date? IDeletable.since => this.since;
 	}

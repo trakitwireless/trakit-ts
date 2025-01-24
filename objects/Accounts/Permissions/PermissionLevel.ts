@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// The levels of permission available.
-	/// </summary>
+	/**
+	 * The levels of permission available.
+	 */
 	export enum PermissionLevel {
-		/// <summary>
-		/// Read-only access, no changes allowed.
-		/// </summary>
+		/**
+		 * Read-only access, no changes allowed.
+		 */
 		read,
-		/// <summary>
-		/// Read and write access, but things cannot be deleted or new things created.
-		/// </summary>
+		/**
+		 * Read and write access, but things cannot be deleted or new things created.
+		 */
 		update,
-		/// <summary>
-		/// Full control to read, write, delete and create things.
-		/// </summary>
+		/**
+		 * Full control to read, write, delete and create things.
+		 */
 		full,
 	}

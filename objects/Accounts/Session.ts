@@ -1,53 +1,53 @@
 
 
 
-	/// <summary>
-	/// Information about another <see cref="User"/>'s <see cref="Session"/>.
-	/// </summary>
+	/**
+	 * Information about another <see cref="User"/>'s <see cref="Session"/>.
+	 */
 	export class Session implements IBelongCompany {
-		/// <summary>
-		/// A "handle" identifying a resource.
-		/// </summary>
+		/**
+		 * A "handle" identifying a resource.
+		 */
 		public handle: string = "";
-		/// <summary>
-		/// Getter shortcut for the <see cref="User"/>'s <see cref="Company.id"/>.
-		/// </summary>
+		/**
+		 * Getter shortcut for the <see cref="User"/>'s <see cref="Company.id"/>.
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// <c>UserAgent</c> identification string
-		/// </summary>
+		/**
+		 *  <c>UserAgent</c> identification string
+		 */
 		public userAgent: string = "";
-		/// <summary>
-		/// The IP address the user last used to connect 
-		/// <summary>
-		/// The number of currently connected WebSocket clients.
-		/// </summary>
+		/**
+		 * The IP address the user last used to connect 
+		/**
+		 * The number of currently connected WebSocket clients.
+		 */
 		public sockets: int = NaN;
-		/// <summary>
-		/// The <see cref="User"/> to which the <see cref="Session"/> belongs.
-		/// </summary>
-		/// <seealso cref="User.login" />
+		/**
+		 * The <see cref="User"/> to which the <see cref="Session"/> belongs.
+		 * {@link User.login}
+		 */
 		public login: string = "";
-		/// <summary>
-		/// This <see cref="Session"/>'s current state.
-		/// </summary>
+		/**
+		 * This <see cref="Session"/>'s current state.
+		 */
 		public status: SessionStatus;
-		/// <summary>
-		/// The timestamp from the moment this <see cref="Session"/> was created.
-		/// </summary>
+		/**
+		 * The timestamp from the moment this <see cref="Session"/> was created.
+		 */
 		public created: Date = DATE();
-		/// <summary>
-		/// A timestamp for when the <see cref="RespSession"/> will expire.
-		/// </summary>
+		/**
+		 * A timestamp for when the <see cref="RespSession"/> will expire.
+		 */
 		public expiry: Date = DATE();
-		/// <summary>
-		/// The name or path of the last command executed.
-		/// </summary>
+		/**
+		 * The name or path of the last command executed.
+		 */
 		public lastCommand: string = "";
-		/// <summary>
-		/// A timestamp from the last command or call to the system.
-		/// </summary>
+		/**
+		 * A timestamp from the last command or call to the system.
+		 */
 		public lastActivity: Date = DATE();
-		/// <summary>
-		/// Indicator that this <see cref="Session"/> is 
+		/**
+		 * Indicator that this <see cref="Session"/> is 
 	}

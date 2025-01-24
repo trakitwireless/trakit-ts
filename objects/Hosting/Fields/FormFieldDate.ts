@@ -1,24 +1,24 @@
 
 
 
-	/// <summary>
-	/// A control to choose a date and (optionally) a time.
-	/// </summary>
+	/**
+	 * A control to choose a date and (optionally) a time.
+	 */
 	export class FormFieldDate extends FormFieldBase {
-		/// <summary>
-		/// These are the calendar control types.
-		/// </summary>
+		/**
+		 * These are the calendar control types.
+		 */
 		protected override FormFieldType[] supported => new[] {
 			FormFieldType.date,
 			FormFieldType.datetime,
 		};
 
-		/// <summary>
-		/// The earliest date or date/time.
-		/// </summary>
+		/**
+		 * The earliest date or date/time.
+		 */
 		public minimum: Date = DATE();
-		/// <summary>
-		/// The latest date or date/time.
-		/// </summary>
+		/**
+		 * The latest date or date/time.
+		 */
 		public maximum: Date = DATE();
 	}

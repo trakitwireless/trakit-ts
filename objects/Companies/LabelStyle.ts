@@ -1,35 +1,35 @@
 ﻿
-	/// <summary>
-	/// Visual style identification helper.
-	/// </summary>
+	/**
+	 * Visual style identification helper.
+	 */
 	export class LabelStyle implements INamed implements IVisual {
-		/// <summary>
-		/// The name of this visual style.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The name of this visual style.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// The codified name of this style
-		/// </summary>
-		/// <override readonly="true" format="codified" />
+		/**
+		 * The codified name of this style
+		 *  <override readonly="true" format="codified" />
+		 */
 		public code: string = "";
-		/// <summary>
-		/// The background colour given to this style for easy visual identification.
-		/// </summary>
-		/// <override max-length="22" format="colour" />
+		/**
+		 * The background colour given to this style for easy visual identification.
+		 *  <override max-length="22" format="colour" />
+		 */
 		public fill: string = "";
-		/// <summary>
-		/// The text/graphic colour given to this style for easy visual identification.
-		/// </summary>
-		/// <override max-length="22" format="colour" />
+		/**
+		 * The text/graphic colour given to this style for easy visual identification.
+		 *  <override max-length="22" format="colour" />
+		 */
 		public stroke: string = "";
-		/// <summary>
-		/// The codified graphic name given to this script for easy visual identification.
-		/// </summary>
-		/// <override max-length="22" format="codified" />
+		/**
+		 * The codified graphic name given to this script for easy visual identification.
+		 *  <override max-length="22" format="codified" />
+		 */
 		public graphic: string = "";
-		/// <summary>
-		/// Notes!
-		/// </summary>
+		/**
+		 * Notes!
+		 */
 		public notes: string = "";
 	}

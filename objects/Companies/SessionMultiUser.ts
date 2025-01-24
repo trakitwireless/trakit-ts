@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// Defines the behaviour of the system when a user creates multiple sessions.
-	/// </summary>
+	/**
+	 * Defines the behaviour of the system when a user creates multiple sessions.
+	 */
 	export enum SessionMultiUser {
-		/// <summary>
-		/// Allow users to create multiple simultaneous sessions.
-		/// </summary>
+		/**
+		 * Allow users to create multiple simultaneous sessions.
+		 */
 		allow,
-		/// <summary>
-		/// Deny users from creating new sessions if they already have an active session.
-		/// </summary>
+		/**
+		 * Deny users from creating new sessions if they already have an active session.
+		 */
 		deny,
-		/// <summary>
-		/// Allow users to create a new session, but automatically kill the previous session.
-		/// </summary>
+		/**
+		 * Allow users to create a new session, but automatically kill the previous session.
+		 */
 		replace,
 	}

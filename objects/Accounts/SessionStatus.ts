@@ -1,30 +1,30 @@
 ﻿
-	/// <summary>
-	/// Current state of a session
-	/// </summary>
+	/**
+	 * Current state of a session
+	 */
 	export enum SessionStatus {
-		/// <summary>
-		/// Invalid session reference.
-		/// </summary>
+		/**
+		 * Invalid session reference.
+		 */
 		notFound,
-		/// <summary>
-		/// Session created but user hasn't logged-in yet.
-		/// </summary>
+		/**
+		 * Session created but user hasn't logged-in yet.
+		 */
 		created,
-		/// <summary>
-		/// User is logged-in and one or more WebSocket connections are open.
-		/// </summary>
+		/**
+		 * User is logged-in and one or more WebSocket connections are open.
+		 */
 		active,
-		/// <summary>
-		/// User is logged-in but no WebSocket connections are open.
-		/// </summary>
+		/**
+		 * User is logged-in but no WebSocket connections are open.
+		 */
 		idle,
-		/// <summary>
-		/// User is logged-in and password is expired and needs to be changed before any commands can be processed.
-		/// </summary>
+		/**
+		 * User is logged-in and password is expired and needs to be changed before any commands can be processed.
+		 */
 		passwordExpired,
-		/// <summary>
-		/// Session is being killed because it has expired.
-		/// </summary>
+		/**
+		 * Session is being killed because it has expired.
+		 */
 		expired,
 	}

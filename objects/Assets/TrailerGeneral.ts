@@ -1,35 +1,35 @@
 ﻿
-	/// <summary>
-	/// Seldom changing details about a trailer.
-	/// </summary>
+	/**
+	 * Seldom changing details about a trailer.
+	 */
 	export class TrailerGeneral extends AssetGeneral {
-		/// <summary>
-		/// The license plate.
-		/// </summary>
-		/// <override max-length="50" />
+		/**
+		 * The license plate.
+		 *  <override max-length="50" />
+		 */
 		public plate: string = "";
-		/// <summary>
-		/// Manufacturer's unique identification number for this trailer.
-		/// </summary>
-		/// <override max-length="50" />
+		/**
+		 * Manufacturer's unique identification number for this trailer.
+		 *  <override max-length="50" />
+		 */
 		public serial: string = "";
-		/// <summary>
-		/// Manufacturer's name.
-		/// </summary>
-		/// <override max-length="50" />
+		/**
+		 * Manufacturer's name.
+		 *  <override max-length="50" />
+		 */
 		public make: string = "";
-		/// <summary>
-		/// Manufacturer's model name/number.
-		/// </summary>
-		/// <override max-length="50" />
+		/**
+		 * Manufacturer's model name/number.
+		 *  <override max-length="50" />
+		 */
 		public model: string = "";
-		/// <summary>
-		/// Year of manufacturing.
-		/// </summary>
+		/**
+		 * Year of manufacturing.
+		 */
 		public year: ushort = NaN;
-		/// <summary>
-		/// Primary colour of the trailer (given in 24bit hex; #RRGGBB)
-		/// </summary>
-		/// <override max-length="22" format="colour" />
+		/**
+		 * Primary colour of the trailer (given in 24bit hex; #RRGGBB)
+		 *  <override max-length="22" format="colour" />
+		 */
 		public colour: string = "";
 	}

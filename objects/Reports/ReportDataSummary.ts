@@ -1,62 +1,62 @@
 
 
 
-	/// <summary>
-	/// Summarized asset details.
-	/// </summary>
+	/**
+	 * Summarized asset details.
+	 */
 	export class ReportSummary {
-		/// <summary>
-		/// The asset to which this summary instance belongs.
-		/// </summary>
-		/// <seealso cref="Asset.id" />
+		/**
+		 * The asset to which this summary instance belongs.
+		 * {@link Asset.id}
+		 */
 		public asset: ulong = NaN;
-		/// <summary>
-		/// Code given to this summary instance for an asset.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * Code given to this summary instance for an asset.
+		 *  <override max-length="100" />
+		 */
 		public stateDetail: string = "";
-		/// <summary>
-		/// Identifier of the summary instance in the report.
-		/// </summary>
+		/**
+		 * Identifier of the summary instance in the report.
+		 */
 		public instance: uint = NaN;
-		/// <summary>
-		/// The number of events included in calculating this summary instance.
-		/// </summary>
+		/**
+		 * The number of events included in calculating this summary instance.
+		 */
 		public instancesCount: uint = NaN;
-		/// <summary>
-		/// Date/time stamp of the first event in this summary's sequence.
-		/// </summary>
+		/**
+		 * Date/time stamp of the first event in this summary's sequence.
+		 */
 		public startingUtc: Date = DATE();
-		/// <summary>
-		/// The reason code that this summary instance began.
-		/// </summary>
+		/**
+		 * The reason code that this summary instance began.
+		 */
 		public startingReason: ReportSummaryReason;
-		/// <summary>
-		/// Date/time stamp of the last event in this summary's sequence.
-		/// </summary>
+		/**
+		 * Date/time stamp of the last event in this summary's sequence.
+		 */
 		public endingUtc: Date = DATE();
-		/// <summary>
-		/// The reason code that this summary instance ended.
-		/// </summary>
+		/**
+		 * The reason code that this summary instance ended.
+		 */
 		public ReportSummaryReason endingReason = ReportSummaryReason.outsideRange;
-		/// <summary>
-		/// The distance travelled in kilometres by the asset during this summary instance.
-		/// </summary>
+		/**
+		 * The distance travelled in kilometres by the asset during this summary instance.
+		 */
 		public distance: double = NaN;
-		/// <summary>
-		/// The amount of time that passed.
-		/// </summary>
+		/**
+		 * The amount of time that passed.
+		 */
 		public get duration(): TimeSpan { return this.endingUtc - this.startingUtc; }
-		/// <summary>
-		/// A simplified polyline of all the asset's positions in sequence.
-		/// </summary>
+		/**
+		 * A simplified polyline of all the asset's positions in sequence.
+		 */
 		public polyline: LatLng[] = [];
-		/// <summary>
-		/// The first asset state which begins this summary instance.
-		/// </summary>
+		/**
+		 * The first asset state which begins this summary instance.
+		 */
 		public firstState: Asset;
-		/// <summary>
-		/// The asset state that ended this summary instance.
-		/// </summary>
+		/**
+		 * The asset state that ended this summary instance.
+		 */
 		public lastState: Asset;
 	}

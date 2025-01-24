@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// Dispatch Task information used in this report.
-	/// </summary>
+	/**
+	 * Dispatch Task information used in this report.
+	 */
 	export class ReportBreakdownTask extends ReportBreakdown {
-		/// <summary>
-		/// The Task used.
-		/// </summary>
+		/**
+		 * The Task used.
+		 */
 		public task: DispatchTask;
 	}

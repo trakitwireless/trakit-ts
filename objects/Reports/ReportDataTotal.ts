@@ -1,31 +1,31 @@
 ﻿
 
 
-	/// <summary>
-	/// Totalled information from all the results of the report.
-	/// </summary>
-	/// <override name="ReportTotal" />
+	/**
+	 * Totalled information from all the results of the report.
+	 *  <override name="ReportTotal" />
+	 */
 	export class ReportDataTotal {
-		/// <summary>
-		/// The asset to which this report total belongs.
-		/// </summary>
-		/// <seealso cref="Asset.id" />
+		/**
+		 * The asset to which this report total belongs.
+		 * {@link Asset.id}
+		 */
 		public asset: ulong = NaN;
-		/// <summary>
-		/// Unique code given to the report total.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * Unique code given to the report total.
+		 *  <override max-length="100" />
+		 */
 		public stateDetail: string = "";
-		/// <summary>
-		/// The number of summary instances included in this total.
-		/// </summary>
+		/**
+		 * The number of summary instances included in this total.
+		 */
 		public summaryCount: uint = NaN;
-		/// <summary>
-		/// The total duration of all summary instances.
-		/// </summary>
+		/**
+		 * The total duration of all summary instances.
+		 */
 		public duration: TimeSpan;
-		/// <summary>
-		/// The total distance travelled in kilometres of all summary instances.
-		/// </summary>
+		/**
+		 * The total distance travelled in kilometres of all summary instances.
+		 */
 		public distance: double = NaN;
 	}

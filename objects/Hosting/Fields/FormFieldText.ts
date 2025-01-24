@@ -1,27 +1,27 @@
 ﻿
-	/// <summary>
-	/// A text input control.
-	/// </summary>
+	/**
+	 * A text input control.
+	 */
 	export class FormFieldText extends FormFieldBase {
-		/// <summary>
-		/// Just <see cref="FormFieldType.text"/> control type.
-		/// </summary>
+		/**
+		 * Just <see cref="FormFieldType.text"/> control type.
+		 */
 		protected override FormFieldType[] supported => new[] {
 			FormFieldType.text,
 		};
-		/// <summary>
-		/// The number of rows of text to display.
-		/// </summary>
-		/// <remarks>
-		/// The control should grow to display all entered text even if the UI must add more rows.
-		/// </remarks>
+		/**
+		 * The number of rows of text to display.
+		 *  <remarks>
+		 * The control should grow to display all entered text even if the UI must add more rows.
+		 *  </remarks>
+		 */
 		public rows: byte = NaN;
-		/// <summary>
-		/// Minimum length of entered text to make it a valid entry.
-		/// </summary>
+		/**
+		 * Minimum length of entered text to make it a valid entry.
+		 */
 		public minimum: ushort = NaN;
-		/// <summary>
-		/// Maximum length of entered text to make it a valid entry.
-		/// </summary>
+		/**
+		 * Maximum length of entered text to make it a valid entry.
+		 */
 		public maximum: ushort = NaN;
 	}

@@ -1,14 +1,14 @@
 ﻿
-	/// <summary>
-	/// Rules used for generating a scorecard.
-	/// </summary>
+	/**
+	 * Rules used for generating a scorecard.
+	 */
 	export class ReportScorecardRules {
-		/// <summary>
-		/// Base score for the scorecard.
-		/// </summary>
+		/**
+		 * Base score for the scorecard.
+		 */
 		public baseScore: double = NaN;
-		/// <summary>
-		/// Infraction parameters used to generate the final score
-		/// </summary>
+		/**
+		 * Infraction parameters used to generate the final score
+		 */
 		public parameters: ReportScorecardParameter[] = [];
 	}

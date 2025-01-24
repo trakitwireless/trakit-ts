@@ -1,66 +1,65 @@
 
 
-	/// <summary>
-	/// A partially created report used to quickly build results.
-	/// </summary>
+	/**
+	 * A partially created report used to quickly build results.
+	 */
 	export class ReportTemplate extends Component implements IIdUlong, INamed, IBelongCompany, IVisual, IDeletable {
-		/// <summary>
-		/// Unique identifier
-		/// </summary>
+		/**
+		 * Unique identifier
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The company to which this report belongs
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which this report belongs
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// Refers to the type of logic used by this report.
-		/// </summary>
+		/**
+		 * Refers to the type of logic used by this report.
+		 */
 		public kind: ReportType;
-		/// <summary>
-		/// Name of this report.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * Name of this report.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes about this report.
-		/// </summary>
+		/**
+		 * Notes about this report.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Specified parameters for the report logic, targeted Assets, and filtering Places.
-		/// </summary>
+		/**
+		 * Specified parameters for the report logic, targeted Assets, and filtering Places.
+		 */
 		public options: ReportOptions;
 
-		/// <summary>
-		/// The fill/background colour of the icon.
-		/// </summary>
-		/// <override max-length="22" format="colour" />
+		/**
+		 * The fill/background colour of the icon.
+		 *  <override max-length="22" format="colour" />
+		 */
 		public fill: string = "";
-		/// <summary>
-		/// Outline and graphic colour.
-		/// </summary>
-		/// <override max-length="22" format="colour" />
+		/**
+		 * Outline and graphic colour.
+		 *  <override max-length="22" format="colour" />
+		 */
 		public stroke: string = "";
-		/// <summary>
-		/// The name of the symbol for this report.
-		/// </summary>
-		/// <override max-length="22" format="codified" />
+		/**
+		 * The name of the symbol for this report.
+		 *  <override max-length="22" format="codified" />
+		 */
 		public graphic: string = "";
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		public since: Date = DATE();
 	}

@@ -1,61 +1,61 @@
 ﻿
-	/// <summary>
-	/// Definition for the kinds of permission escalations.
-	/// </summary>
+	/**
+	 * Definition for the kinds of permission escalations.
+	 */
 	export enum PermissionEscalationType {
-		/// <summary>
-		/// Increase in privileges.
-		/// </summary>
+		/**
+		 * Increase in privileges.
+		 */
 		vertical = "vertical",
-		/// <summary>
-		/// Increase in access to an object.
-		/// </summary>
+		/**
+		 * Increase in access to an object.
+		 */
 		horizontal = "horizontal",
 	}
-	/// <summary>
-	/// Used to throw permission escalation exceptions, this is similar to a <see cref="Permission"/>,
-	/// but defines a <see cref="before"/> and <see cref="after"/> for a proposed change.
-	/// </summary>
+	/**
+	 * Used to throw permission escalation exceptions, this is similar to a <see cref="Permission"/>,
+	 * but defines a <see cref="before"/> and <see cref="after"/> for a proposed change.
+	 */
 	export class PermissionEscalation {
-		/// <summary>
-		/// Gets the direction of the escalation.
-		/// </summary>
+		/**
+		 * Gets the direction of the escalation.
+		 */
 		public direction: PermissionEscalationType;
-		/// <summary>
-		/// The <see cref="Company"/> that this permission targets.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The <see cref="Company"/> that this permission targets.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// The type of permission.
-		/// </summary>
+		/**
+		 * The type of permission.
+		 */
 		public kind: PermissionType;
-		/// <summary>
-		/// Effective permission after the proposed change.
-		/// </summary>
+		/**
+		 * Effective permission after the proposed change.
+		 */
 		public after: PermissionEscalationState;
-		/// <summary>
-		/// Effective permission before the proposed change.
-		/// </summary>
+		/**
+		 * Effective permission before the proposed change.
+		 */
 		public before: PermissionEscalationState;
 	}
 
-	/// <summary>
-	/// Describes the changes in state that raised the escalation.
-	/// </summary>
+	/**
+	 * Describes the changes in state that raised the escalation.
+	 */
 	export class PermissionEscalationState {
-		/// <summary>
-		/// The level of access defined before the proposed change.
-		/// </summary>
+		/**
+		 * The level of access defined before the proposed change.
+		 */
 		public level?: PermissionLevel;
-		/// <summary>
-		/// Codified names of <see cref="LabelStyle"/>s.
-		/// If list is empty, this permission applies for all labels.
-		/// </summary>
-		/// <override>
-		/// <values format="codified">
-		/// <seealso cref="LabelStyle.code" />
-		/// </values>
-		/// </override>
+		/**
+		 * Codified names of <see cref="LabelStyle"/>s.
+		 * If list is empty, this permission applies for all labels.
+		 *  <override>
+		 *  <values format="codified">
+		 * {@link LabelStyle.code}
+		 *  </values>
+		 *  </override>
+		 */
 		public labels: string[] = [];
 	}

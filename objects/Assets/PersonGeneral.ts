@@ -1,11 +1,11 @@
 ﻿
-	/// <summary>
-	/// Seldom changing details about a person.
-	/// </summary>
+	/**
+	 * Seldom changing details about a person.
+	 */
 	export class PersonGeneral extends AssetGeneral {
-		/// <summary>
-		/// A reference to their Company's Contact information.
-		/// </summary>
-		/// <seealso cref="Contact.id" />
+		/**
+		 * A reference to their Company's Contact information.
+		 * {@link Contact.id}
+		 */
 		public contact: ulong = NaN;
 	}

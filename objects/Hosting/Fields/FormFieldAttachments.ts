@@ -2,13 +2,13 @@
 import { FormFieldBase } from './FormFieldBase';
 import { FormFieldType } from '../FormFieldType';
 
-/// <summary>
-/// A control to allow the user to attach <see cref="Picture"/>s or <see cref="Document"/>s.
-/// </summary>
+/**
+ * A control to allow the user to attach <see cref="Picture"/>s or <see cref="Document"/>s.
+*/
 export class FormFieldAttachments extends FormFieldBase {
-	/// <summary>
-	/// These are the attachment types.
-	/// </summary>
+	/**
+	 * These are the attachment types.
+	 */
 	protected override get supported(): FormFieldType[] {
 		return [
 			FormFieldType.pictures,
@@ -16,12 +16,12 @@ export class FormFieldAttachments extends FormFieldBase {
 		];
 	};
 
-	/// <summary>
-	/// Minimum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
-	/// </summary>
+	/**
+	 * Minimum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
+	 */
 	public minimum: byte = NaN;
-	/// <summary>
-	/// Maximum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
-	/// </summary>
+	/**
+	 * Maximum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
+	 */
 	public maximum: byte = NaN;
 }

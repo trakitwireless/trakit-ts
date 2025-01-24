@@ -1,53 +1,53 @@
 ﻿
 
 
-	/// <summary>
-	/// Tasks have a lifetime and each status represents a task's progress through it's life.
-	/// </summary>
-	[Obsolete("Use DispatchStepStatus instead")]
+	/**
+	 * Tasks have a lifetime and each status represents a task's progress through it's life.
+	 * @deprecated Use DispatchStepStatus instead
+	 */
 	export enum DispatchTaskStatus {
-		/// <summary>
-		/// The task has been created, but not yet assigned to an asset.
-		/// </summary>
+		/**
+		 * The task has been created, but not yet assigned to an asset.
+		 */
 		created,
-		/// <summary>
-		/// The task has been given to an asset (and delivered to the asset's primary device).
-		/// </summary>
+		/**
+		 * The task has been given to an asset (and delivered to the asset's primary device).
+		 */
 		queued,
-		/// <summary>
-		/// The asset is on the way to the task's location next.
-		/// </summary>
+		/**
+		 * The asset is on the way to the task's location next.
+		 */
 		onRoute,
-		/// <summary>
-		/// The asset has arrived at the task's location.
-		/// </summary>
+		/**
+		 * The asset has arrived at the task's location.
+		 */
 		arrived,
-		/// <summary>
-		/// The task is done.
-		/// </summary>
+		/**
+		 * The task is done.
+		 */
 		completed,
-		/// <summary>
-		/// The task was cancelled by either the asset or a user.
-		/// </summary>
+		/**
+		 * The task was cancelled by either the asset or a user.
+		 */
 		cancelled,
-		/// <summary>
-		/// An item was picked-up for this task.
-		/// </summary>
+		/**
+		 * An item was picked-up for this task.
+		 */
 		pickedUp,
-		/// <summary>
-		/// An item was dropped-off for this task.
-		/// </summary>
+		/**
+		 * An item was dropped-off for this task.
+		 */
 		droppedOff,
-		/// <summary>
-		/// The asset is waiting and can't complete the task.
-		/// </summary>
+		/**
+		 * The asset is waiting and can't complete the task.
+		 */
 		waiting,
-		/// <summary>
-		/// An item associated with this task is damaged.
-		/// </summary>
+		/**
+		 * An item associated with this task is damaged.
+		 */
 		damaged,
-		/// <summary>
-		/// The task couldn't be completed by the asset.
-		/// </summary>
+		/**
+		 * The task couldn't be completed by the asset.
+		 */
 		unsuccessful,
 	}

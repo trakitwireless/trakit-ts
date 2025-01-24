@@ -1,20 +1,20 @@
 ﻿
 
 
-	/// <summary>
-	/// Infraction parameter used to generate scorecard
-	/// </summary>
+	/**
+	 * Infraction parameter used to generate scorecard
+	 */
 	export class ReportScorecardParameter {
-		/// <summary>
-		/// Type of exception, example speeding, idling, etc.
-		/// </summary>
+		/**
+		 * Type of exception, example speeding, idling, etc.
+		 */
 		public condition: string = "";
-		/// <summary>
-		/// Threshold per instance. If the threshold is 0, each instance is used in the calculation
-		/// </summary>
+		/**
+		 * Threshold per instance. If the threshold is 0, each instance is used in the calculation
+		 */
 		public duration: TimeSpan;
-		/// <summary>
-		/// Points applied against the base score per instance
-		/// </summary>
+		/**
+		 * Points applied against the base score per instance
+		 */
 		public points: double = NaN;
 	}

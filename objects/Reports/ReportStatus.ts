@@ -1,30 +1,30 @@
 ﻿
-	/// <summary>
-	/// The lifetime of building a <see cref="ReportResult"/>.
-	/// </summary>
+	/**
+	 * The lifetime of building a <see cref="ReportResult"/>.
+	 */
 	export enum ReportStatus {
-		/// <summary>
-		/// The <see cref="ReportResult"/> has been requested, but not yet begun processing.
-		/// </summary>
+		/**
+		 * The <see cref="ReportResult"/> has been requested, but not yet begun processing.
+		 */
 		created,
-		/// <summary>
-		/// The <see cref="ReportResult"/> is waiting for required resources to begin processing.
-		/// </summary>
+		/**
+		 * The <see cref="ReportResult"/> is waiting for required resources to begin processing.
+		 */
 		queued,
-		/// <summary>
-		/// The <see cref="ReportResult"/> is currently being processed.
-		/// </summary>
+		/**
+		 * The <see cref="ReportResult"/> is currently being processed.
+		 */
 		running,
-		/// <summary>
-		/// The <see cref="ReportResult"/> results have been calculated, and are being saved for review.
-		/// </summary>
+		/**
+		 * The <see cref="ReportResult"/> results have been calculated, and are being saved for review.
+		 */
 		saving,
-		/// <summary>
-		/// The <see cref="ReportResult"/> is available for retrieval.
-		/// </summary>
+		/**
+		 * The <see cref="ReportResult"/> is available for retrieval.
+		 */
 		completed,
-		/// <summary>
-		/// There was an error processing the <see cref="ReportResult"/>; see the <see cref="ReportResult.error"/> for a description.
-		/// </summary>
+		/**
+		 * There was an error processing the <see cref="ReportResult"/>; see the <see cref="ReportResult.error"/> for a description.
+		 */
 		failed,
 	}

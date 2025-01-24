@@ -1,108 +1,108 @@
 ﻿
 
-	/// <summary>
-	/// Protocols supported by the system.
-	/// </summary>
+	/**
+	 * Protocols supported by the system.
+	 */
 	export enum ProviderType {
-		/// <summary>
-		/// Your guess is as good as mine.
-		/// It should never be this.
-		/// </summary>
+		/**
+		 * Your guess is as good as mine.
+		 * It should never be this.
+		 */
 		unknown,
-		/// <summary>
-		/// Sierra Wireless AirLink RAP protocol
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Sierra Wireless AirLink RAP protocol
+		 * @deprecated No longer supported
+		 */
 		airlink,
-		/// <summary>
-		/// Sixnet BlueTree BEP protocol
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Sixnet BlueTree BEP protocol
+		 * @deprecated No longer supported
+		 */
 		bluetree,
-		/// <summary>
-		/// Gen-X modem protocol
-		/// </summary>
+		/**
+		 * Gen-X modem protocol
+		 */
 		genx,
-		/// <summary>
-		/// CalAmp LMU series protocol
-		/// </summary>
-		[Obsolete("Use calamp instead")]
+		/**
+		 * CalAmp LMU series protocol
+		 * @deprecated Use calamp instead
+		 */
 		lmu,
-		/// <summary>
-		/// CalAmp TTU series protocol
-		/// </summary>
-		[Obsolete("Use calamp instead")]
+		/**
+		 * CalAmp TTU series protocol
+		 * @deprecated Use calamp instead
+		 */
 		ttu,
-		/// <summary>
-		/// Novotel Enfora SpiderAT protocol
-		/// </summary>
-		[Obsolete("Use enfora instead")]
+		/**
+		 * Novotel Enfora SpiderAT protocol
+		 * @deprecated Use enfora instead
+		 */
 		spiderAT,
-		/// <summary>
-		/// Novotel Enfora SpiderMT protocol
-		/// </summary>
-		[Obsolete("Use enfora instead")]
+		/**
+		 * Novotel Enfora SpiderMT protocol
+		 * @deprecated Use enfora instead
+		 */
 		spiderMT,
-		/// <summary>
-		/// Trak iT Wireless Mobile App
-		/// </summary>
+		/**
+		 * Trak iT Wireless Mobile App
+		 */
 		mobile,
-		/// <summary>
-		/// TachWest DataTrans protocol
-		/// </summary>
+		/**
+		 * TachWest DataTrans protocol
+		 */
 		datatrans,
-		/// <summary>
-		/// Xirgo modem protocol
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Xirgo modem protocol
+		 * @deprecated No longer supported
+		 */
 		xirgo,
-		/// <summary>
-		/// Bell Mobility LBS
-		/// </summary>
+		/**
+		 * Bell Mobility LBS
+		 */
 		lbs,
-		/// <summary>
-		/// Certified Tracking protocol
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Certified Tracking protocol
+		 * @deprecated No longer supported
+		 */
 		titan,
-		/// <summary>
-		/// Concox Tracker protocol
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Concox Tracker protocol
+		 * @deprecated No longer supported
+		 */
 		concox,
-		/// <summary>
-		/// Aspenta Open API format
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Aspenta Open API format
+		 * @deprecated No longer supported
+		 */
 		aspenta,
-		/// <summary>
-		/// Fleet Freedom JSON protocol
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Fleet Freedom JSON protocol
+		 * @deprecated No longer supported
+		 */
 		json,
-		/// <summary>
-		/// SmartWitness dashcam formats
-		/// </summary>
+		/**
+		 * SmartWitness dashcam formats
+		 */
 		smartwitness,
-		/// <summary>
-		/// CalAmp LMU/TTU modem protocols
-		/// </summary>
+		/**
+		 * CalAmp LMU/TTU modem protocols
+		 */
 		calamp,
-		/// <summary>
-		/// Enfora (Novotel) modem protocols
-		/// </summary>
-		[Obsolete("No longer supported")]
+		/**
+		 * Enfora (Novotel) modem protocols
+		 * @deprecated No longer supported
+		 */
 		enfora,
-		/// <summary>
-		/// BeWhere beacon protocols
-		/// </summary>
+		/**
+		 * BeWhere beacon protocols
+		 */
 		bewhere,
-		/// <summary>
-		/// ATrack device protocols
-		/// </summary>
+		/**
+		 * ATrack device protocols
+		 */
 		atrack,
-		/// <summary>
-		/// Teltonika device protocols
-		/// </summary>
+		/**
+		 * Teltonika device protocols
+		 */
 		teltonika,
 	}

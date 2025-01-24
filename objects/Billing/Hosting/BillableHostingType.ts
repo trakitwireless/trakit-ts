@@ -1,46 +1,46 @@
 ﻿
-	/// <summary>
-	/// The kind of service being billed.
-	/// </summary>
+	/**
+	 * The kind of service being billed.
+	 */
 	export enum BillableHostingType {
-		/// <summary>
-		/// Employee/driver tracking
-		/// </summary>
+		/**
+		 * Employee/driver tracking
+		 */
 		mobile,
-		/// <summary>
-		/// Vehicle tracking (includes VBus data, and engine hours)
-		/// </summary>
+		/**
+		 * Vehicle tracking (includes VBus data, and engine hours)
+		 */
 		vehicle,
-		/// <summary>
-		/// Generic dot-on-a-map tracking
-		/// </summary>
+		/**
+		 * Generic dot-on-a-map tracking
+		 */
 		asset,
-		/// <summary>
-		/// Tasks assignable to vehicles or persons
-		/// </summary>
+		/**
+		 * Tasks assignable to vehicles or persons
+		 */
 		dispatch,
-		/// <summary>
-		/// FMCSA compliant E-Logs and Hours of Service
-		/// </summary>
+		/**
+		 * FMCSA compliant E-Logs and Hours of Service
+		 */
 		elogs,
-		/// <summary>
-		/// Inventory management
-		/// </summary>
-		/// <override skip="true" />
+		/**
+		 * Inventory management
+		 *  <override skip="true" />
+		 */
 		inventory,
-		/// <summary>
-		/// Cargo and delivery audit
-		/// </summary>
-		/// <override skip="true" />
+		/**
+		 * Cargo and delivery audit
+		 *  <override skip="true" />
+		 */
 		cargo,
-		/// <summary>
-		/// Mobile forms
-		/// </summary>
-		/// <override skip="true" />
+		/**
+		 * Mobile forms
+		 *  <override skip="true" />
+		 */
 		forms,
-		/// <summary>
-		/// Dashcam and live images hosting
-		/// </summary>
-		/// <override skip="true" />
+		/**
+		 * Dashcam and live images hosting
+		 *  <override skip="true" />
+		 */
 		streetview,
 	}

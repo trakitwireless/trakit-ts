@@ -1,14 +1,14 @@
 ﻿
-	/// <summary>
-	/// An argument passed to the report runner.
-	/// </summary>
+	/**
+	 * An argument passed to the report runner.
+	 */
 	public struct ReportParameter {
-		/// <summary>
-		/// The type of argument.
-		/// </summary>
+		/**
+		 * The type of argument.
+		 */
 		public kind: ReportParameterType;
-		/// <summary>
-		/// The parsed value of the argument.  Each type of argument has a different parsing.
-		/// </summary>
+		/**
+		 * The parsed value of the argument.  Each type of argument has a different parsing.
+		 */
 		public value: string = "";
 	}

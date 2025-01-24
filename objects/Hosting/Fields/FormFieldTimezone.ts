@@ -1,11 +1,11 @@
 ﻿
-	/// <summary>
-	/// A <see cref="Timezone"/> selection control.
-	/// </summary>
+	/**
+	 * A <see cref="Timezone"/> selection control.
+	 */
 	export class FormFieldTimezone extends FormFieldBase {
-		/// <summary>
-		/// Just <see cref="FormFieldType.timezone"/> control type.
-		/// </summary>
+		/**
+		 * Just <see cref="FormFieldType.timezone"/> control type.
+		 */
 		protected override FormFieldType[] supported => new[] {
 			FormFieldType.timezone,
 		};

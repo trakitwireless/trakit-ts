@@ -2,17 +2,17 @@
 
 
 
-	/// <summary>
-	/// An abstract class used as a base for all Geofence type classes.
-	/// </summary>
-	[Obsolete]
+	/**
+	 * An abstract class used as a base for all Geofence type classes.
+	 * @deprecated
+	 */
 	export abstract class GeofenceType {
-		/// <summary>
-		/// The supported shape of geofence.
-		/// </summary>
+		/**
+		 * The supported shape of geofence.
+		 */
 		public type: PlaceType;
-		/// <summary>
-		/// The maximum number of unique geofences supported by the device.
-		/// </summary>
+		/**
+		 * The maximum number of unique geofences supported by the device.
+		 */
 		public maxGeofenceCount: uint = NaN;
 	}

@@ -1,29 +1,28 @@
 ﻿
 
-	/// <summary>
-	/// Managing communication with Device/hardware.
-	/// </summary>
+	/**
+	 * Managing communication with Device/hardware.
+	 */
 	export class ProviderControl extends Component implements IBelongCompany {
-		/// <summary>
-		/// Unique identifier of this device.
-		/// </summary>
-		/// <seealso cref="Provider.id" />
-		/// <override min-length="10" max-length="50" />
+		/**
+		 * Unique identifier of this device.
+		 * {@link Provider.id}
+		 *  <override min-length="10" max-length="50" />
+		 */
 		public id: string = "";
-		/// <summary>
-		/// The company to which this device belongs.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which this device belongs.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// Collection of commands for this provider.
-		/// </summary>
+		/**
+		 * Collection of commands for this provider.
+		 */
 		public commands: Map<ProviderCommandType, ProviderCommand>;
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id; }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id; }
 	}

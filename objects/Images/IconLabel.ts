@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// Definition for the name bubble above the icon on a map.
-	/// </summary>
+	/**
+	 * Definition for the name bubble above the icon on a map.
+	 */
 	export class IconLabel {
-		/// <summary>
-		/// The offset from the lat/long in pixels.
-		/// </summary>
+		/**
+		 * The offset from the lat/long in pixels.
+		 */
 		public anchor: Point;
-		/// <summary>
-		/// Determines which corner of the label is attached to the anchor.
-		/// </summary>
+		/**
+		 * Determines which corner of the label is attached to the anchor.
+		 */
 		public align: string = "";
-		/// <summary>
-		/// Background colour of the label.
-		/// </summary>
+		/**
+		 * Background colour of the label.
+		 */
 		public colour: string = "";
 	}

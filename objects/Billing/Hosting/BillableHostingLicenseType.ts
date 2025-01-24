@@ -1,21 +1,21 @@
 ﻿
-	/// <summary>
-	/// The kind of license being billed.
-	/// </summary>
+	/**
+	 * The kind of license being billed.
+	 */
 	export enum BillableHostingLicenseType {
-		/// <summary>
-		/// SmartWitness data hosting fee
-		/// </summary>
-		/// <seealso cref="ProviderType.smartwitness" />
+		/**
+		 * SmartWitness data hosting fee
+		 * {@link ProviderType.smartwitness}
+		 */
 		smartwitness,
-		/// <summary>
-		/// BeWhere license fee
-		/// </summary>
-		/// <seealso cref="ProviderType.bewhere" />
+		/**
+		 * BeWhere license fee
+		 * {@link ProviderType.bewhere}
+		 */
 		bewhere,
-		/// <summary>
-		/// CalAmp PULS fee
-		/// </summary>
-		/// <seealso cref="ProviderType.calamp" />
+		/**
+		 * CalAmp PULS fee
+		 * {@link ProviderType.calamp}
+		 */
 		calamp,
 	}

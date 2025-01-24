@@ -1,34 +1,34 @@
 ﻿
-	/// <summary>
-	/// The password complexity and expiry policy.
-	/// </summary>
+	/**
+	 * The password complexity and expiry policy.
+	 */
 	export class PasswordPolicy {
-		/// <summary>
-		/// The minimum number of characters required.
-		/// </summary>
+		/**
+		 * The minimum number of characters required.
+		 */
 		public minimumLength: byte = NaN;
-		/// <summary>
-		/// Do passwords require alphabetical characters.
-		/// </summary>
+		/**
+		 * Do passwords require alphabetical characters.
+		 */
 		public includeLetters: boolean = false;
-		/// <summary>
-		/// Do passwords require numeric characters.
-		/// </summary>
+		/**
+		 * Do passwords require numeric characters.
+		 */
 		public includeNumbers: boolean = false;
-		/// <summary>
-		/// Do passwords require upper-case and lower-case letters.
-		/// </summary>
+		/**
+		 * Do passwords require upper-case and lower-case letters.
+		 */
 		public includeUpperLower: boolean = false;
-		/// <summary>
-		/// Do passwords require non-alphanumeric characters.
-		/// </summary>
+		/**
+		 * Do passwords require non-alphanumeric characters.
+		 */
 		public includeSpecial: boolean = false;
-		/// <summary>
-		/// Defines how passwords expire.
-		/// </summary>
+		/**
+		 * Defines how passwords expire.
+		 */
 		public expireMode: PasswordExpiryMode;
-		/// <summary>
-		/// The threshold for expiry.
-		/// </summary>
+		/**
+		 * The threshold for expiry.
+		 */
 		public expireThreshold: byte = NaN;  // days
 	}

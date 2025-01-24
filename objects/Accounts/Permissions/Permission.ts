@@ -1,42 +1,42 @@
 ﻿
 
-	/// <summary>
-	/// A defined permission for <see cref="User"/>s, <see cref="UserGroup"/>s, and <see cref="Machine"/>s.
-	/// </summary>
+	/**
+	 * A defined permission for <see cref="User"/>s, <see cref="UserGroup"/>s, and <see cref="Machine"/>s.
+	 */
 	export class Permission {
-		/// <summary>
-		/// The <see cref="Company"/> that this permission targets.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The <see cref="Company"/> that this permission targets.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// The type of permission.
-		/// </summary>
+		/**
+		 * The type of permission.
+		 */
 		public kind: PermissionType;
-		/// <summary>
-		/// The kind of permission.
-		/// </summary>
-		/// <override type="Vorgon.UserPermissionType"/>
-		[Obsolete("Use .kind instead")]
+		/**
+		 * The kind of permission.
+		 *  <override type="Vorgon.UserPermissionType"/>
+		 * @deprecated Use .kind instead
+		 */
 		public string type {
 			get => this.kind.toString();
 			set => this.kind = (PermissionType)Enum.Parse(typeof(PermissionType), value, true);
 		}
-		/// <summary>
-		/// The level of access being defined.
-		/// </summary>
+		/**
+		 * The level of access being defined.
+		 */
 		public level: PermissionLevel;
-		/// <summary>
-		/// The way the access is used.
-		/// </summary>
+		/**
+		 * The way the access is used.
+		 */
 		public method: PermissionMethod;
-		/// <summary>
-		/// Codified names of <see cref="LabelStyle"/>s.  If list is empty, this permission applies for all labels.
-		/// </summary>
-		/// <override>
-		/// <values format="codified">
-		/// <seealso cref="LabelStyle.code" />
-		/// </values>
-		/// </override>
+		/**
+		 * Codified names of <see cref="LabelStyle"/>s.  If list is empty, this permission applies for all labels.
+		 *  <override>
+		 *  <values format="codified">
+		 * {@link LabelStyle.code}
+		 *  </values>
+		 *  </override>
+		 */
 		public labels: string[] = [];
 	}

@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// Defines how User passwords expire.
-	/// </summary>
+	/**
+	 * Defines how User passwords expire.
+	 */
 	export enum PasswordExpiryMode {
-		/// <summary>
-		/// Passwords never expire.
-		/// </summary>
+		/**
+		 * Passwords never expire.
+		 */
 		never,
-		/// <summary>
-		/// Passwords expire after a defined number of days.
-		/// </summary>
+		/**
+		 * Passwords expire after a defined number of days.
+		 */
 		days,
-		/// <summary>
-		/// Passwords expire after a defined number of successful logins.
-		/// </summary>
+		/**
+		 * Passwords expire after a defined number of successful logins.
+		 */
 		sessions,
 	}

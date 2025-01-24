@@ -1,56 +1,55 @@
 
 
-	/// <summary>
-	/// The configured logic loaded onto the provider over-the-air to control it's reporting schedule and behaviour.
-	/// </summary>
-	[Obsolete("Use ProviderConfig instead")]
+	/**
+	 * The configured logic loaded onto the provider over-the-air to control it's reporting schedule and behaviour.
+	 * @deprecated Use ProviderConfig instead
+	 */
 	export class ProviderConfiguration extends Component implements IIdUlong, INamed, IBelongCompany, IDeletable {
-		/// <summary>
-		/// Unique identifier of this configuration.
-		/// </summary>
+		/**
+		 * Unique identifier of this configuration.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The company to which this configuration belongs.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which this configuration belongs.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// The nickname given to this configuration
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The nickname given to this configuration
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Simple details about how the providers are expected to behave.
-		/// </summary>
+		/**
+		 * Simple details about how the providers are expected to behave.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// The logic type which this configuration implements.
-		/// </summary>
-		/// <seealso cref="ProviderConfigurationType.id" />
+		/**
+		 * The logic type which this configuration implements.
+		 * {@link ProviderConfigurationType.id}
+		 */
 		public type: ulong = NaN;
-		/// <summary>
-		/// The list of defined variables given to the <see cref="ProviderConfigurationType.scriptOptions">logic type's options</see> pairs for the logic type requires.
-		/// </summary>
+		/**
+		 * The list of defined variables given to the <see cref="ProviderConfigurationType.scriptOptions">logic type's options</see> pairs for the logic type requires.
+		 */
 		public scriptParameters: Map<string, object>;
-		/// <summary>
-		/// List of Places loaded directly onto the provider.
-		/// </summary>
+		/**
+		 * List of Places loaded directly onto the provider.
+		 */
 		public geofences: ulong[] = [];
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		public since: Date = DATE();
 	}

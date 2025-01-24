@@ -1,63 +1,62 @@
 
 
-	/// <summary>
-	/// An image stored by the system.
-	/// </summary>
+	/**
+	 * An image stored by the system.
+	 */
 	export class Picture extends Component implements IIdUlong, INamed, IBelongCompany, IFileSize, IDeletable {
-		/// <summary>
-		/// Unique identifier of this image.
-		/// </summary>
+		/**
+		 * Unique identifier of this image.
+		 */
 		public id: ulong = NaN;
-		/// <summary>
-		/// The company to which this image belongs.
-		/// </summary>
-		/// <seealso cref="Company.id" />
+		/**
+		 * The company to which this image belongs.
+		 * {@link Company.id}
+		 */
 		public company: ulong = NaN;
-		/// <summary>
-		/// The file name of this image.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The file name of this image.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes about this image.
-		/// </summary>
+		/**
+		 * Notes about this image.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// The URL/path to find this image.
-		/// </summary>
-		/// <override max-length="200" />
+		/**
+		 * The URL/path to find this image.
+		 *  <override max-length="200" />
+		 */
 		public src: string = "";
-		/// <summary>
-		/// Resolution defined in pixels.
-		/// </summary>
+		/**
+		 * Resolution defined in pixels.
+		 */
 		public size: Size;
-		/// <summary>
-		/// A list of focal points in the images like faces.
-		/// </summary>
+		/**
+		 * A list of focal points in the images like faces.
+		 */
 		public focals: Square[] = [];
-		/// <summary>
-		/// The file-size on the disk.
-		/// </summary>
+		/**
+		 * The file-size on the disk.
+		 */
 		public bytes: ulong = NaN;
-		/// <summary>
-		/// A count of the times this image was used for something (asset, contact, task, etc).
-		/// </summary>
+		/**
+		 * A count of the times this image was used for something (asset, contact, task, etc).
+		 */
 		public uses: uint = NaN;
 
 		// IRequestable
-		/// <summary>
-		/// The <see cref="id"/> is the key.
-		/// </summary>
-		/// <returns></returns>
-		public getKey(): string { return this.id.toString(); }
+		/**
+		 * The <see cref="id"/> is the key.
+		 */
+public getKey(): string { return this.id.toString(); }
 
 		// IDeletable
-		/// <summary>
-		/// Indicates whether this object was deleted.
-		/// </summary>
+		/**
+		 * Indicates whether this object was deleted.
+		 */
 		public deleted: boolean = false;
-		/// <summary>
-		/// Timestamp from the action that deleted or suspended this object.
-		/// </summary>
+		/**
+		 * Timestamp from the action that deleted or suspended this object.
+		 */
 		public since: Date = DATE();
 	}

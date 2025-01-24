@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// Used for invoices.
-	/// </summary>
+	/**
+	 * Used for invoices.
+	 */
 	export enum BillingCurrency {
-		/// <summary>
-		/// Canadian dollars
-		/// </summary>
+		/**
+		 * Canadian dollars
+		 */
 		CAD,
-		/// <summary>
-		/// American dollars
-		/// </summary>
+		/**
+		 * American dollars
+		 */
 		USD,
-		/// <summary>
-		/// Eurozone currency
-		/// </summary>
+		/**
+		 * Eurozone currency
+		 */
 		EURO,
 	}

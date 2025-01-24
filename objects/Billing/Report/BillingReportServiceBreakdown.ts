@@ -1,92 +1,92 @@
 
 
 
-	/// <summary>
-	/// Full breakdown of billable details per targeted asset.
-	/// </summary>
+	/**
+	 * Full breakdown of billable details per targeted asset.
+	 */
 	export class BillingReportServiceBreakdown implements INamed implements IBelongAsset {
-		/// <summary>
-		/// The asset to which this breakdown instance belongs.
-		/// </summary>
-		/// <seealso cref="Asset.id" />
+		/**
+		 * The asset to which this breakdown instance belongs.
+		 * {@link Asset.id}
+		 */
 		public asset: ulong = NaN;
-		/// <summary>
-		/// Type of asset.
-		/// </summary>
+		/**
+		 * Type of asset.
+		 */
 		public kind: AssetType;
-		/// <summary>
-		/// Asset's name.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * Asset's name.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes about the asset.
-		/// </summary>
+		/**
+		 * Notes about the asset.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Indicates when this Asset was created.
-		/// </summary>
+		/**
+		 * Indicates when this Asset was created.
+		 */
 		public created: Date = DATE();
-		/// <summary>
-		/// Indicates when this Asset was deleted.
-		/// </summary>
+		/**
+		 * Indicates when this Asset was deleted.
+		 */
 		public deleted: Date = DATE();
-		/// <summary>
-		/// Indicates when this Asset wass suspended from event processing.
-		/// </summary>
+		/**
+		 * Indicates when this Asset wass suspended from event processing.
+		 */
 		public suspended: Date = DATE();
-		/// <summary>
-		/// Indicates when this Asset was restored after being deleted.
-		/// </summary>
+		/**
+		 * Indicates when this Asset was restored after being deleted.
+		 */
 		public restored: Date = DATE();
-		/// <summary>
-		/// Indicates when this Asset was revived after being suspended.
-		/// </summary>
+		/**
+		 * Indicates when this Asset was revived after being suspended.
+		 */
 		public revived: Date = DATE();
-		/// <summary>
-		/// Codified label names.
-		/// </summary>
-		/// <seealso cref="LabelStyle.code" />
-		/// <override>
-		/// <values format="codified">
-		/// <seealso cref="LabelStyle.code" />
-		/// </values>
-		/// </override>
+		/**
+		 * Codified label names.
+		 * {@link LabelStyle.code}
+		 *  <override>
+		 *  <values format="codified">
+		 * {@link LabelStyle.code}
+		 *  </values>
+		 *  </override>
+		 */
 		public labels: string[] = [];
-		/// <summary>
-		/// The list of devices providing events for this asset.
-		/// </summary>
-		/// <seealso cref="Provider.id" />
+		/**
+		 * The list of devices providing events for this asset.
+		 * {@link Provider.id}
+		 */
 		public providers: string[] = [];
-		/// <summary>
-		/// The list of phone numbers for this asset.
-		/// </summary>
-		/// <override>
-		/// <values format="phone" />
-		/// </override>
+		/**
+		 * The list of phone numbers for this asset.
+		 *  <override>
+		 *  <values format="phone" />
+		 *  </override>
+		 */
 		public phoneNumbers: ulong[] = [];
-		/// <summary>
-		/// Indicates when this Asset was last updated.
-		/// </summary>
+		/**
+		 * Indicates when this Asset was last updated.
+		 */
 		public updatedDts: Date = DATE();
-		/// <summary>
-		/// Number of days this Asset is being billed for.
-		/// </summary>
+		/**
+		 * Number of days this Asset is being billed for.
+		 */
 		public billableDays: double = NaN;
-		/// <summary>
-		/// Cost per billing cycle for this asset.
-		/// </summary>
+		/**
+		 * Cost per billing cycle for this asset.
+		 */
 		public cost: double = NaN;
-		/// <summary>
-		/// Number of days this Asset was suspended.
-		/// </summary>
+		/**
+		 * Number of days this Asset was suspended.
+		 */
 		public suspendedDays: double = NaN;
-		/// <summary>
-		/// Cost per billing cycle for suspended asset.
-		/// </summary>
+		/**
+		 * Cost per billing cycle for suspended asset.
+		 */
 		public suspendedCost: double = NaN;
-		/// <summary>
-		/// Total amount being billed for this asset.
-		/// </summary>
+		/**
+		 * Total amount being billed for this asset.
+		 */
 		public total: double = NaN;
 	}

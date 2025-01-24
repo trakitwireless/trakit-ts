@@ -1,26 +1,26 @@
 ﻿
-	/// <summary>
-	/// A value assigned to <see cref="DispatchJob"/>s in order to weigh them when optimizing a route.
-	/// </summary>
+	/**
+	 * A value assigned to <see cref="DispatchJob"/>s in order to weigh them when optimizing a route.
+	 */
 	export enum DispatchJobPriority {
-		/// <summary>
-		/// Will be done last, after all others, if at all.
-		/// </summary>
+		/**
+		 * Will be done last, after all others, if at all.
+		 */
 		standby,
-		/// <summary>
-		/// Low priority jobs are assigned towards the end of a dispatch, unless they are in very close proximity to another job.
-		/// </summary>
+		/**
+		 * Low priority jobs are assigned towards the end of a dispatch, unless they are in very close proximity to another job.
+		 */
 		low,
-		/// <summary>
-		/// A normal job that will be done at the first opportunity.
-		/// </summary>
+		/**
+		 * A normal job that will be done at the first opportunity.
+		 */
 		medium,
-		/// <summary>
-		/// More important job that will be routed to first unless the next high importance job is much farther away.
-		/// </summary>
+		/**
+		 * More important job that will be routed to first unless the next high importance job is much farther away.
+		 */
 		high,
-		/// <summary>
-		/// Must be done first, before all others.
-		/// </summary>
+		/**
+		 * Must be done first, before all others.
+		 */
 		urgent,
 	}

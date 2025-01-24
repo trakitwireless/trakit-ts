@@ -1,16 +1,16 @@
 ﻿
 
-	/// <summary>
-	/// The types of subscriptions available 		/// <summary>
-		/// Subscription types added/removed (or were not applicable) to your socket's subscription list.
-		/// </summary>
+	/**
+	 * The types of subscriptions available 		/**
+		 * Subscription types added/removed (or were not applicable) to your socket's subscription list.
+		 */
 		public merged: SubscriptionType[] = [];
-		/// <summary>
-		/// Subscription types not added to your socket due to insufficient permissions.
-		/// </summary>
+		/**
+		 * Subscription types not added to your socket due to insufficient permissions.
+		 */
 		public denied: SubscriptionType[] = [];
-		/// <summary>
-		/// A returned list of nonsense you sent to my beautiful service.
-		/// </summary>
+		/**
+		 * A returned list of nonsense you sent to my beautiful service.
+		 */
 		public invalid: string[] = [];
 	}

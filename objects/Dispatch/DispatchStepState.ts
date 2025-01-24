@@ -1,16 +1,16 @@
 
 
 
-	/// <summary>
-	/// Details about the lifetime of a <see cref="DispatchStep"/>.
-	/// </summary>
+	/**
+	 * Details about the lifetime of a <see cref="DispatchStep"/>.
+	 */
 	export class DispatchStepState {
-		/// <summary>
-		/// A timestamp from when the lifetime was updated.
-		/// </summary>
+		/**
+		 * A timestamp from when the lifetime was updated.
+		 */
 		public updated: Date = DATE();
-		/// <summary>
-		/// The coordinates from the <see cref="Asset"/> when the update happened.
-		/// </summary>
+		/**
+		 * The coordinates from the <see cref="Asset"/> when the update happened.
+		 */
 		public latlng: LatLng;
 	}

@@ -1,18 +1,18 @@
 ﻿
-	/// <summary>
-	/// The priority of the alert.
-	/// </summary>
+	/**
+	 * The priority of the alert.
+	 */
 	export enum AlertPriority {
-		/// <summary>
-		/// Sends when no other alerts are pending in the queue.
-		/// </summary>
+		/**
+		 * Sends when no other alerts are pending in the queue.
+		 */
 		low,
-		/// <summary>
-		/// Sends in when there are no high priority alerts in the queue.
-		/// </summary>
+		/**
+		 * Sends in when there are no high priority alerts in the queue.
+		 */
 		normal,
-		/// <summary>
-		/// Sends before low and normal priority alerts.
-		/// </summary>
+		/**
+		 * Sends before low and normal priority alerts.
+		 */
 		high,
 	}

@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A hardware license for providers
-	/// </summary>
+	/**
+	 * A hardware license for providers
+	 */
 	export class BillableHostingLicense extends BillableHostingBase {
-		/// <summary>
-		/// The type of hardware license
-		/// </summary>
+		/**
+		 * The type of hardware license
+		 */
 		public kind: BillableHostingLicenseType;
 	}

@@ -1,22 +1,22 @@
 ﻿
-	/// <summary>
-	/// Amount billed for a type of hosting (service or license) per target company.
-	/// </summary>
+	/**
+	 * Amount billed for a type of hosting (service or license) per target company.
+	 */
 	export class BillingReportHostingSummary {
-		/// <summary>
-		/// SKU being billed
-		/// </summary>
+		/**
+		 * SKU being billed
+		 */
 		public sku: string = "";
-		/// <summary>
-		/// Cost per billing cycle for this SKU.
-		/// </summary>
+		/**
+		 * Cost per billing cycle for this SKU.
+		 */
 		public cost: double = NaN;
-		/// <summary>
-		/// Number of items for this SKU.
-		/// </summary>
+		/**
+		 * Number of items for this SKU.
+		 */
 		public count: double = NaN;
-		/// <summary>
-		/// Total amount being billed for this SKU.
-		/// </summary>
+		/**
+		 * Total amount being billed for this SKU.
+		 */
 		public total: double = NaN;
 	}

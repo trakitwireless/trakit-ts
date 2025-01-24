@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// A billing rule for assets
-	/// </summary>
+	/**
+	 * A billing rule for assets
+	 */
 	export class BillableHostingRule extends BillableHostingBase {
-		/// <summary>
-		/// The type of service being billed.
-		/// </summary>
+		/**
+		 * The type of service being billed.
+		 */
 		public service: BillableHostingType;
 	}

@@ -1,10 +1,10 @@
 ﻿
-	/// <summary>
-	/// Dispatch Job information used in this report.
-	/// </summary>
+	/**
+	 * Dispatch Job information used in this report.
+	 */
 	export class ReportBreakdownJob extends ReportBreakdown {
-		/// <summary>
-		/// The Job used.
-		/// </summary>
+		/**
+		 * The Job used.
+		 */
 		public job: DispatchJob;
 	}

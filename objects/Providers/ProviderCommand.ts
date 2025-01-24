@@ -1,23 +1,23 @@
 
 
-	/// <summary>
-	/// Details regarding a provider command
-	/// </summary>
+	/**
+	 * Details regarding a provider command
+	 */
 	export class ProviderCommand {
-		/// <summary>
-		/// Current status of this command.
-		/// </summary>
+		/**
+		 * Current status of this command.
+		 */
 		public status: ProviderCommandStatus;
-		/// <summary>
-		/// Command message body.
-		/// </summary>
+		/**
+		 * Command message body.
+		 */
 		public parameters: string[] = [];
-		/// <summary>
-		/// Date/time stamp of when the command was created.
-		/// </summary>
+		/**
+		 * Date/time stamp of when the command was created.
+		 */
 		public created: Date = DATE();
-		/// <summary>
-		/// Date/time stamp of when the command was processed.
-		/// </summary>
+		/**
+		 * Date/time stamp of when the command was processed.
+		 */
 		public processed: Date = DATE();
 	}

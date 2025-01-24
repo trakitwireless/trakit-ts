@@ -1,19 +1,19 @@
 
 
-	/// <summary>
-	/// A simple status for each place an Asset visits.
-	/// </summary>
+	/**
+	 * A simple status for each place an Asset visits.
+	 */
 	export class AssetPlaceStatus {
-		/// <summary>
-		/// The kind of interaction.
-		/// </summary>
+		/**
+		 * The kind of interaction.
+		 */
 		public kind: AssetPlaceStatusType;
-		/// <summary>
-		/// The date/time stamp for when the Asset first began interacting with the Place.
-		/// </summary>
+		/**
+		 * The date/time stamp for when the Asset first began interacting with the Place.
+		 */
 		public enter: Date = DATE();
-		/// <summary>
-		/// The most recent date/time stamp for the interaction.
-		/// </summary>
+		/**
+		 * The most recent date/time stamp for the interaction.
+		 */
 		public latest: Date = DATE();
 	}

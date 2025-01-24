@@ -1,55 +1,55 @@
 
 
 
-	/// <summary>
-	/// Full breakdown of licensing details per targeted provider.
-	/// </summary>
+	/**
+	 * Full breakdown of licensing details per targeted provider.
+	 */
 	export class BillingReportLicenseBreakdown implements INamed {
-		/// <summary>
-		/// The provider to which this breakdown instance belongs.
-		/// </summary>
-		/// <seealso cref="Provider.id" />
+		/**
+		 * The provider to which this breakdown instance belongs.
+		 * {@link Provider.id}
+		 */
 		public provider: string = "";
-		/// <summary>
-		/// Type of provider.
-		/// </summary>
+		/**
+		 * Type of provider.
+		 */
 		public kind: ProviderType;
-		/// <summary>
-		/// Provider name.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * Provider name.
+		 *  <override max-length="100" />
+		 */
 		public name: string = "";
-		/// <summary>
-		/// Notes about the provider.
-		/// </summary>
+		/**
+		 * Notes about the provider.
+		 */
 		public notes: string = "";
-		/// <summary>
-		/// Indicates when this Provider was created.
-		/// </summary>
+		/**
+		 * Indicates when this Provider was created.
+		 */
 		public created: Date = DATE();
-		/// <summary>
-		/// Indicates when this Provider was deleted.
-		/// </summary>
+		/**
+		 * Indicates when this Provider was deleted.
+		 */
 		public deleted: Date = DATE();
-		/// <summary>
-		/// The phone number for this provider.
-		/// </summary>
+		/**
+		 * The phone number for this provider.
+		 */
 		public phoneNumber: ulong = NaN;
-		/// <summary>
-		/// The firmware/application version number.
-		/// </summary>
-		/// <override max-length="100" />
+		/**
+		 * The firmware/application version number.
+		 *  <override max-length="100" />
+		 */
 		public firmware: string = "";
-		/// <summary>
-		/// Number of days this Provider is being billed for.
-		/// </summary>
+		/**
+		 * Number of days this Provider is being billed for.
+		 */
 		public billableDays: double = NaN;
-		/// <summary>
-		/// Licensing cost per billing cycle for this provider.
-		/// </summary>
+		/**
+		 * Licensing cost per billing cycle for this provider.
+		 */
 		public cost: double = NaN;
-		/// <summary>
-		/// Total amount being billed for this provider.
-		/// </summary>
+		/**
+		 * Total amount being billed for this provider.
+		 */
 		public total: double = NaN;
 	}

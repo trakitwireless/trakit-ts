@@ -1,14 +1,14 @@
 ﻿
-	/// <summary>
-	/// How a permission is applied.
-	/// </summary>
+	/**
+	 * How a permission is applied.
+	 */
 	export enum PermissionMethod {
-		/// <summary>
-		/// Permission is given.
-		/// </summary>
+		/**
+		 * Permission is given.
+		 */
 		grant,
-		/// <summary>
-		/// Permission is taken away.
-		/// </summary>
+		/**
+		 * Permission is taken away.
+		 */
 		revoke,
 	}

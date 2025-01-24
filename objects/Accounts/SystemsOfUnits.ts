@@ -1,14 +1,14 @@
 ﻿
-	/// <summary>
-	/// A type of measurement system
-	/// </summary>
+	/**
+	 * A type of measurement system
+	 */
 	export enum SystemsOfUnits {
-		/// <summary>
-		/// Metric
-		/// </summary>
+		/**
+		 * Metric
+		 */
 		metric = 1,
-		/// <summary>
-		/// US Standard.
-		/// </summary>
+		/**
+		 * US Standard.
+		 */
 		standard = 2,
 	}

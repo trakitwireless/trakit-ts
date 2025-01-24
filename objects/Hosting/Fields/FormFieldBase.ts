@@ -3,42 +3,42 @@ import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
 import { FormFieldType } from '../FormFieldType';
 
-/// <summary>
-/// A base class for the common form field UI members.
-/// </summary>
-/// <override skip="false" />
+/**
+ * A base class for the common form field UI members.
+*  <override skip="false" />
+ */
 export abstract class FormFieldBase implements IIdUlong, INamed {
-	/// <summary>
-	/// A list of supported <see cref="FormFieldType"/>s that this class supports.
-	/// </summary>
+	/**
+	 * A list of supported <see cref="FormFieldType"/>s that this class supports.
+	 */
 	protected abstract supported: FormFieldType[];
-	/// <summary>
-	/// The type of interface control that should be presented to the user.
-	/// </summary>
+	/**
+	 * The type of interface control that should be presented to the user.
+	 */
 	public kind: FormFieldType;
-	/// <summary>
-	/// Identifier for this field.
-	/// This value is unique per <see cref="FormTemplate"/>, but is not unique system-wide.
-	/// </summary>
+	/**
+	 * Identifier for this field.
+	 * This value is unique per <see cref="FormTemplate"/>, but is not unique system-wide.
+	 */
 	public id: ulong = NaN;
-	/// <summary>
-	/// Name of the field.
-	/// </summary>
+	/**
+	 * Name of the field.
+	 */
 	public name: string = "";
-	/// <summary>
-	/// Notes or special instructions for this control.
-	/// </summary>
+	/**
+	 * Notes or special instructions for this control.
+	 */
 	public notes: string = "";
-	/// <summary>
-	/// When true, a valid value must be given for this field.
-	/// </summary>
+	/**
+	 * When true, a valid value must be given for this field.
+	 */
 	public required: boolean = false;
-	/// <summary>
-	/// The default value for the field in the template.
-	/// </summary>
+	/**
+	 * The default value for the field in the template.
+	 */
 	public value: string = "";
-	/// <summary>
-	/// When false, this field's value is treated as read-only.
-	/// </summary>
+	/**
+	 * When false, this field's value is treated as read-only.
+	 */
 	public editable: boolean = false;
 }

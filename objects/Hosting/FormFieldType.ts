@@ -1,132 +1,132 @@
 ﻿
-	/// <summary>
-	/// The supported types of user interface modules for a <see cref="FormTemplate"/>.
-	/// </summary>
+	/**
+	 * The supported types of user interface modules for a <see cref="FormTemplate"/>.
+	 */
 	export enum FormFieldType {
-		/// <summary>
-		/// Any text input.
-		/// </summary>
-		/// <seealso cref="FormFieldText"/>
+		/**
+		 * Any text input.
+		 * {@link FormFieldText}
+		 */
 		text,
-		/// <summary>
-		/// A choice of one (or more) values defined.
-		/// </summary>
-		/// <seealso cref="FormFieldChoice"/>
+		/**
+		 * A choice of one (or more) values defined.
+		 * {@link FormFieldChoice}
+		 */
 		choice,
-		/// <summary>
-		/// A drop-down or fly-out UI for choosing a single value.
-		/// Works better than <see cref="choice"/> when there are a lot of values. ie; country or province list.
-		/// </summary>
-		/// <seealso cref="FormFieldChoice"/>
+		/**
+		 * A drop-down or fly-out UI for choosing a single value.
+		 * Works better than <see cref="choice"/> when there are a lot of values. ie; country or province list.
+		 * {@link FormFieldChoice}
+		 */
 		dropdown,
 
-		/// <summary>
-		/// A check mark to represent a booleanean value.
-		/// </summary>
-		/// <seealso cref="FormFieldBoolean"/>
+		/**
+		 * A check mark to represent a booleanean value.
+		 * {@link FormFieldBoolean}
+		 */
 		checkbox,
-		/// <summary>
-		/// A toggle box to represent one of two possible values (optionally defined).
-		/// </summary>
-		/// <seealso cref="FormFieldBoolean"/>
+		/**
+		 * A toggle box to represent one of two possible values (optionally defined).
+		 * {@link FormFieldBoolean}
+		 */
 		toggle,
 
-		/// <summary>
-		/// Numeric (optionally decimal) input.
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * Numeric (optionally decimal) input.
+		 * {@link FormFieldNumeric}
+		 */
 		numeric,
-		/// <summary>
-		/// A slider bar to choose a numeric value between a given high and low value.
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A slider bar to choose a numeric value between a given high and low value.
+		 * {@link FormFieldNumeric}
+		 */
 		range,
-		/// <summary>
-		/// A numeric value of distance (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of distance (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		distance,
-		/// <summary>
-		/// A numeric value of area (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of area (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		area,
-		/// <summary>
-		/// A numeric value of temperature (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of temperature (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		temperature,
-		/// <summary>
-		/// A numeric value of weight (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of weight (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		weight,
-		/// <summary>
-		/// A numeric value of volume (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of volume (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		volume,
-		/// <summary>
-		/// A numeric value of pressure (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of pressure (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		pressure,
-		/// <summary>
-		/// A numeric value of speed (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of speed (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		speed,
-		/// <summary>
-		/// A numeric value of fuel economy (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value of fuel economy (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * {@link FormFieldNumeric}
+		 */
 		fuelEconomy,
-		/// <summary>
-		/// A numeric value representing an amount of money.
-		/// </summary>
-		/// <seealso cref="FormFieldNumeric"/>
+		/**
+		 * A numeric value representing an amount of money.
+		 * {@link FormFieldNumeric}
+		 */
 		currency,
 
-		/// <summary>
-		/// A date and time picker.
-		/// </summary>
-		/// <seealso cref="FormFieldDate"/>
+		/**
+		 * A date and time picker.
+		 * {@link FormFieldDate}
+		 */
 		datetime,
-		/// <summary>
-		/// A calendar/date picker.
-		/// </summary>
-		/// <seealso cref="FormFieldDate"/>
+		/**
+		 * A calendar/date picker.
+		 * {@link FormFieldDate}
+		 */
 		date,
-		/// <summary>
-		/// A clock/time picker.
-		/// </summary>
-		/// <seealso cref="FormFieldTime"/>
+		/**
+		 * A clock/time picker.
+		 * {@link FormFieldTime}
+		 */
 		time,
-		/// <summary>
-		/// A duration picker.
-		/// Different than <see cref="time"/> because a duration can be negative, or longer than 24 hours.
-		/// </summary>
-		/// <seealso cref="FormFieldTime"/>
+		/**
+		 * A duration picker.
+		 * Different than <see cref="time"/> because a duration can be negative, or longer than 24 hours.
+		 * {@link FormFieldTime}
+		 */
 		duration,
 
-		/// <summary>
-		/// Area to capture a signature bitmap.
-		/// </summary>
-		/// <seealso cref="FormFieldSignature"/>
+		/**
+		 * Area to capture a signature bitmap.
+		 * {@link FormFieldSignature}
+		 */
 		signature,
-		/// <summary>
-		/// A browser of <see cref="Picture"/>s that can be attached.
-		/// </summary>
-		/// <seealso cref="FormFieldAttachments"/>
+		/**
+		 * A browser of <see cref="Picture"/>s that can be attached.
+		 * {@link FormFieldAttachments}
+		 */
 		pictures,
-		/// <summary>
-		/// A browser of <see cref="Document"/>s that can be attached.
-		/// </summary>
-		/// <seealso cref="FormFieldAttachments"/>
+		/**
+		 * A browser of <see cref="Document"/>s that can be attached.
+		 * {@link FormFieldAttachments}
+		 */
 		files,
-		/// <summary>
-		/// A list of <see cref="Timezone"/>s.
-		/// </summary>
-		/// <seealso cref="FormFieldTimezone"/>
+		/**
+		 * A list of <see cref="Timezone"/>s.
+		 * {@link FormFieldTimezone}
+		 */
 		timezone,
 	}
