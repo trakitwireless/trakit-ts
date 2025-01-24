@@ -10,22 +10,22 @@
 		 * The asset to which this report total belongs.
 		 * {@link Asset.id}
 		 */
-		public asset: ulong = NaN;
+		asset: ulong = NaN;
 		/**
 		 * Unique code given to the report total.
 		 *  <override max-length="100" />
 		 */
-		public stateDetail: string = "";
+		stateDetail: string = "";
 		/**
 		 * The number of summary instances included in this total.
 		 */
-		public summaryCount: uint = NaN;
+		summaryCount: uint = NaN;
 		/**
 		 * The total duration of all summary instances.
 		 */
-		public duration: TimeSpan;
+		duration: TimeSpan;
 		/**
 		 * The total distance travelled in kilometres of all summary instances.
 		 */
-		public distance: double = NaN;
+		distance: double = NaN;
 	}

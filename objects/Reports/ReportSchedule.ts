@@ -7,48 +7,48 @@
 		/**
 		 * Unique identifier
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this report belongs
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * A reference to the Template used to create this result.
 		 * {@link ReportTemplate.id}
 		 */
-		public template: ulong = NaN;
+		template: ulong = NaN;
 		/**
 		 * Login of the user who has ownership of this report schedule.
 		 * {@link User.login}
 		 *  <override max-length="254" format="email" />
 		 */
-		public owner: string = "";
+		owner: string = "";
 		/**
 		 * Name of this report.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about this report.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * Indicates whether this schedule is allowed to run.
 		 */
-		public enabled: boolean = false;
+		enabled: boolean = false;
 		/**
 		 * The recurring schedule to generate report results.
 		 */
-		public repetition: ReportRecurrence;
+		repetition: ReportRecurrence;
 		/**
 		 * Specified parameters for the report logic, targeted Assets, and filtering Places.
 		 */
-		public options: ReportOptions;
+		options: ReportOptions;
 		/**
 		 * A list of users and a targeting expression for assets which receive report results notifications.
 		 */
-		public notify: ReportNotifications;
+		notify: ReportNotifications;
 
 		// IRequestable
 		/**
@@ -60,9 +60,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

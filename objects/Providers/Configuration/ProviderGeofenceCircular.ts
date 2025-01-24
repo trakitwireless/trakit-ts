@@ -10,9 +10,9 @@
 		/**
 		 * The smallest possible radius for this geofence.
 		 */
-		public minRadius: uint = NaN;
+		minRadius: uint = NaN;
 		/**
 		 * The largest possible radius for this geofence.
 		 */
-		public maxRadius: uint = NaN;
+		maxRadius: uint = NaN;
 	}

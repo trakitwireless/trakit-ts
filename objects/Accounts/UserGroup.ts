@@ -8,25 +8,25 @@
 		/**
 		 * Unique identifier of this group.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this group belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * A name given to this group.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about this group, and to whom this group should be applied.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * Permissions for this group.
 		 */
-		public permissions: Permission[] = [];
+		permissions: Permission[] = [];
 
 		// IRequestable
 		/**
@@ -38,9 +38,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

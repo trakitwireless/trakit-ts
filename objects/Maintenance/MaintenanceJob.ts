@@ -7,82 +7,82 @@
 		/**
 		 * Default threshold (in minutes) for the valid completion date of jobs.
 		 */
-		public const int DEFAULT_COMPLETED_THRESHOLD_MINUTES = 10;
+		const int DEFAULT_COMPLETED_THRESHOLD_MINUTES = 10;
 
 		/**
 		 * Unique identifier
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The Vehicle or Trailer to which this job belongs
 		 * {@link Asset.id}
 		 */
-		public asset: ulong = NaN;
+		asset: ulong = NaN;
 		/**
 		 * The company to which this Vehicle or Trailer belongs
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The Maintenance Schedule from which this job was created
 		 * {@link MaintenanceSchedule.id}
 		 */
-		public schedule: ulong = NaN;
+		schedule: ulong = NaN;
 		/**
 		 * The work being done. Like "oil change".
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about the job.  Like "changed the oil and filter".
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The status of this job.
 		 */
-		public status: MaintenanceJobStatus;
+		status: MaintenanceJobStatus;
 		/**
 		 * When was this job created.
 		 */
-		public created: Date = DATE();
+		created: Date = DATE();
 		/**
 		 * When was this job created.
 		 */
-		public completed: Date = DATE();
+		completed: Date = DATE();
 		/**
 		 * The odometer at the time of the service.
 		 */
-		public odometer: double = NaN;
+		odometer: double = NaN;
 		/**
 		 * The operating time at the time of the service.
 		 */
-		public engineHours: double = NaN;
+		engineHours: double = NaN;
 
 		// ------------ repair details ------------
 		/**
 		 * The name of the garage or service facility where the work is done.
 		 *  <override max-length="100" />
 		 */
-		public garage: string = "";
+		garage: string = "";
 		/**
 		 * Time it took to complete the job.
 		 *  <override format="timespan" />
 		 */
-		public duration: TimeSpan;
+		duration: TimeSpan;
 		/**
 		 * How much the job cost in dollars.
 		 */
-		public cost: double = NaN;
+		cost: double = NaN;
 		/**
 		 * A reference code used to track this job
 		 *  <override max-length="100" />
 		 */
-		public reference: string = "";
+		reference: string = "";
 		/**
 		 * The mechanic who performed the work.
 		 *  <override max-length="100" />
 		 */
-		public technician: string = "";
+		technician: string = "";
 		/**
 		 * Images taken while performing the work for reference.
 		 * {@link Picture.id}
@@ -92,7 +92,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public pictures: ulong[] = [];
+		pictures: ulong[] = [];
 
 		// IRequestable
 		/**
@@ -104,9 +104,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

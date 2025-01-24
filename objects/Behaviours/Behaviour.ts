@@ -14,44 +14,44 @@ export class Behaviour extends Component implements IIdUlong, INamed, IBelongCom
 	/**
 	 * Unique identifier of this behaviour.
 	 */
-	public id: ulong = NaN;
+	id: ulong = NaN;
 	/**
 	 * The company to which this behaviour belongs.
 	 * {@link Company.id}
 	 */
-	public company: ulong = NaN;
+	company: ulong = NaN;
 	/**
 	 * The script which this behaviour implements.
 	 * {@link BehaviourScript.id}
 	 */
-	public script: ulong = NaN;
+	script: ulong = NaN;
 	/**
 	 * The name of this behaviour.
 	 *  <override max-length="100" />
 	 */
-	public name: string = "";
+	name: string = "";
 	/**
 	 * Notes.
 	 */
-	public notes: string = "";
+	notes: string = "";
 	/**
 	 * The priority flag allows you to define an execution order for all behaviours for a provider.
 	 */
-	public priority: byte = 255;
+	priority: byte = 255;
 	/**
 	 * The search pattern used to target the assets which will embed this behaviour in their execution context.
 	 *  <override type="System.String" format="expression" />
 	 */
-	public targets: string = "";
+	targets: string = "";
 	/**
 	 * A search pattern used to filter the providers which can implement this behaviour.
 	 *  <override type="System.String" format="expression" />
 	 */
-	public filters: string = "";
+	filters: string = "";
 	/**
 	 * The list of defined variable name/value pairs for the script requires.
 	 */
-	public parameters: Map<string, BehaviourParameter> = new Map;
+	parameters: Map<string, BehaviourParameter> = new Map;
 
 
 	constructor(object: JsonObject) {
@@ -65,7 +65,7 @@ export class Behaviour extends Component implements IIdUlong, INamed, IBelongCom
 	 */
 public getKey(): string { return this.id.toString(); }
 
-	public override toJSON(): JsonObject {
+	override toJSON(): JsonObject {
 		var object: JsonObject = {
 			"name": this.name,
 			"notes": this.notes,
@@ -82,7 +82,7 @@ public getKey(): string { return this.id.toString(); }
 		}
 		return object;
 	}
-	public override fromJSON(input: JsonObject): void {
+	override fromJSON(input: JsonObject): void {
 		this.id = input["id"] as ulong;
 		this.company = input["company"] as ulong;
 		this.script = input["script"] as ulong;
@@ -107,9 +107,9 @@ public getKey(): string { return this.id.toString(); }
 	/**
 	 * Indicates whether this object was deleted.
 	 */
-	public deleted: boolean = false;
+	deleted: boolean = false;
 	/**
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
-	public since: Date = DATE();
+	since: Date = DATE();
 }

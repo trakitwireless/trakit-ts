@@ -7,17 +7,17 @@
 		/**
 		 * Current status of this command.
 		 */
-		public status: ProviderCommandStatus;
+		status: ProviderCommandStatus;
 		/**
 		 * Command message body.
 		 */
-		public parameters: string[] = [];
+		parameters: string[] = [];
 		/**
 		 * Date/time stamp of when the command was created.
 		 */
-		public created: Date = DATE();
+		created: Date = DATE();
 		/**
 		 * Date/time stamp of when the command was processed.
 		 */
-		public processed: Date = DATE();
+		processed: Date = DATE();
 	}

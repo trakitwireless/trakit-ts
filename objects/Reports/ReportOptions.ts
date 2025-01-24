@@ -6,27 +6,27 @@
 		/**
 		 * A list of parameters to better shape the results.
 		 */
-		public parameters: ReportParameter[] = [];
+		parameters: ReportParameter[] = [];
 		/**
 		 * A targeting expression for including/excluding Assets.
 		 *  <override type="System.String" format="expression" />
 		 */
-		public targets: string = "";
+		targets: string = "";
 		/**
 		 * The mechanism to use for filtering based on places and regions.
 		 */
-		public filtering: ReportFilterMode;
+		filtering: ReportFilterMode;
 		/**
 		 * A targeting expression for limiting results which only include data from Assets interacting with the targeted Places.
 		 *  <override type="System.String" format="expression" />
 		 */
-		public places: string = "";
+		places: string = "";
 		/**
 		 * A list of provinces and states, where only assets within those regions will be included in the results.
 		 */
-		public regions: string[] = [];
+		regions: string[] = [];
 		/**
 		 * Rules used to generate scorecard for this report.
 		 */
-		public scorecardRules: ReportScorecardRules;
+		scorecardRules: ReportScorecardRules;
 	}

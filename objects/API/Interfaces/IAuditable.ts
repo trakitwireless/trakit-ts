@@ -21,13 +21,13 @@ export class IAuditableUpdated {
 	 * The <see cref="User.login"/> or <see cref="Machine.key"/> when the object is updated,
 	 * or <see cref="Service.UserAgent"/> if a service updates the object itself.
 	 */
-	public by: string = "";
+	by: string = "";
 	/**
 	 * A <see cref="Service.UserAgent"/> that handled the update.
 	 */
-	public from: string = "";
+	from: string = "";
 	/**
 	 * Timestamp from when the change was made.
 	 */
-	public dts: Date = DATE();
+	dts: Date = DATE();
 }

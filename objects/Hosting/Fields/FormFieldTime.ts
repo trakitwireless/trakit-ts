@@ -16,9 +16,9 @@
 		/**
 		 * The minimum duration or earliest time-of-day.
 		 */
-		public minimum?: TimeSpan;
+		minimum?: TimeSpan;
 		/**
 		 * The maximum duration or latest time-of-day.
 		 */
-		public maximum?: TimeSpan;
+		maximum?: TimeSpan;
 	}

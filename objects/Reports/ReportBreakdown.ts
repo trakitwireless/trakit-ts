@@ -6,21 +6,21 @@
 		/**
 		 * The asset to which this event data belongs.
 		 */
-		public asset: ulong = NaN;
+		asset: ulong = NaN;
 		/**
 		 * Report specific identifier of the event data.
 		 */
-		public instance: uint = NaN;
+		instance: uint = NaN;
 		/**
 		 * Identifiers of the summary instances that used this event.
 		 */
-		public summaryInstances: uint[] = [];
+		summaryInstances: uint[] = [];
 		/**
 		 * General Asset information.
 		 */
-		public general: AssetGeneral;
+		general: AssetGeneral;
 		/**
 		 * Advanced/detailed information used.
 		 */
-		public advanced: AssetAdvanced;
+		advanced: AssetAdvanced;
 	}

@@ -11,29 +11,29 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public tags: string[] = [];
+		tags: string[] = [];
 		/**
 		 * Path to the image.
 		 */
-		public src: string = "";
+		src: string = "";
 		/**
 		 * Size of the glyph in pixels.
 		 */
-		public size: Size;
+		size: Size;
 		/**
 		 * The offset from the lat/long in pixels.
 		 */
-		public anchor: Point;
+		anchor: Point;
 		/**
 		 * The layer on which this glyph is displayed.
 		 */
-		public layer: IconLayer;
+		layer: IconLayer;
 		/**
 		 * The z-order of this glyph compared to other glyphs on the same layer.
 		 */
-		public zIndex: ushort = NaN;
+		zIndex: ushort = NaN;
 		/**
 		 * Indicates that this glyph rotate based on GPS bearing.
 		 */
-		public rotates: boolean = false;
+		rotates: boolean = false;
 	}

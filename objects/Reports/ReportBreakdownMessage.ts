@@ -6,5 +6,5 @@
 		/**
 		 * The Message used.
 		 */
-		public message: AssetMessage;
+		message: AssetMessage;
 	}

@@ -8,20 +8,20 @@
 		 * Unique identifier of this asset.
 		 * {@link Asset.id}
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this asset belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The things GPS coordinates including speed, bearing, and street information.
 		 */
-		public position: Position;
+		position: Position;
 		/**
 		 * The cumulative distance travelled in kilometres.
 		 */
-		public odometer: double = NaN;
+		odometer: double = NaN;
 		/**
 		 * The codified status tag names.
 		 *  <override>
@@ -30,7 +30,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public tags: string[] = [];
+		tags: string[] = [];
 		/**
 		 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
 		 *  <override>
@@ -39,7 +39,7 @@
 		 *  </keys>
 		 *  </override>
 		 */
-		public attributes: Map<string, AssetAttribute>;
+		attributes: Map<string, AssetAttribute>;
 		/**
 		 * The list of devices providing events for this asset.
 		 *  <override readonly="true">
@@ -48,7 +48,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public providers: string[] = [];
+		providers: string[] = [];
 		/**
 		 * A list of assets related to this one; like a Person for a Vehicle (driver).
 		 *  <override>
@@ -57,7 +57,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public relationships: ulong[] = [];
+		relationships: ulong[] = [];
 		/**
 		 * The current state of this asset's interaction with known Places.
 		 *  <override>
@@ -66,7 +66,7 @@
 		 *  </keys>
 		 *  </override>
 		 */
-		public places: Map<ulong, AssetPlaceStatus>;
+		places: Map<ulong, AssetPlaceStatus>;
 
 		// IRequestable
 		/**

@@ -7,6 +7,6 @@
 		/**
 		 * A per-number/per-day limit on the amount of Notifications sent.
 		 */
-		public notifyLimit: ushort = NaN;
+		notifyLimit: ushort = NaN;
 		/**
 		 * All phone numbers listed by the country (	}

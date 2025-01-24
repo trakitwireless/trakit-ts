@@ -7,23 +7,23 @@
 		/**
 		 * Unique identifier of this job.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this job belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The <see cref="Asset"/> to which this job belongs.
 		 * This value is null when unassigned.
 		 * {@link Asset.id}
 		 */
-		public asset: ulong = NaN;
+		asset: ulong = NaN;
 		/**
 		 * A name for the work needed to be performed.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Name/value collections of custom fields used to refer to external systems.
 		 *  <override max-count="10">
@@ -31,11 +31,11 @@
 		 *  <values max-length="100" />
 		 *  </override>
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 		/**
 		 * Instructions (filled out by dispatcher) for the field-employee to help them complete the job.
 		 */
-		public instructions: string = "";
+		instructions: string = "";
 		/**
 		 * A list of hosted <see cref="Document"/> identifiers attached to this job.
 		 *  <override max-count="10">
@@ -44,7 +44,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public attachments: ulong[] = [];
+		attachments: ulong[] = [];
 		/**
 		 * A list of hosted <see cref="FormResult"/> identifiers attached to this job.
 		 *  <override max-count="10">
@@ -53,11 +53,11 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public forms: ulong[] = [];
+		forms: ulong[] = [];
 		/**
 		 * The importance of this job when scheduling for an asset.
 		 */
-		public priority: DispatchJobPriority;
+		priority: DispatchJobPriority;
 		/**
 		 * Codified label names used to relate (unassigned) jobs to <see cref="Asset"/>s.
 		 *  <override>
@@ -66,7 +66,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 		/**
 		 * The codified status tag names reflecting the conditions of this job.
 		 *  <override>
@@ -75,20 +75,20 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public tags: string[] = [];
+		tags: string[] = [];
 		/**
 		 * A list of coordinates to visit in order to carry out the work for this job.
 		 */
-		public steps: DispatchStep[] = [];
+		steps: DispatchStep[] = [];
 		/**
 		 * When this job was originally created.
 		 */
-		public created: Date = DATE();
+		created: Date = DATE();
 		/**
 		 * Clocked-in driver name who made the update.
 		 * Null if not clocked-in, or no changes have been made.
 		 */
-		public driver: string = "";
+		driver: string = "";
 
 		// IRequestable
 		/**
@@ -100,9 +100,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

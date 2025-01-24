@@ -15,30 +15,30 @@ export abstract class FormFieldBase implements IIdUlong, INamed {
 	/**
 	 * The type of interface control that should be presented to the user.
 	 */
-	public kind: FormFieldType;
+	kind: FormFieldType;
 	/**
 	 * Identifier for this field.
 	 * This value is unique per <see cref="FormTemplate"/>, but is not unique system-wide.
 	 */
-	public id: ulong = NaN;
+	id: ulong = NaN;
 	/**
 	 * Name of the field.
 	 */
-	public name: string = "";
+	name: string = "";
 	/**
 	 * Notes or special instructions for this control.
 	 */
-	public notes: string = "";
+	notes: string = "";
 	/**
 	 * When true, a valid value must be given for this field.
 	 */
-	public required: boolean = false;
+	required: boolean = false;
 	/**
 	 * The default value for the field in the template.
 	 */
-	public value: string = "";
+	value: string = "";
 	/**
 	 * When false, this field's value is treated as read-only.
 	 */
-	public editable: boolean = false;
+	editable: boolean = false;
 }

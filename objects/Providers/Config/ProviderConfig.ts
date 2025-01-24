@@ -7,30 +7,30 @@
 		/**
 		 * Unique identifier of this configuration.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this configuration belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The script which this configuration implements.
 		 * {@link ProviderScript.id}
 		 */
-		public script: ulong = NaN;
+		script: ulong = NaN;
 		/**
 		 * The nickname given to this configuration
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Simple details about how the providers are expected to behave.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The list of defined variable name/value pairs that the script requires.
 		 */
-		public parameters: Map<string, string>;
+		parameters: Map<string, string>;
 		/**
 		 * A search pattern used to filter which Places' geometry are used as geofences.
 		 * Use null to disable.
@@ -38,7 +38,7 @@
 		 * Or use "#123456" or "label:term" like other Place search patterns.
 		 *  <override type="System.String" format="expression" />
 		 */
-		public geofences: string = "";
+		geofences: string = "";
 
 		// IRequestable
 		/**
@@ -50,9 +50,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

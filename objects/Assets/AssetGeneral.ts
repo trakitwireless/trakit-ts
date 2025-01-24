@@ -8,30 +8,30 @@
 		 * Unique identifier of this asset.
 		 * {@link Asset.id}
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this asset belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * Type of asset.
 		 */
-		public kind: AssetType;
+		kind: AssetType;
 		/**
 		 * This thing's name.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * The icon that represents this asset on the map and in lists.
 		 * {@link Icon.id}
 		 */
-		public icon: ulong = NaN;
+		icon: ulong = NaN;
 		/**
 		 * Notes about it.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * Codified label names.
 		 *  <override>
@@ -40,7 +40,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 		/**
 		 * A list of photos of this thing.
 		 *  <override>
@@ -49,12 +49,12 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public pictures: ulong[] = [];
+		pictures: ulong[] = [];
 		/**
 		 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
 		 *  <override max-length="254" />
 		 */
-		public messagingAddress: string = "";
+		messagingAddress: string = "";
 		/**
 		 * Name/value collections of custom fields used to refer to external systems.
 		 *  <override max-count="10">
@@ -62,7 +62,7 @@
 		 *  <values max-length="100" />
 		 *  </override>
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 
 		// IRequestable
 		/**
@@ -74,13 +74,13 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Indicates whether this object is suspended from event processing.
 		 */
-		public suspended: boolean = false;
+		suspended: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

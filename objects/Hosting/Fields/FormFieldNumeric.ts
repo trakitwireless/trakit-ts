@@ -28,28 +28,28 @@
 		 * Used only for <see cref="FormFieldType.distance"/>, <see cref="FormFieldType.weight"/>, <see cref="FormFieldType.volume"/>,
 		 * and <see cref="FormFieldType.speed"/>.
 		 */
-		public size: FormFieldNumericSize;
+		size: FormFieldNumericSize;
 		/**
 		 * Number of decimal places of accuracy are required.
 		 */
-		public precision: byte = NaN;
+		precision: byte = NaN;
 		/**
 		 * The numeric value increments by this amount.
 		 */
-		public step: double = NaN;
+		step: double = NaN;
 		/**
 		 * An optional suffix for this numeric value, like "%" or "ppm".
 		 * This value is ignored for <see cref="FormFieldType.distance"/>, <see cref="FormFieldType.weight"/>,
 		 *  <see cref="FormFieldType.volume"/>, <see cref="FormFieldType.speed"/>, and <see cref="FormFieldType.area"/> field types.
 		 * And for <see cref="FormFieldType.currency"/> fields it acts as a prefix, like "$" or "USD".
 		 */
-		public units: string = "";
+		units: string = "";
 		/**
 		 * The (optional) minimum value.
 		 */
-		public minimum: double = NaN;
+		minimum: double = NaN;
 		/**
 		 * The (optional) maximum value.
 		 */
-		public maximum: double = NaN;
+		maximum: double = NaN;
 	}

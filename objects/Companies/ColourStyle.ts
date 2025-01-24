@@ -7,10 +7,10 @@
 		 * The colour of the background.
 		 *  <override max-length="22" format="colour" />
 		 */
-		public fill: string = "";
+		fill: string = "";
 		/**
 		 * The colour of the text or outline.
 		 *  <override max-length="22" format="colour" />
 		 */
-		public stroke: string = "";
+		stroke: string = "";
 	}

@@ -6,5 +6,5 @@
 		/**
 		 * The Task used.
 		 */
-		public task: DispatchTask;
+		task: DispatchTask;
 	}

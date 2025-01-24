@@ -6,17 +6,17 @@
 		/**
 		 * SKU being billed
 		 */
-		public sku: string = "";
+		sku: string = "";
 		/**
 		 * Cost per billing cycle for this SKU.
 		 */
-		public cost: double = NaN;
+		cost: double = NaN;
 		/**
 		 * Number of items for this SKU.
 		 */
-		public count: double = NaN;
+		count: double = NaN;
 		/**
 		 * Total amount being billed for this SKU.
 		 */
-		public total: double = NaN;
+		total: double = NaN;
 	}

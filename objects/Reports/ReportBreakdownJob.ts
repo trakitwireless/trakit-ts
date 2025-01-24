@@ -6,5 +6,5 @@
 		/**
 		 * The Job used.
 		 */
-		public job: DispatchJob;
+		job: DispatchJob;
 	}

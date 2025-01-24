@@ -7,93 +7,93 @@ export class Machine extends Component implements IEnabled, IBelongCompany, IHav
 	/**
 	 * The unique idenifier used to access the system.
 	 */
-	public key: string = "";
+	key: string = "";
 	/**
 	 * The company to which this user belongs.
 	 */
-	public company: ulong = NaN;
+	company: ulong = NaN;
 	/**
 	 * Indicates whether system access is disable.
 	 */
-	public enabled: boolean = false;
+	enabled: boolean = false;
 	/**
 	 * A token used to encode or validate requests.
 	 */
-	public secret: string = "";
+	secret: string = "";
 	/**
 	 * Human friendly name for these credentials
 	 */
-	public nickname: string = "";
+	nickname: string = "";
 	/**
 	 * Notes about this machine.
 	 */
-	public notes: string = "";
+	notes: string = "";
 	/**
 	 * An optional timestamp that restricts this machine account from being used before the given date.
 	 */
-	public notBefore: Date = DATE();
+	notBefore: Date = DATE();
 	/**
 	 * An optional timestamp that restricts this machine account from being used after the given date.
 	 */
-	public notAfter: Date = DATE();
+	notAfter: Date = DATE();
 	/**
 	 * The service account's local timezone.
 	 */
-	public timezone: Timezone;
+	timezone: Timezone;
 	/**
 	 * Preferred region/language for the UI and notifications.
 	 * Valid formats use &lt;ISO 639-1&gt;&lt;dash&gt;&lt;ISO 3166-2&gt; such as "fr-CA" or "en-US".
 	 */
-	public language: string = "";
+	language: string = "";
 	/**
 	 * The format strings defining the preferred way to display ambiguous values.
 	 */
-	public formats: Map<codified, datetimetemplate>;
+	formats: Map<codified, datetimetemplate>;
 	/**
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
 	 */
-	public measurements: Map<codified, SystemsOfUnits>;
+	measurements: Map<codified, SystemsOfUnits>;
 	/**
 	 * Additional options which do not fit in with the formats or measurements preferences.
 	 */
-	public options: Map<codified, string>;
+	options: Map<codified, string>;
 
 	/**
 	 * A list of groups to which this machine account belongs.
 	 */
-	public groups: ulong[] = [];
+	groups: ulong[] = [];
 	/**
 	 * Permission rules which override the group rules.
 	 */
-	public permissions: Permission[] = [];
+	permissions: Permission[] = [];
 	/**
 	 * List of system service URIs that this machine account is permitted to access.
 	 */
-	public services: Uri[] = [];
+	services: Uri[] = [];
 	/**
 	 * Optional list of your managed domains from which this machine account can be used.
 	 */
-	public referrers: Uri[] = [];
+	referrers: Uri[] = [];
 	/**
 	 * Restrict service access to only the provided IP ranges.
 	 * Currently we only support IPv4 ranges
 	 * When true, no access restrictions (<see cref="secret"/>, <see cref="referrers"/>, or <see cref="ipRanges"/>) are enforced.
 	 */
-	public insecure: boolean = false;
+	insecure: boolean = false;
 
 	// IRequestable
 	/**
 	 * The <see cref="key"/> is the key (how about that).
 	 */
-	public getKey(): string { return this.key; }
+	getKey(): string { return this.key; }
 
 	// IDeletable
 	/**
 	 * Indicates whether this object was deleted.
 	 */
-	public deleted: boolean = false;
+	deleted: boolean = false;
 	/**
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
-	public since: Date = DATE();
+	since: Date = DATE();
 }

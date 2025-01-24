@@ -20,24 +20,24 @@
 		/**
 		 * Gets the direction of the escalation.
 		 */
-		public direction: PermissionEscalationType;
+		direction: PermissionEscalationType;
 		/**
 		 * The <see cref="Company"/> that this permission targets.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The type of permission.
 		 */
-		public kind: PermissionType;
+		kind: PermissionType;
 		/**
 		 * Effective permission after the proposed change.
 		 */
-		public after: PermissionEscalationState;
+		after: PermissionEscalationState;
 		/**
 		 * Effective permission before the proposed change.
 		 */
-		public before: PermissionEscalationState;
+		before: PermissionEscalationState;
 	}
 
 	/**
@@ -47,7 +47,7 @@
 		/**
 		 * The level of access defined before the proposed change.
 		 */
-		public level?: PermissionLevel;
+		level?: PermissionLevel;
 		/**
 		 * Codified names of <see cref="LabelStyle"/>s.
 		 * If list is empty, this permission applies for all labels.
@@ -57,5 +57,5 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}

@@ -6,43 +6,43 @@ export class StreetAddress {
 	/**
 	 * House number.
 	 */
-	public number: string = "";
+	number: string = "";
 	/**
 	 * Full street name.
 	 */
-	public street: string = "";
+	street: string = "";
 	/**
 	 * City name.
 	 */
-	public city: string = "";
+	city: string = "";
 	/**
 	 * Region name.
 	 */
-	public region: string = "";
+	region: string = "";
 	/**
 	 * Province or state code.
 	 * Codes should be a value from ISO 3166-2.
 	 */
-	public province: string = "";
+	province: string = "";
 	/**
 	 * Country code.
 	 * Codes should be a value from ISO 3166-1 alpha-2.
 	 */
-	public country: string = "";
+	country: string = "";
 	/**
 	 * Postal or zip code.
 	 */
-	public postal: string = "";
+	postal: string = "";
 	/**
 	 * Indicates that there is a toll for the current road segment.
 	 */
-	public isToll: boolean = false;
+	isToll: boolean = false;
 
 	/**
 	 * Returns a text representation of this address.
 	 * Returned strings cannot be converted back into StreetAddress objects, so don't use this for deserialization.
 	 */
-	public toString(): string {
+	toString(): string {
 		var address: string[] = [];
 		if (this.street) address.push((this.number ? this.number + " " : "") + this.street);
 		if (this.city) address.push(this.city);

@@ -8,11 +8,11 @@
 		 * The type of data being stored.
 		 *  <override value="image" />
 		 */
-		public readonly DashcamMediaType kind = DashcamMediaType.image;
+		readonly DashcamMediaType kind = DashcamMediaType.image;
 		/**
 		 * Timestamp of this live camera image.
 		 */
-		public dts: Date = DATE();
+		dts: Date = DATE();
 
 		// IRequestable
 		/**

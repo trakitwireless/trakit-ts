@@ -9,12 +9,12 @@
 		 * Unique identifier of the Company.
 		 * {@link Company.id}
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The unique identifier of this company's parent organization.
 		 * {@link Company.id}
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 		/**
 		 * The list of Contacts from this and other companies broken down by contact role.
 		 *  <override>
@@ -25,7 +25,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public directory: Map<string, ulong[]>;
+		directory: Map<string, ulong[]>;
 
 		// IRequestable
 		/**

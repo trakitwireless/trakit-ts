@@ -9,25 +9,25 @@
 		 * {@link Provider.id}
 		 *  <override min-length="10" max-length="50" />
 		 */
-		public id: string = "";
+		id: string = "";
 		/**
 		 * The company to which this device belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The last IP address of the device.
 		 *  <override type="System.String" format="ipv4" />
 		 */
-		public lastIP: IPEndPoint;
+		lastIP: IPEndPoint;
 		/**
 		 * Often changing values like latitude, longitude, speed, wiring state, VBus information, etc...
 		 */
-		public Map<string, Map<string, ProviderData>> attributes;
+		Map<string, Map<string, ProviderData>> attributes;
 		/**
 		 * Store-and-forward information like last sequence number of SnF window
 		 */
-		public snf: Map<string, string>;
+		snf: Map<string, string>;
 
 		// IRequestable
 		/**

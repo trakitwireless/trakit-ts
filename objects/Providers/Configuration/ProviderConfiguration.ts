@@ -8,34 +8,34 @@
 		/**
 		 * Unique identifier of this configuration.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this configuration belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The nickname given to this configuration
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Simple details about how the providers are expected to behave.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The logic type which this configuration implements.
 		 * {@link ProviderConfigurationType.id}
 		 */
-		public type: ulong = NaN;
+		type: ulong = NaN;
 		/**
 		 * The list of defined variables given to the <see cref="ProviderConfigurationType.scriptOptions">logic type's options</see> pairs for the logic type requires.
 		 */
-		public scriptParameters: Map<string, object>;
+		scriptParameters: Map<string, object>;
 		/**
 		 * List of Places loaded directly onto the provider.
 		 */
-		public geofences: ulong[] = [];
+		geofences: ulong[] = [];
 
 		// IRequestable
 		/**
@@ -47,9 +47,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

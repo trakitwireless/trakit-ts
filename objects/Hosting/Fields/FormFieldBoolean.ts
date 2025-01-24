@@ -24,5 +24,5 @@
 		 * The first value is the "checked" value, second is the "unchecked" value, and third is "indeterminate" value.
 		 *  <override length="3" />
 		 */
-		public choices: string[] = [];
+		choices: string[] = [];
 	}

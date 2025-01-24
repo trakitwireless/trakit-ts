@@ -7,65 +7,65 @@
 		/**
 		 * Unique identifier
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this report belongs and is sending the bill.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * Unique identifier of the Company receiving the bill.
 		 * {@link Company.id}
 		 */
-		public billee: ulong = NaN;
+		billee: ulong = NaN;
 		/**
 		 * The profile to which this report belongs
 		 * {@link BillingProfile.id}
 		 */
-		public profile: ulong = NaN;
+		profile: ulong = NaN;
 		/**
 		 * Name of this report.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about this report.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * First day of the billing cycle
 		 */
-		public startDate: Date = DATE();
+		startDate: Date = DATE();
 		/**
 		 * Last day of the billing cycle
 		 */
-		public endDate: Date = DATE();
+		endDate: Date = DATE();
 		/**
 		 * Total amount being billed.
 		 */
-		public total: double = NaN;
+		total: double = NaN;
 		/**
 		 * Currency being billed in
 		 */
-		public currency: BillingCurrency;
+		currency: BillingCurrency;
 		/**
 		 * The processing status of this report.
 		 */
-		public status: BillingReportStatus;
+		status: BillingReportStatus;
 		/**
 		 * A field which contains report error details if the <see cref="status"/> is <see cref="BillingReportStatus.failed"/>.
 		 * {@link BillingReportStatus}
 		 *  <override max-length="250" />
 		 */
-		public error: string = "";
+		error: string = "";
 		/**
 		 * Summary contains totals per target for this billee
 		 */
-		public summary: BillingReportSummary[] = [];
+		summary: BillingReportSummary[] = [];
 		/**
 		 * Individual amounts per company, used to calculate the results of the report.
 		 */
-		public breakdown: BillingReportBreakdown[] = [];
+		breakdown: BillingReportBreakdown[] = [];
 
 		// IRequestable
 		/**
@@ -77,9 +77,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

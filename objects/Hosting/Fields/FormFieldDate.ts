@@ -16,9 +16,9 @@
 		/**
 		 * The earliest date or date/time.
 		 */
-		public minimum: Date = DATE();
+		minimum: Date = DATE();
 		/**
 		 * The latest date or date/time.
 		 */
-		public maximum: Date = DATE();
+		maximum: Date = DATE();
 	}

@@ -10,5 +10,5 @@
 		/**
 		 * The maximum number of vertices supported by the device.
 		 */
-		public maxVertices: uint = NaN;
+		maxVertices: uint = NaN;
 	}

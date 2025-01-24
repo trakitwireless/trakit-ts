@@ -6,9 +6,9 @@
 		/**
 		 * Base score for the scorecard.
 		 */
-		public baseScore: double = NaN;
+		baseScore: double = NaN;
 		/**
 		 * Infraction parameters used to generate the final score
 		 */
-		public parameters: ReportScorecardParameter[] = [];
+		parameters: ReportScorecardParameter[] = [];
 	}

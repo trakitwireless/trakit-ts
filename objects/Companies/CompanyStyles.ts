@@ -8,20 +8,20 @@
 		 * Unique identifier of the Company.
 		 * {@link Company.id}
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The unique identifier of this company's parent organization.
 		 * {@link Company.id}
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 		/**
 		 * The styles for labels added to Assets, Places, and other things.
 		 */
-		public labels: Map<string, LabelStyle>;
+		labels: Map<string, LabelStyle>;
 		/**
 		 * The styles for status tags added to Assets.
 		 */
-		public tags: Map<string, LabelStyle>;
+		tags: Map<string, LabelStyle>;
 
 		// IRequestable
 		/**

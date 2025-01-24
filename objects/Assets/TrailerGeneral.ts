@@ -7,29 +7,29 @@
 		 * The license plate.
 		 *  <override max-length="50" />
 		 */
-		public plate: string = "";
+		plate: string = "";
 		/**
 		 * Manufacturer's unique identification number for this trailer.
 		 *  <override max-length="50" />
 		 */
-		public serial: string = "";
+		serial: string = "";
 		/**
 		 * Manufacturer's name.
 		 *  <override max-length="50" />
 		 */
-		public make: string = "";
+		make: string = "";
 		/**
 		 * Manufacturer's model name/number.
 		 *  <override max-length="50" />
 		 */
-		public model: string = "";
+		model: string = "";
 		/**
 		 * Year of manufacturing.
 		 */
-		public year: ushort = NaN;
+		year: ushort = NaN;
 		/**
 		 * Primary colour of the trailer (given in 24bit hex; #RRGGBB)
 		 *  <override max-length="22" format="colour" />
 		 */
-		public colour: string = "";
+		colour: string = "";
 	}

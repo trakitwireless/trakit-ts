@@ -10,9 +10,9 @@
 		/**
 		 * The type of services being discounted.
 		 */
-		public services: BillableHostingType[] = [];
+		services: BillableHostingType[] = [];
 		/**
 		 * When true, the amount is used as a percentage value instead of a currency values.
 		 */
-		public percentage: boolean = false;
+		percentage: boolean = false;
 	}

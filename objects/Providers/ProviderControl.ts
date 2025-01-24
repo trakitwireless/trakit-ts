@@ -9,16 +9,16 @@
 		 * {@link Provider.id}
 		 *  <override min-length="10" max-length="50" />
 		 */
-		public id: string = "";
+		id: string = "";
 		/**
 		 * The company to which this device belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * Collection of commands for this provider.
 		 */
-		public commands: Map<ProviderCommandType, ProviderCommand>;
+		commands: Map<ProviderCommandType, ProviderCommand>;
 
 		// IRequestable
 		/**

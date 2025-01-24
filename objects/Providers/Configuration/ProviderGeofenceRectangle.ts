@@ -10,10 +10,10 @@
 		 * The smallest possible diameter for this geofence.
 		 *  <override type="System.UInt32" />
 		 */
-		public maxLength: int = NaN;
+		maxLength: int = NaN;
 		/**
 		 * The smallest possible diameter for this geofence.
 		 *  <override type="System.UInt32" />
 		 */
-		public maxWidth: int = NaN;
+		maxWidth: int = NaN;
 	}

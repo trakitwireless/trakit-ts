@@ -81,11 +81,11 @@ export class Rectangle implements IRectangle {
 	/**
 	 * The absolute width of this Rectangle.
 	 */
-	public get width(): number { return this.right - this.left; }
+	get width(): number { return this.right - this.left; }
 	/**
 	 * The absolute height of this Rectangle.
 	 */
-	public get height(): number { return this.bottom - this.top; }
+	get height(): number { return this.bottom - this.top; }
 
 	constructor(...args: RectangleExpansion[]) {
 		this.__expander(args);

@@ -8,21 +8,21 @@
 		 * {@link User.login}
 		 *  <override min-length="6" max-length="254" format="email" />
 		 */
-		public login: string = "";
+		login: string = "";
 		/**
 		 * The company to which this user belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * A list of groups to which this user belongs.
 		 * {@link UserGroup.id}
 		 */
-		public groups: ulong[] = [];
+		groups: ulong[] = [];
 		/**
 		 * Individual permission rules which override the group rules.
 		 */
-		public permissions: Permission[] = [];
+		permissions: Permission[] = [];
 
 		// IRequestable
 		/**

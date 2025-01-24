@@ -9,38 +9,38 @@
 		/**
 		 * Unique identifier.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * Name of the configuration type.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes regarding the use of this configuration.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The applicable type of provider for which this configuration type can be created.
 		 */
-		public providerType: ProviderType;
+		providerType: ProviderType;
 		/**
 		 * The maximum number of geofences that can be programmed onto a device. This number changes based on device make and model, and can also change based on the supported geofence types.
 		 *  <override type="System.UInt32" />
 		 */
-		public maxGeofenceCount: int = NaN;
+		maxGeofenceCount: int = NaN;
 		/**
 		 * The minimum number of geofences that need to be programmed onto the device. This value is almost always zero.
 		 *  <override type="System.UInt32" />
 		 */
-		public minGeofenceCount: int = NaN;
+		minGeofenceCount: int = NaN;
 		/**
 		 * A tree-structure of configurations required (or optionally available) for programming a device.
 		 */
-		public scriptOptions: Map<string, ProviderConfigurationNode>;
+		scriptOptions: Map<string, ProviderConfigurationNode>;
 		/**
 		 * A list of supported types of geofences which can be programmed directly onto the device.
 		 */
-		public geofenceTypes: PlaceType[] = [];
+		geofenceTypes: PlaceType[] = [];
 
 		// IRequestable
 		/**
@@ -52,9 +52,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

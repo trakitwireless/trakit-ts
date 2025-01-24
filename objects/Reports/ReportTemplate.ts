@@ -7,45 +7,45 @@
 		/**
 		 * Unique identifier
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this report belongs
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * Refers to the type of logic used by this report.
 		 */
-		public kind: ReportType;
+		kind: ReportType;
 		/**
 		 * Name of this report.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about this report.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * Specified parameters for the report logic, targeted Assets, and filtering Places.
 		 */
-		public options: ReportOptions;
+		options: ReportOptions;
 
 		/**
 		 * The fill/background colour of the icon.
 		 *  <override max-length="22" format="colour" />
 		 */
-		public fill: string = "";
+		fill: string = "";
 		/**
 		 * Outline and graphic colour.
 		 *  <override max-length="22" format="colour" />
 		 */
-		public stroke: string = "";
+		stroke: string = "";
 		/**
 		 * The name of the symbol for this report.
 		 *  <override max-length="22" format="codified" />
 		 */
-		public graphic: string = "";
+		graphic: string = "";
 
 		// IRequestable
 		/**
@@ -57,9 +57,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

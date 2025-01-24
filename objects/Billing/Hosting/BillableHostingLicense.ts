@@ -6,5 +6,5 @@
 		/**
 		 * The type of hardware license
 		 */
-		public kind: BillableHostingLicenseType;
+		kind: BillableHostingLicenseType;
 	}

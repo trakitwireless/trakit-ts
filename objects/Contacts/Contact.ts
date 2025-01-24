@@ -7,21 +7,21 @@
 		/**
 		 * Unique identifier of this contact.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this contact belongs
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The person's name
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about this person.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * A collection of other names this person might go by.
 		 * Use the object key like a name identifier.
@@ -30,7 +30,7 @@
 		 *  <values max-length="254" />
 		 *  </override>
 		 */
-		public otherNames: Map<string, string>;
+		otherNames: Map<string, string>;
 		/**
 		 * Email addresses.
 		 * Use the object key like a name of the address.
@@ -39,7 +39,7 @@
 		 *  <values max-length="254" format="email" />
 		 *  </override>
 		 */
-		public emails: Map<string, string>;
+		emails: Map<string, string>;
 		/**
 		 * Phone numbers.
 		 * Use the object key like a name of the phone number.
@@ -48,13 +48,13 @@
 		 *  <values format="phone" />
 		 *  </override>
 		 */
-		public phones: Map<string, ulong>;
+		phones: Map<string, ulong>;
 		/**
 		 * Mailing addresses.
 		 * Use the object key like a name of the address.
 		 * Example keys: Home, Work, Park, etc.
 		 */
-		public addresses: Map<string, string>;
+		addresses: Map<string, string>;
 		/**
 		 * Websites and other online resources.
 		 * Use the object key like a name of the address.
@@ -63,23 +63,23 @@
 		 *  <values type="System.String" max-length="254" format="url" />
 		 *  </override>
 		 */
-		public urls: Map<string, Uri>;
+		urls: Map<string, Uri>;
 		/**
 		 * Date information.
 		 * Use the object key like a name of the date.
 		 * Example keys: Birthday, Started Date, Retired On, etc.
 		 */
-		public dates: Map<string, Date>;
+		dates: Map<string, Date>;
 		/**
 		 * Uncategorized information.
 		 * Use the object keys and values however you'd like.
 		 */
-		public options: Map<string, string>;
+		options: Map<string, string>;
 		/**
 		 * A list of roles they play in the Company.
 		 *  <override format="codified" />
 		 */
-		public roles: string[] = [];
+		roles: string[] = [];
 		/**
 		 * Pictures of this Contact.
 		 *  <override>
@@ -88,7 +88,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public pictures: ulong[] = [];
+		pictures: ulong[] = [];
 
 		// IRequestable
 		/**
@@ -100,9 +100,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

@@ -15,13 +15,13 @@
 		/**
 		 * The list of choices available and their values.
 		 */
-		public choices: Map<string, string>;
+		choices: Map<string, string>;
 		/**
 		 * Minimum number of choices that must be selected.
 		 */
-		public minimum: byte = NaN;
+		minimum: byte = NaN;
 		/**
 		 * Maximum number of choices that must be selected.
 		 */
-		public maximum: byte = NaN;
+		maximum: byte = NaN;
 	}

@@ -15,13 +15,13 @@
 		 * The control should grow to display all entered text even if the UI must add more rows.
 		 *  </remarks>
 		 */
-		public rows: byte = NaN;
+		rows: byte = NaN;
 		/**
 		 * Minimum length of entered text to make it a valid entry.
 		 */
-		public minimum: ushort = NaN;
+		minimum: ushort = NaN;
 		/**
 		 * Maximum length of entered text to make it a valid entry.
 		 */
-		public maximum: ushort = NaN;
+		maximum: ushort = NaN;
 	}

@@ -17,7 +17,7 @@
 		 * A reference to their Company's Contact information.
 		 * {@link Contact.id}
 		 */
-		public ulong contact {
+		ulong contact {
 			get => (this.general ?? throw new NullReferenceException("general")).contact;
 			set => (this.general ?? throw new NullReferenceException("general")).contact = value;
 		}

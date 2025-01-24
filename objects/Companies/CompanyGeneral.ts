@@ -8,21 +8,21 @@
 		 * Unique identifier of the Company.
 		 * {@link Company.id}
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The unique identifier of this company's parent organization.
 		 * {@link Company.id}
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 		/**
 		 * The organizational name.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * Name/value collections of custom fields used to refer to external systems.
 		 *  <override max-count="10">
@@ -30,7 +30,7 @@
 		 *  <values max-length="100" />
 		 *  </override>
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 
 		// IRequestable
 		/**
@@ -42,9 +42,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

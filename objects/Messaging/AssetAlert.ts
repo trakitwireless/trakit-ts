@@ -6,5 +6,5 @@
 		/**
 		 * The priority for which this message must send.
 		 */
-		public priority: AlertPriority;
+		priority: AlertPriority;
 	}

@@ -8,9 +8,9 @@
 		/**
 		 * Grouped events form a summary instance, and contain information about the starting, ending, and number of the grouped events.
 		 */
-		public summary: Map<ulong, ReportSummary[]>;
+		summary: Map<ulong, ReportSummary[]>;
 		/**
 		 * Individual events about the targeted assets used to calculate the results of the report.
 		 */
-		public breakdown: Map<ulong, ReportBreakdown[]>;
+		breakdown: Map<ulong, ReportBreakdown[]>;
 	}

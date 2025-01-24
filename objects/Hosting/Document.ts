@@ -7,39 +7,39 @@
 		/**
 		 * Unique identifier of this file.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this file belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The file name of this file.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about this file.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The URL/path to find this file.
 		 *  <override max-length="200" />
 		 */
-		public src: string = "";
+		src: string = "";
 		/**
 		 * The file-size on the disk.
 		 */
-		public bytes: ulong = NaN;
+		bytes: ulong = NaN;
 		/**
 		 * The MIME type of the file.
 		 *  <override max-length="50" />
 		 */
-		public mime: string = "";
+		mime: string = "";
 		/**
 		 * The date and time this fill will be automatically purged from our system.
 		 */
-		public expiry: Date = DATE();
+		expiry: Date = DATE();
 		/**
 		 * Name/value collections of custom fields used to refer to external systems.
 		 *  <override max-count="10">
@@ -47,7 +47,7 @@
 		 *  <values max-length="100" />
 		 *  </override>
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 
 		// IRequestable
 		/**
@@ -59,9 +59,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

@@ -6,15 +6,15 @@
 		/**
 		 * The folder under which this message is stored.
 		 */
-		public folder: MessageFolder;
+		folder: MessageFolder;
 		/**
 		 * Indicates that this is a received message instead of a sent message.
 		 */
-		public incoming: boolean = false;
+		incoming: boolean = false;
 		/**
 		 * The user that read this message.  This field is blank/null when unread.
 		 * {@link User.login}
 		 *  <override max-length="254" format="email" />
 		 */
-		public readBy: string = "";
+		readBy: string = "";
 	}

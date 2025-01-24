@@ -7,42 +7,42 @@
 		/**
 		 * Unique identifier of this image.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this image belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The file name of this image.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about this image.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The URL/path to find this image.
 		 *  <override max-length="200" />
 		 */
-		public src: string = "";
+		src: string = "";
 		/**
 		 * Resolution defined in pixels.
 		 */
-		public size: Size;
+		size: Size;
 		/**
 		 * A list of focal points in the images like faces.
 		 */
-		public focals: Square[] = [];
+		focals: Square[] = [];
 		/**
 		 * The file-size on the disk.
 		 */
-		public bytes: ulong = NaN;
+		bytes: ulong = NaN;
 		/**
 		 * A count of the times this image was used for something (asset, contact, task, etc).
 		 */
-		public uses: uint = NaN;
+		uses: uint = NaN;
 
 		// IRequestable
 		/**
@@ -54,9 +54,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

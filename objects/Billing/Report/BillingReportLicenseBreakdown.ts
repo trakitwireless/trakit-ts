@@ -9,47 +9,47 @@
 		 * The provider to which this breakdown instance belongs.
 		 * {@link Provider.id}
 		 */
-		public provider: string = "";
+		provider: string = "";
 		/**
 		 * Type of provider.
 		 */
-		public kind: ProviderType;
+		kind: ProviderType;
 		/**
 		 * Provider name.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes about the provider.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * Indicates when this Provider was created.
 		 */
-		public created: Date = DATE();
+		created: Date = DATE();
 		/**
 		 * Indicates when this Provider was deleted.
 		 */
-		public deleted: Date = DATE();
+		deleted: Date = DATE();
 		/**
 		 * The phone number for this provider.
 		 */
-		public phoneNumber: ulong = NaN;
+		phoneNumber: ulong = NaN;
 		/**
 		 * The firmware/application version number.
 		 *  <override max-length="100" />
 		 */
-		public firmware: string = "";
+		firmware: string = "";
 		/**
 		 * Number of days this Provider is being billed for.
 		 */
-		public billableDays: double = NaN;
+		billableDays: double = NaN;
 		/**
 		 * Licensing cost per billing cycle for this provider.
 		 */
-		public cost: double = NaN;
+		cost: double = NaN;
 		/**
 		 * Total amount being billed for this provider.
 		 */
-		public total: double = NaN;
+		total: double = NaN;
 	}

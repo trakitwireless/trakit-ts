@@ -8,12 +8,12 @@
 		 * Unique identifier of the Company.
 		 * {@link Company.id}
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The unique identifier of this company's parent organization.
 		 * {@link Company.id}
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 		/**
 		 * A list of Contacts for company specific things like Technical Support, Billing, etc...
 		 * {@link Contact.id}
@@ -24,33 +24,33 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public contactInfo: Map<string, ulong>;
+		contactInfo: Map<string, ulong>;
 		/**
 		 * The name of the branded service being provided to the seller's customers.
 		 *  <override max-length="150" />
 		 */
-		public serviceName: string = "";
+		serviceName: string = "";
 		/**
 		 * The name of the image uploaded as the logo (used for regular view).
 		 *  <override max-length="200" />
 		 */
-		public logo: string = "";
+		logo: string = "";
 		/**
 		 * The name of the image uploaded as the logo (used for collapsed/mobile view).
 		 *  <override max-length="200" />
 		 */
-		public icon: string = "";
+		icon: string = "";
 		/**
 		 * The name of the icon file used for browser bookmarks.
 		 *  <override max-length="200" />
 		 */
-		public favourite: string = "";
+		favourite: string = "";
 		/**
 		 * The URN and path to the instance of v4.
 		 * It does not contain the protocol because all instances are required to be HTTPS.
 		 *  <override max-length="100" />
 		 */
-		public domain: string = "";
+		domain: string = "";
 		/**
 		 * Themed colours used in the web-based UI.
 		 *  <override>
@@ -58,7 +58,7 @@
 		 *  <values max-length="22" format="colour" />
 		 *  </override>
 		 */
-		public website: Map<string, string>;
+		website: Map<string, string>;
 		/**
 		 * A list of symbol names and their corresponding FontAwesome icon names.
 		 *  <override>
@@ -66,38 +66,38 @@
 		 *  <values max-length="30" format="codified" />
 		 *  </override>
 		 */
-		public graphics: Map<string, string>;
+		graphics: Map<string, string>;
 		/**
 		 * A list of supported languages for your customers.
 		 *  <override>
 		 *  <values max-length="5" format="codified" />
 		 *  </override>
 		 */
-		public languages: string[] = [];
+		languages: string[] = [];
 		/**
 		 * Colours used as templates for status tags, labels, and places.
 		 *  <override>
 		 *  <keys max-length="25" />
 		 *  </override>
 		 */
-		public gamut: Map<string, ColourStyle>;
+		gamut: Map<string, ColourStyle>;
 		/**
 		 * The server used for notification and conversational email messages sent and received by the system.
 		 */
-		public notifyEmail: NotificationServerEmail;
+		notifyEmail: NotificationServerEmail;
 		/**
 		 * Definition for load-balanced outbound SMS numbers for the reseller.
 		 */
-		public notifySms: NotificationServerSms;
+		notifySms: NotificationServerSms;
 		/**
 		 * A preamble to the general terms and conditions offered by Fleet Freedom.
 		 */
-		public termsPreamble: string = "";
+		termsPreamble: string = "";
 		/**
 		 * The date and time when the terms were updated.
 		 * This will promt users who are logging-in to re-agree to the new terms
 		 */
-		public termsUpdated: Date = DATE();
+		termsUpdated: Date = DATE();
 		/**
 		 * The subject of the email sent to a user requesting a password reset.
 		 *  <remarks>
@@ -111,7 +111,7 @@
 		 * - %SERVER%    with the server software's userAgent or the software (Kraken, Medusa, Mindflayer)
 		 *  </remarks>
 		 */
-		public recoverSubject: string = "";
+		recoverSubject: string = "";
 		/**
 		 * The body of the email sent to a user requesting a password reset.
 		 *  <remarks>
@@ -127,7 +127,7 @@
 		 *  </code>
 		 *  </remarks>
 		 */
-		public recoverBody: string = "";
+		recoverBody: string = "";
 		/**
 		 * When true, sends the password reset email as an HTML email instead of plain text.
 		 *  <remarks>
@@ -140,7 +140,7 @@
 		 *  </code>
 		 *  </remarks>
 		 */
-		public recoverIsHtml: boolean = false;
+		recoverIsHtml: boolean = false;
 
 		// IRequestable
 		/**
@@ -152,9 +152,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

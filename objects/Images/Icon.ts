@@ -7,48 +7,48 @@
 		/**
 		 * Unique identifier of this icon.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this icon belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 
 		/**
 		 * A noun to describe the type of thing represented.  Like Truck, Car, Trailer, Hot-Air Balloon, etc...
 		 *  <override max-length="100" />
 		 */
-		public category: string = "";
+		category: string = "";
 		/**
 		 * A specific adjective to describe the thing.  Like Blue, Red, Empty, Full, etc...
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * Indicates whether this icon is available to child companies.
 		 */
-		public global: boolean = false;
+		global: boolean = false;
 		/**
 		 * A list of things that this icon can be used to represent.  Like asset, place, user, etc...
 		 */
-		public usage: string[] = [];
+		usage: string[] = [];
 		/**
 		 * Definition for the name bubble above the icon on a map.
 		 */
-		public label: IconLabel;
+		label: IconLabel;
 		/**
 		 * Where the notification will appear for a mapped icon.
 		 * Such as the number of dispatches an asset is working on, or the number of dispatches at a place.
 		 */
-		public badge: IconLabel;
+		badge: IconLabel;
 		/**
 		 * The images used to show the detail of this icon.
 		 */
-		public glyphs: IconGlyph[] = [];
+		glyphs: IconGlyph[] = [];
 
 		// IRequestable
 		/**
@@ -60,9 +60,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

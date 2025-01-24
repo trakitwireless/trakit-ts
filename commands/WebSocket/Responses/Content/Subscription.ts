@@ -5,9 +5,9 @@
 		/**
 		 * The company relevant to the subscription types you want to receive.
 		 */
-		public company: number = NaN;
+		company: number = NaN;
 		/**
 		 * List of subscription types for the company.
 		 */
-		public subscriptionTypes: SubscriptionType[] = [];
+		subscriptionTypes: SubscriptionType[] = [];
 	}

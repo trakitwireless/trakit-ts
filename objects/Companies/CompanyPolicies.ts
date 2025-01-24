@@ -7,20 +7,20 @@
 		 * Unique identifier of the Company.
 		 * {@link Company.id}
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The unique identifier of this company's parent organization.
 		 * {@link Company.id}
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 		/**
 		 * The session lifetime policy.
 		 */
-		public sessionPolicy: SessionPolicy;
+		sessionPolicy: SessionPolicy;
 		/**
 		 * The password complexity and expiry policy.
 		 */
-		public passwordPolicy: PasswordPolicy;
+		passwordPolicy: PasswordPolicy;
 
 		// IRequestable
 		/**

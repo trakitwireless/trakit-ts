@@ -17,7 +17,7 @@
 		 * Unique identifier of this asset.
 		 * {@link Asset.id}
 		 */
-		public ulong id => this.General?.id
+		ulong id => this.General?.id
 						?? this.Advanced?.id
 						?? this.Dispatch?.id
 						?? throw new NullReferenceException("general");
@@ -25,32 +25,32 @@
 		 * The company to which this asset belongs.
 		 * {@link Company.id}
 		 */
-		public ulong company => this.General?.company
+		ulong company => this.General?.company
 							?? this.Advanced?.company
 							?? this.Dispatch?.company
 							?? throw new NullReferenceException("general");
 		/**
 		 * Type of asset.
 		 */
-		public AssetType kind => this.General?.kind
+		AssetType kind => this.General?.kind
 							?? throw new NullReferenceException("general");
 
 		/**
 		 *  
 		 */
-		public General: AssetGeneral;
+		General: AssetGeneral;
 		/**
 		 * This thing's name.
 		 *  <override max-length="100" />
 		 */
-		public string name {
+		string name {
 			get => (this.General ?? throw new NullReferenceException("general")).name;
 			set => (this.General ?? throw new NullReferenceException("general")).name = value;
 		}
 		/**
 		 * Notes about it.
 		 */
-		public string notes {
+		string notes {
 			get => (this.General ?? throw new NullReferenceException("general")).notes;
 			set => (this.General ?? throw new NullReferenceException("general")).notes = value;
 		}
@@ -58,7 +58,7 @@
 		 * The icon that represents this asset on the map and in lists.
 		 * {@link Icon.id}
 		 */
-		public ulong icon {
+		ulong icon {
 			get => (this.General ?? throw new NullReferenceException("general")).icon;
 			set => (this.General ?? throw new NullReferenceException("general")).icon = value;
 		}
@@ -70,7 +70,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public string[] labels {
+		string[] labels {
 			get => (this.General ?? throw new NullReferenceException("general")).labels;
 			set => (this.General ?? throw new NullReferenceException("general")).labels = value;
 		}
@@ -82,7 +82,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public ulong[] pictures {
+		ulong[] pictures {
 			get => (this.General ?? throw new NullReferenceException("general")).pictures;
 			set => (this.General ?? throw new NullReferenceException("general")).pictures = value;
 		}
@@ -90,7 +90,7 @@
 		 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
 		 *  <override max-length="254" />
 		 */
-		public string messagingAddress {
+		string messagingAddress {
 			get => (this.General ?? throw new NullReferenceException("general")).messagingAddress;
 			set => (this.General ?? throw new NullReferenceException("general")).messagingAddress = value;
 		}
@@ -101,7 +101,7 @@
 		 *  <values max-length="100" />
 		 *  </override>
 		 */
-		public Map<string, string> references {
+		Map<string, string> references {
 			get => (this.General ?? throw new NullReferenceException("general")).references;
 			set => (this.General ?? throw new NullReferenceException("general")).references = value;
 		}
@@ -109,18 +109,18 @@
 		/**
 		 *  
 		 */
-		public Advanced: AssetAdvanced;
+		Advanced: AssetAdvanced;
 		/**
 		 * The things GPS coordinates including speed, bearing, and street information.
 		 */
-		public Position position {
+		Position position {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).position;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).position = value;
 		}
 		/**
 		 * The cumulative distance travelled in kilometres.
 		 */
-		public double odometer {
+		double odometer {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).odometer;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).odometer = value;
 		}
@@ -132,7 +132,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public string[] tags {
+		string[] tags {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).tags;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).tags = value;
 		}
@@ -144,7 +144,7 @@
 		 *  </keys>
 		 *  </override>
 		 */
-		public Map<string, AssetAttribute> attributes {
+		Map<string, AssetAttribute> attributes {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).attributes;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).attributes = value;
 		}
@@ -156,7 +156,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public string[] providers {
+		string[] providers {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).providers;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).providers = value;
 		}
@@ -168,7 +168,7 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public ulong[] relationships {
+		ulong[] relationships {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).relationships;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).relationships = value;
 		}
@@ -180,7 +180,7 @@
 		 *  </keys>
 		 *  </override>
 		 */
-		public Map<ulong, AssetPlaceStatus> places {
+		Map<ulong, AssetPlaceStatus> places {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).places;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).places = value;
 		}
@@ -188,7 +188,7 @@
 		/**
 		 *  
 		 */
-		public Dispatch: AssetDispatch;
+		Dispatch: AssetDispatch;
 
 		// IRequestable
 		/**
@@ -200,13 +200,13 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public boolean? deleted => (this.General ?? throw new NullReferenceException("general")).deleted;
+		boolean? deleted => (this.General ?? throw new NullReferenceException("general")).deleted;
 		/**
 		 * Indicates whether this object is suspended from event processing.
 		 */
-		public boolean? suspended => (this.General ?? throw new NullReferenceException("general")).suspended;
+		boolean? suspended => (this.General ?? throw new NullReferenceException("general")).suspended;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public Date? since => (this.General ?? throw new NullReferenceException("general")).since;
+		Date? since => (this.General ?? throw new NullReferenceException("general")).since;
 	}

@@ -6,5 +6,5 @@
 		/**
 		 * The type of service being billed.
 		 */
-		public service: BillableHostingType;
+		service: BillableHostingType;
 	}

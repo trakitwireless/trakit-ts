@@ -8,46 +8,46 @@
 		/**
 		 * A "handle" identifying a resource.
 		 */
-		public handle: string = "";
+		handle: string = "";
 		/**
 		 * Getter shortcut for the <see cref="User"/>'s <see cref="Company.id"/>.
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 *  <c>UserAgent</c> identification string
 		 */
-		public userAgent: string = "";
+		userAgent: string = "";
 		/**
 		 * The IP address the user last used to connect 
 		/**
 		 * The number of currently connected WebSocket clients.
 		 */
-		public sockets: int = NaN;
+		sockets: int = NaN;
 		/**
 		 * The <see cref="User"/> to which the <see cref="Session"/> belongs.
 		 * {@link User.login}
 		 */
-		public login: string = "";
+		login: string = "";
 		/**
 		 * This <see cref="Session"/>'s current state.
 		 */
-		public status: SessionStatus;
+		status: SessionStatus;
 		/**
 		 * The timestamp from the moment this <see cref="Session"/> was created.
 		 */
-		public created: Date = DATE();
+		created: Date = DATE();
 		/**
 		 * A timestamp for when the <see cref="RespSession"/> will expire.
 		 */
-		public expiry: Date = DATE();
+		expiry: Date = DATE();
 		/**
 		 * The name or path of the last command executed.
 		 */
-		public lastCommand: string = "";
+		lastCommand: string = "";
 		/**
 		 * A timestamp from the last command or call to the system.
 		 */
-		public lastActivity: Date = DATE();
+		lastActivity: Date = DATE();
 		/**
 		 * Indicator that this <see cref="Session"/> is 
 	}

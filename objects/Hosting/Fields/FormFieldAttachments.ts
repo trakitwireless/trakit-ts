@@ -19,9 +19,9 @@ export class FormFieldAttachments extends FormFieldBase {
 	/**
 	 * Minimum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
 	 */
-	public minimum: byte = NaN;
+	minimum: byte = NaN;
 	/**
 	 * Maximum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
 	 */
-	public maximum: byte = NaN;
+	maximum: byte = NaN;
 }

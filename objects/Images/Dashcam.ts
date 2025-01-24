@@ -7,33 +7,33 @@
 		/**
 		 * Unique identifier of this resource.
 		 */
-		public guid: Guid;
+		guid: Guid;
 		/**
 		 * The type of data being stored.
 		 */
-		public kind: DashcamMediaType;
+		kind: DashcamMediaType;
 		/**
 		 * For <see cref="DashcamMediaType.video"/> media files, this indicates the frames-per-second.
 		 */
-		public fps: float = NaN;
+		fps: float = NaN;
 		/**
 		 * Timestamp of when this resource started.
 		 * For <see cref="DashcamMediaType.image"/> media files, the start and end are the same.
 		 */
-		public start: Date = DATE();
+		start: Date = DATE();
 		/**
 		 * Timestamp of when this resource ended.
 		 * For <see cref="DashcamMediaType.image"/> media files, the start and end are the same.
 		 */
-		public end: Date = DATE();
+		end: Date = DATE();
 		/**
 		 * For <see cref="DashcamMediaType.video"/> media files, the duration of the video clip.
 		 */
-		public get duration(): TimeSpan { return this.end - this.start; }
+		get duration(): TimeSpan { return this.end - this.start; }
 		/**
 		 * The reason why we're saving this image/video. Or the event name that triggered it.
 		 */
-		public eventName: string = "";
+		eventName: string = "";
 
 		// IRequestable
 		/**

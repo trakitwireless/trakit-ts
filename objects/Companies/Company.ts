@@ -20,7 +20,7 @@
 		 * Unique identifier of this Company.
 		 * {@link Asset.id}
 		 */
-		public ulong id => this.General?.id
+		ulong id => this.General?.id
 						?? this.Directory?.id
 						?? this.Policies?.id
 						?? this.Styles?.id
@@ -30,7 +30,7 @@
 		 * The parent organization for this Company.
 		 * {@link Company.id}
 		 */
-		public ulong parent {
+		ulong parent {
 			get => this.General?.parent
 				?? this.Directory?.parent
 				?? this.Policies?.parent
@@ -49,19 +49,19 @@
 		/**
 		 *  
 		 */
-		public General: CompanyGeneral;
+		General: CompanyGeneral;
 		/**
 		 * The organizational name.
 		 *  <override max-length="100" />
 		 */
-		public string name {
+		string name {
 			get => (this.General ?? throw new NullReferenceException("general")).name;
 			set => (this.General ?? throw new NullReferenceException("general")).name = value;
 		}
 		/**
 		 * Notes.
 		 */
-		public string notes {
+		string notes {
 			get => (this.General ?? throw new NullReferenceException("general")).notes;
 			set => (this.General ?? throw new NullReferenceException("general")).notes = value;
 		}
@@ -72,7 +72,7 @@
 		 *  <values max-length="100" />
 		 *  </override>
 		 */
-		public Map<string, string> references {
+		Map<string, string> references {
 			get => (this.General ?? throw new NullReferenceException("general")).references;
 			set => (this.General ?? throw new NullReferenceException("general")).references = value;
 		}
@@ -80,11 +80,11 @@
 		/**
 		 *  
 		 */
-		public Directory: CompanyDirectory;
+		Directory: CompanyDirectory;
 		/**
 		 * The list of Contacts from this and other companies broken down by contact role.
 		 */
-		public Map<string, ulong[]> employees {
+		Map<string, ulong[]> employees {
 			get => (this.Directory ?? throw new NullReferenceException("directory")).directory;
 			set => (this.Directory ?? throw new NullReferenceException("directory")).directory = value;
 		}
@@ -92,18 +92,18 @@
 		/**
 		 *  
 		 */
-		public Policies: CompanyPolicies;
+		Policies: CompanyPolicies;
 		/**
 		 * The session lifetime policy.
 		 */
-		public SessionPolicy sessionPolicy {
+		SessionPolicy sessionPolicy {
 			get => (this.Policies ?? throw new NullReferenceException("policies")).sessionPolicy;
 			set => (this.Policies ?? throw new NullReferenceException("policies")).sessionPolicy = value;
 		}
 		/**
 		 * The password complexity and expiry policy.
 		 */
-		public PasswordPolicy passwordPolicy {
+		PasswordPolicy passwordPolicy {
 			get => (this.Policies ?? throw new NullReferenceException("policies")).passwordPolicy;
 			set => (this.Policies ?? throw new NullReferenceException("policies")).passwordPolicy = value;
 		}
@@ -111,18 +111,18 @@
 		/**
 		 *  
 		 */
-		public Styles: CompanyStyles;
+		Styles: CompanyStyles;
 		/**
 		 * The styles for labels added to Assets, Places, and other things.
 		 */
-		public Map<string, LabelStyle> labels {
+		Map<string, LabelStyle> labels {
 			get => (this.Styles ?? throw new NullReferenceException("styles")).labels;
 			set => (this.Styles ?? throw new NullReferenceException("styles")).labels = value;
 		}
 		/**
 		 * The styles for status tags added to Assets.
 		 */
-		public Map<string, LabelStyle> tags {
+		Map<string, LabelStyle> tags {
 			get => (this.Styles ?? throw new NullReferenceException("styles")).tags;
 			set => (this.Styles ?? throw new NullReferenceException("styles")).tags = value;
 		}
@@ -130,7 +130,7 @@
 		/**
 		 * If this company is a reseller, then they have their own theme, support and billing information.
 		 */
-		public Reseller: CompanyReseller;
+		Reseller: CompanyReseller;
 
 		// IRequestable
 		/**
@@ -142,9 +142,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public boolean? deleted => this.General?.deleted;
+		boolean? deleted => this.General?.deleted;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public Date? since => this.General?.since;
+		Date? since => this.General?.since;
 	}

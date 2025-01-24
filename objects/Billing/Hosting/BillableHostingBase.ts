@@ -7,17 +7,17 @@
 		/**
 		 * Unique identifier of this hosting rule.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * Unique identifier of the Company that owns this hosting rule.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * Unique identifier of this rule's billing profile.
 		 * {@link BillingProfile.id}
 		 */
-		public profile: ulong = NaN;
+		profile: ulong = NaN;
 
 		// IRequestable
 		/**
@@ -29,9 +29,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}

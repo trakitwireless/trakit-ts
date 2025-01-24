@@ -10,9 +10,9 @@
 		/**
 		 * The supported shape of geofence.
 		 */
-		public type: PlaceType;
+		type: PlaceType;
 		/**
 		 * The maximum number of unique geofences supported by the device.
 		 */
-		public maxGeofenceCount: uint = NaN;
+		maxGeofenceCount: uint = NaN;
 	}

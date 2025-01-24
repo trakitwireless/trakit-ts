@@ -21,35 +21,35 @@
 		/**
 		 * Unique identifier of this POI.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The company to which this POI belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The kind of geography represented by this POI.
 		 */
-		public kind: PlaceType;
+		kind: PlaceType;
 		/**
 		 * POI's common name instead of street address.
 		 *  <override max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Full street address including province/state, country, and postal/zip code.
 		 *  <override max-length="200" />
 		 */
-		public address: string = "";
+		address: string = "";
 		/**
 		 * The icon used to display this POI in lists and on the map.
 		 * {@link Icon.id}
 		 */
-		public icon: ulong = NaN;
+		icon: ulong = NaN;
 		/**
 		 * Notes!
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The codified names of labels
 		 *  <override>
@@ -58,12 +58,12 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 		/**
 		 * The fill colour given to this place for easy visual identification on the map (given in 24bit hex; #RRGGBB)
 		 *  <override max-length="22" format="colour" />
 		 */
-		public colour: string = "";
+		colour: string = "";
 		/**
 		 * Images of this POI.
 		 *  <override>
@@ -72,25 +72,25 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public pictures: ulong[] = [];
+		pictures: ulong[] = [];
 		/**
 		 * A custom field used to refer to an external system.
 		 *  <override max-length="100" />
 		 */
-		public reference: string = "";
+		reference: string = "";
 
 		/**
 		 * Central lat/long coordinates.
 		 */
-		public anchor: LatLng;
+		anchor: LatLng;
 		/**
 		 * Boundary threshold (in meters)
 		 */
-		public radius: double = NaN;
+		radius: double = NaN;
 		/**
 		 * A list of points forming a non-self-intersecting polygon.
 		 */
-		public points: LatLng[] = [];
+		points: LatLng[] = [];
 
 		// IRequestable
 		/**
@@ -102,9 +102,9 @@ public getKey(): string { return this.id.toString(); }
 		/**
 		 * Indicates whether this object was deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Timestamp from the action that deleted or suspended this object.
 		 */
-		public since: Date = DATE();
+		since: Date = DATE();
 	}
