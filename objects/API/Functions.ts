@@ -126,7 +126,7 @@ export function DATE(value?: string | number | Date): Date {
  * 
  */
 interface DouglasPeukerOrthogonal<TCoord> {
-	(firstCoord: TCoord, midCoord: TCoord, lastCoord: TCoord): number;
+	(firstCoord: TCoord, middleCoord: TCoord, lastCoord: TCoord): number;
 }
 /**
  * An implementation of the Douglas-Peucker path reduction algorithm.
@@ -136,7 +136,7 @@ interface DouglasPeukerOrthogonal<TCoord> {
  * @param tolerance			The "kink" threshold.
  * @returns					Elements in the array are true if they should be kept.
  */
-export function DOUGLASPEUCKER<TCoord>(
+export function DOUGLASPEUCKER_INTERNAL<TCoord>(
 	source: TCoord[],
 	triangleHeight: DouglasPeukerOrthogonal<TCoord>,
 	tolerance: number
@@ -201,7 +201,7 @@ export function DOUGLASPEUCKER<TCoord>(
  * @param triangleHeight	Callback which performs a triangle height calculation between first point, middle point, and last point.
  * @param tolerance						The "kink" threshold
  */
-export function douglasPeucker<TCoord>(
+export function DOUGLASPEUCKER<TCoord>(
 	source: TCoord[],
 	triangleHeight: DouglasPeukerOrthogonal<TCoord>,
 	tolerance: number
@@ -213,7 +213,7 @@ export function douglasPeucker<TCoord>(
 		? [...source]
 		: source.filter(
 			FILTER_BY_BOOLEAN_ARRAY,
-			DOUGLASPEUCKER(source, triangleHeight, tolerance)
+			DOUGLASPEUCKER_INTERNAL(source, triangleHeight, tolerance)
 		);
 }
 
@@ -237,7 +237,7 @@ const PASSWORD_KEY = INT("33", 36); //111
 /**
  * Encodes the given string as a Provider password.
  */
-export function toPassword(value: string): string {
+export function PASSWORD_ENCODE(value: string): string {
 	return escape(value.split("").reduce(function (encoded, char) {
 		return encoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
 	}, ""));
@@ -245,7 +245,7 @@ export function toPassword(value: string): string {
 /**
  * Decodes the given Provider password as a human readable value.
  */
-export function fromPassword(value: string): string {
+export function PASSWORD_DECODE(value: string): string {
 	return unescape(value).split("").reduce(function (decoded, char) {
 		return decoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
 	}, "");
@@ -270,7 +270,7 @@ const PHONE_HIGHEST = 999e7;
  * Parses the input and returns a valid phone number prefixed by 1, or NaN if invalid.
  * @param phone
  * */
-export function phoneNumber(phone: string | number): number {
+export function PHONE_PARSE(phone: string | number): number {
 	let number = ID(phone);
 	if (number) {
 		const eleven = number > PHONE_ELEVEN;

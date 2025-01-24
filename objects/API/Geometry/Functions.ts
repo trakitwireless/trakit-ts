@@ -8,7 +8,7 @@
 	RADIANS_TO_DEGREES,
 } from '../Constants';
 import {
-	DOUGLASPEUCKER,
+	DOUGLASPEUCKER_INTERNAL,
 	FILTER_BY_BOOLEAN_ARRAY,
 	PYTHAGORA,
 } from '../Functions';
@@ -130,7 +130,7 @@ export function PATH_PEUCKER(path: IPoint[], tolerance: number = 0) {
 
 		return path.filter(
 			FILTER_BY_BOOLEAN_ARRAY,
-			DOUGLASPEUCKER(path, PATH_PEUCKER_FILTER, tolerance)
+			DOUGLASPEUCKER_INTERNAL(path, PATH_PEUCKER_FILTER, tolerance)
 		);
 	}
 }
@@ -243,7 +243,7 @@ export function POLY_PEUCKER(path: IPoint[], tolerance: number = 0) {
 		// reduce the polygon's points
 		points = points.filter(
 			FILTER_BY_BOOLEAN_ARRAY,
-			DOUGLASPEUCKER(points, PATH_PEUCKER_FILTER, tolerance)
+			DOUGLASPEUCKER_INTERNAL(points, PATH_PEUCKER_FILTER, tolerance)
 		);
 
 		// trim end point if the same as start point

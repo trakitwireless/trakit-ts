@@ -42,7 +42,7 @@ const DELIMITER: string = ",",
  * @param point			Character(s) to use to divide the integer groups from the decimal groups. The detauls is ".".
  * @throws {TypeError}				size must be greater than zero
  */
-export function numberGroups(
+export function NUMBER_GROUPS(
 	number: number,
 	size: number = 3,
 	delimiter: string = DELIMITER,
@@ -81,7 +81,7 @@ export function numberGroups(
  * @param decimalDelimiter	Character(s) to use to divide the decimal groups.  The detauls is same as delimiter.
  * @param point				Character(s) to use to divide the integer groups from the decimal groups. The detauls is ".".
  * */
-export function fileSize(
+export function FILESIZE_HELPER(
 	bytes: number,
 	places: number = 0,
 	maxScale: number = 4,
@@ -98,7 +98,7 @@ export function fileSize(
 			level++;
 		}
 	}
-	return numberGroups(
+	return NUMBER_GROUPS(
 		ROUND_TO(bytes, places),
 		groupSize,
 		groupDelimiter,

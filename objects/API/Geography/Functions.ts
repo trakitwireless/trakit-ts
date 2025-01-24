@@ -14,7 +14,7 @@
 	ASIN,
 } from '../Constants';
 import {
-	DOUGLASPEUCKER,
+	DOUGLASPEUCKER_INTERNAL,
 	FILTER_BY_BOOLEAN_ARRAY,
 	IS_AN,
 	IS_NAN,
@@ -366,12 +366,12 @@ export function ROUTE_PEUCKER(route: ILatLng[], tolerance: number): ILatLng[] {
 		if (!(tolerance > 0)) tolerance = 0;
 		return route.filter(
 			FILTER_BY_BOOLEAN_ARRAY,
-			DOUGLASPEUCKER(route, ROUTE_PEUCKER_FILTER, tolerance)
+			DOUGLASPEUCKER_INTERNAL(route, ROUTE_PEUCKER_FILTER, tolerance)
 		);
 	}
 }
 /**
- * Used internally by {@link ROUTE_PEUCKER}, and passed to {@link DOUGLASPEUCKER}.
+ * Used internally by {@link ROUTE_PEUCKER}, and passed to {@link DOUGLASPEUCKER_INTERNAL}.
  * @param first
  * @param middle
  * @param last
@@ -519,7 +519,7 @@ export function GEOFENCE_PEUCKER(route: ILatLng[], tolerance: number = MAX_SAME_
 		// reduce the polygon's points
 		coords = coords.filter(
 			FILTER_BY_BOOLEAN_ARRAY,
-			DOUGLASPEUCKER(coords, ROUTE_PEUCKER_FILTER, tolerance)
+			DOUGLASPEUCKER_INTERNAL(coords, ROUTE_PEUCKER_FILTER, tolerance)
 			//LATLNG_PEUCKER_INTERNAL(coords, 0, length - 1, new Int8Array(coords.length), tolerance)
 		);
 

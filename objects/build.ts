@@ -1,19 +1,20 @@
 ﻿"use strict";
 
-import { codify, } from "./API/Codifier";
+import { CODIFY, } from "./API/Codifier";
+import { CONVERT, } from './API/Conversion';
 import {
-    fileSize,
-    numberGroups,
+    FILESIZE_HELPER,
+    NUMBER_GROUPS,
 } from "./API/Files";
 import {
-    douglasPeucker,
-    fromPassword,
+    DOUGLASPEUCKER,
+    PASSWORD_DECODE,
     IS_NAN,
     IS_NOTHING,
-    phoneNumber,
+    PHONE_PARSE,
     PYTHAGORA,
     ROUND_TO,
-    toPassword,
+    PASSWORD_ENCODE,
 } from "./API/Functions";
 import { Point, } from "./API/Geometry/Point";
 import { Radial } from "./API/Geometry/Radial";
@@ -58,15 +59,16 @@ import {
  } from "./API/Geography/Functions";
 import { LatLng, } from "./API/Geography/LatLng";
 import { LatLngBounds, } from "./API/Geography/LatLngBounds";
-import { guid, } from "./API/Guid";
+import { GUID, } from "./API/Guid";
 import { SearchPattern, } from "./API/SearchPattern";
 import {
-    parseTime,
-    stringifyTime,
+    TIMESPACE_PARSE,
+    TIMESPACE_STRINGIFY,
     TimeSpan,
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
-import { merge, } from "./API/Types";
+import { TIMEZONES, } from "./API/Timezones";
+import { MERGE, } from "./API/Types";
 
 const version = (5.01);
 
@@ -74,48 +76,50 @@ export default {
     version,
 
     utility: {
-        codify,
-        guid,
-        "isNothing": IS_NOTHING,
-        "isNaN": IS_NAN,
-        "roundTo": ROUND_TO,
-        "merge": merge,
-        parseTime,
-        stringifyTime,
-        douglasPeucker,
-        numberGroups,
-        toPassword,
-        fromPassword,
-        fileSize,
-        //"timezones": TIMEZONES,
-        phoneNumber,
+        codify: CODIFY,
+        guid: GUID,
+        isNothing: IS_NOTHING,
+        isNaN: IS_NAN,
+        roundTo: ROUND_TO,
+        merge: MERGE,
+        parseTime: TIMESPACE_PARSE,
+        stringifyTime: TIMESPACE_STRINGIFY,
+        douglasPeucker: DOUGLASPEUCKER,
+        numberGroups: NUMBER_GROUPS,
+        fileSize: FILESIZE_HELPER,
+        timezones: TIMEZONES,
+        phoneNumber: PHONE_PARSE,
     },
     SearchPattern,
     TimeSpan,
     Timezone,
 
-    encoding: {},
+    convert: CONVERT,
+    encoding: {
+        toPassword: PASSWORD_ENCODE,
+        fromPassword: PASSWORD_DECODE,
+    },
 
     /**
      * A utility library exposing algorithms for a flat plane.
      */
     drawing: {
-        "pathLength": PATH_LENGTH,
-        "pathOrthogonal": PATH_ORTHOGONAL,
-        "pathReduce": PATH_PEUCKER,
-        "pointAngle": POINT_ANGLE,
-        "pointDistance": POINT_DISTANCE,
-        //	"pointFarthest": POINT_FARTHEST,
-        "pointPythagora": PYTHAGORA,
-        "pointVector": POINT_VECTOR,
-        "polyArea": POLY_AREA,
-        "polyContains": POLY_CONTAINS,
-        "polyReduce": POLY_PEUCKER,
-        "polyWrapper": POLY_WRAPPER,
-        "radialCircumference": RADIAL_CIRCUMFERENCE,
-        "radialArea": RADIAL_AREA,
-        "radialSmallest": RADIAL_BADOIU_CLARKSON,
-        "radialOverlapsRectangle": RADIAL_OVERLAP_RECTANGLE,
+        pathLength: PATH_LENGTH,
+        pathOrthogonal: PATH_ORTHOGONAL,
+        pathReduce: PATH_PEUCKER,
+        pointAngle: POINT_ANGLE,
+        pointDistance: POINT_DISTANCE,
+        //	pointFarthest: POINT_FARTHEST,
+        pointPythagora: PYTHAGORA,
+        pointVector: POINT_VECTOR,
+        polyArea: POLY_AREA,
+        polyContains: POLY_CONTAINS,
+        polyReduce: POLY_PEUCKER,
+        polyWrapper: POLY_WRAPPER,
+        radialCircumference: RADIAL_CIRCUMFERENCE,
+        radialArea: RADIAL_AREA,
+        radialSmallest: RADIAL_BADOIU_CLARKSON,
+        radialOverlapsRectangle: RADIAL_OVERLAP_RECTANGLE,
     },
     Point,
     Radial,
@@ -125,30 +129,30 @@ export default {
     geometry: {
     },
     geography: {
-        "earthRadius": EARTH_RADIUS,
+        earthRadius: EARTH_RADIUS,
 
-        "clampLat": LATITUDE_NORMALIZED,
-        "clampLng": LONGITUDE_NORMALIZED,
+        clampLat: LATITUDE_NORMALIZED,
+        clampLng: LONGITUDE_NORMALIZED,
 
-        "pathLength": ROUTE_LENGTH,
-        "pathReduce": ROUTE_PEUCKER,
-        "pathEncode": ROUTE_ENCODE,
-        "pathDecode": ROUTE_DECODE,
+        pathLength: ROUTE_LENGTH,
+        pathReduce: ROUTE_PEUCKER,
+        pathEncode: ROUTE_ENCODE,
+        pathDecode: ROUTE_DECODE,
 
-        "pointAngle": LATLNG_ANGLE,
-        "pointDistance": LATLNG_DISTANCE,
-        "pointMiddle": LATLNG_MIDPOINT,
-        "pointOrthogonal": LATLNG_GREAT_CIRCLE,
-        "pointTranslate": LATLNG_TRANSLATE,
-        "pointVincenty": LATLNG_DISTANCE_VINCENTY,
+        pointAngle: LATLNG_ANGLE,
+        pointDistance: LATLNG_DISTANCE,
+        pointMiddle: LATLNG_MIDPOINT,
+        pointOrthogonal: LATLNG_GREAT_CIRCLE,
+        pointTranslate: LATLNG_TRANSLATE,
+        pointVincenty: LATLNG_DISTANCE_VINCENTY,
 
-        "polyArea": GEOFENCE_AREA,
-        "polyContains": GEOFENCE_CONTAINS,
-        "polyReduce": GEOFENCE_PEUCKER,
-        "polyWidest": GEOFENCE_WIDEST,
-        //	"polyWrapper": GEOFENCE_WRAPPER,
+        polyArea: GEOFENCE_AREA,
+        polyContains: GEOFENCE_CONTAINS,
+        polyReduce: GEOFENCE_PEUCKER,
+        polyWidest: GEOFENCE_WIDEST,
+        //	polyWrapper: GEOFENCE_WRAPPER,
 
-        //	"radialArea": SPHERECAP_AREA,
+        //	radialArea: SPHERECAP_AREA,
     },
     LatLng,
     LatLngBounds

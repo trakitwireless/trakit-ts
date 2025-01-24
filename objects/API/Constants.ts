@@ -31,6 +31,15 @@ export const
 	FLOAT = parseFloat;
 
 /**
+ * 
+ */
+export const
+	OBJECT = Object,
+	KEYS = OBJECT.keys,
+	JSON_PARSE = JSON.parse,
+	JSON_STRINGIFY = JSON.stringify;
+
+/**
  * Maths (as the Brits would say).
  */
 export const

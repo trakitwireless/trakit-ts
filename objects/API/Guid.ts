@@ -45,7 +45,7 @@ function GUID_HELPER(array: string[], char: string, index: number) {
 /**
  * Delivers a GUID-like string with a mixed in location/refresh unique seed
  */
-export function guid() {
+export function GUID() {
     const l = 36,
         guid = (new Date)
             .valueOf()

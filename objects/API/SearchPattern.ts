@@ -1,4 +1,4 @@
-﻿import { codify, } from './Codifier';
+﻿import { CODIFY, } from './Codifier';
 
 //#region examples
 /*
@@ -146,7 +146,7 @@ function SearchPattern_fromMatches(search: SearchPattern, patterns: string[]): S
 function SearchPattern_fromMatch(this: SearchPattern, pattern: string) {
 	var operator = (pattern.match(SearchPattern_operators) || [])[0] || "",
 		negatory = (operator[0] || "").trim() === "!" ? "!" : "",
-		key = operator && codify(pattern.substring(0, operator.length - 1)) || "";	// why not CODIFIER(operator)?????
+		key = operator && CODIFY(pattern.substring(0, operator.length - 1)) || "";	// why not CODIFIER(operator)?????
 	if (key) {
 		key = negatory + key;
 		var list = this.operators.get(key);
@@ -169,10 +169,10 @@ function SearchPattern_unique(this: string[], term: string) {
 				return this.push(negatory + term);	// short circuit; SearchPattern_asterisk will purge all other records
 			case "#":
 			case "$":
-				term = negatory + term[0] + codify(term.substring(1));
+				term = negatory + term[0] + CODIFY(term.substring(1));
 				break;
 			default:
-				term = negatory + codify(term);
+				term = negatory + CODIFY(term);
 				break;
 		}
 		if (term && this.indexOf(term) < 0) this.push(term);

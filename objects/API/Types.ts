@@ -75,7 +75,7 @@ export type double = number;
  * @param goDeep
  * @returns target
  */
-export function merge(target: object, source: object, goDeep: boolean = false) {
+export function MERGE(target: object, source: object, goDeep: boolean = false) {
   const keys = Object.keys(source);
   for (var i = 0, key = ""; key = keys[i]; i++) {
     (target as any)[key] = goDeep
@@ -95,6 +95,6 @@ function MERGE_INTERNAL(value: any, goDeep: boolean): any {
   else if (value instanceof Date) return new Date(value);
   else if (value instanceof RegExp) return new RegExp(value.source, (value.global ? "g" : "") + (value.ignoreCase ? "i" : "") + (value.multiline ? "m" : ""));
   else if (value instanceof String) return value;
-  else if (typeof value === "object") return merge({}, value, goDeep);
+  else if (typeof value === "object") return MERGE({}, value, goDeep);
   else return value;
 }

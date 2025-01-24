@@ -243,7 +243,7 @@ export class TimeSpan {
  * For example the string "1.07:42:03.467" equals 114123.467, which is 1 day, 7 hours, 42 minutes, 3 seconds, and 467 milliseconds.
  * @param duration	A valid timespan string.  The format is [-]( d | [d.]hh:mm[:ss[.fff]] )
  */
-export function parseTime(duration: TimeSpan | string | number): number {
+export function TIMESPACE_PARSE(duration: TimeSpan | string | number): number {
 	/*
 	var days = 0, hours = 0, minutes = 0, seconds = 0, milli = 0;
 	if (duration = String(duration).trim()) {
@@ -271,7 +271,7 @@ export function parseTime(duration: TimeSpan | string | number): number {
  * For example the number 114123.467 would be serialized as "1.07:42:03.467".
  * @param value		Use a decimal to show milliseconds.
  */
-export function stringifyTime(value: number): string {
+export function TIMESPACE_STRINGIFY(value: number): string {
 	/*
 	var days = 0, hours = days, minutes = hours, seconds = minutes;
 	while (value >= 24 * 60 * 60 && ++days) value -= 24 * 60 * 60;
