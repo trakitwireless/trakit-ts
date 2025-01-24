@@ -1,11 +1,11 @@
 import { ulong } from '../Types';
 
-/// <summary>
-/// An interface for objcts that have an "icon".
-/// </summary>
+/**
+ * An interface for objcts that have an "icon".
+*/
 export interface IIconic {
-	/// <summary>
-	/// This thing's <see cref="Icon.id"/>.
-	/// </summary>
+	/**
+	 * This thing's <see cref="Icon.id"/>.
+	 */
 	icon: ulong;
 }

@@ -1,14 +1,14 @@
 
-/// <summary>
-/// An interface for objects that have a "name" and "notes".
-/// </summary>
+/**
+ * An interface for objects that have a "name" and "notes".
+*/
 export interface INamed {
-	/// <summary>
-	/// This thing's name.
-	/// </summary>
+	/**
+	 * This thing's name.
+	 */
 	name: string;
-	/// <summary>
-	/// This thing's notes.
-	/// </summary>
+	/**
+	 * This thing's notes.
+	 */
 	notes: string;
 }

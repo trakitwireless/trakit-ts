@@ -2,10 +2,10 @@
 import { Component } from './Component';
 /**
  * Some objects are made up of the pieces of many objects.
- * <seealso cref="Asset"/>
- * <seealso cref="Company"/>
- * <seealso cref="Provider"/>
- * <seealso cref="User"/>
+ * {@link Asset}
+ * {@link Company}
+ * {@link Provider}
+ * {@link User}
  */
 export abstract class Compound extends Component {
 	/**
@@ -17,4 +17,5 @@ export abstract class Compound extends Component {
 	 * Compound objects have multiple <see cref="v"/> values; one for each part of the object.
 	 */
 	public override get v(): int[] { return this.Pieces.map(p => p.v[0]); }
-	public override set v(value: int[]) { value?.forEach((v, i) => this.Pieces/// @deprecated.v[0] = v); }
+	public override set v(value: int[]) { value?.forEach((v, i) => this.Pieces[i].v[0] = v); }
+}

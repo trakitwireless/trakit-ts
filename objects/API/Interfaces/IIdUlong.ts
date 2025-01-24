@@ -1,11 +1,11 @@
 import { ulong } from '../Types';
 
-/// <summary>
-/// An interface for objects with a ulong "id".
-/// </summary>
+/**
+ * An interface for objects with a ulong "id".
+*/
 export interface IIdUlong {
-	/// <summary>
-	/// Unique identifier of this object.
-	/// </summary>
+	/**
+	 * Unique identifier of this object.
+	 */
 	id: ulong;
 }

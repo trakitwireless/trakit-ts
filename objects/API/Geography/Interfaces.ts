@@ -44,21 +44,21 @@ export function ILatLng_clone(dot: ILatLng): ILatLng {
  * A rectangular boundary on a flat surface.
  */
 export interface ILatLngBounds {
-	/// <summary>
-	/// Northern latitude
-	/// </summary>
+	/**
+	 * Northern latitude
+	 */
 	north: number;
-	/// <summary>
-	/// Eastern longitude
-	/// </summary>
+	/**
+	 * Eastern longitude
+	 */
 	east: number;
-	/// <summary>
-	/// Southern latitude
-	/// </summary>
+	/**
+	 * Southern latitude
+	 */
 	south: number;
-	/// <summary>
-	/// Western longitude
-	/// </summary>
+	/**
+	 * Western longitude
+	 */
 	west: number;
 }
 

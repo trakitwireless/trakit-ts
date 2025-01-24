@@ -1,30 +1,53 @@
 import { double, ushort, uint } from '../Types';
 import { StreetAddress } from './StreetAddress';
 
-/// <summary>
-/// GPS position information
-/// </summary>
+/**
+	
+ * GPS position information
+*/
 export class Position {
-	/// <summary>Latitude</summary>
+	/**
+	Latitude
+	 */
 	public lat: double = NaN;
-	/// <summary>Longitude</summary>
+	/**
+	Longitude
+	 */
 	public lng: double = NaN;
-	/// <summary>Speed</summary>
+	/**
+	Speed
+	 */
 	public speed: double = NaN;
-	/// <summary>Direction of travel</summary>
+	/**
+	Direction of travel
+	 */
 	public bearing: ushort = NaN;
-	/// <summary>Distance in meters from the sea level</summary>
+	/**
+	Distance in meters from the sea level
+	 */
 	public altitude: double = NaN;
-	/// <summary>Threshold in meters for the accuracy of a position</summary>
+	/**
+	Threshold in meters for the accuracy of a position
+	 */
 	public accuracy: uint = NaN;
-	/// <summary>The Date/Time of the GPS reading</summary>
+	/**
+	The Date/Time of the GPS reading
+	 */
 	public dts: Date = DATE();
-	/// <summary>A better description of the current road-segment</summary>
+	/**
+	A better description of the current road-segment
+	 */
 	public streetAddress: StreetAddress;
-	/// <summary>The posted speed limit for the road segment</summary>
+	/**
+	The posted speed limit for the road segment
+	 */
 	public speedLimit: double = NaN;
-	/// <summary>Provider Identifier</summary>
+	/**
+	Provider Identifier
+	 */
 	public origin: string = "";
-	/// <summary>The road segment description</summary>
+	/**
+	The road segment description
+	 */
 	public get address(): string { return this.streetAddress?.toString() ?? ""; }
 }

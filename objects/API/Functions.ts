@@ -222,7 +222,6 @@ export function DOUGLASPEUCKER<TCoord>(
  * @param this		The array of booleans to use to filter the source array.
  * @param object	Unused.
  * @param index		The index of the obect in the source array.
- * @returns 
  */
 export function FILTER_BY_BOOLEAN_ARRAY(this: boolean[], object: unknown, index: number) {
 	return this[index];
@@ -230,8 +229,6 @@ export function FILTER_BY_BOOLEAN_ARRAY(this: boolean[], object: unknown, index:
 
 /**
  * The key used for encoding/decoding Provider passwords.
- * @const
- * @type {!number}
  */
 const PASSWORD_KEY = INT("33", 36); //111
 /**

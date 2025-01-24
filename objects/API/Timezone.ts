@@ -2,28 +2,25 @@
 import { ISerializable } from "./Interfaces/ISerializable";
 import { JsonObject, short } from "./Types";
 
-/// <summary>
-/// Timezone definition
-/// </summary>
+/**
+ * Timezone definition
+*/
 export class Timezone implements IRequestable, ISerializable {
-	/// <summary>
-	/// Unique timezone code
-	/// </summary>
+	/**
+	 * Unique timezone code
+	 */
 	public code: string = "";
-	/// <summary>
-	/// Common timezone name
-	/// </summary>
-	/// <override readonly="true" />
+	/**
+	 * Common timezone name
+	 */
 	public name: string = "";
-	/// <summary>
-	/// Minutes offset from GMT
-	/// </summary>
-	/// <override readonly="true" />
+	/**
+	 * Minutes offset from GMT
+	 */
 	public offset: short = NaN;
-	/// <summary>
-	/// Indicates whether this timezone abides by daylight savings
-	/// </summary>
-	/// <override readonly="true" />
+	/**
+	 * Indicates whether this timezone abides by daylight savings
+	 */
 	public dst: boolean = false;
 
 	constructor(code: string, name: string, offset: short, dst: boolean) {
@@ -48,9 +45,8 @@ export class Timezone implements IRequestable, ISerializable {
 		this.dst = tz["dst"] as boolean;
 	}
 
-	/// <summary>
-	/// The <see cref="code"/> is the key.
-	/// </summary>
-	/// <returns></returns>
+	/**
+	 * The <see cref="code"/> is the key.
+	 */
 	public getKey(): string { return this.code; }
 }

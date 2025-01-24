@@ -1,20 +1,19 @@
 
-/// <summary>
-/// The main interface for an object in the Trak-iT system.
-/// </summary>
+/**
+ * The main interface for an object in the Trak-iT system.
+*/
 export interface IRequestable {
-	/// <summary>
-	/// Returns a unique identifier as a string.
-	/// </summary>
-	/// <returns></returns>
-	/// <seealso cref="Dashcam.guid"/>
-	/// <seealso cref="IIdUlong.id"/>
-	/// <seealso cref="Machine.key"/>
-	/// <seealso cref="Provider.id"/>
-	/// <seealso cref="ProviderRegistration.code"/>
-	/// <seealso cref="User.login"/>
-	/// <seealso cref="UserGeneral.login"/>
-	/// <seealso cref="UserAdvanced.login"/>
-	/// <seealso cref="Timezone.code"/>
+	/**
+	 * Returns a unique identifier as a string.
+	 * {@link Dashcam.guid}
+	 * {@link IIdUlong.id}
+	 * {@link Machine.key}
+	 * {@link Provider.id}
+	 * {@link ProviderRegistration.code}
+	 * {@link User.login}
+	 * {@link UserGeneral.login}
+	 * {@link UserAdvanced.login}
+	 * {@link Timezone.code}
+	 */
 	getKey(): string;
 }

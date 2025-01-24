@@ -3,18 +3,6 @@ import { IS_NUMBER,ZERO_PADDED, } from "./Functions";
 
 /**
  * An object which represents an interval of time.
- * @constructor
- * @param duration		A time-span formatted string, or a number representing milliseconds
- * @property {!number} days				Days component of the time-span.
- * @property {!number} hours				Hours component of the time-span.
- * @property {!number} minutes			Minutes component of the time-span.
- * @property {!number} seconds			Seconds component of the time-span.
- * @property {!number} milliseconds		Millisecond component of the time-span.
- * @property {!number} totalDays			Total time-span value in decimal days.
- * @property {!number} totalHours			Total time-span value in decimal hours.
- * @property {!number} totalMinutes		Total time-span value in decimal minutes.
- * @property {!number} totalSeconds		Total time-span value in decimal seconds.
- * @property {!number} totalMilliseconds	Total time-span value in milliseconds.
  */
 export class TimeSpan {
 	/**
@@ -72,49 +60,51 @@ export class TimeSpan {
 	 * 
 	 */
 	private __milli = 0;
-	
+	/**
+	 * @param duration		A time-span formatted string, or a number representing milliseconds
+	 */
 	constructor(duration: TimeSpan | string | number) {
 		if (duration) this.add(duration);
 	}
 
 	/**
-	 * 
+	 * Days component of the time-span.
 	 */
 	get days() { return this.__days; }
 	/**
-	 * 
+	 * Hours component of the time-span.
 	 */
 	get hours() { return this.__hours; }
 	/**
-	 * 
+	 * Minutes component of the time-span.
 	 */
 	get minutes() { return this.__minutes; }
 	/**
-	 * 
+	 * Seconds component of the time-span.
 	 */
 	get seconds() { return this.__seconds; }
 	/**
-	 * 
+	 * Millisecond component of the time-span.
 	 */
 	get milliseconds() { return this.__milli; }
 	/**
-	 * 
+	 * Total time-span value in decimal days.
 	 */
 	get totalDays() { return this.__total / (1000 * 60 * 60 * 24); }
 	/**
-	 * 
+	 * Total time-span value in decimal hours.
 	 */
 	get totalHours() { return this.__total / (1000 * 60 * 60); }
 	/**
-	 * 
+	 * Total time-span value in decimal minutes.
 	 */
 	get totalMinutes() { return this.__total / (1000 * 60); }
 	/**
-	 * 
+	 * Total time-span value in decimal seconds.
 	 */
 	get totalSeconds() { return this.__total / 1000; }
 	/**
-	 * 
+	 * Total time-span value in milliseconds.
 	 */
 	get totalMilliseconds() { return this.__total; }
 
@@ -263,7 +253,7 @@ export function TIMESPACE_PARSE(duration: TimeSpan | string | number): number {
 		+ (minutes * 60)
 		+ seconds
 		+ milli;
-	*/
+	 */
 	return (new TimeSpan(String(duration))).totalSeconds;
 }
 /**
@@ -281,6 +271,6 @@ export function TIMESPACE_STRINGIFY(value: number): string {
 	return (!days ? "" : days + ".")
 		+ (hours > 9 ? hours : "0" + hours) + ":" + (minutes > 9 ? minutes : "0" + minutes)
 		+ (!seconds ? "" : ":" + (seconds > 9 ? seconds : "0" + seconds));
-	*/
+	 */
 	return (new TimeSpan(value * 1000)).toString();
 }
