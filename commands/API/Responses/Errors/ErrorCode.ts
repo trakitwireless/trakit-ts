@@ -3,7 +3,7 @@
 	/**
 	 * The possible errors returned by the system.
 	 */
-	public enum ErrorCode : ushort {
+	enum ErrorCode : ushort {
 		 *  <summary sort="">
 		 * Success!
 		 * Operation completed without error.

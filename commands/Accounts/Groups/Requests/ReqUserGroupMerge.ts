@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="UserGroup"/>.
 		 */
-		public userGroup: ParamUserGroupMerge;
+		userGroup: ParamUserGroupMerge;
 
 		/**
 		 *  

@@ -6,5 +6,5 @@
 		/**
 		 * Requested version key(s).
 		 */
-		public v: int[] = [];
+		v: int[] = [];
 	}

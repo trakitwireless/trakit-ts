@@ -4,7 +4,7 @@
 	 * The types of subscriptions available using <see cref="subscribe"/>/<see cref="unsubscribe"/>.
 	 * Each type has a different synchronization messages and objects.
 	 */
-	public enum SubscriptionType {
+	enum SubscriptionType {
 		/**
 		 * Assets' <see cref="AssetGeneral">general properties</see> such as name, icon, and labels.
 		 * {@link AssetGeneral}

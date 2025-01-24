@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="DispatchJob"/>.
 		 */
-		public dispatchJob: ParamId;
+		dispatchJob: ParamId;
 
 		/**
 		 *  

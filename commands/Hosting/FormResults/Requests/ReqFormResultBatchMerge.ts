@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public formResults: ParamFormResultMerge[] = [];
+		formResults: ParamFormResultMerge[] = [];
 	}

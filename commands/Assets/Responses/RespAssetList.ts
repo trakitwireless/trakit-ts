@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="Asset"/>s.
 		 */
-		public assets: Asset[] = [];
+		assets: Asset[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 * Contains the codified <see cref="Company.labels"/> keys used to filter the collection.
@@ -27,7 +27,7 @@
 		 * The parsed labels given as input.
 		 * {@link AssetGeneral.labels}
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}
 	/**
 	 * Contains the <see cref="AssetGeneral.references"/> used to filter the collection.
@@ -37,5 +37,5 @@
 		 * The parsed references given as input.
 		 * {@link AssetGeneral.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Contact"/>.
 		 */
-		public contact: Contact;
+		contact: Contact;
 	}

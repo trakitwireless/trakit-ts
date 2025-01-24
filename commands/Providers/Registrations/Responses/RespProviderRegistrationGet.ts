@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="ProviderRegistration"/>.
 		 */
-		public providerRegistration: ProviderRegistration;
+		providerRegistration: ProviderRegistration;
 	}

@@ -6,5 +6,5 @@
 		/**
 		 * The <see cref="Machine"/>'s key.
 		 */
-		public key: string = "";
+		key: string = "";
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="ReportTemplate"/>.
 		 */
-		public reportTemplate: ReportTemplate;
+		reportTemplate: ReportTemplate;
 	}

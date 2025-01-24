@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public documents: ParamId[] = [];
+		documents: ParamId[] = [];
 	}

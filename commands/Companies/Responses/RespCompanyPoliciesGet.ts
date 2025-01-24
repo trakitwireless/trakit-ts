@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="CompanyPolicies"/>.
 		 */
-		public companyPolicies: CompanyPolicies;
+		companyPolicies: CompanyPolicies;
 	}

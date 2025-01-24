@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Document"/>.
 		 */
-		public documents: RespIdDeleted[] = [];
+		documents: RespIdDeleted[] = [];
 	}

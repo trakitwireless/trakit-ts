@@ -10,22 +10,22 @@
 		 * If not given, will default to the <see cref="UserAdvanced.company"/>, <see cref="UserGroup.company"/> or <see cref="Machine.company"/> to which it belongs.
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The kind of <see cref="PermissionType"/>.
 		 *  <override required="always" />
 		 */
-		public kind: PermissionType;
+		kind: PermissionType;
 		/**
 		 * The level of access being defined.
 		 *  <override value="read"/>
 		 */
-		public level?: PermissionLevel;
+		level?: PermissionLevel;
 		/**
 		 * The way the access is used.
 		 *  <override value="grant"/>
 		 */
-		public method?: PermissionMethod;
+		method?: PermissionMethod;
 		/**
 		 * Codified names of <see cref="CompanyLabels.labels"/>.  If list is empty, this permission applies for all labels.
 		 *  <override>
@@ -34,5 +34,5 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}

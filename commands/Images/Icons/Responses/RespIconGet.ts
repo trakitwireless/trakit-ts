@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Icon"/>.
 		 */
-		public icon: Icon;
+		icon: Icon;
 	}

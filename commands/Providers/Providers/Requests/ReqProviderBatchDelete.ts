@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providers: ParamIdentifier[] = [];
+		providers: ParamIdentifier[] = [];
 	}

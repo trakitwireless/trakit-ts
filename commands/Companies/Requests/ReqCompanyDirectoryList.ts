@@ -7,7 +7,7 @@
 		/**
 		 * When true, the command will also return a deleted <see cref="CompanyDirectory"/> (if it exists).
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}
 	/**
 	 * Gets the list of <see cref="CompanyDirectory"/>s for the specified <see cref="Company"/> only if the <see cref="CompanyDirectoryDirectory.labels"/> matches all of the given <see cref="Parameters.labels"/>.
@@ -27,7 +27,7 @@
 		 * The parsed labels given as input.
 		 * {@link CompanyDirectory.labels}
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}
 	/**
 	 * Gets the list of <see cref="CompanyDirectory"/>s for the specified <see cref="Company"/> only if one of the specified <see cref="CompanyDirectoryDirectory.references"/> fields match.
@@ -39,5 +39,5 @@
 		 * The parsed references given as input.
 		 * {@link CompanyDirectoryDirectory.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

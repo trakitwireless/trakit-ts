@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public assets: ParamId[] = [];
+		assets: ParamId[] = [];
 	}

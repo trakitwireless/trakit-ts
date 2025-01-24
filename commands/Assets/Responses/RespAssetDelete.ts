@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public asset: RespIdDeleted;
+		asset: RespIdDeleted;
 	}

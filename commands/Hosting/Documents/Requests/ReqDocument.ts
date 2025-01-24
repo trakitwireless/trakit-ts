@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="Document"/>.
 		 */
-		public document: ParamId;
+		document: ParamId;
 
 		/**
 		 *  

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Behaviour"/>.
 		 */
-		public behaviour: Behaviour;
+		behaviour: Behaviour;
 	}

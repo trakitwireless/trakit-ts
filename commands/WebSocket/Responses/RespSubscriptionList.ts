@@ -6,5 +6,5 @@
 		/**
 		 * The list of your current subscription types.
 		 */
-		public subscriptions: Subscription[] = [];
+		subscriptions: Subscription[] = [];
 	}

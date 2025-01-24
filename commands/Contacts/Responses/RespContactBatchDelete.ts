@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Contact"/>.
 		 */
-		public contacts: RespIdDeleted[] = [];
+		contacts: RespIdDeleted[] = [];
 	}

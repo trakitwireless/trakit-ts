@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public contacts: ParamContactMerge[] = [];
+		contacts: ParamContactMerge[] = [];
 	}

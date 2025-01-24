@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="MaintenanceJob"/>s.
 		 */
-		public maintenanceJobs: MaintenanceJob[] = [];
+		maintenanceJobs: MaintenanceJob[] = [];
 	}
 
 	/**
@@ -17,5 +17,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}

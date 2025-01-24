@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public behaviourScripts: ParamId[] = [];
+		behaviourScripts: ParamId[] = [];
 	}

@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="ReportTemplate"/>.
 		 */
-		public reportTemplate: ParamId;
+		reportTemplate: ParamId;
 
 		/**
 		 *  

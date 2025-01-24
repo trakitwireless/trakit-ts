@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public reportTemplates: ParamId[] = [];
+		reportTemplates: ParamId[] = [];
 	}

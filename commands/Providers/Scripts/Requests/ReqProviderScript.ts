@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="ProviderScript"/>.
 		 */
-		public providerScript: ParamId;
+		providerScript: ParamId;
 
 		/**
 		 *  

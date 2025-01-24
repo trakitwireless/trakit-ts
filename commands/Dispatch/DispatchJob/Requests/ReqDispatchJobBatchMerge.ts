@@ -7,5 +7,5 @@
 		/**
 		 * List of <see cref="DispatchJob"/>s to update or create.
 		 */
-		public dispatchJobs: ParamDispatchJobMerge[] = [];
+		dispatchJobs: ParamDispatchJobMerge[] = [];
 	}

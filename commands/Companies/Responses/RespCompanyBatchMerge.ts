@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public companies: RespIdCompany[] = [];
+		companies: RespIdCompany[] = [];
 	}

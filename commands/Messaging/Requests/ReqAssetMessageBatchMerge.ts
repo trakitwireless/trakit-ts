@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public assetMessages: ParamAssetMessageMerge[] = [];
+		assetMessages: ParamAssetMessageMerge[] = [];
 	}

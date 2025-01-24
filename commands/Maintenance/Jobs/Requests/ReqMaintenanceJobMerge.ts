@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="MaintenanceJob"/>.
 		 */
-		public maintenanceJob: ParamMaintenanceJobMerge;
+		maintenanceJob: ParamMaintenanceJobMerge;
 
 		/**
 		 *  

@@ -7,19 +7,19 @@
 		/**
 		 * A "handle" identifying a resource.
 		 */
-		public handle: string = "";
+		handle: string = "";
 		/**
 		 * Identifier of the <see cref="Company"/> to which this object belongs
 		 * {@link Company.id}
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The <see cref="User"/> to which the <see cref="Session"/> belongs.
 		 * {@link User.login}
 		 */
-		public login: string = "";
+		login: string = "";
 		/**
 		 * A timestamp for when the <see cref="Session"/> will expire.
 		 */
-		public expiry: Date = DATE();
+		expiry: Date = DATE();
 	}

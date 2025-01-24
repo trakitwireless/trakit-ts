@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public assetMessages: ParamId[] = [];
+		assetMessages: ParamId[] = [];
 	}

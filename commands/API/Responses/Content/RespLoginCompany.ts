@@ -6,5 +6,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which the <see cref="User"/> belongs.
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 	}

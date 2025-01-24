@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public places: ParamId[] = [];
+		places: ParamId[] = [];
 	}

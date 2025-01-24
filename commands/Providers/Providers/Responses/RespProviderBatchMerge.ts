@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providers: RespIdCompany[] = [];
+		providers: RespIdCompany[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public machines: ParamLogin[] = [];
+		machines: ParamLogin[] = [];
 	}

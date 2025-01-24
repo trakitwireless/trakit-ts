@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="MaintenanceSchedule"/>.
 		 */
-		public maintenanceSchedule: ParamMaintenanceScheduleMerge;
+		maintenanceSchedule: ParamMaintenanceScheduleMerge;
 
 		/**
 		 *  

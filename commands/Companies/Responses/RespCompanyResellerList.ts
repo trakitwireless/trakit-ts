@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="CompanyReseller"/>s.
 		 */
-		public companyResellers: CompanyReseller[] = [];
+		companyResellers: CompanyReseller[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 * A container owner <see cref="Company"/> of the collection.
@@ -27,7 +27,7 @@
 		 * The labels given as input.
 		 * {@link CompanyReseller.labels}
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}
 	/**
 	 * A container owner <see cref="Company"/> of the collection.
@@ -37,5 +37,5 @@
 		 * The reference string given as input.
 		 * {@link CompanyReseller.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

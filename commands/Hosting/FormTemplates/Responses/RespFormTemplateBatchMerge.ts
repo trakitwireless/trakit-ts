@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public formTemplates: RespIdCompany[] = [];
+		formTemplates: RespIdCompany[] = [];
 	}

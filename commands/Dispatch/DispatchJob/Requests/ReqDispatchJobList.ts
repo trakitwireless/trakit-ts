@@ -7,7 +7,7 @@
 		/**
 		 * When true, the command will also return  deleted <see cref="DispatchJob"/>s.
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public asset: ParamId;
+		asset: ParamId;
 	}
 	/**
 	 * Gets the list of <see cref="DispatchJob"/>s for the specified <see cref="Asset"/> only if the specified reference fields match.
@@ -29,7 +29,7 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchJob.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}
 
 	/**
@@ -39,7 +39,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}
 	/**
 	 * Gets the list of <see cref="DispatchJob"/>s for the specified <see cref="Company"/> only if the <see cref="DispatchJob.labels"/> matches all of the given <see cref="labels"/>.
@@ -49,7 +49,7 @@
 		 * A list of <see cref="LabelStyle.code">label codes</see> used to match <see cref="DispatchJob"/>s.
 		 * All labels must match to include a <see cref="DispatchJob"/> in the result.
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}
 	/**
 	 * Gets the list of <see cref="DispatchJob"/>s for the specified <see cref="Company"/> only if the specified reference fields match.
@@ -61,7 +61,7 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchJob.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}
 
 	/**
@@ -76,7 +76,7 @@
 		 * A list of <see cref="LabelStyle.code">label codes</see> used to match <see cref="DispatchJob"/>s.
 		 * All labels must match to include a <see cref="DispatchJob"/> in the result.
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}
 	/**
 	 * Gets the list of <see cref="DispatchJob"/>s for the specified <see cref="Company"/> which are not assigned to an <see cref="Asset"/>, only if the specified reference fields match.
@@ -88,5 +88,5 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchJob.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

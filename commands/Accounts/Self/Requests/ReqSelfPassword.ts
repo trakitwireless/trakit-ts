@@ -7,9 +7,9 @@
 		/**
 		 * Your current password, as verification that you are the proper account owner.
 		 */
-		public current: string = "";
+		current: string = "";
 		/**
 		 * Your new password must conform to your company's <see cref="PasswordPolicy">password policy</see>.
 		 */
-		public password: string = "";
+		password: string = "";
 	}

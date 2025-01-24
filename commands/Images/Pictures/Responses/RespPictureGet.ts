@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Picture"/>.
 		 */
-		public picture: Picture;
+		picture: Picture;
 	}

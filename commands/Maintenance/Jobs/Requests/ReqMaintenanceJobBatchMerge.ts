@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public maintenanceJobs: ParamMaintenanceJobMerge[] = [];
+		maintenanceJobs: ParamMaintenanceJobMerge[] = [];
 	}

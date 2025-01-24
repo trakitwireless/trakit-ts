@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="MaintenanceSchedule"/>.
 		 */
-		public maintenanceSchedule: RespIdDeleted;
+		maintenanceSchedule: RespIdDeleted;
 	}

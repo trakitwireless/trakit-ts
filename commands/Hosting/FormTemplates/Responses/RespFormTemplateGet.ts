@@ -8,5 +8,5 @@
 		/**
 		 * The requested <see cref="FormTemplate"/>.
 		 */
-		public formTemplate: FormTemplate;
+		formTemplate: FormTemplate;
 	}

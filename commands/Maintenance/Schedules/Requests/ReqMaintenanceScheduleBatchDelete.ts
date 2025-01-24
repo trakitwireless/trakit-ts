@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public maintenanceSchedules: ParamId[] = [];
+		maintenanceSchedules: ParamId[] = [];
 	}

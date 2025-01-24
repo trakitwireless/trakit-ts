@@ -8,5 +8,5 @@
 		/**
 		 * The requested <see cref="FormResult"/>.
 		 */
-		public formResult: FormResult;
+		formResult: FormResult;
 	}

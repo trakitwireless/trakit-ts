@@ -8,7 +8,7 @@
 		/**
 		 * The list of requested <see cref="Place"/>s.
 		 */
-		public places: Place[] = [];
+		places: Place[] = [];
 	}
 
 	/**
@@ -18,5 +18,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}

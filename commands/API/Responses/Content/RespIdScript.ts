@@ -6,5 +6,5 @@
 		/**
 		 * Identifier of the script to which this object belongs.
 		 */
-		public script: ulong = NaN;
+		script: ulong = NaN;
 	}

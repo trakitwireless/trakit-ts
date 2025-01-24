@@ -6,5 +6,5 @@
 		/**
 		 * Identifier of the parent to which this company belongs
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 	}

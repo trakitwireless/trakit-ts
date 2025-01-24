@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providerScripts: ParamProviderScriptMerge[] = [];
+		providerScripts: ParamProviderScriptMerge[] = [];
 	}

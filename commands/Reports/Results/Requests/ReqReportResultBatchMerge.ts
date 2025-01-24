@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public reportResults: ParamReportResultMerge[] = [];
+		reportResults: ParamReportResultMerge[] = [];
 	}

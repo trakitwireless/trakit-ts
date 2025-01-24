@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public reportTemplates: ParamReportTemplateMerge[] = [];
+		reportTemplates: ParamReportTemplateMerge[] = [];
 	}

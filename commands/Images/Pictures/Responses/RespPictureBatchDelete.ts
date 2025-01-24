@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Picture"/>.
 		 */
-		public pictures: RespIdDeleted[] = [];
+		pictures: RespIdDeleted[] = [];
 	}

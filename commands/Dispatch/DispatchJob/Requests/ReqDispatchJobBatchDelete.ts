@@ -7,5 +7,5 @@
 		/**
 		 * List of <see cref="DispatchJob.id"/>s to delete.
 		 */
-		public dispatchJobs: ParamId[] = [];
+		dispatchJobs: ParamId[] = [];
 	}

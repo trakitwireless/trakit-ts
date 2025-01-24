@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public dispatchJobs: RespIdCompany[] = [];
+		dispatchJobs: RespIdCompany[] = [];
 	}

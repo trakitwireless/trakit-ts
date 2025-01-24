@@ -7,5 +7,5 @@
 		 * A "code" identifying a resource.
 		 *  <override required="always" />
 		 */
-		public code: string = "";
+		code: string = "";
 	}

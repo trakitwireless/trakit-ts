@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public machines: ParamMachineMerge[] = [];
+		machines: ParamMachineMerge[] = [];
 	}

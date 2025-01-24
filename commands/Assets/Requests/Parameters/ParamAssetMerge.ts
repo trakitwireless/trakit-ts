@@ -8,34 +8,34 @@
 		 * The unique identifier of the <see cref="Asset"/> you want to update.
 		 *  <override required="update" />
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The identifier of the <see cref="Company"/> to which this <see cref="Asset"/> belongs.
 		 * After creation, this value is read-only.
 		 *  <override required="create" />
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 		/**
 		 * The kind of <see cref="Asset"/> being created.
 		 * After creation, this value is read-only.
 		 *  <override required="create" />
 		 */
-		public kind?: AssetType;
+		kind?: AssetType;
 		/**
 		 * Name for the <see cref="Asset"/>.
 		 *  <override required="create" max-length="100" />
 		 */
-		public name: string = "";
+		name: string = "";
 		/**
 		 * Notes for the <see cref="Asset"/>.
 		 */
-		public notes: string = "";
+		notes: string = "";
 		/**
 		 * The identifier of the <see cref="Icon"/> used to represent this <see cref="Asset"/> in the UI.
 		 *  <override required="create" />
 		 * {@link Icon.id}
 		 */
-		public icon: ulong = NaN;
+		icon: ulong = NaN;
 		/**
 		 * A list of <format id="codified"/>&amp;nbsp;<see cref="CompanyStyles.labels">label</see> names to categorize/organize this <see cref="Asset"/>.
 		 *  <override>
@@ -44,11 +44,11 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 		/**
 		 * Replaces the <see cref="Asset"/>'s status tags with the given list of <format id="codified"/> tags.
 		 */
-		public tags: string[] = [];
+		tags: string[] = [];
 		/**
 		 * Allows you to add, remove, and replace attributes.
 		 * For each <see cref="AssetAttribute"/> in the attributes object,
@@ -58,11 +58,11 @@
 		 * in the object, the attribute of the key is removed from the <see cref="Asset"/>, and one of the codified name is added to the <see cref="Asset"/>.
 		 * If a new value or null is not provided for a current attribute, no change is made.
 		 */
-		public attributes: Map<string, AssetAttribute?>;
+		attributes: Map<string, AssetAttribute?>;
 		/**
 		 * The email address or phone number of this <see cref="Asset"/> when a <see cref="Person"/>'s <see cref="Contact"/> card is blank, or the <see cref="Provider"/>'s <see cref="ProviderGeneral.pnd">PND</see> is not installed.
 		 */
-		public messagingAddress: string = "";
+		messagingAddress: string = "";
 		/**
 		 * The identifiers of <see cref="Picture"/>s of this <see cref="Asset"/>.
 		 *  <override>
@@ -71,64 +71,64 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public pictures: ulong[] = [];
+		pictures: ulong[] = [];
 		/**
 		 * Name/value collections of custom fields used to refer to external systems.
 		 * If the value is null, the references are removed from the <see cref="Asset"/>.
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 		/**
 		 * The contact card details for this <see cref="Asset"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.person"/>.
 		 *  <override required="create (for person)" />
 		 */
-		public contact: ulong = NaN;
+		contact: ulong = NaN;
 		/**
 		 * The year this <see cref="Vehicle"/> or <see cref="Trailer"/> was built.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.vehicle"/> or <see cref="AssetType.trailer"/>.
 		 */
-		public year: ushort = NaN;
+		year: ushort = NaN;
 		/**
 		 * The license plate of this <see cref="Vehicle"/> or <see cref="Trailer"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.vehicle"/> or <see cref="AssetType.trailer"/>.
 		 */
-		public plate: string = "";
+		plate: string = "";
 		/**
 		 * The manufacturer of this <see cref="Vehicle"/> or <see cref="Trailer"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.vehicle"/> or <see cref="AssetType.trailer"/>.
 		 */
-		public make: string = "";
+		make: string = "";
 		/**
 		 * The model of this <see cref="Vehicle"/> or <see cref="Trailer"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.vehicle"/> or <see cref="AssetType.trailer"/>.
 		 */
-		public model: string = "";
+		model: string = "";
 		/**
 		 * The pretty-pretty colour of this <see cref="Vehicle"/> or <see cref="Trailer"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.vehicle"/> or <see cref="AssetType.trailer"/>.
 		 *  <override max-length="22" format="colour" />
 		 */
-		public colour: string = "";
+		colour: string = "";
 		/**
 		 * The manufacturer's identification number of this <see cref="Trailer"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.vehicle"/>.
 		 */
-		public serial: string = "";
+		serial: string = "";
 		/**
 		 * The Vehicle Identification Number of this <see cref="Vehicle"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.trailer"/>.
 		 */
-		public vin: string = "";
+		vin: string = "";
 		/**
 		 * The distance travelled by this <see cref="Asset"/>.
 		 * Can be a GPS odometer, OBD-II odometer, or other depending on scripts.
 		 */
-		public odometer: double = NaN;
+		odometer: double = NaN;
 		/**
 		 * The number of hours the engine has been running for this <see cref="Vehicle"/>.
 		 * Only applicable if <c>asset.kind</c> is <see cref="AssetType.vehicle"/>.
 		 */
-		public engineHours: double = NaN;
+		engineHours: double = NaN;
 		/**
 		 * A list of related asset identifiers like a driver for a <see cref="Vehicle"/>, or <see cref="Trailer"/> for a truck.
 		 *  <override>
@@ -137,5 +137,5 @@
 		 *  </values>
 		 *  </override>
 		 */
-		public relationships: ulong[] = [];
+		relationships: ulong[] = [];
 	}

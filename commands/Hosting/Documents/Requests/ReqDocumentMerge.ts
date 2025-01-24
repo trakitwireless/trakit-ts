@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Document"/>.
 		 */
-		public document: ParamDocumentMerge;
+		document: ParamDocumentMerge;
 
 		/**
 		 *  

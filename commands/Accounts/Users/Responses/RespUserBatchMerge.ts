@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public users: RespIdCompany[] = [];
+		users: RespIdCompany[] = [];
 	}

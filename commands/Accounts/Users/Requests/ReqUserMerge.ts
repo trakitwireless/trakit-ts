@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="User"/>.
 		 */
-		public user: ParamUserMerge;
+		user: ParamUserMerge;
 
 		/**
 		 *  

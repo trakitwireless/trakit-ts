@@ -6,5 +6,5 @@
 		/**
 		 * A "handle" identifying a session.
 		 */
-		public handle: string = "";
+		handle: string = "";
 	}

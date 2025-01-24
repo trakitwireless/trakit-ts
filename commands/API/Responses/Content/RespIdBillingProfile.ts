@@ -6,5 +6,5 @@
 		/**
 		 * Identifier of the <see cref="BillingProfile"/> to which this object belongs
 		 */
-		public profile: ulong = NaN;
+		profile: ulong = NaN;
 	}

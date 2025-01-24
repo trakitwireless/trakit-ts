@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public machines: RespIdCompany[] = [];
+		machines: RespIdCompany[] = [];
 	}

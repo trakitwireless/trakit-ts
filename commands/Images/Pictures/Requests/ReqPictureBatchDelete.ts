@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public pictures: ParamId[] = [];
+		pictures: ParamId[] = [];
 	}

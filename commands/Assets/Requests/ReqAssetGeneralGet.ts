@@ -7,13 +7,13 @@
 		/**
 		 * When true, the command will also return a deleted <see cref="AssetGeneral"/> (if it exists).
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 		/**
 		 * When true, the command will also return <see cref="AssetGeneralMessage"/>s for the asset.
 		 */
-		public includeMessages: boolean = false;
+		includeMessages: boolean = false;
 		/**
 		 * When true, the command will also return <see cref="DispatchTask"/>s for the asset.
 		 */
-		public includeTasks: boolean = false;
+		includeTasks: boolean = false;
 	}

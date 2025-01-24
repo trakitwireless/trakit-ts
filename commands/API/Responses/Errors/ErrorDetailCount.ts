@@ -6,5 +6,5 @@
 		/**
 		 * The number of items that failed, or number of items preventing success.
 		 */
-		public count: int = NaN;
+		count: int = NaN;
 	}

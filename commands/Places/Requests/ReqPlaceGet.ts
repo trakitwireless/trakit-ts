@@ -8,5 +8,5 @@
 		/**
 		 * When true, the command will also return a deleted <see cref="Place"/> (if it exists).
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}

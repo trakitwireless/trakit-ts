@@ -2,7 +2,7 @@
 	/**
 	 *  <see cref="ErrorDetail"/>s are identified for deserialization using <see cref="ErrorDetail.kind"/>.
 	 */
-	public enum ErrorDetailType {
+	enum ErrorDetailType {
 		/**
 		 * These are the details of an exception while trying to parse the JSON input.
 		 */

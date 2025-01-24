@@ -7,22 +7,22 @@
 		/**
 		 * The list of applications users are allowed to use to create sessions.
 		 */
-		public applications: string[] = [];
+		applications: string[] = [];
 		/**
 		 * Restrict session creation to only the provided IPv4 ranges (		/**
 		 * Defines the behaviour of the system when a user creates multiple sessions.
 		 */
-		public multiUser?: SessionMultiUser;
+		multiUser?: SessionMultiUser;
 		/**
 		 * Defines whether a session should be automatically killed when the connection breaks.
 		 */
-		public idleAllowed: boolean = false;
+		idleAllowed: boolean = false;
 		/**
 		 * The lifetime duration of a session in minutes.
 		 */
-		public expireTimeout: ushort = NaN;
+		expireTimeout: ushort = NaN;
 		/**
 		 * The maximum number of sessions allowed per user.
 		 */
-		public maxSessions: byte = NaN;
+		maxSessions: byte = NaN;
 	}

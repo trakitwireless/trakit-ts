@@ -7,5 +7,5 @@
 		/**
 		 * Parameters given to create or update an <see cref="Asset"/>.
 		 */
-		public asset: ParamAssetMerge;
+		asset: ParamAssetMerge;
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="DispatchTask"/>.
 		 */
-		public dispatchTasks: RespIdDeleted[] = [];
+		dispatchTasks: RespIdDeleted[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public documents: RespIdCompany[] = [];
+		documents: RespIdCompany[] = [];
 	}

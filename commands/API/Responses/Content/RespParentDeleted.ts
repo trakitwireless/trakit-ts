@@ -6,13 +6,13 @@
 		/**
 		 * Identifier of the <see cref="Company">parent</see> to which the <see cref="Company"/> is a child.
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 		/**
 		 * Flag showing if the object is deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 		/**
 		 * Object version keys used to validate synchronization for all object properties.
 		 */
-		public v: uint[] = [];
+		v: uint[] = [];
 	}

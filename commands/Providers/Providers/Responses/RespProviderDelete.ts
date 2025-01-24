@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Provider"/>.
 		 */
-		public provider: RespIdendifierDeleted;
+		provider: RespIdendifierDeleted;
 	}

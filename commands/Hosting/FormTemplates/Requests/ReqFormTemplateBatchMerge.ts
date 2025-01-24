@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public formTemplates: ParamFormTemplateMerge[] = [];
+		formTemplates: ParamFormTemplateMerge[] = [];
 	}

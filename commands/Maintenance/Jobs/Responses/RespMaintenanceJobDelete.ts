@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="MaintenanceJob"/>.
 		 */
-		public maintenanceJob: RespIdDeleted;
+		maintenanceJob: RespIdDeleted;
 	}

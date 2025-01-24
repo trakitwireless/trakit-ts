@@ -8,7 +8,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="FormResult"/>.
 		 */
-		public formResult: ParamId;
+		formResult: ParamId;
 
 		/**
 		 *  

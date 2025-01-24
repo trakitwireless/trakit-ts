@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="DispatchJob"/>.
 		 */
-		public dispatchJobs: RespIdDeleted[] = [];
+		dispatchJobs: RespIdDeleted[] = [];
 	}

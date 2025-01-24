@@ -8,5 +8,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Place"/>.
 		 */
-		public place: RespIdDeleted;
+		place: RespIdDeleted;
 	}

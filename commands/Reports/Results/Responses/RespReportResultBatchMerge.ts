@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public reportResults: RespIdCompany[] = [];
+		reportResults: RespIdCompany[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="User"/>.
 		 */
-		public user: User;
+		user: User;
 	}

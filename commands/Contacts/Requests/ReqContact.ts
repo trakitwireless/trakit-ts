@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="Contact"/>.
 		 */
-		public contact: ParamId;
+		contact: ParamId;
 
 		/**
 		 *  

@@ -6,5 +6,5 @@
 		/**
 		 * The version keys used to validate synchronization.
 		 */
-		public v: int[] = [];
+		v: int[] = [];
 	}

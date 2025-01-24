@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Provider"/>.
 		 */
-		public provider: Provider;
+		provider: Provider;
 	}

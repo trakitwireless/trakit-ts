@@ -10,5 +10,5 @@
 		/**
 		 * A hint for deserializing the error's details.
 		 */
-		public kind: ErrorDetailType;
+		kind: ErrorDetailType;
 	}

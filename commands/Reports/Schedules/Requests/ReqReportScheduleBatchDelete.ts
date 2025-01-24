@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public reportSchedules: ParamId[] = [];
+		reportSchedules: ParamId[] = [];
 	}

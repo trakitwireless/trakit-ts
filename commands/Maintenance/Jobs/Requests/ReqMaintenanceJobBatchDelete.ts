@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public maintenanceJobs: ParamId[] = [];
+		maintenanceJobs: ParamId[] = [];
 	}

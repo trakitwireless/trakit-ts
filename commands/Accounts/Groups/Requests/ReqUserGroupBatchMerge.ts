@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public userGroups: ParamUserGroupMerge[] = [];
+		userGroups: ParamUserGroupMerge[] = [];
 	}

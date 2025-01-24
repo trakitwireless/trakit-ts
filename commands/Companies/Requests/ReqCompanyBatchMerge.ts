@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public companies: ParamCompanyMerge[] = [];
+		companies: ParamCompanyMerge[] = [];
 	}

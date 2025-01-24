@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Behaviour"/>.
 		 */
-		public behaviour: RespIdDeleted;
+		behaviour: RespIdDeleted;
 	}

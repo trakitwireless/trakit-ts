@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="AssetDispatch"/>.
 		 */
-		public assetDispatch: AssetDispatch;
+		assetDispatch: AssetDispatch;
 	}

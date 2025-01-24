@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="ReportTemplate"/>.
 		 */
-		public reportTemplates: RespIdDeleted[] = [];
+		reportTemplates: RespIdDeleted[] = [];
 	}

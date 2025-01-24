@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="UserAdvanced"/>.
 		 */
-		public userAdvanced: UserAdvanced;
+		userAdvanced: UserAdvanced;
 	}

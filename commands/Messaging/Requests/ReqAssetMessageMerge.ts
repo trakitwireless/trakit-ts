@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="AssetMessage"/>.
 		 */
-		public assetMessage: ParamAssetMessageMerge;
+		assetMessage: ParamAssetMessageMerge;
 
 		/**
 		 *  

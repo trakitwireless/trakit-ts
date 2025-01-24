@@ -6,5 +6,5 @@
 		/**
 		 * This is a list of possible values the input should have been.
 		 */
-		public valid: string[] = [];
+		valid: string[] = [];
 	}

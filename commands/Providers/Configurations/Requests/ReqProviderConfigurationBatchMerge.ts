@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public providerConfigurations: ParamProviderConfigurationMerge[] = [];
+		providerConfigurations: ParamProviderConfigurationMerge[] = [];
 	}

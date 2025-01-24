@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public contact: ParamSelfContactMerge;
+		contact: ParamSelfContactMerge;
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="MaintenanceSchedule"/>.
 		 */
-		public maintenanceSchedule: MaintenanceSchedule;
+		maintenanceSchedule: MaintenanceSchedule;
 	}

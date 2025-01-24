@@ -7,5 +7,5 @@
 		/**
 		 * When true, the command will also return a deleted <see cref="Machine"/> (if it exists).
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}

@@ -8,5 +8,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="ProviderConfiguration"/>.
 		 */
-		public providerConfigurations: RespIdDeleted[] = [];
+		providerConfigurations: RespIdDeleted[] = [];
 	}

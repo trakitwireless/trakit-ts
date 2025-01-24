@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="ReportResult"/>.
 		 */
-		public reportResult: RespIdDeleted;
+		reportResult: RespIdDeleted;
 	}

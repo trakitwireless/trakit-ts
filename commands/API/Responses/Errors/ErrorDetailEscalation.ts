@@ -7,5 +7,5 @@
 		/**
 		 * A list of escallated permission details.
 		 */
-		public escalations: PermissionEscalation[] = [];
+		escalations: PermissionEscalation[] = [];
 	}

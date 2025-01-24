@@ -7,5 +7,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this object belongs.
 		 */
-		public company: ulong = NaN;
+		company: ulong = NaN;
 	}

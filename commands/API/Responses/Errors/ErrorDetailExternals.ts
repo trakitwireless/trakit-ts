@@ -6,13 +6,13 @@
 		/**
 		 * List of errors.
 		 */
-		public errors: string[] = [];
+		errors: string[] = [];
 		/**
 		 * List of warnings.
 		 */
-		public warnings: string[] = [];
+		warnings: string[] = [];
 		/**
 		 * List of messages.
 		 */
-		public messages: string[] = [];
+		messages: string[] = [];
 	}

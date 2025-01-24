@@ -7,5 +7,5 @@
 		/**
 		 * List of <see cref="DispatchTask"/>s to update or create.
 		 */
-		public dispatchTasks: ParamDispatchTaskMerge[] = [];
+		dispatchTasks: ParamDispatchTaskMerge[] = [];
 	}

@@ -16,18 +16,18 @@
 		 *  </remarks>
 		 */
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-		public reqId: int = NaN;
+		reqId: int = NaN;
 		/**
 		 * The unique, numeric error code when processing this request.
 		 */
-		public errorCode: ErrorCode;
+		errorCode: ErrorCode;
 		/**
 		 * An English description of the error.
 		 */
-		public message: string = "";
+		message: string = "";
 		/**
 		 * An object to provide developers with a hint about the nature of the error.
 		 * The key is not always present, and only available for some errors.
 		 */
-		public errorDetails: ErrorDetail;
+		errorDetails: ErrorDetail;
 	}

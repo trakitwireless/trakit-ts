@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="ReportSchedule"/>.
 		 */
-		public reportSchedule: ParamId;
+		reportSchedule: ParamId;
 
 		/**
 		 *  

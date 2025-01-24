@@ -6,5 +6,5 @@
 		/**
 		 * Identifier given as input for the command.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 	}

@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="Provider"/>.
 		 */
-		public provider: ParamIdentifier;
+		provider: ParamIdentifier;
 
 		/**
 		 *  

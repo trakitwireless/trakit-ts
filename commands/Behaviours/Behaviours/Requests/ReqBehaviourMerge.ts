@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Behaviour"/>.
 		 */
-		public behaviour: ParamBehaviourMerge;
+		behaviour: ParamBehaviourMerge;
 
 		/**
 		 *  

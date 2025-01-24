@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="Company"/>.
 		 */
-		public company: ParamId;
+		company: ParamId;
 
 		/**
 		 *  

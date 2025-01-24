@@ -6,13 +6,13 @@
 		/**
 		 * The line number in the input string.
 		 */
-		public line: int = NaN;
+		line: int = NaN;
 		/**
 		 * The character on which the failure occurred.
 		 */
-		public column: int = NaN;
+		column: int = NaN;
 		/**
 		 * The last sucessfully parsed object.
 		 */
-		public after: string = "";
+		after: string = "";
 	}

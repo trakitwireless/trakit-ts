@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providerRegistrations: ParamProviderRegistrationMerge[] = [];
+		providerRegistrations: ParamProviderRegistrationMerge[] = [];
 	}

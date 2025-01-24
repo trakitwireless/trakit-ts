@@ -8,5 +8,5 @@
 		/**
 		 * The requested <see cref="Place"/>.
 		 */
-		public place: Place;
+		place: Place;
 	}

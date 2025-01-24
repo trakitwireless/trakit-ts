@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public behaviours: ParamBehaviourMerge[] = [];
+		behaviours: ParamBehaviourMerge[] = [];
 	}

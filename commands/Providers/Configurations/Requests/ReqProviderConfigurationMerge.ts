@@ -8,7 +8,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="ProviderConfiguration"/>.
 		 */
-		public providerConfiguration: ParamProviderConfigurationMerge;
+		providerConfiguration: ParamProviderConfigurationMerge;
 
 		/**
 		 *  

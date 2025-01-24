@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="ReportResult"/>.
 		 */
-		public reportResult: ReportResult;
+		reportResult: ReportResult;
 	}

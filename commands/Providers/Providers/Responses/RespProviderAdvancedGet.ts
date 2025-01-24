@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="ProviderAdvanced"/>.
 		 */
-		public providerAdvanced: ProviderAdvanced;
+		providerAdvanced: ProviderAdvanced;
 	}

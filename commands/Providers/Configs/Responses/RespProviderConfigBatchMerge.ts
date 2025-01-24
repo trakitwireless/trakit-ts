@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providerConfigs: RespIdCompany[] = [];
+		providerConfigs: RespIdCompany[] = [];
 	}

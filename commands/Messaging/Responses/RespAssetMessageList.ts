@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="AssetMessage"/>s.
 		 */
-		public assetMessages: AssetMessage[] = [];
+		assetMessages: AssetMessage[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 * Contains the <see cref="Asset.id"/> of the collection.
@@ -26,5 +26,5 @@
 		/**
 		 * Identifier of the <see cref="Asset"/> to which this collection belongs.
 		 */
-		public asset: RespId;
+		asset: RespId;
 	}

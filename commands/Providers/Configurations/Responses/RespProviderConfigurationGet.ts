@@ -8,5 +8,5 @@
 		/**
 		 * The requested <see cref="ProviderConfiguration"/>.
 		 */
-		public providerConfiguration: ProviderConfiguration;
+		providerConfiguration: ProviderConfiguration;
 	}

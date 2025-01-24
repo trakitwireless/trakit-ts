@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public icons: ParamId[] = [];
+		icons: ParamId[] = [];
 	}

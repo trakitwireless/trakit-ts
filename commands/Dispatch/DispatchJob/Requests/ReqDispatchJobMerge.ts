@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="DispatchJob"/>.
 		 */
-		public dispatchJob: ParamDispatchJobMerge;
+		dispatchJob: ParamDispatchJobMerge;
 
 		/**
 		 *  

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Dashcam"/>.
 		 */
-		public dashcam: Dashcam;
+		dashcam: Dashcam;
 	}

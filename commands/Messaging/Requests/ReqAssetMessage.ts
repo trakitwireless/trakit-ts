@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="AssetMessage"/>.
 		 */
-		public assetMessage: ParamId;
+		assetMessage: ParamId;
 
 		/**
 		 *  

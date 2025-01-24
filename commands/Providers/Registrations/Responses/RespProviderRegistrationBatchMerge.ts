@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providerRegistrations: RespCode[] = [];
+		providerRegistrations: RespCode[] = [];
 	}

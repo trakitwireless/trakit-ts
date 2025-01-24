@@ -7,7 +7,7 @@
 		/**
 		 * When true, the command will also return  deleted <see cref="DispatchTask"/>s.
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public asset: ParamId;
+		asset: ParamId;
 	}
 	/**
 	 * Gets the list of <see cref="DispatchTask"/>s for the specified <see cref="Asset"/> only if the specified reference fields match.
@@ -29,7 +29,7 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchTask.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}
 
 	/**
@@ -39,7 +39,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}
 	/**
 	 * Gets the list of <see cref="DispatchTask"/>s for the specified <see cref="Company"/> only if the specified reference fields match.
@@ -51,5 +51,5 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchTask.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

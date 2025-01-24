@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public behaviourScripts: ParamBehaviourScriptMerge[] = [];
+		behaviourScripts: ParamBehaviourScriptMerge[] = [];
 	}

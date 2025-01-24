@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providerRegistrations: ParamCode[] = [];
+		providerRegistrations: ParamCode[] = [];
 	}

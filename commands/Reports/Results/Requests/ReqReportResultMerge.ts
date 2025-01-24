@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="ReportResult"/>.
 		 */
-		public reportResult: ParamReportResultMerge;
+		reportResult: ParamReportResultMerge;
 
 		/**
 		 *  

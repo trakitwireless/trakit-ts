@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public behaviours: ParamId[] = [];
+		behaviours: ParamId[] = [];
 	}

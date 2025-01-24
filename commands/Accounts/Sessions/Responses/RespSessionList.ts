@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="Session"/>.
 		 */
-		public sessions: Session[] = [];
+		sessions: Session[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="Company"/> to which the array of <see cref="Session"/>s belong.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 * Contains the <see cref="User.login"/> of the collection.
@@ -26,5 +26,5 @@
 		/**
 		 * An object to contain the "login" of the <see cref="User"/> to which the array of <see cref="Session"/>s belong.
 		 */
-		public user: RespLoginCompany;
+		user: RespLoginCompany;
 	}

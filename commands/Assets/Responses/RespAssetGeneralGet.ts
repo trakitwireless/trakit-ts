@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Asset"/>.
 		 */
-		public assetGeneral: AssetGeneral;
+		assetGeneral: AssetGeneral;
 	}

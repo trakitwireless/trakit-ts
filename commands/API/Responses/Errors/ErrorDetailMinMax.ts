@@ -6,11 +6,11 @@
 		/**
 		 * Minimum possible value.
 		 */
-		public min?: T;
+		min?: T;
 		/**
 		 * Maximum possible value.
 		 */
-		public max?: T;
+		max?: T;
 	}
 
 	/**

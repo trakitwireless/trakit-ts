@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="ReportSchedule"/>.
 		 */
-		public reportSchedule: RespIdDeleted;
+		reportSchedule: RespIdDeleted;
 	}

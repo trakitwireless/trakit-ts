@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public userGroups: ParamId[] = [];
+		userGroups: ParamId[] = [];
 	}

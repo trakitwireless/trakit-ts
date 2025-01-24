@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="BehaviourLog"/>.
 		 */
-		public behaviourLogs: RespIdDeleted[] = [];
+		behaviourLogs: RespIdDeleted[] = [];
 	}

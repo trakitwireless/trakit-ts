@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="ProviderScript"/>.
 		 */
-		public providerScript: ParamProviderScriptMerge;
+		providerScript: ParamProviderScriptMerge;
 
 		/**
 		 *  

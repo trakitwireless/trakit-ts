@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="Icon"/>.
 		 */
-		public icon: ParamId;
+		icon: ParamId;
 
 		/**
 		 *  

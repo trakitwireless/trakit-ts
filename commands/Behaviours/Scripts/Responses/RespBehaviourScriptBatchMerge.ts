@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public behaviourScripts: RespIdCompany[] = [];
+		behaviourScripts: RespIdCompany[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * Identifier given as input for the command.
 		 */
-		public code: string = "";
+		code: string = "";
 	}

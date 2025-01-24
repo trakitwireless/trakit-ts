@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="ProviderScript"/>.
 		 */
-		public providerScript: ProviderScript;
+		providerScript: ProviderScript;
 	}

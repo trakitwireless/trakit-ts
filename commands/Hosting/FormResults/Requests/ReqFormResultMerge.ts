@@ -8,7 +8,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="FormResult"/>.
 		 */
-		public formResult: ParamFormResultMerge;
+		formResult: ParamFormResultMerge;
 
 		/**
 		 *  

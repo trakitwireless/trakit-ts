@@ -3,11 +3,11 @@
 	/**
 	 *  
 	 */
-	public static class Polyline {
+	static class Polyline {
 		/**
 		 *  
 		 */
-		public const byte DEFAULT_PRECISION = 6;
+		const byte DEFAULT_PRECISION = 6;
 
 		/**
 		 * A C# implementation to encode a polyline 			Action<int> encode = (diff) => {

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public behaviours: RespIdCompany[] = [];
+		behaviours: RespIdCompany[] = [];
 	}

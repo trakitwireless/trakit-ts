@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Contact"/>.
 		 */
-		public contact: ParamContactMerge;
+		contact: ParamContactMerge;
 
 		/**
 		 *  

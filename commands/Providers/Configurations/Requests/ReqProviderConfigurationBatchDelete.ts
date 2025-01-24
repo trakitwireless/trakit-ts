@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public providerConfigurations: ParamId[] = [];
+		providerConfigurations: ParamId[] = [];
 	}

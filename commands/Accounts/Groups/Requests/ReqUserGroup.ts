@@ -7,10 +7,10 @@
 		/**
 		 * An object to contain the "id" of the <see cref="UserGroup"/>.
 		 */
-		public userGroup: ParamId;
+		userGroup: ParamId;
 
 		/**
 		 *  
 		 */
-		public string GetKey() => this.userGroup?.id.toString() ?? "";
+		string GetKey() => this.userGroup?.id.toString() ?? "";
 	}

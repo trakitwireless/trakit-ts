@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="UserGroup"/>.
 		 */
-		public userGroup: UserGroup;
+		userGroup: UserGroup;
 	}

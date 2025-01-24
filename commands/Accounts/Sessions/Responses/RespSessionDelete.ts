@@ -7,5 +7,5 @@
 		/**
 		 * An object which contains the <see cref="Session.handle"/>, related <see cref="User.login"/>, and owning <see cref="User.company"/> id.
 		 */
-		public session: SessionHandle;
+		session: SessionHandle;
 	}

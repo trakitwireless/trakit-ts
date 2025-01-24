@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="DispatchJob"/>.
 		 */
-		public dispatchJob: DispatchJob;
+		dispatchJob: DispatchJob;
 	}

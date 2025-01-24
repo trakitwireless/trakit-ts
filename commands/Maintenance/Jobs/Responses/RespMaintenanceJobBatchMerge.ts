@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public maintenanceJobs: RespIdCompany[] = [];
+		maintenanceJobs: RespIdCompany[] = [];
 	}

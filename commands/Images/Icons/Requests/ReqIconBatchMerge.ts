@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public icons: ParamIconMerge[] = [];
+		icons: ParamIconMerge[] = [];
 	}

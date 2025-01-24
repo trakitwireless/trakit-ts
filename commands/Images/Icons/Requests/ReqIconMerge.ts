@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Icon"/>.
 		 */
-		public icon: ParamIconMerge;
+		icon: ParamIconMerge;
 
 		/**
 		 *  

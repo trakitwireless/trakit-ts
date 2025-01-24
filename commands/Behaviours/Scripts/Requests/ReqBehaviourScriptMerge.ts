@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="BehaviourScript"/>.
 		 */
-		public behaviourScript: ParamBehaviourScriptMerge;
+		behaviourScript: ParamBehaviourScriptMerge;
 
 		/**
 		 *  

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public users: ParamLogin[] = [];
+		users: ParamLogin[] = [];
 	}

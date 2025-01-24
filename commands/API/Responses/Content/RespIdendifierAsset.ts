@@ -9,5 +9,5 @@
 		 * This value must remain nullable because Providers can have a null value for their asset member.
 		 *  </remarks>
 		 */
-		public asset: ulong = NaN;
+		asset: ulong = NaN;
 	}

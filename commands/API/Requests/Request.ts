@@ -25,5 +25,5 @@ public string[] GetNameParts() => SPLITTER.Match(this.GetType().Name)
 		 * Identifier used by external system to correlate requests to responses.
 		 */
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-		public reqId: int = NaN;
+		reqId: int = NaN;
 	}

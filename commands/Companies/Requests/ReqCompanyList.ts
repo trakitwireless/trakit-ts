@@ -8,15 +8,15 @@
 		 * When set to true, the full tree of <see cref="Company">companies</see> is returned.
 		 * Otherwise, only the first-level child-<see cref="Company">companies</see> are included.
 		 */
-		public tree: boolean = false;
+		tree: boolean = false;
 		/**
 		 * When set to true, the parent <see cref="Company"/> is included in the results.
 		 */
-		public includeParent: boolean = false;
+		includeParent: boolean = false;
 		/**
 		 * When true, the command will also return  deleted <see cref="Company"/>s.
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}
 	/**
 	 * Contains the <see cref="Company.id"/> of the collection.
@@ -25,7 +25,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}
 	/**
 	 * Contains the <see cref="Company.id"/> of the collection.
@@ -35,5 +35,5 @@
 		 * Case-insensitive reference pairs used to match <see cref="Company"/>s.
 		 * {@link CompanyGeneral.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

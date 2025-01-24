@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public icons: RespIdCompany[] = [];
+		icons: RespIdCompany[] = [];
 	}

@@ -7,15 +7,15 @@
 		/**
 		 * The unique identifier of the <see cref="DispatchJob"/> you want to update.
 		 */
-		public id: ulong = NaN;
+		id: ulong = NaN;
 		/**
 		 * The reason the <see cref="DispatchJob"/> was cancelled.
 		 * The given value is added as a <see cref="DispatchJob.references"/> with the key <c>cancelled</c>.
 		 */
-		public reason: string = "";
+		reason: string = "";
 		/**
 		 * The codified status tag names reflecting the conditions of the <see cref="DispatchJob"/>.
 		 * A new tag <c>cancelled</c> is always added.
 		 */
-		public tags: string[] = [];
+		tags: string[] = [];
 	}

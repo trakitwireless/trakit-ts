@@ -6,5 +6,5 @@
 		/**
 		 * The <see cref="Provider"/>'s identifier.
 		 */
-		public id: string = "";
+		id: string = "";
 	}

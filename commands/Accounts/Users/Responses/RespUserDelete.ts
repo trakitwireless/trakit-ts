@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="User"/>.
 		 */
-		public user: RespIdDeleted;
+		user: RespIdDeleted;
 	}

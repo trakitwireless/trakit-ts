@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="Provider"/>s.
 		 */
-		public providers: Provider[] = [];
+		providers: Provider[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 * A container owner <see cref="Company"/> of the collection.
@@ -26,5 +26,5 @@
 		/**
 		 * Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
 		 */
-		public config: RespId;
+		config: RespId;
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * An object to contain the "handle" of the <see cref="Session"/>.
 		 */
-		public session: ParamHandle;
+		session: ParamHandle;
 	}

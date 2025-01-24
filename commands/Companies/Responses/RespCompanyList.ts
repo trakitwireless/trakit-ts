@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="Company"/>s.
 		 */
-		public companies: Company[] = [];
+		companies: Company[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 * Contains the <see cref="Company.id"/> of the collection.
@@ -27,5 +27,5 @@
 		 * The parsed references given as input.
 		 * {@link CompanyGeneral.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

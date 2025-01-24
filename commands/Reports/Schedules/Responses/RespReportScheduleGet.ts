@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="ReportSchedule"/>.
 		 */
-		public reportSchedule: ReportSchedule;
+		reportSchedule: ReportSchedule;
 	}

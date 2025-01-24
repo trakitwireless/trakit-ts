@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="BehaviourScript"/>.
 		 */
-		public behaviourScripts: RespIdDeleted[] = [];
+		behaviourScripts: RespIdDeleted[] = [];
 	}

@@ -8,5 +8,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="FormTemplate"/>.
 		 */
-		public formTemplates: RespIdDeleted[] = [];
+		formTemplates: RespIdDeleted[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * When true, the command will also return  deleted <see cref="CompanyStyles"/>s.
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}

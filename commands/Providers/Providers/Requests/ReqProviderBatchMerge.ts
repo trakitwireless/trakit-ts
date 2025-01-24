@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providers: ParamProviderMerge[] = [];
+		providers: ParamProviderMerge[] = [];
 	}

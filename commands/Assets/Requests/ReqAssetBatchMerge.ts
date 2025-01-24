@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public assets: ParamAssetMerge[] = [];
+		assets: ParamAssetMerge[] = [];
 	}

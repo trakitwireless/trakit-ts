@@ -8,29 +8,29 @@
 		 * Preferred region/language for the UI and notifications.
 		 * Valid formats use &lt;ISO 639-1&gt;&lt;dash&gt;&lt;ISO 3166-2&gt; such as "fr-CA" or "en-US".
 		 */
-		public language: string = "";
+		language: string = "";
 		/**
 		 * Your local <see cref="Timezone"/> used to calculate times.
 		 * {@link Timezone.code}
 		 */
-		public timezone: TimeZoneInfo;
+		timezone: TimeZoneInfo;
 		/**
 		 * List of <see cref="UserNotifications"/> preferences.
 		 * Please note that active times cannot overlap.
 		 */
-		public notify: UserNotifications[] = [];
+		notify: UserNotifications[] = [];
 		/**
 		 * Formatting help for dates, times, numbers.
 		 */
-		public formats: Map<string, string>;
+		formats: Map<string, string>;
 		/**
 		 * Preferred way of displaying ambiguous numbers in the context of measurements.
 		 */
-		public measurements: Map<string, SystemsOfUnits?>;
+		measurements: Map<string, SystemsOfUnits?>;
 		/**
 		 * Additional options which do not fit in with the formats or measurements preferences.
 		 * If a value of null is given, the option is removed.  To keep the option, you can use a blank string.
 		 * For convenience, if the value of an option is given as JSON (instead of a string), they are automatically serialized with no white-space.
 		 */
-		public options: Map<string, string>;
+		options: Map<string, string>;
 	}

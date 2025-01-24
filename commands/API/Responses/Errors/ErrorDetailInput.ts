@@ -6,5 +6,5 @@
 		/**
 		 * The given input which caused the error.
 		 */
-		public input: string = "";
+		input: string = "";
 	}

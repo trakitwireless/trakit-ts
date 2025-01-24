@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public formTemplates: ParamId[] = [];
+		formTemplates: ParamId[] = [];
 	}

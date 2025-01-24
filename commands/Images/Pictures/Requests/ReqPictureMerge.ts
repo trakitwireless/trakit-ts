@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Picture"/>.
 		 */
-		public picture: ParamPictureMerge;
+		picture: ParamPictureMerge;
 
 		/**
 		 *  

@@ -6,5 +6,5 @@
 		/**
 		 * Index-presevered list of sub-command errors.
 		 */
-		public errors: Response[] = [];
+		errors: Response[] = [];
 	}

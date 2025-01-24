@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Session"/> details.
 		 */
-		public session: Session;
+		session: Session;
 	}

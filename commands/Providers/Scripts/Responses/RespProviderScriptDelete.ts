@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="ProviderScript"/>.
 		 */
-		public providerScript: RespIdDeleted;
+		providerScript: RespIdDeleted;
 	}

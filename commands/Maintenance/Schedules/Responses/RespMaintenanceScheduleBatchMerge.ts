@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public maintenanceSchedules: RespIdCompany[] = [];
+		maintenanceSchedules: RespIdCompany[] = [];
 	}

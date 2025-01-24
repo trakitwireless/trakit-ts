@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="DispatchJob"/>s.
 		 */
-		public dispatchJobs: DispatchJob[] = [];
+		dispatchJobs: DispatchJob[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public asset: RespId;
+		asset: RespId;
 	}
 	/**
 	 *  
@@ -27,7 +27,7 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchJob.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}
 
 	/**
@@ -37,7 +37,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 *  
@@ -47,7 +47,7 @@
 		 * A list of <see cref="LabelStyle.code">label codes</see> used to match <see cref="DispatchJob"/>s.
 		 * All labels must match to include a <see cref="DispatchJob"/> in the result.
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}
 	/**
 	 *  
@@ -57,5 +57,5 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchJob.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

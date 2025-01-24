@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public behaviourLogs: ParamId[] = [];
+		behaviourLogs: ParamId[] = [];
 	}

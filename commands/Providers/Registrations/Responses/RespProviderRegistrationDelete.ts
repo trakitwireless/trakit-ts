@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="ProviderRegistration"/>.
 		 */
-		public providerRegistration: RespIdDeleted;
+		providerRegistration: RespIdDeleted;
 	}

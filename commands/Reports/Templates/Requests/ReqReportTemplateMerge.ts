@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="ReportTemplate"/>.
 		 */
-		public reportTemplate: ParamReportTemplateMerge;
+		reportTemplate: ParamReportTemplateMerge;
 
 		/**
 		 *  

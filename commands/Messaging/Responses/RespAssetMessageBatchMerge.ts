@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public assetMessages: RespIdCompany[] = [];
+		assetMessages: RespIdCompany[] = [];
 	}

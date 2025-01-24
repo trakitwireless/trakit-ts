@@ -6,5 +6,5 @@
 		/**
 		 * Identifier of the template to which this object belongs.
 		 */
-		public template: ulong = NaN;
+		template: ulong = NaN;
 	}

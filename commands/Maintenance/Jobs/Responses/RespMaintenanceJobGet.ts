@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="MaintenanceJob"/>.
 		 */
-		public maintenanceJob: MaintenanceJob;
+		maintenanceJob: MaintenanceJob;
 	}

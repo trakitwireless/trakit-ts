@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public companies: ParamId[] = [];
+		companies: ParamId[] = [];
 	}

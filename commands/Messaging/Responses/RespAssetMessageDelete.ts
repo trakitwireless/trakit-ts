@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="AssetMessage"/>.
 		 */
-		public assetMessage: RespIdDeleted;
+		assetMessage: RespIdDeleted;
 	}

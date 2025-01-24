@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="Company"/>.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}
 	/**
 	 * Gets the list of <see cref="Session"/>s for the specified <see cref="User"/>.
@@ -16,5 +16,5 @@
 		/**
 		 * An object to contain the "login" of the <see cref="User"/>.
 		 */
-		public user: ParamLogin;
+		user: ParamLogin;
 	}

@@ -6,9 +6,9 @@
 		/**
 		 * The <see cref="Company.parent"/> specified in the parameters.
 		 */
-		public parent: ulong = NaN;
+		parent: ulong = NaN;
 		/**
 		 * ID of the child <see cref="Company"/> that would cause a circular reference.
 		 */
-		public descendant: ulong = NaN;
+		descendant: ulong = NaN;
 	}

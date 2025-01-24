@@ -7,7 +7,7 @@
 		/**
 		 * When true, the command will also return a deleted <see cref="CompanyReseller"/> (if it exists).
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}
 	/**
 	 * Gets the list of <see cref="CompanyReseller"/>s for the specified <see cref="Company"/> only if the <see cref="CompanyResellerReseller.labels"/> matches all of the given <see cref="Parameters.labels"/>.
@@ -27,7 +27,7 @@
 		 * The parsed labels given as input.
 		 * {@link CompanyReseller.labels}
 		 */
-		public labels: string[] = [];
+		labels: string[] = [];
 	}
 	/**
 	 * Gets the list of <see cref="CompanyReseller"/>s for the specified <see cref="Company"/> only if one of the specified <see cref="CompanyResellerReseller.references"/> fields match.
@@ -39,5 +39,5 @@
 		 * The parsed references given as input.
 		 * {@link CompanyResellerReseller.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

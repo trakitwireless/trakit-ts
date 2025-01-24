@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public places: RespIdCompany[] = [];
+		places: RespIdCompany[] = [];
 	}

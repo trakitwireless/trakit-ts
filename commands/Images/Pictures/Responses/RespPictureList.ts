@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="Picture"/>s.
 		 */
-		public pictures: Picture[] = [];
+		pictures: Picture[] = [];
 	}
 
 	/**
@@ -17,5 +17,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}

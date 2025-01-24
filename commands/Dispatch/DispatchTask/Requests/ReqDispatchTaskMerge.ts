@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="DispatchTask"/>.
 		 */
-		public dispatchTask: ParamDispatchTaskMerge;
+		dispatchTask: ParamDispatchTaskMerge;
 
 		/**
 		 *  

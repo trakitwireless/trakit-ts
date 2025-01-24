@@ -8,5 +8,5 @@
 		/**
 		 *  
 		 */
-		public places: ParamPlaceMerge[] = [];
+		places: ParamPlaceMerge[] = [];
 	}

@@ -8,7 +8,7 @@
 		/**
 		 * When true, the command will also return  deleted <see cref="FormResult"/>s.
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}
 	/**
 	 * Contains the <see cref="Company.id"/> of the collection.
@@ -17,5 +17,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}

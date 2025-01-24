@@ -6,5 +6,5 @@
 		/**
 		 * List of bad ids or keys or whatever.
 		 */
-		public invalid: T[] = [];
+		invalid: T[] = [];
 	}

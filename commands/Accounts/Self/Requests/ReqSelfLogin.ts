@@ -8,13 +8,13 @@
 		/**
 		 * The <see cref="User"/>'s login.
 		 */
-		public username: string = "";
+		username: string = "";
 		/**
 		 * The <see cref="User"/>'s password.
 		 */
-		public password: string = "";
+		password: string = "";
 		/**
 		 * A string to identify the User-Agent of the login request.
 		 */
-		public userAgent: string = "";
+		userAgent: string = "";
 	}

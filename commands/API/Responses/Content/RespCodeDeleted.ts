@@ -8,5 +8,5 @@
 		/**
 		 * Flag showing if the object is deleted.
 		 */
-		public deleted: boolean = false;
+		deleted: boolean = false;
 	}

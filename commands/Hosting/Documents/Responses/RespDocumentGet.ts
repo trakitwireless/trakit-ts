@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="Document"/>.
 		 */
-		public document: Document;
+		document: Document;
 	}

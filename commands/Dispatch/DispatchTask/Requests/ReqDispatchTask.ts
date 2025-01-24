@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="DispatchTask"/>.
 		 */
-		public dispatchTask: ParamId;
+		dispatchTask: ParamId;
 
 		/**
 		 *  

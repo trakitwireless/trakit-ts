@@ -8,7 +8,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="FormTemplate"/>.
 		 */
-		public formTemplate: ParamFormTemplateMerge;
+		formTemplate: ParamFormTemplateMerge;
 
 		/**
 		 *  

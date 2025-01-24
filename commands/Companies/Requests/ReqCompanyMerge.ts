@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Company"/>.
 		 */
-		public company: ParamCompanyMerge;
+		company: ParamCompanyMerge;
 
 		/**
 		 *  

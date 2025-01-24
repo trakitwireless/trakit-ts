@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="CompanyDirectory"/>.
 		 */
-		public companyDirectory: CompanyDirectory;
+		companyDirectory: CompanyDirectory;
 	}

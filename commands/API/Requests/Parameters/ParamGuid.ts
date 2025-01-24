@@ -6,5 +6,5 @@
 		/**
 		 * The global unique identifier.
 		 */
-		public guid: string = "";
+		guid: string = "";
 	}

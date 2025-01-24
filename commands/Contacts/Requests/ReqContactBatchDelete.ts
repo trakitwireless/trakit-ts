@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public contacts: ParamId[] = [];
+		contacts: ParamId[] = [];
 	}

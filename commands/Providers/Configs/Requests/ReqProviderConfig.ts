@@ -7,7 +7,7 @@
 		/**
 		 * An object to contain the "id" of the <see cref="ProviderConfig"/>.
 		 */
-		public providerConfig: ParamId;
+		providerConfig: ParamId;
 
 		/**
 		 *  

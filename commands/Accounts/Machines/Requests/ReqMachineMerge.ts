@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Machine"/>.
 		 */
-		public machine: ParamMachineMerge;
+		machine: ParamMachineMerge;
 
 		/**
 		 *  

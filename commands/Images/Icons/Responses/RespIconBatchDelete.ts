@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Icon"/>.
 		 */
-		public icons: RespIdDeleted[] = [];
+		icons: RespIdDeleted[] = [];
 	}

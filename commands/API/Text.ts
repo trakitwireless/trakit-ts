@@ -3,20 +3,20 @@
 
 
 
-	public static class Text {
+	static class Text {
 		/**
 		 * The full ISO8601 date/time string with seconds and milliseconds.
 		 * All date/time stamps in the Trak-iT APIs are given in UTC unless otherwise specified.
 		 */
-		public const string DATETIME_FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ss.fffZ";
+		const string DATETIME_FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ss.fffZ";
 		/**
 		 *  
 		 */
-		public const string DATE_FORMAT = "yyyy-MM-ddZ";
+		const string DATE_FORMAT = "yyyy-MM-ddZ";
 		/**
 		 *  
 		 */
-		public const string TIME_FORMAT = "HH:mm:ss.fff";
+		const string TIME_FORMAT = "HH:mm:ss.fff";
 
 		/**
 		 * A list of accented characters that need to be swapped for non-accented characters.
@@ -108,7 +108,7 @@
 		 *  <param name="val">String value to be codified.</param>
 		 *  <returns>String value that represents codified value of the specified string.</returns>
 		 */
-		public static string Codify(string val) {
+		static string Codify(string val) {
 			var output = new StringBuilder();
 			boolean dash = !string.IsNullOrEmpty(val = val?.Trim());
 			if (dash) {
@@ -135,7 +135,7 @@
 		 *  <param name="word"></param>
 		 */
 		
-		public static string Plural(string word)
+		static string Plural(string word)
 			=> word.EndsWith("y")
 				? word.Substring(0, word.Length - 1) + "ies" // company  => companies
 				: word.EndsWith("ch")

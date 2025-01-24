@@ -6,5 +6,5 @@
 		/**
 		 * Identifier of the <see cref="Asset"/> to which this object belongs
 		 */
-		public asset: ulong = NaN;
+		asset: ulong = NaN;
 	}

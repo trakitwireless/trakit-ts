@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public maintenanceSchedules: ParamMaintenanceScheduleMerge[] = [];
+		maintenanceSchedules: ParamMaintenanceScheduleMerge[] = [];
 	}

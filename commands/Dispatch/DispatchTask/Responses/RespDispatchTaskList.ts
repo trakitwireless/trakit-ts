@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="DispatchTask"/>s.
 		 */
-		public dispatchTasks: DispatchTask[] = [];
+		dispatchTasks: DispatchTask[] = [];
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public asset: RespId;
+		asset: RespId;
 	}
 	/**
 	 *  
@@ -27,7 +27,7 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchTask.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}
 
 	/**
@@ -37,7 +37,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}
 	/**
 	 *  
@@ -47,5 +47,5 @@
 		 * Case-insensitive reference pairs used to match jobs.
 		 * {@link DispatchTask.references}
 		 */
-		public references: Map<string, string>;
+		references: Map<string, string>;
 	}

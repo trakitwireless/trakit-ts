@@ -6,5 +6,5 @@
 		/**
 		 * A list of keys given to this object so we can differentiate between null and undefined.
 		 */
-		public givenKeys: string[] = [];
+		givenKeys: string[] = [];
 	}

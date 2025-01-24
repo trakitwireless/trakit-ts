@@ -7,7 +7,7 @@
 		/**
 		 * When true, the command will also return  deleted <see cref="AssetMessage"/>s.
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}
 
 	/**
@@ -17,7 +17,7 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: ParamId;
+		company: ParamId;
 	}
 	/**
 	 * Contains the <see cref="Company.id"/> of the collection.
@@ -26,5 +26,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public asset: ParamId;
+		asset: ParamId;
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="AssetAdvanced"/>.
 		 */
-		public assetAdvanced: AssetAdvanced;
+		assetAdvanced: AssetAdvanced;
 	}

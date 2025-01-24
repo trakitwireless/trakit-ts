@@ -7,7 +7,7 @@
 		/**
 		 * The list of requested <see cref="Dashcam"/>s.
 		 */
-		public dashcams: Dashcam[] = [];
+		dashcams: Dashcam[] = [];
 	}
 
 	/**
@@ -17,5 +17,5 @@
 		/**
 		 * Identifier of the <see cref="Company"/> to which this collection belongs.
 		 */
-		public company: RespId;
+		company: RespId;
 	}

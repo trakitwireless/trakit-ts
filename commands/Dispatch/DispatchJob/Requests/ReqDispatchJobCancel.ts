@@ -7,7 +7,7 @@
 		/**
 		 * Parameters given to cancel a <see cref="DispatchJob"/>.
 		 */
-		public dispatchJob: ParamDispatchJobCancel;
+		dispatchJob: ParamDispatchJobCancel;
 
 		/**
 		 *  

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public pictures: RespIdCompany[] = [];
+		pictures: RespIdCompany[] = [];
 	}

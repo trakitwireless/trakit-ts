@@ -9,9 +9,9 @@
 		/**
 		 * Exception message.
 		 */
-		public message: string = "";
+		message: string = "";
 		/**
 		 * The full stack trace if available.
 		 */
-		public stack: string = "";
+		stack: string = "";
 	}

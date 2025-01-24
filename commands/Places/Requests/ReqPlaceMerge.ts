@@ -8,7 +8,7 @@
 		/**
 		 * Parameters given to create or update a <see cref="Place"/>.
 		 */
-		public place: ParamPlaceMerge;
+		place: ParamPlaceMerge;
 
 		/**
 		 *  

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public reportSchedules: ParamReportScheduleMerge[] = [];
+		reportSchedules: ParamReportScheduleMerge[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="AssetMessage"/>.
 		 */
-		public assetMessage: AssetMessage;
+		assetMessage: AssetMessage;
 	}

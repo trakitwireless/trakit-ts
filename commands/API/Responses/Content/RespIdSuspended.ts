@@ -6,9 +6,9 @@
 		/**
 		 * Flag showing if the object is suspended.
 		 */
-		public suspended: boolean = false;
+		suspended: boolean = false;
 		/**
 		 * Object version keys used to validate synchronization for all object properties.
 		 */
-		public v: uint[] = [];
+		v: uint[] = [];
 	}

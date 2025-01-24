@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Company"/>.
 		 */
-		public companies: RespIdDeleted[] = [];
+		companies: RespIdDeleted[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public pictures: ParamPictureMerge[] = [];
+		pictures: ParamPictureMerge[] = [];
 	}

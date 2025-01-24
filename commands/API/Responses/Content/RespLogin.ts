@@ -6,5 +6,5 @@
 		/**
 		 * The <see cref="User"/>'s login.
 		 */
-		public login: string = "";
+		login: string = "";
 	}

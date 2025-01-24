@@ -7,5 +7,5 @@
 		/**
 		 * The requested <see cref="ProviderControl"/>.
 		 */
-		public providerControl: ProviderControl;
+		providerControl: ProviderControl;
 	}

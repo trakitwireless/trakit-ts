@@ -7,9 +7,9 @@
 		/**
 		 * Your old, no longer valid, session identifier.
 		 */
-		public ghostId: string = "";
+		ghostId: string = "";
 		/**
 		 * The timestamp from when your session expired.
 		 */
-		public expiry: Date = DATE();
+		expiry: Date = DATE();
 	}

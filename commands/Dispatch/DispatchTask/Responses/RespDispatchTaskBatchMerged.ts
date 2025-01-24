@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public dispatchTasks: RespIdCompany[] = [];
+		dispatchTasks: RespIdCompany[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public users: ParamUserMerge[] = [];
+		users: ParamUserMerge[] = [];
 	}

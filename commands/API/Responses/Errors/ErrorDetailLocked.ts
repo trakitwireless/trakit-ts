@@ -7,9 +7,9 @@
 		/**
 		 * The amount of time the resource is locked, or you are prevented from issuing the command.
 		 */
-		public timeout?: TimeSpan;
+		timeout?: TimeSpan;
 		/**
 		 * This timestamp represents the moment the resource becomes available again.
 		 */
-		public until: Date = DATE();
+		until: Date = DATE();
 	}

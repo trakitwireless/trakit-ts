@@ -7,5 +7,5 @@
 		/**
 		 * When true, the command will also return a deleted <see cref="UserAdvanced"/> (if it exists).
 		 */
-		public includeDeleted: boolean = false;
+		includeDeleted: boolean = false;
 	}

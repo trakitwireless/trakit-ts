@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public userGroups: RespIdCompany[] = [];
+		userGroups: RespIdCompany[] = [];
 	}

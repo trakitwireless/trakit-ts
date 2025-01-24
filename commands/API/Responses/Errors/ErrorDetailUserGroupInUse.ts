@@ -6,5 +6,5 @@
 		/**
 		 * A list of <see cref="User"/>s currently being referenced.
 		 */
-		public users: string[] = [];
+		users: string[] = [];
 	}

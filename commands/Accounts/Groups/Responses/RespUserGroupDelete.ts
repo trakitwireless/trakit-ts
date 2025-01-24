@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="UserGroup"/>.
 		 */
-		public userGroup: RespIdDeleted;
+		userGroup: RespIdDeleted;
 	}

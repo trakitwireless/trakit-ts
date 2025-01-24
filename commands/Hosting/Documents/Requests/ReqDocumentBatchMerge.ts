@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public documents: ParamDocumentMerge[] = [];
+		documents: ParamDocumentMerge[] = [];
 	}

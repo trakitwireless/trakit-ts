@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public asset: RespIdSuspended;
+		asset: RespIdSuspended;
 	}

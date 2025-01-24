@@ -7,5 +7,5 @@
 		/**
 		 * Details about deleting/restoring the requested <see cref="Machine"/>.
 		 */
-		public machines: RespIdDeleted[] = [];
+		machines: RespIdDeleted[] = [];
 	}

@@ -7,5 +7,5 @@
 		/**
 		 *  
 		 */
-		public providerScripts: ParamId[] = [];
+		providerScripts: ParamId[] = [];
 	}
