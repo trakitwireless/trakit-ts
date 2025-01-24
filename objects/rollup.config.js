@@ -1,7 +1,20 @@
 import typescript from 'rollup-plugin-typescript2';
 import terser from '@rollup/plugin-terser';
 
-const tsc = typescript();
+const obfuscate = {
+  ecma: 2016,
+  // compress: {
+  //   drop_console: true,
+  //   drop_debugger: true,
+  //   hoist_funs: true,
+  //   join_vars: true,
+  //   module: true,
+  //   toplevel: true,
+  // },
+  sourceMap: {
+    filename: '../_publish/objects.min.js',
+  },
+};
 
 export default [
   {
@@ -14,9 +27,9 @@ export default [
       {
         file: '../_publish/objects.min.js',
         format: 'es',
-        plugins: [terser()]
+        plugins: [terser(obfuscate)]
       }
     ],
-    plugins: [tsc],
+    plugins: [typescript()],
   }
 ];
