@@ -273,6 +273,11 @@ export class SearchPattern {
 		).trim() || "*";
 	}
 	/**
+	 * 
+	 */
+	toJSON = this.toString;
+
+	/**
 	 * Returns a new, identical instance of the pattern.
 	 */
 	copy(): SearchPattern {

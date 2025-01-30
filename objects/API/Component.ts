@@ -1,11 +1,12 @@
 ﻿import { int, JsonValue, } from './Types';
 import { IRequestable, } from './Interfaces/IRequestable';
 import { ISerializable, } from './Interfaces/ISerializable';
+import { IDeserializable, } from './Interfaces/IDeserializable';
 
 /**
  * Any derived class can/should be serialized and given to a user.
  */
-export abstract class Component implements IRequestable, ISerializable {
+export abstract class Component implements IRequestable, ISerializable, IDeserializable {
 	/**
 	 * Object version keys used to validate synchronization for all object properties.
 	 */
@@ -24,7 +25,8 @@ export abstract class Component implements IRequestable, ISerializable {
 	abstract getKey(): string;
 
 	/**
-	 * 
+	 * Creates a literal of this {@link Component}.
+	 * Used internally by {@link JSON.stringify}.
 	 */
 	abstract toJSON(): JsonValue;
 	/**
