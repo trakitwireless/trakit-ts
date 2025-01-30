@@ -62,6 +62,7 @@ export function OBJECT_TYPE(value: any): string {
  */
 export function IS_NAN(value: any): value is number {
 	return isNaN(value)
+		|| !isFinite(value)
 		|| !IS_NUMBER(value);
 }
 /**
