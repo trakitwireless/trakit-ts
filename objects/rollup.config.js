@@ -18,7 +18,7 @@ const obfuscate = {
 
 export default [
   {
-    input: 'build.ts',
+    input: 'objects.ts',
     output: [
       // {
       //   file: '../_publish/objects.js',

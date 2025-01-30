@@ -17,5 +17,5 @@
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
     },
-    "files": ["./build.ts"],
+    "files": ["objects.ts"],
 }
