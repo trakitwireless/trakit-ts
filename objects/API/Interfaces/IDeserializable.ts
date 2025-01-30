@@ -6,6 +6,7 @@ import { JsonValue } from "../Types";
 export interface ISerializable {
     /**
      * 
+     * @param input 
      */
-    toJSON(): JsonValue;
+    fromJSON(input: JsonValue): void;
 }
