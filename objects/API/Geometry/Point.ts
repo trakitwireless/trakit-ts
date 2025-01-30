@@ -93,6 +93,24 @@ export class Point implements IPoint {
 	angleTo(point: IPoint): number {
 		return POINT_ANGLE(this, point);
 	}
+	/**
+	 * Updates this {@link Point} with the given angle and distance.
+	 * @param distance 
+	 * @param degrees 
+	 */
+	translateTo(distance: number, degrees: number): this {
+		return this.offsetTo(POINT_VECTOR(distance, degrees));
+	}
+	/**
+	 * Updates this {@link Point} with the given offset.
+	 * @param dot 
+	 */
+	offsetTo(dot: IPoint): this {
+		const offset = this.toOffset(dot);
+		this.x = offset.x;
+		this.y = offset.y;
+		return this;
+	}
 
 	/**
 	 * Creates a new {@link Point} at the given angle and distance.

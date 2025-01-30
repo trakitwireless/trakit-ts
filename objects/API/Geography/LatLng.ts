@@ -48,55 +48,6 @@ export class LatLng implements ILatLng {
 	}
 	
 	/**
-	 * Calculates the distance across the surface of the globe to another coordinate
-	 * @param pin	
-	 */
-	distanceTo(pin: ILatLng): number {
-		return LATLNG_DISTANCE(this, pin);
-	}
-	/**
-	 * Calculates the starting bearing across the surface of the globe from the current coordinate to the given coordinate
-	 * @param pin	
-	 */
-	bearingTo(pin: ILatLng): number {
-		return LATLNG_ANGLE(this, pin);
-	}
-	/**
-	 * Returns a new coordinate at the given distance and bearing from this coordinate
-	 * @param meters	
-	 * @param bearing	
-	 */
-	toTranslated(meters: number, bearing: number): LatLng {
-		const latlng = LATLNG_TRANSLATE(this, meters, bearing);
-		return new LatLng(latlng.lat, latlng.lng);
-	}
-	/**
-	 * Returns a new LatLng at the half-way point between this and the given LatLng.
-	 * @param pin	The other coordinate.
-	 * @throws {Error}	Either latitude or longitude is NaN
-	 */
-	toBetween(pin: ILatLng): LatLng {
-		const latlng = LATLNG_MIDPOINT(this, pin);
-		return new LatLng(latlng.lat, latlng.lng);
-	}
-	/**
-	 * Returns true if this coordinate is not NaN and not zero-zero.
-	 */
-	isValid(): boolean {
-		return !isNaN(this.lat) && !isFinite(this.lat)
-			&& !isNaN(this.lng) && !isFinite(this.lng)
-			&& !this.isEqual(LatLng.INVALID);
-	}
-	/**
-	 * Checks to see if the postions are considered to be the same location with an accuracy of 9 decimal places.
-	 * @param other	
-	 */
-	isEqual(other: LatLng): boolean {
-		return other != null
-			&& this.distanceTo(other) < 1e-9;
-	}
-
-	/**
 	 * Returns a string representation of this {@link LatLng}.
 	 * @param delimiter	The boundary is delimited by a comma (,) by default, but you can override with your own value.
 	 * @returns A string in the format of "lat,lng".
@@ -115,6 +66,57 @@ export class LatLng implements ILatLng {
 				"lat": this.lat,
 				"lng": this.lng,
 			};
+	}
+	/**
+	 * Compares this LatLng to another to see if they are equivalent.
+	 * @param other		The other LatLng to compare
+	 * @param tolerance	Distance tolerance before considering two nearly identical coordinates to be equal.
+	 */
+	equals(other: ILatLng, tolerance: number = MAX_SAME_DISTANCE) {
+		return ILatLng_instanceOf(other)
+			&& LATLNG_DISTANCE(this, other) < tolerance;
+	}
+	/**
+	 * Returns true if this coordinate is not NaN and not zero-zero.
+	 */
+	isValid(): boolean {
+		return !IS_NAN(this.lat)
+			&& !IS_NAN(this.lng)
+			&& !this.equals(LatLng.INVALID);
+	}
+	
+	/**
+	 * Calculates the distance across the surface of the globe to another coordinate
+	 * @param pin	
+	 */
+	distanceTo(pin: ILatLng): number {
+		return LATLNG_DISTANCE(this, pin);
+	}
+	/**
+	 * Calculates the starting bearing across the surface of the globe from the current coordinate to the given coordinate
+	 * @param pin	
+	 */
+	bearingTo(pin: ILatLng): number {
+		return LATLNG_ANGLE(this, pin);
+	}
+
+	/**
+	 * Returns a new coordinate at the given distance and bearing from this coordinate
+	 * @param meters	
+	 * @param bearing	
+	 */
+	toTranslated(meters: number, bearing: number): LatLng {
+		const latlng = LATLNG_TRANSLATE(this, meters, bearing);
+		return new LatLng(latlng.lat, latlng.lng);
+	}
+	/**
+	 * Returns a new LatLng at the half-way point between this and the given LatLng.
+	 * @param pin	The other coordinate.
+	 * @throws {Error}	Either latitude or longitude is NaN
+	 */
+	toBetween(pin: ILatLng): LatLng {
+		const latlng = LATLNG_MIDPOINT(this, pin);
+		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * Creates a Point based on the given magnifier.
@@ -136,14 +138,5 @@ export class LatLng implements ILatLng {
 			LATLNG_TRANSLATE(this, distance, 45),
 			LATLNG_TRANSLATE(this, distance, -135)
 		);
-	}
-	/**
-	 * Compares this LatLng to another to see if they are equivalent.
-	 * @param other		The other LatLng to compare
-	 * @param tolerance	Distance tolerance before considering two nearly identical coordinates to be equal.
-	 */
-	equals(other: ILatLng, tolerance: number = MAX_SAME_DISTANCE) {
-		return ILatLng_instanceOf(other)
-			&& LATLNG_DISTANCE(this, other) < tolerance;
 	}
 }

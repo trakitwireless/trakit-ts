@@ -50,6 +50,21 @@ export interface ILatLngBounds {
  */
 export class LatLngBounds implements ILatLngBounds, ISerializable {
 	/**
+	 * 
+	 * @param object 
+	 */
+	static fromJSON(object: JsonObject): LatLngBounds {
+		const bounds = new LatLngBounds();
+		if (ILatLngBounds_instanceOf(object)) {
+			bounds.east = object.east;
+			bounds.north = object.north;
+			bounds.west = object.west;
+			bounds.south = object.south;
+		}
+		return bounds.validate();
+	}
+
+	/**
 	 * Northern latitude
 	 */
 	north: number = NaN;
@@ -68,6 +83,133 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 
 	constructor(...args: LatLngBoundsExpansion[]) {
 		args.forEach(a => this.__expander(a));
+	}
+
+	/**
+	 * Returns a string representation of this {@link LatLng}.
+	 * @param delimiter	The boundary is delimited by a comma (,) by default, but you can override with your own value.
+	 * @returns A string in the format of "lat,lng".
+	 */
+	toString(delimiter: string = ","): string {
+		return [
+			ROUND_TO(this.north, 8),
+			ROUND_TO(this.east, 8),
+			ROUND_TO(this.south, 8),
+			ROUND_TO(this.west, 8),
+		].join(delimiter ?? "");
+	}
+	/**
+	 * Creates a literal of this object.  Used internally by {@link JSON.stringify}.
+	 */
+	toJSON() {
+		this.validate();
+		return IS_NAN(this.north)
+			|| IS_NAN(this.east)
+			|| IS_NAN(this.south)
+			|| IS_NAN(this.west)
+			? null
+			: {
+				"north": ROUND_TO(this.north, 8),
+				"east": ROUND_TO(this.east, 8),
+				"south": ROUND_TO(this.south, 8),
+				"west": ROUND_TO(this.west, 8),
+			};
+	}
+	/**
+	 * Compares this LatLng to another to see if they are equivalent.
+	 * @param other		The other LatLng to compare
+	 * @param tolerance	Distance tolerance before considering two nearly identical coordinates to be equal.
+	 */
+	equals(other: ILatLngBounds, tolerance: number = MAX_SAME_DISTANCE) {
+		return ILatLngBounds_instanceOf(other)
+			&& LATLNG_DISTANCE(this.getNorthEast(), { lat: other.north, lng: other.east }) < tolerance
+			&& LATLNG_DISTANCE(this.getSouthWest(), { lat: other.south, lng: other.west }) < tolerance;
+	}
+	/**
+	 * 
+	 */
+	isValid(): boolean {
+		return this.north >= this.south
+			&& this.east >= this.west
+			&& !(
+				ABS(this.north) > 90
+				|| ABS(this.south) > 90
+				|| ABS(this.east) > 180
+				&& ABS(this.east) > 180
+			);
+	}
+	/**
+	 * 
+	 */
+	isEmpty(): boolean {
+		return this.isValid()
+			&& (
+				LATLNG_DISTANCE(this.getNorthEast(), this.getNorthWest()) < MAX_SAME_DISTANCE
+				|| LATLNG_DISTANCE(this.getNorthEast(), this.getSouthEast()) < MAX_SAME_DISTANCE
+			);
+	}
+
+	/**
+	 * Checks if a {@link LatLng} is contained within this boundary.
+	 * @param pin	The point to check
+	 */
+	contains(pin: ILatLng) :boolean{
+		this.validate();
+		const lat = LATITUDE_NORMALIZED(pin.lat),
+			lng = LONGITUDE_NORMALIZED(pin.lng, lat) + 360;
+		return lng <= LONGITUDE_NORMALIZED(this.east) + 360
+			&& lng >= LONGITUDE_NORMALIZED(this.west) + 360
+			&& LATLNG_GREAT_CIRCLE(
+				this.getNorthWest(),
+				{ lat, lng },
+				this.getNorthEast()
+			) <= 0
+			&& LATLNG_GREAT_CIRCLE(
+				this.getSouthWest(),
+				{ lat, lng },
+				this.getSouthEast()
+			) >= 0;
+	}
+	/**
+	 * Checks if a {@link LatLngBounds} is contained within this boundary.
+	 * @expose
+	 * @this {LatLngBounds}
+	 * @param bounds	The other boundary to check
+	 */
+	encloses(bounds: ILatLngBounds):boolean {
+		this.validate();
+		const north = LATITUDE_NORMALIZED(bounds.north),
+			east = LONGITUDE_NORMALIZED(bounds.east, north) + 360,
+			south = LATITUDE_NORMALIZED(bounds.south),
+			west = LONGITUDE_NORMALIZED(bounds.west, south) + 360;
+		return east <= LONGITUDE_NORMALIZED(this.east) + 360
+			&& west >= LONGITUDE_NORMALIZED(this.west) + 360
+			&& LATLNG_GREAT_CIRCLE(
+				this.getNorthWest(),
+				{ lat: bounds.north, lng: bounds.west },
+				this.getNorthEast()
+			) <= 0
+			&& LATLNG_GREAT_CIRCLE(
+				this.getSouthWest(),
+				{ lat: bounds.south, lng: bounds.east },
+				this.getSouthEast()
+			) >= 0;
+	}
+	/**
+	 * Checks if a {@link LatLngBounds} overlaps this boundary.
+	 * Also returns true if either boundary's {@link LatLngBounds#encloses} returns true.
+	 * @param other	The other boundary to check
+	 */
+	overlaps(other: ILatLngBounds) :boolean{
+		this.validate();
+		const bounds = new LatLngBounds(other);
+		return (
+			this.contains(bounds.getNorthEast())
+			|| this.contains(bounds.getNorthWest())
+			|| this.contains(bounds.getSouthWest())
+			|| this.contains(bounds.getSouthEast())
+			|| bounds.encloses(this)
+		);
 	}
 
 	/**
@@ -145,7 +287,6 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 			}
 		}
 	}
-	
 	/**
 	 * Extends the boundary to envelop the given point(s) but does not automatically
 	 *		validate. This comes in efficient when doing many operations on a single
@@ -163,68 +304,6 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 		return this.validate();
 	}
 
-	/**
-	 * Checks if a {@link LatLng} is contained within this boundary.
-	 * @param pin	The point to check
-	 */
-	contains(pin: ILatLng) :boolean{
-		this.validate();
-		const lat = LATITUDE_NORMALIZED(pin.lat),
-			lng = LONGITUDE_NORMALIZED(pin.lng, lat) + 360;
-		return lng <= LONGITUDE_NORMALIZED(this.east) + 360
-			&& lng >= LONGITUDE_NORMALIZED(this.west) + 360
-			&& LATLNG_GREAT_CIRCLE(
-				this.getNorthWest(),
-				{ lat, lng },
-				this.getNorthEast()
-			) <= 0
-			&& LATLNG_GREAT_CIRCLE(
-				this.getSouthWest(),
-				{ lat, lng },
-				this.getSouthEast()
-			) >= 0;
-	}
-	/**
-	 * Checks if a {@link LatLngBounds} is contained within this boundary.
-	 * @expose
-	 * @this {LatLngBounds}
-	 * @param bounds	The other boundary to check
-	 */
-	encloses(bounds: ILatLngBounds):boolean {
-		this.validate();
-		const north = LATITUDE_NORMALIZED(bounds.north),
-			east = LONGITUDE_NORMALIZED(bounds.east, north) + 360,
-			south = LATITUDE_NORMALIZED(bounds.south),
-			west = LONGITUDE_NORMALIZED(bounds.west, south) + 360;
-		return east <= LONGITUDE_NORMALIZED(this.east) + 360
-			&& west >= LONGITUDE_NORMALIZED(this.west) + 360
-			&& LATLNG_GREAT_CIRCLE(
-				this.getNorthWest(),
-				{ lat: bounds.north, lng: bounds.west },
-				this.getNorthEast()
-			) <= 0
-			&& LATLNG_GREAT_CIRCLE(
-				this.getSouthWest(),
-				{ lat: bounds.south, lng: bounds.east },
-				this.getSouthEast()
-			) >= 0;
-	}
-	/**
-	 * Checks if a {@link LatLngBounds} overlaps this boundary.
-	 * Also returns true if either boundary's {@link LatLngBounds#encloses} returns true.
-	 * @param other	The other boundary to check
-	 */
-	overlaps(other: ILatLngBounds) :boolean{
-		this.validate();
-		const bounds = new LatLngBounds(other);
-		return (
-			this.contains(bounds.getNorthEast())
-			|| this.contains(bounds.getNorthWest())
-			|| this.contains(bounds.getSouthWest())
-			|| this.contains(bounds.getSouthEast())
-			|| bounds.encloses(this)
-		);
-	}
 	/**
 	 * 
 	 */
@@ -316,61 +395,5 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 		this.east = east > west ? east : west;
 		this.west = west < east ? west : east;
 		return this;
-	}
-
-	/**
-	 * 
-	 */
-	isValid(): boolean {
-		return this.north >= this.south
-			&& this.east >= this.west
-			&& !(
-				ABS(this.north) > 90
-				|| ABS(this.south) > 90
-				|| ABS(this.east) > 180
-				&& ABS(this.east) > 180
-			);
-	}
-	/**
-	 * 
-	 */
-	isEmpty(): boolean {
-		return this.isValid()
-			&& (
-				LATLNG_DISTANCE(this.getNorthEast(), this.getNorthWest()) < MAX_SAME_DISTANCE
-				|| LATLNG_DISTANCE(this.getNorthEast(), this.getSouthEast()) < MAX_SAME_DISTANCE
-			);
-	}
-
-	/**
-	 * Creates a literal of this object.  Used internally by {@link JSON.stringify}.
-	 */
-	toJSON() {
-		this.validate();
-		return IS_NAN(this.north)
-			|| IS_NAN(this.east)
-			|| IS_NAN(this.south)
-			|| IS_NAN(this.west)
-			? null
-			: {
-				"north": ROUND_TO(this.north, 8),
-				"east": ROUND_TO(this.east, 8),
-				"south": ROUND_TO(this.south, 8),
-				"west": ROUND_TO(this.west, 8),
-			};
-	}
-	/**
-	 * 
-	 * @param object 
-	 */
-	fromJSON(object: JsonObject): LatLngBounds {
-		const bounds = new LatLngBounds();
-		if (ILatLngBounds_instanceOf(object)) {
-			bounds.east = object.east;
-			bounds.north = object.north;
-			bounds.west = object.west;
-			bounds.south = object.south;
-		}
-		return bounds.validate();
 	}
 }

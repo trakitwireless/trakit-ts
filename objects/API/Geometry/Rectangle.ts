@@ -309,6 +309,35 @@ export class Rectangle implements IRectangle {
 		return this.validate();
 	}
 	/**
+	 * Updates this {@link Rectangle} with the given angle and distance.
+	 * @param distance 
+	 * @param degrees 
+	 */
+	translateTo(distance: number, degrees: number): this {
+		return this.offsetTo(POINT_VECTOR(distance, degrees));
+	}
+	/**
+	 * Updates this {@link Rectangle} with the given offset.
+	 * @param dot 
+	 */
+	offsetTo(dot: IPoint): this {
+		const offset = this.toOffset(dot);
+		this.left = offset.left;
+		this.top = offset.top;
+		this.right = offset.right;
+		this.bottom = offset.bottom;
+		return this;
+	}
+
+	/**
+	 * Creates a new {@link Rectangle} at the given angle and distance.
+	 * @param distance
+	 * @param degrees
+	 */
+	toTranslated(distance: number, degrees: number): Rectangle {
+		return this.toOffset(POINT_VECTOR(distance, degrees));
+	}
+	/**
 	 * Creates a new {@link Rectangle} offset by the given amounts.
 	 * @param dot
 	 */
@@ -324,14 +353,6 @@ export class Rectangle implements IRectangle {
 				this.bottom + dot.y
 			)
 		);
-	}
-	/**
-	 * Creates a new {@link Rectangle} at the given angle and distance.
-	 * @param distance
-	 * @param degrees
-	 */
-	toTranslated(distance: number, degrees: number): Rectangle {
-		return this.toOffset(POINT_VECTOR(distance, degrees));
 	}
 	/**
 	 * Validates the boundary and returns a {@link Radial}.

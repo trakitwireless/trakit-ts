@@ -157,7 +157,33 @@ export class Radial implements IRadial, IPoint {
 		this.r += length;
 		return this;
 	}
+	/**
+	 * Updates this {@link Radial} with the given angle and distance.
+	 * @param distance 
+	 * @param degrees 
+	 */
+	translateTo(distance: number, degrees: number): this {
+		return this.offsetTo(POINT_VECTOR(distance, degrees));
+	}
+	/**
+	 * Updates this {@link Radial} with the given offset.
+	 * @param dot 
+	 */
+	offsetTo(dot: IPoint): this {
+		const point = this.toOffset(dot);
+		this.x = point.x;
+		this.y = point.y;
+		return this;
+	}
 
+	/**
+	 * Creates a new {@link Radial} at the given distance and direction.
+	 * @param distance
+	 * @param degrees
+	 */
+	toTranslated(distance: number, degrees: number): Radial {
+		return this.toOffset(POINT_VECTOR(distance, degrees));
+	}
 	/**
 	 * Creates a new {@link Radial} offset by the given amounts.
 	 * @param point
@@ -168,14 +194,6 @@ export class Radial implements IRadial, IPoint {
 			this.y + point.y,
 			this.r
 		)
-	}
-	/**
-	 * Creates a new {@link Radial} at the given distance and direction.
-	 * @param distance
-	 * @param degrees
-	 */
-	toTranslated(distance: number, degrees: number): Radial {
-		return this.toOffset(POINT_VECTOR(distance, degrees));
 	}
 	/**
 	 * Converts this radial boundary into a {@link Rectangle}.
