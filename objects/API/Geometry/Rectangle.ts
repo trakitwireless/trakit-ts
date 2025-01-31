@@ -119,7 +119,7 @@ export class Rectangle implements IRectangle {
 	 * @param rect	The other Rectangle to compare.
 	 * @param precision	The degree of precision to use; default is full precision.
 	 */
-	equals(rect: IRectangle, precision: number = 18): rect is IRectangle {
+	isEqual(rect: IRectangle, precision: number = 18): rect is IRectangle {
 		this.validate();
 		return IRectangle_instanceOf(rect)
 			&& ROUND_TO(this.top, precision) == ROUND_TO(rect.top, precision)

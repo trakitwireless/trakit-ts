@@ -92,35 +92,31 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 */
 	toString(delimiter: string = ","): string {
 		return [
-			ROUND_TO(this.north, 8),
-			ROUND_TO(this.east, 8),
-			ROUND_TO(this.south, 8),
-			ROUND_TO(this.west, 8),
+			this.north,
+			this.east,
+			this.south,
+			this.west,
 		].join(delimiter ?? "");
 	}
 	/**
-	 * Creates a literal of this object.  Used internally by {@link JSON.stringify}.
+	 * Creates a literal of this {@link LatLngBounds}.
+	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON() {
+	toJSON(): ILatLngBounds {
 		this.validate();
-		return IS_NAN(this.north)
-			|| IS_NAN(this.east)
-			|| IS_NAN(this.south)
-			|| IS_NAN(this.west)
-			? null
-			: {
-				"north": ROUND_TO(this.north, 8),
-				"east": ROUND_TO(this.east, 8),
-				"south": ROUND_TO(this.south, 8),
-				"west": ROUND_TO(this.west, 8),
-			};
+		return {
+			"north": this.north,
+			"east": this.east,
+			"south": this.south,
+			"west": this.west,
+		};
 	}
 	/**
 	 * Compares this LatLng to another to see if they are equivalent.
 	 * @param other		The other LatLng to compare
 	 * @param tolerance	Distance tolerance before considering two nearly identical coordinates to be equal.
 	 */
-	equals(other: ILatLngBounds, tolerance: number = MAX_SAME_DISTANCE) {
+	isEqual(other: ILatLngBounds, tolerance: number = MAX_SAME_DISTANCE) {
 		return ILatLngBounds_instanceOf(other)
 			&& LATLNG_DISTANCE(this.getNorthEast(), { lat: other.north, lng: other.east }) < tolerance
 			&& LATLNG_DISTANCE(this.getSouthWest(), { lat: other.south, lng: other.west }) < tolerance;

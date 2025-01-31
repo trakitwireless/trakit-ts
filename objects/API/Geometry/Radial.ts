@@ -87,7 +87,7 @@ export class Radial implements IRadial, IPoint {
 	 * @param circle	The other {@link IRadial} to compare
 	 * @param precision	The degree of precision to use; default is full precision.
 	 */
-	equals(circle: IRadial, precision: number = 18): boolean {
+	isEquals(circle: IRadial, precision: number = 18): boolean {
 		return IRadial_instanceOf(circle)
 			&& ROUND_TO(this.x, precision) == ROUND_TO(circle.x, precision)
 			&& ROUND_TO(this.y, precision) == ROUND_TO(circle.y, precision)

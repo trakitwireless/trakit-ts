@@ -53,26 +53,26 @@ export class LatLng implements ILatLng {
 	 * @returns A string in the format of "lat,lng".
 	 */
 	toString(delimiter: string = ","): string {
-		return [ROUND_TO(this.lat, 8), ROUND_TO(this.lng, 8)].join(delimiter ?? "");
+		return [
+			this.lat,
+			this.lng,
+		].join(delimiter ?? "");
 	}
 	/**
 	 * Creates a literal of this {@link LatLng}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON() {
-		return IS_NAN(this.lat)
-			|| IS_NAN(this.lng)
-			? null : {
-				"lat": this.lat,
-				"lng": this.lng,
-			};
+	toJSON(): ILatLng {
+		return this.isValid()
+			? { "lat": this.lat, "lng": this.lng, }
+			: { "lat": 0, "lng": 0, }
 	}
 	/**
 	 * Compares this LatLng to another to see if they are equivalent.
 	 * @param other		The other LatLng to compare
 	 * @param tolerance	Distance tolerance before considering two nearly identical coordinates to be equal.
 	 */
-	equals(other: ILatLng, tolerance: number = MAX_SAME_DISTANCE) {
+	isEqual(other: ILatLng, tolerance: number = MAX_SAME_DISTANCE) {
 		return ILatLng_instanceOf(other)
 			&& LATLNG_DISTANCE(this, other) < tolerance;
 	}
@@ -82,7 +82,7 @@ export class LatLng implements ILatLng {
 	isValid(): boolean {
 		return !IS_NAN(this.lat)
 			&& !IS_NAN(this.lng)
-			&& !this.equals(LatLng.INVALID);
+			&& !this.isEqual(LatLng.INVALID);
 	}
 	
 	/**
