@@ -12,7 +12,7 @@ export type codified = string;
 /**
  * 
  */
-export type JsonObject = { [key: string]: JsonValue };
+export type JsonObject = Object | { [key: string]: JsonValue };
 /**
  * 
  */
@@ -25,7 +25,7 @@ export type JsonValue =
   | boolean
   | number
   | string
-  | JsonValue[]
+  | JsonArray
   | JsonObject;
 
 
