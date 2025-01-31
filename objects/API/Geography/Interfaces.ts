@@ -1,4 +1,4 @@
-﻿import { IS_NUMBER, } from '../Functions';
+﻿import { IS_BOOLEAN, IS_NUMBER, IS_STRING, } from '../Functions';
 import { LatLngBounds, } from './LatLngBounds';
 
 //#region LatLng
@@ -23,8 +23,8 @@ export interface ILatLng {
  */
 export function ILatLng_instanceOf(pin: any): pin is ILatLng {
 	return !!pin
-		&& IS_NUMBER(pin.x)
-		&& IS_NUMBER(pin.y);
+		&& IS_NUMBER(pin.lat)
+		&& IS_NUMBER(pin.lng);
 }
 /**
  * 
@@ -63,7 +63,7 @@ export interface IPosition extends ILatLng {
 	/**
 	The Date/Time of the GPS reading
 	 */
-	dts: string | null;
+	dts: string | Date;
 	/**
 	A better description of the current road-segment
 	 */
@@ -72,6 +72,22 @@ export interface IPosition extends ILatLng {
 	The posted speed limit for the road segment
 	 */
 	speedLimit: number | null;
+}
+/**
+ * Returns true if the given pin conforms to the {@link IPosition} interface.
+ * @param pin	
+ * @returns 
+ */
+export function IPosition_instanceOf(pin: any): pin is IPosition {
+	return (IS_STRING(pin.dts) || pin.dts instanceof Date)
+		// other attributes are all optional (speed+limit, heading, altitude, address)
+		// && IS_NUMBER(pin.speed)
+		// && IS_NUMBER(pin.bearing)
+		// && IS_NUMBER(pin.altitude)
+		// && IS_NUMBER(pin.accuracy)
+		// && IStreetAddress_instanceOf(pin.streetAddress)
+		// && IS_NUMBER(pin.speedLimit)
+		&& ILatLng_instanceOf(pin);
 }
 //#endregion Position
 //#region StreetAddress
@@ -113,6 +129,22 @@ export interface IStreetAddress {
 	 * Indicates that there is a toll for the current road segment.
 	 */
 	isToll: boolean | null;
+}
+/**
+ * Returns true if the given pin conforms to the {@link IStreetAddress} interface.
+ * @param address	
+ * @returns 
+ */
+export function IStreetAddress_instanceOf(address: any): address is IStreetAddress {
+	return IS_STRING(address.province)
+		&& IS_STRING(address.country);
+	// other attributes are all optional (speed+limit, heading, altitude, address)
+	// && (IS_STRING(pin.number) || IS_NUMBER(pin.number))
+	// && IS_STRING(pin.street)
+	// && IS_STRING(pin.city)
+	// && IS_STRING(pin.region)
+	// && IS_STRING(pin.postal)
+	// && IS_BOOLEAN(pin.isToll);
 }
 //#endregion StreetAddress
 
