@@ -17,7 +17,6 @@ import {
 	DOUGLASPEUCKER_INTERNAL,
 	FILTER_BY_BOOLEAN_ARRAY,
 	IS_AN,
-	IS_NAN,
 	IS_NUMBER,
 	PYTHAGORA,
 	ROUND_TO,
@@ -209,7 +208,7 @@ export function LATLNG_DISTANCE_VINCENTY(start: ILatLng, end: ILatLng): number {
 		cosSqAlpha = 1 - sinAlpha * sinAlpha;
 		cos2SigmaM = cosSigma - 2 * sinU1 * sinU2 / cosSqAlpha;
 		C = EARTH_FLATENING / 16 * cosSqAlpha * (4 + EARTH_FLATENING * (4 - 3 * cosSqAlpha));
-		if (IS_NAN(cos2SigmaM)) {
+		if (!IS_AN(cos2SigmaM)) {
 			cos2SigmaM = 0; // equatorial line: cosSqAlpha = 0 (§6)
 		};
 		lambdaP = lambda;
@@ -305,7 +304,7 @@ export function LATLNG_TRANSLATE(pin: ILatLng, meters: number, bearing: number):
 		lat = lat2 * RADIANS_TO_DEGREES;
 		lng = lng2 * RADIANS_TO_DEGREES;
 	}
-	if (IS_NAN(lat) || IS_NAN(lng)) {
+	if (!IS_AN(lat) || !IS_AN(lng)) {
 		throw new Error("Either latitude or longitude is NaN");
 	}
 	return {
@@ -332,7 +331,7 @@ export function LATLNG_MIDPOINT(first: ILatLng, last: ILatLng): ILatLng {
 		By = COS(lat2) * SIN(dLng),
 		lat3 = ATAN2(SIN(lat1) + SIN(lat2), SQRT((COS(lat1) + Bx) * (COS(lat1) + Bx) + By * By)),
 		lng3 = lng1 + ATAN2(By, COS(lat1) + Bx);
-	if (IS_NAN(lat3) || IS_NAN(lng3)) throw new Error("latitude or longitude is NaN");
+	if (!IS_AN(lat3) || !IS_AN(lng3)) throw new Error("latitude or longitude is NaN");
 	return {
 		lat: lat3 * RADIANS_TO_DEGREES,
 		lng: lng3 * RADIANS_TO_DEGREES,

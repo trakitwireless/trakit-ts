@@ -56,18 +56,8 @@ export function OBJECT_TYPE(value: any): string {
 	return Object.prototype.toString.call(value).slice(8, -1);
 }
 /**
- * Similar to {@code key|isNaN}, it checks to see if the given parameter is not a number object, not a number literal, and that it is {@code value|NaN}.
- * This method will return  {@code value|true} for values: {@code value|""}, {@code value|"1234"}, {@code value|null}, {@code value|undefined}, {@code value|true}, and {@code value|false}.
- * @param value The variable to check
- */
-export function IS_NAN(value: any): value is number {
-	return isNaN(value)
-		|| !isFinite(value)
-		|| !IS_NUMBER(value);
-}
-/**
- * Opposite of {@link utility.isNaN}.
- * Checks to see if the given parameter is a number object, or number literal, and that it is not {@code value|NaN}.
+ * Almost the opposite of {@link isNaN}.
+ * Checks to see if the given parameter is a number object, or number literal, and that it is not {@code value|NaN|Infinity}.
  * This method will return  {@code value|false} for values: {@code value|""}, {@code value|"1234"}, {@code value|null}, {@code value|undefined}, {@code value|true}, and {@code value|false}.
  * @param value The variable to check
  */
@@ -174,7 +164,7 @@ export function DOUGLASPEUCKER_INTERNAL<TCoord>(
 				// ABS because circle distance can be negative (to the right of circle)
 				// as well as positive (to the left of circle)
 				const distance = triangleHeight(firstPoint, source[i], lastPoint);
-				if (IS_NAN(distance)) throw new RangeError("triangleHeight returned NaN");
+				if (!IS_AN(distance)) throw new RangeError("triangleHeight returned NaN");
 				if (distance > farthestDistance) {
 					farthestDistance = distance;
 					farthestIndex = i;

@@ -9,7 +9,7 @@ import {
 import {
     DOUGLASPEUCKER,
     PASSWORD_DECODE,
-    IS_NAN,
+    IS_AN,
     IS_NOTHING,
     PHONE_PARSE,
     PYTHAGORA,
@@ -79,7 +79,7 @@ export default {
         codify: CODIFY,
         guid: GUID,
         isNothing: IS_NOTHING,
-        isNaN: IS_NAN,
+        isntNaN: IS_AN,
         roundTo: ROUND_TO,
         merge: MERGE,
         parseTime: TIMESPACE_PARSE,

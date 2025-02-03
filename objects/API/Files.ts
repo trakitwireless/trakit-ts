@@ -3,7 +3,7 @@
 	MAX,
 	MIN,
 } from "./Constants";
-import { IS_NAN, ROUND_TO } from "./Functions";
+import { IS_AN, ROUND_TO } from "./Functions";
 
 /**
  * An array of filesize suffixes where the index in the array represents the "level" of size.

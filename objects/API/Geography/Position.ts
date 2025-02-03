@@ -1,4 +1,4 @@
-import { DATE, IS_AN, IS_NAN } from '../Functions';
+import { DATE, IS_AN, } from '../Functions';
 import { ILatLng, IPosition, IStreetAddress } from './Interfaces';
 import { LatLng, } from './LatLng';
 import { StreetAddress, } from './StreetAddress';
@@ -80,7 +80,7 @@ export class Position extends LatLng implements IPosition {
 			+ this.bearing + delimiter
 			+ this.accuracy + delimiter
 			+ this.altitude + delimiter
-			+ (IS_NAN(this.date.valueOf()) ? "" : this.date.toISOString()) + delimiter
+			+ (!IS_AN(this.date.valueOf()) ? "" : this.date.toISOString()) + delimiter
 			+ this.speedLimit
 			+ ")"
 			+ this.address;

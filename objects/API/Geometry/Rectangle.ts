@@ -2,7 +2,6 @@
 import { ABS, } from '../Constants';
 import {
 	IS_AN,
-	IS_NAN,
 	IS_NUMBER,
 	IS_STRING,
 	ROUND_TO,
@@ -228,15 +227,15 @@ export class Rectangle implements IRectangle {
 		if (object instanceof Array) {
 			object.forEach(this.__expander, this);
 		} else if (IPoint_instanceOf(object)) {
-			if (object.y < this.top || IS_NAN(this.top)) this.top = object.y;
-			if (object.x < this.left || IS_NAN(this.left)) this.left = object.x;
-			if (object.x > this.right || IS_NAN(this.right)) this.right = object.x;
-			if (object.y > this.bottom || IS_NAN(this.bottom)) this.bottom = object.y;
+			if (object.y < this.top || !IS_AN(this.top)) this.top = object.y;
+			if (object.x < this.left || !IS_AN(this.left)) this.left = object.x;
+			if (object.x > this.right || !IS_AN(this.right)) this.right = object.x;
+			if (object.y > this.bottom || !IS_AN(this.bottom)) this.bottom = object.y;
 		} else if (IRectangle_instanceOf(object)) {
-			if (object.top < this.top || IS_NAN(this.top)) this.top = object.top;
-			if (object.left < this.left || IS_NAN(this.left)) this.left = object.left;
-			if (object.right > this.right || IS_NAN(this.right)) this.right = object.right;
-			if (object.bottom > this.bottom || IS_NAN(this.bottom)) this.bottom = object.bottom;
+			if (object.top < this.top || !IS_AN(this.top)) this.top = object.top;
+			if (object.left < this.left || !IS_AN(this.left)) this.left = object.left;
+			if (object.right > this.right || !IS_AN(this.right)) this.right = object.right;
+			if (object.bottom > this.bottom || !IS_AN(this.bottom)) this.bottom = object.bottom;
 		}
 	}
 	/**

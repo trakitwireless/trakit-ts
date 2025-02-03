@@ -8,7 +8,7 @@
 	SIN,
 	SQRT
 } from '../Constants';
-import { IS_NAN, IS_NUMBER, PYTHAGORA, ROUND_TO } from '../Functions';
+import { IS_AN, IS_NUMBER, PYTHAGORA, ROUND_TO } from '../Functions';
 import { Point } from '../Geometry/Point';
 import {
 	LATITUDE_NORMALIZED,
@@ -80,8 +80,8 @@ export class LatLng implements ILatLng {
 	 * Returns true if this coordinate is not NaN and not zero-zero.
 	 */
 	isValid(): boolean {
-		return !IS_NAN(this.lat)
-			&& !IS_NAN(this.lng)
+		return IS_AN(this.lat)
+			&& IS_AN(this.lng)
 			&& !this.isEqual(LatLng.INVALID);
 	}
 	

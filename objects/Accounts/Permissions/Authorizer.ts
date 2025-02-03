@@ -6,7 +6,7 @@ import { PermissionLevel } from './PermissionLevel';
 import { PermissionMethod } from './PermissionMethod';
 import { FREEZE, KEYS } from '../../API/Constants';
 import { PermissionEscalation, PermissionEscalationType } from './PermissionEscalation';
-import { IS_AN, IS_NAN } from '../../API/Functions';
+import { IS_AN, } from '../../API/Functions';
 
 //#region Computing/Internals
 /**
@@ -595,7 +595,7 @@ function findSimpleLevel(
 	targetType: PermissionType
 ) {
 	if (userCompanyId === 0) return PermissionLevel.full; // hax for master accounts
-	else if (IS_NAN(userCompanyId)) throw new TypeError("userCompanyId must be a number");
+	else if (!IS_AN(userCompanyId)) throw new TypeError("userCompanyId must be a number");
 
 	const permission = (permissions || []).find(_filterType, targetType);
 	return permission
@@ -768,7 +768,7 @@ function findComplexLevel(
 	targetLabels: codified[]
 ) {
 	if (userCompanyId === 0) return PermissionLevel.full; // hax for master accounts
-	else if (IS_NAN(userCompanyId)) throw new TypeError("userCompanyId must be a number");
+	else if (!IS_AN(userCompanyId)) throw new TypeError("userCompanyId must be a number");
 
 	if (!targetCompanyLabels) targetCompanyLabels = [];
 	if (!targetLabels || !targetLabels.length) targetLabels = targetCompanyLabels;
@@ -963,7 +963,7 @@ function findEscalations(
 	after: Permission[],
 	targetCompanyLabels: codified[]
 ) {
-	if (IS_NAN(userCompanyId)) throw new TypeError("userCompanyId must be a number");
+	if (!IS_AN(userCompanyId)) throw new TypeError("userCompanyId must be a number");
 
 	const escalated: PermissionEscalation[] = [];
 	if (after && after.length) {

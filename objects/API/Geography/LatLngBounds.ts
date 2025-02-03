@@ -19,7 +19,6 @@ import {
 } from './Functions';
 import {
 	IS_AN,
-	IS_NAN,
 	ROUND_TO,
 } from '../Functions';
 import { ABS, } from '../Constants';
@@ -220,10 +219,10 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 				east = LONGITUDE_NORMALIZED(object.east, north),
 				south = LATITUDE_NORMALIZED(object.south),
 				west = LONGITUDE_NORMALIZED(object.west, south);
-			if (east > this.east || IS_NAN(this.east)) this.east = east;
-			if (west < this.west || IS_NAN(this.west)) this.west = west;
-			//	if (north > this.north || IS_NAN(this.north)) this.north = north;
-			if (IS_NAN(this.north) || (north > this.north && (this.east === east || this.west === west))) {
+			if (east > this.east || !IS_AN(this.east)) this.east = east;
+			if (west < this.west || !IS_AN(this.west)) this.west = west;
+			//	if (north > this.north || !IS_AN(this.north)) this.north = north;
+			if (!IS_AN(this.north) || (north > this.north && (this.east === east || this.west === west))) {
 				this.north = north;
 			} else if (IS_AN(north)) {
 				const pin = { lat: north, lng: east },
@@ -236,7 +235,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 					this.north = LATLNG_TRANSLATE(pin, distance, 0).lat;
 				}
 			}
-			if (IS_NAN(this.south) || (south < this.south && (this.east === east || this.west === west))) {
+			if (!IS_AN(this.south) || (south < this.south && (this.east === east || this.west === west))) {
 				this.south = south;
 			} else if (IS_AN(south)) {
 				const pin = { lat: south, lng: west },
@@ -252,9 +251,9 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 		} else if (ILatLng_instanceOf(object)) {
 			const lat = LATITUDE_NORMALIZED(object.lat),
 				lng = LONGITUDE_NORMALIZED(object.lng, lat);
-			if (lng > this.east || IS_NAN(this.east)) this.east = lng;
-			if (lng < this.west || IS_NAN(this.west)) this.west = lng;
-			if (IS_NAN(this.north) || (lat > this.north && (this.east === lng || this.west === lng))) {
+			if (lng > this.east || !IS_AN(this.east)) this.east = lng;
+			if (lng < this.west || !IS_AN(this.west)) this.west = lng;
+			if (!IS_AN(this.north) || (lat > this.north && (this.east === lng || this.west === lng))) {
 				this.north = lat;
 			} else if (IS_AN(lat)) {
 				const pin = { lat, lng },
@@ -267,8 +266,8 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 					this.north = LATLNG_TRANSLATE(pin, distance, 0).lat;
 				}
 			}
-			//	if (lat < this.south || IS_NAN(this.south)) this.south = lat;
-			if (IS_NAN(this.south) || (lat < this.south && (this.east === lng || this.west === lng))) {
+			//	if (lat < this.south || !IS_AN(this.south)) this.south = lat;
+			if (!IS_AN(this.south) || (lat < this.south && (this.east === lng || this.west === lng))) {
 				this.south = lat;
 			} else if (IS_AN(lat)) {
 				const pin = { lat, lng },
