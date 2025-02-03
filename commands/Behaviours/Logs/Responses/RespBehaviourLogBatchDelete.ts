@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="behaviourLog"/>.
+	 * A container for the {@link behaviourLog}.
 	 */
 	export class RespBehaviourLogBatchDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="BehaviourLog"/>.
+		 * Details about deleting/restoring the requested {@link BehaviourLog}.
 		 */
 		behaviourLogs: RespIdDeleted[] = [];
 	}

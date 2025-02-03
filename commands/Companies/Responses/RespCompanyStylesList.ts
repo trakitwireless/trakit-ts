@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="companyStyless"/>.
+	 * A container for the requested {@link companyStyless}.
 	 */
 	export abstract class RespCompanyStylesList extends Response {
 		/**
-		 * The list of requested <see cref="CompanyStyles"/>s.
+		 * The list of requested {@link CompanyStyles}s.
 		 */
 		companyStyless: CompanyStyles[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyStylesListByCompany extends RespCompanyStylesList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyStylesListByCompanyAndLabels extends RespCompanyStylesListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyStylesListByCompanyAndRefPairs extends RespCompanyStylesListByCompany {
 		/**

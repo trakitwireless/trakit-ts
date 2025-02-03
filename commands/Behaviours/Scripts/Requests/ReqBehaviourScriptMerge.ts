@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="BehaviourScript"/>.
+	 * Creates a new or updates an existing {@link BehaviourScript}.
 	 */
 	export class ReqBehaviourScriptMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="BehaviourScript"/>.
+		 * Parameters given to create or update a {@link BehaviourScript}.
 		 */
 		behaviourScript: ParamBehaviourScriptMerge;
 

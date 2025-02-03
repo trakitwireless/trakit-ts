@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="assetGenerals"/>.
+	 * A container for the requested {@link assetGenerals}.
 	 */
 	export abstract class RespAssetGeneralList extends Response {
 		/**
-		 * The list of requested <see cref="AssetGeneral"/>s.
+		 * The list of requested {@link AssetGeneral}s.
 		 */
 		assetGenerals: AssetGeneral[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetGeneralListByCompany extends RespAssetGeneralList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetGeneralListByCompanyAndLabels extends RespAssetGeneralListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetGeneralListByCompanyAndRefPairs extends RespAssetGeneralListByCompany {
 		/**

@@ -1,10 +1,10 @@
 ﻿
 	/**
-	 * A container class used to house the string identifying a <see cref="Provider"/>.
+	 * A container class used to house the string identifying a {@link Provider}.
 	 */
 	export class ParamIdentifier {
 		/**
-		 * The <see cref="Provider"/>'s identifier.
+		 * The {@link Provider}'s identifier.
 		 */
 		id: string = "";
 	}

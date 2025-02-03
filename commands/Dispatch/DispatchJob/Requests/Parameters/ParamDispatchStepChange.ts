@@ -1,12 +1,12 @@
 ﻿
 
 	/**
-	 * Parameter values for changing the status of a <see cref="DispatchStep"/> in a <see cref="DispatchJob"/>.
+	 * Parameter values for changing the status of a {@link DispatchStep} in a {@link DispatchJob}.
 	 */
 	export class ParamDispatchStepChange extends ParamMergeSubscribable {
 		/**
 		 * The identifier of the step.
-		 * Identifiers are unique to a <see cref="DispatchJob"/>, but are not unique system-wide.
+		 * Identifiers are unique to a {@link DispatchJob}, but are not unique system-wide.
 		 */
 		id: ulong = NaN;
 		/**
@@ -14,12 +14,12 @@
 		 */
 		notes: string = "";
 		/**
-		 * The name of the person who signed the <see cref="DispatchStep"/>'s completion.
+		 * The name of the person who signed the {@link DispatchStep}'s completion.
 		 */
 		signatory: string = "";
 		/**
-		 * Update to the <see cref="DispatchStepState"/> of the <see cref="DispatchStep"/>.
-		 * However, the <see cref="DispatchStepState.latlng"/> is set to <c>null</c>.
+		 * Update to the {@link DispatchStepState} of the {@link DispatchStep}.
+		 * However, the {@link DispatchStepState.latlng} is set to <c>null</c>.
 		 */
 		status?: DispatchStepStatus;
 	}

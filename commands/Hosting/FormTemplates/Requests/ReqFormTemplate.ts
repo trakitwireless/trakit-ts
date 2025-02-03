@@ -2,11 +2,11 @@
 
 
 	/**
-	 * A container for the <see cref="formTemplate"/> object.
+	 * A container for the {@link formTemplate} object.
 	 */
 	export abstract class ReqFormTemplate extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="FormTemplate"/>.
+		 * An object to contain the "id" of the {@link FormTemplate}.
 		 */
 		formTemplate: ParamId;
 

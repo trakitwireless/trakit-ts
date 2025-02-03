@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 *  <see cref="ErrorDetail"/>s are identified for deserialization using <see cref="ErrorDetail.kind"/>.
+	 *  {@link ErrorDetail}s are identified for deserialization using {@link ErrorDetail.kind}.
 	 */
 	enum ErrorDetailType {
 		/**
@@ -60,19 +60,19 @@
 		 */
 		externals,
 		/**
-		 * Details for how a circular <see cref="Company"/> tree would have been created.
+		 * Details for how a circular {@link Company} tree would have been created.
 		 */
 		parent,
 		/**
-		 * Details for how many and which <see cref="User"/>s are still in the <see cref="UserGroup"/>.
+		 * Details for how many and which {@link User}s are still in the {@link UserGroup}.
 		 */
 		userGroupInUse,
 		/**
-		 * Details for how many and which <see cref="Asset"/>s and <see cref="User"/>s are still using this <see cref="Contact"/>.
+		 * Details for how many and which {@link Asset}s and {@link User}s are still using this {@link Contact}.
 		 */
 		contactInUse,
 		/**
-		 * Details for how many and which <see cref="FormResult"/>s are still using this <see cref="FormTemplate"/>.
+		 * Details for how many and which {@link FormResult}s are still using this {@link FormTemplate}.
 		 */
 		formTemplateInUse,
 		/**
@@ -80,7 +80,7 @@
 		 */
 		batch,
 		/**
-		 * Details about why the request failed an authentication process when a <see cref="Machine.secret"/> is used.
+		 * Details about why the request failed an authentication process when a {@link Machine.secret} is used.
 		 */
 		secret,
 	}

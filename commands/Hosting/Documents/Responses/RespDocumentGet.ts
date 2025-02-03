@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="document"/>.
+	 * A container for the {@link document}.
 	 */
 	export class RespDocumentGet extends Response {
 		/**
-		 * The requested <see cref="Document"/>.
+		 * The requested {@link Document}.
 		 */
 		document: Document;
 	}

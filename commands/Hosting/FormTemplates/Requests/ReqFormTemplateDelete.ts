@@ -2,6 +2,6 @@
 
 
 	/**
-	 * Deletes an existing <see cref="FormTemplate"/>.
+	 * Deletes an existing {@link FormTemplate}.
 	 */
 	export class ReqFormTemplateDelete extends ReqFormTemplate { }

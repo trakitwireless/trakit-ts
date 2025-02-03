@@ -1,7 +1,7 @@
 
 
 	/**
-	 * Some work that needs to be done by performing one or more <see cref="DispatchStep"/>s.
+	 * Some work that needs to be done by performing one or more {@link DispatchStep}s.
 	 */
 	export class DispatchJob extends Component implements IIdUlong, ILabelled, IBelongCompany, IDeletable {
 		/**
@@ -14,7 +14,7 @@
 		 */
 		company: ulong = NaN;
 		/**
-		 * The <see cref="Asset"/> to which this job belongs.
+		 * The {@link Asset} to which this job belongs.
 		 * This value is null when unassigned.
 		 * {@link Asset.id}
 		 */
@@ -37,7 +37,7 @@
 		 */
 		instructions: string = "";
 		/**
-		 * A list of hosted <see cref="Document"/> identifiers attached to this job.
+		 * A list of hosted {@link Document} identifiers attached to this job.
 		 *  <override max-count="10">
 		 *  <values>
 		 * {@link Document.id}
@@ -46,7 +46,7 @@
 		 */
 		attachments: ulong[] = [];
 		/**
-		 * A list of hosted <see cref="FormResult"/> identifiers attached to this job.
+		 * A list of hosted {@link FormResult} identifiers attached to this job.
 		 *  <override max-count="10">
 		 *  <values>
 		 * {@link FormResult.id}
@@ -59,7 +59,7 @@
 		 */
 		priority: DispatchJobPriority;
 		/**
-		 * Codified label names used to relate (unassigned) jobs to <see cref="Asset"/>s.
+		 * Codified label names used to relate (unassigned) jobs to {@link Asset}s.
 		 *  <override>
 		 *  <values format="codified">
 		 * {@link LabelStyle.code}
@@ -92,7 +92,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

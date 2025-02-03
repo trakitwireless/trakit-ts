@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="Machine"/>.
+	 * Deletes an existing {@link Machine}.
 	 */
 	export class ReqMachineDelete extends ReqMachine { }

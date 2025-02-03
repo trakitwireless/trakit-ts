@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="Contact"/>.
+	 * Deletes an existing {@link Contact}.
 	 */
 	export class ReqContactDelete extends ReqContact { }

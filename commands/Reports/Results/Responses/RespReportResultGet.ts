@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="reportResult"/>.
+	 * A container for the {@link reportResult}.
 	 */
 	export class RespReportResultGet extends Response {
 		/**
-		 * The requested <see cref="ReportResult"/>.
+		 * The requested {@link ReportResult}.
 		 */
 		reportResult: ReportResult;
 	}

@@ -2,21 +2,21 @@
 
 
 	/**
-	 * A container for the requested <see cref="places"/>.
+	 * A container for the requested {@link places}.
 	 */
 	export abstract class RespPlaceList extends Response {
 		/**
-		 * The list of requested <see cref="Place"/>s.
+		 * The list of requested {@link Place}s.
 		 */
 		places: Place[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export class RespPlaceListByCompany extends RespPlaceList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

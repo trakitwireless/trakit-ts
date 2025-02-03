@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="Company"/>.
+	 * Deletes an existing {@link Company}.
 	 */
 	export class ReqCompanyDelete extends ReqCompany { }

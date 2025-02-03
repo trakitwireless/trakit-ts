@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="providerAdvanced"/>.
+	 * A container for the {@link providerAdvanced}.
 	 */
 	export class RespProviderAdvancedGet extends Response {
 		/**
-		 * The requested <see cref="ProviderAdvanced"/>.
+		 * The requested {@link ProviderAdvanced}.
 		 */
 		providerAdvanced: ProviderAdvanced;
 	}

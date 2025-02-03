@@ -14,16 +14,16 @@ export interface IAuditable {
 	processedUtc: Date;
 }
 /**
- * This class used in conjunction with the <see cref="version"/> member help with synchronization.
+ * This class used in conjunction with the {@link version} member help with synchronization.
 */
 export class IAuditableUpdated {
 	/**
-	 * The <see cref="User.login"/> or <see cref="Machine.key"/> when the object is updated,
-	 * or <see cref="Service.UserAgent"/> if a service updates the object itself.
+	 * The {@link User.login} or {@link Machine.key} when the object is updated,
+	 * or {@link Service.UserAgent} if a service updates the object itself.
 	 */
 	by: string = "";
 	/**
-	 * A <see cref="Service.UserAgent"/> that handled the update.
+	 * A {@link Service.UserAgent} that handled the update.
 	 */
 	from: string = "";
 	/**

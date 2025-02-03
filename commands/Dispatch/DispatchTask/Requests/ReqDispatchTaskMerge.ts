@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="DispatchTask"/>.
+	 * Creates a new or updates an existing {@link DispatchTask}.
 	 */
 	export class ReqDispatchTaskMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="DispatchTask"/>.
+		 * Parameters given to create or update a {@link DispatchTask}.
 		 */
 		dispatchTask: ParamDispatchTaskMerge;
 

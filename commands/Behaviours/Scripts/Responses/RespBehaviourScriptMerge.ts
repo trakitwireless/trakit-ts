@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="behaviourScript"/>.
+	 * A container for the {@link behaviourScript}.
 	 */
 	export class RespBehaviourScriptMerge extends Response {
 		/**

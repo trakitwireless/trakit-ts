@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="Machine"/>.
+	 * Restores a deleted {@link Machine}.
 	 */
 	export class ReqMachineRestore extends ReqMachine { }

@@ -65,7 +65,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

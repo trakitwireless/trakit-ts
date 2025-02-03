@@ -1,7 +1,7 @@
 
 
 	/**
-	 * The full details of an Asset, containing all the properties from the <see cref="AssetGeneral"/> and <see cref="AssetAdvanced"/> objects.
+	 * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
 	 */
 	export class Asset extends Compound implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable, IDeletable {
 		/**
@@ -192,7 +192,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

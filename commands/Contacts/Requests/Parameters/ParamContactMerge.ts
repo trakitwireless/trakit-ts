@@ -1,25 +1,25 @@
 
 
 	/**
-	 * Parameters used to create or update an <see cref="Contact"/>.
+	 * Parameters used to create or update an {@link Contact}.
 	 */
 	export class ParamContactMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="Contact"/> you want to update.
-		 * Leave this as <c>null</c> when creating a new <see cref="Contact"/>.
+		 * The unique identifier of the {@link Contact} you want to update.
+		 * Leave this as <c>null</c> when creating a new {@link Contact}.
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this <see cref="Contact"/> belongs.
+		 * The {@link Company} to which this {@link Contact} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
 		/**
-		 * Name for the <see cref="Contact"/>.
+		 * Name for the {@link Contact}.
 		 */
 		name: string = "";
 		/**
-		 * Notes for the <see cref="Contact"/>.
+		 * Notes for the {@link Contact}.
 		 */
 		notes: string = "";
 		/**
@@ -64,11 +64,11 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * A list of roles they play in the <see cref="Company"/>.
+		 * A list of roles they play in the {@link Company}.
 		 */
 		roles: string[] = [];
 		/**
-		 *  <see cref="Picture"/>s of this <see cref="Contact"/>.
+		 *  {@link Picture}s of this {@link Contact}.
 		 */
 		pictures: ulong[] = [];
 	}

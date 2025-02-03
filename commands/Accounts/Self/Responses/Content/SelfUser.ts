@@ -1,9 +1,9 @@
 
 
 	/**
-	 * Similar to the <see cref="User"/> object, but instead of the <see cref="contact"/>
-	 * and <see cref="groups"/> properties being identifiers of other objects,
-	 * the <see cref="Contact"/> and <see cref="UserGroup"/> objects are embedded within.
+	 * Similar to the {@link User} object, but instead of the {@link contact}
+	 * and {@link groups} properties being identifiers of other objects,
+	 * the {@link Contact} and {@link UserGroup} objects are embedded within.
 	 */
 	export class SelfUser extends Compound implements IBelongCompany, IEnabled, IDeletable {
 		/**
@@ -125,14 +125,14 @@
 		 */
 		Advanced: SelfUserAdvanced;
 		/**
-		 * Individual permission rules which override the <see cref="UserGroup"/> rules.
+		 * Individual permission rules which override the {@link UserGroup} rules.
 		 */
 		Permission[] permissions {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).permissions;
 			set => (this.Advanced ?? throw new NullReferenceException("advanced")).permissions = value;
 		}
 		/**
-		 * The list of <see cref="UserGroup"/>s to which this <see cref="User"/> belongs.
+		 * The list of {@link UserGroup}s to which this {@link User} belongs.
 		 */
 		UserGroup[] groups {
 			get => (this.Advanced ?? throw new NullReferenceException("advanced")).groups;
@@ -141,7 +141,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="login"/> is the key.
+		 * The {@link login} is the key.
 		 */
 public getKey(): string { return this.login; }
 

@@ -2,11 +2,11 @@
 
 
 	/**
-	 * Creates a new or updates an existing <see cref="Place"/>.
+	 * Creates a new or updates an existing {@link Place}.
 	 */
 	export class ReqPlaceMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="Place"/>.
+		 * Parameters given to create or update a {@link Place}.
 		 */
 		place: ParamPlaceMerge;
 

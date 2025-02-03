@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="Document"/>.
+	 * Deletes an existing {@link Document}.
 	 */
 	export class ReqDocumentDelete extends ReqDocument { }

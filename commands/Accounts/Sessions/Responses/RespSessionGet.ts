@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="User"/> of the current session.
+	 * A container for the {@link User} of the current session.
 	 */
 	export class RespSessionGet extends Response {
 		/**
-		 * The requested <see cref="Session"/> details.
+		 * The requested {@link Session} details.
 		 */
 		session: Session;
 	}

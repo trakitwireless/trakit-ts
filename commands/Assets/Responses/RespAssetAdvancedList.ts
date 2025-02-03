@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="assetAdvanceds"/>.
+	 * A container for the requested {@link assetAdvanceds}.
 	 */
 	export abstract class RespAssetAdvancedList extends Response {
 		/**
-		 * The list of requested <see cref="AssetAdvanced"/>s.
+		 * The list of requested {@link AssetAdvanced}s.
 		 */
 		assetAdvanceds: AssetAdvanced[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetAdvancedListByCompany extends RespAssetAdvancedList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetAdvancedListByCompanyAndLabels extends RespAssetAdvancedListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetAdvancedListByCompanyAndRefPairs extends RespAssetAdvancedListByCompany {
 		/**

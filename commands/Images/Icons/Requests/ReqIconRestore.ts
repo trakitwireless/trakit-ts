@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="Icon"/>.
+	 * Restores a deleted {@link Icon}.
 	 */
 	export class ReqIconRestore extends ReqIcon { }

@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="dispatchJob"/>.
+	 * A container for the {@link dispatchJob}.
 	 */
 	export class RespDispatchJobBatchDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="DispatchJob"/>.
+		 * Details about deleting/restoring the requested {@link DispatchJob}.
 		 */
 		dispatchJobs: RespIdDeleted[] = [];
 	}

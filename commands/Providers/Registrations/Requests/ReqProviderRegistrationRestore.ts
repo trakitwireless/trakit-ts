@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="ProviderRegistration"/>.
+	 * Restores a deleted {@link ProviderRegistration}.
 	 */
 	export class ReqProviderRegistrationRestore extends ReqProviderRegistration { }

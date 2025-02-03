@@ -2,21 +2,21 @@
 
 
 	/**
-	 * A container for the requested <see cref="formResults"/>.
+	 * A container for the requested {@link formResults}.
 	 */
 	export abstract class RespFormResultList extends Response {
 		/**
-		 * The list of requested <see cref="FormResult"/>s.
+		 * The list of requested {@link FormResult}s.
 		 */
 		formResults: FormResult[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export class RespFormResultListByCompany extends RespFormResultList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

@@ -12,7 +12,7 @@
 		 * Used to split the Request class name into pieces to help create commands
 		static readonly Regex SPLITTER = new Regex("Req([A-Z][a-z]+)+?((?:Batch)?(?:Get|List|Merge|Delete|Restore|Suspend|Revive|Cancel|Change))(By.+)?", RegexOptions.Compiled);
 		/**
-		 * Splits this class' name into parts helpful to <see cref="TrakitCommander{TClient}.Command{TResponse}(Request)"/>.
+		 * Splits this class' name into parts helpful to {@link TrakitCommander{TClient}.Command{TResponse}(Request)}.
 		 */
 public string[] GetNameParts() => SPLITTER.Match(this.GetType().Name)
 											.Groups

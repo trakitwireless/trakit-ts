@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="icon"/> object.
+	 * A container for the {@link icon} object.
 	 */
 	export abstract class ReqIcon extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="Icon"/>.
+		 * An object to contain the "id" of the {@link Icon}.
 		 */
 		icon: ParamId;
 

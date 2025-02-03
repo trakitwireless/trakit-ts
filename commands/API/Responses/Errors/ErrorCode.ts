@@ -23,7 +23,7 @@
 		 */
 		invalidData,
 		 *  <summary sort="">
-		 * Not a valid <see cref="PermissionType"/>.
+		 * Not a valid {@link PermissionType}.
 		 * @deprecated
 		 */
 		invalidPermission,
@@ -38,7 +38,7 @@
 		 */
 		wrongVersionKey,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="User"/>'s session is expired or unknown.
+		 *  {@link User}'s session is expired or unknown.
 		 */
 		sessionExpired,
 		 *  <summary sort="Users and Groups">
@@ -46,7 +46,7 @@
 		 */
 		userNotLoggedIn,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="User"/>'s session was forcibly killed by another user, or by <see cref="SessionPolicy"/>'s rules.
+		 *  {@link User}'s session was forcibly killed by another user, or by {@link SessionPolicy}'s rules.
 		 */
 		sessionKilled,
 		 *  <summary sort="Users and Groups">
@@ -70,12 +70,12 @@
 		 */
 		ipNotAllowed,
 		 *  <summary sort="Users and Groups">
-		 * Session is active from another client, and the <see cref="SessionPolicy"/>'s rules are set to <see cref="MultiUserPolicy.deny"/>.
+		 * Session is active from another client, and the {@link SessionPolicy}'s rules are set to {@link MultiUserPolicy.deny}.
 		 */
 		multiUserDenied,
 		 *  <summary sort="Users and Groups">
 		 * Password doesn't comply with the password policy.
-		 * See the <see cref="PasswordPolicy"/> for a reason as to why your password does not meet the criteria.
+		 * See the {@link PasswordPolicy} for a reason as to why your password does not meet the criteria.
 		 */
 		noncompliantPassword,
 		 *  <summary sort="Users and Groups">
@@ -98,178 +98,178 @@
 		 */
 		sessionNotFound,
 		 *  <summary sort="Assets">
-		 *  <see cref="Asset"/> not found.
+		 *  {@link Asset} not found.
 		 */
 		assetNotFound,
 		 *  <summary sort="Assets">
-		 *  <see cref="Asset"/> not deleted.
+		 *  {@link Asset} not deleted.
 		 */
 		assetNotDeleted,
 		 *  <summary sort="Assets">
-		 * One or more <see cref="Asset"/>s in the list not found.
+		 * One or more {@link Asset}s in the list not found.
 		 */
 		assetsListNotFound,
 		 *  <summary sort="Behaviours">
-		 *  <see cref="BehaviourScript"/> not found.
+		 *  {@link BehaviourScript} not found.
 		 */
 		behaviourScriptNotFound,
 		 *  <summary sort="Behaviours">
-		 *  <see cref="BehaviourScript"/> not deleted.
+		 *  {@link BehaviourScript} not deleted.
 		 */
 		behaviourScriptNotDeleted,
 		 *  <summary sort="Behaviours">
-		 *  <see cref="BehaviourScript"/> currently implemented by one or more <see cref="Behaviour"/>s.
-		 * In order to delete a <see cref="BehaviourScript"/>, all <see cref="Behaviour"/>s implementing the script must be deleted first.
+		 *  {@link BehaviourScript} currently implemented by one or more {@link Behaviour}s.
+		 * In order to delete a {@link BehaviourScript}, all {@link Behaviour}s implementing the script must be deleted first.
 		 */
 		behaviourScriptInUse,
 		 *  <summary sort="Behaviours">
-		 *  <see cref="Behaviour"/> not found.
+		 *  {@link Behaviour} not found.
 		 */
 		behaviourNotFound,
 		 *  <summary sort="Behaviours">
-		 *  <see cref="Behaviour"/> not deleted.
+		 *  {@link Behaviour} not deleted.
 		 */
 		behaviourNotDeleted,
 		 *  <summary sort="Companies">
-		 *  <see cref="Company"/> not found.
+		 *  {@link Company} not found.
 		 */
 		companyNotFound,
 		 *  <summary sort="Companies">
-		 *  <see cref="Company"/> not deleted.
+		 *  {@link Company} not deleted.
 		 */
 		companyNotDeleted,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="UserGroup"/> not found.
+		 *  {@link UserGroup} not found.
 		 */
 		userGroupNotFound,
 		 *  <summary sort="Contacts">
-		 *  <see cref="Contact"/> not found.
+		 *  {@link Contact} not found.
 		 */
 		contactNotFound,
 		 *  <summary sort="Contacts">
-		 *  <see cref="Contact"/> not deleted.
+		 *  {@link Contact} not deleted.
 		 */
 		contactNotDeleted,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="Icon"/> not found.
+		 *  {@link Icon} not found.
 		 */
 		iconNotFound,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="Icon"/> not deleted.
+		 *  {@link Icon} not deleted.
 		 */
 		iconNotDeleted,
 		 *  <summary sort="Maintenance">
-		 *  <see cref="MaintenanceJob"/> not found.
+		 *  {@link MaintenanceJob} not found.
 		 */
 		maintenanceJobNotFound,
 		 *  <summary sort="Maintenance">
-		 *  <see cref="MaintenanceJob"/> not deleted.
+		 *  {@link MaintenanceJob} not deleted.
 		 */
 		maintenanceJobNotDeleted,
 		 *  <summary sort="Maintenance">
-		 *  <see cref="MaintenanceSchedule"/> not found.
+		 *  {@link MaintenanceSchedule} not found.
 		 */
 		maintenanceScheduleNotFound,
 		 *  <summary sort="Maintenance">
-		 *  <see cref="MaintenanceSchedule"/> not deleted.
+		 *  {@link MaintenanceSchedule} not deleted.
 		 */
 		maintenanceScheduleNotDeleted,
 		 *  <summary sort="Maintenance">
-		 *  <see cref="MaintenanceSchedule"/> currently in use by one or more <see cref="MaintenanceJob"/>s.
-		 * In order to delete a <see cref="MaintenanceSchedule"/>, all <see cref="MaintenanceJob"/>s referencing this schedule must be deleted first.
+		 *  {@link MaintenanceSchedule} currently in use by one or more {@link MaintenanceJob}s.
+		 * In order to delete a {@link MaintenanceSchedule}, all {@link MaintenanceJob}s referencing this schedule must be deleted first.
 		 * @deprecated
 		 */
 		maintenanceScheduleInUse,
 		 *  <summary sort="Places">
-		 *  <see cref="Place"/> not found.
+		 *  {@link Place} not found.
 		 */
 		placeNotFound,
 		 *  <summary sort="Places">
-		 *  <see cref="Place"/> not deleted.
+		 *  {@link Place} not deleted.
 		 */
 		placeNotDeleted,
 		 *  <summary sort="Places">
-		 * One or more <see cref="Place"/>s in the list not found.
+		 * One or more {@link Place}s in the list not found.
 		 */
 		placesListNotFound,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="Provider"/> not found.
+		 *  {@link Provider} not found.
 		 */
 		providerNotFound,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="Provider"/> not deleted.
+		 *  {@link Provider} not deleted.
 		 */
 		providerNotDeleted,
 		 *  <summary sort="Providers and Configurations">
-		 * One or more <see cref="Provider"/>s in the list not found.
+		 * One or more {@link Provider}s in the list not found.
 		 */
 		providersListNotFound,
 		 *  <summary sort="Providers and Configurations">
-		 * Cannot access deleted <see cref="Provider"/>.
+		 * Cannot access deleted {@link Provider}.
 		 * @deprecated Throws providerNotFound instead
 		 */
 		deletedProvider,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderConfigurationType"/> not found.
+		 *  {@link ProviderConfigurationType} not found.
 		 */
 		providerConfigurationTypeNotFound,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderConfig"/> or <see cref="ProviderConfiguration"/> not found.
+		 *  {@link ProviderConfig} or {@link ProviderConfiguration} not found.
 		 */
 		providerConfigurationNotFound,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderConfig"/> or <see cref="ProviderConfiguration"/> not deleted.
+		 *  {@link ProviderConfig} or {@link ProviderConfiguration} not deleted.
 		 */
 		providerConfigurationNotDeleted,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderConfig"/> or <see cref="ProviderConfiguration"/> currently in use by one or more <see cref="Provider"/>s.
-		 * In order to delete a <see cref="ProviderConfig"/>/<see cref="ProviderConfiguration"/>, all <see cref="Provider"/>s using the configuration must be deleted first, or have their configuration changed.
+		 *  {@link ProviderConfig} or {@link ProviderConfiguration} currently in use by one or more {@link Provider}s.
+		 * In order to delete a {@link ProviderConfig}/{@link ProviderConfiguration}, all {@link Provider}s using the configuration must be deleted first, or have their configuration changed.
 		 */
 		providerConfigurationInUse,
 		 *  <summary sort="Providers and Configurations">
-		 * Invalid <see cref="ProviderConfiguration"/> options.
+		 * Invalid {@link ProviderConfiguration} options.
 		 */
 		invalidConfigurationOptions,
 		 *  <summary sort="Reports">
-		 *  <see cref="ReportTemplate"/> not found.
+		 *  {@link ReportTemplate} not found.
 		 */
 		reportTemplateNotFound,
 		 *  <summary sort="Reports">
-		 *  <see cref="ReportTemplate"/> not deleted.
+		 *  {@link ReportTemplate} not deleted.
 		 */
 		reportTemplateNotDeleted,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="User"/> not found.
+		 *  {@link User} not found.
 		 */
 		userNotFound,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="User"/> not deleted.
+		 *  {@link User} not deleted.
 		 */
 		userNotDeleted,
 		 *  <summary sort="Users and Groups">
-		 * Cannot access deleted <see cref="User"/>.
+		 * Cannot access deleted {@link User}.
 		 * @deprecated Throws userNotFound instead
 		 */
 		deletedUser,
 		 *  <summary sort="Users and Groups">
-		 * Cannot kill your own Session, or delete/disable your own <see cref="User"/>.
+		 * Cannot kill your own Session, or delete/disable your own {@link User}.
 		 *  <remarks>
 		 * Don't do it! You have so much to live for!
 		 *  </remarks>
 		 */
 		suicide,
 		 *  <summary sort="Companies">
-		 *  <see cref="CompanyLabels.labels"/> codes must be unique.
+		 *  {@link CompanyLabels.labels} codes must be unique.
 		 * @deprecated
 		 */
 		labelsListNotUnique,
 		 *  <summary sort="Companies">
-		 *  <see cref="CompanyLabels.tags"/> codes must be unique.
+		 *  {@link CompanyLabels.tags} codes must be unique.
 		 * @deprecated
 		 */
 		tagsListNotUnique,
 		 *  <summary sort="Users and Groups">
-		 * One or more <see cref="UserGroup"/>s in the list not found.
+		 * One or more {@link UserGroup}s in the list not found.
 		 */
 		userGroupsListNotFound,
 		 *  <summary sort="">
@@ -280,48 +280,48 @@
 		 */
 		unknownCommand,
 		 *  <summary sort="">
-		 *  <see cref="Timezone"/> not found.
+		 *  {@link Timezone} not found.
 		 */
 		timezoneNotFound,
 		 *  <summary sort="Assets">
-		 *  <see cref="Message"/> not found.
+		 *  {@link Message} not found.
 		 */
 		assetMessageNotFound,
 		 *  <summary sort="Dispatch">
-		 *  <see cref="DispatchTask"/> not found.
+		 *  {@link DispatchTask} not found.
 		 */
 		dispatchTaskNotFound,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="UserGroup"/> currently in use by one or more <see cref="User"/>s.
-		 * In order to delete a <see cref="UserGroup"/>, all <see cref="User"/>s must first be removed as members.
+		 *  {@link UserGroup} currently in use by one or more {@link User}s.
+		 * In order to delete a {@link UserGroup}, all {@link User}s must first be removed as members.
 		 */
 		userGroupInUse,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="UserGroup"/> not deleted.
+		 *  {@link UserGroup} not deleted.
 		 */
 		userGroupNotDeleted,
 		 *  <summary sort="Reports">
-		 *  <see cref="ReportResult"/> not found.
+		 *  {@link ReportResult} not found.
 		 */
 		reportResultNotFound,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="Picture"/> not found.
+		 *  {@link Picture} not found.
 		 */
 		pictureNotFound,
 		 *  <summary sort="File Hosting">
-		 * One or more <see cref="Picture"/>s in the list not found.
+		 * One or more {@link Picture}s in the list not found.
 		 */
 		picturesListNotFound,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="Picture"/> not deleted.
+		 *  {@link Picture} not deleted.
 		 */
 		pictureNotDeleted,
 		 *  <summary sort="Users and Groups">
-		 * Unable to perform operation because resulting <see cref="UserPermission"/>s would be greater than your own.
+		 * Unable to perform operation because resulting {@link UserPermission}s would be greater than your own.
 		 */
 		permissionEscalation,
 		 *  <summary sort="Users and Groups">
-		 * A <see cref="User"/> with this login already exists.
+		 * A {@link User} with this login already exists.
 		 */
 		userAlreadyExists,
 		 *  <summary sort="Users and Groups">
@@ -329,27 +329,27 @@
 		 */
 		sessionThrottled,
 		 *  <summary sort="Users and Groups">
-		 * One or more <see cref="User"/>s in the list not found.
+		 * One or more {@link User}s in the list not found.
 		 */
 		usersListNotFound,
 		 *  <summary sort="Reports">
-		 *  <see cref="ReportResult"/> not deleted.
+		 *  {@link ReportResult} not deleted.
 		 */
 		reportResultNotDeleted,
 		 *  <summary sort="Hours of Service">
-		 *  <see cref="HosCarrier"/> not found.
+		 *  {@link HosCarrier} not found.
 		 */
 		carrierNotFound,
 		 *  <summary sort="Hours of Service">
-		 *  <see cref="HosCarrier"/> not deleted.
+		 *  {@link HosCarrier} not deleted.
 		 */
 		carrierNotDeleted,
 		 *  <summary sort="Hours of Service">
-		 *  <see cref="HosInspection"/> not found.
+		 *  {@link HosInspection} not found.
 		 */
 		inspectionNotFound,
 		 *  <summary sort="Hours of Service">
-		 *  <see cref="HosInspection"/> not deleted.
+		 *  {@link HosInspection} not deleted.
 		 */
 		inspectionNotDeleted,
 
@@ -375,24 +375,24 @@
 		directionsNotFound,
 
 		 *  <summary sort="Hours of Service">
-		 *  <see cref="HosEvent"/> not found.
+		 *  {@link HosEvent} not found.
 		 */
 		elogNotFound,
 
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="User"/> has been disabled.
+		 *  {@link User} has been disabled.
 		 */
 		userDisabled,
 
 		 *  <summary sort="Providers and Configurations">
-		 * Trying to remove an expired or completed <see cref="ProviderRegistration"/>.
+		 * Trying to remove an expired or completed {@link ProviderRegistration}.
 		 *  <remarks>
-		 * For GatekeeperType commands, <see cref="Provider"/>'s <see cref="DataName.REGISTRATION_ID">registration identifier</see> is invalid or not found.
+		 * For GatekeeperType commands, {@link Provider}'s {@link DataName.REGISTRATION_ID|registration identifier} is invalid or not found.
 		 *  </remarks>
 		 */
 		invalidRegistration,
 		 *  <summary sort="Providers and Configurations">
-		 * Verification hash does not match <see cref="Provider"/>'s.
+		 * Verification hash does not match {@link Provider}'s.
 		 *  <remarks>
 		 * For GatekeeperType commands only.
 		 *  </remarks>
@@ -400,7 +400,7 @@
 		 */
 		invalidHash,
 		 *  <summary sort="Providers and Configurations">
-		 * Unknown or invalid <see cref="ProviderRegistration.code"/>.
+		 * Unknown or invalid {@link ProviderRegistration.code}.
 		 *  <remarks>
 		 * Used exclusively by the provisioning service.
 		 *  </remarks>
@@ -408,7 +408,7 @@
 		 */
 		invalidVerification,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderRegistration"/> timeout has elapsed.
+		 *  {@link ProviderRegistration} timeout has elapsed.
 		 *  <remarks>
 		 * Used exclusively by the provisioning service.
 		 *  </remarks>
@@ -425,63 +425,63 @@
 		filesizeExceeded,
 
 		 *  <summary sort="Providers and Configurations">
-		 * Unknown or invalid <see cref="ProviderType"/>.
+		 * Unknown or invalid {@link ProviderType}.
 		 * @deprecated Use invalidData instead
 		 */
 		invalidProviderType,
 
 		 *  <summary sort="Reports">
-		 *  <see cref="ReportSchedule"/> not found.
+		 *  {@link ReportSchedule} not found.
 		 */
 		reportScheduleNotFound,
 		 *  <summary sort="Reports">
-		 *  <see cref="ReportSchedule"/> not deleted.
+		 *  {@link ReportSchedule} not deleted.
 		 */
 		reportScheduleNotDeleted,
 
 		 *  <summary sort="Reports">
-		 *  <see cref="ReportResult"/> not ready to serve <see cref="ReportDataSummaryInstance"/> or <see cref="ReportDataBreakdownInstance"/> data.
+		 *  {@link ReportResult} not ready to serve {@link ReportDataSummaryInstance} or {@link ReportDataBreakdownInstance} data.
 		 */
 		reportResultNotReady,
 
 		 *  <summary sort="Assets">
-		 *  <see cref="Asset"/> suspended.
+		 *  {@link Asset} suspended.
 		 */
 		assetSuspended,
 		 *  <summary sort="Assets">
-		 *  <see cref="Asset"/> not suspended.
+		 *  {@link Asset} not suspended.
 		 */
 		assetNotSuspended,
 
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="Provider"/> suspended.
+		 *  {@link Provider} suspended.
 		 */
 		providerSuspended,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="Provider"/> not suspended.
+		 *  {@link Provider} not suspended.
 		 */
 		providerNotSuspended,
 
 		 *  <summary sort="Dispatch">
-		 *  <see cref="DispatchTask"/> not deleted.
+		 *  {@link DispatchTask} not deleted.
 		 */
 		dispatchTaskNotDeleted,
 		 *  <summary sort="Assets">
-		 *  <see cref="Message"/> not deleted.
+		 *  {@link Message} not deleted.
 		 */
 		assetMessageNotDeleted,
 
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderScript"/> not found.
+		 *  {@link ProviderScript} not found.
 		 */
 		providerScriptNotFound,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderScript"/> not deleted.
+		 *  {@link ProviderScript} not deleted.
 		 */
 		providerScriptNotDeleted,
 		 *  <summary sort="Providers and Configurations">
-		 *  <see cref="ProviderScript"/> currently in use by one or more <see cref="ProviderConfig"/>s.
-		 * In order to delete a <see cref="ProviderScript"/>, all <see cref="ProviderConfig"/>s must first be deleted.
+		 *  {@link ProviderScript} currently in use by one or more {@link ProviderConfig}s.
+		 * In order to delete a {@link ProviderScript}, all {@link ProviderConfig}s must first be deleted.
 		 */
 		providerScriptInUse,
 
@@ -491,11 +491,11 @@
 		commandThrottled,
 
 		 *  <summary sort="White-labelling">
-		 *  <see cref="CompanyReseller"/> not found.
+		 *  {@link CompanyReseller} not found.
 		 */
 		resellerNotFound,
 		 *  <summary sort="White-labelling">
-		 *  <see cref="CompanyReseller"/> not deleted.
+		 *  {@link CompanyReseller} not deleted.
 		 */
 		resellerNotDeleted,
 
@@ -513,66 +513,66 @@
 		operationFailed,
 
 		 *  <summary sort="Billing">
-		 *  <see cref="BillingProfile"/> not found.
+		 *  {@link BillingProfile} not found.
 		 */
 		billingProfileNotFound,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillingProfile"/> not deleted.
+		 *  {@link BillingProfile} not deleted.
 		 */
 		billingProfileNotDeleted,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillableHostingRule"/> not found.
+		 *  {@link BillableHostingRule} not found.
 		 */
 		hostingRuleNotFound,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillableHostingRule"/> not deleted.
+		 *  {@link BillableHostingRule} not deleted.
 		 */
 		hostingRuleNotDeleted,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillableHostingDiscount"/> not found.
+		 *  {@link BillableHostingDiscount} not found.
 		 *  <override skip="true" />
 		 * @deprecated Never implemented.
 		 */
 		hostingDiscountNotFound,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillableHostingDiscount"/> not deleted.
+		 *  {@link BillableHostingDiscount} not deleted.
 		 *  <override skip="true" />
 		 * @deprecated Never implemented.
 		 */
 		hostingDiscountNotDeleted,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillableHostingLicense"/> not found.
+		 *  {@link BillableHostingLicense} not found.
 		 */
 		hostingLicenseNotFound,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillableHostingLicense"/> not deleted.
+		 *  {@link BillableHostingLicense} not deleted.
 		 */
 		hostingLicenseNotDeleted,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillingReport"/> not found.
+		 *  {@link BillingReport} not found.
 		 */
 		billingReportNotFound,
 		 *  <summary sort="Billing">
-		 *  <see cref="BillingReport"/> not deleted.
+		 *  {@link BillingReport} not deleted.
 		 */
 		billingReportNotDeleted,
 
 		 *  <summary sort="Contacts">
-		 *  <see cref="Contact"/> currently in use by one or more <see cref="User"/>s and/or <see cref="Asset"/>s.
-		 * In order to delete a <see cref="Contact"/>, all <see cref="User"/>s/<see cref="Asset"/>s must first be altered or deleted.
+		 *  {@link Contact} currently in use by one or more {@link User}s and/or {@link Asset}s.
+		 * In order to delete a {@link Contact}, all {@link User}s/{@link Asset}s must first be altered or deleted.
 		 */
 		contactInUse,
 
 		 *  <summary sort="File Hosting">
-		 *  <see cref="Document"/> not found.
+		 *  {@link Document} not found.
 		 */
 		documentNotFound,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="Document"/> not deleted.
+		 *  {@link Document} not deleted.
 		 */
 		documentNotDeleted,
 		 *  <summary sort="File Hosting">
-		 * One or more <see cref="Document"/>s in the list not found.
+		 * One or more {@link Document}s in the list not found.
 		 */
 		documentsListNotFound,
 
@@ -586,15 +586,15 @@
 		nothing,
 
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="Machine"/> not found.
+		 *  {@link Machine} not found.
 		 */
 		machineNotFound,
 		 *  <summary sort="Users and Groups">
-		 *  <see cref="Machine"/> not deleted.
+		 *  {@link Machine} not deleted.
 		 */
 		machineNotDeleted,
 		 *  <summary sort="Users and Groups">
-		 * The <see cref="Machine"/> cannot access the requested API.
+		 * The {@link Machine} cannot access the requested API.
 		 */
 		machineNotAllowed,
 
@@ -605,55 +605,55 @@
 		invalidOperation,
 
 		 *  <summary sort="Users and Groups">
-		 * A client using a <see cref="Machine"/> is trying to access the system from an unknown URL.
+		 * A client using a {@link Machine} is trying to access the system from an unknown URL.
 		 */
 		referrerNotAllowed,
 
 		 *  <summary sort="File Hosting">
-		 *  <see cref="FormTemplate"/> not found.
+		 *  {@link FormTemplate} not found.
 		 */
 		formTemplateNotFound,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="FormTemplate"/> not deleted.
+		 *  {@link FormTemplate} not deleted.
 		 */
 		formTemplateNotDeleted,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="FormResult"/> not found.
+		 *  {@link FormResult} not found.
 		 */
 		formResultNotFound,
 		 *  <summary sort="File Hosting">
-		 *  <see cref="FormResult"/> not deleted.
+		 *  {@link FormResult} not deleted.
 		 */
 		formResultNotDeleted,
 		 *  <summary sort="File Hosting">
-		 * One or more <see cref="FormResult"/>s in the list not found.
+		 * One or more {@link FormResult}s in the list not found.
 		 */
 		formResultsListNotFound,
 
 		 *  <summary sort="Dispatch">
-		 *  <see cref="DispatchTemplate"/> not found.
+		 *  {@link DispatchTemplate} not found.
 		 */
 		dispatchTemplateNotFound,
 		 *  <summary sort="Dispatch">
-		 *  <see cref="DispatchTemplate"/> not deleted.
+		 *  {@link DispatchTemplate} not deleted.
 		 */
 		dispatchTemplateNotDeleted,
 		 *  <summary sort="Dispatch">
-		 *  <see cref="DispatchJob"/> not found.
+		 *  {@link DispatchJob} not found.
 		 */
 		dispatchJobNotFound,
 		 *  <summary sort="Dispatch">
-		 *  <see cref="DispatchJob"/> not deleted.
+		 *  {@link DispatchJob} not deleted.
 		 */
 		dispatchJobNotDeleted,
 		 *  <summary sort="File Hosting">
-		 * One or more <see cref="DispatchJob"/>s in the list not found.
+		 * One or more {@link DispatchJob}s in the list not found.
 		 */
 		dispatchJobsListNotFound,
 
 		 *  <summary sort="File Hosting">
-		 *  <see cref="FormTemplate"/> currently in use by one or more <see cref="FormResult"/>s.
-		 * In order to delete a <see cref="FormTemplate"/>, all <see cref="FormResult"/>s must first be expired or deleted.
+		 *  {@link FormTemplate} currently in use by one or more {@link FormResult}s.
+		 * In order to delete a {@link FormTemplate}, all {@link FormResult}s must first be expired or deleted.
 		 */
 		formTemplateInUse,
 	}

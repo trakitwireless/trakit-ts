@@ -1,21 +1,21 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="reportSchedules"/>.
+	 * A container for the requested {@link reportSchedules}.
 	 */
 	export abstract class RespReportScheduleList extends Response {
 		/**
-		 * The list of requested <see cref="ReportSchedule"/>s.
+		 * The list of requested {@link ReportSchedule}s.
 		 */
 		reportSchedules: ReportSchedule[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export class RespReportScheduleListByCompany extends RespReportScheduleList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

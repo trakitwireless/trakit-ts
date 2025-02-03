@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="behaviour"/> object.
+	 * A container for the {@link behaviour} object.
 	 */
 	export abstract class ReqBehaviour extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="Behaviour"/>.
+		 * An object to contain the "id" of the {@link Behaviour}.
 		 */
 		behaviour: ParamId;
 

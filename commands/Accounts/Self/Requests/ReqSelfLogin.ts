@@ -1,16 +1,16 @@
 ﻿
 
 	/**
-	 * A container class used to house the login identifying a <see cref="User"/>.
+	 * A container class used to house the login identifying a {@link User}.
 	 * Used specifically to get session details.
 	 */
 	export class ReqSelfLogin extends Request {
 		/**
-		 * The <see cref="User"/>'s login.
+		 * The {@link User}'s login.
 		 */
 		username: string = "";
 		/**
-		 * The <see cref="User"/>'s password.
+		 * The {@link User}'s password.
 		 */
 		password: string = "";
 		/**

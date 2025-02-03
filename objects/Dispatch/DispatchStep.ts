@@ -4,12 +4,12 @@
 
 
 	/**
-	 * A portion of work for a <see cref="DispatchJob"/>.
+	 * A portion of work for a {@link DispatchJob}.
 	 */
 	export class DispatchStep implements IIdUlong implements INamed {
 		/**
-		 * Identifier for this <see cref="DispatchStep"/>.
-		 * This value is unique per <see cref="DispatchJob"/>, but is not unique system-wide.
+		 * Identifier for this {@link DispatchStep}.
+		 * This value is unique per {@link DispatchJob}, but is not unique system-wide.
 		 */
 		id: ulong = NaN;
 		/**
@@ -44,7 +44,7 @@
 		 */
 		address: string = "";
 		/**
-		 * The lat/long coordinates of where the step must be <see cref="DispatchStepStatus.completed"/>.
+		 * The lat/long coordinates of where the step must be {@link DispatchStepStatus.completed}.
 		 */
 		latlng: LatLng;
 		/**

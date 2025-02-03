@@ -36,6 +36,7 @@ export const
 export const
 	OBJECT = Object,
 	KEYS = OBJECT.keys,
+	FREEZE = OBJECT.freeze,
 	JSON_PARSE = JSON.parse,
 	JSON_STRINGIFY = JSON.stringify;
 

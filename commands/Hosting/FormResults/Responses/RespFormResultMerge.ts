@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="formResult"/>.
+	 * A container for the {@link formResult}.
 	 */
 	export class RespFormResultMerge extends Response {
 		/**

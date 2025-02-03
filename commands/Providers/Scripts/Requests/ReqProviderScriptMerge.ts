@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="ProviderScript"/>.
+	 * Creates a new or updates an existing {@link ProviderScript}.
 	 */
 	export class ReqProviderScriptMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="ProviderScript"/>.
+		 * Parameters given to create or update a {@link ProviderScript}.
 		 */
 		providerScript: ParamProviderScriptMerge;
 

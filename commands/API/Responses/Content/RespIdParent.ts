@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the id and the requested/created <see cref="Company.parent"/>.
+	 * A container for the id and the requested/created {@link Company.parent}.
 	 */
 	export class RespIdParent extends RespId {
 		/**

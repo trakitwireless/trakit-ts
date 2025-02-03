@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="dispatchJobs"/>.
+	 * A container for the requested {@link dispatchJobs}.
 	 */
 	export abstract class RespDispatchJobList extends Response {
 		/**
-		 * The list of requested <see cref="DispatchJob"/>s.
+		 * The list of requested {@link DispatchJob}s.
 		 */
 		dispatchJobs: DispatchJob[] = [];
 	}
@@ -15,7 +15,7 @@
 	 */
 	export class RespDispatchJobListByAsset extends RespDispatchJobList implements IRespListByAsset {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		asset: RespId;
 	}
@@ -35,7 +35,7 @@
 	 */
 	export class RespDispatchJobListByCompany extends RespDispatchJobList implements IRespListByCompany {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
@@ -44,8 +44,8 @@
 	 */
 	export class RespDispatchJobListByCompanyAndLabels extends RespDispatchJobListByCompany implements IRespListByLabels {
 		/**
-		 * A list of <see cref="LabelStyle.code">label codes</see> used to match <see cref="DispatchJob"/>s.
-		 * All labels must match to include a <see cref="DispatchJob"/> in the result.
+		 * A list of {@link LabelStyle.code|label codes} used to match {@link DispatchJob}s.
+		 * All labels must match to include a {@link DispatchJob} in the result.
 		 */
 		labels: string[] = [];
 	}

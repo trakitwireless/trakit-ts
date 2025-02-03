@@ -1,19 +1,19 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="AssetDispatch"/>.
+	 * Gets details of the specified {@link AssetDispatch}.
 	 */
 	export class ReqAssetDispatchGet extends ReqAsset implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="AssetDispatch"/> (if it exists).
+		 * When true, the command will also return a deleted {@link AssetDispatch} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 		/**
-		 * When true, the command will also return <see cref="AssetDispatchMessage"/>s for the asset.
+		 * When true, the command will also return {@link AssetDispatchMessage}s for the asset.
 		 */
 		includeMessages: boolean = false;
 		/**
-		 * When true, the command will also return <see cref="DispatchTask"/>s for the asset.
+		 * When true, the command will also return {@link DispatchTask}s for the asset.
 		 */
 		includeTasks: boolean = false;
 	}

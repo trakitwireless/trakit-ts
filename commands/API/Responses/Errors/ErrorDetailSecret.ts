@@ -1,15 +1,15 @@
 
 
 	/**
-	 * Details about why the request failed an authentication process when a <see cref="Machine.secret"/> is used.
+	 * Details about why the request failed an authentication process when a {@link Machine.secret} is used.
 	 *  <remarks>
-	 * Only available for <see cref="Machine"/> accounts 		/**
+	 * Only available for {@link Machine} accounts 		/**
 	 * The time of the server from when the HTTP request was accepted.
 		 */
 		accepted: Date = DATE();
 
 		/**
-		 * The unique identifier given for the <see cref="Machine"/> to access the system.
+		 * The unique identifier given for the {@link Machine} to access the system.
 		 */
 		key: string = "";
 		/**
@@ -21,7 +21,7 @@
 		 */
 		date: string = "";
 		/**
-		 * The parsed <see cref="HttpMethod"/> (should be upper-case).
+		 * The parsed {@link HttpMethod} (should be upper-case).
 		 */
 		method: string = "";
 		/**

@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="AssetMessage"/>.
+	 * Creates a new or updates an existing {@link AssetMessage}.
 	 */
 	export class ReqAssetMessageMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="AssetMessage"/>.
+		 * Parameters given to create or update a {@link AssetMessage}.
 		 */
 		assetMessage: ParamAssetMessageMerge;
 

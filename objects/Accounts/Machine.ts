@@ -85,7 +85,7 @@ export interface IMachine {
 	/**
 	 * Restrict service access to only the provided IP ranges.
 	 * Currently we only support IPv4 ranges
-	 * When true, no access restrictions (<see cref="secret"/>, <see cref="referrers"/>, or <see cref="ipRanges"/>) are enforced.
+	 * When true, no access restrictions ({@link secret}, {@link referrers}, or {@link ipRanges}) are enforced.
 	 */
 	insecure: boolean;
 }
@@ -167,13 +167,13 @@ export class Machine extends Component implements IEnabled, IBelongCompany, IHav
 	/**
 	 * Restrict service access to only the provided IP ranges.
 	 * Currently we only support IPv4 ranges
-	 * When true, no access restrictions (<see cref="secret"/>, <see cref="referrers"/>, or <see cref="ipRanges"/>) are enforced.
+	 * When true, no access restrictions ({@link secret}, {@link referrers}, or {@link ipRanges}) are enforced.
 	 */
 	insecure: boolean;
 
 	// IRequestable
 	/**
-	 * The <see cref="key"/> is the key (how about that).
+	 * The {@link key} is the key (how about that).
 	 */
 	getKey(): string { return this.key; }
 

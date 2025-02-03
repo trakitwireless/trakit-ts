@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="MaintenanceJob"/>.
+	 * Gets details of the specified {@link MaintenanceJob}.
 	 */
 	export class ReqMaintenanceJobGet extends ReqMaintenanceJob implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="MaintenanceJob"/> (if it exists).
+		 * When true, the command will also return a deleted {@link MaintenanceJob} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

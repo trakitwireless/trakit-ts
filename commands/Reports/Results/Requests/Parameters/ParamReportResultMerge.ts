@@ -1,25 +1,25 @@
 
 
 	/**
-	 * Parameters used to create or update an <see cref="ReportResult"/>.
+	 * Parameters used to create or update an {@link ReportResult}.
 	 */
 	export class ParamReportResultMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="ReportResult"/> you want to update.
-		 * Leave this as <c>null</c> when creating a new <see cref="ReportResult"/>.
+		 * The unique identifier of the {@link ReportResult} you want to update.
+		 * Leave this as <c>null</c> when creating a new {@link ReportResult}.
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this <see cref="ReportResult"/> belongs.
+		 * The {@link Company} to which this {@link ReportResult} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
 		/**
-		 * Name for the <see cref="ReportResult"/>.
+		 * Name for the {@link ReportResult}.
 		 */
 		name: string = "";
 		/**
-		 * Notes for the <see cref="ReportResult"/>.
+		 * Notes for the {@link ReportResult}.
 		 */
 		notes: string = "";
 		/**
@@ -64,11 +64,11 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * A list of roles they play in the <see cref="Company"/>.
+		 * A list of roles they play in the {@link Company}.
 		 */
 		roles: string[] = [];
 		/**
-		 *  <see cref="Picture"/>s of this <see cref="ReportResult"/>.
+		 *  {@link Picture}s of this {@link ReportResult}.
 		 */
 		pictures: ulong[] = [];
 	}

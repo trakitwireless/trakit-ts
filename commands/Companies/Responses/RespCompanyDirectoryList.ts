@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="companyDirectorys"/>.
+	 * A container for the requested {@link companyDirectorys}.
 	 */
 	export abstract class RespCompanyDirectoryList extends Response {
 		/**
-		 * The list of requested <see cref="CompanyDirectory"/>s.
+		 * The list of requested {@link CompanyDirectory}s.
 		 */
 		companyDirectorys: CompanyDirectory[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyDirectoryListByCompany extends RespCompanyDirectoryList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyDirectoryListByCompanyAndLabels extends RespCompanyDirectoryListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyDirectoryListByCompanyAndRefPairs extends RespCompanyDirectoryListByCompany {
 		/**

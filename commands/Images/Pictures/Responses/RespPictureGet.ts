@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="picture"/>.
+	 * A container for the {@link picture}.
 	 */
 	export class RespPictureGet extends Response {
 		/**
-		 * The requested <see cref="Picture"/>.
+		 * The requested {@link Picture}.
 		 */
 		picture: Picture;
 	}

@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="document"/>.
+	 * A container for the {@link document}.
 	 */
 	export class RespDocumentMerge extends Response {
 		/**

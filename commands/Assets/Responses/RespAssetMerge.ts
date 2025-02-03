@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="asset"/>.
+	 * A container for the {@link asset}.
 	 */
 	export class RespAssetMerge extends Response {
 		/**

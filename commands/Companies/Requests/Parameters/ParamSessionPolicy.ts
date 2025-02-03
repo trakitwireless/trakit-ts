@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * Parameter values for creating a new or updating an existing <see cref="SessionPolicy"/>.
+	 * Parameter values for creating a new or updating an existing {@link SessionPolicy}.
 	 */
 	export class ParamSessionPolicy extends ParamMerge {
 		/**

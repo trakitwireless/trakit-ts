@@ -1,12 +1,12 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="providerConfiguration"/>.
+	 * A container for the {@link providerConfiguration}.
 	 * @deprecated Use RespProviderConfigGet instead
 	 */
 	export class RespProviderConfigurationGet extends Response {
 		/**
-		 * The requested <see cref="ProviderConfiguration"/>.
+		 * The requested {@link ProviderConfiguration}.
 		 */
 		providerConfiguration: ProviderConfiguration;
 	}

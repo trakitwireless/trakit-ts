@@ -4,25 +4,25 @@
 
 
 	/**
-	 * Parameters used to create or update an <see cref="Place"/>.
+	 * Parameters used to create or update an {@link Place}.
 	 */
 	export class ParamPlaceMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="Place"/> you want to update.
-		 * Leave this as <c>null</c> when creating a new <see cref="Place"/>.
+		 * The unique identifier of the {@link Place} you want to update.
+		 * Leave this as <c>null</c> when creating a new {@link Place}.
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this <see cref="Place"/> belongs.
+		 * The {@link Company} to which this {@link Place} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
 		/**
-		 * Name for the <see cref="Place"/>.
+		 * Name for the {@link Place}.
 		 */
 		name: string = "";
 		/**
-		 * Notes for the <see cref="Place"/>.
+		 * Notes for the {@link Place}.
 		 */
 		notes: string = "";
 		/**
@@ -67,11 +67,11 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * A list of roles they play in the <see cref="Company"/>.
+		 * A list of roles they play in the {@link Company}.
 		 */
 		roles: string[] = [];
 		/**
-		 *  <see cref="Picture"/>s of this <see cref="Place"/>.
+		 *  {@link Picture}s of this {@link Place}.
 		 */
 		pictures: ulong[] = [];
 	}

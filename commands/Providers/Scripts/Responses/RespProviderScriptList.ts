@@ -1,21 +1,21 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="providerScripts"/>.
+	 * A container for the requested {@link providerScripts}.
 	 */
 	export abstract class RespProviderScriptList extends Response {
 		/**
-		 * The list of requested <see cref="ProviderScript"/>s.
+		 * The list of requested {@link ProviderScript}s.
 		 */
 		providerScripts: ProviderScript[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export class RespProviderScriptListByCompany extends RespProviderScriptList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

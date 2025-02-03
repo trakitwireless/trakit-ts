@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="Company"/>.
+	 * Creates a new or updates an existing {@link Company}.
 	 */
 	export class ReqCompanyMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="Company"/>.
+		 * Parameters given to create or update a {@link Company}.
 		 */
 		company: ParamCompanyMerge;
 

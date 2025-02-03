@@ -1,25 +1,25 @@
 
 
 	/**
-	 * Parameters used to create or update an <see cref="AssetMessage"/>.
+	 * Parameters used to create or update an {@link AssetMessage}.
 	 */
 	export class ParamAssetMessageMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="AssetMessage"/> you want to update.
-		 * Leave this as <c>null</c> when creating a new <see cref="AssetMessage"/>.
+		 * The unique identifier of the {@link AssetMessage} you want to update.
+		 * Leave this as <c>null</c> when creating a new {@link AssetMessage}.
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this <see cref="AssetMessage"/> belongs.
+		 * The {@link Company} to which this {@link AssetMessage} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
 		/**
-		 * Name for the <see cref="AssetMessage"/>.
+		 * Name for the {@link AssetMessage}.
 		 */
 		name: string = "";
 		/**
-		 * Notes for the <see cref="AssetMessage"/>.
+		 * Notes for the {@link AssetMessage}.
 		 */
 		notes: string = "";
 		/**
@@ -64,11 +64,11 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * A list of roles they play in the <see cref="Company"/>.
+		 * A list of roles they play in the {@link Company}.
 		 */
 		roles: string[] = [];
 		/**
-		 *  <see cref="Picture"/>s of this <see cref="AssetMessage"/>.
+		 *  {@link Picture}s of this {@link AssetMessage}.
 		 */
 		pictures: ulong[] = [];
 	}

@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="ProviderScript"/>.
+	 * Gets details of the specified {@link ProviderScript}.
 	 */
 	export class ReqProviderScriptGet extends ReqProviderScript implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="ProviderScript"/> (if it exists).
+		 * When true, the command will also return a deleted {@link ProviderScript} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

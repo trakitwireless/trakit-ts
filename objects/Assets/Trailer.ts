@@ -2,7 +2,7 @@
 
 
 	/**
-	 * The full details of a Trailer, containing all the properties from the <see cref="TrailerGeneral"/> and <see cref="AssetAdvanced"/> objects.
+	 * The full details of a Trailer, containing all the properties from the {@link TrailerGeneral} and {@link AssetAdvanced} objects.
 	 */
 	export class Trailer extends Asset {
 		/**

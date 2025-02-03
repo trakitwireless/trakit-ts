@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="providerScript"/> object.
+	 * A container for the {@link providerScript} object.
 	 */
 	export abstract class ReqProviderScript extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="ProviderScript"/>.
+		 * An object to contain the "id" of the {@link ProviderScript}.
 		 */
 		providerScript: ParamId;
 

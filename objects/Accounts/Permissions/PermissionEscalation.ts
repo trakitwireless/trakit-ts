@@ -1,4 +1,7 @@
-﻿
+﻿import { ulong } from "../../API/Types";
+import { PermissionLevel } from "./PermissionLevel";
+import { PermissionType } from "./PermissionType";
+
 	/**
 	 * Definition for the kinds of permission escalations.
 	 */
@@ -13,8 +16,8 @@
 		horizontal = "horizontal",
 	}
 	/**
-	 * Used to throw permission escalation exceptions, this is similar to a <see cref="Permission"/>,
-	 * but defines a <see cref="before"/> and <see cref="after"/> for a proposed change.
+	 * Used to throw permission escalation exceptions, this is similar to a {@link Permission},
+	 * but defines a {@link before} and {@link after} for a proposed change.
 	 */
 	export class PermissionEscalation {
 		/**
@@ -22,7 +25,7 @@
 		 */
 		direction: PermissionEscalationType;
 		/**
-		 * The <see cref="Company"/> that this permission targets.
+		 * The {@link Company} that this permission targets.
 		 * {@link Company.id}
 		 */
 		company: ulong = NaN;
@@ -49,7 +52,7 @@
 		 */
 		level?: PermissionLevel;
 		/**
-		 * Codified names of <see cref="LabelStyle"/>s.
+		 * Codified names of {@link LabelStyle}s.
 		 * If list is empty, this permission applies for all labels.
 		 *  <override>
 		 *  <values format="codified">

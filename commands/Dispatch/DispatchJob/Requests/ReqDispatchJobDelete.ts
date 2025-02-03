@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="DispatchJob"/>.
+	 * Deletes an existing {@link DispatchJob}.
 	 */
 	export class ReqDispatchJobDelete extends ReqDispatchJob { }

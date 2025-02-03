@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="companyDirectory"/>.
+	 * A container for the {@link companyDirectory}.
 	 */
 	export class RespCompanyDirectoryGet extends Response {
 		/**
-		 * The requested <see cref="CompanyDirectory"/>.
+		 * The requested {@link CompanyDirectory}.
 		 */
 		companyDirectory: CompanyDirectory;
 	}

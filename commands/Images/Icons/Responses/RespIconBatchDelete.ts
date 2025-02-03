@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="icon"/>.
+	 * A container for the {@link icon}.
 	 */
 	export class RespIconBatchDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="Icon"/>.
+		 * Details about deleting/restoring the requested {@link Icon}.
 		 */
 		icons: RespIdDeleted[] = [];
 	}

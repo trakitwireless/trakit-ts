@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="formTemplate"/>.
+	 * A container for the {@link formTemplate}.
 	 */
 	export class RespFormTemplateMerge extends Response {
 		/**

@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="companyPolicies"/>.
+	 * A container for the {@link companyPolicies}.
 	 */
 	export class RespCompanyPoliciesGet extends Response {
 		/**
-		 * The requested <see cref="CompanyPolicies"/>.
+		 * The requested {@link CompanyPolicies}.
 		 */
 		companyPolicies: CompanyPolicies;
 	}

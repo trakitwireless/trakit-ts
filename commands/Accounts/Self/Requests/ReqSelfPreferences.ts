@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * Allows a session <see cref="User"/> to change their own preferences.
+	 * Allows a session {@link User} to change their own preferences.
 	 */
 	export class ReqSelfPreferences extends Request {
 		/**
@@ -10,12 +10,12 @@
 		 */
 		language: string = "";
 		/**
-		 * Your local <see cref="Timezone"/> used to calculate times.
+		 * Your local {@link Timezone} used to calculate times.
 		 * {@link Timezone.code}
 		 */
 		timezone: TimeZoneInfo;
 		/**
-		 * List of <see cref="UserNotifications"/> preferences.
+		 * List of {@link UserNotifications} preferences.
 		 * Please note that active times cannot overlap.
 		 */
 		notify: UserNotifications[] = [];

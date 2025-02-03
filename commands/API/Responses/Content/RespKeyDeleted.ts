@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * For delete/restore commands, this contains the <see cref="Machine.key"/>, version keys, owning <see cref="Company.id"/>, and deleted state.
+	 * For delete/restore commands, this contains the {@link Machine.key}, version keys, owning {@link Company.id}, and deleted state.
 	 */
 	export class RespKeyDeleted extends RespKeyCompany {
 		/**

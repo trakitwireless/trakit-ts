@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Terminates a <see cref="Session"/> and forces the <see cref="User"/> to log back in.
+	 * Terminates a {@link Session} and forces the {@link User} to log back in.
 	 */
 	export class ReqSessionDelete extends ReqSessionGet { }

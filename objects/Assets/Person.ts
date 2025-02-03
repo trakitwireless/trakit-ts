@@ -2,7 +2,7 @@
 
 
 	/**
-	 * The full details of a Person, containing all the properties from the <see cref="PersonGeneral"/> and <see cref="AssetAdvanced"/> objects.
+	 * The full details of a Person, containing all the properties from the {@link PersonGeneral} and {@link AssetAdvanced} objects.
 	 */
 	export class Person extends Asset {
 		/**

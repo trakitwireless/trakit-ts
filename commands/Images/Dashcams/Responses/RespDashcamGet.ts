@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="dashcam"/>.
+	 * A container for the {@link dashcam}.
 	 */
 	export class RespDashcamGet extends Response {
 		/**
-		 * The requested <see cref="Dashcam"/>.
+		 * The requested {@link Dashcam}.
 		 */
 		dashcam: Dashcam;
 	}

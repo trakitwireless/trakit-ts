@@ -1,10 +1,10 @@
 ﻿
 	/**
-	 * For delete/restore commands, this contains the id, owning <see cref="Company.parent"/>, and deleted state.
+	 * For delete/restore commands, this contains the id, owning {@link Company.parent}, and deleted state.
 	 */
 	export class RespParentDeleted extends RespId {
 		/**
-		 * Identifier of the <see cref="Company">parent</see> to which the <see cref="Company"/> is a child.
+		 * Identifier of the {@link Company|parent} to which the {@link Company} is a child.
 		 */
 		parent: ulong = NaN;
 		/**

@@ -13,21 +13,21 @@
 		 */
 		kind: DashcamMediaType;
 		/**
-		 * For <see cref="DashcamMediaType.video"/> media files, this indicates the frames-per-second.
+		 * For {@link DashcamMediaType.video} media files, this indicates the frames-per-second.
 		 */
 		fps: float = NaN;
 		/**
 		 * Timestamp of when this resource started.
-		 * For <see cref="DashcamMediaType.image"/> media files, the start and end are the same.
+		 * For {@link DashcamMediaType.image} media files, the start and end are the same.
 		 */
 		start: Date = DATE();
 		/**
 		 * Timestamp of when this resource ended.
-		 * For <see cref="DashcamMediaType.image"/> media files, the start and end are the same.
+		 * For {@link DashcamMediaType.image} media files, the start and end are the same.
 		 */
 		end: Date = DATE();
 		/**
-		 * For <see cref="DashcamMediaType.video"/> media files, the duration of the video clip.
+		 * For {@link DashcamMediaType.video} media files, the duration of the video clip.
 		 */
 		get duration(): TimeSpan { return this.end - this.start; }
 		/**
@@ -37,7 +37,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="guid"/> is the key.
+		 * The {@link guid} is the key.
 		 */
 public getKey(): string { return this.guid.toString(); }
 	}

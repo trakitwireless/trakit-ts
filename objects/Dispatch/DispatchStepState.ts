@@ -2,7 +2,7 @@
 
 
 	/**
-	 * Details about the lifetime of a <see cref="DispatchStep"/>.
+	 * Details about the lifetime of a {@link DispatchStep}.
 	 */
 	export class DispatchStepState {
 		/**
@@ -10,7 +10,7 @@
 		 */
 		updated: Date = DATE();
 		/**
-		 * The coordinates from the <see cref="Asset"/> when the update happened.
+		 * The coordinates from the {@link Asset} when the update happened.
 		 */
 		latlng: LatLng;
 	}

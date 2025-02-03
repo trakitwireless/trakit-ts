@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="companyReseller"/>.
+	 * A container for the {@link companyReseller}.
 	 */
 	export class RespCompanyResellerGet extends Response {
 		/**
-		 * The requested <see cref="CompanyReseller"/>.
+		 * The requested {@link CompanyReseller}.
 		 */
 		companyReseller: CompanyReseller;
 	}

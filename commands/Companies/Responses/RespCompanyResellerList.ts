@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="companyResellers"/>.
+	 * A container for the requested {@link companyResellers}.
 	 */
 	export abstract class RespCompanyResellerList extends Response {
 		/**
-		 * The list of requested <see cref="CompanyReseller"/>s.
+		 * The list of requested {@link CompanyReseller}s.
 		 */
 		companyResellers: CompanyReseller[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyResellerListByCompany extends RespCompanyResellerList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyResellerListByCompanyAndLabels extends RespCompanyResellerListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespCompanyResellerListByCompanyAndRefPairs extends RespCompanyResellerListByCompany {
 		/**

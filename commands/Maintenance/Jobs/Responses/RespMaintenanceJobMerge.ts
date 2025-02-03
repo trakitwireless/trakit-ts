@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="maintenanceJob"/>.
+	 * A container for the {@link maintenanceJob}.
 	 */
 	export class RespMaintenanceJobMerge extends Response {
 		/**

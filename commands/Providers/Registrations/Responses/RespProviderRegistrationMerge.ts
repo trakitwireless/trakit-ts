@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="providerRegistration"/>.
+	 * A container for the {@link providerRegistration}.
 	 */
 	export class RespProviderRegistrationMerge extends Response {
 		/**

@@ -53,7 +53,7 @@
 
 		// IRequestable
 		/**
-		 * For dashcams, this is either a unique identifier, or a combination of the <see cref="asset"/>, <see cref="provider"/>, and <see cref="camera"/> values.
+		 * For dashcams, this is either a unique identifier, or a combination of the {@link asset}, {@link provider}, and {@link camera} values.
 		 *  <returns>A string unique for this type of object.</returns>
 		 */
 		abstract string GetKey();

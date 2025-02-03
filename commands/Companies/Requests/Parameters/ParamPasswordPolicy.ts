@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * Parameter values for creating a new or updating an existing <see cref="PasswordPolicy"/>.
+	 * Parameter values for creating a new or updating an existing {@link PasswordPolicy}.
 	 */
 	export class ParamPasswordPolicy extends ParamMerge {
 		/**

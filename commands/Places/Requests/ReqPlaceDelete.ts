@@ -2,6 +2,6 @@
 
 
 	/**
-	 * Deletes an existing <see cref="Place"/>.
+	 * Deletes an existing {@link Place}.
 	 */
 	export class ReqPlaceDelete extends ReqPlace { }

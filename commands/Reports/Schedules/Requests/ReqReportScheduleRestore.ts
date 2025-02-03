@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="ReportSchedule"/>.
+	 * Restores a deleted {@link ReportSchedule}.
 	 */
 	export class ReqReportScheduleRestore extends ReqReportSchedule { }

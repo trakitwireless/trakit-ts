@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="assetMessage"/>.
+	 * A container for the {@link assetMessage}.
 	 */
 	export class RespAssetMessageMerge extends Response {
 		/**

@@ -2,11 +2,11 @@
 
 
 	/**
-	 * A container for the <see cref="formTemplate"/>.
+	 * A container for the {@link formTemplate}.
 	 */
 	export class RespFormTemplateDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="FormTemplate"/>.
+		 * Details about deleting/restoring the requested {@link FormTemplate}.
 		 */
 		formTemplate: RespIdDeleted;
 	}

@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="providerControl"/>.
+	 * A container for the {@link providerControl}.
 	 */
 	export class RespProviderControlGet extends Response {
 		/**
-		 * The requested <see cref="ProviderControl"/>.
+		 * The requested {@link ProviderControl}.
 		 */
 		providerControl: ProviderControl;
 	}

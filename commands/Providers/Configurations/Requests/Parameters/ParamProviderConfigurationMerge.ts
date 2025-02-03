@@ -1,26 +1,26 @@
 
 
 	/**
-	 * Parameters used to create or update an <see cref="ProviderConfiguration"/>.
+	 * Parameters used to create or update an {@link ProviderConfiguration}.
 	 * @deprecated Use ParamProviderConfigMerge instead
 	 */
 	export class ParamProviderConfigurationMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="ProviderConfiguration"/> you want to update.
-		 * Leave this as <c>null</c> when creating a new <see cref="ProviderConfiguration"/>.
+		 * The unique identifier of the {@link ProviderConfiguration} you want to update.
+		 * Leave this as <c>null</c> when creating a new {@link ProviderConfiguration}.
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this <see cref="ProviderConfiguration"/> belongs.
+		 * The {@link Company} to which this {@link ProviderConfiguration} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
 		/**
-		 * Name for the <see cref="ProviderConfiguration"/>.
+		 * Name for the {@link ProviderConfiguration}.
 		 */
 		name: string = "";
 		/**
-		 * Notes for the <see cref="ProviderConfiguration"/>.
+		 * Notes for the {@link ProviderConfiguration}.
 		 */
 		notes: string = "";
 		/**
@@ -65,11 +65,11 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * A list of roles they play in the <see cref="Company"/>.
+		 * A list of roles they play in the {@link Company}.
 		 */
 		roles: string[] = [];
 		/**
-		 *  <see cref="Picture"/>s of this <see cref="ProviderConfiguration"/>.
+		 *  {@link Picture}s of this {@link ProviderConfiguration}.
 		 */
 		pictures: ulong[] = [];
 	}

@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="Provider"/>.
+	 * Restores a deleted {@link Provider}.
 	 */
 	export class ReqProviderRestore extends ReqProvider { }

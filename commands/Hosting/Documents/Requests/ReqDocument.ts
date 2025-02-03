@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="document"/> object.
+	 * A container for the {@link document} object.
 	 */
 	export abstract class ReqDocument extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="Document"/>.
+		 * An object to contain the "id" of the {@link Document}.
 		 */
 		document: ParamId;
 

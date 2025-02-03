@@ -2,11 +2,11 @@
 
 
 	/**
-	 * A container for the <see cref="formResult"/> object.
+	 * A container for the {@link formResult} object.
 	 */
 	export abstract class ReqFormResult extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="FormResult"/>.
+		 * An object to contain the "id" of the {@link FormResult}.
 		 */
 		formResult: ParamId;
 

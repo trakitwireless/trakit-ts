@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates multiple new, or updates multiple existing <see cref="DispatchJob"/>s.
+	 * Creates multiple new, or updates multiple existing {@link DispatchJob}s.
 	 */
 	export class ReqDispatchJobBatchMerge extends Request {
 		/**
-		 * List of <see cref="DispatchJob"/>s to update or create.
+		 * List of {@link DispatchJob}s to update or create.
 		 */
 		dispatchJobs: ParamDispatchJobMerge[] = [];
 	}

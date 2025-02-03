@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="ReportSchedule"/>.
+	 * Deletes an existing {@link ReportSchedule}.
 	 */
 	export class ReqReportScheduleDelete extends ReqReportSchedule { }

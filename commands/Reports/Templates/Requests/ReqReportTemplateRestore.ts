@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="ReportTemplate"/>.
+	 * Restores a deleted {@link ReportTemplate}.
 	 */
 	export class ReqReportTemplateRestore extends ReqReportTemplate { }

@@ -26,7 +26,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="login"/> is the key.
+		 * The {@link login} is the key.
 		 */
 public getKey(): string { return this.login; }
 	}

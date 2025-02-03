@@ -1,25 +1,25 @@
 
 
 	/**
-	 * Parameters used to create or update an <see cref="Document"/>.
+	 * Parameters used to create or update an {@link Document}.
 	 */
 	export class ParamDocumentMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="Document"/> you want to update.
-		 * Leave this as <c>null</c> when creating a new <see cref="Document"/>.
+		 * The unique identifier of the {@link Document} you want to update.
+		 * Leave this as <c>null</c> when creating a new {@link Document}.
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this <see cref="Document"/> belongs.
+		 * The {@link Company} to which this {@link Document} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
 		/**
-		 * Name for the <see cref="Document"/>.
+		 * Name for the {@link Document}.
 		 */
 		name: string = "";
 		/**
-		 * Notes for the <see cref="Document"/>.
+		 * Notes for the {@link Document}.
 		 */
 		notes: string = "";
 		/**
@@ -64,11 +64,11 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * A list of roles they play in the <see cref="Company"/>.
+		 * A list of roles they play in the {@link Company}.
 		 */
 		roles: string[] = [];
 		/**
-		 *  <see cref="Picture"/>s of this <see cref="Document"/>.
+		 *  {@link Picture}s of this {@link Document}.
 		 */
 		pictures: ulong[] = [];
 	}

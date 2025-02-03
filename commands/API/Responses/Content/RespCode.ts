@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * A container for the id of the <see cref="ProviderRegistration"/> requested/created.
+	 * A container for the id of the {@link ProviderRegistration} requested/created.
 	 */
 	export class RespCode {
 		/**

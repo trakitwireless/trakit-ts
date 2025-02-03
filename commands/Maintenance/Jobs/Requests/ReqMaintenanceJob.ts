@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="maintenanceJob"/> object.
+	 * A container for the {@link maintenanceJob} object.
 	 */
 	export abstract class ReqMaintenanceJob extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="MaintenanceJob"/>.
+		 * An object to contain the "id" of the {@link MaintenanceJob}.
 		 */
 		maintenanceJob: ParamId;
 

@@ -46,7 +46,7 @@ export class Timezone implements IRequestable, ISerializable {
 	}
 
 	/**
-	 * The <see cref="code"/> is the key.
+	 * The {@link code} is the key.
 	 */
 	getKey(): string { return this.code; }
 }

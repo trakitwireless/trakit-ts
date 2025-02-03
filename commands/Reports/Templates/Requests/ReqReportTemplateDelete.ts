@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="ReportTemplate"/>.
+	 * Deletes an existing {@link ReportTemplate}.
 	 */
 	export class ReqReportTemplateDelete extends ReqReportTemplate { }

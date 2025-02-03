@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="machine"/> object.
+	 * A container for the {@link machine} object.
 	 */
 	export abstract class ReqMachine extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="Machine"/>.
+		 * An object to contain the "id" of the {@link Machine}.
 		 */
 		machine: ParamKey;
 

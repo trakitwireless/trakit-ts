@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="dispatchJob"/>.
+	 * A container for the {@link dispatchJob}.
 	 */
 	export class RespDispatchJobMerge extends Response {
 		/**

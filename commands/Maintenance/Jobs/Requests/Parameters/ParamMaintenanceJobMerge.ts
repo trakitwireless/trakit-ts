@@ -1,25 +1,25 @@
 
 
 	/**
-	 * Parameters used to create or update an <see cref="MaintenanceJob"/>.
+	 * Parameters used to create or update an {@link MaintenanceJob}.
 	 */
 	export class ParamMaintenanceJobMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="MaintenanceJob"/> you want to update.
-		 * Leave this as <c>null</c> when creating a new <see cref="MaintenanceJob"/>.
+		 * The unique identifier of the {@link MaintenanceJob} you want to update.
+		 * Leave this as <c>null</c> when creating a new {@link MaintenanceJob}.
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this <see cref="MaintenanceJob"/> belongs.
+		 * The {@link Company} to which this {@link MaintenanceJob} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
 		/**
-		 * Name for the <see cref="MaintenanceJob"/>.
+		 * Name for the {@link MaintenanceJob}.
 		 */
 		name: string = "";
 		/**
-		 * Notes for the <see cref="MaintenanceJob"/>.
+		 * Notes for the {@link MaintenanceJob}.
 		 */
 		notes: string = "";
 		/**
@@ -64,11 +64,11 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * A list of roles they play in the <see cref="Company"/>.
+		 * A list of roles they play in the {@link Company}.
 		 */
 		roles: string[] = [];
 		/**
-		 *  <see cref="Picture"/>s of this <see cref="MaintenanceJob"/>.
+		 *  {@link Picture}s of this {@link MaintenanceJob}.
 		 */
 		pictures: ulong[] = [];
 	}

@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="Picture"/>.
+	 * Deletes an existing {@link Picture}.
 	 */
 	export class ReqPictureDelete extends ReqPicture { }

@@ -1,10 +1,10 @@
 ﻿
 	/**
-	 * A container for the <see cref="User"/> login and owning <see cref="Company.id"/> of the user requested/created.
+	 * A container for the {@link User} login and owning {@link Company.id} of the user requested/created.
 	 */
 	export class RespLoginCompany extends RespLogin {
 		/**
-		 * Identifier of the <see cref="Company"/> to which the <see cref="User"/> belongs.
+		 * Identifier of the {@link Company} to which the {@link User} belongs.
 		 */
 		company: ulong = NaN;
 	}

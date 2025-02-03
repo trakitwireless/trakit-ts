@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="MaintenanceSchedule"/>.
+	 * Creates a new or updates an existing {@link MaintenanceSchedule}.
 	 */
 	export class ReqMaintenanceScheduleMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="MaintenanceSchedule"/>.
+		 * Parameters given to create or update a {@link MaintenanceSchedule}.
 		 */
 		maintenanceSchedule: ParamMaintenanceScheduleMerge;
 

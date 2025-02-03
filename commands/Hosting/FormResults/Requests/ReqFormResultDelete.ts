@@ -2,6 +2,6 @@
 
 
 	/**
-	 * Deletes an existing <see cref="FormResult"/>.
+	 * Deletes an existing {@link FormResult}.
 	 */
 	export class ReqFormResultDelete extends ReqFormResult { }

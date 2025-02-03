@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="ProviderConfig"/>.
+	 * Creates a new or updates an existing {@link ProviderConfig}.
 	 */
 	export class ReqProviderConfigMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="ProviderConfig"/>.
+		 * Parameters given to create or update a {@link ProviderConfig}.
 		 */
 		providerConfig: ParamProviderConfigMerge;
 

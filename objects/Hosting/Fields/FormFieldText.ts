@@ -4,7 +4,7 @@
 	 */
 	export class FormFieldText extends FormFieldBase {
 		/**
-		 * Just <see cref="FormFieldType.text"/> control type.
+		 * Just {@link FormFieldType.text} control type.
 		 */
 		protected override FormFieldType[] supported => new[] {
 			FormFieldType.text,

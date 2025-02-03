@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="User"/>.
+	 * Restores a deleted {@link User}.
 	 */
 	export class ReqUserRestore extends ReqUser { }

@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="Contact"/>.
+	 * Creates a new or updates an existing {@link Contact}.
 	 */
 	export class ReqContactMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="Contact"/>.
+		 * Parameters given to create or update a {@link Contact}.
 		 */
 		contact: ParamContactMerge;
 

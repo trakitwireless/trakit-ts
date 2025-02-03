@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="dispatchTask"/>.
+	 * A container for the {@link dispatchTask}.
 	 */
 	export class RespDispatchTaskBatchDeleted extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="DispatchTask"/>.
+		 * Details about deleting/restoring the requested {@link DispatchTask}.
 		 */
 		dispatchTasks: RespIdDeleted[] = [];
 	}

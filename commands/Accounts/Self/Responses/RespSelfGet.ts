@@ -1,7 +1,7 @@
 
 
 	/**
-	 * A container for the <see cref="User"/> or <see cref="Machine"/> of the current session.
+	 * A container for the {@link User} or {@link Machine} of the current session.
 	 */
 	export class RespSelfGet extends Response {
 		/**
@@ -13,21 +13,21 @@
 		 */
 		expiry: Date = DATE();
 		/**
-		 * This session's <see cref="User"/> details (if the service is being used by a <see cref="User"/>).
+		 * This session's {@link User} details (if the service is being used by a {@link User}).
 		 * If this value is not present, then the session is not yet authenticated.
 		 */
 		user: SelfUser;
 		/**
-		 * This <see cref="Machine"/>'s details (if the service is being used by a <see cref="Machine"/>).
+		 * This {@link Machine}'s details (if the service is being used by a {@link Machine}).
 		 * If this value is not present, then the session is not a machine account.
 		 */
 		machine: SelfMachine;
 		/**
-		 * This <see cref="User"/>'s <see cref="CompanyPolicies.sessionPolicy"/>.
+		 * This {@link User}'s {@link CompanyPolicies.sessionPolicy}.
 		 */
 		sessionPolicy: SessionPolicy;
 		/**
-		 * This <see cref="User"/>'s <see cref="CompanyPolicies.passwordPolicy"/>.
+		 * This {@link User}'s {@link CompanyPolicies.passwordPolicy}.
 		 */
 		passwordPolicy: PasswordPolicy;
 		/**

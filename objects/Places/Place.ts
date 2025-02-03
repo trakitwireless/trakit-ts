@@ -7,13 +7,13 @@
 	 */
 	/**
 	 * A central point of the shape.
-	 * This is the exact centre of a <see cref="PlaceType.radial"/> and <see cref="PlaceType.point"/> shaped places, and the location of the pin on the map for all types.
-	 * When routing, <see cref="PlaceType.polygon"/> and <see cref="PlaceType.rectangle"/> shapes use the anchor as the location within the place for deliveries.
+	 * This is the exact centre of a {@link PlaceType.radial} and {@link PlaceType.point} shaped places, and the location of the pin on the map for all types.
+	 * When routing, {@link PlaceType.polygon} and {@link PlaceType.rectangle} shapes use the anchor as the location within the place for deliveries.
 	 *  </property>
 	 *  <property name="radius" type="System.Double" nullable="true">
 	 */
 	/**
-	 * This member is only present for <see cref="PlaceType.radial"/> shapes, and is the radius in meters from the centre anchor.
+	 * This member is only present for {@link PlaceType.radial} shapes, and is the radius in meters from the centre anchor.
 	 *  </property>
 	 *  </override>
 	 */
@@ -94,7 +94,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

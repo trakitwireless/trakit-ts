@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="asset"/> object.
+	 * A container for the {@link asset} object.
 	 */
 	export abstract class ReqAsset extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="Asset"/>.
+		 * An object to contain the "id" of the {@link Asset}.
 		 */
 		asset: ParamId;
 

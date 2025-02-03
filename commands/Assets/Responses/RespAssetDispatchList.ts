@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="assetDispatches"/>.
+	 * A container for the requested {@link assetDispatches}.
 	 */
 	export abstract class RespAssetDispatchList extends Response {
 		/**
-		 * The list of requested <see cref="AssetDispatch"/>es.
+		 * The list of requested {@link AssetDispatch}es.
 		 */
 		assetDispatches: AssetDispatch[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetDispatchListByCompany extends RespAssetDispatchList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetDispatchListByCompanyAndLabels extends RespAssetDispatchListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespAssetDispatchListByCompanyAndRefPairs extends RespAssetDispatchListByCompany {
 		/**

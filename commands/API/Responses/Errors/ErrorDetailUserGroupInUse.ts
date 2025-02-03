@@ -1,10 +1,10 @@
 ﻿
 	/**
-	 * Details for how many and which <see cref="User"/>s are still in the <see cref="UserGroup"/>.
+	 * Details for how many and which {@link User}s are still in the {@link UserGroup}.
 	 */
 	export class ErrorDetailUserGroupInUse extends ErrorDetail {
 		/**
-		 * A list of <see cref="User"/>s currently being referenced.
+		 * A list of {@link User}s currently being referenced.
 		 */
 		users: string[] = [];
 	}

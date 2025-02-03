@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="DispatchJob"/>.
+	 * Creates a new or updates an existing {@link DispatchJob}.
 	 */
 	export class ReqDispatchJobMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="DispatchJob"/>.
+		 * Parameters given to create or update a {@link DispatchJob}.
 		 */
 		dispatchJob: ParamDispatchJobMerge;
 

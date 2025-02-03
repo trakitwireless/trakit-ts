@@ -6,7 +6,7 @@
 	 */
 	export class FormFieldChoice extends FormFieldBase {
 		/**
-		 * Just <see cref="FormFieldType.choice"/> control type.
+		 * Just {@link FormFieldType.choice} control type.
 		 */
 		protected override FormFieldType[] supported => new[] {
 			FormFieldType.choice,

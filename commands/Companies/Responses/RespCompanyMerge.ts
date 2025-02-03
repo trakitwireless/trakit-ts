@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="company"/>.
+	 * A container for the {@link company}.
 	 */
 	export class RespCompanyMerge extends Response {
 		/**

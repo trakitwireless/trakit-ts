@@ -1,23 +1,23 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="providerConfigurations"/>.
+	 * A container for the requested {@link providerConfigurations}.
 	 * @deprecated Use RespProviderConfigList instead
 	 */
 	export abstract class RespProviderConfigurationList extends Response {
 		/**
-		 * The list of requested <see cref="ProviderConfiguration"/>s.
+		 * The list of requested {@link ProviderConfiguration}s.
 		 */
 		providerConfigurations: ProviderConfiguration[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 * @deprecated Use RespProviderConfigListByCompany instead
 	 */
 	export class RespProviderConfigurationListByCompany extends RespProviderConfigurationList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

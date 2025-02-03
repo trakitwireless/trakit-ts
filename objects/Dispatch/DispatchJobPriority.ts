@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A value assigned to <see cref="DispatchJob"/>s in order to weigh them when optimizing a route.
+	 * A value assigned to {@link DispatchJob}s in order to weigh them when optimizing a route.
 	 */
 	export enum DispatchJobPriority {
 		/**

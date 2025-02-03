@@ -3,7 +3,7 @@
 */
 export interface IBelongCompany {
 	/**
-	 * The <see cref="Company"/> to which this object belongs.
+	 * The {@link Company} to which this object belongs.
 	 */
 	company: number;
 }

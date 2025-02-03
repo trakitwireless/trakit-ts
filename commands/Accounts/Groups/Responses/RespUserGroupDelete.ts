@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="userGroup"/>.
+	 * A container for the {@link userGroup}.
 	 */
 	export class RespUserGroupDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="UserGroup"/>.
+		 * Details about deleting/restoring the requested {@link UserGroup}.
 		 */
 		userGroup: RespIdDeleted;
 	}

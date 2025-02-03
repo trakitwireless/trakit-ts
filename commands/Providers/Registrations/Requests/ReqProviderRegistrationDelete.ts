@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="ProviderRegistration"/>.
+	 * Deletes an existing {@link ProviderRegistration}.
 	 */
 	export class ReqProviderRegistrationDelete extends ReqProviderRegistration { }

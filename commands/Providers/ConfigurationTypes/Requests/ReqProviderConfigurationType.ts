@@ -1,12 +1,12 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="providerConfigurationType"/> object.
+	 * A container for the {@link providerConfigurationType} object.
 	 * @deprecated Use ReqProviderScript instead
 	 */
 	export abstract class ReqProviderConfigurationType extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="ProviderConfigurationType"/>.
+		 * An object to contain the "id" of the {@link ProviderConfigurationType}.
 		 */
 		providerConfigurationType: ParamId;
 

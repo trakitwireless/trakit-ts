@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * The supported types of user interface modules for a <see cref="FormTemplate"/>.
+	 * The supported types of user interface modules for a {@link FormTemplate}.
 	 */
 	export enum FormFieldType {
 		/**
@@ -15,7 +15,7 @@
 		choice,
 		/**
 		 * A drop-down or fly-out UI for choosing a single value.
-		 * Works better than <see cref="choice"/> when there are a lot of values. ie; country or province list.
+		 * Works better than {@link choice} when there are a lot of values. ie; country or province list.
 		 * {@link FormFieldChoice}
 		 */
 		dropdown,
@@ -42,42 +42,42 @@
 		 */
 		range,
 		/**
-		 * A numeric value of distance (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of distance (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		distance,
 		/**
-		 * A numeric value of area (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of area (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		area,
 		/**
-		 * A numeric value of temperature (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of temperature (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		temperature,
 		/**
-		 * A numeric value of weight (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of weight (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		weight,
 		/**
-		 * A numeric value of volume (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of volume (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		volume,
 		/**
-		 * A numeric value of pressure (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of pressure (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		pressure,
 		/**
-		 * A numeric value of speed (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of speed (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		speed,
 		/**
-		 * A numeric value of fuel economy (for easy conversion between <see cref="SystemsOfUnits.metric"/> and <see cref="SystemsOfUnits.standard"/>).
+		 * A numeric value of fuel economy (for easy conversion between {@link SystemsOfUnits.metric} and {@link SystemsOfUnits.standard}).
 		 * {@link FormFieldNumeric}
 		 */
 		fuelEconomy,
@@ -104,7 +104,7 @@
 		time,
 		/**
 		 * A duration picker.
-		 * Different than <see cref="time"/> because a duration can be negative, or longer than 24 hours.
+		 * Different than {@link time} because a duration can be negative, or longer than 24 hours.
 		 * {@link FormFieldTime}
 		 */
 		duration,
@@ -115,17 +115,17 @@
 		 */
 		signature,
 		/**
-		 * A browser of <see cref="Picture"/>s that can be attached.
+		 * A browser of {@link Picture}s that can be attached.
 		 * {@link FormFieldAttachments}
 		 */
 		pictures,
 		/**
-		 * A browser of <see cref="Document"/>s that can be attached.
+		 * A browser of {@link Document}s that can be attached.
 		 * {@link FormFieldAttachments}
 		 */
 		files,
 		/**
-		 * A list of <see cref="Timezone"/>s.
+		 * A list of {@link Timezone}s.
 		 * {@link FormFieldTimezone}
 		 */
 		timezone,

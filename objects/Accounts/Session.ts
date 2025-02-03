@@ -2,7 +2,7 @@
 
 
 	/**
-	 * Information about another <see cref="User"/>'s <see cref="Session"/>.
+	 * Information about another {@link User}'s {@link Session}.
 	 */
 	export class Session implements IBelongCompany {
 		/**
@@ -10,7 +10,7 @@
 		 */
 		handle: string = "";
 		/**
-		 * Getter shortcut for the <see cref="User"/>'s <see cref="Company.id"/>.
+		 * Getter shortcut for the {@link User}'s {@link Company.id}.
 		 */
 		company: ulong = NaN;
 		/**
@@ -24,20 +24,20 @@
 		 */
 		sockets: int = NaN;
 		/**
-		 * The <see cref="User"/> to which the <see cref="Session"/> belongs.
+		 * The {@link User} to which the {@link Session} belongs.
 		 * {@link User.login}
 		 */
 		login: string = "";
 		/**
-		 * This <see cref="Session"/>'s current state.
+		 * This {@link Session}'s current state.
 		 */
 		status: SessionStatus;
 		/**
-		 * The timestamp from the moment this <see cref="Session"/> was created.
+		 * The timestamp from the moment this {@link Session} was created.
 		 */
 		created: Date = DATE();
 		/**
-		 * A timestamp for when the <see cref="RespSession"/> will expire.
+		 * A timestamp for when the {@link RespSession} will expire.
 		 */
 		expiry: Date = DATE();
 		/**
@@ -49,5 +49,5 @@
 		 */
 		lastActivity: Date = DATE();
 		/**
-		 * Indicator that this <see cref="Session"/> is 
+		 * Indicator that this {@link Session} is 
 	}

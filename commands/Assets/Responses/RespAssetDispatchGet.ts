@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="assetDispatch"/>.
+	 * A container for the {@link assetDispatch}.
 	 */
 	export class RespAssetDispatchGet extends Response {
 		/**
-		 * The requested <see cref="AssetDispatch"/>.
+		 * The requested {@link AssetDispatch}.
 		 */
 		assetDispatch: AssetDispatch;
 	}

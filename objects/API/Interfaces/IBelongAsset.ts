@@ -3,7 +3,7 @@
 */
 export interface IBelongAsset {
 	/**
-	 * The <see cref="Asset"/> to which this object belongs.
+	 * The {@link Asset} to which this object belongs.
 	 */
 	asset: number;
 }

@@ -5,7 +5,7 @@ import { ulong } from '../Types';
 */
 export interface IIconic {
 	/**
-	 * This thing's <see cref="Icon.id"/>.
+	 * This thing's {@link Icon.id}.
 	 */
 	icon: ulong;
 }

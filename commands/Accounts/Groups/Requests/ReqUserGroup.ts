@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="userGroup"/> object.
+	 * A container for the {@link userGroup} object.
 	 */
 	export abstract class ReqUserGroup extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="UserGroup"/>.
+		 * An object to contain the "id" of the {@link UserGroup}.
 		 */
 		userGroup: ParamId;
 

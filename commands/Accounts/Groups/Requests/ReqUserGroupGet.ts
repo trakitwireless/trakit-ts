@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="UserGroup"/>.
+	 * Gets details of the specified {@link UserGroup}.
 	 */
 	export class ReqUserGroupGet extends ReqUserGroup implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="UserGroup"/> (if it exists).
+		 * When true, the command will also return a deleted {@link UserGroup} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

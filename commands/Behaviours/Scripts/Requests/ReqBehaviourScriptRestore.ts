@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="BehaviourScript"/>.
+	 * Restores a deleted {@link BehaviourScript}.
 	 */
 	export class ReqBehaviourScriptRestore extends ReqBehaviourScript { }

@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container class used to house the string identifying a <see cref="Provider"/>.
+	 * A container class used to house the string identifying a {@link Provider}.
 	 */
 	export class ParamIdentifierVersion extends ParamIdentifier {
 		/**

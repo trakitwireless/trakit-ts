@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="Picture"/>.
+	 * Restores a deleted {@link Picture}.
 	 */
 	export class ReqPictureRestore extends ReqPicture { }

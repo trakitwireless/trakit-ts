@@ -5,7 +5,7 @@ import { IIdUlong } from './IIdUlong';
 */
 export interface IAmCompany extends IIdUlong {
 	/**
-	 * The <see cref="Company"/> to which this <see cref="Company"/> belongs.
+	 * The {@link Company} to which this {@link Company} belongs.
 	 */
 	parent: number;
 }

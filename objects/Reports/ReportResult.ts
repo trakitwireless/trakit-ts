@@ -93,7 +93,7 @@
 		 */
 		scorecards: ReportScorecard[] = [];
 		/**
-		 * A field which contains report error details if the <see cref="status"/> is <see cref="ReportStatus.failed"/>.
+		 * A field which contains report error details if the {@link status} is {@link ReportStatus.failed}.
 		 * {@link ReportStatus}
 		 *  <override max-length="250" />
 		 */
@@ -101,7 +101,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * Gets a list of <see cref="CompanyPolicies"/>s.
+	 * Gets a list of {@link CompanyPolicies}s.
 	 */
 	export abstract class ReqCompanyPoliciesList extends Request implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="CompanyPolicies"/> (if it exists).
+		 * When true, the command will also return a deleted {@link CompanyPolicies} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}
 
 	/**
-	 * Gets the list of <see cref="CompanyPolicies"/>s for the specified <see cref="Company"/>.
+	 * Gets the list of {@link CompanyPolicies}s for the specified {@link Company}.
 	 */
 	export class ReqCompanyPoliciesListByCompany extends ReqCompanyPoliciesList implements IReqListByCompany {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: ParamId;
 	}
 	/**
-	 * Gets the list of <see cref="CompanyPolicies"/>s for the specified <see cref="Company"/> only if the <see cref="CompanyPoliciesPolicies.labels"/> matches all of the given <see cref="Parameters.labels"/>.
+	 * Gets the list of {@link CompanyPolicies}s for the specified {@link Company} only if the {@link CompanyPoliciesPolicies.labels} matches all of the given {@link Parameters.labels}.
 	 */
 	export class ReqCompanyPoliciesListByCompanyAndLabels extends ReqCompanyPoliciesListByCompany implements IReqListByLabels {
 		/**
@@ -30,9 +30,9 @@
 		labels: string[] = [];
 	}
 	/**
-	 * Gets the list of <see cref="CompanyPolicies"/>s for the specified <see cref="Company"/> only if one of the specified <see cref="CompanyPoliciesPolicies.references"/> fields match.
-	 * If no references are specified, it will match any <see cref="CompanyPolicies"/> with no references.
-	 * If a reference value is null, it will match any <see cref="CompanyPolicies"/> without that reference key.
+	 * Gets the list of {@link CompanyPolicies}s for the specified {@link Company} only if one of the specified {@link CompanyPoliciesPolicies.references} fields match.
+	 * If no references are specified, it will match any {@link CompanyPolicies} with no references.
+	 * If a reference value is null, it will match any {@link CompanyPolicies} without that reference key.
 	 */
 	export class ReqCompanyPoliciesListByCompanyAndRefPairs extends ReqCompanyPoliciesListByCompany implements IReqListByReferences {
 		/**

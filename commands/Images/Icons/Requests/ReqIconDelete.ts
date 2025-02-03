@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="Icon"/>.
+	 * Deletes an existing {@link Icon}.
 	 */
 	export class ReqIconDelete extends ReqIcon { }

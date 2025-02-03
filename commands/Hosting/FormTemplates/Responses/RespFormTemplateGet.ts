@@ -2,11 +2,11 @@
 
 
 	/**
-	 * A container for the <see cref="formTemplate"/>.
+	 * A container for the {@link formTemplate}.
 	 */
 	export class RespFormTemplateGet extends Response {
 		/**
-		 * The requested <see cref="FormTemplate"/>.
+		 * The requested {@link FormTemplate}.
 		 */
 		formTemplate: FormTemplate;
 	}

@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="maintenanceSchedule"/>.
+	 * A container for the {@link maintenanceSchedule}.
 	 */
 	export class RespMaintenanceScheduleMerge extends Response {
 		/**

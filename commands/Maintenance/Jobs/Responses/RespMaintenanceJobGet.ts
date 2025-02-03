@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="maintenanceJob"/>.
+	 * A container for the {@link maintenanceJob}.
 	 */
 	export class RespMaintenanceJobGet extends Response {
 		/**
-		 * The requested <see cref="MaintenanceJob"/>.
+		 * The requested {@link MaintenanceJob}.
 		 */
 		maintenanceJob: MaintenanceJob;
 	}

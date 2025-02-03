@@ -88,7 +88,7 @@
 		 */
 		notes: string = "";
 		/**
-		 * A list of hosted <see cref="Document"/> identifiers attached to this task.
+		 * A list of hosted {@link Document} identifiers attached to this task.
 		 *  <override max-count="10">
 		 *  <values>
 		 * {@link Document.id}
@@ -107,7 +107,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

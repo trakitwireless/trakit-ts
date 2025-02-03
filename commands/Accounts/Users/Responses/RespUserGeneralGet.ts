@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="userGeneral"/>.
+	 * A container for the {@link userGeneral}.
 	 */
 	export class RespUserGeneralGet extends Response {
 		/**
-		 * The requested <see cref="User"/>.
+		 * The requested {@link User}.
 		 */
 		userGeneral: UserGeneral;
 	}

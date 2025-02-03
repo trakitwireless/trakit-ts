@@ -1,21 +1,21 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="behaviourLogs"/>.
+	 * A container for the requested {@link behaviourLogs}.
 	 */
 	export abstract class RespBehaviourLogList extends Response {
 		/**
-		 * The list of requested <see cref="BehaviourLog"/>s.
+		 * The list of requested {@link BehaviourLog}s.
 		 */
 		behaviourLogs: BehaviourLog[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export class RespBehaviourLogListByCompany extends RespBehaviourLogList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

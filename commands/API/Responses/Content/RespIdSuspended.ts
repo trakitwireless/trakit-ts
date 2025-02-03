@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * For suspend/revive commands, this contains the id, version keys, owning <see cref="Company.id"/>, and suspended state.
+	 * For suspend/revive commands, this contains the id, version keys, owning {@link Company.id}, and suspended state.
 	 */
 	export class RespIdSuspended extends RespIdCompany {
 		/**

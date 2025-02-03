@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="picture"/>.
+	 * A container for the {@link picture}.
 	 */
 	export class RespPictureDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="Picture"/>.
+		 * Details about deleting/restoring the requested {@link Picture}.
 		 */
 		picture: RespIdDeleted;
 	}

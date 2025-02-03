@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * For delete/restore commands, this contains the <see cref="Provider.id"/>, version keys, owning <see cref="Company.id"/>, and deleted state.
+	 * For delete/restore commands, this contains the {@link Provider.id}, version keys, owning {@link Company.id}, and deleted state.
 	 */
 	export class RespIdendifierDeleted extends RespIdendifierCompany {
 		/**

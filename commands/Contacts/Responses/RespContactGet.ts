@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="contact"/>.
+	 * A container for the {@link contact}.
 	 */
 	export class RespContactGet extends Response {
 		/**
-		 * The requested <see cref="Contact"/>.
+		 * The requested {@link Contact}.
 		 */
 		contact: Contact;
 	}

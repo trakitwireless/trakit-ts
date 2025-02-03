@@ -53,7 +53,7 @@
 		 */
 		status: BillingReportStatus;
 		/**
-		 * A field which contains report error details if the <see cref="status"/> is <see cref="BillingReportStatus.failed"/>.
+		 * A field which contains report error details if the {@link status} is {@link BillingReportStatus.failed}.
 		 * {@link BillingReportStatus}
 		 *  <override max-length="250" />
 		 */
@@ -69,7 +69,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

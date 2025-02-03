@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="userGenerals"/>.
+	 * A container for the requested {@link userGenerals}.
 	 */
 	export abstract class RespUserGeneralList extends Response {
 		/**
-		 * The list of requested <see cref="UserGeneral"/>s.
+		 * The list of requested {@link UserGeneral}s.
 		 */
 		userGenerals: UserGeneral[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespUserGeneralListByCompany extends RespUserGeneralList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespUserGeneralListByCompanyAndLabels extends RespUserGeneralListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespUserGeneralListByCompanyAndRefPairs extends RespUserGeneralListByCompany {
 		/**

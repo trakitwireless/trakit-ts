@@ -2,7 +2,7 @@
 	/**
 	 * A numeric value input control with multiple contexts available.
 	 *  <remarks>
-	 * For this field, the <see cref="FormFieldBase.kind"/> is just a helper for the UI, and does not affect input validation.
+	 * For this field, the {@link FormFieldBase.kind} is just a helper for the UI, and does not affect input validation.
 	 *  </remarks>
 	 */
 	export class FormFieldNumeric extends FormFieldBase {
@@ -25,8 +25,8 @@
 
 		/**
 		 * A context hint for the kind of numeric size for this field.
-		 * Used only for <see cref="FormFieldType.distance"/>, <see cref="FormFieldType.weight"/>, <see cref="FormFieldType.volume"/>,
-		 * and <see cref="FormFieldType.speed"/>.
+		 * Used only for {@link FormFieldType.distance}, {@link FormFieldType.weight}, {@link FormFieldType.volume},
+		 * and {@link FormFieldType.speed}.
 		 */
 		size: FormFieldNumericSize;
 		/**
@@ -39,9 +39,9 @@
 		step: double = NaN;
 		/**
 		 * An optional suffix for this numeric value, like "%" or "ppm".
-		 * This value is ignored for <see cref="FormFieldType.distance"/>, <see cref="FormFieldType.weight"/>,
-		 *  <see cref="FormFieldType.volume"/>, <see cref="FormFieldType.speed"/>, and <see cref="FormFieldType.area"/> field types.
-		 * And for <see cref="FormFieldType.currency"/> fields it acts as a prefix, like "$" or "USD".
+		 * This value is ignored for {@link FormFieldType.distance}, {@link FormFieldType.weight},
+		 *  {@link FormFieldType.volume}, {@link FormFieldType.speed}, and {@link FormFieldType.area} field types.
+		 * And for {@link FormFieldType.currency} fields it acts as a prefix, like "$" or "USD".
 		 */
 		units: string = "";
 		/**

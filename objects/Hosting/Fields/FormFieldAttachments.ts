@@ -3,7 +3,7 @@ import { FormFieldBase } from './FormFieldBase';
 import { FormFieldType } from '../FormFieldType';
 
 /**
- * A control to allow the user to attach <see cref="Picture"/>s or <see cref="Document"/>s.
+ * A control to allow the user to attach {@link Picture}s or {@link Document}s.
 */
 export class FormFieldAttachments extends FormFieldBase {
 	/**
@@ -17,11 +17,11 @@ export class FormFieldAttachments extends FormFieldBase {
 	};
 
 	/**
-	 * Minimum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
+	 * Minimum number of {@link Document}s and/or {@link Picture}s that must be attached.
 	 */
 	minimum: byte = NaN;
 	/**
-	 * Maximum number of <see cref="Document"/>s and/or <see cref="Picture"/>s that must be attached.
+	 * Maximum number of {@link Document}s and/or {@link Picture}s that must be attached.
 	 */
 	maximum: byte = NaN;
 }

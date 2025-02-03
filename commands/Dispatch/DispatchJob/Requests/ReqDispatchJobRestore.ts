@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="DispatchJob"/>.
+	 * Restores a deleted {@link DispatchJob}.
 	 */
 	export class ReqDispatchJobRestore extends ReqDispatchJob { }

@@ -1,30 +1,30 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="sessions"/>.
+	 * A container for the requested {@link sessions}.
 	 */
 	export abstract class RespSessionList extends Response {
 		/**
-		 * The list of requested <see cref="Session"/>.
+		 * The list of requested {@link Session}.
 		 */
 		sessions: Session[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export abstract class RespSessionListByCompany extends RespSessionList {
 		/**
-		 * An object to contain the "id" of the <see cref="Company"/> to which the array of <see cref="Session"/>s belong.
+		 * An object to contain the "id" of the {@link Company} to which the array of {@link Session}s belong.
 		 */
 		company: RespId;
 	}
 	/**
-	 * Contains the <see cref="User.login"/> of the collection.
+	 * Contains the {@link User.login} of the collection.
 	 */
 	export abstract class RespSessionListByUser extends RespSessionList {
 		/**
-		 * An object to contain the "login" of the <see cref="User"/> to which the array of <see cref="Session"/>s belong.
+		 * An object to contain the "login" of the {@link User} to which the array of {@link Session}s belong.
 		 */
 		user: RespLoginCompany;
 	}

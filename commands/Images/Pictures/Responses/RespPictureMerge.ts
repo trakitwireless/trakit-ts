@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="picture"/>.
+	 * A container for the {@link picture}.
 	 */
 	export class RespPictureMerge extends Response {
 		/**

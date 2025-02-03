@@ -2,11 +2,11 @@
 
 
 	/**
-	 * Creates a new or updates an existing <see cref="FormResult"/>.
+	 * Creates a new or updates an existing {@link FormResult}.
 	 */
 	export class ReqFormResultMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="FormResult"/>.
+		 * Parameters given to create or update a {@link FormResult}.
 		 */
 		formResult: ParamFormResultMerge;
 

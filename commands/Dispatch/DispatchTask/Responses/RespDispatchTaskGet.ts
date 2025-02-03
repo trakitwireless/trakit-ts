@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="dispatchTask"/>.
+	 * A container for the {@link dispatchTask}.
 	 */
 	export class RespDispatchTaskGet extends Response {
 		/**
-		 * The requested <see cref="DispatchTask"/>.
+		 * The requested {@link DispatchTask}.
 		 */
 		dispatchTask: DispatchTask;
 	}

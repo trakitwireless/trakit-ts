@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="Document"/>.
+	 * Creates a new or updates an existing {@link Document}.
 	 */
 	export class ReqDocumentMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="Document"/>.
+		 * Parameters given to create or update a {@link Document}.
 		 */
 		document: ParamDocumentMerge;
 

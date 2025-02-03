@@ -1,21 +1,21 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="users"/>.
+	 * A container for the requested {@link users}.
 	 */
 	export abstract class RespUserList extends Response {
 		/**
-		 * The list of requested <see cref="User"/>s.
+		 * The list of requested {@link User}s.
 		 */
 		users: User[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export class RespUserListByCompany extends RespUserList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

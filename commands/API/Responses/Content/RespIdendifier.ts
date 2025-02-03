@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * A container for the id of the <see cref="Provider"/> requested/created.
+	 * A container for the id of the {@link Provider} requested/created.
 	 */
 	export class RespIdendifier {
 		/**

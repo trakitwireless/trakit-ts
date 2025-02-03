@@ -2,11 +2,11 @@
 
 
 	/**
-	 * Gets details of the specified <see cref="FormResult"/>.
+	 * Gets details of the specified {@link FormResult}.
 	 */
 	export class ReqFormResultGet extends ReqFormResult implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="FormResult"/> (if it exists).
+		 * When true, the command will also return a deleted {@link FormResult} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

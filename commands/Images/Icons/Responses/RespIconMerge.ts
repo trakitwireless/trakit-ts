@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="icon"/>.
+	 * A container for the {@link icon}.
 	 */
 	export class RespIconMerge extends Response {
 		/**

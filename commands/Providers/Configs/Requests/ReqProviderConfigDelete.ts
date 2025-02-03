@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="ProviderConfig"/>.
+	 * Deletes an existing {@link ProviderConfig}.
 	 */
 	export class ReqProviderConfigDelete extends ReqProviderConfig { }

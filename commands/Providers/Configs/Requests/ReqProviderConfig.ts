@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="providerConfig"/> object.
+	 * A container for the {@link providerConfig} object.
 	 */
 	export abstract class ReqProviderConfig extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="ProviderConfig"/>.
+		 * An object to contain the "id" of the {@link ProviderConfig}.
 		 */
 		providerConfig: ParamId;
 

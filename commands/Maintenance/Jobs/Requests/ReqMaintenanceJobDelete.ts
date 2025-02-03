@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="MaintenanceJob"/>.
+	 * Deletes an existing {@link MaintenanceJob}.
 	 */
 	export class ReqMaintenanceJobDelete extends ReqMaintenanceJob { }

@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="AssetMessage"/>.
+	 * Deletes an existing {@link AssetMessage}.
 	 */
 	export class ReqAssetMessageDelete extends ReqAssetMessage { }

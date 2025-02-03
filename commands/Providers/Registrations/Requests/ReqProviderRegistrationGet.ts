@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="ProviderRegistration"/>.
+	 * Gets details of the specified {@link ProviderRegistration}.
 	 */
 	export class ReqProviderRegistrationGet extends ReqProviderRegistration implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="ProviderRegistration"/> (if it exists).
+		 * When true, the command will also return a deleted {@link ProviderRegistration} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

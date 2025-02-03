@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="document"/>.
+	 * A container for the {@link document}.
 	 */
 	export class RespDocumentBatchDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="Document"/>.
+		 * Details about deleting/restoring the requested {@link Document}.
 		 */
 		documents: RespIdDeleted[] = [];
 	}

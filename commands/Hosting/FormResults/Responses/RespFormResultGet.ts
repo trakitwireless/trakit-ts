@@ -2,11 +2,11 @@
 
 
 	/**
-	 * A container for the <see cref="formResult"/>.
+	 * A container for the {@link formResult}.
 	 */
 	export class RespFormResultGet extends Response {
 		/**
-		 * The requested <see cref="FormResult"/>.
+		 * The requested {@link FormResult}.
 		 */
 		formResult: FormResult;
 	}

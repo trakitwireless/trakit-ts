@@ -1,12 +1,12 @@
 
 
 	/**
-	 * Parameter values for updating the <see cref="DispatchStep"/> for a <see cref="DispatchJob"/>.
+	 * Parameter values for updating the {@link DispatchStep} for a {@link DispatchJob}.
 	 */
 	export class ParamDispatchStepMerge extends ParamMergeSubscribable {
 		/**
 		 * The identifier of the step.
-		 * Identifiers are unique to a <see cref="DispatchJob"/>, but are not unique system-wide.
+		 * Identifiers are unique to a {@link DispatchJob}, but are not unique system-wide.
 		 */
 		id: ulong = NaN;
 		/**
@@ -31,11 +31,11 @@
 		 */
 		address: string = "";
 		/**
-		 * The lat/long coordinates of where the step must be <see cref="DispatchStepStatus.completed"/>.
+		 * The lat/long coordinates of where the step must be {@link DispatchStepStatus.completed}.
 		 */
 		latlng: LatLng;
 		/**
-		 * When true, will mean a signature is required to complete this <see cref="DispatchStep"/>.
+		 * When true, will mean a signature is required to complete this {@link DispatchStep}.
 		 */
 		signature: boolean = false;
 	}

@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="reportTemplate"/>.
+	 * A container for the {@link reportTemplate}.
 	 */
 	export class RespReportTemplateMerge extends Response {
 		/**

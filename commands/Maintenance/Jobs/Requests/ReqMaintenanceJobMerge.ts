@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="MaintenanceJob"/>.
+	 * Creates a new or updates an existing {@link MaintenanceJob}.
 	 */
 	export class ReqMaintenanceJobMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="MaintenanceJob"/>.
+		 * Parameters given to create or update a {@link MaintenanceJob}.
 		 */
 		maintenanceJob: ParamMaintenanceJobMerge;
 

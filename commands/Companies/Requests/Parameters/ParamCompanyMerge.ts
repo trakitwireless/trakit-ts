@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * Parameters used to create or update an <see cref="Company"/>.
+	 * Parameters used to create or update an {@link Company}.
 	 */
 	export class ParamCompanyMerge extends ParamMergeSubscribable {
 		/**
@@ -22,7 +22,7 @@
 		notes: string = "";
 		/**
 		 * Name/value collections of custom fields used to refer to external systems.
-		 * If the value is null, the references are removed from the <see cref="Company"/>.
+		 * If the value is null, the references are removed from the {@link Company}.
 		 */
 		references: Map<string, string>;
 		/**

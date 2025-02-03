@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="reportSchedule"/>.
+	 * A container for the {@link reportSchedule}.
 	 */
 	export class RespReportScheduleMerge extends Response {
 		/**

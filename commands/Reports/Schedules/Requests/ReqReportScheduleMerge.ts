@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="ReportSchedule"/>.
+	 * Creates a new or updates an existing {@link ReportSchedule}.
 	 */
 	export class ReqReportScheduleMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="ReportSchedule"/>.
+		 * Parameters given to create or update a {@link ReportSchedule}.
 		 */
 		reportSchedule: ParamReportScheduleMerge;
 

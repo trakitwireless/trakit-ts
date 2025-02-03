@@ -35,14 +35,14 @@
 		end: TimeSpan;
 		/**
 		 * Email address where the sent is sent.
-		 * If not specified, the email address from the User's <see cref="Contact"/> is taken.
+		 * If not specified, the email address from the User's {@link Contact} is taken.
 		 * If the contact has no email address, the alert is sent to the user's login.
 		 *  <override min-length="6" max-length="254" format="email" />
 		 */
 		email: string = "";
 		/**
 		 * SMS address where the alert is sent.
-		 * If not specified, the mobile phone number from the User's <see cref="Contact"/> is taken.
+		 * If not specified, the mobile phone number from the User's {@link Contact} is taken.
 		 * If the contact has no mobile phone number, the alert is not sent.
 		 */
 		sms: ulong = NaN;

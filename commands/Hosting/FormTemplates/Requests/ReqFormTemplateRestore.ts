@@ -2,6 +2,6 @@
 
 
 	/**
-	 * Restores a deleted <see cref="FormTemplate"/>.
+	 * Restores a deleted {@link FormTemplate}.
 	 */
 	export class ReqFormTemplateRestore extends ReqFormTemplate { }

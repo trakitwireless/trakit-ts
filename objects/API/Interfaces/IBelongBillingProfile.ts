@@ -3,7 +3,7 @@
 */
 export interface IBelongBillingProfile {
 	/**
-	 * The <see cref="BillingProfile"/> to which this object belongs.
+	 * The {@link BillingProfile} to which this object belongs.
 	 */
 	profile: number;
 }

@@ -1,30 +1,30 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="providerAdvanceds"/>.
+	 * A container for the requested {@link providerAdvanceds}.
 	 */
 	export abstract class RespProviderAdvancedList extends Response {
 		/**
-		 * The list of requested <see cref="ProviderAdvanced"/>s.
+		 * The list of requested {@link ProviderAdvanced}s.
 		 */
 		providerAdvanceds: ProviderAdvanced[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespProviderAdvancedListByCompany extends RespProviderAdvancedList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespProviderAdvancedListByConfig: RespProviderAdvancedList {
 		/**
-		 * Identifier of the <see cref="ProviderConfig"/> (or <see cref="ProviderConfiguration"/>) to which this collection belongs.
+		 * Identifier of the {@link ProviderConfig} (or {@link ProviderConfiguration}) to which this collection belongs.
 		 */
 		config: RespId;
 	}

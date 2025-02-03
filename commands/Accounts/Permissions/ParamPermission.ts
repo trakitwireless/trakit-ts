@@ -1,18 +1,18 @@
 ﻿
 
 	/**
-	 * Similar to the <see cref="Permission"/> object, but the <see cref="company"/>, <see cref="level"/>, <see cref="method"/>, and <see cref="labels"/> are all optional.
+	 * Similar to the {@link Permission} object, but the {@link company}, {@link level}, {@link method}, and {@link labels} are all optional.
 	 *  <category>Users and Groups</category>
 	 */
 	export class ParamPermission {
 		/**
-		 * The <see cref="Company"/> that this permission targets.
-		 * If not given, will default to the <see cref="UserAdvanced.company"/>, <see cref="UserGroup.company"/> or <see cref="Machine.company"/> to which it belongs.
+		 * The {@link Company} that this permission targets.
+		 * If not given, will default to the {@link UserAdvanced.company}, {@link UserGroup.company} or {@link Machine.company} to which it belongs.
 		 * {@link Company.id}
 		 */
 		company: ulong = NaN;
 		/**
-		 * The kind of <see cref="PermissionType"/>.
+		 * The kind of {@link PermissionType}.
 		 *  <override required="always" />
 		 */
 		kind: PermissionType;
@@ -27,7 +27,7 @@
 		 */
 		method?: PermissionMethod;
 		/**
-		 * Codified names of <see cref="CompanyLabels.labels"/>.  If list is empty, this permission applies for all labels.
+		 * Codified names of {@link CompanyLabels.labels}.  If list is empty, this permission applies for all labels.
 		 *  <override>
 		 *  <values format="codified">
 		 * {@link LabelStyle.code}

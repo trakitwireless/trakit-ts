@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the id, owning <see cref="ReportTemplate"/> id, and owning <see cref="Company.id"/> of the report object requested/created.
+	 * A container for the id, owning {@link ReportTemplate} id, and owning {@link Company.id} of the report object requested/created.
 	 */
 	export class RespIdCompanyTemplate extends RespIdCompany {
 		/**

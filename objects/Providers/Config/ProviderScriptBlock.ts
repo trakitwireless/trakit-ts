@@ -18,7 +18,7 @@
 		 */
 		replace: string = "";
 		/**
-		 * When defined, this condition matches a <see cref="ProviderScriptParameter"/> defined in the <see cref="ProviderConfig"/> to include or exclude this chunk from the script.
+		 * When defined, this condition matches a {@link ProviderScriptParameter} defined in the {@link ProviderConfig} to include or exclude this chunk from the script.
 		 *  <override max-length="50" />
 		 */
 		condition: string = "";

@@ -1,7 +1,7 @@
 
 
 	/**
-	 * The current state of an asset's <see cref="DispatchJob"/> route progress.
+	 * The current state of an asset's {@link DispatchJob} route progress.
 	 */
 	export class AssetDispatch extends Component implements IIdUlong, IBelongCompany {
 		/**
@@ -15,7 +15,7 @@
 		 */
 		company: ulong = NaN;
 		/**
-		 * The current list of <see cref="DispatchJob"/>s assigned to the asset.
+		 * The current list of {@link DispatchJob}s assigned to the asset.
 		 * {@link DispatchJob}
 		 */
 		jobs: ulong[] = [];
@@ -24,13 +24,13 @@
 		 */
 		directions: DispatchDirection[] = [];
 		/**
-		 * Timestamp from the last update to this <see cref="AssetDispatch"/> by a <see cref="User"/>, <see cref="Machine"/>, <see cref="Asset"/>, or an assigned <see cref="DispatchJob"/>.
+		 * Timestamp from the last update to this {@link AssetDispatch} by a {@link User}, {@link Machine}, {@link Asset}, or an assigned {@link DispatchJob}.
 		 */
 		lastDispatched: Date = DATE();
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 	}

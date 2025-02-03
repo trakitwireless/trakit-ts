@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="dispatchTask"/>.
+	 * A container for the {@link dispatchTask}.
 	 */
 	export class RespDispatchTaskMerge extends Response {
 		/**

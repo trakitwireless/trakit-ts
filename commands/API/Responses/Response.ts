@@ -4,7 +4,7 @@
 	 * Base class for all responses from commands.
 	 * All command response classes use this as the base.
 	 *  <remarks>
-	 * It will always have the <see cref="reqId"/>, <see cref="errorCode"/>, <see cref="message"/>, and <see cref="errorDetails"/> properties, but can also contain any number of other properties.
+	 * It will always have the {@link reqId}, {@link errorCode}, {@link message}, and {@link errorDetails} properties, but can also contain any number of other properties.
 	 * A child class per command type should be created.
 	 *  </remarks>
 	 */

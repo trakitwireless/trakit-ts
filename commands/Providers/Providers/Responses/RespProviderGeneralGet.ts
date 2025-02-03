@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="providerGeneral"/>.
+	 * A container for the {@link providerGeneral}.
 	 */
 	export class RespProviderGeneralGet extends Response {
 		/**
-		 * The requested <see cref="Provider"/>.
+		 * The requested {@link Provider}.
 		 */
 		providerGeneral: ProviderGeneral;
 	}

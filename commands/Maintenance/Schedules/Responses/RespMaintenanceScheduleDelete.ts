@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="maintenanceSchedule"/>.
+	 * A container for the {@link maintenanceSchedule}.
 	 */
 	export class RespMaintenanceScheduleDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="MaintenanceSchedule"/>.
+		 * Details about deleting/restoring the requested {@link MaintenanceSchedule}.
 		 */
 		maintenanceSchedule: RespIdDeleted;
 	}

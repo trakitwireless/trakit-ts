@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="behaviour"/>.
+	 * A container for the {@link behaviour}.
 	 */
 	export class RespBehaviourMerge extends Response {
 		/**

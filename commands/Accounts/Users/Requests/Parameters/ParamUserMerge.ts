@@ -1,15 +1,15 @@
 ﻿
 
 	/**
-	 * Parameters used to create or update an <see cref="User"/>.
+	 * Parameters used to create or update an {@link User}.
 	 */
 	export class ParamUserMerge extends ParamMergeSubscribable {
 		/**
-		 * The unique identifier of the <see cref="User"/> you want to update.
+		 * The unique identifier of the {@link User} you want to update.
 		 */
 		login: string = "";
 		/**
-		 * The company to which this <see cref="User"/> belongs.
+		 * The company to which this {@link User} belongs.
 		 * After creation, this value is read-only.
 		 */
 		company: ulong = NaN;
@@ -18,7 +18,7 @@
 		 */
 		nickname: string = "";
 		/**
-		 * This <see cref="User"/>'s password.
+		 * This {@link User}'s password.
 		 */
 		password: string = "";
 		/**
@@ -30,12 +30,12 @@
 		 */
 		enabled: boolean = false;
 		/**
-		 * Contact information for this <see cref="User"/>.
+		 * Contact information for this {@link User}.
 		 * {@link Contact.id}
 		 */
 		contact: ulong = NaN;
 		/**
-		 * The <see cref="User"/>'s local timezone.
+		 * The {@link User}'s local timezone.
 		 * {@link Timezone.code}
 		 */
 		timezone: TimeZoneInfo;
@@ -57,15 +57,15 @@
 		 */
 		options: Map<string, string>;
 		/**
-		 * Definition of how and when to send alerts to the <see cref="User"/>.
+		 * Definition of how and when to send alerts to the {@link User}.
 		 */
 		notify: UserNotifications[] = [];
 		/**
-		 * A list of <see cref="UserGroup"/>s to which this <see cref="User"/> is a member.
+		 * A list of {@link UserGroup}s to which this {@link User} is a member.
 		 */
 		groups: ulong[] = [];
 		/**
-		 * Individual permission rules which override the <see cref="UserGroup"/> rules.
+		 * Individual permission rules which override the {@link UserGroup} rules.
 		 */
 		permissions: ParamPermission[] = [];
 	}

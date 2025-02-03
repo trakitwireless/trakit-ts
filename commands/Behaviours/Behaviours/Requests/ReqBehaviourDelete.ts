@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="Behaviour"/>.
+	 * Deletes an existing {@link Behaviour}.
 	 */
 	export class ReqBehaviourDelete extends ReqBehaviour { }

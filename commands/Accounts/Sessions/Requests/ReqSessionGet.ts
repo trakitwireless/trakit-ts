@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="Session"/>.
+	 * Gets details of the specified {@link Session}.
 	 */
 	export class ReqSessionGet extends Request {
 		/**
-		 * An object to contain the "handle" of the <see cref="Session"/>.
+		 * An object to contain the "handle" of the {@link Session}.
 		 */
 		session: ParamHandle;
 	}

@@ -9,7 +9,7 @@ import { FormFieldType } from '../FormFieldType';
  */
 export abstract class FormFieldBase implements IIdUlong, INamed {
 	/**
-	 * A list of supported <see cref="FormFieldType"/>s that this class supports.
+	 * A list of supported {@link FormFieldType}s that this class supports.
 	 */
 	protected abstract supported: FormFieldType[];
 	/**
@@ -18,7 +18,7 @@ export abstract class FormFieldBase implements IIdUlong, INamed {
 	kind: FormFieldType;
 	/**
 	 * Identifier for this field.
-	 * This value is unique per <see cref="FormTemplate"/>, but is not unique system-wide.
+	 * This value is unique per {@link FormTemplate}, but is not unique system-wide.
 	 */
 	id: ulong = NaN;
 	/**

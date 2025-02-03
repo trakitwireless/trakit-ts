@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * Gets a list of <see cref="CompanyDirectory"/>s.
+	 * Gets a list of {@link CompanyDirectory}s.
 	 */
 	export abstract class ReqCompanyDirectoryList extends Request implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="CompanyDirectory"/> (if it exists).
+		 * When true, the command will also return a deleted {@link CompanyDirectory} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}
 
 	/**
-	 * Gets the list of <see cref="CompanyDirectory"/>s for the specified <see cref="Company"/>.
+	 * Gets the list of {@link CompanyDirectory}s for the specified {@link Company}.
 	 */
 	export class ReqCompanyDirectoryListByCompany extends ReqCompanyDirectoryList implements IReqListByCompany {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: ParamId;
 	}
 	/**
-	 * Gets the list of <see cref="CompanyDirectory"/>s for the specified <see cref="Company"/> only if the <see cref="CompanyDirectoryDirectory.labels"/> matches all of the given <see cref="Parameters.labels"/>.
+	 * Gets the list of {@link CompanyDirectory}s for the specified {@link Company} only if the {@link CompanyDirectoryDirectory.labels} matches all of the given {@link Parameters.labels}.
 	 */
 	export class ReqCompanyDirectoryListByCompanyAndLabels extends ReqCompanyDirectoryListByCompany implements IReqListByLabels {
 		/**
@@ -30,9 +30,9 @@
 		labels: string[] = [];
 	}
 	/**
-	 * Gets the list of <see cref="CompanyDirectory"/>s for the specified <see cref="Company"/> only if one of the specified <see cref="CompanyDirectoryDirectory.references"/> fields match.
-	 * If no references are specified, it will match any <see cref="CompanyDirectory"/> with no references.
-	 * If a reference value is null, it will match any <see cref="CompanyDirectory"/> without that reference key.
+	 * Gets the list of {@link CompanyDirectory}s for the specified {@link Company} only if one of the specified {@link CompanyDirectoryDirectory.references} fields match.
+	 * If no references are specified, it will match any {@link CompanyDirectory} with no references.
+	 * If a reference value is null, it will match any {@link CompanyDirectory} without that reference key.
 	 */
 	export class ReqCompanyDirectoryListByCompanyAndRefPairs extends ReqCompanyDirectoryListByCompany implements IReqListByReferences {
 		/**

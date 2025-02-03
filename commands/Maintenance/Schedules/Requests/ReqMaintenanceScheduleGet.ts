@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="MaintenanceSchedule"/>.
+	 * Gets details of the specified {@link MaintenanceSchedule}.
 	 */
 	export class ReqMaintenanceScheduleGet extends ReqMaintenanceSchedule implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="MaintenanceSchedule"/> (if it exists).
+		 * When true, the command will also return a deleted {@link MaintenanceSchedule} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

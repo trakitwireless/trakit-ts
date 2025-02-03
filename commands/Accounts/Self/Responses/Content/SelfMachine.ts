@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * A container for the details of the <see cref="Machine"/> requested.
+	 * A container for the details of the {@link Machine} requested.
 	 */
 	export class SelfMachine extends Machine {
 		/**

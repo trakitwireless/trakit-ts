@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * For delete/restore commands, this contains the id, version keys, owning <see cref="Company.id"/>, and deleted state.
+	 * For delete/restore commands, this contains the id, version keys, owning {@link Company.id}, and deleted state.
 	 */
 	export abstract class RespIdDeleted extends RespIdCompany {
 		/**

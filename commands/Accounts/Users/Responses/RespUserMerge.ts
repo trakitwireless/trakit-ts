@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="user"/>.
+	 * A container for the {@link user}.
 	 */
 	export class RespUserMerge extends Response {
 		/**

@@ -1,7 +1,7 @@
 
 
 	/**
-	 * A completed form submitted by a <see cref="User"/> or <see cref="Asset"/>.
+	 * A completed form submitted by a {@link User} or {@link Asset}.
 	 */
 	export class FormResult extends Component implements IIdUlong, INamed, IBelongCompany, ILabelled, IDeletable {
 		/**
@@ -9,16 +9,16 @@
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this form belongs.
+		 * The {@link Company} to which this form belongs.
 		 * {@link Company.id}
 		 */
 		company: ulong = NaN;
 		/**
-		 * The <see cref="FormTemplate"/> to which this form belongs.
+		 * The {@link FormTemplate} to which this form belongs.
 		 */
 		template: ulong = NaN;
 		/**
-		 * The <see cref="Asset"/> to which this form belongs.
+		 * The {@link Asset} to which this form belongs.
 		 * {@link Asset.id}
 		 */
 		asset: ulong = NaN;
@@ -32,7 +32,7 @@
 		 */
 		notes: string = "";
 		/**
-		 * Codified label names used to relate forms to <see cref="Asset"/>s.
+		 * Codified label names used to relate forms to {@link Asset}s.
 		 *  <override>
 		 *  <values format="codified">
 		 * {@link LabelStyle.code}
@@ -45,11 +45,11 @@
 		 */
 		fields: Map<ulong, string>;
 		/**
-		 * A timestamp from when this form was completed by a <see cref="User"/> or <see cref="Asset"/>.
+		 * A timestamp from when this form was completed by a {@link User} or {@link Asset}.
 		 */
 		completed: Date = DATE();
 		/**
-		 * The coordinates of the <see cref="User"/> or <see cref="Asset"/> from when the form was completed.
+		 * The coordinates of the {@link User} or {@link Asset} from when the form was completed.
 		 */
 		latlng: LatLng;
 		/**
@@ -60,7 +60,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

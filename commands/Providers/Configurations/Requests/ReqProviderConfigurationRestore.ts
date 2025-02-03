@@ -1,7 +1,7 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="ProviderConfiguration"/>.
+	 * Restores a deleted {@link ProviderConfiguration}.
 	 * @deprecated Use ReqProviderConfigRestore instead
 	 */
 	export class ReqProviderConfigurationRestore extends ReqProviderConfiguration { }

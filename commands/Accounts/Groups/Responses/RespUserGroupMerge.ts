@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="userGroup"/>.
+	 * A container for the {@link userGroup}.
 	 */
 	export class RespUserGroupMerge extends Response {
 		/**

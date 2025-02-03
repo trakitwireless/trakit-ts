@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="dashcam"/> object.
+	 * A container for the {@link dashcam} object.
 	 */
 	export abstract class ReqDashcam extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="Dashcam"/>.
+		 * An object to contain the "id" of the {@link Dashcam}.
 		 */
 		dashcam: ParamId;
 

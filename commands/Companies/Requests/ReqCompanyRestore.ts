@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Restores a deleted <see cref="Company"/>.
+	 * Restores a deleted {@link Company}.
 	 */
 	export class ReqCompanyRestore extends ReqCompany { }

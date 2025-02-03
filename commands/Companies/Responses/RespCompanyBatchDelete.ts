@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="company"/>.
+	 * A container for the {@link company}.
 	 */
 	export class RespCompanyBatchDelete extends Response {
 		/**
-		 * Details about deleting/restoring the requested <see cref="Company"/>.
+		 * Details about deleting/restoring the requested {@link Company}.
 		 */
 		companies: RespIdDeleted[] = [];
 	}

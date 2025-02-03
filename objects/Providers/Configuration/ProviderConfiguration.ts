@@ -29,7 +29,7 @@
 		 */
 		type: ulong = NaN;
 		/**
-		 * The list of defined variables given to the <see cref="ProviderConfigurationType.scriptOptions">logic type's options</see> pairs for the logic type requires.
+		 * The list of defined variables given to the {@link ProviderConfigurationType.scriptOptions|logic type's options} pairs for the logic type requires.
 		 */
 		scriptParameters: Map<string, object>;
 		/**
@@ -39,7 +39,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

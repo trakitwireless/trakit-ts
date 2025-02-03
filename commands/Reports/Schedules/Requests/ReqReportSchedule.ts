@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="reportSchedule"/> object.
+	 * A container for the {@link reportSchedule} object.
 	 */
 	export abstract class ReqReportSchedule extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="ReportSchedule"/>.
+		 * An object to contain the "id" of the {@link ReportSchedule}.
 		 */
 		reportSchedule: ParamId;
 

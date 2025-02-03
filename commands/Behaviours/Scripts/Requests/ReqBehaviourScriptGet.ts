@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="BehaviourScript"/>.
+	 * Gets details of the specified {@link BehaviourScript}.
 	 */
 	export class ReqBehaviourScriptGet extends ReqBehaviourScript implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="BehaviourScript"/> (if it exists).
+		 * When true, the command will also return a deleted {@link BehaviourScript} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

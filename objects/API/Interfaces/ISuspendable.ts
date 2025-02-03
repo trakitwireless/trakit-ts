@@ -7,12 +7,12 @@
 export interface ISuspendable {
 	/**
 	 * Marked as true for objects that have been suspended.
-	 * This value is not present in the JSON scheme when <see cref="deleted"/> is false.
+	 * This value is not present in the JSON scheme when {@link deleted} is false.
 	 */
 	suspended?: boolean;
 	/**
 	 * A timestamp from when the object was most recently suspended or revived.
-	 * This value is not present in the JSON scheme when <see cref="suspended"/> is false.
+	 * This value is not present in the JSON scheme when {@link suspended} is false.
 	 */
 	since?: Date;
 }

@@ -1,12 +1,12 @@
 ﻿
 
 	/**
-	 * The types of subscriptions available using <see cref="subscribe"/>/<see cref="unsubscribe"/>.
+	 * The types of subscriptions available using {@link subscribe}/{@link unsubscribe}.
 	 * Each type has a different synchronization messages and objects.
 	 */
 	enum SubscriptionType {
 		/**
-		 * Assets' <see cref="AssetGeneral">general properties</see> such as name, icon, and labels.
+		 * Assets' {@link AssetGeneral|general properties} such as name, icon, and labels.
 		 * {@link AssetGeneral}
 		 * {@link PersonGeneral}
 		 * {@link VehicleGeneral}
@@ -14,57 +14,57 @@
 		 */
 		assetGeneral,
 		/**
-		 * Assets' <see cref="AssetAdvanced">advanced properties</see> such as position, attributes, and status tags.
+		 * Assets' {@link AssetAdvanced|advanced properties} such as position, attributes, and status tags.
 		 * {@link AssetAdvanced}
 		 * {@link VehicleAdvanced}
 		 */
 		assetAdvanced,
 		/**
-		 *  <see cref="AssetMessage"/>s between <see cref="Asset"/>s and <see cref="User"/>s.
+		 *  {@link AssetMessage}s between {@link Asset}s and {@link User}s.
 		 * {@link AssetMessage}
 		 */
 		assetMessage,
 		/**
-		 * Assets' <see cref="AssetDispatch">current dispatch</see> such as  <see cref="DispatchJob"/>s and route progress.
+		 * Assets' {@link AssetDispatch|current dispatch} such as  {@link DispatchJob}s and route progress.
 		 * {@link AssetDispatch}
 		 */
 		assetDispatch,
 
 		/**
-		 * Assets' <see cref="DispatchTask"/> information.
+		 * Assets' {@link DispatchTask} information.
 		 * {@link DispatchTask}
 		 */
 		dispatchTask,
 		/**
-		 * Some work that needs to be done by performing one or more <see cref="DispatchStep"/>s.
+		 * Some work that needs to be done by performing one or more {@link DispatchStep}s.
 		 * {@link DispatchJob}
 		 */
 		dispatchJob,
 
 		/**
-		 * Customized <see cref="FormTemplate">forms</see> to be filled.
+		 * Customized {@link FormTemplate|forms} to be filled.
 		 * {@link FormTemplate}
 		 */
 		formTemplate,
 		/**
-		 *  <see cref="FormResult">Forms</see> that are completed and fully filled out.
+		 *  {@link FormResult|Forms} that are completed and fully filled out.
 		 * {@link FormResult}
 		 */
 		formResult,
 
 		/**
-		 *  <see cref="Place"/> information.
+		 *  {@link Place} information.
 		 * {@link PlaceGeneral}
 		 */
 		placeGeneral,
 
 		/**
-		 * Providers' (device) <see cref="ProviderGeneral">general properties</see> such as name, notes, and selected <see cref="Asset"/>.
+		 * Providers' (device) {@link ProviderGeneral|general properties} such as name, notes, and selected {@link Asset}.
 		 * {@link ProviderGeneral}
 		 */
 		providerGeneral,
 		/**
-		 * Raw provider (device) <see cref="ProviderAdvanced">data</see> like GPS coordinates and parsed ODB-II values.
+		 * Raw provider (device) {@link ProviderAdvanced|data} like GPS coordinates and parsed ODB-II values.
 		 * {@link ProviderAdvanced}
 		 */
 		providerAdvanced,
@@ -96,12 +96,12 @@
 		providerRegistration,
 
 		/**
-		 * Recurring maintenance work for <see cref="Vehicle"/>s and <see cref="Trailer"/>s.
+		 * Recurring maintenance work for {@link Vehicle}s and {@link Trailer}s.
 		 * {@link MaintenanceSchedule}
 		 */
 		maintenanceSchedule,
 		/**
-		 * Historical <see cref="Vehicle"/> and <see cref="Trailer"/> maintenance work.
+		 * Historical {@link Vehicle} and {@link Trailer} maintenance work.
 		 * {@link MaintenanceJob}
 		 */
 		maintenanceJob,
@@ -117,7 +117,7 @@
 		 */
 		behaviour,
 		/**
-		 * Behaviour log messages to help developers debug their <see cref="BehaviourScript"/>.
+		 * Behaviour log messages to help developers debug their {@link BehaviourScript}.
 		 * {@link BehaviourLog}
 		 */
 		behaviourLog,
@@ -133,49 +133,49 @@
 		 */
 		companyLabels,
 		/**
-		 * Company's <see cref="SessionPolicy"/> and <see cref="PasswordPolicy"/>.
+		 * Company's {@link SessionPolicy} and {@link PasswordPolicy}.
 		 * {@link CompanyPolicies}
 		 */
 		companyPolicies,
 		 * **
-		 * // Company's list of <see cref="Contact"/>s broken down by role.
+		 * // Company's list of {@link Contact}s broken down by role.
 		//* // {@link CompanyDirectory}
 		 */
 		//companyDirectory,
 		/**
-		 * A <see cref="Company"/>'s white-labelling details.
+		 * A {@link Company}'s white-labelling details.
 		 * {@link CompanyReseller}
 		 */
 		companyReseller,
 
 		/**
-		 * Profiles used to generate <see cref="BillingReport"/> for a customer.
+		 * Profiles used to generate {@link BillingReport} for a customer.
 		 * {@link BillingProfile}
 		 */
 		billingProfile,
 		/**
-		 * Billing rules for <see cref="Asset"/>s.
+		 * Billing rules for {@link Asset}s.
 		 * {@link BillableHostingRule}
 		 */
 		billingHosting,
 		/**
-		 * Discount rules for <see cref="Asset"/>s.
+		 * Discount rules for {@link Asset}s.
 		 * {@link BillableHostingDiscount}
 		 */
 		billingDiscount,
 		/**
-		 * Hardware licenses for <see cref="Provider"/>s.
+		 * Hardware licenses for {@link Provider}s.
 		 * {@link BillableHostingLicense}
 		 */
 		billingLicense,
 		/**
-		 * Reports generated for a billee <see cref="Company"/>.
+		 * Reports generated for a billee {@link Company}.
 		 * {@link BillingReport}
 		 */
 		billingReport,
 
 		/**
-		 * Contact information used by <see cref="Asset"/>s and <see cref="User"/>s.
+		 * Contact information used by {@link Asset}s and {@link User}s.
 		 * {@link Contact}
 		 */
 		contact,

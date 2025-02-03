@@ -1,7 +1,7 @@
 
 
 	/**
-	 * Members of a group (as set by a <see cref="User"/>'s <see cref="UserAdvanced.groups"/> or <see cref="Machine"/>'s <see cref="Machine.groups"/>)
+	 * Members of a group (as set by a {@link User}'s {@link UserAdvanced.groups} or {@link Machine}'s {@link Machine.groups})
 	 * allow for easy administration of permissions and levels of access.
 	 */
 	export class UserGroup extends Component implements IIdUlong, INamed, IBelongCompany, IDeletable {
@@ -30,7 +30,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

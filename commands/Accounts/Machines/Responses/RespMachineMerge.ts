@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="machine"/>.
+	 * A container for the {@link machine}.
 	 */
 	export class RespMachineMerge extends Response {
 		/**

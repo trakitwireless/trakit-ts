@@ -6,12 +6,12 @@
 export interface IDeletable {
 	/**
 	 * Marked as true for objects that have been deleted.
-	 * This value is not present in the JSON scheme when <see cref="deleted"/> is false.
+	 * This value is not present in the JSON scheme when {@link deleted} is false.
 	 */
 	deleted?: boolean;
 	/**
 	 * Timestamp from the action that deleted this object.
-	 * This value is not present in the JSON scheme when <see cref="deleted"/> is false.
+	 * This value is not present in the JSON scheme when {@link deleted} is false.
 	 */
 	since?: Date;
 }

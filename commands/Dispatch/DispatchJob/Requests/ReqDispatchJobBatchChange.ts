@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Completes or modifies multiple existing <see cref="DispatchJob"/>s from a driver's perspective.
+	 * Completes or modifies multiple existing {@link DispatchJob}s from a driver's perspective.
 	 */
 	export class ReqDispatchJobBatchChange extends Request {
 		/**
-		 * List of <see cref="DispatchJob"/>s to update or create.
+		 * List of {@link DispatchJob}s to update or create.
 		 */
 		dispatchJobs: ParamDispatchJobChange[] = [];
 	}

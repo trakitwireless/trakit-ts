@@ -1,10 +1,10 @@
 ﻿
 	/**
-	 * A container for the key of the <see cref="Machine"/> requested/created.
+	 * A container for the key of the {@link Machine} requested/created.
 	 */
 	export class RespKey {
 		/**
-		 * The <see cref="Machine"/>'s key.
+		 * The {@link Machine}'s key.
 		 */
 		key: string = "";
 	}

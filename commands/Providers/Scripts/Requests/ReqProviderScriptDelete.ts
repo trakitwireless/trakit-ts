@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="ProviderScript"/>.
+	 * Deletes an existing {@link ProviderScript}.
 	 */
 	export class ReqProviderScriptDelete extends ReqProviderScript { }

@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="contact"/>.
+	 * A container for the {@link contact}.
 	 */
 	export class RespContactMerge extends Response {
 		/**

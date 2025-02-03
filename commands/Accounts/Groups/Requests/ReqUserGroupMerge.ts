@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Creates a new or updates an existing <see cref="UserGroup"/>.
+	 * Creates a new or updates an existing {@link UserGroup}.
 	 */
 	export class ReqUserGroupMerge extends Request implements IReqSingle {
 		/**
-		 * Parameters given to create or update a <see cref="UserGroup"/>.
+		 * Parameters given to create or update a {@link UserGroup}.
 		 */
 		userGroup: ParamUserGroupMerge;
 

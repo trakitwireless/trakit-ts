@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * Gets a list of <see cref="CompanyReseller"/>s.
+	 * Gets a list of {@link CompanyReseller}s.
 	 */
 	export abstract class ReqCompanyResellerList extends Request implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="CompanyReseller"/> (if it exists).
+		 * When true, the command will also return a deleted {@link CompanyReseller} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}
 
 	/**
-	 * Gets the list of <see cref="CompanyReseller"/>s for the specified <see cref="Company"/>.
+	 * Gets the list of {@link CompanyReseller}s for the specified {@link Company}.
 	 */
 	export class ReqCompanyResellerListByCompany extends ReqCompanyResellerList implements IReqListByCompany {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: ParamId;
 	}
 	/**
-	 * Gets the list of <see cref="CompanyReseller"/>s for the specified <see cref="Company"/> only if the <see cref="CompanyResellerReseller.labels"/> matches all of the given <see cref="Parameters.labels"/>.
+	 * Gets the list of {@link CompanyReseller}s for the specified {@link Company} only if the {@link CompanyResellerReseller.labels} matches all of the given {@link Parameters.labels}.
 	 */
 	export class ReqCompanyResellerListByCompanyAndLabels extends ReqCompanyResellerListByCompany implements IReqListByLabels {
 		/**
@@ -30,9 +30,9 @@
 		labels: string[] = [];
 	}
 	/**
-	 * Gets the list of <see cref="CompanyReseller"/>s for the specified <see cref="Company"/> only if one of the specified <see cref="CompanyResellerReseller.references"/> fields match.
-	 * If no references are specified, it will match any <see cref="CompanyReseller"/> with no references.
-	 * If a reference value is null, it will match any <see cref="CompanyReseller"/> without that reference key.
+	 * Gets the list of {@link CompanyReseller}s for the specified {@link Company} only if one of the specified {@link CompanyResellerReseller.references} fields match.
+	 * If no references are specified, it will match any {@link CompanyReseller} with no references.
+	 * If a reference value is null, it will match any {@link CompanyReseller} without that reference key.
 	 */
 	export class ReqCompanyResellerListByCompanyAndRefPairs extends ReqCompanyResellerListByCompany implements IReqListByReferences {
 		/**

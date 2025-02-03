@@ -1,26 +1,26 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="userAdvanceds"/>.
+	 * A container for the requested {@link userAdvanceds}.
 	 */
 	export abstract class RespUserAdvancedList extends Response {
 		/**
-		 * The list of requested <see cref="UserAdvanced"/>s.
+		 * The list of requested {@link UserAdvanced}s.
 		 */
 		userAdvanceds: UserAdvanced[] = [];
 	}
 
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespUserAdvancedListByCompany extends RespUserAdvancedList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespUserAdvancedListByCompanyAndLabels extends RespUserAdvancedListByCompany {
 		/**
@@ -30,7 +30,7 @@
 		labels: string[] = [];
 	}
 	/**
-	 * A container owner <see cref="Company"/> of the collection.
+	 * A container owner {@link Company} of the collection.
 	 */
 	export class RespUserAdvancedListByCompanyAndRefPairs extends RespUserAdvancedListByCompany {
 		/**

@@ -9,7 +9,7 @@
 		 */
 		id: ulong = NaN;
 		/**
-		 * The <see cref="Company"/> to which this form belongs.
+		 * The {@link Company} to which this form belongs.
 		 * {@link Company.id}
 		 */
 		company: ulong = NaN;
@@ -23,7 +23,7 @@
 		 */
 		notes: string = "";
 		/**
-		 * Codified label names used to relate forms to <see cref="Asset"/>s.
+		 * Codified label names used to relate forms to {@link Asset}s.
 		 *  <override>
 		 *  <values format="codified">
 		 * {@link LabelStyle.code}
@@ -53,7 +53,7 @@
 
 		// IRequestable
 		/**
-		 * The <see cref="id"/> is the key.
+		 * The {@link id} is the key.
 		 */
 public getKey(): string { return this.id.toString(); }
 

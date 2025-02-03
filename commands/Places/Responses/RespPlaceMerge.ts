@@ -1,6 +1,6 @@
 ﻿
 	/**
-	 * A container for the <see cref="place"/>.
+	 * A container for the {@link place}.
 	 */
 	export class RespPlaceMerge extends Response {
 		/**

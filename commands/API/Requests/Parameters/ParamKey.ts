@@ -1,10 +1,10 @@
 ﻿
 	/**
-	 * A container class used to house the key identifying a <see cref="Machine"/>.
+	 * A container class used to house the key identifying a {@link Machine}.
 	 */
 	export class ParamKey {
 		/**
-		 * The <see cref="Machine"/>'s login.
+		 * The {@link Machine}'s login.
 		 */
 		key: string = "";
 	}

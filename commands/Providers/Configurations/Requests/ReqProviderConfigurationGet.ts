@@ -1,12 +1,12 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="ProviderConfiguration"/>.
+	 * Gets details of the specified {@link ProviderConfiguration}.
 	 * @deprecated Use ReqProviderConfigGet instead
 	 */
 	export class ReqProviderConfigurationGet extends ReqProviderConfiguration implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="ProviderConfiguration"/> (if it exists).
+		 * When true, the command will also return a deleted {@link ProviderConfiguration} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

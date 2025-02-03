@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="dispatchTasks"/>.
+	 * A container for the requested {@link dispatchTasks}.
 	 */
 	export abstract class RespDispatchTaskList extends Response {
 		/**
-		 * The list of requested <see cref="DispatchTask"/>s.
+		 * The list of requested {@link DispatchTask}s.
 		 */
 		dispatchTasks: DispatchTask[] = [];
 	}
@@ -15,7 +15,7 @@
 	 */
 	export class RespDispatchTaskListByAsset extends RespDispatchTaskList implements IRespListByAsset {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		asset: RespId;
 	}
@@ -35,7 +35,7 @@
 	 */
 	export class RespDispatchTaskListByCompany extends RespDispatchTaskList implements IRespListByCompany {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

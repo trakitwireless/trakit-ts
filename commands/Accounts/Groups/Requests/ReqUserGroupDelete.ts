@@ -1,6 +1,6 @@
 ﻿
 
 	/**
-	 * Deletes an existing <see cref="UserGroup"/>.
+	 * Deletes an existing {@link UserGroup}.
 	 */
 	export class ReqUserGroupDelete extends ReqUserGroup { }

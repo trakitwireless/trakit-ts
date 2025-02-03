@@ -2,6 +2,6 @@
 
 
 	/**
-	 * Restores a deleted <see cref="Place"/>.
+	 * Restores a deleted {@link Place}.
 	 */
 	export class ReqPlaceRestore extends ReqPlace { }

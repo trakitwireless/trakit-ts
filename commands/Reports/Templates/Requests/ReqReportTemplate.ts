@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="reportTemplate"/> object.
+	 * A container for the {@link reportTemplate} object.
 	 */
 	export abstract class ReqReportTemplate extends Request implements IReqSingle {
 		/**
-		 * An object to contain the "id" of the <see cref="ReportTemplate"/>.
+		 * An object to contain the "id" of the {@link ReportTemplate}.
 		 */
 		reportTemplate: ParamId;
 

@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="ProviderControl"/>.
+	 * Gets details of the specified {@link ProviderControl}.
 	 */
 	export class ReqProviderControlGet extends ReqProvider implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="ProviderControl"/> (if it exists).
+		 * When true, the command will also return a deleted {@link ProviderControl} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

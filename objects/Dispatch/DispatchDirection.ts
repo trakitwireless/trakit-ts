@@ -26,11 +26,11 @@
 		 */
 		directions: DispatchDirection[] = [];
 		/**
-		 * Unique identifier of the <see cref="DispatchJob"/> or <see cref="DispatchTask"/>.
+		 * Unique identifier of the {@link DispatchJob} or {@link DispatchTask}.
 		 */
 		job: ulong = NaN;
 		/**
-		 * The <see cref="DispatchStep.id"/>, if this direction is for <see cref="DispatchJob"/>s.
+		 * The {@link DispatchStep.id}, if this direction is for {@link DispatchJob}s.
 		 */
 		step: ulong = NaN;
 	}

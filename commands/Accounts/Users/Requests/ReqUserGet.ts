@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * Gets details of the specified <see cref="User"/>.
+	 * Gets details of the specified {@link User}.
 	 */
 	export class ReqUserGet extends ReqUser implements IReqIDeletable {
 		/**
-		 * When true, the command will also return a deleted <see cref="User"/> (if it exists).
+		 * When true, the command will also return a deleted {@link User} (if it exists).
 		 */
 		includeDeleted: boolean = false;
 	}

@@ -2,7 +2,7 @@
 
 
 	/**
-	 * The full details of a Vehicle, containing all the properties from the <see cref="VehicleGeneral"/> and <see cref="VehicleAdvanced"/> objects.
+	 * The full details of a Vehicle, containing all the properties from the {@link VehicleGeneral} and {@link VehicleAdvanced} objects.
 	 */
 	export class Vehicle extends Asset {
 		/**

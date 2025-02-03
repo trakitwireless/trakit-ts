@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="behaviour"/>.
+	 * A container for the {@link behaviour}.
 	 */
 	export class RespBehaviourGet extends Response {
 		/**
-		 * The requested <see cref="Behaviour"/>.
+		 * The requested {@link Behaviour}.
 		 */
 		behaviour: Behaviour;
 	}

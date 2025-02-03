@@ -1,21 +1,21 @@
 ﻿
 
 	/**
-	 * A container for the requested <see cref="behaviourScripts"/>.
+	 * A container for the requested {@link behaviourScripts}.
 	 */
 	export abstract class RespBehaviourScriptList extends Response {
 		/**
-		 * The list of requested <see cref="BehaviourScript"/>s.
+		 * The list of requested {@link BehaviourScript}s.
 		 */
 		behaviourScripts: BehaviourScript[] = [];
 	}
 
 	/**
-	 * Contains the <see cref="Company.id"/> of the collection.
+	 * Contains the {@link Company.id} of the collection.
 	 */
 	export class RespBehaviourScriptListByCompany extends RespBehaviourScriptList {
 		/**
-		 * Identifier of the <see cref="Company"/> to which this collection belongs.
+		 * Identifier of the {@link Company} to which this collection belongs.
 		 */
 		company: RespId;
 	}

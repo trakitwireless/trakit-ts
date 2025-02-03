@@ -1,11 +1,11 @@
 ﻿
 
 	/**
-	 * A container for the <see cref="assetAdvanced"/>.
+	 * A container for the {@link assetAdvanced}.
 	 */
 	export class RespAssetAdvancedGet extends Response {
 		/**
-		 * The requested <see cref="AssetAdvanced"/>.
+		 * The requested {@link AssetAdvanced}.
 		 */
 		assetAdvanced: AssetAdvanced;
 	}
