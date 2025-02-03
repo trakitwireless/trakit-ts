@@ -34,7 +34,7 @@ export class Permission {
 	/**
 	 * Codified names of {@link LabelStyle}s.  If list is empty, this permission applies for all labels.
 	 */
-	labels: string[] | null;
+	labels: string[];
 
 	constructor(
 		company: ulong,
@@ -47,6 +47,6 @@ export class Permission {
 		this.kind = kind;
 		this.level = level;
 		this.method = method;
-		this.labels = labels || null;
+		this.labels = labels || [];
 	}
 }

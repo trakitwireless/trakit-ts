@@ -72,7 +72,9 @@ export function IS_NAN(value: any): value is number {
  * @param value The variable to check
  */
 export function IS_AN(value: any): value is number {
-	return !IS_NAN(value);
+	return IS_NUMBER(value)
+		|| !isNaN(value)
+		|| isFinite(value);
 }
 
 /**
