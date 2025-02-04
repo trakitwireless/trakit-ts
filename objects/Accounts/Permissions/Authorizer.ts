@@ -4,7 +4,6 @@ import { Permission } from './Permission';
 import { PermissionType } from './PermissionType';
 import { PermissionLevel } from './PermissionLevel';
 import { PermissionMethod } from './PermissionMethod';
-import { FREEZE, KEYS } from '../../API/Constants';
 import { PermissionEscalation, PermissionEscalationType } from './PermissionEscalation';
 import { IS_AN, } from '../../API/Functions';
 
@@ -40,7 +39,7 @@ class ComputedPermission extends Permission {
 /**
  * Users have implied read access to their company's general, labels, policies, icons, and pictures.
  */
-const IMPLIED_PERMS = [
+export const IMPLIED_PERMS = [
 	PermissionType.companyGeneral,
 	PermissionType.companyLabels,
 	PermissionType.companyPolicies,
@@ -50,7 +49,7 @@ const IMPLIED_PERMS = [
 /**
  * These are the permissions which require label-based calculations.
  */
-const LABEL_BASED_PERMS = [
+export const LABEL_BASED_PERMS = [
 	PermissionType.assetGeneral,
 	PermissionType.assetAdvanced,
 	PermissionType.assetDispatch,
@@ -286,7 +285,7 @@ function _computePermissions(
 	// 2) "labelBased" for label-based permissions which is further reduced
 	computed.forEach(function (methodLevelOrder, key) {
 		const parts = (key as string).split(TYPE_SEPARATOR),
-			type = PermissionType[parts[0]],
+			type = parts[0] as PermissionType,
 			label = parts[1] || "";	// if no second part is defined, it was not a label based permission
 		if (!label) {
 			// only return grant permissions for simple permissions
@@ -324,12 +323,12 @@ function _computePermissions(
 			// permissions of a lower/same level and a lower/same order.
 			if (!permission.labels.length) {
 				// loop through the final permissions to find matches
-				for (let i = 0, p; p = permissions[i]; i++) {
+				for (let i = 0, p: ComputedPermission; p = permissions[i]; i++) {
 					if (
 						p.kind === permission.kind			// always match type
 						&& p.method === permission.method		// always match method
 						&& PERM_INDEX.indexOf(p.level) <= PERM_INDEX.indexOf(permission.level)	// match on lower and same level
-						&& p.__order <= permission.order			// match on lower and same order (higher orders are preserved in case they override a "revoke" permission)
+						&& p.order <= permission.order			// match on lower and same order (higher orders are preserved in case they override a "revoke" permission)
 					) {
 						// remove the matching permission
 						permissions.splice(i--, 1);
@@ -372,10 +371,6 @@ function _computePermissions(
 }
 //#endregion Computing/Internals
 
-
-
-
-
 //#region Generic/global compute
 /**
  * Creates a {@link Dictionary} where the key is a {@link Company#id} and the values are well ordered arrays of {@link Permission}s which can be used to further calculate a user's permissions.
@@ -384,7 +379,7 @@ function _computePermissions(
  * @param	fromUser		The User's user-specific permissions.
  * @param	skipImpliedPermissions		When true, does not automatically add implied permissions for the user's company.
  */
-function computeAll(
+export function computeAll(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -422,7 +417,7 @@ function computeAll(
  * @param	targetCompanyId			Unique identifier of the {@link Company#id} being tested for access.
  * @param	skipImpliedPermissions		When true, does not automatically add implied permissions for the user's company.
  */
-function compute(
+export function compute(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -447,10 +442,10 @@ function compute(
  * @param	fromGroups	Collection of permissions from {@link UserGroup}s to which the User belongs.
  * @param	fromUser		The User's user-specific permissions.
  */
-function computeAllSimple(
+export function computeAllSimple(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
-	fromUser
+	fromUser: Permission[]
 ) {
 	return computeAll(
 		userCompanyId,
@@ -465,7 +460,7 @@ function computeAllSimple(
  * @param	fromUser		The User's user-specific permissions.
  * @param	targetCompanyId			Unique identifier of the {@link Company} being tested for access.
  */
-function computeSimple(
+export function computeSimple(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -485,7 +480,7 @@ function computeSimple(
  * @param	fromUser		The User's user-specific permissions.
  * @param	targetCompanyId			Unique identifier of the {@link Company} being tested for access.
  */
-function computeSimpleLevels(
+export function computeSimpleLevels(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -511,7 +506,7 @@ function computeSimpleLevels(
  * @param	targetCompanyId			Unique identifier of the {@link Company} being tested for access.
  * @param	targetType			The specific {@link PermissionType}s to check.
  */
-function getSimpleLevel(
+export function getSimpleLevel(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -538,7 +533,7 @@ function getSimpleLevel(
  * @param	targetType			The specific {@link PermissionType}s to check.
  * @param	targetLevel		Minimum requested level of access.
  */
-function hasSimple(
+export function hasSimple(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -565,7 +560,7 @@ function hasSimple(
  * @param	targetType			The specific {@link PermissionType}s to check.
  * @param	targetLevel		Minimum requested level of access.
  */
-function findSimple(
+export function findSimple(
 	userCompanyId: ulong,
 	permissions: Permission[],
 	targetType: PermissionType,
@@ -589,7 +584,7 @@ function findSimple(
  * @param	permissions	Pre-computed and ordered array of {@link Permission} like the kind returned by {@link authorizer.computeSimple}.
  * @param	targetType			The specific {@link PermissionType}s to check.
  */
-function findSimpleLevel(
+export function findSimpleLevel(
 	userCompanyId: ulong,
 	permissions: Permission[],
 	targetType: PermissionType
@@ -611,10 +606,10 @@ function findSimpleLevel(
  * @param	fromGroups	Collection of permissions from {@link UserGroup}s to which the User belongs.
  * @param	fromUser		The User's user-specific permissions.
  */
-function computeAllComplex(
+export function computeAllComplex(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
-	fromUser
+	fromUser: Permission[]
 ) {
 	const computed = new Map<ulong, Permission[]>();
 	computeAll(
@@ -640,7 +635,7 @@ function computeAllComplex(
  * @param	fromUser		The User's user-specific permissions.
  * @param	targetCompanyId			Unique identifier of the {@link Company} being tested for access.
  */
-function		computeComplex(
+export function computeComplex(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -664,14 +659,14 @@ function		computeComplex(
  * @param	targetType			The specific {@link PermissionType}s to check.
  * @param	targetLabels		List of codified {@link LabelStyle} names used by the target.
  */
-function getComplexLevel(
+export function getComplexLevel(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
 	targetCompanyId: ulong,
 	targetCompanyLabels: codified[],
 	targetType: PermissionType,
-	targetLabels
+	targetLabels: codified[]
 ) {
 	return findComplexLevel(
 		userCompanyId,
@@ -697,14 +692,14 @@ function getComplexLevel(
  * @param	targetLabels		List of codified {@link LabelStyle} names used by the target.
  * @param	targetLevel		Minimum requested level of access.
  */
-function		hasComplex(
+export function hasComplex(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
 	targetCompanyId: ulong,
 	targetCompanyLabels: codified[],
 	targetType: PermissionType,
-	targetLabels,
+	targetLabels: codified[],
 	targetLevel: PermissionLevel
 ) {
 	return findComplex(
@@ -730,12 +725,12 @@ function		hasComplex(
  * @param	targetLabels		List of codified {@link LabelStyle} names used by the target.
  * @param	targetLevel		Minimum requested level of access.
  */
-function findComplex(
+export function findComplex(
 	userCompanyId: ulong,
 	permissions: Permission[],
 	targetCompanyLabels: codified[],
 	targetType: PermissionType,
-	targetLabels,
+	targetLabels: codified[],
 	targetLevel: PermissionLevel
 ) {
 	return PERM_INDEX.indexOf(
@@ -760,7 +755,7 @@ function findComplex(
  * @param	targetType			The specific {@link PermissionType}s to check.
  * @param	targetLabels		List of codified {@link LabelStyle} names used by the target.
  */
-function findComplexLevel(
+export function findComplexLevel(
 	userCompanyId: ulong,
 	permissions: Permission[],
 	targetCompanyLabels: codified[],
@@ -865,7 +860,7 @@ function findComplexLevel(
  * @param	targetType			The specific {@link PermissionType}s to check.
  * @param	targetLevel		Optional level of access. If not specified, default is {@link PermissionLevel.read}.
  */
-function		hasAnyComplex(
+export function hasAnyComplex(
 	userCompanyId: ulong,
 	fromGroups: Permission[],
 	fromUser: Permission[],
@@ -893,7 +888,7 @@ function		hasAnyComplex(
  * @param	targetType			The specific {@link PermissionType}s to check.
  * @param	targetLevel		Optional level of access. If not specified, default is {@link PermissionLevel.read}.
  */
-function		findAnyComplex(
+export function findAnyComplex(
 	userCompanyId: ulong,
 	permissions: Permission[],
 	targetType: PermissionType,
@@ -912,7 +907,6 @@ function		findAnyComplex(
 //#endregion Complex Permissions
 
 //#region Escalations
-
 /**
  * Generates a {@link Dictionary} (company identifier as the key) of permissions being escalated between two computed permission states.
  * @param	userCompanyId								Unique identifier of the {@link Company} to which the User belongs.
@@ -920,11 +914,11 @@ function		findAnyComplex(
  * @param	after		Proposed state of computed permissions (like returned by {@link authorizer.computeAll}).
  * @param	targetCompaniesLabels	{@link Dictionary} of company and list of codified {@link LabelStyle} names available.  If not specified, complex permissions will not be evaluated correctly.
  **/
-function findAllEscalations(
+export function findAllEscalations(
 	userCompanyId: ulong,
-	before,
-	after,
-	targetCompaniesLabels
+	before: Map<ulong, Permission[]>,
+	after: Map<ulong, Permission[]>,
+	targetCompaniesLabels: Map<ulong, codified[]>
 ) {
 	const escalations = new Map<ulong, PermissionEscalation[]>();
 	after.forEach(function (permissions, companyId) {
@@ -941,9 +935,9 @@ function findAllEscalations(
 		} else {
 			const escalated = findEscalations(
 				userCompanyId,
-				before.get(companyId),
+				before.get(companyId) as Permission[],
 				permissions,
-				targetCompaniesLabels && targetCompaniesLabels.get(companyId)
+				targetCompaniesLabels && targetCompaniesLabels.get(companyId) as codified[]
 			);
 			if (escalated.length) escalations.set(companyId, escalated);
 		}
@@ -957,7 +951,7 @@ function findAllEscalations(
  * @param	after						Proposed list of computed permissions for a company (like returned by {@link authorizer.compute}).
  * @param	targetCompanyLabels					List of codified {@link LabelStyle} names available in the Company.  If not specified, complex permissions will not be evaluated correctly.
  */
-function findEscalations(
+export function findEscalations(
 	userCompanyId: ulong,
 	before: Permission[],
 	after: Permission[],
@@ -1043,7 +1037,7 @@ function findEscalations(
  * @param	targetBeforeLabels				The labels appled to the ILabelled object before the proposed change.
  * @param	targetAfterLabels				The labels appled to the ILabelled object after the proposed change.
  **/
-function findAllLabelEscalations(
+export function findAllLabelEscalations(
 	userCompanyId: ulong,
 	targetCompanyPermissions: Permission[],
 	targetTypes: PermissionType[],
@@ -1076,7 +1070,7 @@ function findAllLabelEscalations(
  * @param	targetBeforeLabels				The labels appled to the ILabelled object before the proposed change.
  * @param	targetAfterLabels				The labels appled to the ILabelled object after the proposed change.
  **/
-function findLabelEscalation(
+export function findLabelEscalation(
 	userCompanyId: ulong,
 	targetCompanyPermissions: Permission[],
 	targetType: PermissionType,
@@ -1136,52 +1130,3 @@ function _isEscalatedLevel(before: PermissionLevel | undefined, after: Permissio
 	return PERM_INDEX.indexOf(after as PermissionLevel) > PERM_INDEX.indexOf(before as PermissionLevel);
 }
 //#endregion Escalations
-
-/**
- * A collection of utility methods that allows you to check a user's permission to objects within the system.
- * The most common functions you should use are {@link authorizer.hasSimple} and {@link authorizer.hasComplex}.
- */
-export const authorizer = {
-	// Generic / global compute
-	computeAll,
-	compute,
-
-	// Simple Permissions
-	computeAllSimple,
-	computeSimple,
-	computeSimpleLevels,
-	getSimpleLevel,
-	hasSimple,
-	findSimple,
-	findSimpleLevel,
-
-	// Complex Permissions
-	computeAllComplex,
-	computeComplex,
-	getComplexLevel,
-	findComplexLevel,
-	hasComplex,
-	findComplex,
-	hasAnyComplex,
-	findAnyComplex,
-	
-	// Escalations
-	findAllEscalations,
-	findEscalations,
-	findAllLabelEscalations,
-	findLabelEscalation,
-	
-	// exposed properties
-	/**
-	 * A list of {@link PermissionType}s which are implied for each user's own company.
-	 */
-	implied: FREEZE(IMPLIED_PERMS),
-	/**
-	 * The {@link PermissionType}s which are calculated using labels.
-	 */
-	simple: FREEZE(ARRAY_EXCEPT(KEYS(PermissionType) as PermissionType[], LABEL_BASED_PERMS)),
-	/**
-	 * {@link PermissionType}s which do not use labels to calculate access.
-	 */
-	complex: FREEZE(LABEL_BASED_PERMS),
-};

@@ -59,6 +59,8 @@ import {
  } from "./API/Geography/Functions";
 import { LatLng, } from "./API/Geography/LatLng";
 import { LatLngBounds, } from "./API/Geography/LatLngBounds";
+import { Position, } from "./API/Geography/Position";
+import { StreetAddress, } from "./API/Geography/StreetAddress";
 import { GUID, } from "./API/Guid";
 import { SearchPattern, } from "./API/SearchPattern";
 import {
@@ -68,7 +70,35 @@ import {
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
 import { TIMEZONES, } from "./API/Timezones";
-import { MERGE, } from "./API/Types";
+import { MERGE, } from "./API/Objects";
+import {
+    compute,
+    computeAll,
+    computeAllComplex,
+    computeAllSimple,
+    computeComplex,
+    computeSimple,
+    computeSimpleLevels,
+    findAllEscalations,
+    findAllLabelEscalations,
+    findAnyComplex,
+    findComplex,
+    findComplexLevel,
+    findEscalations,
+    findLabelEscalation,
+    findSimple,
+    findSimpleLevel,
+    getComplexLevel,
+    getSimpleLevel,
+    hasAnyComplex,
+    hasComplex,
+    hasSimple,
+    IMPLIED_PERMS,
+    LABEL_BASED_PERMS,
+} from './Accounts/Permissions/Authorizer';
+import { FREEZE, KEYS } from "./API/Constants";
+import { PermissionType } from "./Accounts/Permissions/PermissionType";
+import { ARRAY_EXCEPT } from "./API/Arrays";
 
 const version = (5.01);
 
@@ -103,7 +133,7 @@ export default {
     /**
      * A utility library exposing algorithms for a flat plane.
      */
-    drawing: {
+    geometry: {
         pathLength: PATH_LENGTH,
         pathOrthogonal: PATH_ORTHOGONAL,
         pathReduce: PATH_PEUCKER,
@@ -126,8 +156,6 @@ export default {
     Rectangle,
     Size,
 
-    geometry: {
-    },
     geography: {
         earthRadius: EARTH_RADIUS,
 
@@ -155,5 +183,53 @@ export default {
         //	radialArea: SPHERECAP_AREA,
     },
     LatLng,
-    LatLngBounds
+    LatLngBounds,
+    Position,
+    StreetAddress,
+
+    // users
+    authorizer: {
+        // Generic / global compute
+        computeAll,
+        compute,
+    
+        // Simple Permissions
+        computeAllSimple,
+        computeSimple,
+        computeSimpleLevels,
+        getSimpleLevel,
+        hasSimple,
+        findSimple,
+        findSimpleLevel,
+    
+        // Complex Permissions
+        computeAllComplex,
+        computeComplex,
+        getComplexLevel,
+        findComplexLevel,
+        hasComplex,
+        findComplex,
+        hasAnyComplex,
+        findAnyComplex,
+        
+        // Escalations
+        findAllEscalations,
+        findEscalations,
+        findAllLabelEscalations,
+        findLabelEscalation,
+        
+        // exposed properties
+        /**
+         * A list of {@link PermissionType}s which are implied for each user's own company.
+         */
+        implied: FREEZE(IMPLIED_PERMS),
+        /**
+         * The {@link PermissionType}s which are calculated using labels.
+         */
+        simple: FREEZE(ARRAY_EXCEPT(KEYS(PermissionType) as PermissionType[], LABEL_BASED_PERMS)),
+        /**
+         * {@link PermissionType}s which do not use labels to calculate access.
+         */
+        complex: FREEZE(LABEL_BASED_PERMS),
+    }
 };

@@ -1,4 +1,4 @@
-﻿import { ulong } from '../../API/Types';
+﻿import { codified, ulong } from '../../API/Types';
 import { PermissionType } from './PermissionType';
 import { PermissionLevel } from './PermissionLevel';
 import { PermissionMethod } from './PermissionMethod';
@@ -21,7 +21,11 @@ export class Permission {
 	 * @deprecated Use {@link kind} instead.
 	 */
 	get type(): string { return this.kind.toString(); }
-	set type(value: string) { this.kind = PermissionType[value]; }
+	set type(value: string) {
+		const kind = (PermissionType as any)[value];
+		if (!kind) throw new Error("Unknown PermissionType");
+		this.kind = kind;
+	 }
 		
 	/**
 	 * The level of access being defined.
@@ -34,14 +38,14 @@ export class Permission {
 	/**
 	 * Codified names of {@link LabelStyle}s.  If list is empty, this permission applies for all labels.
 	 */
-	labels: string[];
+	labels: codified[];
 
 	constructor(
 		company: ulong,
 		kind: PermissionType,
 		level: PermissionLevel = PermissionLevel.read,
 		method: PermissionMethod = PermissionMethod.grant,
-		labels?: string[]
+		labels?: codified[]
 	) {
 		this.company = company;
 		this.kind = kind;
