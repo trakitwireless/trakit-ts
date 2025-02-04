@@ -1,3 +1,4 @@
+import { ulong } from '../Types';
 import { IIdUlong } from './IIdUlong';
 
 /**
@@ -7,5 +8,5 @@ export interface IAmCompany extends IIdUlong {
 	/**
 	 * The {@link Company} to which this {@link Company} belongs.
 	 */
-	parent: number;
+	parentId: ulong;
 }

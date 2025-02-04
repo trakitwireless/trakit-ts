@@ -1,5 +1,4 @@
 ﻿import { KEYS } from './Constants';
-import { IS_BOOLEAN, IS_NOTHING, IS_STRING } from './Functions';
 
 /**
  * Does a deep copy of values from one object to another.
@@ -10,7 +9,7 @@ import { IS_BOOLEAN, IS_NOTHING, IS_STRING } from './Functions';
  */
 export function MERGE(target: object, source: object, goDeep: boolean = false) {
   const keys = KEYS(source);
-  for (let i = 0, key; key = keys[i]; i++) {
+  for (let i = 0, key: string; key = keys[i]; i++) {
     (target as any)[key] = goDeep
       ? MERGE_INTERNAL((source as any)[key], !!goDeep)
       : (source as any)[key];
@@ -47,8 +46,4 @@ function MERGE_INTERNAL(value: any, goDeep: boolean): any {
   } else {
     return value;
   }
-}
-
-export function KEYS_AS<T>(...vlues: any[]) {
-  
 }

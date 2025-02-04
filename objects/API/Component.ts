@@ -1,7 +1,8 @@
-﻿import { int,  } from './Types';
+﻿import { int, uint,  } from './Types';
 import { IRequestable, } from './Interfaces/IRequestable';
 import { ISerializable, } from './Interfaces/ISerializable';
 import { IDeserializable, } from './Interfaces/IDeserializable';
+import { MAX } from './Constants';
 
 /**
  * Any derived class can/should be serialized and given to a user.
@@ -33,5 +34,32 @@ export abstract class Component implements IRequestable, ISerializable, IDeseria
 	 * 
 	 * @param input 
 	 */
-	abstract fromJSON(input: any): void;
+	abstract fromJSON(json: any): void;
+}
+
+/**
+ * Compares the two version key arrays and returns a boolean array of which keys to keep.
+ * Also replaces the existing version array with the accepted values.
+ * @param	existingVersion
+ * @param	jsonVersions
+ */
+export function COMPARE_VERSIONS(existingVersion: int[], jsonVersions: int[] = []) {
+	const keepers: boolean[] = [],
+		length = MAX(existingVersion.length, jsonVersions.length);
+	for (let i = 0; i < length; i++) {
+		const json = (jsonVersions[i] + 1) || 0,
+			existing = (existingVersion[i] + 1) || 0;
+		// if the existing version is -1, accept new value even if it's also -1
+		if (keepers[i] = (!existing || json > existing)) {
+			existingVersion[i] = json - 1;
+		}
+	}
+	return keepers;
+}
+/**
+ * Used on the results of the {@link COMPARE_VERSIONS} helper, as the predicate in an Array#some.
+ * @param	keeper
+ **/
+function WAS_CHANGED(keeper: boolean) {
+	return keeper;
 }
