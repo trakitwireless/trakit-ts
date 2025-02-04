@@ -5,7 +5,6 @@
 	LatLngBoundsExpansion,
 } from './Interfaces';
 import { LatLng, } from './LatLng';
-import { JsonObject } from '../Types';
 import { ISerializable } from '../Interfaces/ISerializable';
 import {
 	LATITUDE_NORMALIZED,
@@ -52,7 +51,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * 
 	 * @param object 
 	 */
-	static fromJSON(object: JsonObject): LatLngBounds {
+	static fromJSON(object: any): LatLngBounds {
 		const bounds = new LatLngBounds();
 		if (ILatLngBounds_instanceOf(object)) {
 			bounds.east = object.east;
@@ -101,7 +100,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * Creates a literal of this {@link LatLngBounds}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): ILatLngBounds {
+	toJSON(): any {
 		this.validate();
 		return {
 			"north": this.north,

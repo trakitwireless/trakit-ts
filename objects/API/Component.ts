@@ -1,4 +1,4 @@
-﻿import { int, JsonValue, } from './Types';
+﻿import { int,  } from './Types';
 import { IRequestable, } from './Interfaces/IRequestable';
 import { ISerializable, } from './Interfaces/ISerializable';
 import { IDeserializable, } from './Interfaces/IDeserializable';
@@ -28,10 +28,10 @@ export abstract class Component implements IRequestable, ISerializable, IDeseria
 	 * Creates a literal of this {@link Component}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	abstract toJSON(): JsonValue;
+	abstract toJSON(): any;
 	/**
 	 * 
 	 * @param input 
 	 */
-	abstract fromJSON(input: JsonValue): void;
+	abstract fromJSON(input: any): void;
 }

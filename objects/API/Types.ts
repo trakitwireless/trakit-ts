@@ -9,24 +9,24 @@ export type colour = string;
  */
 export type codified = string;
 
-/**
- * 
- */
-export type JsonObject = Object | { [key: string]: JsonValue };
-/**
- * 
- */
-export type JsonArray = JsonValue[];
-/**
- * 
- */
-export type JsonValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JsonArray
-  | JsonObject;
+// /**
+//  * 
+//  */
+// export type JsonObject = object | { [key: string]: JsonValue };
+// /**
+//  * 
+//  */
+// export type JsonArray = JsonValue[];
+// /**
+//  * 
+//  */
+// export type JsonValue =
+//   | null
+//   | boolean
+//   | number
+//   | string
+//   | JsonArray
+//   | JsonObject;
 
 
 /**

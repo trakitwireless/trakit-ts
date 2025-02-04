@@ -1,27 +1,29 @@
 ﻿import { IRequestable } from "./Interfaces/IRequestable";
 import { ISerializable } from "./Interfaces/ISerializable";
-import { JsonObject, short } from "./Types";
+import { IDeserializable } from "./Interfaces/IDeserializable";
+import { short } from "./Types";
+import { ID } from "./Functions";
 
 /**
  * Timezone definition
 */
-export class Timezone implements IRequestable, ISerializable {
+export class Timezone implements IRequestable, ISerializable, IDeserializable {
 	/**
 	 * Unique timezone code
 	 */
-	code: string = "";
+	code: string;
 	/**
 	 * Common timezone name
 	 */
-	name: string = "";
+	name: string;
 	/**
 	 * Minutes offset from GMT
 	 */
-	offset: short = NaN;
+	offset: short;
 	/**
 	 * Indicates whether this timezone abides by daylight savings
 	 */
-	dst: boolean = false;
+	dst: boolean;
 
 	constructor(code: string, name: string, offset: short, dst: boolean) {
 		this.code = code;
@@ -38,11 +40,11 @@ export class Timezone implements IRequestable, ISerializable {
 			"dst": this.dst,
 		};
 	}
-	fromJSON(tz: JsonObject) {
+	fromJSON(tz: any) {
 		this.code = tz["code"] as string;
 		this.name = tz["name"] as string;
-		this.offset = tz["offset"] as short;
-		this.dst = tz["dst"] as boolean;
+		this.offset = ID(tz["offset"] as short) || 0;
+		this.dst = !!(tz["dst"] as boolean);
 	}
 
 	/**

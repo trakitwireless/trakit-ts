@@ -3,7 +3,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IDeletable } from "../API/Interfaces/IDeletable";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { byte, JsonObject, ulong } from "../API/Types";
+import { byte, ulong } from "../API/Types";
 import { BehaviourParameter } from "./BehaviourParameter";
 import { BehaviourParameterType } from "./BehaviourParameterType";
 
@@ -54,7 +54,7 @@ export class Behaviour extends Component implements IIdUlong, INamed, IBelongCom
 	parameters: Map<string, BehaviourParameter> = new Map;
 
 
-	constructor(object: JsonObject) {
+	constructor(object: any) {
 		super();
 		if (object) this.fromJSON(object);
 	}
@@ -65,8 +65,8 @@ export class Behaviour extends Component implements IIdUlong, INamed, IBelongCom
 	 */
 public getKey(): string { return this.id.toString(); }
 
-	override toJSON(): JsonObject {
-		var object: JsonObject = {
+	override toJSON(): any {
+		const object= {
 			"name": this.name,
 			"notes": this.notes,
 			"targets": this.targets,
@@ -82,7 +82,7 @@ public getKey(): string { return this.id.toString(); }
 		}
 		return object;
 	}
-	override fromJSON(input: JsonObject): void {
+	override fromJSON(input: any): void {
 		this.id = input["id"] as ulong;
 		this.company = input["company"] as ulong;
 		this.script = input["script"] as ulong;
@@ -92,8 +92,8 @@ public getKey(): string { return this.id.toString(); }
 		this.targets = input["targets"] as string;
 		this.filters = input["filters"] as string;
 		this.parameters.clear();
-		for (let key in input["parameters"] as JsonObject) {
-			let value = (input["parameters"] as JsonObject)[key] as JsonObject;
+		for (let key in input["parameters"] as any) {
+			let value = (input["parameters"] as any)[key] as any;
 			this.parameters.set(key, new BehaviourParameter(
 				value["kind"] as BehaviourParameterType,
 				value["value"] as string,

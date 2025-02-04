@@ -3,7 +3,7 @@ import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IDeletable } from "../API/Interfaces/IDeletable";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { JsonObject, JsonValue, uint, ulong } from "../API/Types";
+import {  uint, ulong } from "../API/Types";
 import { BehaviourLogType } from "./BehaviourLogType";
 
 /**
@@ -55,14 +55,14 @@ export class BehaviourLog extends Component implements IIdUlong, IBelongCompany,
 	 */
 	character: uint = NaN;
 
-	constructor(object: JsonObject) {
+	constructor(object: any) {
 		super();
 	}
 
-	override toJSON(): JsonValue {
+	override toJSON() {
 		throw new Error("Method not implemented.");
 	}
-	override fromJSON(input: JsonValue): void {
+	override fromJSON(input: any): void {
 		throw new Error("Method not implemented.");
 	}
 
@@ -70,7 +70,7 @@ export class BehaviourLog extends Component implements IIdUlong, IBelongCompany,
 	/**
 	 * The {@link id} is the key.
 	 */
-public getKey(): string { return this.id.toString(); }
+	public getKey(): string { return this.id.toString(); }
 
 	/**
 	 * Indicates whether this object was deleted.
