@@ -70,7 +70,7 @@ export class BehaviourLog extends Component implements IIdUlong, IBelongCompany,
 	/**
 	 * The {@link id} is the key.
 	 */
-	public getKey(): string { return this.id.toString(); }
+	getKey(): string { return this.id.toString(); }
 
 	/**
 	 * Indicates whether this object was deleted.

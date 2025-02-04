@@ -143,7 +143,7 @@
 		/**
 		 * The {@link login} is the key.
 		 */
-public getKey(): string { return this.login; }
+getKey(): string { return this.login; }
 
 		// ISuspendable and IDeletable
 		/**

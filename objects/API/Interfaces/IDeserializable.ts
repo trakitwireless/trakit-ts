@@ -4,7 +4,7 @@
 export interface IDeserializable {
     /**
      * Updates this {@link IDeserializable} from the given input.
-     * @param input 
+     * @param json 
      */
-    fromJSON(input: any): void;
+    fromJSON(json: any): void;
 }

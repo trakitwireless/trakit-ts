@@ -39,5 +39,5 @@
 		/**
 		 * The {@link guid} is the key.
 		 */
-public getKey(): string { return this.guid.toString(); }
+getKey(): string { return this.guid.toString(); }
 	}

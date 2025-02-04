@@ -3,6 +3,7 @@
 	INT,
 	MAX,
 	MIN,
+	OBJECT,
 	POW,
 	ROUND,
 	SQRT,
@@ -53,7 +54,7 @@ export function IS_FUNCTION(value: any): value is Function {
  * @param value The variable to check
  */
 export function OBJECT_TYPE(value: any): string {
-	return Object.prototype.toString.call(value).slice(8, -1);
+	return OBJECT.prototype.toString.call(value).slice(8, -1);
 }
 /**
  * Almost the opposite of {@link isNaN}.

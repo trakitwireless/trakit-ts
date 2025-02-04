@@ -63,7 +63,7 @@ export class Behaviour extends Component implements IIdUlong, INamed, IBelongCom
 	/**
 	 * The {@link id} is the key.
 	 */
-public getKey(): string { return this.id.toString(); }
+getKey(): string { return this.id.toString(); }
 
 	override toJSON(): any {
 		const object= {

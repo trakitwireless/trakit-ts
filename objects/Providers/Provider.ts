@@ -158,7 +158,7 @@
 		/**
 		 * The {@link id} is the key.
 		 */
-public getKey(): string { return this.id; }
+getKey(): string { return this.id; }
 
 		// ISuspendable and IDeletable
 		/**

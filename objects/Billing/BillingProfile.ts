@@ -67,7 +67,7 @@
 		/**
 		 * The {@link id} is the key.
 		 */
-public getKey(): string { return this.id.toString(); }
+getKey(): string { return this.id.toString(); }
 
 		// IDeletable
 		/**
