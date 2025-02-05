@@ -5,7 +5,9 @@ import { IBelongCompany } from './Interfaces/IBelongCompany';
 /**
  * Any derived class can/should be serialized and given to a user.
  */
-export abstract class CompanyObject extends Component implements IBelongCompany {
+export abstract class CompanyComponent
+	extends Component
+	implements IBelongCompany {
 	/**
 	 * 
 	 */
