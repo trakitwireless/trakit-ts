@@ -1,5 +1,8 @@
-
-
+import { DATE } from "../API/Functions";
+import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
+import { int, ipv4, ulong } from "../API/Types";
+import { Company } from "../Companies/Company";
+import { SessionStatus } from "./SessionStatus";
 
 	/**
 	 * Information about another {@link User}'s {@link Session}.
@@ -12,7 +15,11 @@
 		/**
 		 * Getter shortcut for the {@link User}'s {@link Company.id}.
 		 */
-		company: ulong = NaN;
+		companyId: ulong = NaN;
+		/**
+		 * Getter shortcut for the {@link User}'s {@link Company}.
+		 */
+		get company(): Company { throw new Error; }
 		/**
 		 *  <c>UserAgent</c> identification string
 		 */
@@ -31,7 +38,7 @@
 		/**
 		 * This {@link Session}'s current state.
 		 */
-		status: SessionStatus;
+		status: SessionStatus = SessionStatus.expired;
 		/**
 		 * The timestamp from the moment this {@link Session} was created.
 		 */
@@ -49,5 +56,16 @@
 		 */
 		lastActivity: Date = DATE();
 		/**
-		 * Indicator that this {@link Session} is 
+		 * The (most recent) IP address that used this {@link Session} to connect.
+		 */
+		ipAddress: ipv4;
+			
+		/**
+		 * Indicator that this {@link Session} is using at least one WebSocket connection.
+		 */
+		get active() { return this.sockets > 0; }
+
+		constructor(json: any) {
+			throw new Error;
+		}
 	}
