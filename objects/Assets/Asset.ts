@@ -18,7 +18,6 @@ import { AssetPlaceStatus } from "./AssetPlaceStatus";
 import { Position } from "../API/Geography/Position";
 import { DATE } from "../API/Functions";
 
-
 /**
  * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
  */
@@ -30,9 +29,9 @@ export class Asset
 	 */
 	get pieces(): Component[] {
 		return [
-			this.General,
-			this.Advanced,
-			this.Dispatch,
+			this.general,
+			this.advanced,
+			this.dispatch,
 		];
 	}
 
@@ -41,67 +40,67 @@ export class Asset
 	 * {@link Asset.id}
 	 */
 	get id(): ulong {
-		return this.General?.id
-			?? this.Advanced?.id
-			?? this.Dispatch?.id;
+		return this.general.id
+			?? this.advanced.id
+			?? this.dispatch.id;
 	}
 	/**
 	 * The company to which this asset belongs.
 	 * {@link Company.id}
 	 */
 	get companyId(): ulong {
-		return this.General?.companyId
-			?? this.Advanced?.companyId
-			?? this.Dispatch?.companyId;
+		return this.general.companyId
+			?? this.advanced.companyId
+			?? this.dispatch.companyId;
 	}
 	/**
 	 * The company to which this asset belongs.
 	 * {@link Company.id}
 	 */
 	get company(): Company {
-		return this.General?.company
-			?? this.Advanced?.company
-			?? this.Dispatch?.company;
+		return this.general.company
+			?? this.advanced.company
+			?? this.dispatch.company;
 	}
 	/**
 	 * Type of asset.
 	 */
 	get kind(): AssetType {
-		return this.General?.kind;
+		return this.general.kind;
 	}
 
 	/**
 	 *  
 	 */
-	General: AssetGeneral = new AssetGeneral;
+	general: AssetGeneral = new AssetGeneral;
 	/**
 	 * This thing's name.
 	 *  <override max-length="100" />
 	 */
 	get name(): string {
-		return this.General?.name;
+		return this.general.name;
 	}
 	set name(value: string) {
-		if (this.General) this.General.name = value;
+		this.general.name = value;
 	}
 	/**
 	 * Notes about it.
 	 */
 	get notes(): string {
-		return this.General?.notes;
+		return this.general.notes;
 	}
 	set notes(value: string) {
-		if (this.General) this.General.notes = value;
+		this.general.notes = value;
 	}
 	/**
 	 * The icon that represents this asset on the map and in lists.
 	 * {@link Icon.id}
 	 */
 	get icon(): ulong {
-		return this.General?.icon;
+		return this.general.icon;
 	}
 	set icon(value: ulong) {
-		if (this.General) this.General.icon = value;
+		this.general.icon = value;
 	}
 	/**
 	 * Codified label names.
@@ -112,10 +111,10 @@ export class Asset
 	 *  </override>
 	 */
 	get labels(): string[] {
-		return this.General?.labels;
+		return this.general.labels;
 	}
 	set labels(value: string[]) {
-		if (this.General) this.General.labels = value;
+		this.general.labels = value;
 	}
 	/**
 	 * A list of photos of this thing.
@@ -126,20 +125,20 @@ export class Asset
 	 *  </override>
 	 */
 	get pictures(): ulong[] {
-		return this.General?.pictures;
+		return this.general.pictures;
 	}
 	set pictures(value: ulong[]) {
-		if (this.General) this.General.pictures = value;
+		this.general.pictures = value;
 	}
 	/**
 	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
 	 *  <override max-length="254" />
 	 */
 	get messagingAddress(): string {
-		return this.General?.messagingAddress;
+		return this.general.messagingAddress;
 	}
 	set messagingAddress(value: string) {
-		if (this.General) this.General.messagingAddress = value;
+		this.general.messagingAddress = value;
 	}
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
@@ -149,33 +148,33 @@ export class Asset
 	 *  </override>
 	 */
 	get references(): Map<string, string> {
-		return this.General?.references;
+		return this.general.references;
 	}
 	set references(value: Map<string, string>) {
-		if (this.General) this.General.references = value;
+		this.general.references = value;
 	}
 
 	/**
 	 *  
 	 */
-	Advanced: AssetAdvanced = new AssetAdvanced;
+	advanced: AssetAdvanced = new AssetAdvanced;
 	/**
 	 * The things GPS coordinates including speed, bearing, and street information.
 	 */
 	get position(): Position | null {
-		return this.Advanced?.position;
+		return this.advanced.position;
 	}
 	set position(value: Position | null) {
-		if (this.Advanced) this.Advanced.position = value;
+		this.advanced.position = value;
 	}
 	/**
 	 * The cumulative distance travelled in kilometres.
 	 */
 	get odometer(): double {
-		return this.Advanced?.odometer;
+		return this.advanced.odometer;
 	}
 	set odometer(value: double) {
-		if (this.Advanced) this.Advanced.odometer = value;
+		this.advanced.odometer = value;
 	}
 	/**
 	 * The codified status tag names.
@@ -186,10 +185,10 @@ export class Asset
 	 *  </override>
 	 */
 	get tags(): string[] {
-		return this.Advanced?.tags;
+		return this.advanced.tags;
 	}
 	set tags(value: string[]) {
-		if (this.Advanced) this.Advanced.tags = value;
+		this.advanced.tags = value;
 	}
 	/**
 	 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
@@ -200,10 +199,10 @@ export class Asset
 	 *  </override>
 	 */
 	get attributes(): Map<string, AssetAttribute> {
-		return this.Advanced?.attributes;
+		return this.advanced.attributes;
 	}
 	set attributes(value: Map<string, AssetAttribute>) {
-		if (this.Advanced) this.Advanced.attributes = value;
+		this.advanced.attributes = value;
 	}
 	/**
 	 * The list of devices providing events for this asset.
@@ -214,10 +213,10 @@ export class Asset
 	 *  </override>
 	 */
 	get providers(): string[] {
-		return this.Advanced?.providers;
+		return this.advanced.providers;
 	}
 	set providers(value: string[]) {
-		if (this.Advanced) this.Advanced.providers = value;
+		this.advanced.providers = value;
 	}
 	/**
 	 * A list of assets related to this one; like a Person for a Vehicle (driver).
@@ -228,10 +227,10 @@ export class Asset
 	 *  </override>
 	 */
 	get relationships(): ulong[] {
-		return this.Advanced?.relationships;
+		return this.advanced.relationships;
 	}
 	set relationships(value: ulong[]) {
-		if (this.Advanced) this.Advanced.relationships = value;
+		this.advanced.relationships = value;
 	}
 	/**
 	 * The current state of this asset's interaction with known Places.
@@ -242,16 +241,16 @@ export class Asset
 	 *  </override>
 	 */
 	get places(): Map<ulong, AssetPlaceStatus> {
-		return this.Advanced?.places;
+		return this.advanced.places;
 	}
 	set places(value: Map<ulong, AssetPlaceStatus>) {
-		if (this.Advanced) this.Advanced.places = value;
+		this.advanced.places = value;
 	}
 
 	/**
 	 *  
 	 */
-	Dispatch: AssetDispatch = new AssetDispatch;
+	dispatch: AssetDispatch = new AssetDispatch;
 
 	constructor(json: any = null) {
 		super();
@@ -275,12 +274,12 @@ export class Asset
 	 * Indicates whether this object is suspended from event processing.
 	 */
 	get suspended(): boolean {
-		return this.General?.suspended ?? false;
+		return this.general.suspended ?? false;
 	}
 	/**
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
 	get since(): Date {
-		return this.General?.since ?? DATE();
+		return this.general.since ?? DATE();
 	}
 }

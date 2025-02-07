@@ -26,12 +26,12 @@ export class Company
 	 */
 	override get pieces(): Component[] {
 		return [
-			this.General,
+			this.general,
 			null as unknown as Component,	// reserved for future use
-			this.Directory,
-			this.Styles,
-			this.Policies,
-			this.Reseller as Component,
+			this.directory,
+			this.styles,
+			this.policies,
+			this.reseller as Component,
 		];
 	}
 	/**
@@ -39,13 +39,11 @@ export class Company
 	 * {@link Asset.id}
 	 */
 	get id(): ulong {
-		const id = this.General?.id
-			?? this.Directory?.id
-			?? this.Policies?.id
-			?? this.Styles?.id
-			?? this.Reseller?.id;
-		//throw new NullReferenceException("general");
-		return id;
+		return this.general.id
+			?? this.directory.id
+			?? this.policies.id
+			?? this.styles.id
+			?? this.reseller?.id;
 	}
 	/**
 	 * The parent organization for this Company.
@@ -66,27 +64,23 @@ export class Company
 	get company(): Company {
 		throw new Error('Method not implemented.');
 	}
-	get companyId(): number {
-		throw new Error('Method not implemented.');
-	}
-	set companyId(value: number) {
-		throw new Error('Method not implemented.');
-	}
+	get companyId(): number { return this.parentId; }
+	set companyId(value: number) { this.parentId = value; }
 
 	/**
 	 *  
 	 */
-	General: CompanyGeneral = new CompanyGeneral;
+	general: CompanyGeneral = new CompanyGeneral;
 	/**
 	 * The organizational name.
 	 */
-	get name(): string { return this.General.name; }
-	set name(value: string) { this.General.name = value; }
+	get name(): string { return this.general.name; }
+	set name(value: string) { this.general.name = value; }
 	/**
 	 * Notes.
 	 */
-	get notes(): string { return this.General.notes; }
-	set notes(value: string) { this.General.notes = value; }
+	get notes(): string { return this.general.notes; }
+	set notes(value: string) { this.general.notes = value; }
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
 	 *  <override max-count="10">
@@ -94,53 +88,53 @@ export class Company
 	 *  <values max-length="100" />
 	 *  </override>
 	 */
-	get references(): Map<string, string> { return this.General.references; }
-	set references(value: Map<string, string>) { this.General.references = value; }
+	get references(): Map<string, string> { return this.general.references; }
+	set references(value: Map<string, string>) { this.general.references = value; }
 
 	/**
 	 *  
 	 */
-	Directory: CompanyDirectory = new CompanyDirectory;
+	directory: CompanyDirectory = new CompanyDirectory;
 	/**
 	 * The list of Contacts from this and other companies broken down by contact role.
 	 */
-	get employees(): Map<string, ulong[]> { return this.Directory.employees; }
-	set employees(value: Map<string, ulong[]>) { this.Directory.employees = value; }
+	get employees(): Map<string, ulong[]> { return this.directory.employees; }
+	set employees(value: Map<string, ulong[]>) { this.directory.employees = value; }
 
 	/**
 	 *  
 	 */
-	Policies: CompanyPolicies = new CompanyPolicies;
+	policies: CompanyPolicies = new CompanyPolicies;
 	/**
 	 * The session lifetime policy.
 	 */
-	get sessionPolicy(): SessionPolicy { return this.Policies.sessionPolicy; }
-	set sessionPolicy(value: SessionPolicy) { this.Policies.sessionPolicy = value; }
+	get sessionPolicy(): SessionPolicy { return this.policies.sessionPolicy; }
+	set sessionPolicy(value: SessionPolicy) { this.policies.sessionPolicy = value; }
 	/**
 	 * The password complexity and expiry policy.
 	 */
-	get passwordPolicy(): PasswordPolicy { return this.Policies.passwordPolicy; }
-	set passwordPolicy(value: PasswordPolicy) { this.Policies.passwordPolicy = value; }
+	get passwordPolicy(): PasswordPolicy { return this.policies.passwordPolicy; }
+	set passwordPolicy(value: PasswordPolicy) { this.policies.passwordPolicy = value; }
 
 	/**
 	 *  
 	 */
-	Styles: CompanyStyles = new CompanyStyles;
+	styles: CompanyStyles = new CompanyStyles;
 	/**
 	 * The styles for labels added to Assets, Places, and other things.
 	 */
-	get labels(): Map<codified, LabelStyle> { return this.Styles.labels }
-	set labels(value: Map<codified, LabelStyle>) { this.Styles.labels = value; }
+	get labels(): Map<codified, LabelStyle> { return this.styles.labels }
+	set labels(value: Map<codified, LabelStyle>) { this.styles.labels = value; }
 	/**
 	 * The styles for status tags added to Assets.
 	 */
-	get tags(): Map<codified, LabelStyle> { return this.Styles.tags; }
-	set tags(value: Map<codified, LabelStyle>) { this.Styles.tags = value; }
+	get tags(): Map<codified, LabelStyle> { return this.styles.tags; }
+	set tags(value: Map<codified, LabelStyle>) { this.styles.tags = value; }
 	
 	/**
 	 * If this company is a reseller, then they have their own theme, support and billing information.
 	 */
-	Reseller: CompanyReseller | null = null;
+	reseller: CompanyReseller | null = null;
 
 	constructor(json: any = null) {
 		super();
@@ -152,11 +146,11 @@ export class Company
 	toJSON() {
 		return MERGE(
 			{ "v": this.v },
-			this.General.toJSON(),
-			this.Directory.toJSON(),
-			this.Styles.toJSON(),
-			this.Policies.toJSON(),
-			this.Reseller?.toJSON() ?? {}
+			this.general.toJSON(),
+			this.directory.toJSON(),
+			this.styles.toJSON(),
+			this.policies.toJSON(),
+			this.reseller.toJSON() ?? {}
 		);
 	}
 	/**
@@ -164,17 +158,17 @@ export class Company
 	 * @param json 
 	 */
 	fromJSON(json: any): void {
-		this.General.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json));
-		//this.Reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json));
-		this.Directory.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json));
-		this.Styles.fromJSON(MERGE({ "v": json["v"].slice(3, 4) }, json));
-		this.Policies.fromJSON(MERGE({ "v": json["v"].slice(4, 5) }, json));
+		this.general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json));
+		//this.reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json));
+		this.directory.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json));
+		this.styles.fromJSON(MERGE({ "v": json["v"].slice(3, 4) }, json));
+		this.policies.fromJSON(MERGE({ "v": json["v"].slice(4, 5) }, json));
 		if (json["v"][5] > 0) {
-			if (!this.Reseller) this.Reseller = new CompanyReseller;
+			if (!this.reseller) this.reseller = new CompanyReseller;
 		} else {
-			this.Reseller = null;
+			this.reseller = null;
 		}
-		this.Reseller?.fromJSON(MERGE({ "v": json["v"].slice(5, 6) }, json));
+		this.reseller?.fromJSON(MERGE({ "v": json["v"].slice(5, 6) }, json));
 	}
 	// IRequestable
 	/**

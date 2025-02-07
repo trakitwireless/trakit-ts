@@ -1,16 +1,16 @@
-import { DATE } from "../API/Functions";
+import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
+import { IRequestable } from "../API/Interfaces/IRequestable";
+import { ISerializable } from "../API/Interfaces/ISerializable";
 import { int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { SessionStatus } from "./SessionStatus";
-
-
 
 /**
  * Information about another {@link User}'s {@link Session}.
  */
 export class Session
-	implements IBelongCompany {
+	implements IBelongCompany, IRequestable, ISerializable {
 	/**
 	 * A "handle" identifying a resource.
 	 */
@@ -26,6 +26,10 @@ export class Session
 	get company(): Company {
 		throw new Error("Method not implemented.");
 	}
+	/**
+	 * The IP address of the {@link User} last used to connect using this session.
+	 */
+	ipAddress: string = "";
 	/**
 	 *  <c>UserAgent</c> identification string
 	 */
@@ -65,4 +69,42 @@ export class Session
 	 * Indicator that this {@link Session} is using at least one WebSocket connection.
 	 */
 	get active(): boolean { return this.sockets > 0; }
+
+	constructor(json: any = null) {
+		this.handle = json["handle"];
+		this.companyId = ID(json["company"]);
+		this.login = json["login"];
+		this.userAgent = json["userAgent"];
+		this.ipAddress = json["ipAddress"] || "";
+		this.created = DATE(json["created"]);
+		this.lastActivity = DATE(json["lastActivity"]);
+		this.lastCommand = json["lastCommand"];
+		this.sockets = ID(json["sockets"]) || 0;
+	}
+	/**
+	 * 
+	 * @returns 
+	 */
+	toJSON() {
+		return {
+			"handle": this.handle,
+			"login": this.login,
+			"company": this.companyId,
+
+			"created": this.created.toISOString(),
+			"lastActivity": this.lastActivity.toISOString(),
+			"ipAddress": this.ipAddress,
+			"userAgent": this.userAgent,
+			"lastCommand": this.lastCommand,
+
+			"active": this.active,
+			"sockets": this.sockets,
+		};
+	}
+
+	// IRequestable
+	/**
+	 * The {@link handle} is the key.
+	 */
+	getKey(): string { return this.handle; }
 }

@@ -26,8 +26,8 @@ export class User
 	 */
 	get pieces(): Component[] {
 		return [
-			this.General,
-			this.Advanced,
+			this.general,
+			this.advanced,
 		];
 	}
 
@@ -37,87 +37,87 @@ export class User
 	 *  <override min-length="6" max-length="254" format="email" />
 	 */
 	get login(): string {
-		return this.General?.login
-			?? this.Advanced?.login;
+		return this.general.login
+			?? this.advanced.login;
 	}
 	/**
 	 * The company to which this user belongs.
 	 * {@link Company.id}
 	 */
 	get companyId(): ulong {
-		return this.General?.companyId
-			?? this.Advanced?.companyId;
+		return this.general.companyId
+			?? this.advanced.companyId;
 	}
 	/**
 	 * The company to which this user belongs.
 	 * {@link Company.id}
 	 */
 	get company(): Company {
-		return this.General?.company;
+		return this.general.company;
 	}
 
 
 	/**
 	 *  
 	 */
-	General: UserGeneral = new UserGeneral;
+	general: UserGeneral = new UserGeneral;
 	/**
 	 * Indicated whether the credentials have expired according to the company's policy.
 	 */
 	get passwordExpired(): boolean {
-		return this.General?.passwordExpired;
+		return this.general.passwordExpired;
 	}
 	set passwordExpired(value: boolean) {
-		if (this.General) this.General.passwordExpired = value;
+		 this.general.passwordExpired = value;
 	}
 	/**
 	 * Indicates whether system access is disabled.
 	 */
 	get enabled(): boolean {
-		return this.General?.enabled;
+		return this.general.enabled;
 	}
 	set enabled(value: boolean) {
-		if (this.General) this.General.enabled = value;
+		 this.general.enabled = value;
 	}
 	/**
 	 * Human friendly name for these credentials
 	 *  <override max-length="100" />
 	 */
 	get nickname(): string {
-		return this.General?.nickname;
+		return this.general.nickname;
 	}
 	set nickname(value: string) {
-		if (this.General) this.General.nickname = value;
+		 this.general.nickname = value;
 	}
 	/**
 	 * Contact information for this user.
 	 * {@link Contact.id}
 	 */
 	get contactId(): ulong | null {
-		return this.General?.contactId;
+		return this.general.contactId;
 	}
 	set contactId(value: ulong | null | undefined) {
-		if (this.General) this.General.contactId = value ?? null;
+		 this.general.contactId = value ?? null;
 	}
 	/**
 	 * Contact information for this user.
 	 * {@link Contact.id}
 	 */
 	get contact(): Contact {
-		return this.General?.contact;
+		return this.general.contact;
 	}
 	set contact(value: Contact | null | undefined) {
-		if (this.General) this.General.contactId = value?.id ?? null;
+		 this.general.contactId = value?.id ?? null;
 	}
 	/**
 	 * The user's local timezone.
 	 * {@link Timezone.code}
 	 */
 	get timezone(): Timezone {
-		return this.General?.timezone;
+		return this.general.timezone;
 	}
 	set timezone(value: Timezone) {
-		if (this.General) this.General.timezone = value;
+		 this.general.timezone = value;
 	}
 	/**
 	 * Preferred region/language for the UI and notifications.
@@ -125,10 +125,10 @@ export class User
 	 *  <override min-length="2" max-length="5" format="codified" />
 	 */
 	get language(): string {
-		return this.General?.language;
+		return this.general.language;
 	}
 	set language(value: string) {
-		if (this.General) this.General.language = value;
+		 this.general.language = value;
 	}
 	/**
 	 * The format strings defining the preferred way to display ambiguous values.
@@ -138,10 +138,10 @@ export class User
 	 *  </override>
 	 */
 	get formats(): Map<codified, datetimetemplate> {
-		return this.General?.formats;
+		return this.general.formats;
 	}
 	set formats(value: Map<codified, datetimetemplate>) {
-		if (this.General) this.General.formats = value;
+		 this.general.formats = value;
 	}
 	/**
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
@@ -150,10 +150,10 @@ export class User
 	 *  </override>
 	 */
 	get measurements(): Map<codified, SystemsOfUnits> {
-		return this.General?.measurements;
+		return this.general.measurements;
 	}
 	set measurements(value: Map<codified, SystemsOfUnits>) {
-		if (this.General) this.General.measurements = value;
+		 this.general.measurements = value;
 	}
 	/**
 	 * Additional options which do not fit in with the formats or measurements preferences.
@@ -163,54 +163,54 @@ export class User
 	 *  </override>
 	 */
 	get options(): Map<codified, string> {
-		return this.General?.options;
+		return this.general.options;
 	}
 	set options(value: Map<codified, string>) {
-		if (this.General) this.General.options = value;
+		 this.general.options = value;
 	}
 	/**
 	 * Definition of how and when to send alerts to the user.
 	 *  <override max-count="7" />
 	 */
 	get notify(): UserNotifications[] {
-		return this.General?.notify;
+		return this.general.notify;
 	}
 	set notify(value: UserNotifications[]) {
-		if (this.General) this.General.notify = value;
+		 this.general.notify = value;
 	}
 
 	/**
 	 *  
 	 */
-	Advanced: UserAdvanced = new UserAdvanced;
+	advanced: UserAdvanced = new UserAdvanced;
 	/**
 	 * A list of groups to which this user belongs.
 	 * {@link UserGroup.id}
 	 */
 	get groupIds(): ulong[] {
-		return this.Advanced?.groupIds;
+		return this.advanced.groupIds;
 	}
 	set groupIds(value: ulong[]) {
-		if (this.Advanced) this.Advanced.groupIds = value;
+		this.advanced.groupIds = value;
 	}
 	/**
 	 * A list of groups to which this user belongs.
 	 * {@link UserGroup.id}
 	 */
 	get groups(): UserGroup[] {
-		return this.Advanced?.groups;
+		return this.advanced.groups;
 	}
 	set groups(value: UserGroup[]) {
-		if (this.Advanced) this.Advanced.groups = value;
+		this.advanced.groups = value;
 	}
 	/**
 	 * Individual permission rules which override the group rules.
 	 */
 	get permissions(): Permission[] {
-		return this.Advanced?.permissions;
+		return this.advanced.permissions;
 	}
 	set permissions(value: Permission[]) {
-		if (this.Advanced) this.Advanced.permissions = value;
+		this.advanced.permissions = value;
 	}
 
 	constructor(json: any = null) {
