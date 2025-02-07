@@ -2,6 +2,7 @@ import { Component } from "../API/Component";
 import { Compound } from "../API/Compound";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
+import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { codified, datetimetemplate, ulong } from "../API/Types";
@@ -20,7 +21,7 @@ import { UserNotifications } from "./UserNotifications";
  */
 export class User
 	extends Compound
-	implements IEnabled, IBelongCompany, IHavePreferences {
+	implements IEnabled, IBelongCompany, IHavePermissions, IHavePreferences {
 	/**
 	 *  
 	 */
@@ -68,7 +69,7 @@ export class User
 		return this.general.passwordExpired;
 	}
 	set passwordExpired(value: boolean) {
-		 this.general.passwordExpired = value;
+		this.general.passwordExpired = value;
 	}
 	/**
 	 * Indicates whether system access is disabled.
@@ -77,7 +78,7 @@ export class User
 		return this.general.enabled;
 	}
 	set enabled(value: boolean) {
-		 this.general.enabled = value;
+		this.general.enabled = value;
 	}
 	/**
 	 * Human friendly name for these credentials
@@ -87,7 +88,7 @@ export class User
 		return this.general.nickname;
 	}
 	set nickname(value: string) {
-		 this.general.nickname = value;
+		this.general.nickname = value;
 	}
 	/**
 	 * Contact information for this user.
@@ -97,7 +98,7 @@ export class User
 		return this.general.contactId;
 	}
 	set contactId(value: ulong | null | undefined) {
-		 this.general.contactId = value ?? null;
+		this.general.contactId = value ?? null;
 	}
 	/**
 	 * Contact information for this user.
@@ -107,7 +108,7 @@ export class User
 		return this.general.contact;
 	}
 	set contact(value: Contact | null | undefined) {
-		 this.general.contactId = value?.id ?? null;
+		this.general.contactId = value?.id ?? null;
 	}
 	/**
 	 * The user's local timezone.
@@ -117,7 +118,7 @@ export class User
 		return this.general.timezone;
 	}
 	set timezone(value: Timezone) {
-		 this.general.timezone = value;
+		this.general.timezone = value;
 	}
 	/**
 	 * Preferred region/language for the UI and notifications.
@@ -128,7 +129,7 @@ export class User
 		return this.general.language;
 	}
 	set language(value: string) {
-		 this.general.language = value;
+		this.general.language = value;
 	}
 	/**
 	 * The format strings defining the preferred way to display ambiguous values.
@@ -141,7 +142,7 @@ export class User
 		return this.general.formats;
 	}
 	set formats(value: Map<codified, datetimetemplate>) {
-		 this.general.formats = value;
+		this.general.formats = value;
 	}
 	/**
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
@@ -153,7 +154,7 @@ export class User
 		return this.general.measurements;
 	}
 	set measurements(value: Map<codified, SystemsOfUnits>) {
-		 this.general.measurements = value;
+		this.general.measurements = value;
 	}
 	/**
 	 * Additional options which do not fit in with the formats or measurements preferences.
@@ -166,7 +167,7 @@ export class User
 		return this.general.options;
 	}
 	set options(value: Map<codified, string>) {
-		 this.general.options = value;
+		this.general.options = value;
 	}
 	/**
 	 * Definition of how and when to send alerts to the user.
@@ -176,7 +177,7 @@ export class User
 		return this.general.notify;
 	}
 	set notify(value: UserNotifications[]) {
-		 this.general.notify = value;
+		this.general.notify = value;
 	}
 
 	/**

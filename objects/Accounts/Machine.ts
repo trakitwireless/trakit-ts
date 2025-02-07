@@ -80,7 +80,16 @@ export class Machine
 	/**
 	 * A list of groups to which this machine account belongs.
 	 */
-	groups: UserGroup[] = [];
+	groupIds: ulong[] = [];
+	/**
+	 * A list of groups to which this machine account belongs.
+	 */
+	get groups(): UserGroup[] {
+		throw new Error("Method not implemented.");
+	}
+	set groups(value: UserGroup[]) {
+		throw new Error("Method not implemented.");
+	}
 	/**
 	 * Permission rules which override the group rules.
 	 */

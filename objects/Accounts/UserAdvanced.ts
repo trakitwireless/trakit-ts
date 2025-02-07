@@ -39,7 +39,12 @@ export class UserAdvanced
 	 * A list of groups to which this user belongs.
 	 * {@link UserGroup.id}
 	 */
-	groups: UserGroup[] = [];
+	get groups(): UserGroup[] {
+		throw new Error("Method not implemented.");
+	}
+	set groups(value: UserGroup[]) {
+		throw new Error("Method not implemented.");
+	}
 	/**
 	 * Individual permission rules which override the group rules.
 	 */
