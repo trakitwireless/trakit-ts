@@ -1,6 +1,7 @@
 ﻿import { Component } from "../API/Component";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { ProviderCommand } from "./ProviderCommand";
 import { ProviderCommandType } from "./ProviderCommandType";
@@ -26,9 +27,7 @@ export class ProviderControl
 	 * The company to which this device belongs.
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error("Method not implemented.");
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * Collection of commands for this provider.
 	 */

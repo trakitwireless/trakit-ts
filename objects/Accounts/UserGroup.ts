@@ -3,6 +3,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { Permission } from "./Permissions/Permission";
 
@@ -27,9 +28,7 @@ export class UserGroup
 	 * The company to which this group belongs.
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error;
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * A name given to this group.
 	 *  <override max-length="100" />

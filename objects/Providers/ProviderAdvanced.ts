@@ -1,6 +1,7 @@
 ﻿import { Component } from "../API/Component";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ipv4, ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { ProviderData } from "./ProviderData";
 
@@ -25,9 +26,7 @@ export class ProviderAdvanced
 	 * The company to which this device belongs.
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error("Method not implemented.");
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The last IP address of the device.
 	 *  <override type="System.String" format="ipv4" />

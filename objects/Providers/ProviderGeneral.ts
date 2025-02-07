@@ -4,6 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { ProviderType } from "./ProviderType";
 
@@ -28,9 +29,7 @@ export class ProviderGeneral
 	 * The company to which this device belongs.
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error("Method not implemented.");
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * A nickname given to the device/hardware.
 	 *  <override max-length="100" />

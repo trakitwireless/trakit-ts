@@ -2,6 +2,7 @@
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { Permission } from "./Permissions/Permission";
 import { UserGroup } from "./UserGroup";
@@ -27,9 +28,7 @@ export class UserAdvanced
 	 * The company to which this user belongs.
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error;
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * A list of groups to which this user belongs.
 	 * {@link UserGroup.id}

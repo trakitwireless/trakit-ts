@@ -4,6 +4,7 @@ import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { Contact } from "./Contact";
 import { SystemsOfUnits } from "./SystemsOfUnits";
@@ -26,12 +27,12 @@ export class UserGeneral
 	 * {@link Company.id}
 	 */
 	companyId: ulong = NaN;
-	get company(): Company {
-		throw new Error("Method not implemented.");
-	}
-	set company(value: Company) {
-		this.companyId = value.id;
-	}
+	
+	/**
+	 * The company to which this user belongs.
+	 * {@link Company}
+	 */
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * Indicated whether the credentials have expired according to the company's policy.
 	 */

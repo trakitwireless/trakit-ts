@@ -3,6 +3,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { int, ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { SessionStatus } from "./SessionStatus";
 
@@ -23,9 +24,7 @@ export class Session
 	 * The company to which this contact belongs
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error("Method not implemented.");
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The IP address of the {@link User} last used to connect using this session.
 	 */

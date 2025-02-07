@@ -6,6 +6,7 @@ import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
 import { MERGE } from '../API/Objects';
 import { codified, ulong } from '../API/Types';
+import { COMPANIES } from '../COMPANIES';
 import { CompanyDirectory } from './CompanyDirectory';
 import { CompanyGeneral } from './CompanyGeneral';
 import { CompanyPolicies } from './CompanyPolicies';
@@ -61,9 +62,7 @@ export class Company
 	set parentId(value: number) {
 		throw new Error('Method not implemented.');
 	}
-	get company(): Company {
-		throw new Error('Method not implemented.');
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	get companyId(): number { return this.parentId; }
 	set companyId(value: number) { this.parentId = value; }
 

@@ -4,6 +4,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ulong, url } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 
 /**
@@ -25,9 +26,7 @@ export class Contact
 	 * The company to which this contact belongs
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error("Method not implemented.");
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The person's name
 	 *  <override max-length="100" />

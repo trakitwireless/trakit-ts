@@ -3,6 +3,7 @@ import { DATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { DispatchDirection } from "../Dispatch/DispatchDirection";
 
@@ -26,9 +27,7 @@ export class AssetDispatch
 	 * The company to which this asset belongs.
 	 * {@link Company.id}
 	 */
-	get company(): Company {
-		throw new Error("Method not implemented.");
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The current list of {@link DispatchJob}s assigned to the asset.
 	 * {@link DispatchJob}

@@ -3,6 +3,7 @@ import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { double, ulong } from "../API/Types";
+import { COMPANIES } from "../COMPANIES";
 import { Company } from "../Companies/Company";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";
@@ -27,9 +28,7 @@ export class AssetAdvanced
 	 * The company to which this asset belongs.
 	 * {@link Company.id}
 	 */
-	get company(): Company{
-		throw new Error("Method not implemented.");
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The things GPS coordinates including speed, bearing, and street information.
 	 */

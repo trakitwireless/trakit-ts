@@ -6,6 +6,7 @@ import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
 import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
 import { Timezone } from '../API/Timezone';
 import { codified, ulong, url } from '../API/Types';
+import { COMPANIES } from '../COMPANIES';
 import { Company } from '../Companies/Company';
 import { Permission } from './Permissions/Permission';
 import { SystemsOfUnits } from './SystemsOfUnits';
@@ -28,9 +29,7 @@ export class Machine
 	/**
 	 * 
 	 */
-	get company(): Company {
-		throw new Error('Method not implemented.');
-	}
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * Indicates whether system access is disable.
 	 */
