@@ -31,6 +31,10 @@ export class CompanyPolicies
 	 */
 	passwordPolicy: PasswordPolicy = new PasswordPolicy;;
 
+	constructor(json: any = null) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	toJSON(): any {
 		throw new Error("Method not implemented.");
 	}

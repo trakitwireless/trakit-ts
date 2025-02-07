@@ -20,7 +20,7 @@ export class UserNotifications
 	 */
 	enabled: boolean;
 	/**
-	 * A 7 item, booleanean array, determines if the user should be notified on that day of the week.
+	 * A 7 item, boolean array, determines if the user should be notified on that day of the week.
 	 * The days of the week are defined in local time, not UTC.
 	 * {@link UserGeneral.timezone}
 	 *  <override count="7" />

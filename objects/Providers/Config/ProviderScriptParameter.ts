@@ -17,7 +17,7 @@
 		notes: string = "";
 		/**
 		 * Gives a hint to the client on the best UI to use for editing.
-		 * For example, "checkbox" is a good UI hint for booleanean parameter types.
+		 * For example, "checkbox" is a good UI hint for boolean parameter types.
 		 */
 		context: string = "";
 		/**

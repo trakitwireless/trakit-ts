@@ -150,7 +150,7 @@ export class Company
 			this.directory.toJSON(),
 			this.styles.toJSON(),
 			this.policies.toJSON(),
-			this.reseller.toJSON() ?? {}
+			this.reseller?.toJSON() ?? {}
 		);
 	}
 	/**

@@ -9,7 +9,7 @@
 		 */
 		kind: ReportRecurrenceType;
 		/**
-		 * Used only for daily schedules, this 7 item, booleanean array, determines if the schedule should recur on that day of the week.
+		 * Used only for daily schedules, this 7 item, boolean array, determines if the schedule should recur on that day of the week.
 		 *  <override count="7" />
 		 */
 		weekdays: boolean[] = [];

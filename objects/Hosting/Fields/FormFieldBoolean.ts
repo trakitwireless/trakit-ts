@@ -12,7 +12,7 @@
 	 */
 	export class FormFieldBoolean extends FormFieldBase {
 		/**
-		 * These are the booleanean control types.
+		 * These are the boolean control types.
 		 */
 		protected override FormFieldType[] supported => new[] {
 			FormFieldType.checkbox,
