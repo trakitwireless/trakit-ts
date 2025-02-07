@@ -1,7 +1,7 @@
 ﻿import { Component } from "../API/Component";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { ulong } from "../API/Types";
+import { codified, ulong } from "../API/Types";
 import { LabelStyle } from "./LabelStyle";
 
 
@@ -24,11 +24,11 @@ export class CompanyStyles
 	/**
 	 * The styles for labels added to Assets, Places, and other things.
 	 */
-	labels: Map<string, LabelStyle>;
+	labels: Map<codified, LabelStyle> = new Map;
 	/**
 	 * The styles for status tags added to Assets.
 	 */
-	tags: Map<string, LabelStyle>;
+	tags: Map<codified, LabelStyle> = new Map;
 
 	toJSON(): any {
 		throw new Error("Method not implemented.");

@@ -1,4 +1,5 @@
 ﻿import { Component } from "../API/Component";
+import { ID, IS_AN } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
@@ -24,17 +25,22 @@ export class CompanyPolicies
 	/**
 	 * The session lifetime policy.
 	 */
-	sessionPolicy: SessionPolicy;
+	sessionPolicy: SessionPolicy = new SessionPolicy;
 	/**
 	 * The password complexity and expiry policy.
 	 */
-	passwordPolicy: PasswordPolicy;
+	passwordPolicy: PasswordPolicy = new PasswordPolicy;;
 
 	toJSON(): any {
 		throw new Error("Method not implemented.");
 	}
 	fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+		if (!IS_AN(this.id)) this.id = ID(json["id"]);
+		if (!IS_AN(this.parentId)) this.id = ID(json["parent"]);
+		if (this.updateVersions(json["v"])[0]) {
+			this.sessionPolicy = new SessionPolicy(json["sessionPolicy"]);
+			this.passwordPolicy = new PasswordPolicy(json["passwordPolicy"]);
+		}
 	}
 	// IRequestable
 	/**

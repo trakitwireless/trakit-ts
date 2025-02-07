@@ -1,6 +1,7 @@
 import { Component } from '../API/Component';
 import { Compound } from '../API/Compound';
 import { IAmCompany } from '../API/Interfaces/IAmCompany';
+import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
 import { MERGE } from '../API/Objects';
@@ -19,7 +20,7 @@ import { SessionPolicy } from './SessionPolicy';
  */
 export class Company
 	extends Compound
-	implements IIdUlong, INamed, IAmCompany {
+	implements IIdUlong, INamed, IAmCompany, IBelongCompany {
 	/**
 	 * 
 	 */
@@ -30,7 +31,7 @@ export class Company
 			this.Directory,
 			this.Styles,
 			this.Policies,
-			this.Reseller,
+			this.Reseller as Component,
 		];
 	}
 	/**
@@ -50,25 +51,32 @@ export class Company
 	 * The parent organization for this Company.
 	 * {@link Company.id}
 	 */
-	get parentId(): ulong {
-		return this.General?.parentId
-			?? this.Directory?.parentId
-			?? this.Policies?.parentId
-			?? this.Styles?.parentId
-			?? this.Reseller?.parentId;
+	get parent(): Company {
+		throw new Error('Method not implemented.');
 	}
-	set parentId(value: ulong) {
-		if (this.General) this.General.parentId = value;
-		if (this.Directory) this.Directory.parentId = value;
-		if (this.Policies) this.Policies.parentId = value;
-		if (this.Styles) this.Styles.parentId = value;
-		if (this.Reseller) this.Reseller.parentId = value;
+	set parent(parent: Company) {
+		throw new Error('Method not implemented.');
+	}
+	get parentId(): number {
+		throw new Error('Method not implemented.');
+	}
+	set parentId(value: number) {
+		throw new Error('Method not implemented.');
+	}
+	get company(): Company {
+		throw new Error('Method not implemented.');
+	}
+	get companyId(): number {
+		throw new Error('Method not implemented.');
+	}
+	set companyId(value: number) {
+		throw new Error('Method not implemented.');
 	}
 
 	/**
 	 *  
 	 */
-	General: CompanyGeneral;
+	General: CompanyGeneral = new CompanyGeneral;
 	/**
 	 * The organizational name.
 	 */
@@ -92,7 +100,7 @@ export class Company
 	/**
 	 *  
 	 */
-	Directory: CompanyDirectory;
+	Directory: CompanyDirectory = new CompanyDirectory;
 	/**
 	 * The list of Contacts from this and other companies broken down by contact role.
 	 */
@@ -102,7 +110,7 @@ export class Company
 	/**
 	 *  
 	 */
-	Policies: CompanyPolicies;
+	Policies: CompanyPolicies = new CompanyPolicies;
 	/**
 	 * The session lifetime policy.
 	 */
@@ -117,7 +125,7 @@ export class Company
 	/**
 	 *  
 	 */
-	Styles: CompanyStyles;
+	Styles: CompanyStyles = new CompanyStyles;
 	/**
 	 * The styles for labels added to Assets, Places, and other things.
 	 */
@@ -128,25 +136,27 @@ export class Company
 	 */
 	get tags(): Map<codified, LabelStyle> { return this.Styles.tags; }
 	set tags(value: Map<codified, LabelStyle>) { this.Styles.tags = value; }
-			
-
+	
 	/**
 	 * If this company is a reseller, then they have their own theme, support and billing information.
 	 */
-	Reseller: CompanyReseller;
+	Reseller: CompanyReseller | null = null;
 
+	constructor(json: any = null) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	/**
 	 * 
 	 */
 	toJSON() {
 		return MERGE(
-			{},
+			{ "v": this.v },
 			this.General.toJSON(),
 			this.Directory.toJSON(),
 			this.Styles.toJSON(),
 			this.Policies.toJSON(),
-			this.Reseller.toJSON(),
-			{ "v": this.v.slice() }
+			this.Reseller?.toJSON() ?? {}
 		);
 	}
 	/**
@@ -155,10 +165,16 @@ export class Company
 	 */
 	fromJSON(json: any): void {
 		this.General.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json));
-		this.Directory.fromJSON(MERGE({ "v": json["v"].slice(2, 1) }, json));
-		this.Styles.fromJSON(MERGE({ "v": json["v"].slice(3, 1) }, json));
-		this.Policies.fromJSON(MERGE({ "v": json["v"].slice(4, 1) }, json));
-		this.Reseller.fromJSON(MERGE({ "v": json["v"].slice(5, 1) }, json));
+		//this.Reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json));
+		this.Directory.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json));
+		this.Styles.fromJSON(MERGE({ "v": json["v"].slice(3, 4) }, json));
+		this.Policies.fromJSON(MERGE({ "v": json["v"].slice(4, 5) }, json));
+		if (json["v"][5] > 0) {
+			if (!this.Reseller) this.Reseller = new CompanyReseller;
+		} else {
+			this.Reseller = null;
+		}
+		this.Reseller?.fromJSON(MERGE({ "v": json["v"].slice(5, 6) }, json));
 	}
 	// IRequestable
 	/**
