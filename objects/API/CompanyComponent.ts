@@ -18,4 +18,9 @@ export abstract class CompanyComponent
 	get companyId(): number {
 		return this.company.id;
 	}
+
+	constructor(company: Company) {
+		super();
+		this.company = company;
+	}
 }

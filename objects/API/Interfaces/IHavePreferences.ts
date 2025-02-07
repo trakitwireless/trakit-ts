@@ -1,6 +1,6 @@
-import { codified } from '../Types';
-import { Timezone } from '../Timezone';
 import { SystemsOfUnits } from '../../Accounts/SystemsOfUnits';
+import { Timezone } from '../Timezone';
+import { codified } from '../Types';
 
 /**
  * This interface exists so that I can work with Machine and UserGeneral objects the same way.
