@@ -12,5 +12,5 @@ export interface IBelongCompany {
 	/**
 	 * The {@link Company} to which this object belongs.
 	 */
-	readonly company: Company;
+	get company(): Company;
 }

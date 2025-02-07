@@ -1,3 +1,4 @@
+import { codified, colour } from "../Types";
 
 /**
  * An interface for objects that make them more easily visually identifiable.

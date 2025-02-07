@@ -34,7 +34,7 @@ export class CompanyReseller
 	 *  </values>
 	 *  </override>
 	 */
-	contactInfo: Map<string, ulong>;
+	contactInfo: Map<string, ulong> = new Map;
 	/**
 	 * The name of the branded service being provided to the seller's customers.
 	 *  <override max-length="150" />
@@ -68,7 +68,7 @@ export class CompanyReseller
 	 *  <values max-length="22" format="colour" />
 	 *  </override>
 	 */
-	website: Map<string, string>;
+	website: Map<string, string> = new Map;
 	/**
 	 * A list of symbol names and their corresponding FontAwesome icon names.
 	 *  <override>
@@ -76,7 +76,7 @@ export class CompanyReseller
 	 *  <values max-length="30" format="codified" />
 	 *  </override>
 	 */
-	graphics: Map<string, string>;
+	graphics: Map<string, string> = new Map;
 	/**
 	 * A list of supported languages for your customers.
 	 *  <override>
@@ -90,15 +90,15 @@ export class CompanyReseller
 	 *  <keys max-length="25" />
 	 *  </override>
 	 */
-	gamut: Map<string, ColourStyle>;
+	gamut: Map<string, ColourStyle> = new Map;
 	/**
 	 * The server used for notification and conversational email messages sent and received by the system.
 	 */
-	notifyEmail: NotificationServerEmail;
+	notifyEmail: NotificationServerEmail = new NotificationServerEmail;
 	/**
 	 * Definition for load-balanced outbound SMS numbers for the reseller.
 	 */
-	notifySms: NotificationServerSms;
+	notifySms: NotificationServerSms = new NotificationServerSms;
 	/**
 	 * A preamble to the general terms and conditions offered by Fleet Freedom.
 	 */

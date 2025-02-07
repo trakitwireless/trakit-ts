@@ -1,212 +1,285 @@
+import { Component } from "../API/Component";
+import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
+import { IIdUlong } from "../API/Interfaces/IIdUlong";
+import { INamed } from "../API/Interfaces/INamed";
+import { IPictured } from "../API/Interfaces/IPictured";
+import { IIconic } from "../API/Interfaces/IIconic";
+import { ILabelled } from "../API/Interfaces/ILabelled";
+import { ISuspendable } from "../API/Interfaces/ISuspendable";
+import { Compound } from "../API/Compound";
+import { double, ulong } from "../API/Types";
+import { Company } from "../Companies/Company";
+import { AssetType } from "./AssetType";
+import { AssetGeneral } from "./AssetGeneral";
+import { AssetAdvanced } from "./AssetAdvanced";
+import { AssetDispatch } from "./AssetDispatch";
+import { AssetAttribute } from "./AssetAttribute";
+import { AssetPlaceStatus } from "./AssetPlaceStatus";
+import { Position } from "../API/Geography/Position";
+import { DATE } from "../API/Functions";
 
+/**
+ * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
+ */
+export class Asset
+	extends Compound
+	implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
+	/**
+	 *  
+	 */
+	get pieces(): Component[] {
+		return [
+			this.general,
+			this.advanced,
+			this.dispatch,
+		];
+	}
 
 	/**
-	 * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
+	 * Unique identifier of this asset.
+	 * {@link Asset.id}
 	 */
-	export class Asset extends Compound implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable, IDeletable {
-		/**
-		 *  
-		 */
-		protected override Component[] Pieces => new Component[] {
-			this.General,
-			this.Advanced,
-			this.Dispatch,
-		};
-
-		/**
-		 * Unique identifier of this asset.
-		 * {@link Asset.id}
-		 */
-		ulong id => this.General?.id
-						?? this.Advanced?.id
-						?? this.Dispatch?.id
-						?? throw new NullReferenceException("general");
-		/**
-		 * The company to which this asset belongs.
-		 * {@link Company.id}
-		 */
-		ulong company => this.General?.company
-							?? this.Advanced?.company
-							?? this.Dispatch?.company
-							?? throw new NullReferenceException("general");
-		/**
-		 * Type of asset.
-		 */
-		AssetType kind => this.General?.kind
-							?? throw new NullReferenceException("general");
-
-		/**
-		 *  
-		 */
-		General: AssetGeneral;
-		/**
-		 * This thing's name.
-		 *  <override max-length="100" />
-		 */
-		string name {
-			get => (this.General ?? throw new NullReferenceException("general")).name;
-			set => (this.General ?? throw new NullReferenceException("general")).name = value;
-		}
-		/**
-		 * Notes about it.
-		 */
-		string notes {
-			get => (this.General ?? throw new NullReferenceException("general")).notes;
-			set => (this.General ?? throw new NullReferenceException("general")).notes = value;
-		}
-		/**
-		 * The icon that represents this asset on the map and in lists.
-		 * {@link Icon.id}
-		 */
-		ulong icon {
-			get => (this.General ?? throw new NullReferenceException("general")).icon;
-			set => (this.General ?? throw new NullReferenceException("general")).icon = value;
-		}
-		/**
-		 * Codified label names.
-		 *  <override>
-		 *  <values format="codified">
-		 * {@link LabelStyle.code}
-		 *  </values>
-		 *  </override>
-		 */
-		string[] labels {
-			get => (this.General ?? throw new NullReferenceException("general")).labels;
-			set => (this.General ?? throw new NullReferenceException("general")).labels = value;
-		}
-		/**
-		 * A list of photos of this thing.
-		 *  <override>
-		 *  <values>
-		 * {@link Picture.id}
-		 *  </values>
-		 *  </override>
-		 */
-		ulong[] pictures {
-			get => (this.General ?? throw new NullReferenceException("general")).pictures;
-			set => (this.General ?? throw new NullReferenceException("general")).pictures = value;
-		}
-		/**
-		 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
-		 *  <override max-length="254" />
-		 */
-		string messagingAddress {
-			get => (this.General ?? throw new NullReferenceException("general")).messagingAddress;
-			set => (this.General ?? throw new NullReferenceException("general")).messagingAddress = value;
-		}
-		/**
-		 * Name/value collections of custom fields used to refer to external systems.
-		 *  <override max-count="10">
-		 *  <keys max-length="20" />
-		 *  <values max-length="100" />
-		 *  </override>
-		 */
-		Map<string, string> references {
-			get => (this.General ?? throw new NullReferenceException("general")).references;
-			set => (this.General ?? throw new NullReferenceException("general")).references = value;
-		}
-
-		/**
-		 *  
-		 */
-		Advanced: AssetAdvanced;
-		/**
-		 * The things GPS coordinates including speed, bearing, and street information.
-		 */
-		Position position {
-			get => (this.Advanced ?? throw new NullReferenceException("advanced")).position;
-			set => (this.Advanced ?? throw new NullReferenceException("advanced")).position = value;
-		}
-		/**
-		 * The cumulative distance travelled in kilometres.
-		 */
-		double odometer {
-			get => (this.Advanced ?? throw new NullReferenceException("advanced")).odometer;
-			set => (this.Advanced ?? throw new NullReferenceException("advanced")).odometer = value;
-		}
-		/**
-		 * The codified status tag names.
-		 *  <override>
-		 *  <values format="codified">
-		 * {@link LabelStyle.code}
-		 *  </values>
-		 *  </override>
-		 */
-		string[] tags {
-			get => (this.Advanced ?? throw new NullReferenceException("advanced")).tags;
-			set => (this.Advanced ?? throw new NullReferenceException("advanced")).tags = value;
-		}
-		/**
-		 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
-		 *  <override>
-		 *  <keys format="codified">
-		 * {@link AssetAttribute.name}
-		 *  </keys>
-		 *  </override>
-		 */
-		Map<string, AssetAttribute> attributes {
-			get => (this.Advanced ?? throw new NullReferenceException("advanced")).attributes;
-			set => (this.Advanced ?? throw new NullReferenceException("advanced")).attributes = value;
-		}
-		/**
-		 * The list of devices providing events for this asset.
-		 *  <override readonly="true">
-		 *  <values>
-		 * {@link Provider.id}
-		 *  </values>
-		 *  </override>
-		 */
-		string[] providers {
-			get => (this.Advanced ?? throw new NullReferenceException("advanced")).providers;
-			set => (this.Advanced ?? throw new NullReferenceException("advanced")).providers = value;
-		}
-		/**
-		 * A list of assets related to this one; like a Person for a Vehicle (driver).
-		 *  <override>
-		 *  <values>
-		 * {@link Asset.id}
-		 *  </values>
-		 *  </override>
-		 */
-		ulong[] relationships {
-			get => (this.Advanced ?? throw new NullReferenceException("advanced")).relationships;
-			set => (this.Advanced ?? throw new NullReferenceException("advanced")).relationships = value;
-		}
-		/**
-		 * The current state of this asset's interaction with known Places.
-		 *  <override>
-		 *  <keys>
-		 * {@link Place.id}
-		 *  </keys>
-		 *  </override>
-		 */
-		Map<ulong, AssetPlaceStatus> places {
-			get => (this.Advanced ?? throw new NullReferenceException("advanced")).places;
-			set => (this.Advanced ?? throw new NullReferenceException("advanced")).places = value;
-		}
-
-		/**
-		 *  
-		 */
-		Dispatch: AssetDispatch;
-
-		// IRequestable
-		/**
-		 * The {@link id} is the key.
-		 */
-getKey(): string { return this.id.toString(); }
-
-		// ISuspendable and IDeletable
-		/**
-		 * Indicates whether this object was deleted.
-		 */
-		boolean? deleted => (this.General ?? throw new NullReferenceException("general")).deleted;
-		/**
-		 * Indicates whether this object is suspended from event processing.
-		 */
-		boolean? suspended => (this.General ?? throw new NullReferenceException("general")).suspended;
-		/**
-		 * Timestamp from the action that deleted or suspended this object.
-		 */
-		Date? since => (this.General ?? throw new NullReferenceException("general")).since;
+	get id(): ulong {
+		return this.general.id
+			?? this.advanced.id
+			?? this.dispatch.id;
 	}
+	/**
+	 * The company to which this asset belongs.
+	 * {@link Company.id}
+	 */
+	get companyId(): ulong {
+		return this.general.companyId
+			?? this.advanced.companyId
+			?? this.dispatch.companyId;
+	}
+	/**
+	 * The company to which this asset belongs.
+	 * {@link Company.id}
+	 */
+	get company(): Company {
+		return this.general.company
+			?? this.advanced.company
+			?? this.dispatch.company;
+	}
+	/**
+	 * Type of asset.
+	 */
+	get kind(): AssetType {
+		return this.general.kind;
+	}
+
+	/**
+	 *  
+	 */
+	general: AssetGeneral = new AssetGeneral;
+	/**
+	 * This thing's name.
+	 *  <override max-length="100" />
+	 */
+	get name(): string {
+		return this.general.name;
+	}
+	set name(value: string) {
+		this.general.name = value;
+	}
+	/**
+	 * Notes about it.
+	 */
+	get notes(): string {
+		return this.general.notes;
+	}
+	set notes(value: string) {
+		this.general.notes = value;
+	}
+	/**
+	 * The icon that represents this asset on the map and in lists.
+	 * {@link Icon.id}
+	 */
+	get icon(): ulong {
+		return this.general.icon;
+	}
+	set icon(value: ulong) {
+		this.general.icon = value;
+	}
+	/**
+	 * Codified label names.
+	 *  <override>
+	 *  <values format="codified">
+	 * {@link LabelStyle.code}
+	 *  </values>
+	 *  </override>
+	 */
+	get labels(): string[] {
+		return this.general.labels;
+	}
+	set labels(value: string[]) {
+		this.general.labels = value;
+	}
+	/**
+	 * A list of photos of this thing.
+	 *  <override>
+	 *  <values>
+	 * {@link Picture.id}
+	 *  </values>
+	 *  </override>
+	 */
+	get pictures(): ulong[] {
+		return this.general.pictures;
+	}
+	set pictures(value: ulong[]) {
+		this.general.pictures = value;
+	}
+	/**
+	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
+	 *  <override max-length="254" />
+	 */
+	get messagingAddress(): string {
+		return this.general.messagingAddress;
+	}
+	set messagingAddress(value: string) {
+		this.general.messagingAddress = value;
+	}
+	/**
+	 * Name/value collections of custom fields used to refer to external systems.
+	 *  <override max-count="10">
+	 *  <keys max-length="20" />
+	 *  <values max-length="100" />
+	 *  </override>
+	 */
+	get references(): Map<string, string> {
+		return this.general.references;
+	}
+	set references(value: Map<string, string>) {
+		this.general.references = value;
+	}
+
+	/**
+	 *  
+	 */
+	advanced: AssetAdvanced = new AssetAdvanced;
+	/**
+	 * The things GPS coordinates including speed, bearing, and street information.
+	 */
+	get position(): Position | null {
+		return this.advanced.position;
+	}
+	set position(value: Position | null) {
+		this.advanced.position = value;
+	}
+	/**
+	 * The cumulative distance travelled in kilometres.
+	 */
+	get odometer(): double {
+		return this.advanced.odometer;
+	}
+	set odometer(value: double) {
+		this.advanced.odometer = value;
+	}
+	/**
+	 * The codified status tag names.
+	 *  <override>
+	 *  <values format="codified">
+	 * {@link LabelStyle.code}
+	 *  </values>
+	 *  </override>
+	 */
+	get tags(): string[] {
+		return this.advanced.tags;
+	}
+	set tags(value: string[]) {
+		this.advanced.tags = value;
+	}
+	/**
+	 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
+	 *  <override>
+	 *  <keys format="codified">
+	 * {@link AssetAttribute.name}
+	 *  </keys>
+	 *  </override>
+	 */
+	get attributes(): Map<string, AssetAttribute> {
+		return this.advanced.attributes;
+	}
+	set attributes(value: Map<string, AssetAttribute>) {
+		this.advanced.attributes = value;
+	}
+	/**
+	 * The list of devices providing events for this asset.
+	 *  <override readonly="true">
+	 *  <values>
+	 * {@link Provider.id}
+	 *  </values>
+	 *  </override>
+	 */
+	get providers(): string[] {
+		return this.advanced.providers;
+	}
+	set providers(value: string[]) {
+		this.advanced.providers = value;
+	}
+	/**
+	 * A list of assets related to this one; like a Person for a Vehicle (driver).
+	 *  <override>
+	 *  <values>
+	 * {@link Asset.id}
+	 *  </values>
+	 *  </override>
+	 */
+	get relationships(): ulong[] {
+		return this.advanced.relationships;
+	}
+	set relationships(value: ulong[]) {
+		this.advanced.relationships = value;
+	}
+	/**
+	 * The current state of this asset's interaction with known Places.
+	 *  <override>
+	 *  <keys>
+	 * {@link Place.id}
+	 *  </keys>
+	 *  </override>
+	 */
+	get places(): Map<ulong, AssetPlaceStatus> {
+		return this.advanced.places;
+	}
+	set places(value: Map<ulong, AssetPlaceStatus>) {
+		this.advanced.places = value;
+	}
+
+	/**
+	 *  
+	 */
+	dispatch: AssetDispatch = new AssetDispatch;
+
+	constructor(json: any = null) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
+		throw new Error("Method not implemented.");
+	}
+	override fromJSON(json: any): void {
+		throw new Error("Method not implemented.");
+	}
+
+	// IRequestable
+	/**
+	 * The {@link id} is the key.
+	 */
+	getKey(): string { return this.id.toString(); }
+
+	// ISuspendable
+	/**
+	 * Indicates whether this object is suspended from event processing.
+	 */
+	get suspended(): boolean {
+		return this.general.suspended ?? false;
+	}
+	/**
+	 * Timestamp from the action that deleted or suspended this object.
+	 */
+	get since(): Date {
+		return this.general.since ?? DATE();
+	}
+}

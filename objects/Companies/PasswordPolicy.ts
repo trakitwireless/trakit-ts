@@ -1,34 +1,40 @@
-﻿
+﻿import { byte } from "../API/Types";
+import { PasswordExpiryMode } from "./PasswordExpiryMode";
+
+/**
+ * The password complexity and expiry policy.
+ */
+export class PasswordPolicy {
 	/**
-	 * The password complexity and expiry policy.
+	 * The minimum number of characters required.
 	 */
-	export class PasswordPolicy {
-		/**
-		 * The minimum number of characters required.
-		 */
-		minimumLength: byte = NaN;
-		/**
-		 * Do passwords require alphabetical characters.
-		 */
-		includeLetters: boolean = false;
-		/**
-		 * Do passwords require numeric characters.
-		 */
-		includeNumbers: boolean = false;
-		/**
-		 * Do passwords require upper-case and lower-case letters.
-		 */
-		includeUpperLower: boolean = false;
-		/**
-		 * Do passwords require non-alphanumeric characters.
-		 */
-		includeSpecial: boolean = false;
-		/**
-		 * Defines how passwords expire.
-		 */
-		expireMode: PasswordExpiryMode;
-		/**
-		 * The threshold for expiry.
-		 */
-		expireThreshold: byte = NaN;  // days
+	minimumLength: byte = NaN;
+	/**
+	 * Do passwords require alphabetical characters.
+	 */
+	includeLetters: boolean = false;
+	/**
+	 * Do passwords require numeric characters.
+	 */
+	includeNumbers: boolean = false;
+	/**
+	 * Do passwords require upper-case and lower-case letters.
+	 */
+	includeUpperLower: boolean = false;
+	/**
+	 * Do passwords require non-alphanumeric characters.
+	 */
+	includeSpecial: boolean = false;
+	/**
+	 * Defines how passwords expire.
+	 */
+	expireMode: PasswordExpiryMode = PasswordExpiryMode.never;
+	/**
+	 * The threshold for expiry.
+	 */
+	expireThreshold: byte = NaN;  // days
+	
+	constructor(json: any = null) {
+
 	}
+}

@@ -1,22 +1,21 @@
-﻿
+﻿/**
+ * The four supported types of trackable things.
+ */
+export enum AssetType {
 	/**
-	 * The four supported types of trackable things.
+	 * Generic thing.
 	 */
-	export enum AssetType {
-		/**
-		 * Generic thing.
-		 */
-		asset,
-		/**
-		 * Human (or alien) Person.
-		 */
-		person,
-		/**
-		 * A towed vehicle without an engine.
-		 */
-		trailer,
-		/**
-		 * A vehicle that moves with its own power.
-		 */
-		vehicle,
-	}
+	asset = "asset",
+	/**
+	 * Human (or alien) Person.
+	 */
+	person = "person",
+	/**
+	 * A towed vehicle without an engine.
+	 */
+	trailer = "trailer",
+	/**
+	 * A vehicle that moves with its own power.
+	 */
+	vehicle = "vehicle",
+}

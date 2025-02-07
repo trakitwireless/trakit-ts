@@ -1,76 +1,8 @@
-﻿"use strict";
+﻿// "use strict";
 
-import { CODIFY, } from "./API/Codifier";
-import { CONVERT, } from './API/Conversion';
-import {
-    FILESIZE_HELPER,
-    NUMBER_GROUPS,
-} from "./API/Files";
-import {
-    DOUGLASPEUCKER,
-    PASSWORD_DECODE,
-    IS_AN,
-    IS_NOTHING,
-    PHONE_PARSE,
-    PYTHAGORA,
-    ROUND_TO,
-    PASSWORD_ENCODE,
-} from "./API/Functions";
-import { Point, } from "./API/Geometry/Point";
-import { Radial } from "./API/Geometry/Radial";
-import { Size, } from "./API/Geometry/Size";
-import { Rectangle, } from "./API/Geometry/Rectangle";
-import {
-    PATH_LENGTH,
-    PATH_PEUCKER,
-    POINT_ANGLE,
-    POINT_DISTANCE,
-    //POINT_FARTHEST,
-    PATH_ORTHOGONAL,
-    POINT_VECTOR,
-    POLY_AREA,
-    POLY_CONTAINS,
-    POLY_PEUCKER,
-    POLY_WRAPPER,
-    RADIAL_CIRCUMFERENCE,
-    RADIAL_AREA,
-    RADIAL_BADOIU_CLARKSON,
-    RADIAL_OVERLAP_RECTANGLE,
- } from "./API/Geometry/Functions";
-import {
-    EARTH_RADIUS,
-    LATITUDE_NORMALIZED,
-    LONGITUDE_NORMALIZED,
-    ROUTE_LENGTH,
-    ROUTE_PEUCKER,
-    ROUTE_ENCODE,
-    ROUTE_DECODE,
-    LATLNG_ANGLE,
-    LATLNG_DISTANCE,
-    LATLNG_MIDPOINT,
-    LATLNG_GREAT_CIRCLE,
-    LATLNG_TRANSLATE,
-    LATLNG_DISTANCE_VINCENTY,
-    GEOFENCE_AREA,
-    GEOFENCE_CONTAINS,
-    GEOFENCE_PEUCKER,
-    GEOFENCE_WIDEST,
-//  SPHERECAP_AREA,
- } from "./API/Geography/Functions";
-import { LatLng, } from "./API/Geography/LatLng";
-import { LatLngBounds, } from "./API/Geography/LatLngBounds";
-import { Position, } from "./API/Geography/Position";
-import { StreetAddress, } from "./API/Geography/StreetAddress";
-import { GUID, } from "./API/Guid";
-import { SearchPattern, } from "./API/SearchPattern";
-import {
-    TIMESPACE_PARSE,
-    TIMESPACE_STRINGIFY,
-    TimeSpan,
-} from "./API/TimeSpan";
-import { Timezone, } from "./API/Timezone";
-import { TIMEZONES, } from "./API/Timezones";
-import { MERGE, } from "./API/Objects";
+ import { Contact } from "./Accounts/Contact";
+import { Machine } from "./Accounts/Machine";
+import { NotificationMethod } from "./Accounts/NotificationMethod";
 import {
     compute,
     computeAll,
@@ -96,15 +28,92 @@ import {
     IMPLIED_PERMS,
     LABEL_BASED_PERMS,
 } from './Accounts/Permissions/Authorizer';
-import { FREEZE, KEYS } from "./API/Constants";
 import { PermissionType } from "./Accounts/Permissions/PermissionType";
+import { Session } from "./Accounts/Session";
+import { SessionStatus } from "./Accounts/SessionStatus";
+import { User } from "./Accounts/User";
+import { UserAdvanced } from "./Accounts/UserAdvanced";
+import { UserGeneral } from "./Accounts/UserGeneral";
+import { UserGroup } from "./Accounts/UserGroup";
+import { UserNotifications } from "./Accounts/UserNotifications";
 import { ARRAY_EXCEPT } from "./API/Arrays";
+import { CODIFY, } from "./API/Codifier";
+import { FREEZE, KEYS } from "./API/Constants";
+import { CONVERT, } from './API/Conversion';
+import {
+    FILESIZE_HELPER,
+    NUMBER_GROUPS,
+} from "./API/Files";
+import {
+    DOUGLASPEUCKER,
+    IS_AN,
+    IS_NOTHING,
+    PASSWORD_DECODE,
+    PASSWORD_ENCODE,
+    PHONE_PARSE,
+    PYTHAGORA,
+    ROUND_TO,
+} from "./API/Functions";
+import {
+    EARTH_RADIUS,
+    GEOFENCE_AREA,
+    GEOFENCE_CONTAINS,
+    GEOFENCE_PEUCKER,
+    GEOFENCE_WIDEST,
+    LATITUDE_NORMALIZED,
+    LATLNG_ANGLE,
+    LATLNG_DISTANCE,
+    LATLNG_DISTANCE_VINCENTY,
+    LATLNG_GREAT_CIRCLE,
+    LATLNG_MIDPOINT,
+    LATLNG_TRANSLATE,
+    LONGITUDE_NORMALIZED,
+    ROUTE_DECODE,
+    ROUTE_ENCODE,
+    ROUTE_LENGTH,
+    ROUTE_PEUCKER,
+} from "./API/Geography/Functions";
+import { LatLng, } from "./API/Geography/LatLng";
+import { LatLngBounds, } from "./API/Geography/LatLngBounds";
+import { Position, } from "./API/Geography/Position";
+import { StreetAddress, } from "./API/Geography/StreetAddress";
+import {
+    PATH_LENGTH,
+    //POINT_FARTHEST,
+    PATH_ORTHOGONAL,
+    PATH_PEUCKER,
+    POINT_ANGLE,
+    POINT_DISTANCE,
+    POINT_VECTOR,
+    POLY_AREA,
+    POLY_CONTAINS,
+    POLY_PEUCKER,
+    POLY_WRAPPER,
+    RADIAL_AREA,
+    RADIAL_BADOIU_CLARKSON,
+    RADIAL_CIRCUMFERENCE,
+    RADIAL_OVERLAP_RECTANGLE,
+} from "./API/Geometry/Functions";
+import { Point, } from "./API/Geometry/Point";
+import { Radial } from "./API/Geometry/Radial";
+import { Rectangle, } from "./API/Geometry/Rectangle";
+import { Size, } from "./API/Geometry/Size";
+import { GUID, } from "./API/Guid";
+import { MERGE, } from "./API/Objects";
+import { SearchPattern, } from "./API/SearchPattern";
+import {
+    TIMESPACE_PARSE,
+    TIMESPACE_STRINGIFY,
+    TimeSpan,
+} from "./API/TimeSpan";
+import { Timezone, } from "./API/Timezone";
+import { TIMEZONES, } from "./API/Timezones";
 
 const version = (5.01);
 
 export default {
     version,
-
+    //#region Utility, conversion, and encoding functions
     utility: {
         codify: CODIFY,
         guid: GUID,
@@ -123,13 +132,16 @@ export default {
     SearchPattern,
     TimeSpan,
     Timezone,
+    timezones: TIMEZONES,
 
     convert: CONVERT,
     encoding: {
         toPassword: PASSWORD_ENCODE,
         fromPassword: PASSWORD_DECODE,
     },
+    //#endregion Utility, conversion, and encoding functions
 
+    //#region Drawing and trigonometry
     /**
      * A utility library exposing algorithms for a flat plane.
      */
@@ -155,7 +167,9 @@ export default {
     Radial,
     Rectangle,
     Size,
+    //#endregion Drawing and trigonometry
 
+    //#region Coordinates and geography
     geography: {
         earthRadius: EARTH_RADIUS,
 
@@ -186,7 +200,9 @@ export default {
     LatLngBounds,
     Position,
     StreetAddress,
+    //#endregion Coordinates and geography
 
+    //#region Accounts
     // users
     authorizer: {
         // Generic / global compute
@@ -231,5 +247,16 @@ export default {
          * {@link PermissionType}s which do not use labels to calculate access.
          */
         complex: FREEZE(LABEL_BASED_PERMS),
-    }
+    },
+    Contact,
+    Machine,
+    Session,
+    SessionStatus,
+    User,
+    UserGeneral,
+    UserAdvanced,
+    UserGroup,
+    UserNotifications,
+    NotificationMethod,
+    //#endregion Accounts
 };
