@@ -1,21 +1,22 @@
-﻿
+﻿import { ProviderType } from '../../Providers/ProviderType';
+
+/**
+ * The kind of license being billed.
+ */
+export enum BillableHostingLicenseType {
 	/**
-	 * The kind of license being billed.
+	 * SmartWitness data hosting fee
+	 * {@link ProviderType.smartwitness}
 	 */
-	export enum BillableHostingLicenseType {
-		/**
-		 * SmartWitness data hosting fee
-		 * {@link ProviderType.smartwitness}
-		 */
-		smartwitness,
-		/**
-		 * BeWhere license fee
-		 * {@link ProviderType.bewhere}
-		 */
-		bewhere,
-		/**
-		 * CalAmp PULS fee
-		 * {@link ProviderType.calamp}
-		 */
-		calamp,
-	}
+	smartwitness = "smartwitness",
+	/**
+	 * BeWhere license fee
+	 * {@link ProviderType.bewhere}
+	 */
+	bewhere = "bewhere",
+	/**
+	 * CalAmp PULS fee
+	 * {@link ProviderType.calamp}
+	 */
+	calamp = "calamp",
+}

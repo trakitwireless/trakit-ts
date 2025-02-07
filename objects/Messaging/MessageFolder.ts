@@ -1,14 +1,13 @@
-﻿
+﻿/**
+ * The name of folder where the message is stored.
+ */
+export enum MessageFolder {
 	/**
-	 * The name of folder where the message is stored.
+	 * The inbox is loaded quickly from memory, but messages regularly move to the archive.
 	 */
-	export enum MessageFolder {
-		/**
-		 * The inbox is loaded quickly from memory, but messages regularly move to the archive.
-		 */
-		inbox,
-		/**
-		 * The archive contains all previous messages, but must be queried from disk for retrieval.
-		 */
-		archive,
-	}
+	inbox = "inbox",
+	/**
+	 * The archive contains all previous messages, but must be queried from disk for retrieval.
+	 */
+	archive = "archive",
+}

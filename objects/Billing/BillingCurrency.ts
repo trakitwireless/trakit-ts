@@ -1,18 +1,17 @@
-﻿
+﻿/**
+ * Used for invoices.
+ */
+export enum BillingCurrency {
 	/**
-	 * Used for invoices.
+	 * Canadian dollars
 	 */
-	export enum BillingCurrency {
-		/**
-		 * Canadian dollars
-		 */
-		CAD,
-		/**
-		 * American dollars
-		 */
-		USD,
-		/**
-		 * Eurozone currency
-		 */
-		EURO,
-	}
+	CAD = "CAD",
+	/**
+	 * American dollars
+	 */
+	USD = "USD",
+	/**
+	 * Eurozone currency
+	 */
+	EURO = "EURO",
+}

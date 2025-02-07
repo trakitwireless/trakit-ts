@@ -1,18 +1,17 @@
-﻿
+﻿/**
+ * The type of repeating cycle used for generating bills.
+ */
+export enum BillingCycle {
 	/**
-	 * The type of repeating cycle used for generating bills.
+	 * Once a month
 	 */
-	export enum BillingCycle {
-		/**
-		 * Once a month
-		 */
-		monthly,
-		/**
-		 * Every three months
-		 */
-		quarterly,
-		/**
-		 * Once per year
-		 */
-		annually,
-	}
+	monthly = "monthly",
+	/**
+	 * Every three months
+	 */
+	quarterly = "quarterly",
+	/**
+	 * Once per year
+	 */
+	annually = "annually",
+}

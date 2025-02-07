@@ -1,18 +1,17 @@
-﻿
+﻿/**
+ * The type of dashcam data being stored.
+ */
+export enum DashcamMediaType {
 	/**
-	 * The type of dashcam data being stored.
+	 * Unknown or other.
 	 */
-	export enum DashcamMediaType {
-		/**
-		 * Unknown or other.
-		 */
-		unknown,
-		/**
-		 * Image
-		 */
-		image,
-		/**
-		 * Video
-		 */
-		video,
-	}
+	unknown = "unknown",
+	/**
+	 * Image
+	 */
+	image = "image",
+	/**
+	 * Video
+	 */
+	video = "video",
+}

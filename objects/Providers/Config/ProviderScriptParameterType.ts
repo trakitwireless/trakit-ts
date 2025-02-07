@@ -1,18 +1,17 @@
-﻿
+﻿/**
+ * Possible data-types given to ProviderScriptParameter.
+ */
+export enum ProviderScriptParameterType {
 	/**
-	 * Possible data-types given to ProviderScriptParameter.
+	 * True or false.
 	 */
-	export enum ProviderScriptParameterType {
-		/**
-		 * True or false.
-		 */
-		booleanean,
-		/**
-		 * Numeric value (double-precision floating point number).
-		 */
-		number,
-		/**
-		 * Text.
-		 */
-		text,
-	}
+	boolean = "boolean",
+	/**
+	 * Numeric value (double-precision floating point number).
+	 */
+	number = "number",
+	/**
+	 * Text.
+	 */
+	text = "text",
+}

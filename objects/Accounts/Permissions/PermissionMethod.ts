@@ -1,14 +1,13 @@
-﻿
+﻿/**
+ * How a permission is applied.
+ */
+export enum PermissionMethod {
 	/**
-	 * How a permission is applied.
+	 * Permission is given.
 	 */
-	export enum PermissionMethod {
-		/**
-		 * Permission is given.
-		 */
-		grant,
-		/**
-		 * Permission is taken away.
-		 */
-		revoke,
-	}
+	grant = "grant",
+	/**
+	 * Permission is taken away.
+	 */
+	revoke = "revoke",
+}

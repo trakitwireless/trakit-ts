@@ -1,22 +1,21 @@
-﻿
+﻿/**
+ * Possible data-types given to BehaviourParameters.
+ */
+export enum BehaviourParameterType {
 	/**
-	 * Possible data-types given to BehaviourParameters.
+	 * True or false.
 	 */
-	export enum BehaviourParameterType {
-		/**
-		 * True or false.
-		 */
-		booleanean,
-		/**
-		 * Numeric value (signed double-precision floating point number).
-		 */
-		number,
-		/**
-		 * Text.
-		 */
-		text,
-		/**
-		 * Object or array literal.
-		 */
-		json,
-	}
+	boolean = "boolean",
+	/**
+	 * Numeric value (signed double-precision floating point number).
+	 */
+	number = "number",
+	/**
+	 * Text.
+	 */
+	text = "text",
+	/**
+	 * Object or array literal.
+	 */
+	json = "json",
+}

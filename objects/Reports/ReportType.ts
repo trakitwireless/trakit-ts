@@ -1,7 +1,4 @@
-﻿
-
-
-/**
+﻿/**
  * The type of logic used by the report runner.
  */
 export enum ReportType {
@@ -12,35 +9,34 @@ export enum ReportType {
 	/**
 	 * Summarizes the timeline based on the given tags.
 	 */
-	tags,
+	tags = "tags",
 	/**
 	 * Summarizes the timeline based on places visited.
 	 */
-	places,
+	places = "places",
 	/**
 	 * Processes the log of messages sent to and from the assets.
 	 */
-	messages,
+	messages = "messages",
 	/**
 	 * Summarizes the timeline based on the asset's task's lifetimes.
-	 * @deprecated 
+	 * @deprecated Use `ReportType.jobs` instead
 	 */
-	@deprecated Use `ReportType.jobs` instead
-	tasks,
+	tasks = "tasks",
 	/**
 	 * Summarizes the timeline based on the given attributes and thresholds.
 	 */
-	attributes,
+	attributes = "attributes",
 	/**
 	 * Summarizes the timeline based on the regions (cities, provinces/states, countries) through which the assets travelled.
 	 */
-	regions,
+	regions = "regions",
 	/**
 	 * Summarizes the timeline based on the asset's jobs's lifetimes.
 	 */
-	jobs,
+	jobs = "jobs",
 	/**
 	 * Summarizes the timeline by day, week, and month based on the asset's positions.
 	 */
-	positions,
+	positions = "positions",
 }
