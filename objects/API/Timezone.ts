@@ -7,7 +7,13 @@ import { ID } from "./Functions";
 /**
  * Timezone definition
 */
-export class Timezone implements IRequestable, ISerializable, IDeserializable {
+export class Timezone
+	implements IRequestable, ISerializable, IDeserializable {
+	/**
+	 * 
+	 */
+	static utc: Timezone = new Timezone("utc", "UTC", 0, false);
+
 	/**
 	 * Unique timezone code
 	 */
@@ -40,11 +46,11 @@ export class Timezone implements IRequestable, ISerializable, IDeserializable {
 			"dst": this.dst,
 		};
 	}
-	fromJSON(tz: any) {
-		this.code = tz["code"] as string;
-		this.name = tz["name"] as string;
-		this.offset = ID(tz["offset"] as short) || 0;
-		this.dst = !!(tz["dst"] as boolean);
+	fromJSON(json: any) {
+		this.code = json["code"] as string;
+		this.name = json["name"] as string;
+		this.offset = ID(json["offset"] as short) || 0;
+		this.dst = !!(json["dst"] as boolean);
 	}
 
 	/**

@@ -1,6 +1,7 @@
 ﻿import {
 	ABS,
 	INT,
+	KEYS,
 	MAX,
 	MIN,
 	OBJECT,
@@ -8,6 +9,7 @@
 	ROUND,
 	SQRT,
 } from "./Constants";
+import { MERGE_INTERNAL } from "./Objects";
 
 /**
  * Checks for both null and undefined
@@ -297,4 +299,42 @@ export function ZERO_PADDED(
 		strings[1] += "0".repeat(decimals - strings[1].length);
 	}
 	return strings.join(".");
+}
+
+/**
+ * 
+ * @param source 
+ * @param deep 
+ * @returns 
+ */
+export function MAP_TO_OBJECT(source: Map<any, any>, deep: boolean = true): object {
+  const target: any = {};
+  source.forEach((v, k) => target[k] = deep ? MERGE_INTERNAL(v) : v);
+  return target;
+}
+/**
+ * 
+ * @param map 
+ * @param deep 
+ * @returns 
+ */
+export function OBJECT_TO_MAP<T>(source: object, deep: boolean = true) {
+  const keys = KEYS(source),
+    target: Map<string, T> = new Map;
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i],
+      value = (source as any)[key];
+    target.set(key, deep ? MERGE_INTERNAL(value) : value);
+  }
+  return target;
+}
+
+/**
+ * 
+ * @param this 
+ * @param value 
+ * @returns 
+ */
+export function STRING_TO_ENUM<T extends { [key: string]: T | undefined }>(this: T, value: string): T | undefined {
+	return this[value] as T;
 }

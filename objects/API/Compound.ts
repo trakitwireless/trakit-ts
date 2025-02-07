@@ -1,9 +1,10 @@
-﻿import { int } from './Types';
-import { Component } from './Component';
+﻿import { User } from '../Accounts/User';
 import { Asset } from '../Assets/Asset';
 import { Company } from '../Companies/Company';
 import { Provider } from '../Providers/Provider';
-import { User } from '../Accounts/User';
+import { Component } from './Component';
+import { int } from './Types';
+
 /**
  * Some objects are made up of the pieces of many objects.
  * {@link Asset}
@@ -11,7 +12,8 @@ import { User } from '../Accounts/User';
  * {@link Provider}
  * {@link User}
  */
-export abstract class Compound extends Component {
+export abstract class Compound
+	extends Component {
 	/**
 	 * A list of individually subscribable objects that make up the compound object.
 	 */
@@ -20,6 +22,6 @@ export abstract class Compound extends Component {
 	/**
 	 * Compound objects have multiple {@link v} values; one for each part of the object.
 	 */
-	override get v(): int[] { return this.pieces.map(p => p?.v[0]??-1); }
-	override set v(value: int[]) { value?.forEach((v, i) => this.pieces[i].v[0] = v); }
+	override get v(): int[] { return this.pieces.map(p => p?.v[0] ?? -1); }
+	//override set v(value: int[]) { value?.forEach((v, i) => this.pieces[i].v[0] = v); }
 }
