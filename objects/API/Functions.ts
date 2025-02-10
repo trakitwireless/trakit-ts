@@ -214,16 +214,6 @@ export function DOUGLASPEUCKER<TCoord>(
 }
 
 /**
- * Given as the first argument to {@link Array#filter} where the second argument is a {@link boolean[]}.
- * @param this		The array of booleans to use to filter the source array.
- * @param object	Unused.
- * @param index		The index of the obect in the source array.
- */
-export function FILTER_BY_BOOLEAN_ARRAY(this: boolean[], object: unknown, index: number) {
-	return this[index];
-}
-
-/**
  * The key used for encoding/decoding Provider passwords.
  */
 const PASSWORD_KEY = INT("33", 36); //111
@@ -318,15 +308,33 @@ export function MAP_TO_OBJECT(source: Map<any, any>, deep: boolean = true): obje
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP<T>(source: object, deep: boolean = true) {
-  const keys = KEYS(source),
-    target: Map<string, T> = new Map;
-  for (let i = 0; i < keys.length; i++) {
-    const key = keys[i],
-      value = (source as any)[key];
-    target.set(key, deep ? MERGE_INTERNAL(value) : value);
-  }
-  return target;
+export function OBJECT_TO_MAP(source: object, deep: boolean = true) {
+	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
+		source,
+		(k, v) => [k, deep ? MERGE_INTERNAL(v) : v]
+	);
+}
+
+/**
+ * 
+ */
+interface PREDICATE_OBJECT_TO_MAP<K, V> {
+	(key: string, value: any): [K, V];
+}
+/**
+ * 
+ * @param map 
+ * @param deep 
+ * @returns 
+ */
+export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(source: object, predicate: PREDICATE_OBJECT_TO_MAP<K, V>) {
+	const keys = KEYS(source),
+		target: Map<K, V> = new Map;
+	for (let i = 0; i < keys.length; i++) {
+		const [key, value] = predicate(keys[i], (source as any)[keys[i]]);
+		target.set(key, value);
+	}
+	return target;
 }
 
 /**

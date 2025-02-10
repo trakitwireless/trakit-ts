@@ -1,11 +1,16 @@
 import { ulong } from '../Types';
+import { Picture } from '../../Images/Picture';
 
 /**
  * An interface for objects that have "pictures".
 */
 export interface IPictured {
 	/**
-	 * A list of picture identifiers of this object.
+	 * An array of picture identifiers of this object.
 	 */
-	pictures: ulong[];
+	pictureIds: ulong[];
+	/**
+	 * An array of {@link Picture}s of this object.
+	 */
+	get pictures(): Picture[];
 }
