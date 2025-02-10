@@ -293,27 +293,42 @@ export function ZERO_PADDED(
 
 /**
  * 
+ */
+interface PREDICATE_MAP_TO_OBJECT<K, V> {
+	(key: K, value: V): [string, any];
+}
+/**
+ * 
  * @param source 
  * @param deep 
  * @returns 
  */
-export function MAP_TO_OBJECT(source: Map<any, any>, deep: boolean = true): object {
+export function MAP_TO_OBJECT(
+	source: Map<any, any>,
+	deep: boolean = true
+): object {
   const target: any = {};
   source.forEach((v, k) => target[k] = deep ? MERGE_INTERNAL(v) : v);
   return target;
 }
 /**
  * 
- * @param map 
+ * @param source 
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP(source: object, deep: boolean = true) {
-	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
-		source,
-		(k, v) => [k, deep ? MERGE_INTERNAL(v) : v]
-	);
+export function MAP_TO_OBJECT_PREDICATE<K, V>(
+	source: Map<K, V>,
+	predicate: PREDICATE_MAP_TO_OBJECT<K, V>
+): object {
+	const target: any = {};
+	for (let [k, v] of source.entries()) {
+		const [key, value] = predicate(k, v);
+		target[key] = value;
+	}
+	return target;
 }
+
 
 /**
  * 
@@ -327,7 +342,25 @@ interface PREDICATE_OBJECT_TO_MAP<K, V> {
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(source: object, predicate: PREDICATE_OBJECT_TO_MAP<K, V>) {
+export function OBJECT_TO_MAP(
+	source: object,
+	deep: boolean = true
+) {
+	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
+		source,
+		(k, v) => [k, deep ? MERGE_INTERNAL(v) : v]
+	);
+}
+/**
+ * 
+ * @param map 
+ * @param deep 
+ * @returns 
+ */
+export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
+	source: object,
+	predicate: PREDICATE_OBJECT_TO_MAP<K, V>
+) {
 	const keys = KEYS(source),
 		target: Map<K, V> = new Map;
 	for (let i = 0; i < keys.length; i++) {
