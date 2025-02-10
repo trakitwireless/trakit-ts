@@ -1,4 +1,4 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { DATE } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -12,7 +12,7 @@ import { NotificationServerSms } from "./NotificationServerSms";
  * Defines the seller company's details for white-labelling.
  */
 export class CompanyReseller
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, IAmCompany {
 	/**
 	 * Unique identifier of the Company.

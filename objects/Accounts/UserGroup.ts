@@ -1,9 +1,9 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { Permission } from "./Permissions/Permission";
 
@@ -13,7 +13,7 @@ import { Permission } from "./Permissions/Permission";
  * allow for easy administration of permissions and levels of access.
  */
 export class UserGroup
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, INamed, IBelongCompany {
 	/**
 	 * Unique identifier of this group.

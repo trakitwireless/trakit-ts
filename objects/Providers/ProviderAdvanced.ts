@@ -1,7 +1,7 @@
-﻿import { Component } from "../API/Component";
+﻿import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ipv4, ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { ProviderData } from "./ProviderData";
 
@@ -9,7 +9,7 @@ import { ProviderData } from "./ProviderData";
  * Device/hardware information reported from the field.
  */
 export class ProviderAdvanced
-	extends Component
+	extends BaseComponent
 	implements IBelongCompany {
 	/**
 	 * Unique identifier of this device.

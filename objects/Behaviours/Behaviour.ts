@@ -1,4 +1,4 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IDeletable } from "../API/Interfaces/IDeletable";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -10,7 +10,7 @@ import { BehaviourParameterType } from "./BehaviourParameterType";
 /**
  * The applied behaviour which includes all parameters and targets specific assets.
 */
-export class Behaviour extends Component implements IIdUlong, INamed, IBelongCompany, IDeletable {
+export class Behaviour extends BaseComponent implements IIdUlong, INamed, IBelongCompany, IDeletable {
 	/**
 	 * Unique identifier of this behaviour.
 	 */

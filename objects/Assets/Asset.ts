@@ -1,4 +1,4 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -6,7 +6,7 @@ import { IPictured } from "../API/Interfaces/IPictured";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { Compound } from "../API/Compound";
+import { BaseCompound } from "../API/BaseCompound";
 import { double, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { AssetType } from "./AssetType";
@@ -22,12 +22,12 @@ import { DATE } from "../API/Functions";
  * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
  */
 export class Asset
-	extends Compound
+	extends BaseCompound
 	implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
 	/**
 	 *  
 	 */
-	get pieces(): Component[] {
+	get pieces(): BaseComponent[] {
 		return [
 			this.general,
 			this.advanced,

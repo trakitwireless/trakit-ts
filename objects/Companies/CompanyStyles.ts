@@ -1,4 +1,4 @@
-﻿import { Component } from "../API/Component";
+﻿import { BaseComponent } from "../API/BaseComponent";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { codified, ulong } from "../API/Types";
@@ -9,7 +9,7 @@ import { LabelStyle } from "./LabelStyle";
  * The colours and styles used by this company to tag and label Assets, Places, and other things.
  */
 export class CompanyStyles
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, IAmCompany {
 	/**
 	 * Unique identifier of the Company.

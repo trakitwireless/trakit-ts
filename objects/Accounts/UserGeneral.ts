@@ -1,10 +1,10 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { Contact } from "./Contact";
 import { SystemsOfUnits } from "./SystemsOfUnits";
@@ -14,7 +14,7 @@ import { UserNotifications } from "./UserNotifications";
  * Credentials, information, and preferences about a user.
  */
 export class UserGeneral
-	extends Component
+	extends BaseComponent
 	implements IEnabled, IBelongCompany, IHavePreferences {
 	/**
 	 * The unique public email address used to access the system.

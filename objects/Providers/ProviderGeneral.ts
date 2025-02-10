@@ -1,10 +1,10 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { DATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { ProviderType } from "./ProviderType";
 
@@ -12,7 +12,7 @@ import { ProviderType } from "./ProviderType";
  * Device/hardware information and configuration.
  */
 export class ProviderGeneral
-	extends Component
+	extends BaseComponent
 	implements INamed, IBelongCompany, ISuspendable {
 	/**
 	 * Unique identifier of this device.

@@ -1,5 +1,5 @@
-import { Component } from "../API/Component";
-import { Compound } from "../API/Compound";
+import { BaseComponent } from "../API/BaseComponent";
+import { BaseCompound } from "../API/BaseCompound";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
@@ -20,12 +20,12 @@ import { UserNotifications } from "./UserNotifications";
  * A grouping of credentials, information, preferences, and permissions for a person or machine to login to the system and access its resources.
  */
 export class User
-	extends Compound
+	extends BaseCompound
 	implements IEnabled, IBelongCompany, IHavePermissions, IHavePreferences {
 	/**
 	 *  
 	 */
-	get pieces(): Component[] {
+	get pieces(): BaseComponent[] {
 		return [
 			this.general,
 			this.advanced,

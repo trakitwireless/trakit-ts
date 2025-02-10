@@ -1,5 +1,5 @@
-import { Component } from "../API/Component";
-import { Compound } from "../API/Compound";
+import { BaseComponent } from "../API/BaseComponent";
+import { BaseCompound } from "../API/BaseCompound";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
@@ -17,12 +17,12 @@ import { ProviderType } from "./ProviderType";
  * A device, modem, or service which provides events from the field.
  */
 export class Provider
-	extends Compound
+	extends BaseCompound
 	implements INamed, IBelongCompany, ISuspendable {
 	/**
 	 *  
 	 */
-	get pieces(): Component[] {
+	get pieces(): BaseComponent[] {
 		return [
 			this.general,
 			this.advanced,

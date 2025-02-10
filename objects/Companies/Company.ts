@@ -1,12 +1,14 @@
-import { Component } from '../API/Component';
-import { Compound } from '../API/Compound';
+import { Contact } from '../Accounts/Contact';
+import { BaseComponent } from '../API/BaseComponent';
+import { BaseCompound } from '../API/BaseCompound';
 import { IAmCompany } from '../API/Interfaces/IAmCompany';
 import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
 import { MERGE } from '../API/Objects';
 import { codified, ulong } from '../API/Types';
-import { COMPANIES } from '../COMPANIES';
+import { COMPANIES } from '../Storage';
+import { Picture } from '../Images/Picture';
 import { CompanyDirectory } from './CompanyDirectory';
 import { CompanyGeneral } from './CompanyGeneral';
 import { CompanyPolicies } from './CompanyPolicies';
@@ -20,19 +22,19 @@ import { SessionPolicy } from './SessionPolicy';
  * The full company object which contains all fields.
  */
 export class Company
-	extends Compound
+	extends BaseCompound
 	implements IIdUlong, INamed, IAmCompany, IBelongCompany {
 	/**
 	 * 
 	 */
-	override get pieces(): Component[] {
+	override get pieces(): BaseComponent[] {
 		return [
 			this.general,
-			null as unknown as Component,	// reserved for future use
+			null as unknown as BaseComponent,	// reserved for future use
 			this.directory,
 			this.styles,
 			this.policies,
-			this.reseller as Component,
+			this.reseller as BaseComponent,
 		];
 	}
 	/**
@@ -174,4 +176,13 @@ export class Company
 	 * The {@link id} is the key.
 	 */
 	getKey(): string { return this.id.toString(); }
+
+	/**
+	 * 
+	 */
+	readonly contacts: Map<ulong, Contact> = new Map;
+	/**
+	 * 
+	 */
+	readonly pictures: Map<ulong, Picture> = new Map;
 }

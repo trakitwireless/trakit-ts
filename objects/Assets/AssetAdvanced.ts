@@ -1,9 +1,9 @@
-﻿import { Component } from "../API/Component";
+﻿import { BaseComponent } from "../API/BaseComponent";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { double, ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";
@@ -12,7 +12,7 @@ import { AssetPlaceStatus } from "./AssetPlaceStatus";
  * Often changing details about a thing.
  */
 export class AssetAdvanced
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, IBelongCompany {
 	/**
 	 * Unique identifier of this asset.

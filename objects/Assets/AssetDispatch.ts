@@ -1,9 +1,9 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { DATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { DispatchDirection } from "../Dispatch/DispatchDirection";
 
@@ -11,7 +11,7 @@ import { DispatchDirection } from "../Dispatch/DispatchDirection";
  * The current state of an asset's {@link DispatchJob} route progress.
  */
 export class AssetDispatch
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, IBelongCompany {
 	/**
 	 * Unique identifier of this asset.

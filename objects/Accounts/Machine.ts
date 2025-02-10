@@ -1,4 +1,4 @@
-import { Component, } from '../API/Component';
+import { BaseComponent, } from '../API/BaseComponent';
 import { DATE } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
@@ -6,7 +6,7 @@ import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
 import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
 import { Timezone } from '../API/Timezone';
 import { codified, ulong, url } from '../API/Types';
-import { COMPANIES } from '../COMPANIES';
+import { COMPANIES } from '../Storage';
 import { Company } from '../Companies/Company';
 import { Permission } from './Permissions/Permission';
 import { SystemsOfUnits } from './SystemsOfUnits';
@@ -16,7 +16,7 @@ import { UserGroup } from './UserGroup';
  * A service account that allowes for API access of system services.
  */
 export class Machine
-	extends Component
+	extends BaseComponent
 	implements IEnabled, IBelongCompany, IHavePreferences, IHavePermissions {
 	/**
 	 * The unique idenifier used to access the system.

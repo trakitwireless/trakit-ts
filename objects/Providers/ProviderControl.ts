@@ -1,7 +1,7 @@
-﻿import { Component } from "../API/Component";
+﻿import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { ProviderCommand } from "./ProviderCommand";
 import { ProviderCommandType } from "./ProviderCommandType";
@@ -10,7 +10,7 @@ import { ProviderCommandType } from "./ProviderCommandType";
  * Managing communication with Device/hardware.
  */
 export class ProviderControl
-	extends Component
+	extends BaseComponent
 	implements IBelongCompany {
 	/**
 	 * Unique identifier of this device.

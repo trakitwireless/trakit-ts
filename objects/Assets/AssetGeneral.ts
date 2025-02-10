@@ -1,4 +1,4 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { DATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
@@ -8,7 +8,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { AssetType } from "./AssetType";
 
@@ -16,7 +16,7 @@ import { AssetType } from "./AssetType";
  * Seldom changing details about a thing.
  */
 export class AssetGeneral
-	extends Component implements
+	extends BaseComponent implements
 	IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
 	/**
 	 * Unique identifier of this asset.

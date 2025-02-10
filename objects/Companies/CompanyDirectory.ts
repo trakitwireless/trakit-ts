@@ -1,4 +1,4 @@
-﻿import { Component } from "../API/Component";
+﻿import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -9,7 +9,7 @@ import { codified, ulong } from "../API/Types";
  * The list of Contacts from this and other companies broken down by contact role.
  */
 export class CompanyDirectory
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, IAmCompany {
 	/**
 	 * Unique identifier of the Company.

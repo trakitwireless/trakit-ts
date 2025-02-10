@@ -1,4 +1,5 @@
-﻿import {
+﻿import { FILTER_BY_BOOLEAN_ARRAY } from "./Arrays";
+import {
 	ABS,
 	INT,
 	KEYS,
@@ -121,7 +122,7 @@ export function DATE(value?: string | number | Date): Date {
 /**
  * 
  */
-interface DouglasPeukerOrthogonal<TCoord> {
+interface PREDICATE_DOUGLASPEUCKER<TCoord> {
 	(firstCoord: TCoord, middleCoord: TCoord, lastCoord: TCoord): number;
 }
 /**
@@ -134,7 +135,7 @@ interface DouglasPeukerOrthogonal<TCoord> {
  */
 export function DOUGLASPEUCKER_INTERNAL<TCoord>(
 	source: TCoord[],
-	triangleHeight: DouglasPeukerOrthogonal<TCoord>,
+	triangleHeight: PREDICATE_DOUGLASPEUCKER<TCoord>,
 	tolerance: number
 ): boolean[] {
 	// references the indexes in the source array that should be kept
@@ -199,7 +200,7 @@ export function DOUGLASPEUCKER_INTERNAL<TCoord>(
  */
 export function DOUGLASPEUCKER<TCoord>(
 	source: TCoord[],
-	triangleHeight: DouglasPeukerOrthogonal<TCoord>,
+	triangleHeight: PREDICATE_DOUGLASPEUCKER<TCoord>,
 	tolerance: number
 ): TCoord[] {
 	if (!Array.isArray(source)) throw new TypeError("source is not an Array.");

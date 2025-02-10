@@ -1,4 +1,4 @@
-﻿import { Component } from "../API/Component";
+﻿import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -10,7 +10,7 @@ import { SessionPolicy } from "./SessionPolicy";
  * The password and session lifetime policies for this Company.
  */
 export class CompanyPolicies
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, IAmCompany {
 	/**
 	 * Unique identifier of the Company.

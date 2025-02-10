@@ -3,7 +3,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { int, ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { SessionStatus } from "./SessionStatus";
 

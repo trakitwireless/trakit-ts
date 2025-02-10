@@ -1,4 +1,4 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IDeletable } from "../API/Interfaces/IDeletable";
@@ -9,7 +9,7 @@ import { BehaviourLogType } from "./BehaviourLogType";
 /**
  * A debug message available to script writers to help debug and trace output from a BehaviourScript.
 */
-export class BehaviourLog extends Component implements IIdUlong, IBelongCompany, IBelongAsset, IDeletable {
+export class BehaviourLog extends BaseComponent implements IIdUlong, IBelongCompany, IBelongAsset, IDeletable {
 	/**
 	 * Unique identifier of this log message.
 	 */

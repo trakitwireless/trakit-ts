@@ -1,8 +1,8 @@
-﻿import { Component } from "../API/Component";
+﻿import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../COMPANIES";
+import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { Permission } from "./Permissions/Permission";
 import { UserGroup } from "./UserGroup";
@@ -11,7 +11,7 @@ import { UserGroup } from "./UserGroup";
  * Permissions and group membership defined for a user.
  */
 export class UserAdvanced
-	extends Component
+	extends BaseComponent
 	implements IBelongCompany, IHavePermissions {
 	/**
 	 * The unique public email address used to access the system.

@@ -108,11 +108,17 @@ import {
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
 import { TIMEZONES, } from "./API/Timezones";
+import { COMPANIES, CONTACTS } from "./Storage";
 
 const version = (5.01);
 
 export default {
     version,
+    storage: {
+        companies: COMPANIES,
+        contacts: CONTACTS,
+    },
+
     //#region Utility, conversion, and encoding functions
     utility: {
         codify: CODIFY,

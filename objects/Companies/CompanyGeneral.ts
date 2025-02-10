@@ -1,4 +1,4 @@
-import { Component } from "../API/Component";
+import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -10,7 +10,7 @@ import { ulong } from "../API/Types";
  * General details about a company.
  */
 export class CompanyGeneral
-	extends Component
+	extends BaseComponent
 	implements IIdUlong, INamed, IAmCompany {
 	/**
 	 * Unique identifier of the Company.
