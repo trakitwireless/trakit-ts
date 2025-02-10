@@ -2,7 +2,7 @@
 import { Asset } from '../Assets/Asset';
 import { Company } from '../Companies/Company';
 import { Provider } from '../Providers/Provider';
-import { Component } from './Component';
+import { BaseComponent } from './BaseComponent';
 import { int } from './Types';
 
 /**
@@ -12,12 +12,12 @@ import { int } from './Types';
  * {@link Provider}
  * {@link User}
  */
-export abstract class Compound
-	extends Component {
+export abstract class BaseCompound
+	extends BaseComponent {
 	/**
 	 * A list of individually subscribable objects that make up the compound object.
 	 */
-	abstract get pieces(): Component[];
+	abstract get pieces(): BaseComponent[];
 
 	/**
 	 * Compound objects have multiple {@link v} values; one for each part of the object.

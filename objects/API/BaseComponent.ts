@@ -1,14 +1,14 @@
-﻿import { int, uint,  } from './Types';
+﻿import { Base, } from './Base';
 import { IRequestable, } from './Interfaces/IRequestable';
 import { ISerializable, } from './Interfaces/ISerializable';
-import { IDeserializable, } from './Interfaces/IDeserializable';
-import { MAX } from './Constants';
+import { int } from './Types';
 
 /**
  * Any derived class can/should be serialized and given to a user.
  */
-export abstract class Component
-	implements IRequestable, ISerializable, IDeserializable {
+export abstract class BaseComponent
+	extends Base
+	implements IRequestable, ISerializable {
 	/**
 	 * Object version keys used to validate synchronization for all object properties.
 	 */
@@ -50,13 +50,8 @@ export abstract class Component
 	abstract getKey(): string;
 
 	/**
-	 * Creates a literal of this {@link Component}.
+	 * Creates a literal of this {@link BaseComponent}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
 	abstract toJSON(): any;
-	/**
-	 * 
-	 * @param input 
-	 */
-	abstract fromJSON(json: any): void;
 }
