@@ -1,5 +1,6 @@
 ﻿import { ABS, FLOAT, ROUND, } from "./Constants";
 import { IS_NUMBER,ZERO_PADDED, } from "./Functions";
+import { timespan, } from "./Types";
 
 /**
  * An object which represents an interval of time.
@@ -63,7 +64,7 @@ export class TimeSpan {
 	/**
 	 * @param duration		A time-span formatted string, or a number representing milliseconds
 	 */
-	constructor(duration: TimeSpan | string | number) {
+	constructor(duration: TimeSpan | timespan | number) {
 		if (duration) this.add(duration);
 	}
 
@@ -110,10 +111,10 @@ export class TimeSpan {
 
 	/**
 	 * Parses the time-span into a serialized TimeSpan string.
-	 * The format follows the {@link trakit.json.duration} definition.
+	 * The format follows the {@link timespan} definition.
 	 * @param format	Use format strings like "HH:mm" for just hours and minutes.  Valid flags are d, h, H, m, s, and f.  If you use 
 	 */
-	toString(format: string = "") {
+	toString(format: timespan = "") {
 		if (format) {
 			var time = this,
 				pieces = format.split(/(\\.|[hHmstT]{1,2}|[df]{1,6})/gm),
@@ -165,7 +166,7 @@ export class TimeSpan {
 	 * @param duration	A time-span formatted string, or a number representing milliseconds
 	 * @param subtract				When true, the value is subtracted from the time-span instead of added.
 	 */
-	add(duration: TimeSpan | string | number, subtract: boolean = false) {
+	add(duration: TimeSpan | timespan | number, subtract: boolean = false) {
 		if (IS_NUMBER(duration)) {
 			let negatory = duration < 0 ? -1 : 1,
 				value = ABS(duration || 0);
@@ -223,7 +224,7 @@ export class TimeSpan {
 	 * @param duration	A time-span formatted string, or a number representing milliseconds
 	 * @param add					When true, the value is added from the time-span instead of subtracted.
 	 */
-	subtract(duration: TimeSpan | string | number, add: boolean = false) {
+	subtract(duration: TimeSpan | timespan | number, add: boolean = false) {
 		return this.add(duration, !add);
 	}
 }
@@ -233,7 +234,7 @@ export class TimeSpan {
  * For example the string "1.07:42:03.467" equals 114123.467, which is 1 day, 7 hours, 42 minutes, 3 seconds, and 467 milliseconds.
  * @param duration	A valid timespan string.  The format is [-]( d | [d.]hh:mm[:ss[.fff]] )
  */
-export function TIMESPACE_PARSE(duration: TimeSpan | string | number): number {
+export function TIMESPACE_PARSE(duration: TimeSpan | timespan | number): number {
 	/*
 	var days = 0, hours = 0, minutes = 0, seconds = 0, milli = 0;
 	if (duration = String(duration).trim()) {
@@ -261,7 +262,7 @@ export function TIMESPACE_PARSE(duration: TimeSpan | string | number): number {
  * For example the number 114123.467 would be serialized as "1.07:42:03.467".
  * @param value		Use a decimal to show milliseconds.
  */
-export function TIMESPACE_STRINGIFY(value: number): string {
+export function TIMESPACE_STRINGIFY(value: number): timespan {
 	/*
 	var days = 0, hours = days, minutes = hours, seconds = minutes;
 	while (value >= 24 * 60 * 60 && ++days) value -= 24 * 60 * 60;

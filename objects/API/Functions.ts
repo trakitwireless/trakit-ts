@@ -1,4 +1,5 @@
 ﻿import { FILTER_BY_BOOLEAN_ARRAY } from "./Arrays";
+import { CODIFY } from "./Codifier";
 import {
 	ABS,
 	INT,
@@ -343,6 +344,24 @@ interface PREDICATE_OBJECT_TO_MAP<K, V> {
  * @param deep 
  * @returns 
  */
+export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
+	source: object,
+	predicate: PREDICATE_OBJECT_TO_MAP<K, V>
+) {
+	const keys = KEYS(source),
+		target: Map<K, V> = new Map;
+	for (let i = 0; i < keys.length; i++) {
+		const [key, value] = predicate(keys[i], (source as any)[keys[i]]);
+		target.set(key, value);
+	}
+	return target;
+}
+/**
+ * 
+ * @param map 
+ * @param deep 
+ * @returns 
+ */
 export function OBJECT_TO_MAP(
 	source: object,
 	deep: boolean = true
@@ -358,17 +377,14 @@ export function OBJECT_TO_MAP(
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
+export function OBJECT_TO_MAP_KEY_CODIFIED(
 	source: object,
-	predicate: PREDICATE_OBJECT_TO_MAP<K, V>
+	deep: boolean = true
 ) {
-	const keys = KEYS(source),
-		target: Map<K, V> = new Map;
-	for (let i = 0; i < keys.length; i++) {
-		const [key, value] = predicate(keys[i], (source as any)[keys[i]]);
-		target.set(key, value);
-	}
-	return target;
+	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
+		source,
+		(k, v) => [CODIFY(k), deep ? MERGE_INTERNAL(v) : v]
+	);
 }
 
 /**
@@ -377,6 +393,9 @@ export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
  * @param value 
  * @returns 
  */
-export function STRING_TO_ENUM<T extends { [key: string]: T | undefined }>(this: T, value: string): T | undefined {
-	return this[value] as T;
+export function STRING_TO_ENUM<T extends { [key: string]: T }>(
+	this: T,
+	value: string
+): T {
+	return this[value as keyof T] as T;
 }

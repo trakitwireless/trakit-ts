@@ -1,15 +1,25 @@
-﻿import { MIN } from "../API/Constants";
-import { ID, PHONE_PARSE, STRING_TO_ENUM } from "../API/Functions";
+﻿import { ARRAY_TO_ENUMS } from "../API/Arrays";
+import { ID, IS_AN, PHONE_PARSE, STRING_TO_ENUM } from "../API/Functions";
 import { IEnabled } from "../API/Interfaces/IEnabled";
+import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
 import { ulong } from "../API/Types";
 import { NotificationMethod } from "./NotificationMethod";
 
+const WEEKDAYS = [
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+];
 /**
  * Definition of how and when to send alerts to the user.
  */
 export class UserNotifications
-	implements IEnabled {
+	implements IEnabled, ISerializable {
 	/**
 	 * A common name like "Weekdays" or "Off Hours".
 	 *  <override max-length="100" />
@@ -68,8 +78,8 @@ export class UserNotifications
 		this.end = new TimeSpan(json["end"]);
 		this.email = json["email"] || "";
 		this.sms = PHONE_PARSE(json["sms"]);
-		this.online = (json["online"] || []).map(STRING_TO_ENUM);
-		this.offline = (json["offline"] || []).map(STRING_TO_ENUM);
+		this.online = ARRAY_TO_ENUMS(NotificationMethod, json["online"] || []);
+		this.offline = ARRAY_TO_ENUMS(NotificationMethod, json["offline"] || []);
 	}
 
 	/**
@@ -78,13 +88,40 @@ export class UserNotifications
 	 * @param days 
 	 */
 	private _parseWeekdays(days: string | boolean[]) {
-		const weekdays: boolean[] = [];
-		for (let i = 0; i < MIN(7, days?.length ?? 7); i++) {
+		const weekdays: boolean[] = [...WEEKDAYS];
+		for (let i = 0; i < weekdays.length; i++) {
 			const day = days[i];
 			weekdays[i] = typeof day === "boolean"
 				? day
 				: ID(day) === 1;
 		}
 		return weekdays;
+	}
+	/**
+	 * Creates as string of 7 characters (either `1` or `0`).
+	 */
+	private _jsonWeekdays(): string {
+		let weekdays = "";
+		for (let i = 0; i < 7; i++) {
+			weekdays += this.weekdays[i] ? "1" : "0";
+		}
+		return weekdays;
+	}
+
+	/**
+	 * 
+	 */
+	toJSON(): any {
+		return {
+			"name": this.name || "",
+			"enabled": !!this.enabled,
+			"weekdays": this._jsonWeekdays(),
+			"start": IS_AN(this.start.valueOf()) ? this.start.toString() : "00:00:00",
+			"end": IS_AN(this.end.valueOf()) ? this.end.toString() : "00:00:00",
+			"email": this.email || "",
+			"sms": this.sms || null,
+			"online": this.online.slice(),
+			"offline": this.offline.slice(),
+		}
 	}
 }

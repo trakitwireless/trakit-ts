@@ -1,4 +1,5 @@
 ﻿import { IIdUlong } from "./Interfaces/IIdUlong";
+import { ISerializable } from "./Interfaces/ISerializable";
 import { ulong } from "./Types";
 
 /**
@@ -56,6 +57,22 @@ export function ARRAY_EXCEPT<T>(array1: T[], array2: T[]): T[] {
 export function ARRAY_TO_IDS(object: IIdUlong): ulong {
   return object.id;
 }
+/**
+ * Given as the first argument to {@link Array#map}, the {@link IIdUlong.id}s are returned.
+ * @param   object
+ */
+export function ARRAY_TO_JSON(object: ISerializable): any {
+  return object.toJSON();
+}
+/**
+ * 
+ * @param type 
+ * @param array 
+ */
+export function ARRAY_TO_ENUMS<T>(type: any, array: string[]): T[] {
+  return array.map(e => type[e as keyof T] as T);
+}
+
 
 /**
  * Given as the first argument to {@link Array#filter} where the second argument is a {@link boolean[]}.
