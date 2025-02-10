@@ -4,6 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
+import { MERGE } from "../API/Objects";
 import { Timezone } from "../API/Timezone";
 import { codified, datetimetemplate, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -219,10 +220,16 @@ export class User
 		if (json) this.fromJSON(json);
 	}
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return MERGE(
+			{ "v": this.v },
+			this.general.toJSON(),
+			this.advanced.toJSON()
+		);
 	}
-	override fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any): this {
+		this.general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json));
+		this.advanced.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json));
+		return this;
 	}
 	
 	// IRequestable

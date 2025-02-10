@@ -1,5 +1,5 @@
 import { BaseComponent, } from '../API/BaseComponent';
-import { DATE, ID, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from '../API/Functions';
+import { DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
@@ -13,6 +13,7 @@ import { SystemsOfUnits } from './SystemsOfUnits';
 import { UserGroup } from './UserGroup';
 import { CODIFY } from '../API/Codifier';
 import { TIMEZONE_FIND } from '../API/Timezones';
+import { ARRAY_TO_JSON } from '../API/Arrays';
 
 /**
  * A service account that allowes for API access of system services.
@@ -116,7 +117,27 @@ export class Machine
 	insecure: boolean = false;
 
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"key": this.key,
+			"v": this.v,
+			"company": this.companyId,
+			"nickname": this.nickname,
+			"notes": this.notes,
+			"enabled": !!this.enabled,
+			"notBefore": IS_AN(this.notBefore.valueOf()) ? this.notBefore.toISOString() : "",
+			"notAfter": IS_AN(this.notAfter.valueOf()) ? this.notAfter.toISOString() : "",
+			"timezone": this.timezone?.code || Timezone.utc.code,
+			"language": this.language,
+			"formats": MAP_TO_OBJECT(this.formats),
+			"measurements": MAP_TO_OBJECT(this.measurements),
+			"options": MAP_TO_OBJECT(this.options),
+			"groups": [...this.groupIds],
+			"permissions": this.permissions.map(ARRAY_TO_JSON),
+			"services": [...this.services],
+			"referrers": [...this.referrers],
+			"ipRanges": [...this.ipRanges],
+			"insecure": !!this.insecure,
+		};
 	}
 	override fromJSON(json: any): this {
 		if (json) {
@@ -133,9 +154,9 @@ export class Machine
 				this.notAfter = DATE(json["notAfter"]);
 				this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
 				this.language = json["language"] || "";
-				this.formats = OBJECT_TO_MAP_BY_PREDICATE(json["formats"] || {}, (k, v) => [CODIFY(k), v]);
+				this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
 				this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-				this.options = OBJECT_TO_MAP(json["options"] || {});
+				this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
 				this.groupIds = (json["groups"] || []).map(ID);
 				this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
 				this.services = json["services"] || [];

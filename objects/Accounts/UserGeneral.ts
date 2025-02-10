@@ -1,11 +1,15 @@
+import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
+import { CODIFY } from "../API/Codifier";
+import { ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
+import { TIMEZONE_FIND } from "../API/Timezones";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
+import { COMPANIES } from "../Storage";
 import { Contact } from "./Contact";
 import { SystemsOfUnits } from "./SystemsOfUnits";
 import { UserNotifications } from "./UserNotifications";
@@ -99,17 +103,43 @@ export class UserGeneral
 	 * Definition of how and when to send alerts to the user.
 	 *  <override max-count="7" />
 	 */
-	notify: UserNotifications[] = [];
+	notifications: UserNotifications[] = [];
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"login": this.login.toLowerCase(),
+			"v": this.v,
+			"company": this.companyId,
+			"nickname": this.nickname,
+			"enabled": !!this.enabled,
+			"contact": !!this.contactId,
+			"passwordExpired": !!this.passwordExpired,
+			"timezone": this.timezone?.code ?? Timezone.utc.code,
+			"language": this.language,
+			"formats": MAP_TO_OBJECT(this.formats),
+			"measurements": MAP_TO_OBJECT(this.measurements),
+			"options": MAP_TO_OBJECT(this.options),
+			"notify": this.notifications.map(ARRAY_TO_JSON),
+		};
 	}
-	override fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any): this {
+		if (json) {
+			if (!this.login) this.login = (json["login"] || "").toLowerCase();
+			var keepers = this.updateVersions(json["v"]);
+			if (keepers[0]) {
+				this.nickname = json["nickname"] || "";
+				this.enabled = !!json["enabled"];
+				this.contactId = ID(json["contact"]);
+				this.passwordExpired = !!json["passwordExpired"];
+				this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
+				this.language = json["language"] || "";
+				this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
+				this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+				this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
+				this.notifications = (json["notify"] || []).map((notify: any) => new UserNotifications(notify));
+			}
+		}
+		return this;
 	}
 
 	// IRequestable

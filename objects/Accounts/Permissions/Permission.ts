@@ -2,16 +2,25 @@
 import { PermissionType } from './PermissionType';
 import { PermissionLevel } from './PermissionLevel';
 import { PermissionMethod } from './PermissionMethod';
+import { ISerializable } from '../../API/Interfaces/ISerializable';
+import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
+import { Company } from '../../Companies/Company';
+import { COMPANIES } from '../../Storage';
 
 /**
  * A defined permission for {@link User}s, {@link UserGroup}s, and {@link Machine}s.
  */
-export class Permission {
+export class Permission
+	implements IBelongCompany, ISerializable {
 	/**
 	 * The {@link Company} that this permission targets.
 	 * {@link Company.id}
 	 */
-	company: ulong;
+	companyId: ulong;
+	/**
+	 * The company to which this contact belongs
+	 */
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The type of permission.
 	 */
@@ -25,7 +34,7 @@ export class Permission {
 		const kind = (PermissionType as any)[value];
 		if (!kind) throw new Error("Unknown PermissionType");
 		this.kind = kind;
-	 }
+	}
 		
 	/**
 	 * The level of access being defined.
@@ -47,14 +56,29 @@ export class Permission {
 		method: PermissionMethod = PermissionMethod.grant,
 		labels?: codified[]
 	) {
-		this.company = company;
+		this.companyId = company;
 		this.kind = PermissionType[kind];
 		this.level = PermissionLevel[level];
 		this.method = PermissionMethod[method];
 		this.labels = labels || [];
 	}
+
+	toJSON() {
+		return {
+			"company": this.companyId,
+			"kind": this.kind,
+			"level": this.level,
+			"method": this.method,
+			"labels": [...this.labels],
+		};
+	}
 }
 
+/**
+ * 
+ * @param obj 
+ * @returns 
+ */
 export function ARRAY_TO_PERMISSIONS(obj: any) {
 	return new Permission(
 		obj["company"],

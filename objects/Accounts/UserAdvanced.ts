@@ -1,10 +1,11 @@
-﻿import { BaseComponent } from "../API/BaseComponent";
+﻿import { ARRAY_TO_JSON } from "../API/Arrays";
+import { BaseComponent } from "../API/BaseComponent";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
-import { Permission } from "./Permissions/Permission";
+import { COMPANIES } from "../Storage";
+import { ARRAY_TO_PERMISSIONS, Permission } from "./Permissions/Permission";
 import { UserGroup } from "./UserGroup";
 
 /**
@@ -49,15 +50,25 @@ export class UserAdvanced
 	 */
 	permissions: Permission[] = [];
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"login": this.login.toLowerCase(),
+			"v": this.v,
+			"company": this.companyId,
+			"groups": [...this.groupIds],
+			"permissions": this.permissions.map(ARRAY_TO_JSON),
+		};
 	}
-	override fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any): this {
+		if (json) {
+			if (!this.login) this.login = (json["login"] || "").toLowerCase();
+			var keepers = this.updateVersions(json["v"]);
+			if (keepers[0]) {
+				this.groupIds = json["groups"] || [];
+				this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
+			}
+		}
+		return this;
 	}
 	
 	// IRequestable
