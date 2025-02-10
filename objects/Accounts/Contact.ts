@@ -194,7 +194,9 @@ export class Contact
 	
 	override toJSON() {
 		return {
-			"company": this.company.id,
+			"id": this.id || null,
+			"v": this.v,
+			"company": this.companyId,
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"otherNames": MAP_TO_OBJECT(this.otherNames),
@@ -204,25 +206,26 @@ export class Contact
 			"urls": MAP_TO_OBJECT(this.urls),
 			"dates": MAP_TO_OBJECT_PREDICATE(this.dates, (k, v) => [k, v.toISOString()]),
 			"options": MAP_TO_OBJECT(this.options),
-
-			"roles": this.roles,
-			"pictures": this.pictureIds.slice(),
+			"roles": [...this.roles],
+			"pictures": [...this.pictureIds],
 		};
 	}
 	override fromJSON(json: any): this {
-		if (!IS_AN(this.id)) this.id = ID(json["id"]);
-		if (this.updateVersions(json["v"])[0]) {
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.emails = OBJECT_TO_MAP(json["emails"] || {}, false);
-			this.phones = OBJECT_TO_MAP(json["phones"] || {}, false);
-			this.addresses = OBJECT_TO_MAP(json["addresses"] || {}, false);
-			this.urls = OBJECT_TO_MAP(json["urls"] || {}, false);
-			this.dates = OBJECT_TO_MAP_BY_PREDICATE(json["dates"] || {}, (k, v) => [k, DATE(v)]);
-			this.options = OBJECT_TO_MAP(json["options"] || {}, false);
-			this.otherNames = OBJECT_TO_MAP(json["otherNames"] || {}, false);
-			this.roles = (json["roles"] || []).map(CODIFY);
-			this.pictureIds = (json["pictures"] || []).map(ID);
+		if (json) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			if (this.updateVersions(json["v"])[0]) {
+				this.name = json["name"] || "";
+				this.notes = json["notes"] || "";
+				this.emails = OBJECT_TO_MAP(json["emails"] || {}, false);
+				this.phones = OBJECT_TO_MAP(json["phones"] || {}, false);
+				this.addresses = OBJECT_TO_MAP(json["addresses"] || {}, false);
+				this.urls = OBJECT_TO_MAP(json["urls"] || {}, false);
+				this.dates = OBJECT_TO_MAP_BY_PREDICATE(json["dates"] || {}, (k, v) => [k, DATE(v)]);
+				this.options = OBJECT_TO_MAP(json["options"] || {}, false);
+				this.otherNames = OBJECT_TO_MAP(json["otherNames"] || {}, false);
+				this.roles = (json["roles"] || []).map(CODIFY);
+				this.pictureIds = (json["pictures"] || []).map(ID);
+			}
 		}
 		return this;
 	}

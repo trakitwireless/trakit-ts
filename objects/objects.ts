@@ -107,7 +107,7 @@ import {
     TimeSpan,
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
-import { TIMEZONES, } from "./API/Timezones";
+import { TIMEZONE_FIND, } from "./API/Timezones";
 import { COMPANIES, CONTACTS } from "./Storage";
 
 const version = (5.01);
@@ -132,13 +132,12 @@ export default {
         douglasPeucker: DOUGLASPEUCKER,
         numberGroups: NUMBER_GROUPS,
         fileSize: FILESIZE_HELPER,
-        timezones: TIMEZONES,
+        findTimeZoneById: TIMEZONE_FIND,
         phoneNumber: PHONE_PARSE,
     },
     SearchPattern,
     TimeSpan,
     Timezone,
-    timezones: TIMEZONES,
 
     convert: CONVERT,
     encoding: {

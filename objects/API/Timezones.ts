@@ -1,9 +1,11 @@
-﻿import { Timezone } from './Timezone';
+﻿import { CODIFY } from './Codifier';
+import { Timezone } from './Timezone';
+import { codified } from './Types';
 
 /**
  * A list of all supported system timezones.
  **/
-export const TIMEZONES = [
+const TIMEZONES: Timezone[] = [
 	new Timezone("dateline-standard-time", "International Date Line West (UTC-12:00)", -720, false),
 	new Timezone("utc-11", "Coordinated Universal Time-11 (UTC-11:00)", -660, false),
 	new Timezone("aleutian-standard-time", "Aleutian Islands (UTC-10:00)", -600, true),
@@ -146,3 +148,12 @@ export const TIMEZONES = [
 	new Timezone("samoa-standard-time", "Samoa (UTC+13:00)", 780, true),
 	new Timezone("line-islands-standard-time", "Kiritimati Island (UTC+14:00)", 840, false),
 ];
+
+/**
+ * 
+ * @param code 
+ */
+export function TIMEZONE_FIND(code: codified): Timezone | undefined {
+	code = CODIFY(code);
+	return TIMEZONES.find(tz => tz.code === code);
+}

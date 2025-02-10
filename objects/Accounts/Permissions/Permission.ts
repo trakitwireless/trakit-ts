@@ -48,9 +48,19 @@ export class Permission {
 		labels?: codified[]
 	) {
 		this.company = company;
-		this.kind = kind;
-		this.level = level;
-		this.method = method;
+		this.kind = PermissionType[kind];
+		this.level = PermissionLevel[level];
+		this.method = PermissionMethod[method];
 		this.labels = labels || [];
 	}
+}
+
+export function ARRAY_TO_PERMISSIONS(obj: any) {
+	return new Permission(
+		obj["company"],
+		obj["kind"] || obj["type"],
+		obj["level"],
+		obj["method"],
+		obj["labels"]
+	);
 }

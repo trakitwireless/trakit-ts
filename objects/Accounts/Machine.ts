@@ -1,16 +1,18 @@
 import { BaseComponent, } from '../API/BaseComponent';
-import { DATE } from '../API/Functions';
+import { DATE, ID, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
 import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
 import { Timezone } from '../API/Timezone';
-import { codified, ulong, url } from '../API/Types';
+import { codified, ipv4, ulong, url } from '../API/Types';
 import { COMPANIES } from '../Storage';
 import { Company } from '../Companies/Company';
-import { Permission } from './Permissions/Permission';
+import { ARRAY_TO_PERMISSIONS, Permission } from './Permissions/Permission';
 import { SystemsOfUnits } from './SystemsOfUnits';
 import { UserGroup } from './UserGroup';
+import { CODIFY } from '../API/Codifier';
+import { TIMEZONE_FIND } from '../API/Timezones';
 
 /**
  * A service account that allowes for API access of system services.
@@ -103,20 +105,46 @@ export class Machine
 	referrers: url[] = [];
 	/**
 	 * Restrict service access to only the provided IP ranges.
+	 * Currently we only support IPv4 ranges using CIDR slash-notation.
+	 */
+	ipRanges: ipv4[] = [];
+	/**
+	 * Restrict service access to only the provided IP ranges.
 	 * Currently we only support IPv4 ranges
 	 * When true, no access restrictions ({@link secret}, {@link referrers}, or {@link ipRanges}) are enforced.
 	 */
 	insecure: boolean = false;
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
 		throw new Error("Method not implemented.");
 	}
-	override fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any): this {
+		if (json) {
+			if (!this.key) this.key = json["key"] || "";
+			var keepers = this.updateVersions(json["v"]);
+			if (keepers[0]) {
+				this.secret = typeof json["secret"] === "string"
+					? json["secret"]
+					: "";
+				this.nickname = json["nickname"] || "";
+				this.notes = json["notes"] || "";
+				this.enabled = !!json["enabled"];
+				this.notBefore = DATE(json["notBefore"]);
+				this.notAfter = DATE(json["notAfter"]);
+				this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
+				this.language = json["language"] || "";
+				this.formats = OBJECT_TO_MAP_BY_PREDICATE(json["formats"] || {}, (k, v) => [CODIFY(k), v]);
+				this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+				this.options = OBJECT_TO_MAP(json["options"] || {});
+				this.groupIds = (json["groups"] || []).map(ID);
+				this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
+				this.services = json["services"] || [];
+				this.referrers = json["referrers"] || [];
+				this.ipRanges = json["ipRanges"] || [];
+				this.insecure = !!json["insecure"];
+			}
+		}
+		return this;
 	}
 	
 	// IRequestable
