@@ -213,7 +213,8 @@ export class Contact
 	override fromJSON(json: any): this {
 		if (json) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
-			if (this.updateVersions(json["v"])[0]) {
+			var keepers = this.updateVersions(json["v"]);
+			if (keepers[0]) {
 				this.name = json["name"] || "";
 				this.notes = json["notes"] || "";
 				this.emails = OBJECT_TO_MAP(json["emails"] || {}, false);

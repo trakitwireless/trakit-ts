@@ -31,7 +31,6 @@ export class UserGeneral
 	 * {@link Company.id}
 	 */
 	companyId: ulong = NaN;
-	
 	/**
 	 * The company to which this user belongs.
 	 * {@link Company}
@@ -54,7 +53,7 @@ export class UserGeneral
 	 * Contact information for this user.
 	 * {@link Contact.id}
 	 */
-	contactId: ulong | null = NaN;
+	contactId: ulong = NaN;
 	/**
 	 * Contact information for this user.
 	 * {@link Contact.id}

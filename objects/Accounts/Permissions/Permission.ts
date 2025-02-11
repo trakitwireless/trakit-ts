@@ -6,6 +6,7 @@ import { ISerializable } from '../../API/Interfaces/ISerializable';
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { Company } from '../../Companies/Company';
 import { COMPANIES } from '../../Storage';
+import { ID, IS_NUMBER } from '../../API/Functions';
 
 /**
  * A defined permission for {@link User}s, {@link UserGroup}s, and {@link Machine}s.
@@ -16,7 +17,7 @@ export class Permission
 	 * The {@link Company} that this permission targets.
 	 * {@link Company.id}
 	 */
-	companyId: ulong;
+	companyId: ulong = NaN;
 	/**
 	 * The company to which this contact belongs
 	 */
@@ -24,7 +25,7 @@ export class Permission
 	/**
 	 * The type of permission.
 	 */
-	kind: PermissionType;
+	kind: PermissionType = PermissionType.companyGeneral;
 	/**
 	 * The kind of permission.
 	 * @deprecated Use {@link kind} instead.
@@ -39,28 +40,37 @@ export class Permission
 	/**
 	 * The level of access being defined.
 	 */
-	level: PermissionLevel;
+	level: PermissionLevel = PermissionLevel.read;
 	/**
 	 * The way the access is used.
 	 */
-	method: PermissionMethod;
+	method: PermissionMethod = PermissionMethod.grant;
 	/**
 	 * Codified names of {@link LabelStyle}s.  If list is empty, this permission applies for all labels.
 	 */
-	labels: codified[];
+	labels: codified[] = [];
 
+	constructor(json: any)
 	constructor(
-		company: ulong,
-		kind: PermissionType,
+		company?: ulong | any,
+		kind?: PermissionType,
 		level: PermissionLevel = PermissionLevel.read,
 		method: PermissionMethod = PermissionMethod.grant,
 		labels?: codified[]
 	) {
-		this.companyId = company;
-		this.kind = PermissionType[kind];
-		this.level = PermissionLevel[level];
-		this.method = PermissionMethod[method];
-		this.labels = labels || [];
+		if (IS_NUMBER(company)) {
+			this.companyId = company;
+			this.kind = PermissionType[kind as PermissionType] || PermissionType.companyGeneral;
+			this.level = PermissionLevel[level];
+			this.method = PermissionMethod[method];
+			this.labels = labels || [];
+		} else if (company) {
+			this.companyId = ID(company["company"]);
+			this.kind = PermissionType[company["kind"] as PermissionType];
+			this.level = PermissionLevel[company["level"] as PermissionLevel];
+			this.method = PermissionMethod[company["method"] as PermissionMethod];
+			this.labels = company["labels"] || [];
+		}
 	}
 
 	toJSON() {
@@ -80,11 +90,5 @@ export class Permission
  * @returns 
  */
 export function ARRAY_TO_PERMISSIONS(obj: any) {
-	return new Permission(
-		obj["company"],
-		obj["kind"] || obj["type"],
-		obj["level"],
-		obj["method"],
-		obj["labels"]
-	);
+	return new Permission(obj);
 }
