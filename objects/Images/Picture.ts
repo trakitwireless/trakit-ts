@@ -78,28 +78,28 @@ export class Picture
 			"uses": !IS_AN(this.uses) ? null : this.uses,
 		};
 	}
-	override fromJSON(json: any): this {
-		if (json) {
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
-			var keepers = this.updateVersions(json["v"]);
-			if (keepers[0]) {
-				this.name = json["name"] || "";
-				this.notes = json["notes"] || "";
-				this.src = json["src"] || "";
-				this.size = !json["size"]
-					? new Size(0, 0)
-					: new Size(
-						json["size"]["width"],
-						json["size"]["height"]
-					);
-				this.focals = (json["focals"] || []).map(function (focal: IRectangle) {
-					return new Rectangle(new Point(focal["left"], focal["top"]), new Point(focal["right"], focal["bottom"]));
-				});
-				this.bytes = !IS_AN(json["bytes"]) ? NaN : json["bytes"];
-				this.uses = !IS_AN(json["uses"]) ? NaN : json["uses"];
-			}
+			this.companyId = ID(json["company"]);
+			this.name = json["name"] || "";
+			this.notes = json["notes"] || "";
+			this.src = json["src"] || "";
+			this.size = !json["size"]
+				? new Size(0, 0)
+				: new Size(
+					json["size"]["width"],
+					json["size"]["height"]
+				);
+			this.focals = (json["focals"] || []).map((r: IRectangle) => new Rectangle(
+				new Point(r["left"], r["top"]),
+				new Point(r["right"], r["bottom"])
+			));
+			this.bytes = ID(json["bytes"]);
+			this.uses = ID(json["uses"]);
 		}
-		return this;
+		return update;
 	}
 	// IRequestable
 	/**

@@ -308,9 +308,10 @@ export function MAP_TO_OBJECT(
 	source: Map<any, any>,
 	deep: boolean = true
 ): object {
-  const target: any = {};
-  source.forEach((v, k) => target[k] = deep ? MERGE_INTERNAL(v) : v);
-  return target;
+	return MAP_TO_OBJECT_PREDICATE(
+		source,
+		(k, v) => [k, deep ? MERGE_INTERNAL(v) : v]
+	);
 }
 /**
  * 
@@ -330,6 +331,26 @@ export function MAP_TO_OBJECT_PREDICATE<K, V>(
 	return target;
 }
 
+/**
+ * 
+ */
+interface PREDICATE_MAP_TO_OBJECT_JSON {
+	toJSON(): any;
+}
+/**
+ * 
+ * @param source 
+ * @param deep 
+ * @returns 
+ */
+export function MAP_TO_OBJECT_VALUE_JSON<V extends PREDICATE_MAP_TO_OBJECT_JSON>(
+	source: Map<any, V>
+): object {
+	return MAP_TO_OBJECT_PREDICATE(
+		source,
+		(k, v) => [k, v.toJSON()]
+	);
+}
 
 /**
  * 

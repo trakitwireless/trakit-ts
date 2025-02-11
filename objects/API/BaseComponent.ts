@@ -22,13 +22,17 @@ export abstract class BaseComponent
 	 * @param version 
 	 * @returns 
 	 */
-	protected updateVersion(version: int = -1) {
-		const json = (version + 1) || 0,
-			existing = (this.#version + 1) || 0,
-			update = !existing || json > existing;
-		// if the existing version is -1, accept new value even if it's also -1
-		if (update) this.#version = json - 1;
-		return update;
+	protected updateVersion(version: int | int[]): boolean {
+		if (version instanceof Array) {
+			return this.updateVersion(version[0]);
+		} else {
+			const json = (version + 1) || 0,
+				existing = (this.#version + 1) || 0,
+				update = !existing || json > existing;
+			// if the existing version is -1, accept new value even if it's also -1
+			if (update) this.#version = json - 1;
+			return update;
+		}
 	}
 	/**
 	 * 
