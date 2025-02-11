@@ -9,7 +9,7 @@ import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
 import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES, CONTACTS } from "../Storage";
 import { Contact } from "./Contact";
 import { SystemsOfUnits } from "./SystemsOfUnits";
 import { UserNotifications } from "./UserNotifications";
@@ -58,12 +58,8 @@ export class UserGeneral
 	 * Contact information for this user.
 	 * {@link Contact.id}
 	 */
-	get contact(): Contact {
-		throw new Error;
-	}
-	set contact(value: Contact) {
-		this.contactId = value.id;
-	}
+	get contact(): Contact { return CONTACTS.get(this.contactId) as Contact; }
+	set contact(value: Contact) { this.contactId = value.id; }
 	/**
 	 * The user's local timezone.
 	 * {@link Timezone.code}
@@ -102,7 +98,7 @@ export class UserGeneral
 	 * Definition of how and when to send alerts to the user.
 	 *  <override max-count="7" />
 	 */
-	notifications: UserNotifications[] = [];
+	notify: UserNotifications[] = [];
 
 	override toJSON() {
 		return {
@@ -118,27 +114,26 @@ export class UserGeneral
 			"formats": MAP_TO_OBJECT(this.formats),
 			"measurements": MAP_TO_OBJECT(this.measurements),
 			"options": MAP_TO_OBJECT(this.options),
-			"notify": this.notifications.map(ARRAY_TO_JSON),
+			"notify": this.notify.map(ARRAY_TO_JSON),
 		};
 	}
-	override fromJSON(json: any): this {
-		if (json) {
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
 			if (!this.login) this.login = (json["login"] || "").toLowerCase();
-			var keepers = this.updateVersions(json["v"]);
-			if (keepers[0]) {
-				this.nickname = json["nickname"] || "";
-				this.enabled = !!json["enabled"];
-				this.contactId = ID(json["contact"]);
-				this.passwordExpired = !!json["passwordExpired"];
-				this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
-				this.language = json["language"] || "";
-				this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
-				this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-				this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
-				this.notifications = (json["notify"] || []).map((notify: any) => new UserNotifications(notify));
-			}
+			this.companyId = ID(json["company"]);
+			this.nickname = json["nickname"] || "";
+			this.enabled = !!json["enabled"];
+			this.contactId = ID(json["contact"]);
+			this.passwordExpired = !!json["passwordExpired"];
+			this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
+			this.language = json["language"] || "";
+			this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
+			this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
+			this.notify = (json["notify"] || []).map((notify: any) => new UserNotifications(notify));
 		}
-		return this;
+		return update;
 	}
 
 	// IRequestable

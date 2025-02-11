@@ -1,10 +1,12 @@
-﻿import { ARRAY_TO_JSON } from "../API/Arrays";
+﻿import { ARRAY_TO_IDS, ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
+import { ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
+import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES, GROUPS } from "../Storage";
 import { ARRAY_TO_PERMISSIONS, Permission } from "./Permissions/Permission";
 import { UserGroup } from "./UserGroup";
 
@@ -39,12 +41,8 @@ export class UserAdvanced
 	 * A list of groups to which this user belongs.
 	 * {@link UserGroup.id}
 	 */
-	get groups(): UserGroup[] {
-		throw new Error("Method not implemented.");
-	}
-	set groups(value: UserGroup[]) {
-		throw new Error("Method not implemented.");
-	}
+	get groups(): UserGroup[] { return MAP_FILTERED_BY_KEYS(GROUPS, this.groupIds); }
+	set groups(value: UserGroup[]) { this.groupIds = value?.map(ARRAY_TO_IDS) ?? []; }
 	/**
 	 * Individual permission rules which override the group rules.
 	 */
@@ -59,16 +57,15 @@ export class UserAdvanced
 			"permissions": this.permissions.map(ARRAY_TO_JSON),
 		};
 	}
-	override fromJSON(json: any): this {
-		if (json) {
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
 			if (!this.login) this.login = (json["login"] || "").toLowerCase();
-			var keepers = this.updateVersions(json["v"]);
-			if (keepers[0]) {
-				this.groupIds = json["groups"] || [];
-				this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
-			}
+			this.companyId = ID(json["company"]);
+			this.groupIds = json["groups"] || [];
+			this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
 		}
-		return this;
+		return update;
 	}
 	
 	// IRequestable

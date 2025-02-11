@@ -6,14 +6,15 @@ import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
 import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
 import { Timezone } from '../API/Timezone';
 import { codified, ipv4, ulong, url } from '../API/Types';
-import { COMPANIES } from '../Storage';
+import { COMPANIES, GROUPS } from '../Storage';
 import { Company } from '../Companies/Company';
 import { ARRAY_TO_PERMISSIONS, Permission } from './Permissions/Permission';
 import { SystemsOfUnits } from './SystemsOfUnits';
 import { UserGroup } from './UserGroup';
 import { CODIFY } from '../API/Codifier';
 import { TIMEZONE_FIND } from '../API/Timezones';
-import { ARRAY_TO_JSON } from '../API/Arrays';
+import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
+import { MAP_FILTERED_BY_KEYS } from '../API/Maps';
 
 /**
  * A service account that allowes for API access of system services.
@@ -86,12 +87,8 @@ export class Machine
 	/**
 	 * A list of groups to which this machine account belongs.
 	 */
-	get groups(): UserGroup[] {
-		throw new Error("Method not implemented.");
-	}
-	set groups(value: UserGroup[]) {
-		throw new Error("Method not implemented.");
-	}
+	get groups(): UserGroup[] { return MAP_FILTERED_BY_KEYS(GROUPS, this.groupIds); }
+	set groups(value: UserGroup[]) { this.groupIds = value?.map(ARRAY_TO_IDS) ?? []; }
 	/**
 	 * Permission rules which override the group rules.
 	 */
@@ -132,40 +129,39 @@ export class Machine
 			"measurements": MAP_TO_OBJECT(this.measurements),
 			"options": MAP_TO_OBJECT(this.options),
 			"groups": [...this.groupIds],
-			"permissions": this.permissions.map(ARRAY_TO_JSON),
+			"permissions": this.permissions?.map(ARRAY_TO_JSON) ?? [],
 			"services": [...this.services],
 			"referrers": [...this.referrers],
 			"ipRanges": [...this.ipRanges],
 			"insecure": !!this.insecure,
 		};
 	}
-	override fromJSON(json: any): this {
-		if (json) {
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
 			if (!this.key) this.key = json["key"] || "";
-			var keepers = this.updateVersions(json["v"]);
-			if (keepers[0]) {
-				this.secret = typeof json["secret"] === "string"
-					? json["secret"]
-					: "";
-				this.nickname = json["nickname"] || "";
-				this.notes = json["notes"] || "";
-				this.enabled = !!json["enabled"];
-				this.notBefore = DATE(json["notBefore"]);
-				this.notAfter = DATE(json["notAfter"]);
-				this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
-				this.language = json["language"] || "";
-				this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
-				this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-				this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
-				this.groupIds = (json["groups"] || []).map(ID);
-				this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
-				this.services = json["services"] || [];
-				this.referrers = json["referrers"] || [];
-				this.ipRanges = json["ipRanges"] || [];
-				this.insecure = !!json["insecure"];
-			}
+			this.companyId = ID(json["company"]);
+			this.secret = typeof json["secret"] === "string"
+				? json["secret"]
+				: "";
+			this.nickname = json["nickname"] || "";
+			this.notes = json["notes"] || "";
+			this.enabled = !!json["enabled"];
+			this.notBefore = DATE(json["notBefore"]);
+			this.notAfter = DATE(json["notAfter"]);
+			this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
+			this.language = json["language"] || "";
+			this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
+			this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
+			this.groupIds = (json["groups"] || []).map(ID);
+			this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
+			this.services = json["services"] || [];
+			this.referrers = json["referrers"] || [];
+			this.ipRanges = json["ipRanges"] || [];
+			this.insecure = !!json["insecure"];
 		}
-		return this;
+		return update;
 	}
 	
 	// IRequestable

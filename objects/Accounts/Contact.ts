@@ -116,12 +116,8 @@ export class Contact
 	/**
 	 * {@link Picture}s of this Contact.
 	 */
-	get pictures(): Picture[] {
-		return MAP_FILTERED_BY_KEYS(PICTURES, this.pictureIds);
-	}
-	set pictures(values: Picture[]) {
-		this.pictureIds = values?.map(ARRAY_TO_IDS) ?? [];
-	}
+	get pictures(): Picture[] { return MAP_FILTERED_BY_KEYS(PICTURES, this.pictureIds); }
+	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }
 
 	//#region Legacy/Deprecated
 	/**
@@ -210,25 +206,24 @@ export class Contact
 			"pictures": [...this.pictureIds],
 		};
 	}
-	override fromJSON(json: any): this {
-		if (json) {
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
-			var keepers = this.updateVersions(json["v"]);
-			if (keepers[0]) {
-				this.name = json["name"] || "";
-				this.notes = json["notes"] || "";
-				this.emails = OBJECT_TO_MAP(json["emails"] || {}, false);
-				this.phones = OBJECT_TO_MAP(json["phones"] || {}, false);
-				this.addresses = OBJECT_TO_MAP(json["addresses"] || {}, false);
-				this.urls = OBJECT_TO_MAP(json["urls"] || {}, false);
-				this.dates = OBJECT_TO_MAP_BY_PREDICATE(json["dates"] || {}, (k, v) => [k, DATE(v)]);
-				this.options = OBJECT_TO_MAP(json["options"] || {}, false);
-				this.otherNames = OBJECT_TO_MAP(json["otherNames"] || {}, false);
-				this.roles = (json["roles"] || []).map(CODIFY);
-				this.pictureIds = (json["pictures"] || []).map(ID);
-			}
+			this.companyId = ID(json["company"]);
+			this.name = json["name"] || "";
+			this.notes = json["notes"] || "";
+			this.emails = OBJECT_TO_MAP(json["emails"] || {}, false);
+			this.phones = OBJECT_TO_MAP(json["phones"] || {}, false);
+			this.addresses = OBJECT_TO_MAP(json["addresses"] || {}, false);
+			this.urls = OBJECT_TO_MAP(json["urls"] || {}, false);
+			this.dates = OBJECT_TO_MAP_BY_PREDICATE(json["dates"] || {}, (k, v) => [k, DATE(v)]);
+			this.options = OBJECT_TO_MAP(json["options"] || {}, false);
+			this.otherNames = OBJECT_TO_MAP(json["otherNames"] || {}, false);
+			this.roles = (json["roles"] || []).map(CODIFY);
+			this.pictureIds = (json["pictures"] || []).map(ID);
 		}
-		return this;
+		return update;
 	}
 
 	// IRequestable
