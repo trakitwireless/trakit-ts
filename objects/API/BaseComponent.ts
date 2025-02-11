@@ -22,14 +22,21 @@ export abstract class BaseComponent
 	 * @param version 
 	 * @returns 
 	 */
-	protected updateVersion(versions: int[] = [-1]) {
-		const version = versions?.[0] ?? -1,
-			json = (version + 1) || 0,
+	protected updateVersion(version: int = -1) {
+		const json = (version + 1) || 0,
 			existing = (this.#version + 1) || 0,
 			update = !existing || json > existing;
 		// if the existing version is -1, accept new value even if it's also -1
 		if (update) this.#version = json - 1;
 		return update;
+	}
+	/**
+	 * 
+	 * @param version 
+	 * @returns 
+	 */
+	protected updateVersions(versions: int[] = []) {
+		return versions?.map(v => this.updateVersion(v));
 	}
 
 	/**

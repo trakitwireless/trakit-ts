@@ -4,8 +4,9 @@
 export interface IDeserializable {
     /**
      * Updates this {@link IDeserializable} from the given input.
-     * @param json 
+     * @param json      A JSON value used to update this class.
+     * @param forced    When true, forces the update.
      * @returns True when an update was completed.
      */
-    fromJSON(json: any): boolean;
+    fromJSON(json: any, force?: boolean): boolean;
 }
