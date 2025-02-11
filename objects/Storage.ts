@@ -46,7 +46,7 @@ export const CONTACTS: Map<ulong, Contact> = new Map;
 /**
  * 
  */
-export const MACHINES: Map<ulong, Machine> = new Map;
+export const MACHINES: Map<string, Machine> = new Map;
 /**
  * 
  */
@@ -58,7 +58,7 @@ export const GROUPS: Map<ulong, UserGroup> = new Map;
 /**
  * 
  */
-export const SESSIONS: Map<ulong, Session> = new Map;
+export const SESSIONS: Map<string, Session> = new Map;
 //#endregion Accounts
 //#region Assets
 /**
@@ -156,7 +156,7 @@ export const PLACES: Map<ulong, Place> = new Map;
 /**
  * 
  */
-export const PROVIDERS: Map<ulong, Provider> = new Map;
+export const PROVIDERS: Map<string, Provider> = new Map;
 /**
  * 
  */
