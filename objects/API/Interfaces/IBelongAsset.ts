@@ -6,11 +6,11 @@ import { ulong } from "../Types";
 */
 export interface IBelongAsset {
 	/**
-	 * The {@link Asset} to which this object belongs.
+	 * The {@link Asset.id} to which this object belongs.
 	 */
-	get assetId(): ulong;
+	assetId: ulong;
 	/**
 	 * The {@link Asset} to which this object belongs.
 	 */
-	readonly asset: Asset;
+	get asset(): Asset;
 }

@@ -6,42 +6,47 @@ import { StreetAddress, } from './StreetAddress';
 /**
  * GPS position information
  */
-export class Position extends LatLng implements IPosition {
+export class Position
+	extends LatLng
+	implements IPosition {
 	/**
-	Speed
+	 * Speed
 	 */
 	speed: number;
 	/**
-	Direction of travel
+	 * Direction of travel
 	 */
 	bearing: number;
 	/**
-	Distance in meters from the sea level
+	 * Distance in meters from the sea level
 	 */
 	altitude: number;
 	/**
-	Threshold in meters for the accuracy of a position
+	 * Threshold in meters for the accuracy of a position
 	 */
 	accuracy: number;
 	/**
-	The Date/Time of the GPS reading
+	 * The Date/Time of the GPS reading
 	 */
 	date: Date = DATE();
+	/**
+	 * The Date/Time of the GPS reading
+	 */
 	get dts(): string { return this.date.toISOString(); }
 	/**
-	A better description of the current road-segment
+	 * A better description of the current road-segment
 	 */
-	streetAddress: StreetAddress;
+	streetAddress: StreetAddress | null = null;
 	/**
-	The posted speed limit for the road segment
+	 * The posted speed limit for the road segment
 	 */
 	speedLimit: number;
 	/**
-	Provider Identifier
+	 * Provider Identifier
 	 */
 	origin: string = "";
 	/**
-	The road segment description
+	 * The road segment description
 	 */
 	get address(): string { return this.streetAddress?.toString() ?? ""; }
 
@@ -63,7 +68,7 @@ export class Position extends LatLng implements IPosition {
 		this.date = DATE(dts);
 		this.speedLimit = limit;
 		this.altitude = altitude;
-		this.streetAddress = StreetAddress.fromJSON(street);
+		if (street) this.streetAddress = StreetAddress.fromJSON(street);
 	}
 
 	/**
@@ -93,7 +98,7 @@ export class Position extends LatLng implements IPosition {
 		return {
 			"lat": this.lat,
 			"lng": this.lng,
-			"dts": this.dts,
+			"dts": this.date.toISOString(),
 			"speed": IS_AN(this.speed)
 				? this.speed
 				: null,
@@ -109,7 +114,7 @@ export class Position extends LatLng implements IPosition {
 			"accuracy": IS_AN(this.accuracy)
 				? this.accuracy
 				: null,
-			"streetAddress": this.streetAddress?.toJSON(),
+			"streetAddress": this.streetAddress?.toJSON() || null,
 		};
 	}
 }

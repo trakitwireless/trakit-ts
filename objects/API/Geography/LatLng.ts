@@ -27,12 +27,21 @@ import { LatLngBounds } from './LatLngBounds';
 /**
  * A coordinate on the Earth.
  */
-export class LatLng implements ILatLng {
+export class LatLng
+	implements ILatLng {
 	/**
 	 * Let's consider the zero-zero coordinates to be invalid.
 	 */
 	static readonly INVALID: LatLng = new LatLng(0, 0);
-
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any): LatLng | null {
+		return json
+			? new LatLng(json["lat"], json["lng"])
+			: null;
+	}
 	/**
 	 * Latitude
 	 */

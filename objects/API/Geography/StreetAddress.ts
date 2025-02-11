@@ -4,7 +4,8 @@ import { IStreetAddress, } from "./Interfaces";
 /**
  * A road segment description
 */
-export class StreetAddress implements IStreetAddress, ISerializable {
+export class StreetAddress
+	implements IStreetAddress, ISerializable {
 	/**
 	 * 
 	 * @param street 

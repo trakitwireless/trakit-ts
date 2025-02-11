@@ -1,5 +1,5 @@
 ﻿import { ABS, FLOAT, ROUND, } from "./Constants";
-import { IS_NUMBER,ZERO_PADDED, } from "./Functions";
+import { IS_NUMBER, ZERO_PADDED, } from "./Functions";
 import { timespan, } from "./Types";
 
 /**
@@ -64,7 +64,7 @@ export class TimeSpan {
 	/**
 	 * @param duration		A time-span formatted string, or a number representing milliseconds
 	 */
-	constructor(duration: TimeSpan | timespan | number) {
+	constructor(duration?: TimeSpan | timespan | number) {
 		if (duration) this.add(duration);
 	}
 
@@ -116,17 +116,16 @@ export class TimeSpan {
 	 */
 	toString(format: timespan = "") {
 		if (format) {
-			var time = this,
-				pieces = format.split(/(\\.|[hHmstT]{1,2}|[df]{1,6})/gm),
+			var pieces = format.split(/(\\.|[hHmstT]{1,2}|[df]{1,6})/gm),
 				hasDays = pieces.includes("d");
-			return pieces.slice(1, pieces.length - 1).reduce(function (span, piece) {
+			return pieces.slice(1, pieces.length - 1).reduce((span, piece) => {
 				switch (piece[0] || "") {
-					case "d": span += ZERO_PADDED(time.days, piece.length); break;
-					case "H": span += ZERO_PADDED(time.hours + (hasDays ? 0 : time.days * 24), piece.length); break;
-					case "h": span += ZERO_PADDED(time.hours % 12, piece.length); break;
-					case "m": span += ZERO_PADDED(time.minutes, piece.length); break;
-					case "s": span += ZERO_PADDED(time.seconds, piece.length); break;
-					case "f": span += ZERO_PADDED(time.milliseconds / 1000, 0, piece.length).substring(2); break;
+					case "d": span += ZERO_PADDED(this.days, piece.length); break;
+					case "H": span += ZERO_PADDED(this.hours + (hasDays ? 0 : this.days * 24), piece.length); break;
+					case "h": span += ZERO_PADDED(this.hours % 12, piece.length); break;
+					case "m": span += ZERO_PADDED(this.minutes, piece.length); break;
+					case "s": span += ZERO_PADDED(this.seconds, piece.length); break;
+					case "f": span += ZERO_PADDED(this.milliseconds / 1000, 0, piece.length).substring(2); break;
 					default: span += piece; break;
 				}
 				return span;

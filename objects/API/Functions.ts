@@ -255,7 +255,7 @@ const PHONE_HIGHEST = 999e7;
  * Parses the input and returns a valid phone number prefixed by 1, or NaN if invalid.
  * @param phone
  * */
-export function PHONE_PARSE(phone: string | number): number {
+export function PHONE_PARSE(phone: string | number | undefined): number {
 	let number = ID(phone);
 	if (number) {
 		const eleven = number > PHONE_ELEVEN;
@@ -265,7 +265,6 @@ export function PHONE_PARSE(phone: string | number): number {
 	}
 	return number || NaN;
 }
-
 
 /**
  * Internal method for returning a string representation of the given number, padded with zeros.

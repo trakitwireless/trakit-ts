@@ -1,3 +1,4 @@
+import { Icon } from '../../Images/Icon';
 import { ulong } from '../Types';
 
 /**
@@ -7,5 +8,9 @@ export interface IIconic {
 	/**
 	 * This thing's {@link Icon.id}.
 	 */
-	icon: ulong;
+	iconId: ulong;
+	/**
+	 * This thing's {@link Icon}.
+	 */
+	get icon(): Icon;
 }
