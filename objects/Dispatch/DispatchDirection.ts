@@ -1,11 +1,16 @@
-﻿import { LatLng } from "../API/Geography/LatLng";
+﻿import { ARRAY_TO_JSON } from "../API/Arrays";
+import { ID, IS_AN, IS_NUMBER } from "../API/Functions";
+import { ILatLng } from "../API/Geography/Interfaces";
+import { LatLng } from "../API/Geography/LatLng";
+import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { double, ulong } from "../API/Types";
+import { double, timespan, ulong } from "../API/Types";
 
 /**
  * Driving directions and details like duration and distance.
  */
-export class DispatchDirection {
+export class DispatchDirection
+	implements ISerializable {
 	/**
 	 * The total distance of these directions (including sub-directions if applicable).
 	 */
@@ -13,7 +18,7 @@ export class DispatchDirection {
 	/**
 	 * The total duration of these directions (including sub-directions if applicable).
 	 */
-	duration?: TimeSpan;
+	duration: TimeSpan | null = null;
 	/**
 	 * Text hint for the driver for the action to perform.
 	 */
@@ -35,4 +40,37 @@ export class DispatchDirection {
 	 * The {@link DispatchStep.id}, if this direction is for {@link DispatchJob}s.
 	 */
 	step: ulong = NaN;
+
+	constructor(json: any)
+	constructor(
+		distance?: double,
+		duration?: TimeSpan | timespan | number,
+		instructions?: string,
+		path?: ILatLng[],
+		directions?: DispatchDirection[],
+		job?: ulong,
+		step?: ulong
+	) {
+		if (IS_NUMBER(distance)) {
+			this.distance = distance;
+			this.duration = new TimeSpan(duration);
+			this.instructions = instructions || "";
+			this.path = path?.map(p => LatLng.fromJSON(p) as LatLng) || [];
+			this.directions = directions?.map(d => new DispatchDirection(d)) || [];
+			this.job = ID(job);
+			this.step = ID(step);
+		}
+	}
+
+	toJSON() {
+		return {
+			"distance": this.distance || 0,
+			"duration": this.duration?.toString() || null,
+			"instructions": this.instructions || "",
+			"path": this.path.map(ARRAY_TO_JSON),
+			"directions": this.directions.map(ARRAY_TO_JSON),
+			"job": this.job || null,
+			"step": this.step || null,
+		};
+	}
 }

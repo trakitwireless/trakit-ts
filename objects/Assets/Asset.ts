@@ -17,6 +17,9 @@ import { AssetAttribute } from "./AssetAttribute";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";
 import { Position } from "../API/Geography/Position";
 import { DATE } from "../API/Functions";
+import { Picture } from "../Images/Picture";
+import { Icon } from "../Images/Icon";
+import { Provider } from "../Providers/Provider";
 
 /**
  * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
@@ -69,10 +72,11 @@ export class Asset
 		return this.general.kind;
 	}
 
+	#general: AssetGeneral = new AssetGeneral;
 	/**
 	 *  
 	 */
-	general: AssetGeneral = new AssetGeneral;
+	get general(): AssetGeneral { return this.#general; }
 	/**
 	 * This thing's name.
 	 *  <override max-length="100" />
@@ -96,12 +100,14 @@ export class Asset
 	 * The icon that represents this asset on the map and in lists.
 	 * {@link Icon.id}
 	 */
-	get icon(): ulong {
-		return this.general.icon;
-	}
-	set icon(value: ulong) {
-		this.general.icon = value;
-	}
+	get iconId(): ulong { return this.general.iconId; }
+	set iconId(value: ulong) { this.general.iconId = value; }
+	/**
+	 * The icon that represents this asset on the map and in lists.
+	 * {@link Icon.id}
+	 */
+	get icon(): Icon { return this.general.icon; }
+	set icon(value: Icon) { this.general.icon = value; }
 	/**
 	 * Codified label names.
 	 *  <override>
@@ -124,12 +130,18 @@ export class Asset
 	 *  </values>
 	 *  </override>
 	 */
-	get pictures(): ulong[] {
-		return this.general.pictures;
-	}
-	set pictures(value: ulong[]) {
-		this.general.pictures = value;
-	}
+	get pictureIds(): ulong[] { return this.general.pictureIds; }
+	set pictureIds(value: ulong[]) { this.general.pictureIds = value; }
+	/**
+	 * A list of photos of this thing.
+	 *  <override>
+	 *  <values>
+	 * {@link Picture.id}
+	 *  </values>
+	 *  </override>
+	 */
+	get pictures(): Picture[] { return this.general.pictures; }
+	set pictures(value: Picture[]) { this.general.pictures = value; }
 	/**
 	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
 	 *  <override max-length="254" />
@@ -212,12 +224,18 @@ export class Asset
 	 *  </values>
 	 *  </override>
 	 */
-	get providers(): string[] {
-		return this.advanced.providers;
-	}
-	set providers(value: string[]) {
-		this.advanced.providers = value;
-	}
+	get providerIds(): string[] { return this.advanced.providerIds; }
+	set providerIds(value: string[]) { this.advanced.providerIds = value; }
+	/**
+	 * The list of devices providing events for this asset.
+	 *  <override readonly="true">
+	 *  <values>
+	 * {@link Provider.id}
+	 *  </values>
+	 *  </override>
+	 */
+	get providers(): Provider[] { return this.advanced.providers; }
+	set providers(value: Provider[]) { this.advanced.providers = value; }
 	/**
 	 * A list of assets related to this one; like a Person for a Vehicle (driver).
 	 *  <override>
@@ -226,12 +244,18 @@ export class Asset
 	 *  </values>
 	 *  </override>
 	 */
-	get relationships(): ulong[] {
-		return this.advanced.relationships;
-	}
-	set relationships(value: ulong[]) {
-		this.advanced.relationships = value;
-	}
+	get relationshipIds(): ulong[] { return this.advanced.relationshipIds; }
+	set relationshipIds(value: ulong[]) { this.advanced.relationshipIds = value; }
+	/**
+	 * A list of assets related to this one; like a Person for a Vehicle (driver).
+	 *  <override>
+	 *  <values>
+	 * {@link Asset.id}
+	 *  </values>
+	 *  </override>
+	 */
+	get relationships(): Asset[] { return this.advanced.relationships; }
+	set relationships(value: Asset[]) { this.advanced.relationships = value; }
 	/**
 	 * The current state of this asset's interaction with known Places.
 	 *  <override>
@@ -240,26 +264,18 @@ export class Asset
 	 *  </keys>
 	 *  </override>
 	 */
-	get places(): Map<ulong, AssetPlaceStatus> {
-		return this.advanced.places;
-	}
-	set places(value: Map<ulong, AssetPlaceStatus>) {
-		this.advanced.places = value;
-	}
+	get places(): Map<ulong, AssetPlaceStatus> { return this.advanced.places; }
+	set places(value: Map<ulong, AssetPlaceStatus>) { this.advanced.places = value; }
 
 	/**
 	 *  
 	 */
 	dispatch: AssetDispatch = new AssetDispatch;
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
 		throw new Error("Method not implemented.");
 	}
-	override fromJSON(json: any): void {
+	override fromJSON(json: any): this {
 		throw new Error("Method not implemented.");
 	}
 

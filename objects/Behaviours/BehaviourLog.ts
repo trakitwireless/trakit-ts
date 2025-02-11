@@ -18,7 +18,7 @@ export class BehaviourLog extends BaseComponent implements IIdUlong, IBelongComp
 	 * The asset which whose behaviours created this log entry.
 	 * {@link Asset.id}
 	 */
-	asset: ulong = NaN;
+	assetId: ulong = NaN;
 	/**
 	 * The company to which this log message belongs.
 	 * {@link Company.id}

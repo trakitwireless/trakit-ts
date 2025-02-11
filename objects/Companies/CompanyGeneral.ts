@@ -5,7 +5,6 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ulong } from "../API/Types";
 
-
 /**
  * General details about a company.
  */
@@ -36,12 +35,7 @@ export class CompanyGeneral
 	 */
 	references: Map<string, string> = new Map;
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
-
-	toJSON() {
+	override toJSON() {
 		return {
 			"id": this.id,
 			"parent": this.parentId,
@@ -50,14 +44,17 @@ export class CompanyGeneral
 			"references": MAP_TO_OBJECT(this.references),
 		}
 	}
-	fromJSON(json: any): void {
-		if (!IS_AN(this.id)) this.id = ID(json["id"]);
-		if (!IS_AN(this.parentId)) this.id = ID(json["parent"]);
-		if (this.updateVersions(json["v"])[0]) {
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.references = OBJECT_TO_MAP(json["references"] || {});
+	override fromJSON(json: any): this {
+		if (json) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			if (!IS_AN(this.parentId)) this.id = ID(json["parent"]);
+			if (this.updateVersions(json["v"])[0]) {
+				this.name = json["name"] || "";
+				this.notes = json["notes"] || "";
+				this.references = OBJECT_TO_MAP(json["references"] || {});
+			}
 		}
+		return this;
 	}
 
 	// IRequestable

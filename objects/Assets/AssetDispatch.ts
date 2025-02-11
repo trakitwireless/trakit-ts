@@ -1,11 +1,14 @@
+import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE } from "../API/Functions";
+import { DATE, ID, IS_AN } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
+import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { DispatchDirection } from "../Dispatch/DispatchDirection";
+import { DispatchJob } from "../Dispatch/DispatchJob";
+import { COMPANIES, DISPATCH_JOBS } from "../Storage";
 
 /**
  * The current state of an asset's {@link DispatchJob} route progress.
@@ -32,7 +35,12 @@ export class AssetDispatch
 	 * The current list of {@link DispatchJob}s assigned to the asset.
 	 * {@link DispatchJob}
 	 */
-	jobs: ulong[] = [];
+	jobIds: ulong[] = [];
+	/**
+	 * A list of {@link Asset}s related to this one; like a {@link Person} for a {@link Vehicle} (driver).
+	 */
+	get jobs(): DispatchJob[] { return MAP_FILTERED_BY_KEYS(DISPATCH_JOBS, this.jobIds); }
+	set jobs(value: DispatchJob[]) { this.jobIds = value?.map(ARRAY_TO_IDS) ?? []; }
 	/**
 	 * Driving directions and route path details.
 	 */
@@ -42,15 +50,29 @@ export class AssetDispatch
 	 */
 	lastDispatched: Date = DATE();
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"id": this.id || null,
+			"v": this.v,
+			"companyId": this.companyId || null,
+			"jobs": [...this.jobIds],
+			//"tasks": [...this.taskIds],
+			"directions": [...this.directions],
+			"lastDispatched": this.lastDispatched.toISOString(),
+		};
 	}
-	override fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any): this {
+		if (json) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			var keepers = this.updateVersions(json["v"]);
+			if (keepers[0]) {
+				//if ("tasks" in json) this.tasks = json["tasks"].map();
+				this.jobIds = (json["jobs"] || []).map(ID);
+				this.directions = ((json["directions"] || []) as any[]).map(obj => new DispatchDirection(obj));
+				this.lastDispatched = DATE(json["lastDispatched"]);
+			}
+		}
+		return this;
 	}
 
 	// IRequestable

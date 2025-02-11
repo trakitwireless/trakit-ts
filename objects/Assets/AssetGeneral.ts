@@ -1,5 +1,6 @@
+import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE } from "../API/Functions";
+import { DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -7,17 +8,21 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
+import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
+import { Icon } from "../Images/Icon";
+import { Picture } from "../Images/Picture";
+import { COMPANIES, ICONS, PICTURES } from "../Storage";
 import { AssetType } from "./AssetType";
 
 /**
  * Seldom changing details about a thing.
  */
 export class AssetGeneral
-	extends BaseComponent implements
-	IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
+	extends BaseComponent
+	implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
+	
 	/**
 	 * Unique identifier of this asset.
 	 * {@link Asset.id}
@@ -43,10 +48,14 @@ export class AssetGeneral
 	 */
 	name: string = "";
 	/**
-	 * The icon that represents this asset on the map and in lists.
-	 * {@link Icon.id}
+	 * The {@link Icon.id} that represents this asset on the map and in lists.
 	 */
-	icon: ulong = NaN;
+	iconId: ulong = NaN;
+	/**
+	 * The {@link Icon} that represents this asset on the map and in lists.
+	 */
+	get icon(): Icon { return ICONS.get(this.iconId) as Icon; }
+	set icon(value: Icon) { this.iconId = value?.id ?? NaN; }
 	/**
 	 * Notes about it.
 	 */
@@ -61,14 +70,14 @@ export class AssetGeneral
 	 */
 	labels: string[] = [];
 	/**
-	 * A list of photos of this thing.
-	 *  <override>
-	 *  <values>
-	 * {@link Picture.id}
-	 *  </values>
-	 *  </override>
+	 * {@link Picture.id}s of this asset.
 	 */
-	pictures: ulong[] = [];
+	pictureIds: ulong[] = [];
+	/**
+	 * {@link Picture}s of this asset.
+	 */
+	get pictures(): Picture[] { return MAP_FILTERED_BY_KEYS(PICTURES, this.pictureIds); }
+	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }
 	/**
 	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
 	 *  <override max-length="254" />
@@ -83,15 +92,40 @@ export class AssetGeneral
 	 */
 	references: Map<string, string> = new Map;
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"id": this.id || null,
+			"v": this.v,
+			"company": this.companyId,
+			"kind": this.kind,
+			"suspended": !!this.suspended,
+			"since": this.suspended && IS_AN(this.since.valueOf()) ? this.since.toISOString() : "",
+			"name": this.name,
+			"notes": this.notes,
+			"references": MAP_TO_OBJECT(this.references),
+			"labels": [...this.labels],
+			"messagingAddress": this.messagingAddress,
+			"icon": this.iconId,
+			"pictures": [...this.pictureIds],
+		};
 	}
-	override fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any): this {
+		if (json) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			var keepers = this.updateVersions(json["v"]);
+			if (keepers[0]) {
+				this.name = json["name"] || "";
+				this.notes = json["notes"] || "";
+				this.suspended = !!json["suspended"];
+				this.since = DATE(json["since"]);
+				this.references = OBJECT_TO_MAP(json["references"] || {});
+				this.labels = [...(json["labels"] || [])];
+				this.iconId = ID(json["icon"]);
+				this.pictureIds = (json["pictures"] || []).map(ID);
+				this.messagingAddress = json["messagingAddress"] || "";
+			}
+		}
+		return this;
 	}
 
 	// IRequestable

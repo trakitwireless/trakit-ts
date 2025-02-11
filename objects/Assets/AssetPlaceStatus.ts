@@ -1,10 +1,12 @@
-import { DATE } from "../API/Functions";
+import { DATE, IS_AN } from "../API/Functions";
+import { ISerializable } from "../API/Interfaces/ISerializable";
 import { AssetPlaceStatusType } from "./AssetPlaceStatusType";
 
 /**
  * A simple status for each place an Asset visits.
  */
-export class AssetPlaceStatus {
+export class AssetPlaceStatus
+	implements ISerializable {
 	/**
 	 * The kind of interaction.
 	 */
@@ -17,4 +19,32 @@ export class AssetPlaceStatus {
 	 * The most recent date/time stamp for the interaction.
 	 */
 	latest: Date = DATE();
+
+	constructor(json: any)
+	constructor(
+		kind?: AssetPlaceStatusType | any,
+		enter?: Date | number | string,
+		latest?: Date | number | string
+	) {
+		if (this.kind = AssetPlaceStatusType[kind as AssetPlaceStatusType]) {
+			this.enter = DATE(enter);
+			this.latest = DATE(latest);
+		} else if (kind) {
+			this.kind = AssetPlaceStatusType[kind["kind"] as AssetPlaceStatusType];
+			this.enter = DATE(kind["enter"]);
+			this.latest = DATE(kind["latest"]);
+		}
+	}
+
+	toJSON() {
+		return {
+			"kind": this.kind,
+			"enter": !IS_AN(this.enter.valueOf())
+				? null
+				: this.enter.toISOString(),
+			"latest": !IS_AN(this.latest.valueOf())
+				? null
+				: this.latest.toISOString(),
+		};
+	}
 }
