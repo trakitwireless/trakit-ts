@@ -18,5 +18,5 @@ export abstract class Base
      * Updates this {@link IDeserializable} from the given input.
      * @param json 
      */
-    abstract fromJSON(json: any): this;
+    abstract fromJSON(json: any): boolean;
 }

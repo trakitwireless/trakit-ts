@@ -17,29 +17,19 @@ export abstract class BaseComponent
 	 * Object version keys used to validate synchronization for all object properties.
 	 */
 	get v(): int[] { return [this.#version]; }
-	//set v(value: int[]) { this._version = value; }
 	/**
 	 * 
 	 * @param version 
 	 * @returns 
 	 */
-	protected updateVersion(version: int = -1) {
-		const json = (version + 1) || 0,
+	protected updateVersion(versions: int[] = [-1]) {
+		const version = versions?.[0] ?? -1,
+			json = (version + 1) || 0,
 			existing = (this.#version + 1) || 0,
 			update = !existing || json > existing;
 		// if the existing version is -1, accept new value even if it's also -1
 		if (update) this.#version = json - 1;
 		return update;
-	}
-	/**
-	 * 
-	 * @param versions 
-	 * @returns 
-	 */
-	protected updateVersions(versions: int[] = []) {
-		return [
-			this.updateVersion(versions[0]),
-		];
 	}
 
 	/**
