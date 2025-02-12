@@ -1,6 +1,5 @@
 ﻿/**
  * The types of geography the system supports
- *  <override name="PlaceType"/>
  */
 export enum PlaceType {
 	/**
