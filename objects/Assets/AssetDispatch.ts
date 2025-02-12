@@ -62,17 +62,16 @@ export class AssetDispatch
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
-		if (json) {
-			if (!IS_AN(this.id)) this.id = ID(json["id"]);
-			var keepers = this.updateVersions(json["v"]);
-			if (keepers[0]) {
-				//if ("tasks" in json) this.tasks = json["tasks"].map();
-				this.jobIds = (json["jobs"] || []).map(ID);
-				this.directions = ((json["directions"] || []) as any[]).map(obj => new DispatchDirection(obj));
-				this.lastDispatched = DATE(json["lastDispatched"]);
-			}
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			this.id = ID(json["id"]);
+			this.companyId = ID(json["company"]);
+			//if ("tasks" in json) this.tasks = json["tasks"].map();
+			this.jobIds = (json["jobs"] || []).map(ID);
+			this.directions = ((json["directions"] || []) as any[]).map(obj => new DispatchDirection(obj));
+			this.lastDispatched = DATE(json["lastDispatched"]);
 		}
-		return this;
+		return update;
 	}
 
 	// IRequestable
