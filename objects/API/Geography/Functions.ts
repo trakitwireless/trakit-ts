@@ -1,25 +1,23 @@
-﻿import {
+﻿import { FILTER_BY_BOOLEAN_ARRAY } from '../Arrays';
+import {
 	ABS,
-	ATAN2,
-	SIN,
-	COS,
-	PI,
-	DEGREES_TO_RADIANS,
-	RADIANS_TO_DEGREES,
-	POW,
-	SQRT,
-	FLOAT,
-	ATAN,
-	TAN,
 	ASIN,
+	ATAN,
+	ATAN2,
+	COS,
+	DEGREES_TO_RADIANS,
+	PI,
+	POW,
+	RADIANS_TO_DEGREES,
+	SIN,
+	SQRT,
+	TAN
 } from '../Constants';
 import {
 	DOUGLASPEUCKER_INTERNAL,
-	FILTER_BY_BOOLEAN_ARRAY,
 	IS_AN,
 	IS_NUMBER,
-	PYTHAGORA,
-	ROUND_TO,
+	ROUND_TO
 } from '../Functions';
 import { ILatLng } from './Interfaces';
 

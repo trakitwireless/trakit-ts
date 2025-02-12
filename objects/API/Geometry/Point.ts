@@ -17,13 +17,13 @@ import { Radial, } from './Radial';
 export class Point implements IPoint {
 	/**
 	 * Returns a new {@link Radial} from the given object.
-	 * @param object	
+	 * @param json	
 	 * @returns 
 	 */
-	static fromObject(object: any): Point {
+	static fromJSON(json: any): Point {
 		return new Point(
-			object.x,
-			object.y
+			json?.x,
+			json?.y
 		);
 	}
 
