@@ -8,7 +8,20 @@ import { ID } from "./Functions";
  * Timezone definition
 */
 export class Timezone
-	implements IRequestable, ISerializable, IDeserializable {
+	implements IRequestable, ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new Timezone(
+			json["code"] as string,
+			json["name"] as string,
+			ID(json["offset"] as short) || 0,
+			!!(json["dst"] as boolean)
+		);
+	}
+
 	/**
 	 * 
 	 */
@@ -46,13 +59,6 @@ export class Timezone
 			"dst": this.dst,
 		};
 	}
-	fromJSON(json: any) {
-		this.code = json["code"] as string;
-		this.name = json["name"] as string;
-		this.offset = ID(json["offset"] as short) || 0;
-		this.dst = !!(json["dst"] as boolean);
-	}
-
 	/**
 	 * The {@link code} is the key.
 	 */

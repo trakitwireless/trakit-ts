@@ -1,4 +1,5 @@
-﻿import {
+﻿import { FILTER_BY_BOOLEAN_ARRAY } from '../Arrays';
+import {
 	ABS,
 	ATAN2,
 	SIN,
@@ -9,7 +10,6 @@
 } from '../Constants';
 import {
 	DOUGLASPEUCKER_INTERNAL,
-	FILTER_BY_BOOLEAN_ARRAY,
 	PYTHAGORA,
 } from '../Functions';
 import {

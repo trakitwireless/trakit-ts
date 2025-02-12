@@ -12,6 +12,7 @@ import {
 	SQRT,
 } from "./Constants";
 import { MERGE_INTERNAL } from "./Objects";
+import { ulong } from "./Types";
 
 /**
  * Checks for both null and undefined
@@ -68,8 +69,8 @@ export function OBJECT_TYPE(value: any): string {
  */
 export function IS_AN(value: any): value is number {
 	return IS_NUMBER(value)
-		|| !isNaN(value)
-		|| isFinite(value);
+		&& !isNaN(value)
+		&& isFinite(value);
 }
 
 /**
@@ -384,7 +385,7 @@ export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
  */
 export function OBJECT_TO_MAP(
 	source: object,
-	deep: boolean = true
+	deep: boolean = false
 ) {
 	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
 		source,
@@ -399,11 +400,26 @@ export function OBJECT_TO_MAP(
  */
 export function OBJECT_TO_MAP_KEY_CODIFIED(
 	source: object,
-	deep: boolean = true
+	deep: boolean = false
 ) {
 	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
 		source,
 		(k, v) => [CODIFY(k), deep ? MERGE_INTERNAL(v) : v]
+	);
+}
+/**
+ * 
+ * @param map 
+ * @param deep 
+ * @returns 
+ */
+export function OBJECT_TO_MAP_KEY_ULONG(
+	source: object,
+	deep: boolean = false
+) {
+	return OBJECT_TO_MAP_BY_PREDICATE<ulong, any>(
+		source,
+		(k, v) => [ID(k), deep ? MERGE_INTERNAL(v) : v]
 	);
 }
 
