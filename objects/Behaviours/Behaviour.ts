@@ -1,16 +1,20 @@
 import { BaseComponent } from "../API/BaseComponent";
+import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { IDeletable } from "../API/Interfaces/IDeletable";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { byte, ulong } from "../API/Types";
+import { Company } from "../Companies/Company";
+import { BEHAVIOUR_SCRIPTS, COMPANIES } from "../Storage";
 import { BehaviourParameter } from "./BehaviourParameter";
-import { BehaviourParameterType } from "./BehaviourParameterType";
+import { BehaviourScript } from "./BehaviourScript";
 
 /**
  * The applied behaviour which includes all parameters and targets specific assets.
 */
-export class Behaviour extends BaseComponent implements IIdUlong, INamed, IBelongCompany, IDeletable {
+export class Behaviour
+	extends BaseComponent
+	implements IIdUlong, INamed, IBelongCompany {
 	/**
 	 * Unique identifier of this behaviour.
 	 */
@@ -19,12 +23,22 @@ export class Behaviour extends BaseComponent implements IIdUlong, INamed, IBelon
 	 * The company to which this behaviour belongs.
 	 * {@link Company.id}
 	 */
-	company: ulong = NaN;
+	companyId: ulong = NaN;
+	/**
+	 * The company to which this behaviour belongs.
+	 * {@link Company.id}
+	 */
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The script which this behaviour implements.
 	 * {@link BehaviourScript.id}
 	 */
-	script: ulong = NaN;
+	scriptId: ulong = NaN;
+	/**
+	 * The script which this behaviour implements.
+	 * {@link BehaviourScript.id}
+	 */
+	get script(): BehaviourScript { return BEHAVIOUR_SCRIPTS.get(this.scriptId) as BehaviourScript; }
 	/**
 	 * The name of this behaviour.
 	 *  <override max-length="100" />
@@ -53,63 +67,39 @@ export class Behaviour extends BaseComponent implements IIdUlong, INamed, IBelon
 	 */
 	parameters: Map<string, BehaviourParameter> = new Map;
 
-
-	constructor(object: any) {
-		super();
-		if (object) this.fromJSON(object);
+	override toJSON() {
+		return {
+			"id": this.id || null,
+			"v": this.v,
+			"company": this.companyId|| null,
+			"script": this.scriptId|| null,
+			"name": this.name||"",
+			"notes": this.notes||"",
+			"targets": this.targets||"*",
+			"filters": this.filters||"",
+			"priority": this.priority||255,
+			"parameters": MAP_TO_OBJECT_VALUE_JSON(this.parameters),
+		};
 	}
-
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			this.companyId = ID(json["company"]);
+			this.scriptId = ID(json["script"]);
+			this.name = json["name"] || "";
+			this.notes = json["notes"] || "";
+			this.priority = ID(json["priority"]);
+			this.targets = json["targets"] || "*";
+			this.filters = json["filters"] || "";
+			this.parameters = OBJECT_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
+		}
+		return update;
+	}
+	
 	// IRequestable
 	/**
 	 * The {@link id} is the key.
 	 */
-getKey(): string { return this.id.toString(); }
-
-	override toJSON(): any {
-		const object= {
-			"name": this.name,
-			"notes": this.notes,
-			"targets": this.targets,
-			"filters": this.filters,
-			"priority": this.priority,
-			"parameters": this.parameters.toJSON(),
-			"script": this.script,
-			"company": this.company,
-		};
-		if (!isNaN(this.id)) {
-			object["id"] = this.id;
-			object["v"] = this.v.slice();
-		}
-		return object;
-	}
-	override fromJSON(input: any): void {
-		this.id = input["id"] as ulong;
-		this.company = input["company"] as ulong;
-		this.script = input["script"] as ulong;
-		this.name = input["name"] as string;
-		this.notes = input["notes"] as string;
-		this.priority = input["priority"] as byte;
-		this.targets = input["targets"] as string;
-		this.filters = input["filters"] as string;
-		this.parameters.clear();
-		for (let key in input["parameters"] as any) {
-			let value = (input["parameters"] as any)[key] as any;
-			this.parameters.set(key, new BehaviourParameter(
-				value["kind"] as BehaviourParameterType,
-				value["value"] as string,
-				value["notes"] as string,
-				value["context"] as string
-			));
-		}
-	}
-
-	// IDeletable
-	/**
-	 * Indicates whether this object was deleted.
-	 */
-	deleted: boolean = false;
-	/**
-	 * Timestamp from the action that deleted or suspended this object.
-	 */
-	since: Date = DATE();
+	getKey(): string { return this.id.toString(); }
 }
