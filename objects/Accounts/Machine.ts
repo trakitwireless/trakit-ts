@@ -8,7 +8,7 @@ import { Timezone } from '../API/Timezone';
 import { codified, ipv4, ulong, url } from '../API/Types';
 import { COMPANIES, GROUPS } from '../Storage';
 import { Company } from '../Companies/Company';
-import { ARRAY_TO_PERMISSIONS, Permission } from './Permissions/Permission';
+import {  Permission } from './Permissions/Permission';
 import { SystemsOfUnits } from './SystemsOfUnits';
 import { UserGroup } from './UserGroup';
 import { CODIFY } from '../API/Codifier';
@@ -155,7 +155,7 @@ export class Machine
 			this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
 			this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
 			this.groupIds = (json["groups"] || []).map(ID);
-			this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
+			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
 			this.services = json["services"] || [];
 			this.referrers = json["referrers"] || [];
 			this.ipRanges = json["ipRanges"] || [];
