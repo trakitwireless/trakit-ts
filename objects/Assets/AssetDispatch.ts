@@ -61,7 +61,7 @@ export class AssetDispatch
 			"lastDispatched": this.lastDispatched.toISOString(),
 		};
 	}
-	override fromJSON(json: any): this {
+	override fromJSON(json: any, force?: boolean): boolean {
 		if (json) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			var keepers = this.updateVersions(json["v"]);

@@ -109,23 +109,22 @@ export class AssetGeneral
 			"pictures": [...this.pictureIds],
 		};
 	}
-	override fromJSON(json: any): this {
-		if (json) {
-			if (!IS_AN(this.id)) this.id = ID(json["id"]);
-			var keepers = this.updateVersions(json["v"]);
-			if (keepers[0]) {
-				this.name = json["name"] || "";
-				this.notes = json["notes"] || "";
-				this.suspended = !!json["suspended"];
-				this.since = DATE(json["since"]);
-				this.references = OBJECT_TO_MAP(json["references"] || {});
-				this.labels = [...(json["labels"] || [])];
-				this.iconId = ID(json["icon"]);
-				this.pictureIds = (json["pictures"] || []).map(ID);
-				this.messagingAddress = json["messagingAddress"] || "";
-			}
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			this.id = ID(json["id"]);
+			this.companyId = ID(json["company"]);
+			this.name = json["name"] || "";
+			this.notes = json["notes"] || "";
+			this.suspended = !!json["suspended"];
+			this.since = DATE(json["since"]);
+			this.references = OBJECT_TO_MAP(json["references"] || {});
+			this.labels = [...(json["labels"] || [])];
+			this.iconId = ID(json["icon"]);
+			this.pictureIds = (json["pictures"] || []).map(ID);
+			this.messagingAddress = json["messagingAddress"] || "";
 		}
-		return this;
+		return update;
 	}
 
 	// IRequestable

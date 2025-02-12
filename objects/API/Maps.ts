@@ -1,9 +1,9 @@
-﻿import { Company } from '../Companies/Company';
-import { Asset } from '../Assets/Asset';
+﻿import { Asset } from '../Assets/Asset';
 import { BillingProfile } from '../Billing/BillingProfile';
-import { IBelongCompany } from './Interfaces/IBelongCompany';
+import { Company } from '../Companies/Company';
 import { IBelongAsset } from './Interfaces/IBelongAsset';
 import { IBelongBillingProfile } from './Interfaces/IBelongBillingProfile';
+import { IBelongCompany } from './Interfaces/IBelongCompany';
 import { ulong } from './Types';
 
 /**

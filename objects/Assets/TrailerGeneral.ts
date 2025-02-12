@@ -1,4 +1,6 @@
-﻿import { ushort } from "../API/Types";
+﻿import { ID } from "../API/Functions";
+import { MERGE } from "../API/Objects";
+import { ushort } from "../API/Types";
 import { AssetGeneral } from "./AssetGeneral";
 
 /**
@@ -35,4 +37,28 @@ export class TrailerGeneral
 	 *  <override max-length="22" format="colour" />
 	 */
 	colour: string = "";
+
+	override toJSON(): any {
+		return MERGE(super.toJSON(), {
+			"serial": this.serial || "",
+			"plate": this.plate || "",
+			"make": this.make || "",
+			"model": this.model || "",
+			"year": this.year || null,
+			"colour": this.colour || "",
+		});
+	}
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		super.fromJSON(json, update);
+		if (update) {
+			this.plate = json["plate"] || "";
+			this.serial = json["serial"] || "";
+			this.make = json["make"] || "";
+			this.model = json["model"] || "";
+			this.year = ID(json["year"]) || 0;
+			this.colour = json["colour"] || "";
+		}
+		return update;
+	}
 }

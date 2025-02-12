@@ -1,4 +1,6 @@
 ﻿import { Contact } from "../Accounts/Contact";
+import { ID } from "../API/Functions";
+import { MERGE } from "../API/Objects";
 import { ulong } from "../API/Types";
 import { CONTACTS } from "../Storage";
 import { AssetGeneral } from "./AssetGeneral";
@@ -19,4 +21,18 @@ export class PersonGeneral
 	 */
 	get contact(): Contact { return CONTACTS.get(this.contactId) as Contact; }
 	set contact(value: Contact) { this.contactId = value.id; }
+	
+	override toJSON(): any {
+		return MERGE(super.toJSON(), {
+			"contact": this.contactId,
+		});
+	}
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		super.fromJSON(json, update);
+		if (update) {
+			this.contactId = ID(json["contact"]);
+		}
+		return update;
+	}
 }

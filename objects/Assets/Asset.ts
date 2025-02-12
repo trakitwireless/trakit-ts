@@ -7,7 +7,7 @@ import { IIconic } from "../API/Interfaces/IIconic";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { BaseCompound } from "../API/BaseCompound";
-import { double, ulong } from "../API/Types";
+import { codified, double, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { AssetType } from "./AssetType";
 import { AssetGeneral } from "./AssetGeneral";
@@ -16,10 +16,11 @@ import { AssetDispatch } from "./AssetDispatch";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";
 import { Position } from "../API/Geography/Position";
-import { DATE } from "../API/Functions";
+import { DATE, IS_AN, MAP_TO_OBJECT, MAP_TO_OBJECT_PREDICATE } from "../API/Functions";
 import { Picture } from "../Images/Picture";
 import { Icon } from "../Images/Icon";
 import { Provider } from "../Providers/Provider";
+import { MERGE } from "../API/Objects";
 
 /**
  * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
@@ -68,9 +69,7 @@ export class Asset
 	/**
 	 * Type of asset.
 	 */
-	get kind(): AssetType {
-		return this.general.kind;
-	}
+	get kind(): AssetType { return this.general.kind; }
 
 	#general: AssetGeneral = new AssetGeneral;
 	/**
@@ -81,21 +80,13 @@ export class Asset
 	 * This thing's name.
 	 *  <override max-length="100" />
 	 */
-	get name(): string {
-		return this.general.name;
-	}
-	set name(value: string) {
-		this.general.name = value;
-	}
+	get name(): string { return this.general.name; }
+	set name(value: string) { this.general.name = value; }
 	/**
 	 * Notes about it.
 	 */
-	get notes(): string {
-		return this.general.notes;
-	}
-	set notes(value: string) {
-		this.general.notes = value;
-	}
+	get notes(): string { return this.general.notes; }
+	set notes(value: string) { this.general.notes = value; }
 	/**
 	 * The icon that represents this asset on the map and in lists.
 	 * {@link Icon.id}
@@ -116,12 +107,8 @@ export class Asset
 	 *  </values>
 	 *  </override>
 	 */
-	get labels(): string[] {
-		return this.general.labels;
-	}
-	set labels(value: string[]) {
-		this.general.labels = value;
-	}
+	get labels(): string[] { return this.general.labels; }
+	set labels(value: string[]) { this.general.labels = value; }
 	/**
 	 * A list of photos of this thing.
 	 *  <override>
@@ -146,12 +133,8 @@ export class Asset
 	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
 	 *  <override max-length="254" />
 	 */
-	get messagingAddress(): string {
-		return this.general.messagingAddress;
-	}
-	set messagingAddress(value: string) {
-		this.general.messagingAddress = value;
-	}
+	get messagingAddress(): string { return this.general.messagingAddress; }
+	set messagingAddress(value: string) { this.general.messagingAddress = value; }
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
 	 *  <override max-count="10">
@@ -159,35 +142,24 @@ export class Asset
 	 *  <values max-length="100" />
 	 *  </override>
 	 */
-	get references(): Map<string, string> {
-		return this.general.references;
-	}
-	set references(value: Map<string, string>) {
-		this.general.references = value;
-	}
+	get references(): Map<string, string> { return this.general.references; }
+	set references(value: Map<string, string>) { this.general.references = value; }
 
+	#advanced: AssetAdvanced = new AssetAdvanced;
 	/**
 	 *  
 	 */
-	advanced: AssetAdvanced = new AssetAdvanced;
+	get advanced(): AssetAdvanced { return this.#advanced; }
 	/**
 	 * The things GPS coordinates including speed, bearing, and street information.
 	 */
-	get position(): Position | null {
-		return this.advanced.position;
-	}
-	set position(value: Position | null) {
-		this.advanced.position = value;
-	}
+	get position(): Position | null { return this.advanced.position; }
+	set position(value: Position | null) { this.advanced.position = value; }
 	/**
 	 * The cumulative distance travelled in kilometres.
 	 */
-	get odometer(): double {
-		return this.advanced.odometer;
-	}
-	set odometer(value: double) {
-		this.advanced.odometer = value;
-	}
+	get odometer(): double { return this.advanced.odometer; }
+	set odometer(value: double) { this.advanced.odometer = value; }
 	/**
 	 * The codified status tag names.
 	 *  <override>
@@ -196,12 +168,8 @@ export class Asset
 	 *  </values>
 	 *  </override>
 	 */
-	get tags(): string[] {
-		return this.advanced.tags;
-	}
-	set tags(value: string[]) {
-		this.advanced.tags = value;
-	}
+	get tags(): codified[] { return this.advanced.tags; }
+	set tags(value: codified[]) { this.advanced.tags = value; }
 	/**
 	 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
 	 *  <override>
@@ -210,12 +178,8 @@ export class Asset
 	 *  </keys>
 	 *  </override>
 	 */
-	get attributes(): Map<string, AssetAttribute> {
-		return this.advanced.attributes;
-	}
-	set attributes(value: Map<string, AssetAttribute>) {
-		this.advanced.attributes = value;
-	}
+	get attributes(): Map<string, AssetAttribute> { return this.advanced.attributes; }
+	set attributes(value: Map<string, AssetAttribute>) { this.advanced.attributes = value; }
 	/**
 	 * The list of devices providing events for this asset.
 	 *  <override readonly="true">
@@ -267,16 +231,29 @@ export class Asset
 	get places(): Map<ulong, AssetPlaceStatus> { return this.advanced.places; }
 	set places(value: Map<ulong, AssetPlaceStatus>) { this.advanced.places = value; }
 
+	#dispatch: AssetDispatch = new AssetDispatch;
 	/**
 	 *  
 	 */
-	dispatch: AssetDispatch = new AssetDispatch;
+	get dispatch(): AssetDispatch { return this.#dispatch; }
 
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return MERGE(
+			{
+				"id": this.id || null,
+				"v": this.v,
+				"company": this.companyId,
+			},
+			this.#general.toJSON(),
+			this.#advanced.toJSON(),
+			this.#dispatch.toJSON(),
+		)
 	}
-	override fromJSON(json: any): this {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any, force?: boolean): boolean {
+		const general = this.#general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json), force),
+			advanced = this.#advanced.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json), force),
+			dispatch = this.#dispatch.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json), force);
+		return general || advanced || dispatch;
 	}
 
 	// IRequestable
@@ -289,13 +266,9 @@ export class Asset
 	/**
 	 * Indicates whether this object is suspended from event processing.
 	 */
-	get suspended(): boolean {
-		return this.general.suspended ?? false;
-	}
+	get suspended(): boolean { return this.general.suspended; }
 	/**
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
-	get since(): Date {
-		return this.general.since ?? DATE();
-	}
+	get since(): Date { return this.general.since; }
 }
