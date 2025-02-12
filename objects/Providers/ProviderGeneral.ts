@@ -79,14 +79,10 @@ export class ProviderGeneral
 	 */
 	sim: string = "";
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
 		throw new Error("Method not implemented.");
 	}
-	override fromJSON(json: any): void {
+	override fromJSON(json: any, force?: boolean): boolean {
 		throw new Error("Method not implemented.");
 	}
 
