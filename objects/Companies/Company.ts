@@ -1,14 +1,16 @@
 import { Contact } from '../Accounts/Contact';
 import { BaseComponent } from '../API/BaseComponent';
 import { BaseCompound } from '../API/BaseCompound';
+import { IS_AN } from '../API/Functions';
 import { IAmCompany } from '../API/Interfaces/IAmCompany';
 import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
+import { MAP_FILTERED_BY_COMPANY } from '../API/Maps';
 import { MERGE } from '../API/Objects';
 import { codified, ulong } from '../API/Types';
-import { COMPANIES } from '../Storage';
 import { Picture } from '../Images/Picture';
+import { COMPANIES, CONTACTS, PICTURES } from '../Storage';
 import { CompanyDirectory } from './CompanyDirectory';
 import { CompanyGeneral } from './CompanyGeneral';
 import { CompanyPolicies } from './CompanyPolicies';
@@ -144,9 +146,13 @@ export class Company
 	/**
 	 * 
 	 */
-	toJSON() {
+	override toJSON() {
 		return MERGE(
-			{ "v": this.v },
+			{
+				"id": IS_AN(this.id) ? this.id : null,
+				"v": this.v,
+				"parent": this.parentId,
+			},
 			this.general.toJSON(),
 			this.directory.toJSON(),
 			this.styles.toJSON(),
@@ -158,18 +164,28 @@ export class Company
 	 * 
 	 * @param json 
 	 */
-	fromJSON(json: any): void {
-		this.general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json));
-		//this.reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json));
-		this.directory.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json));
-		this.styles.fromJSON(MERGE({ "v": json["v"].slice(3, 4) }, json));
-		this.policies.fromJSON(MERGE({ "v": json["v"].slice(4, 5) }, json));
-		if (json["v"][5] > 0) {
-			if (!this.reseller) this.reseller = new CompanyReseller;
+	override fromJSON(json: any, force?: boolean): boolean {
+		const general = this.general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json)),
+			//reserved = this.reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json)),
+			directory = this.directory.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json)),
+			styles = this.styles.fromJSON(MERGE({ "v": json["v"].slice(3, 4) }, json)),
+			policies = this.policies.fromJSON(MERGE({ "v": json["v"].slice(4, 5) }, json));
+		let reseller;
+		if (json?.["v"]?.[5] > 0) {
+			reseller = !this.reseller;
+			if (reseller) this.reseller = new CompanyReseller;
+			reseller = this.reseller?.fromJSON(MERGE({ "v": json["v"].slice(5, 6) }, json))
+				?? reseller;
 		} else {
+			reseller = !!this.reseller;
 			this.reseller = null;
 		}
-		this.reseller?.fromJSON(MERGE({ "v": json["v"].slice(5, 6) }, json));
+		return general
+			//|| reserved
+			|| directory
+			|| styles
+			|| policies
+			|| reseller;
 	}
 	// IRequestable
 	/**
@@ -180,9 +196,9 @@ export class Company
 	/**
 	 * 
 	 */
-	readonly contacts: Map<ulong, Contact> = new Map;
+	get contacts(): Contact[] { return MAP_FILTERED_BY_COMPANY(CONTACTS, this.id); }
 	/**
 	 * 
 	 */
-	readonly pictures: Map<ulong, Picture> = new Map;
+	get pictures(): Picture[] { return MAP_FILTERED_BY_COMPANY(PICTURES, this.id); }
 }

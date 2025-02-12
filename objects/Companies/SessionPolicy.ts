@@ -1,10 +1,13 @@
-﻿import { byte, ipv4, ushort } from "../API/Types";
+﻿import { ID } from "../API/Functions";
+import { ISerializable } from "../API/Interfaces/ISerializable";
+import { byte, ipv4, ushort } from "../API/Types";
 import { SessionMultiUser } from "./SessionMultiUser";
 
 /**
  * The session lifetime policy.
  */
-export class SessionPolicy {
+export class SessionPolicy
+	implements ISerializable {
 	/**
 	 * The list of applications users are allowed to use to create sessions.
 	 */
@@ -32,11 +35,22 @@ export class SessionPolicy {
 	maxSessions: byte;
 	
 	constructor(json: any = null) {
-		this.applications = (json["applications"] || []).slice();
-		this.ipv4Ranges = (json["ipv4Ranges"] || []).slice();
+		this.applications = [...(json["applications"] || [])];
+		this.ipv4Ranges = [...(json["ipv4Ranges"] || [])];
 		this.multiUser = SessionMultiUser[json["multiUser"] as SessionMultiUser] || SessionMultiUser.allow;
 		this.idleAllowed = !!json["idleAllowed"];
-		this.expireTimeout = json["expireTimeout"];
-		this.maxSessions = json["maxSessions"];
+		this.expireTimeout = ID(json["expireTimeout"]) || 0;
+		this.maxSessions = ID(json["maxSessions"]) || 0;
+	}
+	
+	toJSON() {
+		return {
+			"applications": this.applications,
+			"ipv4Ranges": this.ipv4Ranges,
+			"multiUser": this.multiUser,
+			"idleAllowed": this.idleAllowed,
+			"expireTimeout": this.expireTimeout,
+			"maxSessions": this.maxSessions,
+		};
 	}
 }

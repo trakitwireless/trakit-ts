@@ -1,11 +1,13 @@
 ﻿import { ID } from "../API/Functions";
+import { ISerializable } from "../API/Interfaces/ISerializable";
 import { byte } from "../API/Types";
 import { PasswordExpiryMode } from "./PasswordExpiryMode";
 
 /**
  * The password complexity and expiry policy.
  */
-export class PasswordPolicy {
+export class PasswordPolicy
+	implements ISerializable {
 	/**
 	 * The minimum number of characters required.
 	 */
@@ -43,5 +45,17 @@ export class PasswordPolicy {
 		this.includeSpecial = !!json["includeSpecial"];
 		this.expireMode = PasswordExpiryMode[json["expireMode"] as PasswordExpiryMode] ?? PasswordExpiryMode.never;
 		this.expireThreshold = ID(json["expireThreshold"]);
+	}
+
+	toJSON() {
+		return {
+			"minimumLength": this.minimumLength,
+			"includeLetters": !!this.includeLetters,
+			"includeNumbers": !!this.includeNumbers,
+			"includeUpperLower": !!this.includeUpperLower,
+			"includeSpecial": !!this.includeSpecial,
+			"expireMode": this.expireMode,
+			"expireThreshold": this.expireThreshold,
+		};
 	}
 }

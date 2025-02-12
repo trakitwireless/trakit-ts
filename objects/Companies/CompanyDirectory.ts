@@ -3,7 +3,8 @@ import { ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { codified, ulong } from "../API/Types";
-
+import { COMPANIES } from "../Storage";
+import { Company } from "./Company";
 
 /**
  * The list of Contacts from this and other companies broken down by contact role.
@@ -22,26 +23,25 @@ export class CompanyDirectory
 	 */
 	parentId: ulong = NaN;
 	/**
+	 * The unique identifier of this company's parent organization.
+	 * {@link Company.id}
+	 */
+	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
+	/**
 	 * The list of Contacts from this and other companies broken down by contact role.
 	 * {@link Contact.id}
 	 */
 	employees: Map<codified, ulong[]> = new Map;
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
-
-	// Iserializable
 	/**
 	 * 
 	 * @returns 
 	 */
 	toJSON() {
 		return {
-			"id": this.id,
+			"id": IS_AN(this.id) ? this.id : null,
+			"v": this.v,
 			"parent": this.parentId,
-			"v": this.v.slice(),
 			"directory": MAP_TO_OBJECT(this.employees),
 		};
 	}
@@ -49,12 +49,14 @@ export class CompanyDirectory
 	 * 
 	 * @param json 
 	 */
-	fromJSON(json: any): void {
-		if (!IS_AN(this.id)) this.id = ID(json["id"]);
-		if (!IS_AN(this.parentId)) this.parentId = ID(json["parent"]);
-		if (this.updateVersions(json["v"])[0]) {
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			this.parentId = ID(json["parent"]);
 			this.employees = OBJECT_TO_MAP(json["directory"] || {});
 		}
+		return update;
 	}
 	
 	// IRequestable

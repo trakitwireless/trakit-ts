@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE } from "../API/Functions";
+import { DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
@@ -152,12 +152,56 @@ export class CompanyReseller
 	 */
 	recoverIsHtml: boolean = false;
 
-	toJSON(): any {
-		throw new Error("Method not implemented.");
+	override toJSON() {
+		return {
+			"id": IS_AN(this.id) ? this.id : null,
+			"v": this.v,
+			"parent": this.parentId,
+			"contactInfo": MAP_TO_OBJECT(this.contactInfo),
+			"serviceName": this.serviceName || "",
+			"logo": this.logo || "",
+			"icon": this.icon || "",
+			"favourite": this.favourite || "",
+			"domain": this.domain || "",
+			"website": MAP_TO_OBJECT(this.website),
+			"graphics": MAP_TO_OBJECT(this.graphics),
+			"languages": [...this.languages],
+			"gamut": MAP_TO_OBJECT(this.gamut),
+			"notifyEmail": this.notifyEmail.toJSON(),
+			"notifySms": this.notifySms.toJSON(),
+			"termsPreamble": this.termsPreamble || "",
+			"termsUpdated": this.termsUpdated.valueOf() ? this.termsUpdated.toISOString() : null,
+			"recoverSubject": this.recoverSubject || "",
+			"recoverBody": this.recoverBody || "",
+			"recoverIsHtml": !!this.recoverIsHtml,
+		};
 	}
-	fromJSON(json: any): void {
-		throw new Error("Method not implemented.");
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			this.parentId = ID(json["parent"]);
+			this.contactInfo = OBJECT_TO_MAP_BY_PREDICATE(json["contactInfo"] || {}, (k, v) => [k, ID(v)]);
+			this.serviceName = json["serviceName"] || "";
+			this.logo = json["logo"] || "";
+			this.icon = json["icon"] || "";
+			this.favourite = json["favourite"] || "";
+			this.domain = json["domain"] || json["URN"] || json["urn"] || "";
+			this.website = OBJECT_TO_MAP(json["website"] || {});
+			this.graphics = OBJECT_TO_MAP(json["graphics"] || {});
+			this.gamut = OBJECT_TO_MAP_BY_PREDICATE(json["gamut"] || {}, (k, v) => [k, new ColourStyle(v)]);
+			this.languages = [...(json["languages"] || [])];
+			this.notifyEmail = new NotificationServerEmail(json["notifyEmail"]);
+			this.notifySms = new NotificationServerSms(json["notifySms"]);
+			this.termsPreamble = json["termsPreamble"] || "";
+			this.termsUpdated = DATE(json["termsUpdated"]);
+			this.recoverSubject = json["recoverSubject"] || "";
+			this.recoverBody = json["recoverBody"] || "";
+			this.recoverIsHtml = !!json["recoverIsHtml"];
+		}
+		return update;
 	}
+		
 	// IRequestable
 	/**
 	 * The {@link id} is the key.

@@ -3,6 +3,8 @@ import { ID, IS_AN } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../Storage";
+import { Company } from "./Company";
 import { PasswordPolicy } from "./PasswordPolicy";
 import { SessionPolicy } from "./SessionPolicy";
 
@@ -23,28 +25,37 @@ export class CompanyPolicies
 	 */
 	parentId: ulong = NaN;
 	/**
+	 * The unique identifier of this company's parent organization.
+	 * {@link Company.id}
+	 */
+	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
+	/**
 	 * The session lifetime policy.
 	 */
 	sessionPolicy: SessionPolicy = new SessionPolicy;
 	/**
 	 * The password complexity and expiry policy.
 	 */
-	passwordPolicy: PasswordPolicy = new PasswordPolicy;;
+	passwordPolicy: PasswordPolicy = new PasswordPolicy;
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
+	toJSON() {
+		return {
+			"id": IS_AN(this.id) ? this.id : null,
+			"v": this.v,
+			"parent": this.parentId,
+			"sessionPolicy": this.sessionPolicy?.toJSON() ?? null,
+			"passwordPolicy": this.passwordPolicy?.toJSON() ?? null,
+		};
 	}
-	toJSON(): any {
-		throw new Error("Method not implemented.");
-	}
-	fromJSON(json: any): void {
-		if (!IS_AN(this.id)) this.id = ID(json["id"]);
-		if (!IS_AN(this.parentId)) this.id = ID(json["parent"]);
-		if (this.updateVersions(json["v"])[0]) {
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			this.parentId = ID(json["parent"]);
 			this.sessionPolicy = new SessionPolicy(json["sessionPolicy"]);
 			this.passwordPolicy = new PasswordPolicy(json["passwordPolicy"]);
 		}
+		return update;
 	}
 	// IRequestable
 	/**
