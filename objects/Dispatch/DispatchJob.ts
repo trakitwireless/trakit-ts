@@ -40,6 +40,11 @@ export class DispatchJob
 	 * {@link Asset.id}
 	 */
 	assetId: ulong = NaN;
+	/**
+	 * The {@link Asset} to which this job belongs.
+	 * This value is null when unassigned.
+	 * {@link Asset.id}
+	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	set asset(value: Asset) { this.assetId = value?.id || NaN; }
 	/**
