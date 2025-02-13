@@ -5,7 +5,7 @@ export enum ReportType {
 	/**
 	 * Processes all history for the assets.
 	 */
-	full = 1,
+	full ="full",
 	/**
 	 * Summarizes the timeline based on the given tags.
 	 */
