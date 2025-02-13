@@ -3,7 +3,7 @@ import { Machine } from './Accounts/Machine';
 import { Session } from './Accounts/Session';
 import { User } from './Accounts/User';
 import { UserGroup } from './Accounts/UserGroup';
-import { ulong } from './API/Types';
+import { email, ulong } from './API/Types';
 import { Asset } from './Assets/Asset';
 import { Behaviour } from './Behaviours/Behaviour';
 import { BehaviourLog } from './Behaviours/BehaviourLog';
@@ -50,7 +50,7 @@ export const MACHINES: Map<string, Machine> = new Map;
 /**
  * 
  */
-export const USERS: Map<ulong, User> = new Map;
+export const USERS: Map<email, User> = new Map;
 /**
  * 
  */
