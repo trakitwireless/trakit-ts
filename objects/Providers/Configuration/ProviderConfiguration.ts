@@ -4,7 +4,9 @@
 	 * The configured logic loaded onto the provider over-the-air to control it's reporting schedule and behaviour.
 	 * @deprecated Use ProviderConfig instead
 	 */
-	export class ProviderConfiguration extends Component implements IIdUlong, INamed, IBelongCompany, IDeletable {
+	export class ProviderConfiguration
+extends BaseComponent
+implements IIdUlong, INamed, IBelongCompany, IDeletable {
 		/**
 		 * Unique identifier of this configuration.
 		 */

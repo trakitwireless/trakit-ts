@@ -3,7 +3,9 @@
 	/**
 	 * A base class for Alerts and Messages.
 	 */
-	export abstract class MessageBase extends Component implements IIdUlong, IBelongCompany, IBelongAsset, IDeletable {
+	export abstract class MessageBase
+extends BaseComponent
+implements IIdUlong, IBelongCompany, IBelongAsset, IDeletable {
 		/**
 		 * Unique identifier of this memo.
 		 */

@@ -5,7 +5,9 @@
 	 * ProviderConfigurationTypes are used to help define a ProviderConfiguration.
 	 * @deprecated Use ProviderScript instead
 	 */
-	export class ProviderConfigurationType extends Component implements IIdUlong, INamed, IDeletable {
+	export class ProviderConfigurationType
+extends BaseComponent
+implements IIdUlong, INamed, IDeletable {
 		/**
 		 * Unique identifier.
 		 */

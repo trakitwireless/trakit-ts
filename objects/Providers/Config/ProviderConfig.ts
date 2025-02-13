@@ -3,7 +3,9 @@
 	/**
 	 * The configured script loaded onto the provider over-the-air to control it's reporting schedule and behaviour.
 	 */
-	export class ProviderConfig extends Component implements IIdUlong, INamed, IBelongCompany, IDeletable {
+	export class ProviderConfig
+extends BaseComponent
+implements IIdUlong, INamed, IBelongCompany, IDeletable {
 		/**
 		 * Unique identifier of this configuration.
 		 */

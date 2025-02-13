@@ -4,7 +4,9 @@
 	 * This class describes a type of logic applied to a provider.
 	 * A script will generate a file which is loaded onto a provider in the field.
 	 */
-	export class ProviderScript extends Component implements IIdUlong, INamed, IBelongCompany, IGlobal, IVisual, IDeletable {
+	export class ProviderScript
+extends BaseComponent
+implements IIdUlong, INamed, IBelongCompany, IGlobal, IVisual, IDeletable {
 		/**
 		 * Unique identifier of this configuration.
 		 */
