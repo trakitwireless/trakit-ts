@@ -11,7 +11,8 @@ import { IS_AN, } from '../../API/Functions';
 /**
  * A pre-computed Permission used by the {@link authorizer} when checking for system access.
  */
-class ComputedPermission extends Permission {
+class ComputedPermission
+	extends Permission {
 	/**
 	 * Numeric processing order when looping.
 	 */

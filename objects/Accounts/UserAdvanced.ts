@@ -7,7 +7,7 @@ import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, GROUPS } from "../Storage";
-import { ARRAY_TO_PERMISSIONS, Permission } from "./Permissions/Permission";
+import { Permission } from "./Permissions/Permission";
 import { UserGroup } from "./UserGroup";
 
 /**
@@ -63,7 +63,7 @@ export class UserAdvanced
 			if (!this.login) this.login = (json["login"] || "").toLowerCase();
 			this.companyId = ID(json["company"]);
 			this.groupIds = json["groups"] || [];
-			this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
+			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
 		}
 		return update;
 	}

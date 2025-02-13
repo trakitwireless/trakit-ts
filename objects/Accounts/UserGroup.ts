@@ -6,7 +6,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../Storage";
-import { ARRAY_TO_PERMISSIONS, Permission } from "./Permissions/Permission";
+import { Permission } from "./Permissions/Permission";
 
 /**
  * Members of a group (as set by a {@link User}'s {@link UserAdvanced.groups} or {@link Machine}'s {@link Machine.groups})
@@ -57,7 +57,7 @@ export class UserGroup
 			this.companyId = ID(json["company"]);
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
-			this.permissions = (json["permissions"] || []).map(ARRAY_TO_PERMISSIONS);
+			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
 		}
 		return update;
 	}

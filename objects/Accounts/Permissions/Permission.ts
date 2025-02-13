@@ -14,6 +14,20 @@ import { ID, IS_NUMBER } from '../../API/Functions';
 export class Permission
 	implements IBelongCompany, ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 * @returns 
+	 */
+	static fromJSON(json: any) {
+		return new Permission(
+			ID(json["company"]),
+			PermissionType[json["kind"] as PermissionType],
+			PermissionLevel[json["level"] as PermissionLevel],
+			PermissionMethod[json["method"] as PermissionMethod],
+			json["labels"] || []
+		);
+	}
+	/**
 	 * The {@link Company} that this permission targets.
 	 * {@link Company.id}
 	 */
@@ -50,27 +64,18 @@ export class Permission
 	 */
 	labels: codified[] = [];
 
-	constructor(json: any)
 	constructor(
-		company?: ulong | any,
-		kind?: PermissionType,
+		company: ulong,
+		kind: PermissionType,
 		level: PermissionLevel = PermissionLevel.read,
 		method: PermissionMethod = PermissionMethod.grant,
 		labels?: codified[]
 	) {
-		if (IS_NUMBER(company)) {
-			this.companyId = company;
-			this.kind = PermissionType[kind as PermissionType] || PermissionType.companyGeneral;
-			this.level = PermissionLevel[level];
-			this.method = PermissionMethod[method];
-			this.labels = labels || [];
-		} else if (company) {
-			this.companyId = ID(company["company"]);
-			this.kind = PermissionType[company["kind"] as PermissionType];
-			this.level = PermissionLevel[company["level"] as PermissionLevel];
-			this.method = PermissionMethod[company["method"] as PermissionMethod];
-			this.labels = company["labels"] || [];
-		}
+		this.companyId = company;
+		this.kind = PermissionType[kind as PermissionType] || PermissionType.companyGeneral;
+		this.level = PermissionLevel[level];
+		this.method = PermissionMethod[method];
+		this.labels = labels || [];
 	}
 
 	toJSON() {
@@ -82,13 +87,4 @@ export class Permission
 			"labels": [...this.labels],
 		};
 	}
-}
-
-/**
- * 
- * @param obj 
- * @returns 
- */
-export function ARRAY_TO_PERMISSIONS(obj: any) {
-	return new Permission(obj);
 }
