@@ -1,6 +1,6 @@
 import { CODIFY } from "../../API/Codifier";
 import { FLOAT } from "../../API/Constants";
-import { DATE, ID, IS_AN, PHONE_PARSE } from "../../API/Functions";
+import { DATE, DATE_JSON, ID, IS_AN, PHONE_PARSE } from "../../API/Functions";
 import { IBelongAsset } from "../../API/Interfaces/IBelongAsset";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
@@ -186,27 +186,15 @@ export class BillingReportServiceBreakdown
 			"kind": AssetType[this.kind] || null,
 			"name": this.name || "",
 			"notes": this.notes || "",
-			"created": IS_AN(this.created.valueOf())
-				? this.created.toISOString()
-				: null,
-			"deleted": IS_AN(this.deleted.valueOf())
-				? this.deleted.toISOString()
-				: null,
-			"suspended": IS_AN(this.suspended.valueOf())
-				? this.suspended.toISOString()
-				: null,
-			"restored": IS_AN(this.restored.valueOf())
-				? this.restored.toISOString()
-				: null,
-			"revived": IS_AN(this.revived.valueOf())
-				? this.revived.toISOString()
-				: null,
+			"created": DATE_JSON(this.created),
+			"deleted": DATE_JSON(this.deleted),
+			"suspended": DATE_JSON(this.suspended),
+			"restored": DATE_JSON(this.restored),
+			"revived": DATE_JSON(this.revived),
 			"labels": [...this.labels],
 			"providers": [...this.providerIds],
 			"phoneNumbers": [...this.phoneNumbers],
-			"revupdatedDtsived": IS_AN(this.updatedDts.valueOf())
-				? this.updatedDts.toISOString()
-				: null,
+			"revupdatedDtsived": DATE_JSON(this.updatedDts),
 			"billableDays": this.billableDays || 0,
 			"cost": this.cost || 0,
 			"suspendedDays": this.suspendedDays || 0,

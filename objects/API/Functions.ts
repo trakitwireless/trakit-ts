@@ -435,3 +435,13 @@ export function STRING_TO_ENUM<T extends { [key: string]: T }>(
 ): T {
 	return this[value as keyof T] as T;
 }
+
+/**
+ * Serializes a {@link Date} to an ISO string, or null (for use in {@link ISerializable.toJSON}).
+ * @param date 
+ */
+export function DATE_JSON(date: Date): string | null {
+	return IS_AN(date.valueOf())
+		? date.toISOString()
+		: null;
+}

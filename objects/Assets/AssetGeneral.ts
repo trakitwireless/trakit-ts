@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, DATE_JSON, ID, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -99,7 +99,7 @@ export class AssetGeneral
 			"company": this.companyId,
 			"kind": this.kind,
 			"suspended": !!this.suspended,
-			"since": this.suspended && IS_AN(this.since.valueOf()) ? this.since.toISOString() : "",
+			"since": this.suspended && DATE_JSON(this.since),
 			"name": this.name,
 			"notes": this.notes,
 			"references": MAP_TO_OBJECT(this.references),

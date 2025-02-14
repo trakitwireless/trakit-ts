@@ -1,20 +1,20 @@
+import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
 import { BaseComponent, } from '../API/BaseComponent';
-import { DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from '../API/Functions';
+import { CODIFY } from '../API/Codifier';
+import { DATE, DATE_JSON, ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
 import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
+import { MAP_FILTERED_BY_KEYS } from '../API/Maps';
 import { Timezone } from '../API/Timezone';
+import { TIMEZONE_FIND } from '../API/Timezones';
 import { codified, ipv4, ulong, url } from '../API/Types';
-import { COMPANIES, GROUPS } from '../Storage';
 import { Company } from '../Companies/Company';
-import {  Permission } from './Permissions/Permission';
+import { COMPANIES, GROUPS } from '../Storage';
+import { Permission } from './Permissions/Permission';
 import { SystemsOfUnits } from './SystemsOfUnits';
 import { UserGroup } from './UserGroup';
-import { CODIFY } from '../API/Codifier';
-import { TIMEZONE_FIND } from '../API/Timezones';
-import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
-import { MAP_FILTERED_BY_KEYS } from '../API/Maps';
 
 /**
  * A service account that allowes for API access of system services.
@@ -121,8 +121,8 @@ export class Machine
 			"nickname": this.nickname,
 			"notes": this.notes,
 			"enabled": !!this.enabled,
-			"notBefore": IS_AN(this.notBefore.valueOf()) ? this.notBefore.toISOString() : "",
-			"notAfter": IS_AN(this.notAfter.valueOf()) ? this.notAfter.toISOString() : "",
+			"notBefore": DATE_JSON(this.notBefore),
+			"notAfter": DATE_JSON(this.notAfter),
 			"timezone": this.timezone?.code || Timezone.utc.code,
 			"language": this.language,
 			"formats": MAP_TO_OBJECT(this.formats),

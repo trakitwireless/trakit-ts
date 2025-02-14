@@ -1,4 +1,4 @@
-import { DATE, IS_AN } from "../../API/Functions";
+import { DATE, DATE_JSON, IS_AN } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
@@ -52,8 +52,8 @@ export class FormFieldDate
 	}
 	override toJSON(): any {
 		return MERGE(super.toJSON(), {
-			"minimum": IS_AN(this.minimum.valueOf()) ? this.minimum.toISOString() : null,
-			"maximum": IS_AN(this.maximum.valueOf()) ? this.maximum.toISOString() : null,
+			"minimum": DATE_JSON(this.minimum),
+			"maximum": DATE_JSON(this.maximum),
 		});
 	}
 	override isValid(value: string): boolean {

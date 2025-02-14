@@ -1,6 +1,6 @@
 import { User } from "../Accounts/User";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN } from "../API/Functions";
+import { DATE, DATE_JSON, ID, IS_AN } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -100,12 +100,8 @@ export abstract class MessageBase
 			"to": this.to|| "",
 			"from": this.from|| "",
 			"body": this.body|| "",
-			"processed": !IS_AN(this.processed.valueOf())
-				? null
-				: this.processed.toISOString(),
-			"delivered": !IS_AN(this.delivered.valueOf())
-				? null
-				: this.delivered.toISOString(),
+			"processed": DATE_JSON(this.processed),
+			"delivered": DATE_JSON(this.delivered),
 			"subject": this.subject|| "",
 			"asset": this.assetId,
 			"user": this.userLogin || "",

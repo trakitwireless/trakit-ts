@@ -1,4 +1,4 @@
-import { DATE, IS_AN } from "../API/Functions";
+import { DATE, DATE_JSON } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { AssetPlaceStatusType } from "./AssetPlaceStatusType";
 
@@ -39,12 +39,8 @@ export class AssetPlaceStatus
 	toJSON() {
 		return {
 			"kind": this.kind,
-			"enter": !IS_AN(this.enter.valueOf())
-				? null
-				: this.enter.toISOString(),
-			"latest": !IS_AN(this.latest.valueOf())
-				? null
-				: this.latest.toISOString(),
+			"enter": DATE_JSON(this.enter),
+			"latest": DATE_JSON(this.latest),
 		};
 	}
 }

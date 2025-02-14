@@ -1,4 +1,4 @@
-import { DATE } from "../API/Functions";
+import { DATE, DATE_JSON } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 
@@ -23,7 +23,7 @@ export class DispatchStepState
 
 	toJSON() {
 		return {
-			"updated": this.updated.toISOString(),
+			"updated": DATE_JSON(this.updated),
 			"latlng": this.latlng?.toJSON() ?? null,
 		};
 	}

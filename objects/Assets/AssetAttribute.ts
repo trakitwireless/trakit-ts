@@ -1,4 +1,4 @@
-import { DATE, ID, IS_AN, IS_NUMBER } from "../API/Functions";
+import { DATE, DATE_JSON, ID, IS_AN } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { ulong } from "../API/Types";
@@ -103,9 +103,7 @@ export class AssetAttribute
 				: null,
 			"provider": this.providerId,
 			"asset": this.assetId,
-			"dts": !IS_AN(this.dts.valueOf())
-				? null
-				: this.dts.toISOString(),
+			"dts": DATE_JSON(this.dts),
 			"global": !!this.global,
 		};
 	}

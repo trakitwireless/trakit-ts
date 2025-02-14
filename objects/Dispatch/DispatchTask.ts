@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, DATE_JSON, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -161,28 +161,18 @@ export class DispatchTask
 			"address": this.address || "",
 			"latlng": this.latlng?.toJSON() || null,
 			"status": DispatchTaskStatus[this.status] || null,
-			"created": IS_AN(this.created.valueOf())
-				? this.created.toISOString()
-				: null,
-			"eta": IS_AN(this.eta.valueOf())
-				? this.eta.toISOString()
-				: null,
+			"created": DATE_JSON(this.created),
+			"eta": DATE_JSON(this.eta),
 			"duration": this.duration?.toString() ?? null,
-			"arrived": IS_AN(this.arrived.valueOf())
-				? this.arrived.toISOString()
-				: null,
-			"completed": IS_AN(this.completed.valueOf())
-				? this.completed.toISOString()
-				: null,
+			"arrived": DATE_JSON(this.arrived),
+			"completed": DATE_JSON(this.completed),
 			"instructions": this.instructions || "",
 			"signature": !!this.signature,
 			"signatory": this.signatory || "",
 			"notes": this.notes || "",
 			"attachments": [...this.attachmentIds],
 			"updatedBy": this.updatedBy || "",
-			"updatedUtc": IS_AN(this.updatedUtc.valueOf())
-				? this.updatedUtc.toISOString()
-				: null,
+			"updatedUtc": DATE_JSON(this.updatedUtc),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
