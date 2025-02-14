@@ -1,6 +1,6 @@
 ﻿
 import { ARRAY_TO_JSON } from "../../API/Arrays";
-import { ID, IS_AN } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { ulong } from "../../API/Types";
@@ -57,23 +57,23 @@ export class BillingReportSummary
 	hosting: BillingReportHostingSummary[] = [];
 
 	constructor(
-		target: ulong,
-		parent: ulong,
-		name: string,
-		notes: string,
-		hosting: BillingReportHostingSummary[]
+		target?: ulong,
+		parent?: ulong,
+		name?: string,
+		notes?: string,
+		hosting?: BillingReportHostingSummary[]
 	) {
 		this.targetId = ID(target);
 		this.parentId = ID(parent);
 		this.name = name || "";
 		this.notes = notes || "";
-		this.hosting = [...hosting];
+		this.hosting = [...(hosting || [])];
 	}
 	
 	toJSON() {
 		return {
-			"target": IS_AN(this.targetId) ? this.targetId : null,
-			"parent": IS_AN(this.parentId) ? this.parentId : null,
+			"target": JSON_NUMBER(this.targetId),
+			"parent": JSON_NUMBER(this.parentId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"hosting": this.hosting?.map(ARRAY_TO_JSON) ?? [],

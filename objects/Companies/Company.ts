@@ -1,7 +1,7 @@
 import { Contact } from '../Accounts/Contact';
 import { BaseComponent } from '../API/BaseComponent';
 import { BaseCompound } from '../API/BaseCompound';
-import { IS_AN } from '../API/Functions';
+import { IS_AN, JSON_NUMBER } from '../API/Functions';
 import { IAmCompany } from '../API/Interfaces/IAmCompany';
 import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../API/Interfaces/IIdUlong';
@@ -145,7 +145,7 @@ export class Company
 	override toJSON() {
 		return MERGE(
 			{
-				"id": IS_AN(this.id) ? this.id : null,
+				"id": JSON_NUMBER(this.id),
 				"v": this.v,
 				"parent": this.parentId,
 			},

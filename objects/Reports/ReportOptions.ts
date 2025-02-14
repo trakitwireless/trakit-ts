@@ -53,16 +53,16 @@ export class ReportOptions
 	scorecardRules: ReportScorecardRules | null;
 
 	constructor(
-		parameters: ReportParameter[],
-		targets: string,
-		filtering: ReportFilterMode,
-		places: string,
-		regions: string[],
+		parameters?: ReportParameter[],
+		targets?: string,
+		filtering?: ReportFilterMode,
+		places?: string,
+		regions?: string[],
 		scorecardRules?: ReportScorecardRules | null
 	) {
 		this.parameters = parameters ?? [];
 		this.targets = targets || "";
-		this.filtering = ReportFilterMode[filtering] || ReportFilterMode.none;
+		this.filtering = ReportFilterMode[filtering as ReportFilterMode] || ReportFilterMode.none;
 		this.places = places || "";
 		this.regions = regions ?? [];
 		this.scorecardRules = scorecardRules || null;

@@ -34,9 +34,9 @@ export class ReportScorecardParameter
 	points: double = NaN;
 
 	constructor(
-		condition: string,
-		duration: TimeSpan | timespan | number,
-		points: double
+		condition?: string,
+		duration?: TimeSpan | timespan | number,
+		points?: double
 	) {
 		this.condition = condition || "";
 		this.duration = new TimeSpan(duration);

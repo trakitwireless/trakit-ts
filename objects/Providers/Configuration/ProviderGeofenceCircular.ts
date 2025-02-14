@@ -1,5 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
-import { IS_AN } from "../../API/Functions";
+import { IS_AN, JSON_NUMBER } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { uint } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
@@ -28,9 +28,9 @@ export class ProviderGeofenceCircular
 	maxRadius: uint = NaN;
 	
 	constructor(
-		maxGeofenceCount: uint,
-		minRadius: uint,
-		maxRadius: uint
+		maxGeofenceCount?: uint,
+		minRadius?: uint,
+		maxRadius?: uint
 	) {
 		super(maxGeofenceCount);
 		this.minRadius = FLOAT(minRadius as any);
@@ -39,8 +39,8 @@ export class ProviderGeofenceCircular
 
 	override toJSON() {
 		return MERGE(super.toJSON(), {
-			"minRadius": IS_AN(this.minRadius) ? this.minRadius : null,
-			"maxRadius": IS_AN(this.maxRadius) ? this.maxRadius : null,
+			"minRadius": JSON_NUMBER(this.minRadius),
+			"maxRadius": JSON_NUMBER(this.maxRadius),
 		});
 	}
 }

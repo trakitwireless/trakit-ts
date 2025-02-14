@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -44,7 +44,7 @@ export class CompanyGeneral
 
 	override toJSON() {
 		return {
-			"id": IS_AN(this.id) ? this.id : null,
+			"id": JSON_NUMBER(this.id),
 			"v": this.v,
 			"parent": this.parentId,
 			"name": this.name,

@@ -39,15 +39,15 @@ export class FormFieldTime
 	maximum: TimeSpan | null;
 	
 	constructor(
-		id: ulong,
-		name: string,
-		kind: FormFieldType,
-		minimum: TimeSpan,
-		maximum: TimeSpan,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		kind?: FormFieldType,
+		minimum?: TimeSpan,
+		maximum?: TimeSpan,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,
@@ -58,8 +58,8 @@ export class FormFieldTime
 			value,
 			editable
 		);
-		this.minimum = new TimeSpan(minimum as any);
-		this.maximum = new TimeSpan(maximum as any);
+		this.minimum = minimum || IS_AN(minimum) ? new TimeSpan(minimum) : null;
+		this.maximum = maximum || IS_AN(maximum) ? new TimeSpan(maximum) : null;
 	}
 
 	override toJSON(): any {

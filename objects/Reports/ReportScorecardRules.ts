@@ -30,8 +30,8 @@ export class ReportScorecardRules
 	parameters: ReportScorecardParameter[] = [];
 
 	constructor(
-		baseScore: double,
-		parameters: ReportScorecardParameter[]
+		baseScore?: double,
+		parameters?: ReportScorecardParameter[]
 	) {
 		this.baseScore = FLOAT(baseScore as any);
 		this.parameters = parameters ?? [];

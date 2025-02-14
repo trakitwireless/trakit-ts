@@ -17,12 +17,12 @@ export class FormFieldTimezone
 		];
 	}
 	constructor(
-		id: ulong,
-		name: string,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,

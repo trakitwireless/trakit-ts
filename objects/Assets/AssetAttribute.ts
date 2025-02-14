@@ -77,15 +77,15 @@ export class AssetAttribute
 	global: boolean = false;
 
 	constructor(
-		name: string,
-		simple: string,
-		complex: string,
-		raw: any,
-		unit: string,
-		provider: string,
-		asset: ulong,
-		dts: Date,
-		global: boolean
+		name?: string,
+		simple?: string,
+		complex?: string,
+		raw?: any,
+		unit?: string,
+		provider?: string,
+		asset?: ulong,
+		dts?: Date,
+		global?: boolean
 	) {
 		this.name = name || "";
 		this.simple = simple || "";

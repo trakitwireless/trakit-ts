@@ -27,11 +27,11 @@ export class ReportParameter
 	value: string;
 
 	constructor(
-		kind: ReportParameterType,
-		value: string
+		kind?: ReportParameterType,
+		value?: string
 	) {
-		this.kind = ReportParameterType[kind];
-		this.value = value;
+		this.kind = ReportParameterType[kind as ReportParameterType];
+		this.value = value || "";
 	}
 
 	toJSON() {

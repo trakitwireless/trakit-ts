@@ -33,9 +33,9 @@ export class IconLabel
 	colour: colour = "";
 
 	constructor(
-		anchor: Point,
-		align: string,
-		colour: colour
+		anchor?: Point,
+		align?: string,
+		colour?: colour
 	) {
 		this.anchor = Point.fromJSON(anchor);
 		this.align = align || "right top";

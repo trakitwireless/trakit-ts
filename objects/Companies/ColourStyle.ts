@@ -29,8 +29,8 @@ export class ColourStyle
 	stroke: colour = "";
 
 	constructor(
-		fill: colour,
-		stroke: colour
+		fill?: colour,
+		stroke?: colour
 	) {
 		this.fill = fill || "";
 		this.stroke = stroke || "";

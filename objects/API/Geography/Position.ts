@@ -1,4 +1,5 @@
-import { DATE, JSON_DATE, IS_AN, } from '../Functions';
+import { FLOAT } from '../Constants';
+import { DATE, JSON_DATE, JSON_NUMBER } from '../Functions';
 import { IPosition, IStreetAddress } from './Interfaces';
 import { LatLng, } from './LatLng';
 import { StreetAddress, } from './StreetAddress';
@@ -51,23 +52,23 @@ export class Position
 	get address(): string { return this.streetAddress?.toString() ?? ""; }
 
 	constructor(
-		lat: number,
-		lng: number,
-		speed: number,
-		bearing: number,
-		accuracy: number,
-		dts: Date | string | number,
-		limit: number,
-		altitude: number,
-		street: IStreetAddress
+		lat?: number,
+		lng?: number,
+		speed?: number,
+		bearing?: number,
+		accuracy?: number,
+		dts?: Date | string | number,
+		limit?: number,
+		altitude?: number,
+		street?: IStreetAddress
 	) {
-		super(lat, lng);
-		this.speed = speed;
-		this.bearing = bearing;
-		this.accuracy = accuracy;
+		super(lat || NaN, lng || NaN);
+		this.speed = FLOAT(speed as any);
+		this.bearing = FLOAT(bearing as any);
+		this.accuracy = FLOAT(accuracy as any);
 		this.date = DATE(dts);
-		this.speedLimit = limit;
-		this.altitude = altitude;
+		this.speedLimit = FLOAT(limit as any);
+		this.altitude = FLOAT(altitude as any);
 		if (street) this.streetAddress = StreetAddress.fromJSON(street);
 	}
 
@@ -99,21 +100,11 @@ export class Position
 			"lat": this.lat,
 			"lng": this.lng,
 			"dts": this.date.toISOString(),
-			"speed": IS_AN(this.speed)
-				? this.speed
-				: null,
-			"speedLimit": IS_AN(this.speedLimit)
-				? this.speedLimit
-				: null,
-			"bearing": IS_AN(this.bearing)
-				? this.bearing
-				: null,
-			"altitude": IS_AN(this.altitude)
-				? this.altitude
-				: null,
-			"accuracy": IS_AN(this.accuracy)
-				? this.accuracy
-				: null,
+			"speed": JSON_NUMBER(this.speed),
+			"speedLimit": JSON_NUMBER(this.speedLimit),
+			"bearing": JSON_NUMBER(this.bearing),
+			"altitude": JSON_NUMBER(this.altitude),
+			"accuracy": JSON_NUMBER(this.accuracy),
 			"streetAddress": this.streetAddress?.toJSON() || null,
 		};
 	}

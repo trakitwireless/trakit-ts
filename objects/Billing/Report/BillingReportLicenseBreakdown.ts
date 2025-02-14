@@ -1,5 +1,5 @@
 import { FLOAT } from "../../API/Constants";
-import { DATE, JSON_DATE, IS_AN, PHONE_PARSE } from "../../API/Functions";
+import { DATE, JSON_DATE, JSON_NUMBER, PHONE_PARSE } from "../../API/Functions";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { double, ulong } from "../../API/Types";
@@ -87,20 +87,20 @@ export class BillingReportLicenseBreakdown
 	total: double = NaN;
 
 	constructor(
-		provider: string,
-		kind: ProviderType,
-		name: string,
-		notes: string,
-		created: Date | string | number,
-		deleted: Date | string | number,
-		phoneNumber: ulong,
-		firmware: string,
-		billableDays: double,
-		cost: double,
-		total: double
+		provider?: string,
+		kind?: ProviderType,
+		name?: string,
+		notes?: string,
+		created?: Date | string | number,
+		deleted?: Date | string | number,
+		phoneNumber?: ulong,
+		firmware?: string,
+		billableDays?: double,
+		cost?: double,
+		total?: double
 	) {
 		this.providerId = provider || "";
-		this.kind = ProviderType[kind] || ProviderType.unknown;
+		this.kind = ProviderType[kind as ProviderType] || ProviderType.unknown;
 		this.name = name || "";
 		this.notes = notes || "";
 		this.created = DATE(created);
@@ -120,11 +120,11 @@ export class BillingReportLicenseBreakdown
 			"notes": this.notes || "",
 			"created": JSON_DATE(this.created),
 			"deleted": JSON_DATE(this.deleted),
-			"phoneNumber": this.phoneNumber || null,
+			"phoneNumber": JSON_NUMBER(this.phoneNumber),
 			"firmware": this.firmware || "",
-			"billableDays": IS_AN(this.billableDays) ? this.billableDays : null,
-			"cost": IS_AN(this.cost) ? this.cost : null,
-			"total": IS_AN(this.total) ? this.total : null,
+			"billableDays": JSON_NUMBER(this.billableDays),
+			"cost": JSON_NUMBER(this.cost),
+			"total": JSON_NUMBER(this.total),
 		};
 	}
 }

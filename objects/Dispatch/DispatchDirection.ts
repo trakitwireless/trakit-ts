@@ -58,13 +58,13 @@ export class DispatchDirection
 	step: ulong = NaN;
 
 	constructor(
-		distance: double,
-		duration: TimeSpan | timespan | number,
-		instructions: string,
-		path: LatLng[],
-		directions: DispatchDirection[],
-		job: ulong,
-		step: ulong
+		distance?: double,
+		duration?: TimeSpan | timespan | number,
+		instructions?: string,
+		path?: LatLng[],
+		directions?: DispatchDirection[],
+		job?: ulong,
+		step?: ulong
 	) {
 		this.distance = FLOAT(distance as any);
 		this.duration = new TimeSpan(duration);

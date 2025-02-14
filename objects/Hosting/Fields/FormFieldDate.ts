@@ -28,15 +28,15 @@ export class FormFieldDate
 	maximum: Date;
 
 	constructor(
-		id: ulong,
-		name: string,
-		kind: FormFieldType,
-		minimum: Date,
-		maximum: Date,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		kind?: FormFieldType,
+		minimum?: Date,
+		maximum?: Date,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,

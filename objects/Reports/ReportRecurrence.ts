@@ -1,4 +1,4 @@
-import { DATE, ID, JSON_DATE, JSON_NUMBER, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
+import { DATE, ID, JSON_DATE, JSON_NUMBER, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { byte, ulong, ushort } from "../API/Types";
 import { ReportRecurrenceType } from "./ReportRecurrenceType";
@@ -87,20 +87,20 @@ export class ReportRecurrence
 	lastEndDate: Date = DATE();
 
 	constructor(
-		kind: ReportRecurrenceType,
-		weekdays: boolean[] | string,
-		weekday: byte,
-		start: Date | number | string,
-		end: Date | number | string,
-		iterations: ushort,
-		lastResult: ulong,
-		nextStartDate: Date | number | string,
-		nextEndDate: Date | number | string,
-		lastStartDate: Date | number | string,
-		lastEndDate: Date | number | string
+		kind?: ReportRecurrenceType,
+		weekdays?: boolean[] | string,
+		weekday?: byte,
+		start?: Date | number | string,
+		end?: Date | number | string,
+		iterations?: ushort,
+		lastResult?: ulong,
+		nextStartDate?: Date | number | string,
+		nextEndDate?: Date | number | string,
+		lastStartDate?: Date | number | string,
+		lastEndDate?: Date | number | string
 	) {
-		this.kind = ReportRecurrenceType[kind] || ReportRecurrenceType.once;
-		this.weekdays = WEEKDAYS_PARSE(weekdays);
+		this.kind = ReportRecurrenceType[kind as ReportRecurrenceType] || ReportRecurrenceType.once;
+		this.weekdays = WEEKDAYS_PARSE(weekdays || WEEKDAYS);
 		this.weekday = ID(weekday);
 		this.start = DATE(start);
 		this.end = DATE(end);

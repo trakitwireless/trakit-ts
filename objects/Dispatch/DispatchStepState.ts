@@ -1,4 +1,5 @@
 import { DATE, JSON_DATE } from "../API/Functions";
+import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 
@@ -28,8 +29,8 @@ export class DispatchStepState
 	latlng: LatLng | null;
 	
 	constructor(
-		updated: Date | number | string,
-		latlng: LatLng | null
+		updated?: Date | number | string,
+		latlng?: LatLng | ILatLng | null
 	) {
 		this.updated = DATE(updated);
 		this.latlng = LatLng.fromJSON(latlng);

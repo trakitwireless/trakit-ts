@@ -33,11 +33,11 @@ export class AssetPlaceStatus
 	latest: Date = DATE();
 
 	constructor(
-		kind: AssetPlaceStatusType,
-		enter: Date | number | string,
-		latest: Date | number | string
+		kind?: AssetPlaceStatusType,
+		enter?: Date | number | string,
+		latest?: Date | number | string
 	) {
-		this.kind = AssetPlaceStatusType[kind] || AssetPlaceStatusType.inside;
+		this.kind = AssetPlaceStatusType[kind as AssetPlaceStatusType] || AssetPlaceStatusType.inside;
 		this.enter = DATE(enter);
 		this.latest = DATE(latest);
 		
@@ -45,7 +45,7 @@ export class AssetPlaceStatus
 
 	toJSON() {
 		return {
-			"kind": this.kind,
+			"kind": AssetPlaceStatusType[this.kind] || AssetPlaceStatusType.inside,
 			"enter": JSON_DATE(this.enter),
 			"latest": JSON_DATE(this.latest),
 		};

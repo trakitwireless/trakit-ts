@@ -51,14 +51,14 @@ export class ProviderScriptParameter
 	advanced: boolean = false;
 
 	constructor(
-		kind: ProviderScriptParameterType,
-		value: string,
-		notes: string,
-		context: string,
-		order: uint,
-		advanced: boolean
+		kind?: ProviderScriptParameterType,
+		value?: string,
+		notes?: string,
+		context?: string,
+		order?: uint,
+		advanced?: boolean
 	) {
-		this.kind = ProviderScriptParameterType[kind] || ProviderScriptParameterType.text;
+		this.kind = ProviderScriptParameterType[kind as ProviderScriptParameterType] || ProviderScriptParameterType.text;
 		this.value = value || "";
 		this.notes = notes || "";
 		this.context = context || "";

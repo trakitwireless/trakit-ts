@@ -34,8 +34,8 @@ export class ReportNotifications
 	assets: expression = "";
 	
 	constructor(
-		users: email[],
-		assets: expression
+		users?: email[],
+		assets?: expression
 	) {
 		this.users = [...(users || [])];
 		this.assets = assets || "";

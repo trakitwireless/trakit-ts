@@ -1,4 +1,4 @@
-﻿import { ID } from "../../API/Functions";
+﻿import { ID, JSON_NUMBER } from "../../API/Functions";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
@@ -38,20 +38,20 @@ export class BillingReportBreakdown
 	licenses: BillingReportLicenseBreakdown[] = [];
 
 	constructor(
-		target: ulong,
-		services: BillingReportServiceBreakdown[],
-		licenses: BillingReportLicenseBreakdown[]
+		target?: ulong,
+		services?: BillingReportServiceBreakdown[],
+		licenses?: BillingReportLicenseBreakdown[]
 	) {
 		this.targetId = ID(target);
-		this.services = [...services || []];
-		this.licenses = [...licenses || []];
+		this.services = [...(services || [])];
+		this.licenses = [...(licenses || [])];
 	}
 
 	toJSON() {
 		return {
-			"target": this.targetId,
-			"services": [...this.services || []],
-			"licenses": [...this.licenses || []],
+			"target": JSON_NUMBER(this.targetId),
+			"services": [...(this.services || [])],
+			"licenses": [...(this.licenses || [])],
 		};
 	}
 }

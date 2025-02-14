@@ -1,5 +1,5 @@
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT_VALUE_JSON } from "../../API/Functions";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { int, ulong } from "../../API/Types";
@@ -58,14 +58,10 @@ export class ProviderConfigurationType
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"providerType": ProviderType[this.providerType] || ProviderType.unknown,
-			"maxGeofenceCount": IS_AN(this.maxGeofenceCount)
-				? this.maxGeofenceCount
-				: null,
-			"minGeofenceCount": IS_AN(this.minGeofenceCount)
-				? this.minGeofenceCount
-				: null,
+			"maxGeofenceCount": JSON_NUMBER(this.maxGeofenceCount),
+			"minGeofenceCount": JSON_NUMBER(this.minGeofenceCount),
 			"scriptOptions": MAP_TO_OBJECT_VALUE_JSON(this.scriptOptions),
-			"geofenceTypes": this.geofenceTypes?.map(g => PlaceType[g] || null)
+			"geofenceTypes": this.geofenceTypes?.map(g => PlaceType[g] || null) ?? [],
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {

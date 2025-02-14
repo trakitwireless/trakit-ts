@@ -1,4 +1,4 @@
-﻿import { ID, IS_AN, MAP_TO_OBJECT } from "../../API/Functions";
+﻿import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { byte, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
@@ -32,16 +32,16 @@ export class FormFieldChoice
 	maximum: byte;
 	
 	constructor(
-		id: ulong,
-		name: string,
-		kind: FormFieldType,
-		choices: Map<string, string>,
-		minimum: byte,
-		maximum: byte,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		kind?: FormFieldType,
+		choices?: Map<string, string>,
+		minimum?: byte,
+		maximum?: byte,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,
@@ -59,8 +59,8 @@ export class FormFieldChoice
 	override toJSON(): any {
 		return MERGE(super.toJSON(), {
 			"choices": MAP_TO_OBJECT(this.choices),
-			"minimum": IS_AN(this.minimum) ? this.minimum : null,
-			"maximum": IS_AN(this.maximum) ? this.maximum : null,
+			"minimum": JSON_NUMBER(this.minimum),
+			"maximum": JSON_NUMBER(this.maximum),
 		});
 	}
 	override isValid(value: string): boolean {

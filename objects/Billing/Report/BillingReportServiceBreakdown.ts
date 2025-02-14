@@ -1,6 +1,6 @@
 import { CODIFY } from "../../API/Codifier";
 import { FLOAT } from "../../API/Constants";
-import { DATE, JSON_DATE, ID, IS_AN, PHONE_PARSE } from "../../API/Functions";
+import { DATE, JSON_DATE, ID, IS_AN, PHONE_PARSE, JSON_NUMBER } from "../../API/Functions";
 import { IBelongAsset } from "../../API/Interfaces/IBelongAsset";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
@@ -141,27 +141,27 @@ export class BillingReportServiceBreakdown
 	total: double = NaN;
 
 	constructor(
-		asset: ulong,
-		kind: AssetType,
-		name: string,
-		notes: string,
-		created: Date | string | number,
-		deleted: Date | string | number,
-		suspended: Date | string | number,
-		restored: Date | string | number,
-		revived: Date | string | number,
-		labels: codified[],
-		providers: string[],
-		phoneNumbers: phone[],
-		updatedDts: Date | string | number,
-		billableDays: double,
-		cost: double,
-		suspendedDays: double,
-		suspendedCost: double,
-		total: double,
+		asset?: ulong,
+		kind?: AssetType,
+		name?: string,
+		notes?: string,
+		created?: Date | string | number,
+		deleted?: Date | string | number,
+		suspended?: Date | string | number,
+		restored?: Date | string | number,
+		revived?: Date | string | number,
+		labels?: codified[],
+		providers?: string[],
+		phoneNumbers?: phone[],
+		updatedDts?: Date | string | number,
+		billableDays?: double,
+		cost?: double,
+		suspendedDays?: double,
+		suspendedCost?: double,
+		total?: double,
 	) {
 		this.assetId = ID(asset);
-		this.kind = AssetType[kind] || AssetType.asset;
+		this.kind = AssetType[kind as AssetType] || AssetType.asset;
 		this.name = name || "";
 		this.notes = notes || "";
 		this.created = DATE(created);
@@ -182,7 +182,7 @@ export class BillingReportServiceBreakdown
 	
 	toJSON() {
 		return {
-			"asset": IS_AN(this.assetId) ? this.assetId : null,
+			"asset": JSON_NUMBER(this.assetId),
 			"kind": AssetType[this.kind] || null,
 			"name": this.name || "",
 			"notes": this.notes || "",

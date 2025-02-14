@@ -54,11 +54,11 @@ export class MaintenanceInterval
 	get lastJob(): MaintenanceJob { return MAINTENANCE_JOBS.get(this.lastJobId) as MaintenanceJob; }
 
 	constructor(
-		asset: ulong,
-		date: Date | number | string,
-		odometer: double,
-		engineHours: double,
-		lastJob: ulong
+		asset?: ulong,
+		date?: Date | number | string,
+		odometer?: double,
+		engineHours?: double,
+		lastJob?: ulong
 	) {
 		this.assetId = ID(asset);
 		this.date = DATE(date);

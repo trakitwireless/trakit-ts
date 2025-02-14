@@ -44,9 +44,9 @@ export class ReportScorecard
 	rulePoints: Map<string, double>;
 
 	constructor(
-		asset: ulong,
-		score: double,
-		rulePoints: Map<string, double>,
+		asset?: ulong,
+		score?: double,
+		rulePoints?: Map<string, double>,
 	) {
 		this.assetId = ID(asset);
 		this.score = FLOAT(score as any);

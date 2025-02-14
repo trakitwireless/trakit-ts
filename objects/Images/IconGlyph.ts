@@ -57,19 +57,19 @@ export class IconGlyph
 	rotates: boolean = false;
 
 	constructor(
-		tags: string[],
-		src: string,
-		size: Size | ISize,
-		anchor: Point | IPoint,
-		layer: IconLayer,
-		zIndex: ushort,
-		rotates: boolean
+		tags?: codified[],
+		src?: string,
+		size?: Size | ISize,
+		anchor?: Point | IPoint,
+		layer?: IconLayer,
+		zIndex?: ushort,
+		rotates?: boolean
 	) {
 		this.tags = [...(tags || [])];
 		this.src = src || "";
 		this.size = Size.fromJSON(size);
 		this.anchor = Point.fromJSON(anchor);
-		this.layer = IconLayer[layer] || IconLayer.markers;
+		this.layer = IconLayer[layer as IconLayer] || IconLayer.markers;
 		this.zIndex = ID(zIndex) || 0;
 		this.rotates = !!rotates;
 	}

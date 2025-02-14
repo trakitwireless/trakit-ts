@@ -1,4 +1,4 @@
-﻿import { ID, IS_AN } from "../../API/Functions";
+﻿import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { uint } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
@@ -21,15 +21,15 @@ export class ProviderGeofencePolygon
 	maxVertices: uint = NaN;
 
 	constructor(
-		maxGeofenceCount: uint,
-		maxVertices: uint
+		maxGeofenceCount?: uint,
+		maxVertices?: uint
 	) {
 		super(maxGeofenceCount);
 		this.maxVertices = ID(maxVertices);
 	}
 	override toJSON() {
 		return MERGE(super.toJSON(), {
-			"maxVertices": IS_AN(this.maxVertices) ? this.maxVertices : null,
+			"maxVertices": JSON_NUMBER(this.maxVertices),
 		});
 	}
 }

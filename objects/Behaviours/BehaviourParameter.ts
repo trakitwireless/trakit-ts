@@ -38,12 +38,12 @@ export class BehaviourParameter
 	context: string;
 
 	constructor(
-		kind: BehaviourParameterType,
-		value: string,
-		notes: string,
-		context: string
+		kind?: BehaviourParameterType,
+		value?: string,
+		notes?: string,
+		context?: string
 	) {
-		this.kind = BehaviourParameterType[kind] || BehaviourParameterType.text;
+		this.kind = BehaviourParameterType[kind as BehaviourParameterType] || BehaviourParameterType.text;
 		this.value = value || "";
 		this.notes = notes || "";
 		this.context = context || "";

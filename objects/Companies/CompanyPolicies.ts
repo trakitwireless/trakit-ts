@@ -1,5 +1,5 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
@@ -40,7 +40,7 @@ export class CompanyPolicies
 
 	toJSON() {
 		return {
-			"id": IS_AN(this.id) ? this.id : null,
+			"id": JSON_NUMBER(this.id),
 			"v": this.v,
 			"parent": this.parentId,
 			"sessionPolicy": this.sessionPolicy?.toJSON() ?? null,

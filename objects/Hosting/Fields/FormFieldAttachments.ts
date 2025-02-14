@@ -1,7 +1,7 @@
 ﻿import { byte, ulong } from '../../API/Types';
 import { FormFieldBase } from './FormFieldBase';
 import { FormFieldType } from '../FormFieldType';
-import { ID, IS_AN } from '../../API/Functions';
+import { ID, IS_AN, JSON_NUMBER } from '../../API/Functions';
 import { MERGE } from '../../API/Objects';
 
 /**
@@ -28,15 +28,15 @@ export class FormFieldAttachments
 	maximum: byte;
 	
 	constructor(
-		id: ulong,
-		name: string,
-		kind: FormFieldType,
-		minimum: byte,
-		maximum: byte,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		kind?: FormFieldType,
+		minimum?: byte,
+		maximum?: byte,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,
@@ -52,8 +52,8 @@ export class FormFieldAttachments
 	}
 	override toJSON(): any {
 		return MERGE(super.toJSON(), {
-			"minimum": IS_AN(this.minimum) ? this.minimum : null,
-			"maximum": IS_AN(this.maximum) ? this.maximum : null,
+			"minimum": JSON_NUMBER(this.minimum),
+			"maximum": JSON_NUMBER(this.maximum),
 		});
 	}
 	override isValid(value: string): boolean {

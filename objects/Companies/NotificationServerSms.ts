@@ -1,4 +1,4 @@
-﻿import { ID, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+﻿import { ID, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { ulong, ushort } from "../API/Types";
 
@@ -28,8 +28,8 @@ export class NotificationServerSms
 	phoneNumbers: Map<string, ulong[]> = new Map;
 
 	constructor(
-		notifyLimit: ushort,
-		phoneNumbers: Map<string, ulong[]>
+		notifyLimit?: ushort,
+		phoneNumbers?: Map<string, ulong[]>
 	) {
 		this.notifyLimit = ID(notifyLimit);
 		this.phoneNumbers = phoneNumbers ?? new Map;
@@ -37,7 +37,7 @@ export class NotificationServerSms
 	
 	toJSON() {
 		return {
-			"notifyLimit": this.notifyLimit || null,
+			"notifyLimit": JSON_NUMBER(this.notifyLimit),
 			"phoneNumbers": MAP_TO_OBJECT(this.phoneNumbers),
 		};
 	}

@@ -50,12 +50,12 @@ export class SessionPolicy
 	maxSessions: byte;
 	
 	constructor(
-		applications: string[],
-		ipv4Ranges: ipv4[],
-		multiUser: SessionMultiUser,
-		idleAllowed: boolean,
-		expireTimeout: ushort,
-		maxSessions: byte
+		applications?: string[],
+		ipv4Ranges?: ipv4[],
+		multiUser?: SessionMultiUser,
+		idleAllowed?: boolean,
+		expireTimeout?: ushort,
+		maxSessions?: byte
 	) {
 		this.applications = [...(applications || [])];
 		this.ipv4Ranges = [...(ipv4Ranges || [])];

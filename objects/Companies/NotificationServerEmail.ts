@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { uint, ushort } from "../API/Types";
+import { email, uint, ushort } from "../API/Types";
 
 /**
  * The types of email protocols supported for incoming mail servers.
@@ -101,21 +101,21 @@ export class NotificationServerEmail
 	 * An optional field which can be set as the "sent from" and/or "reply-to" address.
 	 *  <override format="email" />
 	 */
-	outgoingReplyTo: string = "";
+	outgoingReplyTo: email = "";
 
 	constructor(
-		incomingType: IncomingEmailServerType,
-		incomingAddress: string,
-		incomingPort: ushort,
-		incomingLogin: string,
-		incomingSecure: boolean,
-		incomingMessageNumber: uint,
-		outgoingType: OutgoingEmailServerType,
-		outgoingAddress: string,
-		outgoingPort: ushort,
-		outgoingLogin: string,
-		outgoingSecure: boolean,
-		outgoingReplyTo: string
+		incomingType?: IncomingEmailServerType,
+		incomingAddress?: string,
+		incomingPort?: ushort,
+		incomingLogin?: string,
+		incomingSecure?: boolean,
+		incomingMessageNumber?: uint,
+		outgoingType?: OutgoingEmailServerType,
+		outgoingAddress?: string,
+		outgoingPort?: ushort,
+		outgoingLogin?: string,
+		outgoingSecure?: boolean,
+		outgoingReplyTo?: string
 	) {
 		this.incomingType = IncomingEmailServerType[incomingType as IncomingEmailServerType] || IncomingEmailServerType.IMAP;
 		this.incomingAddress = incomingAddress || "";

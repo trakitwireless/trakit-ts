@@ -55,7 +55,7 @@ export abstract class ProviderGeofenceBase
 	maxGeofenceCount: uint;
 	
 	constructor(
-		maxGeofenceCount: uint
+		maxGeofenceCount?: uint
 	) {
 		this.maxGeofenceCount = ID(maxGeofenceCount) || 0;
 	}

@@ -74,15 +74,15 @@ export class ProviderConfigurationNode
 	nodes: Map<string, ProviderConfigurationNode> = new Map;
 
 	constructor(
-		id: string,
-		notes: string,
-		isAdvanced: boolean,
-		type: string,
-		min: any,
-		max: any,
-		value: any,
-		unit: string,
-		nodes: Map<string, ProviderConfigurationNode>
+		id?: string,
+		notes?: string,
+		isAdvanced?: boolean,
+		type?: string,
+		min?: any,
+		max?: any,
+		value?: any,
+		unit?: string,
+		nodes?: Map<string, ProviderConfigurationNode>
 	) {
 		this.id = id || "";
 		this.notes = notes || "";

@@ -90,28 +90,28 @@ export class Session
 	get active(): boolean { return this.sockets > 0; }
 
 	constructor(
-		handle: string,
-		company: ulong,
-		ipAddress: string,
-		userAgent: string,
-		sockets: int,
-		login: string,
-		status: SessionStatus,
-		created: Date | number | string,
-		expiry: Date | number | string,
-		lastCommand: string,
-		lastActivity: Date | number | string
+		handle?: string,
+		company?: ulong,
+		ipAddress?: string,
+		userAgent?: string,
+		sockets?: int,
+		login?: string,
+		status?: SessionStatus,
+		created?: Date | number | string,
+		expiry?: Date | number | string,
+		lastCommand?: string,
+		lastActivity?: Date | number | string
 	) {
 		this.handle = handle || "";
 		this.companyId = ID(company);
-		this.login = login;
-		this.status = SessionStatus[status] || SessionStatus.notFound;
+		this.login = login || "";
+		this.status = SessionStatus[status as SessionStatus] || SessionStatus.notFound;
 		this.userAgent = userAgent || "";
 		this.ipAddress = ipAddress || "";
 		this.created = DATE(created);
 		this.expiry = DATE(expiry);
 		this.lastActivity = DATE(lastActivity);
-		this.lastCommand = lastCommand;
+		this.lastCommand = lastCommand|| "";
 		this.sockets = ID(sockets) || 0;
 	}
 	/**

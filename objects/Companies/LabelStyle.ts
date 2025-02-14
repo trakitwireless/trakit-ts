@@ -49,13 +49,13 @@ export class LabelStyle
 	get code(): codified { return CODIFY(this.name); }
 
 	constructor(
-		name: string,
-		fill: colour,
-		stroke: colour,
-		graphic: codified,
-		notes: string
+		name?: string,
+		fill?: colour,
+		stroke?: colour,
+		graphic?: codified,
+		notes?: string
 	) {
-		this.name = name;
+		this.name = name || "";
 		this.fill = fill || "";
 		this.stroke = stroke || "";
 		this.graphic = graphic || "";

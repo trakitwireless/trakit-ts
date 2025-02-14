@@ -44,10 +44,10 @@ export class ProviderScriptBlock
 	validate: string = "";
 
 	constructor(
-		content: string,
-		replace: string,
-		condition: string,
-		validate: string
+		content?: string,
+		replace?: string,
+		condition?: string,
+		validate?: string
 	) {
 		this.content = content || "";
 		this.replace = replace || "";

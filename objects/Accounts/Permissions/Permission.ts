@@ -6,7 +6,7 @@ import { ISerializable } from '../../API/Interfaces/ISerializable';
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { Company } from '../../Companies/Company';
 import { COMPANIES } from '../../Storage';
-import { ID, IS_NUMBER } from '../../API/Functions';
+import { ID, IS_NUMBER, JSON_NUMBER } from '../../API/Functions';
 
 /**
  * A defined permission for {@link User}s, {@link UserGroup}s, and {@link Machine}s.
@@ -65,13 +65,13 @@ export class Permission
 	labels: codified[] = [];
 
 	constructor(
-		company: ulong,
-		kind: PermissionType,
+		company?: ulong,
+		kind?: PermissionType,
 		level: PermissionLevel = PermissionLevel.read,
 		method: PermissionMethod = PermissionMethod.grant,
-		labels?: codified[]
+		labels?: codified[] | null
 	) {
-		this.companyId = company;
+		this.companyId = ID(company);
 		this.kind = PermissionType[kind as PermissionType] || PermissionType.companyGeneral;
 		this.level = PermissionLevel[level];
 		this.method = PermissionMethod[method];
@@ -80,10 +80,10 @@ export class Permission
 
 	toJSON() {
 		return {
-			"company": this.companyId,
-			"kind": this.kind,
-			"level": this.level,
-			"method": this.method,
+			"company": JSON_NUMBER(this.companyId),
+			"kind": PermissionType[this.kind] || null,
+			"level": PermissionLevel[this.level] || null,
+			"method": PermissionMethod[this.method] || null,
 			"labels": [...this.labels],
 		};
 	}

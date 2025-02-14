@@ -1,5 +1,5 @@
 ﻿import { FLOAT } from "../API/Constants";
-import { ID, IS_AN } from "../API/Functions";
+import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { double, uint } from "../API/Types";
 
@@ -25,8 +25,8 @@ export class BillableSmsProfile
 	amount: double = NaN;
 
 	constructor(
-		limit: uint,
-		amount: double
+		limit?: uint,
+		amount?: double
 	) {
 		this.limit = ID(limit);
 		this.amount = FLOAT(amount as any);
@@ -34,8 +34,8 @@ export class BillableSmsProfile
 
 	toJSON(): any {
 		return {
-			"limit": IS_AN(this.limit) ? this.limit : null,
-			"amount": IS_AN(this.amount) ? this.amount : null,
+			"limit": JSON_NUMBER(this.limit),
+			"amount": JSON_NUMBER(this.amount),
 		}
 	}
 }

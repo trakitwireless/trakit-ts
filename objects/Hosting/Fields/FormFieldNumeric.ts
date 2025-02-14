@@ -1,5 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
-import { ID, IS_AN, ROUND_TO } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, ROUND_TO } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { byte, double, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
@@ -63,19 +63,19 @@ export class FormFieldNumeric
 	maximum: double;
 
 	constructor(
-		id: ulong,
-		name: string,
-		kind: FormFieldType,
-		size: FormFieldNumericSize,
-		precision: byte,
-		step: double,
-		units: string,
-		minimum: double,
-		maximum: double,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		kind?: FormFieldType,
+		size?: FormFieldNumericSize,
+		precision?: byte,
+		step?: double,
+		units?: string,
+		minimum?: double,
+		maximum?: double,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,
@@ -86,7 +86,7 @@ export class FormFieldNumeric
 			value,
 			editable
 		);
-		this.size = FormFieldNumericSize[size] ?? FormFieldNumericSize.medium;
+		this.size = FormFieldNumericSize[size as FormFieldNumericSize] ?? FormFieldNumericSize.medium;
 		this.precision = ID(precision);
 		this.step = FLOAT(step as any);
 		this.units = units || "";
@@ -96,11 +96,11 @@ export class FormFieldNumeric
 	override toJSON(): any {
 		return MERGE(super.toJSON(), {
 			"size": FormFieldNumericSize[this.size] ?? FormFieldNumericSize.medium,
-			"precision": IS_AN(this.precision) ? this.precision : null,
-			"step": IS_AN(this.step) ? this.step : null,
+			"precision": JSON_NUMBER(this.precision),
+			"step": JSON_NUMBER(this.step),
 			"units": this.units || "",
-			"minimum": IS_AN(this.minimum) ? this.minimum : null,
-			"maximum": IS_AN(this.maximum) ? this.maximum : null,
+			"minimum": JSON_NUMBER(this.minimum),
+			"maximum": JSON_NUMBER(this.maximum),
 		});
 	}
 	override isValid(value: string): boolean {

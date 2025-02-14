@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
@@ -154,7 +154,7 @@ export class CompanyReseller
 
 	override toJSON() {
 		return {
-			"id": IS_AN(this.id) ? this.id : null,
+			"id": JSON_NUMBER(this.id),
 			"v": this.v,
 			"parent": this.parentId,
 			"contactInfo": MAP_TO_OBJECT(this.contactInfo),

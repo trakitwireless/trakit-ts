@@ -1,5 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
-import { ID, IS_AN, IS_NOTHING } from "../../API/Functions";
+import { ID, IS_AN, IS_NOTHING, JSON_NUMBER } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { byte, ulong, ushort } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
@@ -35,15 +35,15 @@ export class FormFieldText
 	maximum: ushort;
 	
 	constructor(
-		id: ulong,
-		name: string,
-		rows: byte,
-		minimum: ushort,
-		maximum: ushort,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		rows?: byte,
+		minimum?: ushort,
+		maximum?: ushort,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,
@@ -60,9 +60,9 @@ export class FormFieldText
 	}
 	override toJSON(): any {
 		return MERGE(super.toJSON(), {
-			"rows": IS_AN(this.rows) ? this.rows : null,
-			"minimum": IS_AN(this.minimum) ? this.minimum : null,
-			"maximum": IS_AN(this.maximum) ? this.maximum : null,
+			"rows": JSON_NUMBER(this.rows),
+			"minimum": JSON_NUMBER(this.minimum),
+			"maximum": JSON_NUMBER(this.maximum),
 		});
 	}
 	override isValid(value: string): boolean {

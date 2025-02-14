@@ -127,17 +127,17 @@ export class DispatchStep
 	signatory: string = "";
 	
 	constructor(
-		id: ulong,
-		name: string,
-		states: Map<DispatchStepStatus, DispatchStepState>,
-		eta: Date,
-		duration: TimeSpan | timespan | number,
-		place: ulong,
-		address: string,
-		latlng: LatLng | ILatLng | null,
-		notes: string,
-		signature: boolean,
-		signatory: string
+		id?: ulong,
+		name?: string,
+		states?: Map<DispatchStepStatus, DispatchStepState>,
+		eta?: Date,
+		duration?: TimeSpan | timespan | number,
+		place?: ulong,
+		address?: string,
+		latlng?: LatLng | ILatLng | null,
+		notes?: string,
+		signature?: boolean,
+		signatory?: string
 	) {
 		this.id = ID(id);
 		this.address = address || "";

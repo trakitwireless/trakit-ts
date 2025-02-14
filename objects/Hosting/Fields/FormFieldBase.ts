@@ -187,22 +187,24 @@ export abstract class FormFieldBase
 	editable: boolean;
 
 	constructor(
-		id: ulong,
-		name: string,
-		kind: FormFieldType,
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		kind?: FormFieldType,
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		this.id = ID(id);
-		this.kind = FormFieldType[kind];
+		this.kind = FormFieldType[kind as FormFieldType];
 		this.name = name || "";
 		this.notes = notes || "";
 		this.required = !!required;
 		this.value = value ?? null;
 		this.editable = !!editable;
-		if (!this.supported.includes(this.kind)) throw new Error("kind is not supported by this field type.");
+		if (!this.supported.includes(this.kind)) {
+			throw new Error(`kind "${(this.kind || "")}" is not supported by this field type.`);
+		}
 	}
 	
 	toJSON(): any {

@@ -80,15 +80,15 @@ export class UserNotifications
 	offline: NotificationMethod[] = [];
 
 	constructor(
-		name: string,
-		enabled: boolean,
-		weekdays: string | boolean[],
-		start: TimeSpan | timespan | number,
-		end: TimeSpan | timespan | number,
-		email: email,
-		sms: ulong,
-		online: NotificationMethod[],
-		offline: NotificationMethod[]
+		name?: string,
+		enabled?: boolean,
+		weekdays?: string | boolean[],
+		start?: TimeSpan | timespan | number,
+		end?: TimeSpan | timespan | number,
+		email?: email,
+		sms?: ulong,
+		online?: NotificationMethod[],
+		offline?: NotificationMethod[]
 	) {
 		this.name = name || "";
 		this.enabled = !!enabled;

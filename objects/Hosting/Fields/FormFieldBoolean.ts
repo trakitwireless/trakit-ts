@@ -51,14 +51,14 @@ export class FormFieldBoolean
 	choices: string[] = [];
 
 	constructor(
-		id: ulong,
-		name: string,
-		kind: FormFieldType,
-		choices: string[],
-		notes: string,
-		required: boolean,
-		value: string | null,
-		editable: boolean
+		id?: ulong,
+		name?: string,
+		kind?: FormFieldType,
+		choices?: string[],
+		notes?: string,
+		required?: boolean,
+		value?: string | null,
+		editable?: boolean
 	) {
 		super(
 			id,

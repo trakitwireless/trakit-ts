@@ -1,5 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
-import { ID, IS_AN } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { double } from "../../API/Types";
 
@@ -16,9 +16,9 @@ export class BillingReportHostingSummary
 	static fromJSON(json: any) {
 		return new BillingReportHostingSummary(
 			json["sku"],
-			json["cost"],
-			json["count"],
-			json["total"]
+			FLOAT(json["cost"]),
+			ID(json["count"]),
+			FLOAT(json["total"])
 		);
 	}
 	/**
@@ -39,10 +39,10 @@ export class BillingReportHostingSummary
 	total: double = NaN;
 	
 	constructor(
-		sku: string,
-		cost: double,
-		count: double,
-		total: double
+		sku?: string,
+		cost?: double,
+		count?: double,
+		total?: double
 	) {
 		this.sku = sku || "";
 		this.cost = FLOAT(cost as any);
@@ -53,9 +53,9 @@ export class BillingReportHostingSummary
 	toJSON() {
 		return {
 			"sku": this.sku || "",
-			"cost": IS_AN(this.cost) ? this.cost : null,
-			"count": IS_AN(this.count) ? this.count : null,
-			"total": IS_AN(this.total) ? this.total : null,
+			"cost": JSON_NUMBER(this.cost),
+			"count": JSON_NUMBER(this.count),
+			"total": JSON_NUMBER(this.total),
 		};
 	}
 }

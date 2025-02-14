@@ -59,13 +59,13 @@ export class StreetAddress
 	isToll: boolean;
 
 	constructor(
-		number: string | null,
-		street: string | null,
-		city: string | null,
-		region: string | null,
-		province: string,
-		country: string,
-		postal: string | null,
+		number?: string | null,
+		street?: string | null,
+		city?: string | null,
+		region?: string | null,
+		province?: string,
+		country?: string,
+		postal?: string | null,
 		isToll: boolean = false
 	) {
 		this.number = number?.trim() ?? "";
