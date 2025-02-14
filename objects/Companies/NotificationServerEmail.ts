@@ -1,4 +1,4 @@
-﻿import { ID } from "../API/Functions";
+﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { uint, ushort } from "../API/Types";
 
@@ -30,6 +30,27 @@ export enum OutgoingEmailServerType {
  */
 export class NotificationServerEmail
 	implements ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new NotificationServerEmail(
+			IncomingEmailServerType[json["incomingType"] as IncomingEmailServerType] || IncomingEmailServerType.IMAP,
+			json["incomingAddress"] || "",
+			ID(json["incomingPort"]),
+			json["incomingLogin"] || "",
+			!!json["incomingSecure"],
+			ID(json["incomingMessageNumber"]),
+			OutgoingEmailServerType[json["outgoingType"] as OutgoingEmailServerType] || OutgoingEmailServerType.SMTP,
+			json["outgoingAddress"] || "",
+			ID(json["outgoingPort"]),
+			json["outgoingLogin"] || "",
+			!!json["outgoingSecure"],
+			json["outgoingReplyTo"] || ""
+		);
+	}
+	
 	/**
 	 * The type of incoming protocol to use (IMAP or POP3).
 	 */
@@ -82,34 +103,45 @@ export class NotificationServerEmail
 	 */
 	outgoingReplyTo: string = "";
 
-	constructor(json?: any) {
-		if (json) {
-			this.incomingType = IncomingEmailServerType[json["incomingType"] as IncomingEmailServerType] || IncomingEmailServerType.IMAP;
-			this.incomingAddress = json["incomingAddress"] || "";
-			this.incomingPort = ID(json["incomingPort"]) || NaN;
-			this.incomingLogin = json["incomingLogin"] || "";
-			this.incomingSecure = !!json["incomingSecure"];
-			this.incomingMessageNumber = ID(json["incomingMessageNumber"]) || NaN;
-			this.outgoingType = OutgoingEmailServerType[json["outgoingType"] as OutgoingEmailServerType] || OutgoingEmailServerType.SMTP;
-			this.outgoingAddress = json["outgoingAddress"] || "";
-			this.outgoingPort = ID(json["outgoingPort"]) || NaN;
-			this.outgoingLogin = json["outgoingLogin"] || "";
-			this.outgoingSecure = !!json["outgoingSecure"];
-			this.outgoingReplyTo = json["outgoingReplyTo"] || "";
-		}
+	constructor(
+		incomingType: IncomingEmailServerType,
+		incomingAddress: string,
+		incomingPort: ushort,
+		incomingLogin: string,
+		incomingSecure: boolean,
+		incomingMessageNumber: uint,
+		outgoingType: OutgoingEmailServerType,
+		outgoingAddress: string,
+		outgoingPort: ushort,
+		outgoingLogin: string,
+		outgoingSecure: boolean,
+		outgoingReplyTo: string
+	) {
+		this.incomingType = IncomingEmailServerType[incomingType as IncomingEmailServerType] || IncomingEmailServerType.IMAP;
+		this.incomingAddress = incomingAddress || "";
+		this.incomingPort = ID(incomingPort);
+		this.incomingLogin = incomingLogin || "";
+		this.incomingSecure = !!incomingSecure;
+		this.incomingMessageNumber = ID(incomingMessageNumber);
+		this.outgoingType = OutgoingEmailServerType[outgoingType as OutgoingEmailServerType] || OutgoingEmailServerType.SMTP;
+		this.outgoingAddress = outgoingAddress || "";
+		this.outgoingPort = ID(outgoingPort);
+		this.outgoingLogin = outgoingLogin || "";
+		this.outgoingSecure = !!outgoingSecure;
+		this.outgoingReplyTo = outgoingReplyTo || "";
 	}
 
 	toJSON() {
 		return {
 			"incomingType": IncomingEmailServerType[this.incomingType] || IncomingEmailServerType.IMAP,
 			"incomingAddress": this.incomingAddress || "",
-			"incomingPort": this.incomingPort || null,
+			"incomingPort": JSON_NUMBER(this.incomingPort),
 			"incomingLogin": this.incomingLogin || "",
 			"incomingSecure": !!this.incomingSecure,
-			"incomingMessageNumber": this.incomingMessageNumber || null,
+			"incomingMessageNumber": JSON_NUMBER(this.incomingMessageNumber),
 			"outgoingType": OutgoingEmailServerType[this.outgoingType] || OutgoingEmailServerType.SMTP,
 			"outgoingAddress": this.outgoingAddress || "",
-			"outgoingPort": this.outgoingPort || null,
+			"outgoingPort": JSON_NUMBER(this.outgoingPort),
 			"outgoingLogin": this.outgoingLogin || "",
 			"outgoingSecure": !!this.outgoingSecure,
 			"outgoingReplyTo": this.outgoingReplyTo || "",

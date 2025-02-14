@@ -3,8 +3,8 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { int, ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
+import { COMPANIES } from "../Storage";
 import { SessionStatus } from "./SessionStatus";
 
 /**
@@ -12,6 +12,26 @@ import { SessionStatus } from "./SessionStatus";
  */
 export class Session
 	implements IBelongCompany, IRequestable, ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new Session(
+			json["handle"] || "",
+			ID(json["company"]),
+			json["ipAddress"] || "",
+			json["userAgent"] || "",
+			ID(json["sockets"]) || 0,
+			json["login"] || "",
+			SessionStatus[json["status"] as SessionStatus],
+			DATE(json["created"]),
+			DATE(json["expires"]),
+			json["lastCommand"],
+			DATE(json["lastActivity"])
+		);
+	}
+
 	/**
 	 * A "handle" identifying a resource.
 	 */
@@ -69,16 +89,30 @@ export class Session
 	 */
 	get active(): boolean { return this.sockets > 0; }
 
-	constructor(json: any = null) {
-		this.handle = json["handle"];
-		this.companyId = ID(json["company"]);
-		this.login = json["login"];
-		this.userAgent = json["userAgent"];
-		this.ipAddress = json["ipAddress"] || "";
-		this.created = DATE(json["created"]);
-		this.lastActivity = DATE(json["lastActivity"]);
-		this.lastCommand = json["lastCommand"];
-		this.sockets = ID(json["sockets"]) || 0;
+	constructor(
+		handle: string,
+		company: ulong,
+		ipAddress: string,
+		userAgent: string,
+		sockets: int,
+		login: string,
+		status: SessionStatus,
+		created: Date | number | string,
+		expiry: Date | number | string,
+		lastCommand: string,
+		lastActivity: Date | number | string
+	) {
+		this.handle = handle || "";
+		this.companyId = ID(company);
+		this.login = login;
+		this.status = SessionStatus[status] || SessionStatus.notFound;
+		this.userAgent = userAgent || "";
+		this.ipAddress = ipAddress || "";
+		this.created = DATE(created);
+		this.expiry = DATE(expiry);
+		this.lastActivity = DATE(lastActivity);
+		this.lastCommand = lastCommand;
+		this.sockets = ID(sockets) || 0;
 	}
 	/**
 	 * 

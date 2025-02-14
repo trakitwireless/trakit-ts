@@ -8,6 +8,18 @@ import { AssetPlaceStatusType } from "./AssetPlaceStatusType";
 export class AssetPlaceStatus
 	implements ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new AssetPlaceStatus(
+			AssetPlaceStatusType[json["kind"] as AssetPlaceStatusType],
+			DATE(json["enter"]),
+			DATE(json["latest"])
+		);
+	}
+	
+	/**
 	 * The kind of interaction.
 	 */
 	kind: AssetPlaceStatusType = AssetPlaceStatusType.inside;
@@ -20,20 +32,15 @@ export class AssetPlaceStatus
 	 */
 	latest: Date = DATE();
 
-	constructor(json: any)
 	constructor(
-		kind?: AssetPlaceStatusType | any,
-		enter?: Date | number | string,
-		latest?: Date | number | string
+		kind: AssetPlaceStatusType,
+		enter: Date | number | string,
+		latest: Date | number | string
 	) {
-		if (this.kind = AssetPlaceStatusType[kind as AssetPlaceStatusType]) {
-			this.enter = DATE(enter);
-			this.latest = DATE(latest);
-		} else if (kind) {
-			this.kind = AssetPlaceStatusType[kind["kind"] as AssetPlaceStatusType];
-			this.enter = DATE(kind["enter"]);
-			this.latest = DATE(kind["latest"]);
-		}
+		this.kind = AssetPlaceStatusType[kind] || AssetPlaceStatusType.inside;
+		this.enter = DATE(enter);
+		this.latest = DATE(latest);
+		
 	}
 
 	toJSON() {

@@ -9,6 +9,22 @@ import { PasswordExpiryMode } from "./PasswordExpiryMode";
 export class PasswordPolicy
 	implements ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new PasswordPolicy(
+			ID(json["minimumLength"]),
+			!!json["includeLetters"],
+			!!json["includeNumbers"],
+			!!json["includeUpperLower"],
+			!!json["includeSpecial"],
+			PasswordExpiryMode[json["expireMode"] as PasswordExpiryMode],
+			ID(json["expireThreshold"])
+		);
+	}
+
+	/**
 	 * The minimum number of characters required.
 	 */
 	minimumLength: byte;
@@ -37,14 +53,22 @@ export class PasswordPolicy
 	 */
 	expireThreshold: byte;  // days
 	
-	constructor(json: any = null) {
-		this.minimumLength = ID(json["minimumLength"]);
-		this.includeLetters = !!json["includeLetters"];
-		this.includeNumbers = !!json["includeNumbers"];
-		this.includeUpperLower = !!json["includeUpperLower"];
-		this.includeSpecial = !!json["includeSpecial"];
-		this.expireMode = PasswordExpiryMode[json["expireMode"] as PasswordExpiryMode] ?? PasswordExpiryMode.never;
-		this.expireThreshold = ID(json["expireThreshold"]);
+	constructor(
+		minimumLength: byte,
+		includeLetters: boolean,
+		includeNumbers: boolean,
+		includeUpperLower: boolean,
+		includeSpecial: boolean,
+		expireMode: PasswordExpiryMode,
+		expireThreshold: byte
+	) {
+		this.minimumLength = ID(minimumLength);
+		this.includeLetters = !!includeLetters;
+		this.includeNumbers = !!includeNumbers;
+		this.includeUpperLower = !!includeUpperLower;
+		this.includeSpecial = !!includeSpecial;
+		this.expireMode = PasswordExpiryMode[expireMode] ?? PasswordExpiryMode.never;
+		this.expireThreshold = ID(expireThreshold);
 	}
 
 	toJSON() {

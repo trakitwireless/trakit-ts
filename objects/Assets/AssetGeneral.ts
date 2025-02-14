@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, DATE_JSON, ID, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, ID, JSON_DATE, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -15,6 +15,9 @@ import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
 import { COMPANIES, ICONS, PICTURES } from "../Storage";
 import { AssetType } from "./AssetType";
+import { PersonGeneral } from "./PersonGeneral";
+import { TrailerGeneral } from "./TrailerGeneral";
+import { VehicleGeneral } from "./VehicleGeneral";
 
 /**
  * Seldom changing details about a thing.
@@ -22,6 +25,18 @@ import { AssetType } from "./AssetType";
 export class AssetGeneral
 	extends BaseComponent
 	implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		switch (json["kind"] as AssetType) {
+			case AssetType.person: return new PersonGeneral(json);
+			case AssetType.vehicle: return new VehicleGeneral(json);
+			case AssetType.trailer: return new TrailerGeneral(json);
+			default: return new AssetGeneral(json);
+		}
+	}
 	
 	/**
 	 * Unique identifier of this asset.
@@ -99,7 +114,7 @@ export class AssetGeneral
 			"company": this.companyId,
 			"kind": this.kind,
 			"suspended": !!this.suspended,
-			"since": this.suspended && DATE_JSON(this.since),
+			"since": this.suspended && JSON_DATE(this.since),
 			"name": this.name,
 			"notes": this.notes,
 			"references": MAP_TO_OBJECT(this.references),

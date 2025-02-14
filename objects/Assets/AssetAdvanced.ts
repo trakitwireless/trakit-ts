@@ -1,7 +1,7 @@
 ﻿import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON, MAP_TO_OBJECT_PREDICATE, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -13,6 +13,8 @@ import { ASSETS, COMPANIES, PROVIDERS } from "../Storage";
 import { Asset } from "./Asset";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";
+import { AssetType } from "./AssetType";
+import { VehicleAdvanced } from "./VehicleAdvanced";
 
 /**
  * Often changing details about a thing.
@@ -20,6 +22,19 @@ import { AssetPlaceStatus } from "./AssetPlaceStatus";
 export class AssetAdvanced
 	extends BaseComponent
 	implements IIdUlong, IBelongCompany {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		switch (json["kind"] as AssetType) {
+			case AssetType.vehicle: return new VehicleAdvanced(json);
+			case AssetType.person:
+			case AssetType.trailer:
+			default: return new AssetAdvanced(json);
+		}
+	}
+	
 	/**
 	 * Unique identifier of this asset.
 	 * {@link Asset.id}

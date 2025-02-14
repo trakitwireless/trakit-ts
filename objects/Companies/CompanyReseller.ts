@@ -189,10 +189,10 @@ export class CompanyReseller
 			this.domain = json["domain"] || json["URN"] || json["urn"] || "";
 			this.website = OBJECT_TO_MAP(json["website"] || {});
 			this.graphics = OBJECT_TO_MAP(json["graphics"] || {});
-			this.gamut = OBJECT_TO_MAP_BY_PREDICATE(json["gamut"] || {}, (k, v) => [k, new ColourStyle(v)]);
+			this.gamut = OBJECT_TO_MAP_BY_PREDICATE(json["gamut"] || {}, (k, v) => [k, ColourStyle.fromJSON(v)]);
 			this.languages = [...(json["languages"] || [])];
-			this.notifyEmail = new NotificationServerEmail(json["notifyEmail"]);
-			this.notifySms = new NotificationServerSms(json["notifySms"]);
+			this.notifyEmail = NotificationServerEmail.fromJSON(json["notifyEmail"]);
+			this.notifySms = NotificationServerSms.fromJSON(json["notifySms"]);
 			this.termsPreamble = json["termsPreamble"] || "";
 			this.termsUpdated = DATE(json["termsUpdated"]);
 			this.recoverSubject = json["recoverSubject"] || "";

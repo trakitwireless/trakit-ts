@@ -139,10 +139,6 @@ export class Company
 	 */
 	reseller: CompanyReseller | null = null;
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	/**
 	 * 
 	 */

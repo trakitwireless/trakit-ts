@@ -1,8 +1,9 @@
-﻿import { ID } from "../API/Functions";
+﻿import { ID, JSON_NUMBER } from "../API/Functions";
+import { IPoint, ISize } from "../API/Geometry/Interfaces";
 import { Point } from "../API/Geometry/Point";
 import { Size } from "../API/Geometry/Size";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { ushort } from "../API/Types";
+import { codified, ushort } from "../API/Types";
 import { IconLayer } from "./IconLayer";
 
 /**
@@ -11,14 +12,25 @@ import { IconLayer } from "./IconLayer";
 export class IconGlyph
 	implements ISerializable {
 	/**
-	 * A list of codified status tag names.  Any of the tags must be applied to the asset for the image to appear.
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
+	 * 
+	 * @param json 
 	 */
-	tags: string[] = [];
+	static fromJSON(json: any) {
+		return new IconGlyph(
+			json["tags"] || [],
+			json["src"] || "",
+			Size.fromJSON(json["size"]),
+			Point.fromJSON(json["anchor"]),
+			IconLayer[json["layer"] as IconLayer],
+			ID(json["zIndex"]) || 0,
+			!!json["rotates"]
+		);
+	}
+	
+	/**
+	 * A list of codified status tag names.  Any of the tags must be applied to the asset for the image to appear.
+	 */
+	tags: codified[] = [];
 	/**
 	 * Path to the image.
 	 */
@@ -44,26 +56,32 @@ export class IconGlyph
 	 */
 	rotates: boolean = false;
 
-	constructor(json?: any) {
-		if (json) {
-			this.tags = [...(json["tags"] || [])];
-			this.src = json["src"] || "";
-			this.size = !json["size"] ? new Size(0, 0) : Size.fromJSON(json["size"]);
-			this.anchor = !json["anchor"] ? new Point(0, 0) : Point.fromJSON(json["anchor"]);
-			this.layer = IconLayer[json["layer"] as IconLayer] || IconLayer.markers;
-			this.zIndex = ID(json["zIndex"]) || 0;
-			this.rotates = !!json["rotates"];
-		}
+	constructor(
+		tags: string[],
+		src: string,
+		size: Size | ISize,
+		anchor: Point | IPoint,
+		layer: IconLayer,
+		zIndex: ushort,
+		rotates: boolean
+	) {
+		this.tags = [...(tags || [])];
+		this.src = src || "";
+		this.size = Size.fromJSON(size);
+		this.anchor = Point.fromJSON(anchor);
+		this.layer = IconLayer[layer] || IconLayer.markers;
+		this.zIndex = ID(zIndex) || 0;
+		this.rotates = !!rotates;
 	}
 
 	toJSON() {
 		return {
 			"tags": [...this.tags],
 			"src": this.src || "",
-			"size": this.size.toJSON(),
-			"anchor": this.anchor.toJSON(),
+			"size": this.size?.toJSON() ?? null,
+			"anchor": this.anchor?.toJSON() ?? null,
 			"layer": IconLayer[this.layer] || IconLayer.markers,
-			"zIndex": this.zIndex || null,
+			"zIndex": JSON_NUMBER(this.zIndex),
 			"rotates": !!this.rotates,
 		};
 	}

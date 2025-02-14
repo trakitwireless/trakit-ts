@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN } from "../API/Functions";
+import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
@@ -16,6 +16,14 @@ import { COMPANIES, DISPATCH_JOBS } from "../Storage";
 export class AssetDispatch
 	extends BaseComponent
 	implements IIdUlong, IBelongCompany {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new AssetDispatch(json);
+	}
+
 	/**
 	 * Unique identifier of this asset.
 	 * {@link Asset.id}
@@ -68,7 +76,7 @@ export class AssetDispatch
 			this.companyId = ID(json["company"]);
 			//if ("tasks" in json) this.tasks = json["tasks"].map();
 			this.jobIds = (json["jobs"] || []).map(ID);
-			this.directions = ((json["directions"] || []) as any[]).map(obj => new DispatchDirection(obj));
+			this.directions = ((json["directions"] || []) as any[]).map(DispatchDirection.fromJSON);
 			this.lastDispatched = DATE(json["lastDispatched"]);
 		}
 		return update;

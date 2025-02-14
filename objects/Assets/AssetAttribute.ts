@@ -1,4 +1,4 @@
-import { DATE, DATE_JSON, ID, IS_AN } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { ulong } from "../API/Types";
@@ -11,6 +11,24 @@ import { Asset } from "./Asset";
  */
 export class AssetAttribute
 	implements ISerializable, IBelongAsset {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new AssetAttribute(
+			json["name"] || "",
+			json["simple"] || "",
+			json["complex"] || "",
+			json["raw"] || null,
+			json["unit"] || "",
+			json["provider"] || "",
+			ID(json["asset"]),
+			DATE(json["dts"]),
+			!!json["global"]
+		);
+	}
+
 	/**
 	 * Display name of the attribute.
 	 *  <override max-length="100" />
@@ -58,39 +76,26 @@ export class AssetAttribute
 	 */
 	global: boolean = false;
 
-	constructor(json: any)
 	constructor(
-		name?: string | any,
-		simple?: string,
-		complex?: string,
-		raw?: any,
-		unit?: string,
-		provider?: string,
-		asset?: ulong,
-		dts?: Date,
-		global?: boolean
+		name: string,
+		simple: string,
+		complex: string,
+		raw: any,
+		unit: string,
+		provider: string,
+		asset: ulong,
+		dts: Date,
+		global: boolean
 	) {
-		if (typeof name === "string") {
-			this.name = name || "";
-			this.simple = simple || "";
-			this.complex = complex || "";
-			this.raw = raw || null;
-			this.unit = unit || "";
-			this.providerId = provider || "";
-			this.assetId = ID(asset);
-			this.dts = DATE(dts);
-			this.global = !!global;
-		} else if (name) {
-			this.name = name["name"] || "";
-			this.simple = name["simple"] || "";
-			this.complex = name["complex"] || "";
-			this.raw = name["raw"] || null;
-			this.unit = name["unit"] || "";
-			this.providerId = name["provider"] || "";
-			this.assetId = ID(name["asset"]);
-			this.dts = DATE(name["dts"]);
-			this.global = !!name["global"];
-		}
+		this.name = name || "";
+		this.simple = simple || "";
+		this.complex = complex || "";
+		this.raw = raw || null;
+		this.unit = unit || "";
+		this.providerId = provider || "";
+		this.assetId = ID(asset);
+		this.dts = DATE(dts);
+		this.global = !!global;
 	}
 
 	toJSON() {
@@ -101,9 +106,9 @@ export class AssetAttribute
 			"raw": this.raw || IS_AN(this.raw) || typeof this.raw === "string"
 				? this.raw
 				: null,
-			"provider": this.providerId,
-			"asset": this.assetId,
-			"dts": DATE_JSON(this.dts),
+			"provider": this.providerId || "",
+			"asset": JSON_NUMBER(this.assetId),
+			"dts": JSON_DATE(this.dts),
 			"global": !!this.global,
 		};
 	}

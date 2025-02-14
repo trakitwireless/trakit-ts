@@ -1,7 +1,7 @@
 import { ARRAY_TO_JSON } from "../../API/Arrays";
 import { BaseComponent } from '../../API/BaseComponent';
 import { FLOAT } from '../../API/Constants';
-import { DATE, DATE_JSON, ID, IS_AN } from '../../API/Functions';
+import { DATE, JSON_DATE, ID, IS_AN } from '../../API/Functions';
 import { IBelongBillingProfile } from '../../API/Interfaces/IBelongBillingProfile';
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
@@ -108,8 +108,8 @@ export class BillingReport
 			"profile": this.profileId,
 			"name": this.name || "",
 			"notes": this.notes || "",
-			"startDate": DATE_JSON(this.startDate),
-			"endDate": DATE_JSON(this.endDate),
+			"startDate": JSON_DATE(this.startDate),
+			"endDate": JSON_DATE(this.endDate),
 			"total": this.total || 0,
 			"currency": BillingCurrency[this.currency] || BillingCurrency.CAD,
 			"status": BillingReportStatus[this.status] || BillingReportStatus.created,

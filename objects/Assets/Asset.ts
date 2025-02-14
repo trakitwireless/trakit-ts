@@ -1,26 +1,28 @@
 import { BaseComponent } from "../API/BaseComponent";
+import { BaseCompound } from "../API/BaseCompound";
+import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
+import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
+import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
-import { IIconic } from "../API/Interfaces/IIconic";
-import { ILabelled } from "../API/Interfaces/ILabelled";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { BaseCompound } from "../API/BaseCompound";
+import { MERGE } from "../API/Objects";
 import { codified, double, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { AssetType } from "./AssetType";
-import { AssetGeneral } from "./AssetGeneral";
-import { AssetAdvanced } from "./AssetAdvanced";
-import { AssetDispatch } from "./AssetDispatch";
-import { AssetAttribute } from "./AssetAttribute";
-import { AssetPlaceStatus } from "./AssetPlaceStatus";
-import { Position } from "../API/Geography/Position";
-import { DATE, IS_AN, MAP_TO_OBJECT, MAP_TO_OBJECT_PREDICATE } from "../API/Functions";
-import { Picture } from "../Images/Picture";
 import { Icon } from "../Images/Icon";
+import { Picture } from "../Images/Picture";
 import { Provider } from "../Providers/Provider";
-import { MERGE } from "../API/Objects";
+import { AssetAdvanced } from "./AssetAdvanced";
+import { AssetAttribute } from "./AssetAttribute";
+import { AssetDispatch } from "./AssetDispatch";
+import { AssetGeneral } from "./AssetGeneral";
+import { AssetPlaceStatus } from "./AssetPlaceStatus";
+import { AssetType } from "./AssetType";
+import { Person } from "./Person";
+import { Trailer } from "./Trailer";
+import { Vehicle } from "./Vehicle";
 
 /**
  * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
@@ -28,6 +30,19 @@ import { MERGE } from "../API/Objects";
 export class Asset
 	extends BaseCompound
 	implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		switch (json["kind"] as AssetType) {
+			case AssetType.person: return new Person(json);
+			case AssetType.vehicle: return new Vehicle(json);
+			case AssetType.trailer: return new Trailer(json);
+			default: return new Asset(json);
+		}
+	}
+	
 	/**
 	 *  
 	 */

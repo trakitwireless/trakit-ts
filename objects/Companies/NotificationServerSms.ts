@@ -8,6 +8,17 @@ import { ulong, ushort } from "../API/Types";
 export class NotificationServerSms
 	implements ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new NotificationServerSms(
+			ID(json["notifyLimit"]),
+			OBJECT_TO_MAP(json["phoneNumbers"] || {})
+		);
+	}
+	
+	/**
 	 * A per-number/per-day limit on the amount of Notifications sent.
 	 */
 	notifyLimit: ushort = NaN;
@@ -16,11 +27,12 @@ export class NotificationServerSms
 	 */
 	phoneNumbers: Map<string, ulong[]> = new Map;
 
-	constructor(json?: any) {
-		if (json) {
-			this.notifyLimit = ID(json["notifyLimit"]);
-			this.phoneNumbers = OBJECT_TO_MAP(json["phoneNumbers"] || {})
-		}
+	constructor(
+		notifyLimit: ushort,
+		phoneNumbers: Map<string, ulong[]>
+	) {
+		this.notifyLimit = ID(notifyLimit);
+		this.phoneNumbers = phoneNumbers ?? new Map;
 	}
 	
 	toJSON() {

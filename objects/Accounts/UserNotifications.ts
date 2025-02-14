@@ -12,6 +12,24 @@ import { NotificationMethod } from "./NotificationMethod";
 export class UserNotifications
 	implements IEnabled, ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new UserNotifications(
+			json["name"] || "",
+			!!json["enabled"],
+			WEEKDAYS_PARSE(json["weekdays"] as string),
+			new TimeSpan(json["start"]),
+			new TimeSpan(json["end"]),
+			json["email"] || "",
+			PHONE_PARSE(json["sms"]),
+			ARRAY_TO_ENUMS(NotificationMethod, json["online"] || []),
+			ARRAY_TO_ENUMS(NotificationMethod, json["offline"] || [])
+		);
+	}
+	
+	/**
 	 * A common name like "Weekdays" or "Off Hours".
 	 *  <override max-length="100" />
 	 */
@@ -62,37 +80,25 @@ export class UserNotifications
 	offline: NotificationMethod[] = [];
 
 	constructor(
-		name?: string ,
-		enabled?: boolean,
-		weekdays?: string | boolean[],
-		start?: TimeSpan | timespan | number,
-		end?: TimeSpan | timespan | number,
-		email?: email,
-		sms?: ulong,
-		online?: NotificationMethod[],
-		offline?: NotificationMethod[]
+		name: string,
+		enabled: boolean,
+		weekdays: string | boolean[],
+		start: TimeSpan | timespan | number,
+		end: TimeSpan | timespan | number,
+		email: email,
+		sms: ulong,
+		online: NotificationMethod[],
+		offline: NotificationMethod[]
 	) {
-		if (typeof name === "string") {
-			this.name = name || "";
-			this.enabled = !!enabled;
-			this.weekdays = WEEKDAYS_PARSE(weekdays || []);
-			this.start = new TimeSpan(start);
-			this.end = new TimeSpan(end);
-			this.email = email || "";
-			this.sms = PHONE_PARSE(sms);
-			this.online = [...(online || [])];
-			this.offline = [...(offline || [])];
-		} else if (name) {
-			this.name = name["name"] || "";
-			this.enabled = !!name["enabled"];
-			this.weekdays = WEEKDAYS_PARSE(name["weekdays"] as string);
-			this.start = new TimeSpan(name["start"]);
-			this.end = new TimeSpan(name["end"]);
-			this.email = name["email"] || "";
-			this.sms = PHONE_PARSE(name["sms"]);
-			this.online = ARRAY_TO_ENUMS(NotificationMethod, name["online"] || []);
-			this.offline = ARRAY_TO_ENUMS(NotificationMethod, name["offline"] || []);
-		}
+		this.name = name || "";
+		this.enabled = !!enabled;
+		this.weekdays = WEEKDAYS_PARSE(weekdays || []);
+		this.start = new TimeSpan(start);
+		this.end = new TimeSpan(end);
+		this.email = email || "";
+		this.sms = PHONE_PARSE(sms);
+		this.online = [...(online || [])];
+		this.offline = [...(offline || [])];
 	}
 
 	/**

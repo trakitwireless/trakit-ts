@@ -1,3 +1,4 @@
+import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -43,12 +44,15 @@ export class UserGroup
 	 */
 	permissions: Permission[] = [];
 
-	constructor(json: any = null) {
-		super();
-		if (json) this.fromJSON(json);
-	}
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"id": this.id,
+			"v": this.v,
+			"company": this.companyId,
+			"name": this.name || "",
+			"notes": this.notes || "",
+			"permissions": this.permissions?.map(ARRAY_TO_JSON) ?? [],
+		}
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);

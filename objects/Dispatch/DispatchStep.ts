@@ -1,10 +1,11 @@
 import { DATE, ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { ulong } from "../API/Types";
+import { timespan, ulong } from "../API/Types";
 import { Place } from "../Places/Place";
 import { PLACES } from "../Storage";
 import { DispatchStepState } from "./DispatchStepState";
@@ -15,6 +16,29 @@ import { DispatchStepStatus } from "./DispatchStepStatus";
  */
 export class DispatchStep
 	implements IIdUlong, INamed, ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new DispatchStep(
+			ID(json["id"]),
+			json["name"] || "",
+			OBJECT_TO_MAP_BY_PREDICATE(
+				json["states"] || {},
+				(k, v) => [k as DispatchStepStatus, DispatchStepState.fromJSON(v)]
+			),
+			DATE(json["eta"]),
+			new TimeSpan(json["duration"]),
+			ID(json["place"]),
+			json["address"] || "",
+			LatLng.fromJSON(json["latlng"]),
+			json["notes"] || "",
+			!!json["signature"],
+			json["signatory"] || "",
+		);
+	}
+
 	/**
 	 * Identifier for this {@link DispatchStep}.
 	 * This value is unique per {@link DispatchJob}, but is not unique system-wide.
@@ -102,18 +126,30 @@ export class DispatchStep
 	 */
 	signatory: string = "";
 	
-	constructor(json: any) {
-		this.id = ID(json["id"]);
-		this.address = json["address"] || "";
-		this.duration = new TimeSpan(json["duration"]);
-		this.eta = DATE(json["eta"]);
-		this.latlng = LatLng.fromJSON(json["latlng"]);
-		this.name = json["name"] || "";
-		this.notes = json["notes"] || "";
-		this.placeId = ID(json["place"]);
-		this.signature = !!json["signature"];
-		this.signatory = json["signatory"] || "";
-		this.states = OBJECT_TO_MAP_BY_PREDICATE(json["states"] || {}, (k, v) => [k as DispatchStepStatus, new DispatchStepState(v)]);
+	constructor(
+		id: ulong,
+		name: string,
+		states: Map<DispatchStepStatus, DispatchStepState>,
+		eta: Date,
+		duration: TimeSpan | timespan | number,
+		place: ulong,
+		address: string,
+		latlng: LatLng | ILatLng | null,
+		notes: string,
+		signature: boolean,
+		signatory: string
+	) {
+		this.id = ID(id);
+		this.address = address || "";
+		this.duration = new TimeSpan(duration);
+		this.eta = DATE(eta);
+		this.latlng = LatLng.fromJSON(latlng);
+		this.name = name || "";
+		this.notes = notes || "";
+		this.placeId = ID(place);
+		this.signature = !!signature;
+		this.signatory = signatory || "";
+		this.states = states ?? new Map;
 	}
 
 	toJSON(): any {

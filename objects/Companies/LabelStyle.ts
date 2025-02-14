@@ -10,6 +10,20 @@ import { codified, colour } from "../API/Types";
 export class LabelStyle
 	implements INamed, IVisual, ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new LabelStyle(
+			json["name"] || "",
+			json["fill"] || "",
+			json["stroke"] || "",
+			json["graphic"] || "",
+			json["notes"] || ""
+		);
+	}
+
+	/**
 	 * The name of this visual style.
 	 */
 	name: string = "";
@@ -34,27 +48,18 @@ export class LabelStyle
 	 */
 	get code(): codified { return CODIFY(this.name); }
 
-	constructor(json: any)
 	constructor(
-		name?: string | any,
-		fill?: colour,
-		stroke?: colour,
-		graphic?: codified,
-		notes?: string
+		name: string,
+		fill: colour,
+		stroke: colour,
+		graphic: codified,
+		notes: string
 	) {
-		if (typeof name === "string") {
-			this.name = name;
-			this.fill = fill || "";
-			this.stroke = stroke || "";
-			this.graphic = graphic || "";
-			this.notes = notes || "";
-		} else if (name) {
-			this.name = name["name"] || "";
-			this.fill = name["fill"] || "";
-			this.stroke = name["stroke"] || "";
-			this.graphic = name["graphic"] || "";
-			this.notes = name["notes"] || "";
-		}
+		this.name = name;
+		this.fill = fill || "";
+		this.stroke = stroke || "";
+		this.graphic = graphic || "";
+		this.notes = notes || "";
 	}
 
 	toJSON() {
