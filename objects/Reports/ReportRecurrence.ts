@@ -1,13 +1,37 @@
-
+import { DATE, ID, JSON_DATE, JSON_NUMBER, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
+import { ISerializable } from "../API/Interfaces/ISerializable";
+import { byte, ulong, ushort } from "../API/Types";
+import { ReportRecurrenceType } from "./ReportRecurrenceType";
 
 /**
  * Determines when and how often a report schedule runs automatically.
  */
-export class ReportRecurrence {
+export class ReportRecurrence
+	implements ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new ReportRecurrence(
+			ReportRecurrenceType[json["kind"] as ReportRecurrenceType],
+			WEEKDAYS_PARSE(json["weekdays"]),
+			ID(json["weekday"]),
+			DATE(json["start"]),
+			DATE(json["end"]),
+			ID(json["iterations"]),
+			ID(json["lastResult"]),
+			DATE(json["nextStartDate"]),
+			DATE(json["nextEndDate"]),
+			DATE(json["lastStartDate"]),
+			DATE(json["lastEndDate"])
+		);
+	}
+
 	/**
 	 * How often the report is automatically run.  Daily, weekly, monthly, etc...
 	 */
-	kind: ReportRecurrenceType;
+	kind: ReportRecurrenceType = ReportRecurrenceType.once;
 	/**
 	 * Used only for daily schedules, this 7 item, boolean array, determines if the schedule should recur on that day of the week.
 	 *  <override count="7" />
@@ -17,12 +41,6 @@ export class ReportRecurrence {
 	 * Used only for weekly schedules, it's a number between 0 and 6 representing the day of the week, with Sunday being the first day of the week.
 	 */
 	weekday: byte = NaN;
-	/**
-	 * The local timezone used to calculate recurring date/time ranges.
-	 * {@link Timezone.code}
-	 * @deprecated Use owner.timezone instead
-	 */
-	timezone: Timezone;
 	/**
 	 * When the schedule is to begin recurring in local-time (not UTC).
 	 */
@@ -67,4 +85,46 @@ export class ReportRecurrence {
 	 *  <override readonly="true" />
 	 */
 	lastEndDate: Date = DATE();
+
+	constructor(
+		kind: ReportRecurrenceType,
+		weekdays: boolean[] | string,
+		weekday: byte,
+		start: Date | number | string,
+		end: Date | number | string,
+		iterations: ushort,
+		lastResult: ulong,
+		nextStartDate: Date | number | string,
+		nextEndDate: Date | number | string,
+		lastStartDate: Date | number | string,
+		lastEndDate: Date | number | string
+	) {
+		this.kind = ReportRecurrenceType[kind] || ReportRecurrenceType.once;
+		this.weekdays = WEEKDAYS_PARSE(weekdays);
+		this.weekday = ID(weekday);
+		this.start = DATE(start);
+		this.end = DATE(end);
+		this.iterations = ID(iterations);
+		this.lastResult = ID(lastResult);
+		this.nextStartDate = DATE(nextStartDate);
+		this.nextEndDate = DATE(nextEndDate);
+		this.lastStartDate = DATE(lastStartDate);
+		this.lastEndDate = DATE(lastEndDate);
+	}
+
+	toJSON() {
+		return {
+			"kind": ReportRecurrenceType[this.kind] || ReportRecurrenceType.once,
+			"weekdays": WEEKDAYS_JSON(this.weekdays),
+			"weekday": JSON_NUMBER(this.weekday),
+			"start": JSON_DATE(this.start),
+			"end": JSON_DATE(this.end),
+			"iterations": JSON_NUMBER(this.iterations),
+			"lastResult": JSON_NUMBER(this.lastResult),
+			"nextStartDate": JSON_DATE(this.nextStartDate),
+			"nextEndDate": JSON_DATE(this.nextEndDate),
+			"lastStartDate": JSON_DATE(this.lastStartDate),
+			"lastEndDate": JSON_DATE(this.lastEndDate),
+		}
+	}
 }

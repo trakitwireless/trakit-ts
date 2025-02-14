@@ -52,7 +52,7 @@ export class ReportResult
 	/**
 	 * Specified parameters for the report logic, targeted Assets, and filtering Places.
 	 */
-	options: ReportOptions = new ReportOptions;
+	options: ReportOptions = ReportOptions.fromJSON({});
 	/**
 	 * A reference to the Template used to create this result.  This field is optional because templates are not necessarily required; they just make life a lot easier.
 	 * {@link ReportTemplate.id}

@@ -11,6 +11,7 @@ import {
 	ROUND,
 	SQRT,
 } from "./Constants";
+import { ISerializable } from "./Interfaces/ISerializable";
 import { MERGE_INTERNAL } from "./Objects";
 import { ulong } from "./Types";
 
@@ -440,8 +441,55 @@ export function STRING_TO_ENUM<T extends { [key: string]: T }>(
  * Serializes a {@link Date} to an ISO string, or null (for use in {@link ISerializable.toJSON}).
  * @param date 
  */
-export function DATE_JSON(date: Date): string | null {
+export function JSON_DATE(date: Date): string | null {
 	return IS_AN(date.valueOf())
 		? date.toISOString()
 		: null;
+}
+/**
+ * Serializes a {@link Number} as itself, or null instead of {@link NaN} (for use in {@link ISerializable.toJSON}).
+ * @param date 
+ */
+export function JSON_NUMBER(num: number): number | null {
+	return IS_AN(num)
+		? num
+		: null;
+}
+
+/**
+ * 
+ */
+export const WEEKDAYS = [
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+];
+/**
+ * Creates an array of 7 boolean values.
+ * Extra values from the input are ignored.
+ * @param days 
+ */
+export function WEEKDAYS_PARSE(days: string | boolean[]) {
+	const weekdays: boolean[] = [...WEEKDAYS];
+	for (let i = 0; i < weekdays.length; i++) {
+		const day = days[i];
+		weekdays[i] = typeof day === "boolean"
+			? day
+			: ID(day) === 1;
+	}
+	return weekdays;
+}
+/**
+ * Creates as string of 7 characters (either `1` or `0`).
+ */
+export function WEEKDAYS_JSON(days: string | boolean[]): string {
+	let weekdays = "";
+	for (let i = 0; i < 7; i++) {
+		weekdays += days[i] ? "1" : "0";
+	}
+	return weekdays;
 }

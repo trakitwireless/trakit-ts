@@ -7,6 +7,17 @@ import { ReportParameterType } from './ReportParameterType';
 export class ReportParameter
 	implements ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new ReportParameter(
+			ReportParameterType[json["kind"] as ReportParameterType],
+			json["value"]
+		);
+	}
+
+	/**
 	 * The type of argument.
 	 */
 	kind: ReportParameterType;
