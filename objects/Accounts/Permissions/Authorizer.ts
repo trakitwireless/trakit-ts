@@ -206,20 +206,21 @@ function _filterType(this: PermissionType, permission: Permission) {
 }
 /**
  * A method used with Array#filter to retrieve only "grant" permissions.
+ * @this				The company's unique identifier
  * @param	permission
  */
 function _filterGrants(this: ulong, permission: Permission) {
 	return permission.method === PermissionMethod.grant
-		&& permission.company == this;
+		&& permission.companyId == this;
 }
 /**
  * A method used with Array#filter to retrieve only "revoke" permissions.
- * @this {number}					The company's unique identifier
+ * @this 				The company's unique identifier
  * @param	permission
  */
 function _filterRevokes(this: ulong, permission: Permission) {
 	return permission.method === PermissionMethod.revoke
-		&& permission.company == this;
+		&& permission.companyId == this;
 }
 /**
  * A method used with Array#filter to retrieve only label-based permissions.
@@ -362,7 +363,7 @@ function _computePermissions(
 		.sort(_sortComplex)
 		.map(function (permission) {
 			return new Permission(
-				permission.company,
+				permission.companyId,
 				permission.kind,
 				permission.level,
 				permission.method,
@@ -397,7 +398,7 @@ export function computeAll(
 		!!skipImpliedPermissions
 	));
 	fromGroups.concat(fromUser).forEach(function (permission) {
-		const targetCompanyId = permission.company;
+		const targetCompanyId = permission.companyId;
 		if (!companies.has(targetCompanyId)) {
 			companies.set(targetCompanyId, _computePermissions(
 				userCompanyId,
@@ -927,7 +928,7 @@ export function findAllEscalations(
 			escalations.set(companyId, permissions.map(function (proposed) {
 				return new PermissionEscalation(
 					PermissionEscalationType.vertical,
-					proposed.company,
+					proposed.companyId,
 					proposed.kind,
 					proposed.level,
 					proposed.labels
@@ -993,7 +994,7 @@ export function findEscalations(
 					if (_isEscalatedLevel(beforeLevel, afterLevel)) {
 						escalated.push(new PermissionEscalation(
 							PermissionEscalationType.vertical,
-							proposed.company,
+							proposed.companyId,
 							proposed.kind,
 							afterLevel as PermissionLevel,
 							[labels[i]],
@@ -1015,7 +1016,7 @@ export function findEscalations(
 				if (_isEscalatedLevel(current?.level, proposed.level)) {
 					escalated.push(new PermissionEscalation(
 						PermissionEscalationType.vertical,
-						proposed.company,
+						proposed.companyId,
 						proposed.kind,
 						proposed.level,
 						null,		// simple permissions have no labels
@@ -1083,7 +1084,7 @@ export function findLabelEscalation(
 
 	targetBeforeLabels = targetBeforeLabels || [];
 	targetAfterLabels = targetAfterLabels || [];
-	const targetCompanyIds = ARRAY_UNIQUE((targetCompanyPermissions || []).map(function (p) { return p.company; }));
+	const targetCompanyIds = ARRAY_UNIQUE((targetCompanyPermissions || []).map(p => p.companyId));
 	switch (targetCompanyIds.length) {
 		case 1: break;//ok
 		case 0: throw new Error("Zero permissions given.");
