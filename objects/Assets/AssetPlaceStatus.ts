@@ -1,4 +1,4 @@
-import { DATE, DATE_JSON } from "../API/Functions";
+import { DATE, JSON_DATE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { AssetPlaceStatusType } from "./AssetPlaceStatusType";
 
@@ -39,8 +39,8 @@ export class AssetPlaceStatus
 	toJSON() {
 		return {
 			"kind": this.kind,
-			"enter": DATE_JSON(this.enter),
-			"latest": DATE_JSON(this.latest),
+			"enter": JSON_DATE(this.enter),
+			"latest": JSON_DATE(this.latest),
 		};
 	}
 }

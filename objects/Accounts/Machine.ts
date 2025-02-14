@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
 import { BaseComponent, } from '../API/BaseComponent';
 import { CODIFY } from '../API/Codifier';
-import { DATE, DATE_JSON, ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from '../API/Functions';
+import { DATE, JSON_DATE, ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
@@ -121,8 +121,8 @@ export class Machine
 			"nickname": this.nickname,
 			"notes": this.notes,
 			"enabled": !!this.enabled,
-			"notBefore": DATE_JSON(this.notBefore),
-			"notAfter": DATE_JSON(this.notAfter),
+			"notBefore": JSON_DATE(this.notBefore),
+			"notAfter": JSON_DATE(this.notAfter),
 			"timezone": this.timezone?.code || Timezone.utc.code,
 			"language": this.language,
 			"formats": MAP_TO_OBJECT(this.formats),

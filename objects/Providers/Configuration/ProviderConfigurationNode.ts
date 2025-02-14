@@ -12,6 +12,15 @@ export class ProviderConfigurationNode
 	 * 
 	 * @param json 
 	 */
+	static nodesFromJSON(json: any) {
+		const dict = new Map<string, ProviderConfigurationNode>();
+		KEYS(json).forEach(key => dict.set(key, ProviderConfigurationNode.fromJSON(json[key] || {})));
+		return dict;
+	}
+	/**
+	 * 
+	 * @param json 
+	 */
 	static fromJSON(json: any) {
 		return new ProviderConfigurationNode(
 			json["id"] || "",
@@ -22,17 +31,8 @@ export class ProviderConfigurationNode
 			json["max"],
 			json["value"],
 			json["unit"] || "",
-			ProviderConfigurationNode.parseNodesFromJSON(json["nodes"])
+			ProviderConfigurationNode.nodesFromJSON(json["nodes"])
 		);
-	}
-	/**
-	 * 
-	 * @param json 
-	 */
-	static parseNodesFromJSON(json: any) {
-		const dict = new Map<string, ProviderConfigurationNode>();
-		KEYS(json).forEach(key => dict.set(key, ProviderConfigurationNode.fromJSON(json[key] || {})));
-		return dict;
 	}
 
 	/**

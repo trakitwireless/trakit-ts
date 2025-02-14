@@ -1,23 +1,16 @@
 ﻿import {
-	ATAN2,
-	COS,
 	DEGREES_TO_RADIANS,
 	LOG,
 	PI,
-	POW,
-	SIN,
-	SQRT
+	SIN
 } from '../Constants';
-import { IS_AN, IS_NUMBER, PYTHAGORA, ROUND_TO } from '../Functions';
+import { IS_AN, PYTHAGORA } from '../Functions';
 import { Point } from '../Geometry/Point';
 import {
-	LATITUDE_NORMALIZED,
 	LATLNG_ANGLE,
 	LATLNG_DISTANCE,
-	LATLNG_GREAT_CIRCLE,
 	LATLNG_MIDPOINT,
 	LATLNG_TRANSLATE,
-	LONGITUDE_NORMALIZED,
 	MAX_SAME_DISTANCE
 } from './Functions';
 import { ILatLng, ILatLng_instanceOf } from './Interfaces';

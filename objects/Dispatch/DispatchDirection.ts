@@ -1,6 +1,6 @@
 ﻿import { ARRAY_TO_JSON } from "../API/Arrays";
-import { ID, IS_AN, IS_NUMBER } from "../API/Functions";
-import { ILatLng } from "../API/Geography/Interfaces";
+import { FLOAT } from "../API/Constants";
+import { ID } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
@@ -11,6 +11,22 @@ import { double, timespan, ulong } from "../API/Types";
  */
 export class DispatchDirection
 	implements ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any): DispatchDirection {
+		return new DispatchDirection(
+			FLOAT(json["distance"]),
+			new TimeSpan(json["duration"]),
+			json["instructions"] || "",
+			(json["path"] as any[])?.map(LatLng.fromJSON) as LatLng[],
+			(json["directions"] as any[])?.map(DispatchDirection.fromJSON),
+			ID(json["job"]),
+			ID(json["step"])
+		);
+	}
+	
 	/**
 	 * The total distance of these directions (including sub-directions if applicable).
 	 */
@@ -41,25 +57,22 @@ export class DispatchDirection
 	 */
 	step: ulong = NaN;
 
-	constructor(json: any)
 	constructor(
-		distance?: double,
-		duration?: TimeSpan | timespan | number,
-		instructions?: string,
-		path?: ILatLng[],
-		directions?: DispatchDirection[],
-		job?: ulong,
-		step?: ulong
+		distance: double,
+		duration: TimeSpan | timespan | number,
+		instructions: string,
+		path: LatLng[],
+		directions: DispatchDirection[],
+		job: ulong,
+		step: ulong
 	) {
-		if (IS_NUMBER(distance)) {
-			this.distance = distance;
-			this.duration = new TimeSpan(duration);
-			this.instructions = instructions || "";
-			this.path = path?.map(p => LatLng.fromJSON(p) as LatLng) || [];
-			this.directions = directions?.map(d => new DispatchDirection(d)) || [];
-			this.job = ID(job);
-			this.step = ID(step);
-		}
+		this.distance = FLOAT(distance as any);
+		this.duration = new TimeSpan(duration);
+		this.instructions = instructions || "";
+		this.path = path ?? [];
+		this.directions = directions ?? [];
+		this.job = ID(job);
+		this.step = ID(step);
 	}
 
 	toJSON() {

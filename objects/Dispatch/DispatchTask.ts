@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, DATE_JSON, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, JSON_DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -161,18 +161,18 @@ export class DispatchTask
 			"address": this.address || "",
 			"latlng": this.latlng?.toJSON() || null,
 			"status": DispatchTaskStatus[this.status] || null,
-			"created": DATE_JSON(this.created),
-			"eta": DATE_JSON(this.eta),
+			"created": JSON_DATE(this.created),
+			"eta": JSON_DATE(this.eta),
 			"duration": this.duration?.toString() ?? null,
-			"arrived": DATE_JSON(this.arrived),
-			"completed": DATE_JSON(this.completed),
+			"arrived": JSON_DATE(this.arrived),
+			"completed": JSON_DATE(this.completed),
 			"instructions": this.instructions || "",
 			"signature": !!this.signature,
 			"signatory": this.signatory || "",
 			"notes": this.notes || "",
 			"attachments": [...this.attachmentIds],
 			"updatedBy": this.updatedBy || "",
-			"updatedUtc": DATE_JSON(this.updatedUtc),
+			"updatedUtc": JSON_DATE(this.updatedUtc),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {

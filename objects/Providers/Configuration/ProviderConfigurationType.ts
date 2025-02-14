@@ -77,7 +77,7 @@ export class ProviderConfigurationType
 			this.providerType = ProviderType[json["providerType"] as ProviderType] || ProviderType.unknown;
 			this.maxGeofenceCount = ID(json["maxGeofenceCount"]);
 			this.minGeofenceCount = ID(json["minGeofenceCount"]);
-			this.scriptOptions = ProviderConfigurationNode.parseNodesFromJSON(json["scriptOptions"]);
+			this.scriptOptions = ProviderConfigurationNode.nodesFromJSON(json["scriptOptions"]);
 			this.geofenceTypes = (json["geofenceTypes"] as any[])?.map(g => PlaceType[g as PlaceType]);
 		}
 		return update;

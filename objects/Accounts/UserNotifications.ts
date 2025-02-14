@@ -1,20 +1,11 @@
 ﻿import { ARRAY_TO_ENUMS } from "../API/Arrays";
-import { ID, IS_AN, PHONE_PARSE, STRING_TO_ENUM } from "../API/Functions";
+import { IS_AN, PHONE_PARSE, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
 import { email, timespan, ulong } from "../API/Types";
 import { NotificationMethod } from "./NotificationMethod";
 
-const WEEKDAYS = [
-	false,
-	false,
-	false,
-	false,
-	false,
-	false,
-	false,
-];
 /**
  * Definition of how and when to send alerts to the user.
  */
@@ -70,9 +61,8 @@ export class UserNotifications
 	 */
 	offline: NotificationMethod[] = [];
 
-	constructor(json: any)
 	constructor(
-		name?: string | any,
+		name?: string ,
 		enabled?: boolean,
 		weekdays?: string | boolean[],
 		start?: TimeSpan | timespan | number,
@@ -85,7 +75,7 @@ export class UserNotifications
 		if (typeof name === "string") {
 			this.name = name || "";
 			this.enabled = !!enabled;
-			this.weekdays = this._parseWeekdays(weekdays || []);
+			this.weekdays = WEEKDAYS_PARSE(weekdays || []);
 			this.start = new TimeSpan(start);
 			this.end = new TimeSpan(end);
 			this.email = email || "";
@@ -95,7 +85,7 @@ export class UserNotifications
 		} else if (name) {
 			this.name = name["name"] || "";
 			this.enabled = !!name["enabled"];
-			this.weekdays = this._parseWeekdays(name["weekdays"] as string);
+			this.weekdays = WEEKDAYS_PARSE(name["weekdays"] as string);
 			this.start = new TimeSpan(name["start"]);
 			this.end = new TimeSpan(name["end"]);
 			this.email = name["email"] || "";
@@ -106,39 +96,13 @@ export class UserNotifications
 	}
 
 	/**
-	 * Creates an array of 7 boolean values.
-	 * Extra values from the input are ignored.
-	 * @param days 
-	 */
-	private _parseWeekdays(days: string | boolean[]) {
-		const weekdays: boolean[] = [...WEEKDAYS];
-		for (let i = 0; i < weekdays.length; i++) {
-			const day = days[i];
-			weekdays[i] = typeof day === "boolean"
-				? day
-				: ID(day) === 1;
-		}
-		return weekdays;
-	}
-	/**
-	 * Creates as string of 7 characters (either `1` or `0`).
-	 */
-	private _jsonWeekdays(): string {
-		let weekdays = "";
-		for (let i = 0; i < 7; i++) {
-			weekdays += this.weekdays[i] ? "1" : "0";
-		}
-		return weekdays;
-	}
-
-	/**
 	 * 
 	 */
 	toJSON(): any {
 		return {
 			"name": this.name || "",
 			"enabled": !!this.enabled,
-			"weekdays": this._jsonWeekdays(),
+			"weekdays": WEEKDAYS_JSON(this.weekdays),
 			"start": IS_AN(this.start.valueOf()) ? this.start.toString() : "00:00:00",
 			"end": IS_AN(this.end.valueOf()) ? this.end.toString() : "00:00:00",
 			"email": this.email || "",

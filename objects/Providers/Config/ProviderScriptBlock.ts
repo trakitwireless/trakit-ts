@@ -18,6 +18,7 @@ export class ProviderScriptBlock
 			json["validate"] || ""
 		);
 	}
+	
 	/**
 	 * A chunk of the file loaded onto a provider with it's variables replaced with configurable variables.
 	 * Trailing or leading whitespace should be included here, so when blocks are merged, so too is the newline characters.

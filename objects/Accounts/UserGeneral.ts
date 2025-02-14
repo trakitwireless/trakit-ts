@@ -13,6 +13,7 @@ import { COMPANIES, CONTACTS } from "../Storage";
 import { Contact } from "./Contact";
 import { SystemsOfUnits } from "./SystemsOfUnits";
 import { UserNotifications } from "./UserNotifications";
+import { User } from "./User";
 
 /**
  * Credentials, information, and preferences about a user.

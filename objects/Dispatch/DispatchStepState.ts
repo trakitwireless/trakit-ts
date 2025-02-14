@@ -1,4 +1,4 @@
-import { DATE, DATE_JSON } from "../API/Functions";
+import { DATE, JSON_DATE } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 
@@ -8,6 +8,17 @@ import { ISerializable } from "../API/Interfaces/ISerializable";
 export class DispatchStepState
 	implements ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new DispatchStepState(
+			DATE(json["updated"]),
+			json["latlng"] || null
+		);
+	}
+	
+	/**
 	 * A timestamp from when the lifetime was updated.
 	 */
 	updated: Date = DATE();
@@ -16,14 +27,17 @@ export class DispatchStepState
 	 */
 	latlng: LatLng | null;
 	
-	constructor(json: any) {
-		this.updated = DATE(json("updated"));
-		this.latlng = LatLng.fromJSON(json("latlng"));
+	constructor(
+		updated: Date | number | string,
+		latlng: LatLng | null
+	) {
+		this.updated = DATE(updated);
+		this.latlng = LatLng.fromJSON(latlng);
 	}
 
 	toJSON() {
 		return {
-			"updated": DATE_JSON(this.updated),
+			"updated": JSON_DATE(this.updated),
 			"latlng": this.latlng?.toJSON() ?? null,
 		};
 	}

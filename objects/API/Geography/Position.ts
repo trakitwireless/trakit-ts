@@ -1,4 +1,4 @@
-import { DATE, DATE_JSON, IS_AN, } from '../Functions';
+import { DATE, JSON_DATE, IS_AN, } from '../Functions';
 import { IPosition, IStreetAddress } from './Interfaces';
 import { LatLng, } from './LatLng';
 import { StreetAddress, } from './StreetAddress';
@@ -85,7 +85,7 @@ export class Position
 			+ this.bearing + delimiter
 			+ this.accuracy + delimiter
 			+ this.altitude + delimiter
-			+ DATE_JSON(this.date) + delimiter
+			+ JSON_DATE(this.date) + delimiter
 			+ this.speedLimit
 			+ ")"
 			+ this.address;
