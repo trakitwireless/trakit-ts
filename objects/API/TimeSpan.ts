@@ -3,6 +3,14 @@ import { IS_NUMBER, ZERO_PADDED, } from "./Functions";
 import { timespan, } from "./Types";
 
 /**
+ * The number of milliseconds in other kinds of time measurements.
+ */
+const MILLI_PER_SECOND = 1000,
+	MILLI_PER_MINUTE = MILLI_PER_SECOND * 60,
+	MILLI_PER_HOUR = MILLI_PER_MINUTE * 60,
+	MILLI_PER_DAY = MILLI_PER_HOUR * 24;
+
+/**
  * An object which represents an interval of time.
  */
 export class TimeSpan {
@@ -10,25 +18,25 @@ export class TimeSpan {
 	 * Constructs a new TimeSpan with the value specified in days.
 	 */
 	static fromDays(value: number): TimeSpan {
-		return new TimeSpan(value * 1000 * 60 * 60 * 24);
+		return new TimeSpan(value * MILLI_PER_DAY);
 	}
 	/**
 	 * Constructs a new TimeSpan with the value specified in hours.
 	 */
 	static fromHours(value: number): TimeSpan {
-		return new TimeSpan(value * 1000 * 60 * 60);
+		return new TimeSpan(value * MILLI_PER_HOUR);
 	}
 	/**
 	 * Constructs a new TimeSpan with the value specified in minutes.
 	 */
 	static fromMinutes(value: number): TimeSpan {
-		return new TimeSpan(value * 1000 * 60);
+		return new TimeSpan(value * MILLI_PER_MINUTE);
 	}
 	/**
 	 * Constructs a new TimeSpan with the value specified in seconds.
 	 */
 	static fromSeconds(value: number): TimeSpan {
-		return new TimeSpan(value * 1000);
+		return new TimeSpan(value * MILLI_PER_SECOND);
 	}
 	/**
 	 * Constructs a new TimeSpan with the value specified in milliseconds.
@@ -91,19 +99,19 @@ export class TimeSpan {
 	/**
 	 * Total time-span value in decimal days.
 	 */
-	get totalDays() { return this.__total / (1000 * 60 * 60 * 24); }
+	get totalDays() { return this.__total / MILLI_PER_DAY; }
 	/**
 	 * Total time-span value in decimal hours.
 	 */
-	get totalHours() { return this.__total / (1000 * 60 * 60); }
+	get totalHours() { return this.__total / MILLI_PER_HOUR; }
 	/**
 	 * Total time-span value in decimal minutes.
 	 */
-	get totalMinutes() { return this.__total / (1000 * 60); }
+	get totalMinutes() { return this.__total / MILLI_PER_MINUTE; }
 	/**
 	 * Total time-span value in decimal seconds.
 	 */
-	get totalSeconds() { return this.__total / 1000; }
+	get totalSeconds() { return this.__total / MILLI_PER_SECOND; }
 	/**
 	 * Total time-span value in milliseconds.
 	 */
@@ -125,7 +133,7 @@ export class TimeSpan {
 					case "h": span += ZERO_PADDED(this.hours % 12, piece.length); break;
 					case "m": span += ZERO_PADDED(this.minutes, piece.length); break;
 					case "s": span += ZERO_PADDED(this.seconds, piece.length); break;
-					case "f": span += ZERO_PADDED(this.milliseconds / 1000, 0, piece.length).substring(2); break;
+					case "f": span += ZERO_PADDED(this.milliseconds / MILLI_PER_SECOND, 0, piece.length).substring(2); break;
 					default: span += piece; break;
 				}
 				return span;
@@ -141,7 +149,7 @@ export class TimeSpan {
 				+ (hours > 9 ? hours : "0" + hours) + ":"
 				+ (minutes > 9 ? minutes : "0" + minutes) + ":"
 				+ (seconds > 9 ? seconds : "0" + seconds)
-				+ (milli ? (milli / 1000).toString().slice(1) : "");
+				+ (milli ? (milli / MILLI_PER_SECOND).toString().slice(1) : "");
 		}
 	}
 	/**
@@ -166,54 +174,57 @@ export class TimeSpan {
 	 * @param subtract				When true, the value is subtracted from the time-span instead of added.
 	 */
 	add(duration: TimeSpan | timespan | number, subtract: boolean = false) {
+		let value = 0;
 		if (IS_NUMBER(duration)) {
-			let negatory = duration < 0 ? -1 : 1,
-				value = ABS(duration || 0);
-			if (subtract) negatory *= -1;
-			while (value >= 1000 * 60 * 60 * 24) {
-				this.__days += negatory; value -= 1000 * 60 * 60 * 24;
+			const negatory = (duration < 0 ? -1 : 1)
+							* (subtract ? -1 : 1);
+			while (value >= MILLI_PER_DAY) {
+				this.__days += negatory;
+				value -= MILLI_PER_DAY;
 			}
-			while (value >= 1000 * 60 * 60) {
-				this.__hours += negatory; value -= 1000 * 60 * 60;
+			while (value >= MILLI_PER_HOUR) {
+				this.__hours += negatory;
+				value -= MILLI_PER_HOUR;
 			}
-			while (value >= 1000 * 60) {
-				this.__minutes += negatory; value -= 1000 * 60;
+			while (value >= MILLI_PER_MINUTE) {
+				this.__minutes += negatory;
+				value -= MILLI_PER_MINUTE;
 			}
-			while (value >= 1000) {
-				this.__seconds += negatory; value -= 1000;
+			while (value >= MILLI_PER_SECOND) {
+				this.__seconds += negatory;
+				value -= MILLI_PER_SECOND;
 			}
 			this.__milli += ROUND(value) * negatory;
 		} else if (duration = String(duration).trim()) {
-			var numbers = duration.match(/^(-?)(?:(\d+)\.)?(\d*):(\d*)(?::(\d+)(?:\.(\d+))?)?$/)
+			const numbers = duration.match(/^(-?)(?:(\d+)\.)?(\d*):(\d*)(?::(\d+)(?:\.(\d+))?)?$/)
 				|| [
 					duration,									// whole string
 					duration[0],								// minus sign
 					(duration[0] === "-" ? -1 : 1) * FLOAT(duration)	// days (valid if numeric)
-				],
-				value = 0;
+				];
 			if (numbers[1] === "-") {
 				subtract = !subtract;
 			}
-			if (value = 1000 * 60 * 60 * 24 * FLOAT(numbers[2] as string)) {
+			if (value = (MILLI_PER_DAY * FLOAT(numbers[2] as string))) {
 				this.add(value, subtract);
 			}
-			if (value = 1000 * 60 * 60 * FLOAT(numbers[3] as string)) {
+			if (value = (MILLI_PER_HOUR * FLOAT(numbers[3] as string))) {
 				this.add(value, subtract);
 			}
-			if (value = 1000 * 60 * FLOAT(numbers[4] as string)) {
+			if (value = (MILLI_PER_MINUTE * FLOAT(numbers[4] as string))) {
 				this.add(value, subtract);
 			}
-			if (value = 1000 * FLOAT(numbers[5] as string)) {
+			if (value = (MILLI_PER_SECOND * FLOAT(numbers[5] as string))) {
 				this.add(value, subtract);
 			}
-			if (value = ROUND(FLOAT("0." + (numbers[6] && numbers[6] + "000".slice((numbers[6] as string).length))) * 1000)) {
+			if (value = (ROUND(FLOAT("0." + (numbers[6] && numbers[6] + "000".slice((numbers[6] as string).length))) * MILLI_PER_SECOND))) {
 				this.add(value, subtract);
 			}
 		}
-		return this.__total = (this.__days * 1000 * 60 * 60 * 24)
-			+ (this.__hours * 1000 * 60 * 60)
-			+ (this.__minutes * 1000 * 60)
-			+ (this.__seconds * 1000)
+		return this.__total = (this.__days * MILLI_PER_DAY)
+			+ (this.__hours * MILLI_PER_HOUR)
+			+ (this.__minutes * MILLI_PER_MINUTE)
+			+ (this.__seconds * MILLI_PER_SECOND)
 			+ (this.__milli);
 	}
 	/**
@@ -272,5 +283,5 @@ export function TIMESPACE_STRINGIFY(value: number): timespan {
 		+ (hours > 9 ? hours : "0" + hours) + ":" + (minutes > 9 ? minutes : "0" + minutes)
 		+ (!seconds ? "" : ":" + (seconds > 9 ? seconds : "0" + seconds));
 	 */
-	return (new TimeSpan(value * 1000)).toString();
+	return (new TimeSpan(value * MILLI_PER_SECOND)).toString();
 }

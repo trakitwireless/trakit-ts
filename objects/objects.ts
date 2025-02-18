@@ -188,6 +188,15 @@ import { FormFieldTimezone } from "./Hosting/Fields/FormFieldTimezone";
 import { FormFieldType } from "./Hosting/FormFieldType";
 import { FormResult } from "./Hosting/FormResult";
 import { FormTemplate } from "./Hosting/FormTemplate";
+import { Dashcam } from "./Images/Dashcam";
+import { DashcamBase } from "./Images/DashcamBase";
+import { DashcamLive } from "./Images/DashcamLive";
+import { DashcamMediaType } from "./Images/DashcamMediaType";
+import { Icon } from "./Images/Icon";
+import { IconGlyph } from "./Images/IconGlyph";
+import { IconLabel } from "./Images/IconLabel";
+import { IconLayer } from "./Images/IconLayer";
+import { Picture } from "./Images/Picture";
 import {
     ASSETS,
     BEHAVIOUR_LOGS,
@@ -523,7 +532,15 @@ export default {
     FormFieldTimezone,
     //#endregion Hosting
     //#region Images
-    
+    DashcamBase,
+    Dashcam,
+    DashcamLive,
+    DashcamMediaType,
+    Icon,
+    IconGlyph,
+    IconLabel,
+    IconLayer,
+    Picture,
     //#endregion Images
     //#region Maintenance
     
