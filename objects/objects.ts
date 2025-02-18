@@ -115,6 +115,27 @@ import {
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
 import { TIMEZONE_FIND, } from "./API/Timezones";
+import { Asset } from "./Assets/Asset";
+import { AssetAdvanced } from "./Assets/AssetAdvanced";
+import { AssetAttribute } from "./Assets/AssetAttribute";
+import { AssetDispatch } from "./Assets/AssetDispatch";
+import { AssetGeneral } from "./Assets/AssetGeneral";
+import { AssetPlaceStatus } from "./Assets/AssetPlaceStatus";
+import { AssetPlaceStatusType } from "./Assets/AssetPlaceStatusType";
+import { AssetType } from "./Assets/AssetType";
+import { Person } from "./Assets/Person";
+import { PersonGeneral } from "./Assets/PersonGeneral";
+import { Trailer } from "./Assets/Trailer";
+import { TrailerGeneral } from "./Assets/TrailerGeneral";
+import { Vehicle } from "./Assets/Vehicle";
+import { VehicleAdvanced } from "./Assets/VehicleAdvanced";
+import { VehicleGeneral } from "./Assets/VehicleGeneral";
+import { Behaviour } from "./Behaviours/Behaviour";
+import { BehaviourLog } from "./Behaviours/BehaviourLog";
+import { BehaviourLogType } from "./Behaviours/BehaviourLogType";
+import { BehaviourParameter } from "./Behaviours/BehaviourParameter";
+import { BehaviourParameterType } from "./Behaviours/BehaviourParameterType";
+import { BehaviourScript } from "./Behaviours/BehaviourScript";
 import { Company } from "./Companies/Company";
 import { CompanyDirectory } from "./Companies/CompanyDirectory";
 import { CompanyGeneral } from "./Companies/CompanyGeneral";
@@ -219,7 +240,6 @@ export default {
         fromPassword: PASSWORD_DECODE,
     },
     //#endregion Utility, conversion, and encoding functions
-
     //#region Drawing and trigonometry
     /**
      * A utility library exposing algorithms for a flat plane.
@@ -247,7 +267,6 @@ export default {
     Rectangle,
     Size,
     //#endregion Drawing and trigonometry
-
     //#region Coordinates and geography
     geography: {
         earthRadius: EARTH_RADIUS,
@@ -297,7 +316,6 @@ export default {
     NotificationServerSms,
     //#endregion Company
     //#region Accounts
-    // users
     authorizer: {
         // Generic / global compute
         computeAll,
@@ -362,10 +380,29 @@ export default {
     UserNotifications,
     //#endregion Accounts
     //#region Assets
-    
+    Asset,
+    AssetAdvanced,
+    AssetAttribute,
+    AssetDispatch,
+    AssetGeneral,
+    AssetPlaceStatus,
+    AssetPlaceStatusType,
+    AssetType,
+    Person,
+    PersonGeneral,
+    Trailer,
+    TrailerGeneral,
+    Vehicle,
+    VehicleGeneral,
+    VehicleAdvanced,
     //#endregion Assets
     //#region Behaviours
-    
+    Behaviour,
+    BehaviourLog,
+    BehaviourLogType,
+    BehaviourParameter,
+    BehaviourParameterType,
+    BehaviourScript,
     //#endregion Behaviours
     //#region Billing
     

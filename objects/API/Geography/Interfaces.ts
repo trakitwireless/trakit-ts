@@ -1,4 +1,4 @@
-﻿import { IS_BOOLEAN, IS_NUMBER, IS_STRING, } from '../Functions';
+﻿import { IS_NUMBER, IS_STRING } from '../Functions';
 import { LatLngBounds, } from './LatLngBounds';
 
 //#region LatLng
@@ -90,6 +90,7 @@ export function IPosition_instanceOf(pin: any): pin is IPosition {
 		&& ILatLng_instanceOf(pin);
 }
 //#endregion Position
+
 //#region StreetAddress
 /**
  * A road segment description.
