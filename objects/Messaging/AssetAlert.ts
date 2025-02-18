@@ -10,7 +10,7 @@ export class AssetAlert
 	/**
 	 * The priority for which this message must send.
 	 */
-	priority: AlertPriority;
+	priority: AlertPriority = AlertPriority.normal;
 
 	override toJSON() {
 		return MERGE(

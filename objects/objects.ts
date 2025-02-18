@@ -197,6 +197,16 @@ import { IconGlyph } from "./Images/IconGlyph";
 import { IconLabel } from "./Images/IconLabel";
 import { IconLayer } from "./Images/IconLayer";
 import { Picture } from "./Images/Picture";
+import { MaintenanceInterval } from "./Maintenance/MaintenanceInterval";
+import { MaintenanceJob } from "./Maintenance/MaintenanceJob";
+import { MaintenanceJobStatus } from "./Maintenance/MaintenanceJobStatus";
+import { MaintenanceSchedule } from "./Maintenance/MaintenanceSchedule";
+import { AlertPriority } from "./Messaging/AlertPriority";
+import { AssetAlert } from "./Messaging/AssetAlert";
+import { AssetMessage } from "./Messaging/AssetMessage";
+import { MessageFolder } from "./Messaging/MessageFolder";
+import { MessageStatus } from "./Messaging/MessageStatus";
+import { MessageType } from "./Messaging/MessageType";
 import {
     ASSETS,
     BEHAVIOUR_LOGS,
@@ -478,6 +488,12 @@ export default {
     Vehicle,
     VehicleGeneral,
     VehicleAdvanced,
+    AssetAlert,
+    AssetMessage,
+    AlertPriority,
+    MessageFolder,
+    MessageStatus,
+    MessageType,
     //#endregion Assets
     //#region Behaviours
     Behaviour,
@@ -543,7 +559,10 @@ export default {
     Picture,
     //#endregion Images
     //#region Maintenance
-    
+    MaintenanceInterval,
+    MaintenanceJob,
+    MaintenanceJobStatus,
+    MaintenanceSchedule,
     //#endregion Maintenance
     //#region Places
     
