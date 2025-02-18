@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE } from "../API/Functions";
+import { DATE, ID, IS_AN, OBJECT_TO_MAP } from "../API/Functions";
 import { LatLngBounds } from "../API/Geography/LatLngBounds";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -136,8 +136,22 @@ export class ReportResult
 	override toJSON() {
 		throw new Error("Method not implemented.");
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
-		throw new Error("Method not implemented.");
+	fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			this.companyId = ID(json["company"]);
+
+
+
+			
+			this.scriptId = ID(json["script"]);
+			this.name = json["name"] || "";
+			this.notes = json["notes"] || "";
+			this.parameters = OBJECT_TO_MAP(json["parameters"] || {});
+			this.geofences = json["geofences"] || "";
+		}
+		return update;
 	}
 
 	// IRequestable

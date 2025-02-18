@@ -1,5 +1,5 @@
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
@@ -63,10 +63,10 @@ export class ProviderConfig
 
 	toJSON() {
 		return {
-			"id": this.id || null,
+			"id": JSON_NUMBER(this.id),
 			"v": this.v,
-			"company": this.companyId,
-			"script": this.scriptId,
+			"company": JSON_NUMBER(this.companyId),
+			"script": JSON_NUMBER(this.scriptId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"parameters": MAP_TO_OBJECT(this.parameters),

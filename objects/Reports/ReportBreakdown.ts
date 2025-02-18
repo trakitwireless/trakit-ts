@@ -1,16 +1,90 @@
-﻿import { ID } from "../API/Functions";
+﻿import { ID, JSON_NUMBER } from "../API/Functions";
+import { ISerializable } from "../API/Interfaces/ISerializable";
 import { uint, ulong } from "../API/Types";
+import { Asset } from "../Assets/Asset";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
+import { DispatchJob } from "../Dispatch/DispatchJob";
+import { DispatchTask } from "../Dispatch/DispatchTask";
+import { AssetMessage } from "../Messaging/AssetMessage";
+import { ASSETS } from "../Storage";
+import { ReportBreakdownJob } from "./ReportBreakdownJob";
+import { ReportBreakdownMessage } from "./ReportBreakdownMessage";
+import { ReportBreakdownTask } from "./ReportBreakdownTask";
 
 /**
  * Asset information used in calculating a summary instance.
  */
-export class ReportBreakdown {
+export class ReportBreakdown
+	implements ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		if (typeof json["job"] === "object") {
+			return new ReportBreakdownJob(
+				new DispatchJob(json["job"]),
+				ID(json["asset"]),
+				ID(json["instance"]),
+				json["summaryInstances"]?.map(ID),
+				json["general"]
+					? AssetGeneral.fromJSON(json["general"])
+					: json["general"],
+				json["advanced"]
+					? AssetAdvanced.fromJSON(json["advanced"])
+					: json["advanced"]
+			);
+		}
+		if (typeof json["message"] === "object") {
+			return new ReportBreakdownMessage(
+				new AssetMessage(json["message"]),
+				ID(json["asset"]),
+				ID(json["instance"]),
+				json["summaryInstances"]?.map(ID),
+				json["general"]
+					? AssetGeneral.fromJSON(json["general"])
+					: json["general"],
+				json["advanced"]
+					? AssetAdvanced.fromJSON(json["advanced"])
+					: json["advanced"]
+			);
+		}
+		if (typeof json["task"] === "object") {
+			return new ReportBreakdownTask(
+				new DispatchTask(json["task"]),
+				ID(json["asset"]),
+				ID(json["instance"]),
+				json["summaryInstances"]?.map(ID),
+				json["general"]
+					? AssetGeneral.fromJSON(json["general"])
+					: json["general"],
+				json["advanced"]
+					? AssetAdvanced.fromJSON(json["advanced"])
+					: json["advanced"]
+			);
+		}
+		return new ReportBreakdown(
+			ID(json["asset"]),
+			ID(json["instance"]),
+			json["summaryInstances"]?.map(ID),
+			json["general"]
+				? AssetGeneral.fromJSON(json["general"])
+				: json["general"],
+			json["advanced"]
+				? AssetAdvanced.fromJSON(json["advanced"])
+				: json["advanced"]
+		);
+	}
+
 	/**
 	 * The asset to which this event data belongs.
 	 */
-	asset: ulong;
+	assetId: ulong;
+	/**
+	 * The asset to which this event data belongs.
+	 */
+	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
 	 * Report specific identifier of the event data.
 	 */
@@ -35,10 +109,20 @@ export class ReportBreakdown {
 		general?: AssetGeneral | null,
 		advanced?: AssetAdvanced | null
 	) {
-		this.asset = ID(asset);
+		this.assetId = ID(asset);
 		this.instance = ID(instance);
 		this.summaryInstances = summaryInstances?.map(ID) ?? [];
 		this.general = general || null;
 		this.advanced = advanced || null;
+	}
+
+	toJSON(): any {
+		return {
+			"asset": JSON_NUMBER(this.assetId),
+			"instance": JSON_NUMBER(this.instance),
+			"summaryInstances": [...(this.summaryInstances || [])],
+			"general": this.general?.toJSON() ?? null,
+			"advanced": this.advanced?.toJSON() ?? null,
+		};
 	}
 }

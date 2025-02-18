@@ -4,9 +4,10 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
+import { ASSETS, COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
 import { ProviderType } from "./ProviderType";
+import { Asset } from "../Assets/Asset";
 
 /**
  * Device/hardware information and configuration.
@@ -47,7 +48,12 @@ export class ProviderGeneral
 	 * The asset for which this device provides field data.
 	 * {@link Asset.id}
 	 */
-	asset: ulong = NaN;
+	assetId: ulong = NaN;
+	/**
+	 * The asset for which this device provides field data.
+	 * {@link Asset.id}
+	 */
+	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
 	 * The provider's current (or pending) configuration profile.
 	 * {@link ProviderConfig.id}

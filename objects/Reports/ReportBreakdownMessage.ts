@@ -1,4 +1,5 @@
-﻿import { uint, ulong } from "../API/Types";
+﻿import { MERGE } from "../API/Objects";
+import { uint, ulong } from "../API/Types";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 import { AssetMessage } from "../Messaging/AssetMessage";
@@ -30,5 +31,14 @@ export class ReportBreakdownMessage
 			advanced
 		);
 		this.message = message;
+	}
+
+	override toJSON(): any {
+		return MERGE(
+			super.toJSON(),
+			{
+				"message": this.message.toJSON(),
+			}
+		);
 	}
 }

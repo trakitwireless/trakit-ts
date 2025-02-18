@@ -1,4 +1,5 @@
-﻿import { uint, ulong } from "../API/Types";
+﻿import { MERGE } from "../API/Objects";
+import { uint, ulong } from "../API/Types";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 import { DispatchTask } from "../Dispatch/DispatchTask";
@@ -30,5 +31,14 @@ export class ReportBreakdownTask
 			advanced
 		);
 		this.task = task;
+	}
+
+	override toJSON(): any {
+		return MERGE(
+			super.toJSON(),
+			{
+				"task": this.task.toJSON(),
+			}
+		);
 	}
 }

@@ -92,10 +92,10 @@ export class Provider
 	 * {@link Asset.id}
 	 */
 	get asset(): ulong {
-		return this.general.asset;
+		return this.general.assetId;
 	}
 	set asset(value: ulong) {
-		this.general.asset = value;
+		this.general.assetId = value;
 	}
 	/**
 	 * The provider's current (or pending) configuration profile.

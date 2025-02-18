@@ -1,4 +1,5 @@
-﻿import { uint, ulong } from "../API/Types";
+﻿import { MERGE } from "../API/Objects";
+import { uint, ulong } from "../API/Types";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 import { DispatchJob } from "../Dispatch/DispatchJob";
@@ -30,5 +31,14 @@ export class ReportBreakdownJob
 			advanced
 		);
 		this.job = job;
+	}
+
+	override toJSON(): any {
+		return MERGE(
+			super.toJSON(),
+			{
+				"job": this.job.toJSON(),
+			}
+		);
 	}
 }
