@@ -151,6 +151,7 @@ import { BillingReportLicenseBreakdown } from "./Billing/Report/BillingReportLic
 import { BillingReportServiceBreakdown } from "./Billing/Report/BillingReportServiceBreakdown";
 import { BillingReportStatus } from "./Billing/Report/BillingReportStatus";
 import { BillingReportSummary } from "./Billing/Report/BillingReportSummary";
+import { ColourStyle } from "./Companies/ColourStyle";
 import { Company } from "./Companies/Company";
 import { CompanyDirectory } from "./Companies/CompanyDirectory";
 import { CompanyGeneral } from "./Companies/CompanyGeneral";
@@ -164,7 +165,64 @@ import { PasswordExpiryMode } from "./Companies/PasswordExpiryMode";
 import { PasswordPolicy } from "./Companies/PasswordPolicy";
 import { SessionMultiUser } from "./Companies/SessionMultiUser";
 import { SessionPolicy } from "./Companies/SessionPolicy";
-import { ASSETS, BEHAVIOUR_LOGS, BEHAVIOUR_SCRIPTS, BEHAVIOURS, BILLING_LICENSES, BILLING_PROFILES, BILLING_REPORTS, BILLING_RULES, COMPANIES, CONTACTS, DISPATCH_JOBS, DISPATCH_TASKS, DOCUMENTS, FORM_RESULTS, FORM_TEMPLATES, GROUPS, ICONS, MACHINES, MAINTENANCE_JOBS, MAINTENANCE_SCHEDULES, MESSAGES, PICTURES, PLACES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATION_TYPES, PROVIDER_CONFIGURATIONS, PROVIDER_SCRIPTS, PROVIDERS, REPORT_RESULTS, REPORT_SCHEDULES, REPORT_TEMPLATES, SESSIONS, USERS } from "./Storage";
+import { DispatchDirection } from "./Dispatch/DispatchDirection";
+import { DispatchJob } from "./Dispatch/DispatchJob";
+import { DispatchJobPriority } from "./Dispatch/DispatchJobPriority";
+import { DispatchStep } from "./Dispatch/DispatchStep";
+import { DispatchStepState } from "./Dispatch/DispatchStepState";
+import { DispatchStepStatus } from "./Dispatch/DispatchStepStatus";
+import { DispatchTask } from "./Dispatch/DispatchTask";
+import { DispatchTaskStatus } from "./Dispatch/DispatchTaskStatus";
+import { Document } from "./Hosting/Document";
+import { FormFieldAttachments } from "./Hosting/Fields/FormFieldAttachments";
+import { FormFieldBase } from "./Hosting/Fields/FormFieldBase";
+import { FormFieldBoolean } from "./Hosting/Fields/FormFieldBoolean";
+import { FormFieldChoice } from "./Hosting/Fields/FormFieldChoice";
+import { FormFieldDate } from "./Hosting/Fields/FormFieldDate";
+import { FormFieldNumeric } from "./Hosting/Fields/FormFieldNumeric";
+import { FormFieldNumericSize } from "./Hosting/Fields/FormFieldNumericSize";
+import { FormFieldSignature } from "./Hosting/Fields/FormFieldSignature";
+import { FormFieldText } from "./Hosting/Fields/FormFieldText";
+import { FormFieldTime } from "./Hosting/Fields/FormFieldTime";
+import { FormFieldTimezone } from "./Hosting/Fields/FormFieldTimezone";
+import { FormFieldType } from "./Hosting/FormFieldType";
+import { FormResult } from "./Hosting/FormResult";
+import { FormTemplate } from "./Hosting/FormTemplate";
+import {
+    ASSETS,
+    BEHAVIOUR_LOGS,
+    BEHAVIOUR_SCRIPTS,
+    BEHAVIOURS,
+    BILLING_LICENSES,
+    BILLING_PROFILES,
+    BILLING_REPORTS,
+    BILLING_RULES,
+    COMPANIES,
+    CONTACTS,
+    DISPATCH_JOBS,
+    DISPATCH_TASKS,
+    DOCUMENTS,
+    FORM_RESULTS,
+    FORM_TEMPLATES,
+    GROUPS,
+    ICONS,
+    MACHINES,
+    MAINTENANCE_JOBS,
+    MAINTENANCE_SCHEDULES,
+    MESSAGES,
+    PICTURES,
+    PLACES,
+    PROVIDER_CONFIGS,
+    PROVIDER_CONFIGURATION_TYPES,
+    PROVIDER_CONFIGURATIONS,
+    PROVIDER_SCRIPTS,
+    PROVIDERS,
+    REPORT_RESULTS,
+    REPORT_SCHEDULES,
+    REPORT_TEMPLATES,
+    SESSIONS,
+    USERS,
+} from "./Storage";
 
 const version = (5.01);
 
@@ -316,6 +374,7 @@ export default {
     //#endregion Coordinates and geography
 
     //#region Company
+    ColourStyle,
     Company,
     CompanyGeneral,
     CompanyDirectory,
@@ -437,10 +496,31 @@ export default {
     BillingReportSummary,
     //#endregion Billing
     //#region Dispatch
-    
+    DispatchDirection,
+    DispatchJob,
+    DispatchJobPriority,
+    DispatchStep,
+    DispatchStepState,
+    DispatchStepStatus,
+    DispatchTask,
+    DispatchTaskStatus,
     //#endregion Dispatch
     //#region Hosting
-    
+    Document,
+    FormResult,
+    FormTemplate,
+    FormFieldType,
+    FormFieldBase,
+    FormFieldAttachments,
+    FormFieldBoolean,
+    FormFieldChoice,
+    FormFieldDate,
+    FormFieldNumeric,
+    FormFieldNumericSize,
+    FormFieldSignature,
+    FormFieldText,
+    FormFieldTime,
+    FormFieldTimezone,
     //#endregion Hosting
     //#region Images
     
