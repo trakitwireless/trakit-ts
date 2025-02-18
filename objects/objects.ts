@@ -266,6 +266,29 @@ import { ProviderGeofenceCircular } from "./Providers/Configuration/ProviderGeof
 import { ProviderGeofencePoint } from "./Providers/Configuration/ProviderGeofencePoint";
 import { ProviderGeofencePolygon } from "./Providers/Configuration/ProviderGeofencePolygon";
 import { ProviderGeofenceRectangle } from "./Providers/Configuration/ProviderGeofenceRectangle";
+import { ReportResult } from "./Reports/ReportResult";
+import { ReportResultData } from "./Reports/ReportResultData";
+import { ReportTemplate } from "./Reports/ReportTemplate";
+import { ReportSchedule } from "./Reports/ReportSchedule";
+import { ReportBreakdown } from "./Reports/ReportBreakdown";
+import { ReportBreakdownJob } from "./Reports/ReportBreakdownJob";
+import { ReportBreakdownMessage } from "./Reports/ReportBreakdownMessage";
+import { ReportBreakdownTask } from "./Reports/ReportBreakdownTask";
+import { ReportDataTotal } from "./Reports/ReportDataTotal";
+import { ReportFilterMode } from "./Reports/ReportFilterMode";
+import { ReportNotifications } from "./Reports/ReportNotifications";
+import { ReportOptions } from "./Reports/ReportOptions";
+import { ReportParameter } from "./Reports/ReportParameter";
+import { ReportParameterType } from "./Reports/ReportParameterType";
+import { ReportRecurrence } from "./Reports/ReportRecurrence";
+import { ReportRecurrenceType } from "./Reports/ReportRecurrenceType";
+import { ReportScorecard } from "./Reports/ReportScorecard";
+import { ReportScorecardParameter } from "./Reports/ReportScorecardParameter";
+import { ReportScorecardRules } from "./Reports/ReportScorecardRules";
+import { ReportStatus } from "./Reports/ReportStatus";
+import { ReportSummary } from "./Reports/ReportSummary";
+import { ReportSummaryReason } from "./Reports/ReportSummaryReason";
+import { ReportType } from "./Reports/ReportType";
 
 const version = (5.01);
 
@@ -617,6 +640,28 @@ export default {
     ProviderGeofenceRectangle,
     //#endregion Providers
     //#region Reports
-    
+    ReportResult,
+    ReportResultData,
+    ReportSchedule,
+    ReportTemplate,
+    ReportBreakdown,
+    ReportBreakdownJob,
+    ReportBreakdownMessage,
+    ReportBreakdownTask,
+    ReportDataTotal,
+    ReportFilterMode,
+    ReportNotifications,
+    ReportOptions,
+    ReportParameter,
+    ReportParameterType,
+    ReportRecurrence,
+    ReportRecurrenceType,
+    ReportScorecard,
+    ReportScorecardParameter,
+    ReportScorecardRules,
+    ReportStatus,
+    ReportSummary,
+    ReportSummaryReason,
+    ReportType,
     //#endregion Reports
 };

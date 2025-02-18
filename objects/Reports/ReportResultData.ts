@@ -11,9 +11,9 @@ export class ReportResultData
 	/**
 	 * Grouped events form a summary instance, and contain information about the starting, ending, and number of the grouped events.
 	 */
-	summary: Map<ulong, ReportSummary[]>;
+	summary: Map<ulong, ReportSummary[]> = new Map;
 	/**
 	 * Individual events about the targeted assets used to calculate the results of the report.
 	 */
-	breakdown: Map<ulong, ReportBreakdown[]>;
+	breakdown: Map<ulong, ReportBreakdown[]> = new Map;
 }

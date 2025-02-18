@@ -1,4 +1,5 @@
-﻿import { uint, ulong } from "../API/Types";
+﻿import { ID } from "../API/Functions";
+import { uint, ulong } from "../API/Types";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 
@@ -21,9 +22,23 @@ export class ReportBreakdown {
 	/**
 	 * General Asset information.
 	 */
-	general: AssetGeneral;
+	general: AssetGeneral | null;
 	/**
 	 * Advanced/detailed information used.
 	 */
-	advanced: AssetAdvanced;
+	advanced: AssetAdvanced | null;
+
+	constructor(
+		asset: ulong,
+		instance: uint,
+		summaryInstances: uint[],
+		general?: AssetGeneral | null,
+		advanced?: AssetAdvanced | null
+	) {
+		this.asset = ID(asset);
+		this.instance = ID(instance);
+		this.summaryInstances = summaryInstances?.map(ID) ?? [];
+		this.general = general || null;
+		this.advanced = advanced || null;
+	}
 }
