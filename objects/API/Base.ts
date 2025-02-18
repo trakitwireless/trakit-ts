@@ -10,7 +10,7 @@ export abstract class Base
      * Almost all objects can be constructed using a simple JSON object.
      * @param json 
      */
-    constructor(json: any = null) {
+    constructor(json?: any | null) {
         if (json) this.fromJSON(json);
     }
 

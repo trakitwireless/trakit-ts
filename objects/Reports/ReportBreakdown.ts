@@ -10,15 +10,15 @@ export class ReportBreakdown {
 	/**
 	 * The asset to which this event data belongs.
 	 */
-	asset: ulong = NaN;
+	asset: ulong;
 	/**
 	 * Report specific identifier of the event data.
 	 */
-	instance: uint = NaN;
+	instance: uint;
 	/**
 	 * Identifiers of the summary instances that used this event.
 	 */
-	summaryInstances: uint[] = [];
+	summaryInstances: uint[];
 	/**
 	 * General Asset information.
 	 */
@@ -29,9 +29,9 @@ export class ReportBreakdown {
 	advanced: AssetAdvanced | null;
 
 	constructor(
-		asset: ulong,
-		instance: uint,
-		summaryInstances: uint[],
+		asset?: ulong,
+		instance?: uint,
+		summaryInstances?: uint[],
 		general?: AssetGeneral | null,
 		advanced?: AssetAdvanced | null
 	) {

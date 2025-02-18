@@ -45,15 +45,7 @@ export function IPoint_clone(dot: IPoint): IPoint {
 /**
  * A boundary on a flat surface based on a centre point and a radius.
  */
-export interface IRadial {
-	/**
-	 * Left coordinate.
-	 */
-	x: number;
-	/**
-	 * Top coordinate.
-	 */
-	y: number;
+export interface IRadial extends IPoint {
 	/**
 	 * Radius.
 	 */
@@ -65,7 +57,7 @@ export interface IRadial {
  */
 export type RadialExpansion = IPoint
 	| IRadial
-	| (IPoint | IRadial | RadialExpansion)[];
+	| RadialExpansion[];
 
 /**
  * Returns true if the given radial conforms to the {@link IRadial} interface.
@@ -73,9 +65,8 @@ export type RadialExpansion = IPoint
  * @returns 
  */
 export function IRadial_instanceOf(radial: any): radial is IRadial {
-	return !!radial
-		&& IS_NUMBER(radial.width)
-		&& IS_NUMBER(radial.height);
+	return IS_NUMBER(radial?.r)
+		&& IPoint_instanceOf(radial);
 }
 /**
  * 
@@ -144,7 +135,8 @@ export function IRectangle_clone(rect: IRectangle): IRectangle {
  */
 export type RectangleExpansion = IPoint
 	| IRectangle
-	| (IPoint | IRectangle | RectangleExpansion)[];
+	| IRadial
+	| RectangleExpansion[];
 //#endregion Rectangle
 
 //#region Size

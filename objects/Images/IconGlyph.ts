@@ -30,37 +30,37 @@ export class IconGlyph
 	/**
 	 * A list of codified status tag names.  Any of the tags must be applied to the asset for the image to appear.
 	 */
-	tags: codified[] = [];
+	tags: codified[];
 	/**
 	 * Path to the image.
 	 */
-	src: string = "";
+	src: string;
 	/**
 	 * Size of the glyph in pixels.
 	 */
-	size: Size = new Size(0, 0);
+	size: Size;
 	/**
 	 * The offset from the lat/long in pixels.
 	 */
-	anchor: Point = new Point(0, 0);
+	anchor: Point;
 	/**
 	 * The layer on which this glyph is displayed.
 	 */
-	layer: IconLayer = IconLayer.markers;
+	layer: IconLayer;
 	/**
 	 * The z-order of this glyph compared to other glyphs on the same layer.
 	 */
-	zIndex: ushort = NaN;
+	zIndex: ushort;
 	/**
 	 * Indicates that this glyph rotate based on GPS bearing.
 	 */
-	rotates: boolean = false;
+	rotates: boolean;
 
 	constructor(
 		tags?: codified[],
 		src?: string,
-		size?: Size | ISize,
-		anchor?: Point | IPoint,
+		size?: ISize,
+		anchor?: IPoint,
 		layer?: IconLayer,
 		zIndex?: ushort,
 		rotates?: boolean

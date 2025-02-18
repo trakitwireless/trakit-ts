@@ -202,5 +202,5 @@ export function ILatLngBounds_clone(box: ILatLngBounds): ILatLngBounds {
  */
 export type LatLngBoundsExpansion = ILatLng
 	| ILatLngBounds
-	| (ILatLng | ILatLngBounds | LatLngBoundsExpansion)[];
+	| LatLngBoundsExpansion[];
 //#endregion LatLngBounds

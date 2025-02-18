@@ -18,11 +18,11 @@ export class ProviderGeofenceRectangle
 	/**
 	 * The smallest possible diameter for this geofence.
 	 */
-	maxLength: uint = NaN;
+	maxLength: uint;
 	/**
 	 * The smallest possible diameter for this geofence.
 	 */
-	maxWidth: uint = NaN;
+	maxWidth: uint;
 
 	constructor(
 		maxGeofenceCount?: uint,

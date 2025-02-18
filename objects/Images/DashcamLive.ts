@@ -38,21 +38,21 @@ export class DashcamLive
 	/**
 	 * Timestamp of this live camera image.
 	 */
-	dts: Date = DATE();
+	dts: Date;
 
 	constructor(
-		bytes: ulong,
-		size: Size,
-		provider: string,
-		company: ulong,
-		asset: ulong,
-		camera: byte,
-		latitude: double,
-		longitude: double,
-		speed: double,
-		heading: double,
-		altitude: double,
-		dts: Date | string | number
+		bytes?: ulong,
+		size?: Size,
+		provider?: string,
+		company?: ulong,
+		asset?: ulong,
+		camera?: byte,
+		latitude?: double,
+		longitude?: double,
+		speed?: double,
+		heading?: double,
+		altitude?: double,
+		dts?: Date | string | number
 	) {
 		super(
 			bytes,

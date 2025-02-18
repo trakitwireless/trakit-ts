@@ -1,15 +1,14 @@
 ﻿import { FLOAT } from "../API/Constants";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { ID, JSON_NUMBER } from "../API/Functions";
 import { Size } from "../API/Geometry/Size";
-import { IBelongBillingProfile } from "../API/Interfaces/IBelongBillingProfile";
-import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
-import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { INamed } from "../API/Interfaces/INamed";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { byte, double, ulong } from "../API/Types";
+import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
+import { Provider } from "../Providers/Provider";
+import { ASSETS, COMPANIES, PROVIDERS } from "../Storage";
 
 /**
  * A base class for Dashcam meta-data.
@@ -19,7 +18,7 @@ export abstract class DashcamBase
 	/**
 	 * Number bytes in the dashcam media file.
 	 */
-	bytes: ulong = NaN;
+	bytes: ulong;
 	/**
 	 * Resolution defined in pixels.
 	 */
@@ -28,69 +27,69 @@ export abstract class DashcamBase
 	 * Unique identifier of the provider that sent the data.
 	 * {@link Provider.id}
 	 */
-	providerId: string = "";
+	providerId: string;
 	/**
 	 * Unique identifier of the provider that sent the data.
 	 * {@link Provider.id}
 	 */
-	provider: string = "";
+	get provider(): Provider { return PROVIDERS.get(this.providerId) as Provider; }
 	/**
 	 * Unique identifier of the company of the provider.
 	 * {@link Company.id}
 	 */
-	companyId: ulong = NaN;
+	companyId: ulong;
 	/**
 	 * Unique identifier of the company of the provider.
 	 * {@link Company.id}
 	 */
-	company: ulong = NaN;
+	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * Unique identifier of the asset tied to the provider at the time.
 	 * {@link Asset.id}
 	 */
-	assetId: ulong = NaN;
+	assetId: ulong;
 	/**
 	 * Unique identifier of the asset tied to the provider at the time.
 	 * {@link Asset.id}
 	 */
-	asset: ulong = NaN;
+	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
 	 * Number assigned to the camera that took the image/video.
 	 */
-	camera: byte = NaN;
+	camera: byte;
 	/**
 	 * Latitude of the start of the resource.
 	 */
-	latitude: double = NaN;
+	latitude: double;
 	/**
 	 * Longitude of the start of the resource.
 	 */
-	longitude: double = NaN;
+	longitude: double;
 	/**
 	 * Speed of the start of the resource.
 	 */
-	speed: double = NaN;
+	speed: double;
 	/**
 	 * Heading of the start of the resource.
 	 */
-	heading: double = NaN;
+	heading: double;
 	/**
 	 * Altitude of the start of the resource.
 	 */
-	altitude: double = NaN;
+	altitude: double;
 
 	constructor(
-		bytes: ulong,
-		size: Size,
-		provider: string,
-		company: ulong,
-		asset: ulong,
-		camera: byte,
-		latitude: double,
-		longitude: double,
-		speed: double,
-		heading: double,
-		altitude: double
+		bytes?: ulong,
+		size?: Size,
+		provider?: string,
+		company?: ulong,
+		asset?: ulong,
+		camera?: byte,
+		latitude?: double,
+		longitude?: double,
+		speed?: double,
+		heading?: double,
+		altitude?: double
 	) {
 		this.bytes = ID(bytes);
 		this.size = size || new Size(0, 0);

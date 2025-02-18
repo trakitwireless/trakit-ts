@@ -1,5 +1,5 @@
 ﻿
-import { ABS, } from '../Constants';
+import { ABS, FLOAT, } from '../Constants';
 import {
 	IS_AN,
 	IS_NUMBER,
@@ -9,6 +9,7 @@ import {
 import {
 	IPoint,
 	IPoint_instanceOf,
+	IRadial_instanceOf,
 	IRectangle,
 	IRectangle_instanceOf,
 	RectangleExpansion,
@@ -37,28 +38,28 @@ export class Rectangle implements IRectangle {
 			hasBottom = IS_AN(rectangle.bottom),
 			hasWidth = IS_AN(rectangle.width),
 			hasHeight = IS_AN(rectangle.height);
-		return new Rectangle({
-			"left": hasLeft
+		return new Rectangle(
+			hasLeft
 				? rectangle.left
 				: hasRight && hasWidth
 					? rectangle.right - rectangle.width
 					: NaN,
-			"top": hasTop
+			hasTop
 				? rectangle.top
 				: hasBottom && hasHeight
 					? rectangle.bottom - rectangle.height
 					: NaN,
-			"right": hasRight
+			hasRight
 				? rectangle.right
 				: hasLeft && hasWidth
 					? rectangle.left + rectangle.width
 					: NaN,
-			"bottom": hasBottom
+			hasBottom
 				? rectangle.bottom
 				: hasTop && hasHeight
 					? rectangle.top + rectangle.height
 					: NaN,
-		});
+		);
 	}
 
 	/**
@@ -86,8 +87,21 @@ export class Rectangle implements IRectangle {
 	 */
 	get height(): number { return this.bottom - this.top; }
 
-	constructor(...args: RectangleExpansion[]) {
-		this.__expander(args);
+	constructor(
+		left?: number | RectangleExpansion,
+		top?: number | RectangleExpansion,
+		right?: number | RectangleExpansion,
+		bottom?: number | RectangleExpansion
+	)
+	constructor(...args: (number | undefined | RectangleExpansion)[]) {
+		if (IS_AN(args[0]) && IS_AN(args[1]) && IS_AN(args[2]) && IS_AN(args[3])) {
+			this.left = FLOAT(args[0] as any);
+			this.top = FLOAT(args[1] as any);
+			this.right = FLOAT(args[2] as any);
+			this.bottom = FLOAT(args[3] as any);
+		} else {
+			this.__expander(args as RectangleExpansion[]);
+		}
 	}
 
 	/**
@@ -226,16 +240,17 @@ export class Rectangle implements IRectangle {
 	private __expander(object: RectangleExpansion) {
 		if (object instanceof Array) {
 			object.forEach(this.__expander, this);
+		} else if (IRadial_instanceOf(object)) {
+			this.__expander({ x: object.x + object.r, y: object.y + object.r });
+			this.__expander({ x: object.x - object.r, y: object.y - object.r });
 		} else if (IPoint_instanceOf(object)) {
 			if (object.y < this.top || !IS_AN(this.top)) this.top = object.y;
 			if (object.x < this.left || !IS_AN(this.left)) this.left = object.x;
 			if (object.x > this.right || !IS_AN(this.right)) this.right = object.x;
 			if (object.y > this.bottom || !IS_AN(this.bottom)) this.bottom = object.y;
 		} else if (IRectangle_instanceOf(object)) {
-			if (object.top < this.top || !IS_AN(this.top)) this.top = object.top;
-			if (object.left < this.left || !IS_AN(this.left)) this.left = object.left;
-			if (object.right > this.right || !IS_AN(this.right)) this.right = object.right;
-			if (object.bottom > this.bottom || !IS_AN(this.bottom)) this.bottom = object.bottom;
+			this.__expander({ x: object.left, y: object.top });
+			this.__expander({ x: object.right, y: object.bottom });
 		}
 	}
 	/**

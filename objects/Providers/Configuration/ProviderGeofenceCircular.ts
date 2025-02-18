@@ -21,11 +21,11 @@ export class ProviderGeofenceCircular
 	/**
 	 * The smallest possible radius for this geofence.
 	 */
-	minRadius: uint = NaN;
+	minRadius: uint;
 	/**
 	 * The largest possible radius for this geofence.
 	 */
-	maxRadius: uint = NaN;
+	maxRadius: uint;
 	
 	constructor(
 		maxGeofenceCount?: uint,

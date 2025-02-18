@@ -1,4 +1,5 @@
-﻿import { Point } from "../API/Geometry/Point";
+﻿import { IPoint } from "../API/Geometry/Interfaces";
+import { Point } from "../API/Geometry/Point";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { colour } from "../API/Types";
 
@@ -22,18 +23,18 @@ export class IconLabel
 	/**
 	 * The offset from the lat/long in pixels.
 	 */
-	anchor: Point = new Point(0, 0);
+	anchor: Point;
 	/**
 	 * Determines which corner of the label is attached to the anchor.
 	 */
-	align: string = "";
+	align: string;
 	/**
 	 * Background colour of the label.
 	 */
-	colour: colour = "";
+	colour: colour;
 
 	constructor(
-		anchor?: Point,
+		anchor?: IPoint,
 		align?: string,
 		colour?: colour
 	) {

@@ -35,11 +35,11 @@ export class Session
 	/**
 	 * A "handle" identifying a resource.
 	 */
-	handle: string = "";
+	handle: string;
 	/**
 	 * Getter shortcut for the {@link User}'s {@link Company.id}.
 	 */
-	companyId: ulong = NaN;
+	companyId: ulong;
 	/**
 	 * The company to which this contact belongs
 	 * {@link Company.id}
@@ -48,42 +48,42 @@ export class Session
 	/**
 	 * The IP address of the {@link User} last used to connect using this session.
 	 */
-	ipAddress: string = "";
+	ipAddress: string;
 	/**
 	 *  <c>UserAgent</c> identification string
 	 */
-	userAgent: string = "";
+	userAgent: string;
 	/**
 	 * The IP address the user last used to connect 
 	/**
 	 * The number of currently connected WebSocket clients.
 	 */
-	sockets: int = NaN;
+	sockets: int;
 	/**
 	 * The {@link User} to which the {@link Session} belongs.
 	 * {@link User.login}
 	 */
-	login: string = "";
+	login: string;
 	/**
 	 * This {@link Session}'s current state.
 	 */
-	status: SessionStatus = SessionStatus.notFound;
+	status: SessionStatus;
 	/**
 	 * The timestamp from the moment this {@link Session} was created.
 	 */
-	created: Date = DATE();
+	created: Date;
 	/**
 	 * A timestamp for when the {@link RespSession} will expire.
 	 */
-	expiry: Date = DATE();
+	expiry: Date;
 	/**
 	 * The name or path of the last command executed.
 	 */
-	lastCommand: string = "";
+	lastCommand: string;
 	/**
 	 * A timestamp from the last command or call to the system.
 	 */
-	lastActivity: Date = DATE();
+	lastActivity: Date;
 	/**
 	 * Indicator that this {@link Session} is using at least one WebSocket connection.
 	 */
@@ -114,9 +114,9 @@ export class Session
 		this.lastCommand = lastCommand|| "";
 		this.sockets = ID(sockets) || 0;
 	}
+
 	/**
 	 * 
-	 * @returns 
 	 */
 	toJSON() {
 		return {

@@ -1,4 +1,7 @@
-﻿import { DispatchJob } from "../Dispatch/DispatchJob";
+﻿import { uint, ulong } from "../API/Types";
+import { AssetAdvanced } from "../Assets/AssetAdvanced";
+import { AssetGeneral } from "../Assets/AssetGeneral";
+import { DispatchJob } from "../Dispatch/DispatchJob";
 import { ReportBreakdown } from "./ReportBreakdown";
 
 /**
@@ -10,4 +13,22 @@ export class ReportBreakdownJob
 	 * The Job used.
 	 */
 	job: DispatchJob;
+
+	constructor(
+		job: DispatchJob,
+		asset?: ulong,
+		instance?: uint,
+		summaryInstances?: uint[],
+		general?: AssetGeneral | null,
+		advanced?: AssetAdvanced | null
+	) {
+		super(
+			asset,
+			instance,
+			summaryInstances,
+			general,
+			advanced
+		);
+		this.job = job;
+	}
 }

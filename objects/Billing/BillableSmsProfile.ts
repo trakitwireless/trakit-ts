@@ -8,6 +8,10 @@ import { double, uint } from "../API/Types";
  */
 export class BillableSmsProfile
 	implements ISerializable {
+	/**
+	 * 
+	 * @param json 
+	 */
 	static fromJSON(json: any) {
 		return new BillableSmsProfile(
 			json["limit"],

@@ -23,7 +23,7 @@ export class ReportScorecardParameter
 	/**
 	 * Type of exception, example speeding, idling, etc.
 	 */
-	condition: string = "";
+	condition: string;
 	/**
 	 * Threshold per instance. If the threshold is 0, each instance is used in the calculation
 	 */
@@ -31,7 +31,7 @@ export class ReportScorecardParameter
 	/**
 	 * Points applied against the base score per instance
 	 */
-	points: double = NaN;
+	points: double;
 
 	constructor(
 		condition?: string,

@@ -31,7 +31,7 @@ export class Permission
 	 * The {@link Company} that this permission targets.
 	 * {@link Company.id}
 	 */
-	companyId: ulong = NaN;
+	companyId: ulong;
 	/**
 	 * The company to which this contact belongs
 	 */
@@ -39,7 +39,7 @@ export class Permission
 	/**
 	 * The type of permission.
 	 */
-	kind: PermissionType = PermissionType.companyGeneral;
+	kind: PermissionType;
 	/**
 	 * The kind of permission.
 	 * @deprecated Use {@link kind} instead.
@@ -54,15 +54,15 @@ export class Permission
 	/**
 	 * The level of access being defined.
 	 */
-	level: PermissionLevel = PermissionLevel.read;
+	level: PermissionLevel;
 	/**
 	 * The way the access is used.
 	 */
-	method: PermissionMethod = PermissionMethod.grant;
+	method: PermissionMethod;
 	/**
 	 * Codified names of {@link LabelStyle}s.  If list is empty, this permission applies for all labels.
 	 */
-	labels: codified[] = [];
+	labels: codified[];
 
 	constructor(
 		company?: ulong,
@@ -72,9 +72,9 @@ export class Permission
 		labels?: codified[] | null
 	) {
 		this.companyId = ID(company);
-		this.kind = PermissionType[kind as PermissionType] || PermissionType.companyGeneral;
-		this.level = PermissionLevel[level];
-		this.method = PermissionMethod[method];
+		this.kind = PermissionType[kind as PermissionType];
+		this.level = PermissionLevel[level] || PermissionLevel.read;
+		this.method = PermissionMethod[method] || PermissionMethod.grant;
 		this.labels = labels || [];
 	}
 

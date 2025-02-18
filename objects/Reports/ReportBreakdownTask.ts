@@ -1,4 +1,7 @@
-﻿import { DispatchTask } from "../Dispatch/DispatchTask";
+﻿import { uint, ulong } from "../API/Types";
+import { AssetAdvanced } from "../Assets/AssetAdvanced";
+import { AssetGeneral } from "../Assets/AssetGeneral";
+import { DispatchTask } from "../Dispatch/DispatchTask";
 import { ReportBreakdown } from "./ReportBreakdown";
 
 /**
@@ -10,4 +13,22 @@ export class ReportBreakdownTask
 	 * The Task used.
 	 */
 	task: DispatchTask;
+	
+	constructor(
+		task: DispatchTask,
+		asset?: ulong,
+		instance?: uint,
+		summaryInstances?: uint[],
+		general?: AssetGeneral | null,
+		advanced?: AssetAdvanced | null
+	) {
+		super(
+			asset,
+			instance,
+			summaryInstances,
+			general,
+			advanced
+		);
+		this.task = task;
+	}
 }

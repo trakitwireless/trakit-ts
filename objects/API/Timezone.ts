@@ -44,7 +44,12 @@ export class Timezone
 	 */
 	dst: boolean;
 
-	constructor(code: string, name: string, offset: short, dst: boolean) {
+	constructor(
+		code: string,
+		name: string,
+		offset: short,
+		dst: boolean
+	) {
 		this.code = code;
 		this.name = name;
 		this.offset = offset;

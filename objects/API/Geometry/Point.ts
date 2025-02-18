@@ -10,15 +10,16 @@ import {
 	POINT_ANGLE,
 } from './Functions';
 import { Radial, } from './Radial';
+import { ISerializable } from '../Interfaces/ISerializable';
 
 /**
  * A coordinate on a flat surface.
  */
-export class Point implements IPoint {
+export class Point
+	implements IPoint, ISerializable {
 	/**
 	 * Returns a new {@link Radial} from the given object.
 	 * @param json	
-	 * @returns 
 	 */
 	static fromJSON(json: any): Point {
 		return new Point(

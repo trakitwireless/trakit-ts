@@ -49,17 +49,17 @@ export class Dashcam
 	/**
 	 * For {@link DashcamMediaType.video} media files, this indicates the frames-per-second.
 	 */
-	fps: single = NaN;
+	fps: single;
 	/**
 	 * Timestamp of when this resource started.
 	 * For {@link DashcamMediaType.image} media files, the start and end are the same.
 	 */
-	start: Date = DATE();
+	start: Date;
 	/**
 	 * Timestamp of when this resource ended.
 	 * For {@link DashcamMediaType.image} media files, the start and end are the same.
 	 */
-	end: Date = DATE();
+	end: Date;
 	/**
 	 * For {@link DashcamMediaType.video} media files, the duration of the video clip.
 	 */
@@ -67,26 +67,26 @@ export class Dashcam
 	/**
 	 * The reason why we're saving this image/video. Or the event name that triggered it.
 	 */
-	eventName: string = "";
+	eventName: string;
 
 	constructor(
-		bytes: ulong,
-		size: Size,
-		provider: string,
-		company: ulong,
-		asset: ulong,
-		camera: byte,
-		latitude: double,
-		longitude: double,
-		speed: double,
-		heading: double,
-		altitude: double,
-		guid: guid,
-		kind: DashcamMediaType,
-		fps: single = NaN,
-		start: Date | string | number,
-		end: Date | string | number,
-		eventName: string
+		bytes?: ulong,
+		size?: Size,
+		provider?: string,
+		company?: ulong,
+		asset?: ulong,
+		camera?: byte,
+		latitude?: double,
+		longitude?: double,
+		speed?: double,
+		heading?: double,
+		altitude?: double,
+		guid?: guid,
+		kind?: DashcamMediaType,
+		fps?: single,
+		start?: Date | string | number,
+		end?: Date | string | number,
+		eventName?: string
 	) {
 		super(
 			bytes,
@@ -101,8 +101,8 @@ export class Dashcam
 			heading,
 			altitude
 		);
-		this.guid = guid;
-		this.kind = DashcamMediaType[kind] || DashcamMediaType.unknown;
+		this.guid = guid || "";
+		this.kind = DashcamMediaType[kind as DashcamMediaType] || DashcamMediaType.unknown;
 		this.fps = FLOAT(fps as any);
 		this.start = DATE(start);
 		this.end = DATE(end);

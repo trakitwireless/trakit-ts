@@ -26,7 +26,7 @@ export class MaintenanceInterval
 	 * The Vehicle or Trailer to which this recurrence detail belongs.
 	 * {@link Asset.id}
 	 */
-	assetId: ulong = NaN;
+	assetId: ulong;
 	/**
 	 * The Vehicle or Trailer to which this recurrence detail belongs.
 	 * {@link Asset.id}
@@ -35,19 +35,19 @@ export class MaintenanceInterval
 	/**
 	 * The date of the last calculation.
 	 */
-	date: Date = DATE();
+	date: Date;
 	/**
 	 * The odometer at the time of the last calculation.
 	 */
-	odometer: double = NaN;
+	odometer: double;
 	/**
 	 * The operating time at the time of the last calculation.
 	 */
-	engineHours: double = NaN;
+	engineHours: double;
 	/**
 	 * The last "completed" job related to this schedule interval.
 	 */
-	lastJobId: ulong = NaN;
+	lastJobId: ulong;
 	/**
 	 * The last "completed" job related to this schedule interval.
 	 */

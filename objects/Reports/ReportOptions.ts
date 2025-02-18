@@ -30,11 +30,11 @@ export class ReportOptions
 	/**
 	 * A list of parameters to better shape the results.
 	 */
-	parameters: ReportParameter[] = [];
+	parameters: ReportParameter[];
 	/**
 	 * A targeting expression for including/excluding Assets.
 	 */
-	targets: expression = "";
+	targets: expression;
 	/**
 	 * The mechanism to use for filtering based on places and regions.
 	 */
@@ -42,11 +42,11 @@ export class ReportOptions
 	/**
 	 * A targeting expression for limiting results which only include data from Assets interacting with the targeted Places.
 	 */
-	places: expression = "";
+	places: expression;
 	/**
 	 * A list of provinces and states, where only assets within those regions will be included in the results.
 	 */
-	regions: string[] = [];
+	regions: string[];
 	/**
 	 * Rules used to generate scorecard for this report.
 	 */

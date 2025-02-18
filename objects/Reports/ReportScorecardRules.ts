@@ -23,11 +23,11 @@ export class ReportScorecardRules
 	/**
 	 * Base score for the scorecard.
 	 */
-	baseScore: double = NaN;
+	baseScore: double;
 	/**
 	 * Infraction parameters used to generate the final score
 	 */
-	parameters: ReportScorecardParameter[] = [];
+	parameters: ReportScorecardParameter[];
 
 	constructor(
 		baseScore?: double,

@@ -38,40 +38,40 @@ export class ProviderConfigurationNode
 	/**
 	 * Indicates that this configuration is an advanced property and should only be set by someone who knows what they're doing.
 	 */
-	isAdvanced: boolean = true;
+	isAdvanced: boolean;
 	/**
 	 * Unique identifier of the value being mapped.
 	 */
-	id: string = "";
+	id: string;
 	/**
 	 * The value being set.
 	 */
-	value: any = null;
+	value: any;
 	/**
 	 * The minimum possible value for this confugration node.
 	 */
-	min: any = null;
+	min: any;
 	/**
 	 * The maximum possible value for this confugration node.
 	 */
-	max: any = null;
+	max: any;
 	/**
 	 * Type hint used by the script processor to help format the value.
 	 */
-	type: string = "";
+	type: string;
 	/**
 	 * Unit hint used to help the script processor format the value.
 	 *  <override type="Vorgon.Units" />
 	 */
-	unit: string = "";
+	unit: string;
 	/**
 	 * Description of what this configuration does when mapped to a device.
 	 */
-	notes: string = "";
+	notes: string;
 	/**
 	 * Child configuration nodes.
 	 */
-	nodes: Map<string, ProviderConfigurationNode> = new Map;
+	nodes: Map<string, ProviderConfigurationNode>;
 
 	constructor(
 		id?: string,

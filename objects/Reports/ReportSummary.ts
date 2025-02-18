@@ -40,7 +40,7 @@ export class ReportSummary
 	 * The asset to which this summary instance belongs.
 	 * {@link Asset.id}
 	 */
-	assetId: ulong = NaN;
+	assetId: ulong;
 	/**
 	 * The asset to which this summary instance belongs.
 	 * {@link Asset.id}
@@ -50,19 +50,19 @@ export class ReportSummary
 	 * Code given to this summary instance for an asset.
 	 *  <override max-length="100" />
 	 */
-	stateDetail: string = "";
+	stateDetail: string;
 	/**
 	 * Identifier of the summary instance in the report.
 	 */
-	instance: uint = NaN;
+	instance: uint;
 	/**
 	 * The number of events included in calculating this summary instance.
 	 */
-	instancesCount: uint = NaN;
+	instancesCount: uint;
 	/**
 	 * Date/time stamp of the first event in this summary's sequence.
 	 */
-	startingUtc: Date = DATE();
+	startingUtc: Date;
 	/**
 	 * The reason code that this summary instance began.
 	 */
@@ -70,15 +70,15 @@ export class ReportSummary
 	/**
 	 * Date/time stamp of the last event in this summary's sequence.
 	 */
-	endingUtc: Date = DATE();
+	endingUtc: Date;
 	/**
 	 * The reason code that this summary instance ended.
 	 */
-	endingReason: ReportSummaryReason = ReportSummaryReason.outsideRange;
+	endingReason: ReportSummaryReason;
 	/**
 	 * The distance travelled in kilometres by the asset during this summary instance.
 	 */
-	distance: double = NaN;
+	distance: double;
 	/**
 	 * The amount of time that passed.
 	 */
@@ -86,42 +86,42 @@ export class ReportSummary
 	/**
 	 * A simplified polyline of all the asset's positions in sequence.
 	 */
-	polyline: LatLng[] = [];
+	polyline: LatLng[];
 	/**
 	 * The first asset state which begins this summary instance.
 	 */
-	firstState: Asset;
+	firstState: Asset | null;
 	/**
 	 * The asset state that ended this summary instance.
 	 */
-	lastState: Asset;
+	lastState: Asset | null;
 
 	constructor(
-		asset: ulong,
-		stateDetail: string,
-		instance: uint,
-		instancesCount: uint,
-		startingUtc: Date,
-		startingReason: ReportSummaryReason,
-		endingUtc: Date,
-		endingReason: ReportSummaryReason,
-		distance: double,
-		polyline: LatLng[],
-		firstState: Asset,
-		lastState: Asset
+		asset?: ulong,
+		stateDetail?: string,
+		instance?: uint,
+		instancesCount?: uint,
+		startingUtc?: Date | number | string,
+		startingReason?: ReportSummaryReason,
+		endingUtc?: Date | number | string,
+		endingReason?: ReportSummaryReason,
+		distance?: double,
+		polyline?: LatLng[],
+		firstState?: Asset,
+		lastState?: Asset
 	) {
 		this.assetId = ID(asset);
 		this.stateDetail = stateDetail || "";
 		this.instance = ID(instance);
 		this.instancesCount = ID(instancesCount);
 		this.startingUtc = DATE(startingUtc);
-		this.startingReason = ReportSummaryReason[startingReason] || ReportSummaryReason.outsideRange;
+		this.startingReason = ReportSummaryReason[startingReason as ReportSummaryReason] || ReportSummaryReason.outsideRange;
 		this.endingUtc = DATE(endingUtc);
-		this.endingReason = ReportSummaryReason[endingReason] || ReportSummaryReason.outsideRange;
+		this.endingReason = ReportSummaryReason[endingReason as ReportSummaryReason] || ReportSummaryReason.outsideRange;
 		this.distance = FLOAT(distance as any);
 		this.polyline = [...(polyline || [])];
-		this.firstState = firstState;
-		this.lastState = lastState;
+		this.firstState = firstState || null;
+		this.lastState = lastState || null;
 	}
 
 	toJSON() {
@@ -136,8 +136,8 @@ export class ReportSummary
 			"endingReason": ReportSummaryReason[this.endingReason] || ReportSummaryReason.outsideRange,
 			"distance": JSON_NUMBER(this.distance),
 			"polyline": this.polyline?.map(ARRAY_TO_JSON) ?? [],
-			"firstState": this.firstState,
-			"lastState": this.lastState,
+			"firstState": this.firstState?.toJSON() ?? null,
+			"lastState": this.lastState?.toJSON() ?? null,
 		};
 	}
 }

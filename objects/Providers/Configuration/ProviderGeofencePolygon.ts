@@ -18,7 +18,7 @@ export class ProviderGeofencePolygon
 	/**
 	 * The maximum number of vertices supported by the device.
 	 */
-	maxVertices: uint = NaN;
+	maxVertices: uint;
 
 	constructor(
 		maxGeofenceCount?: uint,

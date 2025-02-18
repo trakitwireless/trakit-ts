@@ -1,4 +1,5 @@
-﻿import { ROUND_TO, } from '../Functions';
+﻿import { FLOAT } from '../Constants';
+import { ROUND_TO, } from '../Functions';
 import {
 	ISize,
 	ISize_instanceOf,
@@ -24,8 +25,8 @@ export class Size implements ISize {
 	height: number;
 
 	constructor(width: number, height: number) {
-		this.width = width;
-		this.height = height;
+		this.width = FLOAT(width as any);
+		this.height = FLOAT(height as any);
 	}
 
 	/**

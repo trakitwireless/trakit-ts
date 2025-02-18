@@ -11,11 +11,13 @@ import {
 import { Point, } from './Point';
 import { Size, } from './Size';
 import { Rectangle, } from './Rectangle';
+import { ISerializable } from '../Interfaces/ISerializable';
 
 /**
  * A boundary on a flat surface based on a centre point and a radius.
  */
-export class Radial implements IRadial, IPoint {
+export class Radial
+	implements IRadial, IPoint, ISerializable {
 	/**
 	 * Returns a new {@link Radial} from the given object.
 	 * @param object	
@@ -41,8 +43,12 @@ export class Radial implements IRadial, IPoint {
 	 */
 	r: number = NaN;
 
-	constructor(x: number, y: number, r: number)
-	constructor(...args: (number | RadialExpansion)[]) {
+	constructor(
+		x?: number,
+		y?: number,
+		r?: number
+	)
+	constructor(...args: (number | undefined | RadialExpansion)[]) {
 		if (IS_AN(args[0]) && IS_AN(args[1]) && IS_AN(args[2])) {
 			this.x = FLOAT(args[0] as any);
 			this.y = FLOAT(args[1] as any);
