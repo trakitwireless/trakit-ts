@@ -1,11 +1,12 @@
-﻿import { byte, codified, ulong } from '../../API/Types';
-import { ARRAY_EXCEPT, ARRAY_INTERSECT, ARRAY_UNIQUE } from '../../API/Arrays';
+﻿import { ARRAY_EXCEPT, ARRAY_INTERSECT, ARRAY_UNIQUE } from '../../API/Arrays';
+import { IS_AN, } from '../../API/Functions';
+import { byte, codified, ulong } from '../../API/Types';
 import { Permission } from './Permission';
-import { PermissionType } from './PermissionType';
+import { PermissionEscalation } from './PermissionEscalation';
+import { PermissionEscalationType } from './PermissionEscalationType';
 import { PermissionLevel } from './PermissionLevel';
 import { PermissionMethod } from './PermissionMethod';
-import { PermissionEscalation, PermissionEscalationType } from './PermissionEscalation';
-import { IS_AN, } from '../../API/Functions';
+import { PermissionType } from './PermissionType';
 
 //#region Computing/Internals
 /**

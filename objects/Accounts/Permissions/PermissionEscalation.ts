@@ -1,20 +1,9 @@
 ﻿import { codified, ulong } from "../../API/Types";
+import { PermissionEscalationState } from "./PermissionEscalationState";
+import { PermissionEscalationType } from "./PermissionEscalationType";
 import { PermissionLevel } from "./PermissionLevel";
 import { PermissionType } from "./PermissionType";
 
-/**
- * Definition for the kinds of permission escalations.
- */
-export enum PermissionEscalationType {
-	/**
-	 * Increase in privileges.
-	 */
-	vertical = "vertical",
-	/**
-	 * Increase in access to an object.
-	 */
-	horizontal = "horizontal",
-}
 /**
  * Used to throw permission escalation exceptions, this is similar to a {@link Permission},
  * but defines a {@link before} and {@link after} for a proposed change.
@@ -56,28 +45,5 @@ export class PermissionEscalation {
 		this.kind = kind;
 		this.after = new PermissionEscalationState(levelAfter, labelsAfter);
 		this.before = new PermissionEscalationState(levelBefore, labelsBefore);
-	}
-}
-
-/**
- * Describes the changes in state that raised the escalation.
- */
-export class PermissionEscalationState {
-	/**
-	 * The level of access defined before the proposed change.
-	 */
-	level: PermissionLevel | null;
-	/**
-	 * Codified names of {@link LabelStyle}s.
-	 * If list is empty, this permission applies for all labels.
-	 */
-	labels: codified[] | null;
-
-	constructor(
-		level?: PermissionLevel | null,
-		labels?: codified[] | null
-	) {
-		this.level = level || null;
-		this.labels = labels || null;
 	}
 }

@@ -28,9 +28,16 @@ import {
     IMPLIED_PERMS,
     LABEL_BASED_PERMS,
 } from './Accounts/Permissions/Authorizer';
+import { Permission } from "./Accounts/Permissions/Permission";
+import { PermissionEscalation } from "./Accounts/Permissions/PermissionEscalation";
+import { PermissionEscalationState } from "./Accounts/Permissions/PermissionEscalationState";
+import { PermissionEscalationType } from "./Accounts/Permissions/PermissionEscalationType";
+import { PermissionLevel } from "./Accounts/Permissions/PermissionLevel";
+import { PermissionMethod } from "./Accounts/Permissions/PermissionMethod";
 import { PermissionType } from "./Accounts/Permissions/PermissionType";
 import { Session } from "./Accounts/Session";
 import { SessionStatus } from "./Accounts/SessionStatus";
+import { SystemsOfUnits } from "./Accounts/SystemsOfUnits";
 import { User } from "./Accounts/User";
 import { UserAdvanced } from "./Accounts/UserAdvanced";
 import { UserGeneral } from "./Accounts/UserGeneral";
@@ -108,7 +115,20 @@ import {
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
 import { TIMEZONE_FIND, } from "./API/Timezones";
-import { COMPANIES, CONTACTS } from "./Storage";
+import { Company } from "./Companies/Company";
+import { CompanyDirectory } from "./Companies/CompanyDirectory";
+import { CompanyGeneral } from "./Companies/CompanyGeneral";
+import { CompanyPolicies } from "./Companies/CompanyPolicies";
+import { CompanyReseller } from "./Companies/CompanyReseller";
+import { CompanyStyles } from "./Companies/CompanyStyles";
+import { LabelStyle } from "./Companies/LabelStyle";
+import { NotificationServerEmail } from "./Companies/NotificationServerEmail";
+import { NotificationServerSms } from "./Companies/NotificationServerSms";
+import { PasswordExpiryMode } from "./Companies/PasswordExpiryMode";
+import { PasswordPolicy } from "./Companies/PasswordPolicy";
+import { SessionMultiUser } from "./Companies/SessionMultiUser";
+import { SessionPolicy } from "./Companies/SessionPolicy";
+import { ASSETS, BEHAVIOUR_LOGS, BEHAVIOUR_SCRIPTS, BEHAVIOURS, BILLING_LICENSES, BILLING_PROFILES, BILLING_REPORTS, BILLING_RULES, COMPANIES, CONTACTS, DISPATCH_JOBS, DISPATCH_TASKS, DOCUMENTS, FORM_RESULTS, FORM_TEMPLATES, GROUPS, ICONS, MACHINES, MAINTENANCE_JOBS, MAINTENANCE_SCHEDULES, MESSAGES, PICTURES, PLACES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATION_TYPES, PROVIDER_CONFIGURATIONS, PROVIDER_SCRIPTS, PROVIDERS, REPORT_RESULTS, REPORT_SCHEDULES, REPORT_TEMPLATES, SESSIONS, USERS } from "./Storage";
 
 const version = (5.01);
 
@@ -116,7 +136,61 @@ export default {
     version,
     storage: {
         companies: COMPANIES,
+    
+        //#region Accounts
         contacts: CONTACTS,
+        machines: MACHINES,
+        users: USERS,
+        userGroups: GROUPS,
+        sessions: SESSIONS,
+        //#endregion Accounts
+        //#region Assets
+        assets: ASSETS,
+        assetMessages: MESSAGES,
+        //#endregion Assets
+        //#region Behaviours
+        behaviours: BEHAVIOURS,
+        behaviourScripts: BEHAVIOUR_SCRIPTS,
+        behaviourLogs: BEHAVIOUR_LOGS,
+        //#endregion Behaviours
+        //#region Billing
+        billingProfiles: BILLING_PROFILES,
+        billingReports: BILLING_REPORTS,
+        billableHostingRules: BILLING_RULES,
+        billableHostingLicenses: BILLING_LICENSES,
+        //#endregion Billing
+        //#region Dispatch
+        dispatchTasks: DISPATCH_TASKS,
+        dispatchJobs: DISPATCH_JOBS,
+        //#endregion Dispatch
+        //#region Hosting
+        documents: DOCUMENTS,
+        formTemplates: FORM_TEMPLATES,
+        formResults: FORM_RESULTS,
+        //#endregion Hosting
+        //#region Images
+        pictures: PICTURES,
+        icons: ICONS,
+        //#endregion Images
+        //#region Maintenance
+        maintenanceSchedules: MAINTENANCE_SCHEDULES,
+        maintenanceJobs: MAINTENANCE_JOBS,
+        //#endregion Maintenance
+        //#region Places
+        places: PLACES,
+        //#endregion Places
+        //#region Providers
+        providers: PROVIDERS,
+        providerScripts: PROVIDER_SCRIPTS,
+        providerConfigs: PROVIDER_CONFIGS,
+        providerConfigurationTypes: PROVIDER_CONFIGURATION_TYPES,
+        providerConfigurations: PROVIDER_CONFIGURATIONS,
+        //#endregion Providers
+        //#region Reports
+        reportTemplates: REPORT_TEMPLATES,
+        reportSchedules: REPORT_SCHEDULES,
+        reportResults: REPORT_RESULTS,
+        //#endregion Reports
     },
 
     //#region Utility, conversion, and encoding functions
@@ -207,6 +281,21 @@ export default {
     StreetAddress,
     //#endregion Coordinates and geography
 
+    //#region Company
+    Company,
+    CompanyGeneral,
+    CompanyDirectory,
+    CompanyPolicies,
+    CompanyStyles,
+    CompanyReseller,
+    PasswordExpiryMode,
+    PasswordPolicy,
+    SessionMultiUser,
+    SessionPolicy,
+    LabelStyle,
+    NotificationServerEmail,
+    NotificationServerSms,
+    //#endregion Company
     //#region Accounts
     // users
     authorizer: {
@@ -255,13 +344,51 @@ export default {
     },
     Contact,
     Machine,
+    NotificationMethod,
+    Permission,
+    PermissionEscalation,
+    PermissionEscalationState,
+    PermissionEscalationType,
+    PermissionLevel,
+    PermissionMethod,
+    PermissionType,
     Session,
     SessionStatus,
+    SystemsOfUnits,
     User,
     UserGeneral,
     UserAdvanced,
     UserGroup,
     UserNotifications,
-    NotificationMethod,
     //#endregion Accounts
+    //#region Assets
+    
+    //#endregion Assets
+    //#region Behaviours
+    
+    //#endregion Behaviours
+    //#region Billing
+    
+    //#endregion Billing
+    //#region Dispatch
+    
+    //#endregion Dispatch
+    //#region Hosting
+    
+    //#endregion Hosting
+    //#region Images
+    
+    //#endregion Images
+    //#region Maintenance
+    
+    //#endregion Maintenance
+    //#region Places
+    
+    //#endregion Places
+    //#region Providers
+    
+    //#endregion Providers
+    //#region Reports
+    
+    //#endregion Reports
 };
