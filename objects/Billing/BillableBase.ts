@@ -1,5 +1,6 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE } from "../API/Functions";
+import { FLOAT } from "../API/Constants";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { IBelongBillingProfile } from "../API/Interfaces/IBelongBillingProfile";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -73,6 +74,38 @@ export abstract class BillableBase
 	 */
 	amount: double = NaN;
 
+	override toJSON(): any {
+		return {
+			"id": this.id || null,
+			"v": this.v,
+			"company": this.companyId,
+			"profile": this.profileId,
+			"name": this.name || "",
+			"notes": this.notes || "",
+			"reference": this.reference || "",
+			"sku": this.sku || "",
+			"start": JSON_DATE(this.start),
+			"end": JSON_DATE(this.end),
+			"amount": JSON_NUMBER(this.amount),
+		};
+	}
+	override fromJSON(json: any, force?: boolean): boolean {
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			this.companyId = ID(json["company"]);
+			this.profileId = ID(json["profile"]);
+			this.name = json["name"] || "";
+			this.notes = json["notes"] || "";
+			this.reference = json["reference"] || "";
+			this.sku = json["sku"] || "";
+			this.start = DATE(json["start"]);
+			this.end = DATE(json["end"]);
+			this.amount = FLOAT(json["amount"]);
+		}
+		return update;
+	}
+	
 	// IRequestable
 	/**
 	 * The {@link id} is the key.

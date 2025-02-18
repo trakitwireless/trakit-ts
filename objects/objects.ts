@@ -136,6 +136,21 @@ import { BehaviourLogType } from "./Behaviours/BehaviourLogType";
 import { BehaviourParameter } from "./Behaviours/BehaviourParameter";
 import { BehaviourParameterType } from "./Behaviours/BehaviourParameterType";
 import { BehaviourScript } from "./Behaviours/BehaviourScript";
+import { BillingCurrency } from "./Billing/BillingCurrency";
+import { BillingCycle } from "./Billing/BillingCycle";
+import { BillingProfile } from "./Billing/BillingProfile";
+import { BillableHostingDiscount } from "./Billing/Hosting/BillableHostingDiscount";
+import { BillableHostingLicense } from "./Billing/Hosting/BillableHostingLicense";
+import { BillableHostingLicenseType } from "./Billing/Hosting/BillableHostingLicenseType";
+import { BillableHostingRule } from "./Billing/Hosting/BillableHostingRule";
+import { BillableHostingType } from "./Billing/Hosting/BillableHostingType";
+import { BillingReport } from "./Billing/Report/BillingReport";
+import { BillingReportBreakdown } from "./Billing/Report/BillingReportBreakdown";
+import { BillingReportHostingSummary } from "./Billing/Report/BillingReportHostingSummary";
+import { BillingReportLicenseBreakdown } from "./Billing/Report/BillingReportLicenseBreakdown";
+import { BillingReportServiceBreakdown } from "./Billing/Report/BillingReportServiceBreakdown";
+import { BillingReportStatus } from "./Billing/Report/BillingReportStatus";
+import { BillingReportSummary } from "./Billing/Report/BillingReportSummary";
 import { Company } from "./Companies/Company";
 import { CompanyDirectory } from "./Companies/CompanyDirectory";
 import { CompanyGeneral } from "./Companies/CompanyGeneral";
@@ -405,7 +420,21 @@ export default {
     BehaviourScript,
     //#endregion Behaviours
     //#region Billing
-    
+    BillableHostingDiscount,
+    BillableHostingLicense,
+    BillableHostingLicenseType,
+    BillableHostingRule,
+    BillableHostingType,
+    BillingCurrency,
+    BillingCycle,
+    BillingProfile,
+    BillingReport,
+    BillingReportBreakdown,
+    BillingReportHostingSummary,
+    BillingReportLicenseBreakdown,
+    BillingReportServiceBreakdown,
+    BillingReportStatus,
+    BillingReportSummary,
     //#endregion Billing
     //#region Dispatch
     
