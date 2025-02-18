@@ -207,6 +207,24 @@ import { AssetMessage } from "./Messaging/AssetMessage";
 import { MessageFolder } from "./Messaging/MessageFolder";
 import { MessageStatus } from "./Messaging/MessageStatus";
 import { MessageType } from "./Messaging/MessageType";
+import { Place } from "./Places/Place";
+import { PlaceType } from "./Places/PlaceType";
+import { ProviderConfig } from "./Providers/Config/ProviderConfig";
+import { ProviderRegistration } from "./Providers/Config/ProviderRegistration";
+import { ProviderScript } from "./Providers/Config/ProviderScript";
+import { ProviderScriptBlock } from "./Providers/Config/ProviderScriptBlock";
+import { ProviderConfiguration } from "./Providers/Configuration/ProviderConfiguration";
+import { ProviderScriptParameter } from "./Providers/Config/ProviderScriptParameter";
+import { ProviderScriptParameterType } from "./Providers/Config/ProviderScriptParameterType";
+import { Provider } from "./Providers/Provider";
+import { ProviderAdvanced } from "./Providers/ProviderAdvanced";
+import { ProviderCommand } from "./Providers/ProviderCommand";
+import { ProviderCommandStatus } from "./Providers/ProviderCommandStatus";
+import { ProviderCommandType } from "./Providers/ProviderCommandType";
+import { ProviderControl } from "./Providers/ProviderControl";
+import { ProviderData } from "./Providers/ProviderData";
+import { ProviderGeneral } from "./Providers/ProviderGeneral";
+import { ProviderType } from "./Providers/ProviderType";
 import {
     ASSETS,
     BEHAVIOUR_LOGS,
@@ -242,6 +260,12 @@ import {
     SESSIONS,
     USERS,
 } from "./Storage";
+import { ProviderConfigurationNode } from "./Providers/Configuration/ProviderConfigurationNode";
+import { ProviderConfigurationType } from "./Providers/Configuration/ProviderConfigurationType";
+import { ProviderGeofenceCircular } from "./Providers/Configuration/ProviderGeofenceCircular";
+import { ProviderGeofencePoint } from "./Providers/Configuration/ProviderGeofencePoint";
+import { ProviderGeofencePolygon } from "./Providers/Configuration/ProviderGeofencePolygon";
+import { ProviderGeofenceRectangle } from "./Providers/Configuration/ProviderGeofenceRectangle";
 
 const version = (5.01);
 
@@ -565,10 +589,32 @@ export default {
     MaintenanceSchedule,
     //#endregion Maintenance
     //#region Places
-    
+    Place,
+    PlaceType,
     //#endregion Places
     //#region Providers
-    
+    Provider,
+    ProviderAdvanced,
+    ProviderData,
+    ProviderGeneral,
+    ProviderControl,
+    ProviderCommand,
+    ProviderCommandStatus,
+    ProviderCommandType,
+    ProviderType,
+    ProviderRegistration,
+    ProviderConfig,
+    ProviderScript,
+    ProviderScriptBlock,
+    ProviderScriptParameter,
+    ProviderScriptParameterType,
+    ProviderConfiguration,
+    ProviderConfigurationNode,
+    ProviderConfigurationType,
+    ProviderGeofenceCircular,
+    ProviderGeofencePoint,
+    ProviderGeofencePolygon,
+    ProviderGeofenceRectangle,
     //#endregion Providers
     //#region Reports
     

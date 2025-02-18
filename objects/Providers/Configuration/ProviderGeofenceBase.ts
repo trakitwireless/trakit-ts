@@ -18,7 +18,7 @@ export abstract class ProviderGeofenceBase
 	 * @param json 
 	 */
 	static fromJSON(json: any) {
-		switch (PlaceType[json["type"]]) {
+		switch (PlaceType[json["type"] as PlaceType]) {
 			case PlaceType.point:
 				return new ProviderGeofencePoint(
 					json["maxGeofenceCount"]
