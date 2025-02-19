@@ -31,6 +31,7 @@ export class ProviderGeneral
 	 * {@link Company.id}
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
+	set company(value: Company) { this.companyId = value?.id ?? NaN; }
 	/**
 	 * A nickname given to the device/hardware.
 	 *  <override max-length="100" />
