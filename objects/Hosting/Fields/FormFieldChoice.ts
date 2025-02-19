@@ -56,7 +56,7 @@ export class FormFieldChoice
 		this.minimum = ID(minimum);
 		this.maximum = ID(maximum);
 	}
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"choices": MAP_TO_OBJECT(this.choices),
 			"minimum": JSON_NUMBER(this.minimum),

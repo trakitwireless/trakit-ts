@@ -51,7 +51,7 @@ export class ProviderConfigurationType
 	 */
 	geofenceTypes: PlaceType[] = [];
 
-	override toJSON(): any {
+	override toJSON() {
 		return {
 			"id": this.id,
 			"v": this.v,

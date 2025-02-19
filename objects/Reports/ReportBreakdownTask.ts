@@ -33,7 +33,7 @@ export class ReportBreakdownTask
 		this.task = task;
 	}
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(
 			super.toJSON(),
 			{

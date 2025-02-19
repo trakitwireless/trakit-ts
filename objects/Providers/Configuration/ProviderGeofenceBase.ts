@@ -60,7 +60,7 @@ export abstract class ProviderGeofenceBase
 		this.maxGeofenceCount = ID(maxGeofenceCount) || 0;
 	}
 
-	toJSON(): any {
+	toJSON() {
 		return {
 			"type": PlaceType[this.type] || null,
 			"maxGeofenceCount": this.maxGeofenceCount || 0

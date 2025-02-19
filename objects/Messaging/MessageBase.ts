@@ -90,7 +90,7 @@ export abstract class MessageBase
 	 */
 	get user(): User { return USERS.get(this.userLogin) as User; }
 
-	override toJSON(): any {
+	override toJSON() {
 		return {
 			"id": this.id || null,
 			"v": this.v,

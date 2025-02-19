@@ -88,7 +88,7 @@ export class FormResult
 	 */
 	getKey(): string { return this.id.toString(); }
 
-	override toJSON(): any {
+	override toJSON() {
 		return {
 			"id": this.id,
 			"company": this.companyId,

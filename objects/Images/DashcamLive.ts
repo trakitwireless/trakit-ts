@@ -70,7 +70,7 @@ export class DashcamLive
 		this.dts = DATE(dts);
 	}
 	
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(
 			super.toJSON(),
 			{

@@ -33,7 +33,7 @@ export class ReportBreakdownMessage
 		this.message = message;
 	}
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(
 			super.toJSON(),
 			{

@@ -12,7 +12,7 @@ export class BillableHostingLicense
 	 */
 	kind: BillableHostingLicenseType = BillableHostingLicenseType.bewhere;
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"kind": BillableHostingLicenseType[this.kind],
 		});

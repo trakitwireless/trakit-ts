@@ -100,7 +100,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * Creates a literal of this {@link LatLngBounds}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): any {
+	toJSON() {
 		this.validate();
 		return {
 			"north": this.north,

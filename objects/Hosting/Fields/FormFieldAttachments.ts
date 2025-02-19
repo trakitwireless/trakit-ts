@@ -50,7 +50,7 @@ export class FormFieldAttachments
 		this.minimum = ID(minimum);
 		this.maximum = ID(maximum);
 	}
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"minimum": JSON_NUMBER(this.minimum),
 			"maximum": JSON_NUMBER(this.maximum),

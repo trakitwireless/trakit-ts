@@ -27,7 +27,7 @@ export abstract class BillableHostingBase
 	 */
 	suspended: boolean = false;
 	
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(
 			super.toJSON(),
 			{

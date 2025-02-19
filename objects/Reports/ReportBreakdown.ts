@@ -116,7 +116,7 @@ export class ReportBreakdown
 		this.advanced = advanced || null;
 	}
 
-	toJSON(): any {
+	toJSON() {
 		return {
 			"asset": JSON_NUMBER(this.assetId),
 			"instance": JSON_NUMBER(this.instance),

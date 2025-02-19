@@ -106,7 +106,7 @@ export abstract class DashcamBase
 	/**
 	 * 
 	 */
-	toJSON(): any {
+	toJSON() {
 		return {
 			"bytes": JSON_NUMBER(this.bytes),
 			"size": this.size?.toJSON() ?? null,

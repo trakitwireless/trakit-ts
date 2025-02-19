@@ -50,7 +50,7 @@ export class FormFieldDate
 		this.minimum = DATE(minimum);
 		this.maximum = DATE(maximum);
 	}
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"minimum": JSON_DATE(this.minimum),
 			"maximum": JSON_DATE(this.maximum),

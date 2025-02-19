@@ -152,7 +152,7 @@ export class DispatchStep
 		this.states = states ?? new Map;
 	}
 
-	toJSON(): any {
+	toJSON() {
 		return {
 			"id": this.id || null,
 			"address": this.address || "",
