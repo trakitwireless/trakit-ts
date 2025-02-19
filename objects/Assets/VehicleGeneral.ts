@@ -38,7 +38,7 @@ export class VehicleGeneral
 	 */
 	colour: string = "";
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"vin": this.vin || "",
 			"plate": this.plate || "",

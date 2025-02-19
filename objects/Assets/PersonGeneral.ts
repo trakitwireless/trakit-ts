@@ -22,7 +22,7 @@ export class PersonGeneral
 	get contact(): Contact { return CONTACTS.get(this.contactId) as Contact; }
 	set contact(value: Contact) { this.contactId = value.id; }
 	
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"contact": this.contactId,
 		});

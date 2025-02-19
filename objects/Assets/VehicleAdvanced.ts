@@ -13,7 +13,7 @@ export class VehicleAdvanced
 	 */
 	engineHours: double = NaN;
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"engineHours": this.engineHours || null,
 		});

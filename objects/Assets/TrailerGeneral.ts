@@ -38,7 +38,7 @@ export class TrailerGeneral
 	 */
 	colour: string = "";
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"serial": this.serial || "",
 			"plate": this.plate || "",
