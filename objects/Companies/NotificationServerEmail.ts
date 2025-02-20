@@ -99,7 +99,6 @@ export class NotificationServerEmail
 	/**
 	 * Is the outgoing email server 		/**
 	 * An optional field which can be set as the "sent from" and/or "reply-to" address.
-	 *  <override format="email" />
 	 */
 	outgoingReplyTo: email = "";
 

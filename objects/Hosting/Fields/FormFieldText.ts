@@ -20,9 +20,7 @@ export class FormFieldText
 	}
 	/**
 	 * The number of rows of text to display.
-	 *  <remarks>
-	 * The control should grow to display all entered text even if the UI must add more rows.
-	 *  </remarks>
+	 * @tutorial The control should grow to display all entered text even if the UI must add more rows.
 	 */
 	rows: byte;
 	/**

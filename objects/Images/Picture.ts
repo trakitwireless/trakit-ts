@@ -35,7 +35,6 @@ export class Picture
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The file name of this image.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -44,7 +43,6 @@ export class Picture
 	notes: string = "";
 	/**
 	 * The URL/path to find this image.
-	 *  <override max-length="200" />
 	 */
 	src: string = "";
 	/**

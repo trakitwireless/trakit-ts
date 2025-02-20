@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { DATE, JSON_DATE, ID, IS_AN } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -66,7 +66,6 @@ export class MaintenanceJob
 
 	/**
 	 * The work being done. Like "oil change".
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -97,7 +96,6 @@ export class MaintenanceJob
 	// ------------ repair details ------------
 	/**
 	 * The name of the garage or service facility where the work is done.
-	 *  <override max-length="100" />
 	 */
 	garage: string = "";
 	/**
@@ -110,32 +108,20 @@ export class MaintenanceJob
 	cost: double = NaN;
 	/**
 	 * A reference code used to track this job
-	 *  <override max-length="100" />
 	 */
 	reference: string = "";
 	/**
 	 * The mechanic who performed the work.
-	 *  <override max-length="100" />
 	 */
 	technician: string = "";
 	/**
 	 * Images taken while performing the work for reference.
 	 * {@link Picture.id}
-	 *  <override>
-	 *  <values>
-	 * {@link Picture.id}
-	 *  </values>
-	 *  </override>
 	 */
 	pictureIds: ulong[] = [];
 	/**
 	 * Images taken while performing the work for reference.
 	 * {@link Picture.id}
-	 *  <override>
-	 *  <values>
-	 * {@link Picture.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get pictures(): Picture[] { return MAP_FILTERED_BY_KEYS(PICTURES, this.pictureIds); }
 	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }

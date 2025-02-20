@@ -213,9 +213,15 @@ import { ProviderConfig } from "./Providers/Config/ProviderConfig";
 import { ProviderRegistration } from "./Providers/Config/ProviderRegistration";
 import { ProviderScript } from "./Providers/Config/ProviderScript";
 import { ProviderScriptBlock } from "./Providers/Config/ProviderScriptBlock";
-import { ProviderConfiguration } from "./Providers/Configuration/ProviderConfiguration";
 import { ProviderScriptParameter } from "./Providers/Config/ProviderScriptParameter";
 import { ProviderScriptParameterType } from "./Providers/Config/ProviderScriptParameterType";
+import { ProviderConfiguration } from "./Providers/Configuration/ProviderConfiguration";
+import { ProviderConfigurationNode } from "./Providers/Configuration/ProviderConfigurationNode";
+import { ProviderConfigurationType } from "./Providers/Configuration/ProviderConfigurationType";
+import { ProviderGeofenceCircular } from "./Providers/Configuration/ProviderGeofenceCircular";
+import { ProviderGeofencePoint } from "./Providers/Configuration/ProviderGeofencePoint";
+import { ProviderGeofencePolygon } from "./Providers/Configuration/ProviderGeofencePolygon";
+import { ProviderGeofenceRectangle } from "./Providers/Configuration/ProviderGeofenceRectangle";
 import { Provider } from "./Providers/Provider";
 import { ProviderAdvanced } from "./Providers/ProviderAdvanced";
 import { ProviderCommand } from "./Providers/ProviderCommand";
@@ -225,6 +231,29 @@ import { ProviderControl } from "./Providers/ProviderControl";
 import { ProviderData } from "./Providers/ProviderData";
 import { ProviderGeneral } from "./Providers/ProviderGeneral";
 import { ProviderType } from "./Providers/ProviderType";
+import { ReportBreakdown } from "./Reports/ReportBreakdown";
+import { ReportBreakdownJob } from "./Reports/ReportBreakdownJob";
+import { ReportBreakdownMessage } from "./Reports/ReportBreakdownMessage";
+import { ReportBreakdownTask } from "./Reports/ReportBreakdownTask";
+import { ReportFilterMode } from "./Reports/ReportFilterMode";
+import { ReportNotifications } from "./Reports/ReportNotifications";
+import { ReportOptions } from "./Reports/ReportOptions";
+import { ReportParameter } from "./Reports/ReportParameter";
+import { ReportParameterType } from "./Reports/ReportParameterType";
+import { ReportRecurrence } from "./Reports/ReportRecurrence";
+import { ReportRecurrenceType } from "./Reports/ReportRecurrenceType";
+import { ReportResult } from "./Reports/ReportResult";
+import { ReportResultData } from "./Reports/ReportResultData";
+import { ReportSchedule } from "./Reports/ReportSchedule";
+import { ReportScorecard } from "./Reports/ReportScorecard";
+import { ReportScorecardParameter } from "./Reports/ReportScorecardParameter";
+import { ReportScorecardRules } from "./Reports/ReportScorecardRules";
+import { ReportStatus } from "./Reports/ReportStatus";
+import { ReportSummary } from "./Reports/ReportSummary";
+import { ReportSummaryReason } from "./Reports/ReportSummaryReason";
+import { ReportTemplate } from "./Reports/ReportTemplate";
+import { ReportTotal } from "./Reports/ReportTotal";
+import { ReportType } from "./Reports/ReportType";
 import {
     ASSETS,
     BEHAVIOUR_LOGS,
@@ -260,35 +289,6 @@ import {
     SESSIONS,
     USERS,
 } from "./Storage";
-import { ProviderConfigurationNode } from "./Providers/Configuration/ProviderConfigurationNode";
-import { ProviderConfigurationType } from "./Providers/Configuration/ProviderConfigurationType";
-import { ProviderGeofenceCircular } from "./Providers/Configuration/ProviderGeofenceCircular";
-import { ProviderGeofencePoint } from "./Providers/Configuration/ProviderGeofencePoint";
-import { ProviderGeofencePolygon } from "./Providers/Configuration/ProviderGeofencePolygon";
-import { ProviderGeofenceRectangle } from "./Providers/Configuration/ProviderGeofenceRectangle";
-import { ReportResult } from "./Reports/ReportResult";
-import { ReportResultData } from "./Reports/ReportResultData";
-import { ReportTemplate } from "./Reports/ReportTemplate";
-import { ReportSchedule } from "./Reports/ReportSchedule";
-import { ReportBreakdown } from "./Reports/ReportBreakdown";
-import { ReportBreakdownJob } from "./Reports/ReportBreakdownJob";
-import { ReportBreakdownMessage } from "./Reports/ReportBreakdownMessage";
-import { ReportBreakdownTask } from "./Reports/ReportBreakdownTask";
-import { ReportDataTotal } from "./Reports/ReportDataTotal";
-import { ReportFilterMode } from "./Reports/ReportFilterMode";
-import { ReportNotifications } from "./Reports/ReportNotifications";
-import { ReportOptions } from "./Reports/ReportOptions";
-import { ReportParameter } from "./Reports/ReportParameter";
-import { ReportParameterType } from "./Reports/ReportParameterType";
-import { ReportRecurrence } from "./Reports/ReportRecurrence";
-import { ReportRecurrenceType } from "./Reports/ReportRecurrenceType";
-import { ReportScorecard } from "./Reports/ReportScorecard";
-import { ReportScorecardParameter } from "./Reports/ReportScorecardParameter";
-import { ReportScorecardRules } from "./Reports/ReportScorecardRules";
-import { ReportStatus } from "./Reports/ReportStatus";
-import { ReportSummary } from "./Reports/ReportSummary";
-import { ReportSummaryReason } from "./Reports/ReportSummaryReason";
-import { ReportType } from "./Reports/ReportType";
 
 const version = (5.01);
 
@@ -648,7 +648,7 @@ export default {
     ReportBreakdownJob,
     ReportBreakdownMessage,
     ReportBreakdownTask,
-    ReportDataTotal,
+    ReportTotal,
     ReportFilterMode,
     ReportNotifications,
     ReportOptions,

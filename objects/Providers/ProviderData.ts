@@ -29,7 +29,6 @@ export class ProviderData
 	dts: Date = DATE();
 	/**
 	 * The relevant unit for the data provided like Km/h, degrees, volts, RPM, etc...
-	 *  <override type="Vorgon.Units" />
 	 */
 	unit: string = "";
 

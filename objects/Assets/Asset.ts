@@ -93,7 +93,6 @@ export class Asset
 	get general(): AssetGeneral { return this.#general; }
 	/**
 	 * This thing's name.
-	 *  <override max-length="100" />
 	 */
 	get name(): string { return this.#general.name; }
 	set name(value: string) { this.#general.name = value; }
@@ -116,46 +115,29 @@ export class Asset
 	set icon(value: Icon) { this.#general.icon = value; }
 	/**
 	 * Codified label names.
-	 *  <override>
-	 *  <values format="codified">
 	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
-	get labels(): string[] { return this.#general.labels; }
-	set labels(value: string[]) { this.#general.labels = value; }
+	get labels(): codified[] { return this.#general.labels; }
+	set labels(value: codified[]) { this.#general.labels = value; }
 	/**
 	 * A list of photos of this thing.
-	 *  <override>
-	 *  <values>
 	 * {@link Picture.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get pictureIds(): ulong[] { return this.#general.pictureIds; }
 	set pictureIds(value: ulong[]) { this.#general.pictureIds = value; }
 	/**
 	 * A list of photos of this thing.
-	 *  <override>
-	 *  <values>
 	 * {@link Picture.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get pictures(): Picture[] { return this.#general.pictures; }
 	set pictures(value: Picture[]) { this.#general.pictures = value; }
 	/**
 	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
-	 *  <override max-length="254" />
 	 */
 	get messagingAddress(): string { return this.#general.messagingAddress; }
 	set messagingAddress(value: string) { this.#general.messagingAddress = value; }
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
-	 *  <override max-count="10">
-	 *  <keys max-length="20" />
-	 *  <values max-length="100" />
-	 *  </override>
 	 */
 	get references(): Map<string, string> { return this.#general.references; }
 	set references(value: Map<string, string>) { this.#general.references = value; }
@@ -177,71 +159,37 @@ export class Asset
 	set odometer(value: double) { this.#advanced.odometer = value; }
 	/**
 	 * The codified status tag names.
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
 	get tags(): codified[] { return this.#advanced.tags; }
 	set tags(value: codified[]) { this.#advanced.tags = value; }
 	/**
 	 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
-	 *  <override>
-	 *  <keys format="codified">
-	 * {@link AssetAttribute.name}
-	 *  </keys>
-	 *  </override>
 	 */
-	get attributes(): Map<string, AssetAttribute> { return this.#advanced.attributes; }
-	set attributes(value: Map<string, AssetAttribute>) { this.#advanced.attributes = value; }
+	get attributes(): Map<codified, AssetAttribute> { return this.#advanced.attributes; }
+	set attributes(value: Map<codified, AssetAttribute>) { this.#advanced.attributes = value; }
 	/**
 	 * The list of devices providing events for this asset.
-	 *  <override readonly="true">
-	 *  <values>
-	 * {@link Provider.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get providerIds(): string[] { return this.#advanced.providerIds; }
-	set providerIds(value: string[]) { this.#advanced.providerIds = value; }
 	/**
 	 * The list of devices providing events for this asset.
-	 *  <override readonly="true">
-	 *  <values>
-	 * {@link Provider.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get providers(): Provider[] { return this.#advanced.providers; }
-	set providers(value: Provider[]) { this.#advanced.providers = value; }
 	/**
 	 * A list of assets related to this one; like a Person for a Vehicle (driver).
-	 *  <override>
-	 *  <values>
 	 * {@link Asset.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get relationshipIds(): ulong[] { return this.#advanced.relationshipIds; }
 	set relationshipIds(value: ulong[]) { this.#advanced.relationshipIds = value; }
 	/**
 	 * A list of assets related to this one; like a Person for a Vehicle (driver).
-	 *  <override>
-	 *  <values>
 	 * {@link Asset.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get relationships(): Asset[] { return this.#advanced.relationships; }
 	set relationships(value: Asset[]) { this.#advanced.relationships = value; }
 	/**
 	 * The current state of this asset's interaction with known Places.
-	 *  <override>
-	 *  <keys>
 	 * {@link Place.id}
-	 *  </keys>
-	 *  </override>
 	 */
 	get places(): Map<ulong, AssetPlaceStatus> { return this.#advanced.places; }
 	set places(value: Map<ulong, AssetPlaceStatus>) { this.#advanced.places = value; }

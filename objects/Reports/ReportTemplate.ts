@@ -36,7 +36,6 @@ export class ReportTemplate
 	kind: ReportType = ReportType.full;
 	/**
 	 * Name of this report.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

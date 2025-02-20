@@ -49,7 +49,6 @@ export class DispatchJob
 	set asset(value: Asset) { this.assetId = value?.id || NaN; }
 	/**
 	 * A name for the work needed to be performed.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -66,11 +65,6 @@ export class DispatchJob
 	formIds: ulong[] = [];
 	/**
 	 * A list of hosted {@link FormResult}s attached to this job.
-	 *  <override max-count="10">
-	 *  <values>
-	 * {@link FormResult.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get forms(): FormResult[] { return MAP_FILTERED_BY_KEYS(FORM_RESULTS, this.formIds); }
 	set forms(value: FormResult[]) { this.formIds = value?.map(ARRAY_TO_IDS) ?? []; }
@@ -80,20 +74,10 @@ export class DispatchJob
 	priority: DispatchJobPriority = DispatchJobPriority.medium;
 	/**
 	 * Codified label names used to relate (unassigned) jobs to {@link Asset}s.
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
 	labels: codified[] = [];
 	/**
 	 * The codified status tag names reflecting the conditions of this job.
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
 	tags: codified[] = [];
 	/**

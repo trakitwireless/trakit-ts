@@ -12,7 +12,7 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { colour, double, ulong } from "../API/Types";
+import { codified, colour, double, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -21,20 +21,6 @@ import { PlaceType } from "./PlaceType";
 
 /**
  * A POI (point-of-interest) saved to the system to help determine an asset's real-world position.
- *  <override complex="true">
- *  <property name="anchor" type="Vorgon.LatLng">
- */
-/**
- * A central point of the shape.
- * This is the exact centre of a {@link PlaceType.radial} and {@link PlaceType.point} shaped places, and the location of the pin on the map for all types.
- * When routing, {@link PlaceType.polygon} and {@link PlaceType.rectangle} shapes use the anchor as the location within the place for deliveries.
- *  </property>
- *  <property name="radius" type="System.Double" nullable="true">
- */
-/**
- * This member is only present for {@link PlaceType.radial} shapes, and is the radius in meters from the centre anchor.
- *  </property>
- *  </override>
  */
 export class Place
 	extends BaseComponent
@@ -59,12 +45,10 @@ export class Place
 	kind: PlaceType = PlaceType.point;
 	/**
 	 * POI's common name instead of street address.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
 	 * Full street address including province/state, country, and postal/zip code.
-	 *  <override max-length="200" />
 	 */
 	address: string = "";
 	/**
@@ -84,16 +68,10 @@ export class Place
 	notes: string = "";
 	/**
 	 * The codified names of labels
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
-	labels: string[] = [];
+	labels: codified[] = [];
 	/**
 	 * The fill colour given to this place for easy visual identification on the map (given in 24bit hex; #RRGGBB)
-	 *  <override max-length="22" format="colour" />
 	 */
 	colour: colour = "";
 	/**
@@ -107,16 +85,17 @@ export class Place
 	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }
 	/**
 	 * A custom field used to refer to an external system.
-	 *  <override max-length="100" />
 	 */
 	reference: string = "";
-
+	
 	/**
-	 * Central lat/long coordinates.
+	 * A central point of the shape.
+	 * This is the exact centre of a {@link PlaceType.radial} and {@link PlaceType.point} shaped places, and the location of the pin on the map for all types.
+	 * When routing, {@link PlaceType.polygon} and {@link PlaceType.rectangle} shapes use the anchor as the location within the place for deliveries.
 	 */
 	anchor: LatLng | null = null;
 	/**
-	 * Boundary threshold (in meters)
+	 * This member is only present for {@link PlaceType.radial} shapes, and is the radius in meters from the centre anchor.
 	 */
 	radius: double = NaN;
 	/**

@@ -49,7 +49,6 @@ export class BillingReportLicenseBreakdown
 	kind: ProviderType;
 	/**
 	 * Provider name.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -70,7 +69,6 @@ export class BillingReportLicenseBreakdown
 	phoneNumber: ulong = NaN;
 	/**
 	 * The firmware/application version number.
-	 *  <override max-length="100" />
 	 */
 	firmware: string = "";
 	/**

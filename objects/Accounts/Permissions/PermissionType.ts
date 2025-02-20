@@ -13,7 +13,6 @@ export enum PermissionType {
 	companyGeneral = "companyGeneral",
 	/**
 	* Updating the company's {@link CompanyDirectory|directory} of {@link Contact}s.  Not the same as {@link PermissionType.contact}.
-	*  <override skip="true" />
 	* {@link CompanyDirectory}
 	*/
 	companyDirectory = "companyDirectory",
@@ -64,7 +63,6 @@ export enum PermissionType {
 	assetMessage = "assetMessage",
 	/**
 	*  {@link Asset}'s {@link DispatchTask} order = "*  {@link Asset}'s {@link DispatchTask} order", turn by turn directions, and required route.
-	*  <override skip="true" />
 	* {@link AssetDispatch}
 	*/
 	assetDispatch = "assetDispatch",
@@ -101,9 +99,8 @@ export enum PermissionType {
 	providerConfiguration = "providerConfiguration",
 	/**
 	* Legacy {@link Provider} configuration types.
-	*  <override skip="true" />
 	* {@link ProviderConfigurationType}
-	* @deprecated Use .providerConfiguration instead
+	* @deprecated Use {@link providerConfiguration} instead
 	*/
 	providerConfigType = "providerConfigType",
 	/**
@@ -113,9 +110,8 @@ export enum PermissionType {
 	providerScript = "providerScript",
 	/**
 	* Sending and reading {@link Provider} commands.
-	*  <override skip="true" />
 	* {@link ProviderCommand}
-	* @deprecated Use .providerControl instead
+	* @deprecated Use {@link providerControl} instead
 	*/
 	providerCommand = "providerCommand",
 
@@ -198,19 +194,19 @@ export enum PermissionType {
 	/**
 	* Hours of Service {@link HosCarrier|Carrier}s.
 	* {@link HosCarrier}
-	*  <override obsolete="true" deprecated="Feature retired" />
+	* @deprecated Feature retired
 	*/
 	hosCarrier = "hosCarrier",
 	/**
 	* Driver's {@link HosEvent|E-log event} records.
 	* {@link HosEvent}
-	*  <override obsolete="true" deprecated="Feature retired" />
+	* @deprecated Feature retired
 	*/
 	hosEvent = "hosEvent",
 	/**
 	* Driver {@link HosInspection|vehicle inspection} reports.
 	* {@link HosInspection}
-	*  <override obsolete="true" deprecated="Feature retired" />
+	* @deprecated Feature retired
 	*/
 	hosInspection = "hosInspection",
 
@@ -227,14 +223,12 @@ export enum PermissionType {
 
 	/**
 	* Rules definiting real-time analytic calculations.
-	*  <override skip="true" />
 	* {@link AnalyticRule}
 	* @deprecated Feature retired
 	*/
 	analyticRule = "analyticRule",
 	/**
 	* Updates to the calculations of real-time analytics.
-	*  <override skip="true" />
 	* {@link AnalyticSummary}
 	* @deprecated Feature retired
 	*/
@@ -269,7 +263,6 @@ export enum PermissionType {
 	/**
 	* Discount rule for {@link Asset}s.
 	* {@link BillableHostingDiscount}
-	*  <override skip="true" />
 	* @deprecated Feature retired
 	*/
 	billingDiscount = "billingDiscount",

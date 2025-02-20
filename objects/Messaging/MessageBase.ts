@@ -4,7 +4,7 @@ import { DATE, JSON_DATE, ID, IS_AN } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { ulong } from "../API/Types";
+import { email, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, COMPANIES, USERS } from "../Storage";
@@ -40,15 +40,13 @@ export abstract class MessageBase
 	 */
 	kind: MessageType = MessageType.unknown;
 	/**
-	 * Recipient address
-	 *  <override min-length="6" max-length="254" />
+	 * Recipient address.
 	 */
-	to: string = "";
+	to: email = "";
 	/**
-	 * Sender address
-	 *  <override min-length="6" max-length="254" />
+	 * Sender address.
 	 */
-	from: string = "";
+	from: email = "";
 	/**
 	 * The main contents of the memo.
 	 */
@@ -64,7 +62,6 @@ export abstract class MessageBase
 
 	/**
 	 * The subject of this message.
-	 *  <override max-length="100" />
 	 */
 	subject: string = "";
 	/**
@@ -80,13 +77,11 @@ export abstract class MessageBase
 	/**
 	 * The user who sent/received this message.
 	 * {@link User.login}
-	 *  <override max-length="254" format="email" />
 	 */
-	userLogin: string = "";
+	userLogin: email = "";
 	/**
 	 * The user who sent/received this message.
 	 * {@link User.login}
-	 *  <override max-length="254" format="email" />
 	 */
 	get user(): User { return USERS.get(this.userLogin) as User; }
 

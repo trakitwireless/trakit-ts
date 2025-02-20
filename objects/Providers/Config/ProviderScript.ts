@@ -36,7 +36,6 @@ export class ProviderScript
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The nickname given to this configuration
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -46,17 +45,14 @@ export class ProviderScript
 
 	/**
 	 * The fill/background colour of the icon.
-	 *  <override max-length="22" format="colour" />
 	 */
 	fill: colour = "";
 	/**
 	 * Outline and graphic colour.
-	 *  <override max-length="22" format="colour" />
 	 */
 	stroke: colour = "";
 	/**
 	 * The name of the symbol for this script.
-	 *  <override max-length="22" format="codified" />
 	 */
 	graphic: codified = "";
 

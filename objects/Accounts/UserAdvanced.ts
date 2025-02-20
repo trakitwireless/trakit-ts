@@ -4,7 +4,7 @@ import { ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { ulong } from "../API/Types";
+import { email, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, GROUPS } from "../Storage";
 import { Permission } from "./Permissions/Permission";
@@ -19,9 +19,8 @@ export class UserAdvanced
 	/**
 	 * The unique public email address used to access the system.
 	 * {@link User.login}
-	 *  <override min-length="6" max-length="254" format="email" />
 	 */
-	login: string = "";
+	login: email = "";
 	/**
 	 * The company to which this user belongs.
 	 * {@link Company.id}

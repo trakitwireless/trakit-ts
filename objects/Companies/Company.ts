@@ -90,10 +90,6 @@ export class Company
 	set notes(value: string) { this.general.notes = value; }
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
-	 *  <override max-count="10">
-	 *  <keys max-length="20" />
-	 *  <values max-length="100" />
-	 *  </override>
 	 */
 	get references(): Map<string, string> { return this.general.references; }
 	set references(value: Map<string, string>) { this.general.references = value; }

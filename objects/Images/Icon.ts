@@ -35,12 +35,10 @@ export class Icon
 
 	/**
 	 * A noun to describe the type of thing represented.  Like Truck, Car, Trailer, Hot-Air Balloon, etc...
-	 *  <override max-length="100" />
 	 */
 	category: string = "";
 	/**
 	 * A specific adjective to describe the thing.  Like Blue, Red, Empty, Full, etc...
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

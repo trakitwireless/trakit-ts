@@ -1,6 +1,6 @@
 ﻿import { ID } from "../API/Functions";
 import { MERGE } from "../API/Objects";
-import { ushort } from "../API/Types";
+import { colour, ushort } from "../API/Types";
 import { AssetGeneral } from "./AssetGeneral";
 
 /**
@@ -10,22 +10,18 @@ export class TrailerGeneral
 	extends AssetGeneral {
 	/**
 	 * The license plate.
-	 *  <override max-length="50" />
 	 */
 	plate: string = "";
 	/**
 	 * Manufacturer's unique identification number for this trailer.
-	 *  <override max-length="50" />
 	 */
 	serial: string = "";
 	/**
 	 * Manufacturer's name.
-	 *  <override max-length="50" />
 	 */
 	make: string = "";
 	/**
 	 * Manufacturer's model name/number.
-	 *  <override max-length="50" />
 	 */
 	model: string = "";
 	/**
@@ -34,9 +30,8 @@ export class TrailerGeneral
 	year: ushort = NaN;
 	/**
 	 * Primary colour of the trailer (given in 24bit hex; #RRGGBB)
-	 *  <override max-length="22" format="colour" />
 	 */
-	colour: string = "";
+	colour: colour = "";
 
 	override toJSON() {
 		return this.suspended

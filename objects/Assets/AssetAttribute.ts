@@ -31,7 +31,6 @@ export class AssetAttribute
 
 	/**
 	 * Display name of the attribute.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

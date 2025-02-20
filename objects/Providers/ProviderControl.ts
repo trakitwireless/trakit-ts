@@ -16,7 +16,6 @@ export class ProviderControl
 	/**
 	 * Unique identifier of this device.
 	 * {@link Provider.id}
-	 *  <override min-length="10" max-length="50" />
 	 */
 	id: string = "";
 	/**

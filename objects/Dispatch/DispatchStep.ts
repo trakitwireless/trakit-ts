@@ -46,7 +46,6 @@ export class DispatchStep
 	id: ulong = NaN;
 	/**
 	 * A name for the work needed to be performed.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -105,7 +104,6 @@ export class DispatchStep
 	set place(value: Place) { this.placeId = value?.id ?? NaN; }
 	/**
 	 * The street address of where the step must be completed.
-	 *  <override max-length="500" />
 	 */
 	address: string = "";
 	/**
@@ -122,7 +120,6 @@ export class DispatchStep
 	signature: boolean = false;
 	/**
 	 * The name of the person who signed the step's completion.
-	 *  <override max-length="100" />
 	 */
 	signatory: string = "";
 	

@@ -5,7 +5,7 @@ import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { INamed } from "../../API/Interfaces/INamed";
 import { IRequestable } from "../../API/Interfaces/IRequestable";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { phone, ulong } from "../../API/Types";
+import { email, phone, ulong } from "../../API/Types";
 import { User } from "../../Accounts/User";
 import { Asset } from "../../Assets/Asset";
 import { Company } from "../../Companies/Company";
@@ -22,7 +22,6 @@ export class ProviderRegistration
 	implements IRequestable, INamed, IBelongCompany, IBelongAsset, ISerializable {
 	/**
 	 * A unique six digit code.
-	 *  <override length="6" />
 	 */
 	code: string = "";
 	/**
@@ -37,7 +36,6 @@ export class ProviderRegistration
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * A nickname given to the device once it has been provisioned.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -46,19 +44,16 @@ export class ProviderRegistration
 	notes: string = "";
 	/**
 	 * The password programmed on the device used to ensure the system is the only client authorized to make changes.
-	 *  <override max-length="50" />
 	 */
 	password: string = "";
 	/**
 	 * The unique identifier the user who generated this registration.
 	 * {@link User.login}
-	 *  <override max-length="254" format="email" />
 	 */
-	userLogin: string = "";
+	userLogin: email = "";
 	/**
 	 * The unique identifier the user who generated this registration.
 	 * {@link User.login}
-	 *  <override max-length="254" format="email" />
 	 */
 	get user(): User { return USERS.get(this.userLogin) as User; }
 	/**
@@ -95,7 +90,6 @@ export class ProviderRegistration
 	/**
 	 * The unique identifier of the device that completed this registration.
 	 * {@link Provider.id}
-	 *  <override max-length="50" />
 	 */
 	identifier: string = "";
 	/**
@@ -111,7 +105,6 @@ export class ProviderRegistration
 	/**
 	 * The phone number of the device being provisioned.
 	 * This is set by the user for long-term registrations, or by the client during serial port setup.
-	 *  <override format="phone" />
 	 */
 	phoneNumber: phone = NaN;
 

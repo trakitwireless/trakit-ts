@@ -8,16 +8,15 @@ import { ASSETS } from "../Storage";
 
 /**
  * Totalled information from all the results of the report.
- *  <override name="ReportTotal" />
  */
-export class ReportDataTotal
+export class ReportTotal
 	implements ISerializable {
 	/**
 	 * 
 	 * @param json 
 	 */
 	static fromJSON(json: any) {
-		return new ReportDataTotal(
+		return new ReportTotal(
 			ID(json["asset"]),
 			json["stateDetail"],
 			ID(json["summaryCount"]),
@@ -37,7 +36,6 @@ export class ReportDataTotal
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
 	 * Unique code given to the report total.
-	 *  <override max-length="100" />
 	 */
 	stateDetail: string;
 	/**

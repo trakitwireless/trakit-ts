@@ -9,7 +9,6 @@ import { MaintenanceJob } from "./MaintenanceJob";
 
 /**
  * The detail for calculating Maintenance Schedule recurrence.
- *  <override name="MaintenanceInterval" />
  */
 export class MaintenanceInterval
 	implements IBelongAsset, ISerializable {

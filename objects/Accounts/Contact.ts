@@ -7,7 +7,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { email, phone, ulong, url } from "../API/Types";
+import { codified, email, phone, ulong, url } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Picture } from "../Images/Picture";
 import { COMPANIES, PICTURES } from "../Storage";
@@ -44,7 +44,6 @@ export class Contact
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The person's name
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -55,27 +54,18 @@ export class Contact
 	 * A collection of other names this person might go by.
 	 * Use the object key like a name identifier.
 	 * Example keys: Initials, Nickname, Maiden Name, etc.
-	 *  <override>
-	 *  <values max-length="254" />
-	 *  </override>
 	 */
 	otherNames: Map<string, string> = new Map;
 	/**
 	 * Email addresses.
 	 * Use the object key like a name of the address.
 	 * Example keys: Home, Work, Support, Old, etc.
-	 *  <override>
-	 *  <values max-length="254" format="email" />
-	 *  </override>
 	 */
 	emails: Map<string, email> = new Map;
 	/**
 	 * Phone numbers.
 	 * Use the object key like a name of the phone number.
 	 * Example keys: Mobile, Fax, Home, Office, etc.
-	 *  <override>
-	 *  <values format="phone" />
-	 *  </override>
 	 */
 	phones: Map<string, phone> = new Map;
 	/**
@@ -88,9 +78,6 @@ export class Contact
 	 * Websites and other online resources.
 	 * Use the object key like a name of the address.
 	 * Example keys: Downloads, Support, FTP, etc.
-	 *  <override>
-	 *  <values type="System.String" max-length="254" format="url" />
-	 *  </override>
 	 */
 	urls: Map<string, url> = new Map;
 	/**
@@ -106,9 +93,8 @@ export class Contact
 	options: Map<string, string> = new Map;
 	/**
 	 * A list of roles they play in the Company.
-	 *  <override format="codified" />
 	 */
-	roles: string[] = [];
+	roles: codified[] = [];
 	/**
 	 * {@link Picture.id}s of this Contact.
 	 */

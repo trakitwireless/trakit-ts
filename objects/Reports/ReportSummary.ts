@@ -48,7 +48,6 @@ export class ReportSummary
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
 	 * Code given to this summary instance for an asset.
-	 *  <override max-length="100" />
 	 */
 	stateDetail: string;
 	/**

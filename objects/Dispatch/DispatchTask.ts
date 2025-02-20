@@ -49,15 +49,10 @@ export class DispatchTask
 	set asset(value: Asset) { this.assetId = value?.id || NaN; }
 	/**
 	 * The name of this task or the work needed to be performed.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
-	 *  <override max-count="10">
-	 *  <keys max-length="20" />
-	 *  <values max-length="100" />
-	 *  </override>
 	 */
 	references: Map<string, string> = new Map;
 	/**
@@ -73,7 +68,6 @@ export class DispatchTask
 	set place(value: Place) { this.placeId = value?.id || NaN; }
 	/**
 	 * The street address of where the task must be completed.
-	 *  <override max-length="500" />
 	 */
 	address: string = "";
 	/**
@@ -114,7 +108,6 @@ export class DispatchTask
 	signature: boolean = false;
 	/**
 	 * The name of the person who signed the task's completion.
-	 *  <override max-length="100" />
 	 */
 	signatory: string = "";
 	/**
@@ -123,20 +116,10 @@ export class DispatchTask
 	notes: string = "";
 	/**
 	 * A list of hosted {@link Document} identifiers attached to this task.
-	 *  <override max-count="10">
-	 *  <values>
-	 * {@link Document.id}
-	 *  </values>
-	 *  </override>
 	 */
 	attachmentIds: ulong[] = [];
 	/**
 	 * A list of hosted {@link Document} identifiers attached to this task.
-	 *  <override max-count="10">
-	 *  <values>
-	 * {@link Document.id}
-	 *  </values>
-	 *  </override>
 	 */
 	get attachments(): Document[] { return MAP_FILTERED_BY_KEYS(DOCUMENTS, this.attachmentIds); }
 	set attachments(value: Document[]) { this.attachmentIds = value?.map(ARRAY_TO_IDS) ?? []; }

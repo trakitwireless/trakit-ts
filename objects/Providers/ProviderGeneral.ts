@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MERGE } from "../API/Objects";
-import { ulong } from "../API/Types";
+import { phone, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, COMPANIES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATIONS } from "../Storage";
@@ -21,7 +21,6 @@ export class ProviderGeneral
 	/**
 	 * Unique identifier of this device.
 	 * {@link Provider.id}
-	 *  <override min-length="10" max-length="50" />
 	 */
 	id: string = "";
 	/**
@@ -37,7 +36,6 @@ export class ProviderGeneral
 	set company(value: Company) { this.companyId = value?.id ?? NaN; }
 	/**
 	 * A nickname given to the device/hardware.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -78,19 +76,16 @@ export class ProviderGeneral
 
 	/**
 	 * The password programmed on the device used to ensure the system is the only client authorized to make changes.
-	 *  <override max-length="50" />
 	 */
 	password: string = "";
 	/**
 	 * The firmware/application version number.
-	 *  <override max-length="100" />
 	 */
 	firmware: string = "";
 	/**
 	 * The phone number of this device.
-	 *  <override format="phone" />
 	 */
-	phoneNumber: ulong = NaN;
+	phoneNumber: phone = NaN;
 	/**
 	 * A list of read-only values about the device like IMEI, ESN, firmware version, hardware revision, etc...
 	 */

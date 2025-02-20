@@ -15,7 +15,6 @@ export class ProviderAdvanced
 	/**
 	 * Unique identifier of this device.
 	 * {@link Provider.id}
-	 *  <override min-length="10" max-length="50" />
 	 */
 	id: string = "";
 	/**
@@ -31,7 +30,6 @@ export class ProviderAdvanced
 	set company(value: Company) { this.companyId = value?.id ?? NaN; }
 	/**
 	 * The last IP address of the device.
-	 *  <override type="System.String" format="ipv4" />
 	 */
 	lastIP: ipv4 = "";
 	/**

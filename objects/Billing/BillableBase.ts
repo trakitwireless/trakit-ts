@@ -42,7 +42,6 @@ export abstract class BillableBase
 	get profile(): BillingProfile { return BILLING_PROFILES.get(this.profileId) as BillingProfile; }
 	/**
 	 * The name of this billing rule.
-	 *  <override max-length="254" />
 	 */
 	name: string = "";
 	/**
@@ -51,12 +50,10 @@ export abstract class BillableBase
 	notes: string = "";
 	/**
 	 * A custom field used to refer to an external system.  Examples are a cost codes, SOCs, discount plans...
-	 *  <override max-length="100" />
 	 */
 	reference: string = "";
 	/**
-	 * SKU or SOC code
-	 *  <override max-length="20" />
+	 * SKU or SOC code.
 	 */
 	sku: string = "";
 	/**

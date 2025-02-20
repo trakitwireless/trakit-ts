@@ -16,7 +16,6 @@ import { FormFieldTimezone } from './FormFieldTimezone';
 
 /**
  * A base class for the common form field UI members.
-*  <override skip="false" />
  */
 export abstract class FormFieldBase
 	implements IIdUlong, INamed, ISerializable {

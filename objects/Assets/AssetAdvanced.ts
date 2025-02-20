@@ -6,7 +6,7 @@ import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { double, ulong } from "../API/Types";
+import { codified, double, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, COMPANIES, PROVIDERS } from "../Storage";
@@ -60,22 +60,12 @@ export class AssetAdvanced
 	odometer: double = NaN;
 	/**
 	 * The codified status tag names.
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
-	tags: string[] = [];
+	tags: codified[] = [];
 	/**
 	 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
-	 *  <override>
-	 *  <keys format="codified">
-	 * {@link AssetAttribute.name}
-	 *  </keys>
-	 *  </override>
 	 */
-	attributes: Map<string, AssetAttribute> = new Map;
+	attributes: Map<codified, AssetAttribute> = new Map;
 	/**
 	 * The list of {@link Provider.id|device identifiers} providing events for this asset.
 	 */

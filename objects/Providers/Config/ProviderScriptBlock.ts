@@ -28,14 +28,12 @@ export class ProviderScriptBlock
 	 * A regular expression used to match variables in the content.
 	 * The regex must contain at least one match-group.
 	 * The value fom the last group is what's used as a parameter name.
-	 *  <example>{{([a-z]+)}}</example>
-	 *  <example>&lt;(var[a-z]+)&gt;</example>
-	 *  <override max-length="20" />
+	 * @example {{([a-z]+)}}
+	 * @example &lt;(var[a-z]+)&gt;
 	 */
 	replace: string;
 	/**
 	 * When defined, this condition matches a {@link ProviderScriptParameter} defined in the {@link ProviderConfig} to include or exclude this chunk from the script.
-	 *  <override max-length="50" />
 	 */
 	condition: string;
 	/**

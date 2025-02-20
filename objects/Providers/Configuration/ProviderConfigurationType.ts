@@ -2,7 +2,7 @@ import { BaseComponent } from "../../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT_VALUE_JSON } from "../../API/Functions";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
-import { int, ulong } from "../../API/Types";
+import { uint, ulong } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderType } from "../ProviderType";
 import { ProviderConfigurationNode } from "./ProviderConfigurationNode";
@@ -21,7 +21,6 @@ export class ProviderConfigurationType
 	id: ulong = NaN;
 	/**
 	 * Name of the configuration type.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -34,14 +33,12 @@ export class ProviderConfigurationType
 	providerType: ProviderType = ProviderType.unknown;
 	/**
 	 * The maximum number of geofences that can be programmed onto a device. This number changes based on device make and model, and can also change based on the supported geofence types.
-	 *  <override type="System.UInt32" />
 	 */
-	maxGeofenceCount: int = NaN;
+	maxGeofenceCount: uint = NaN;
 	/**
 	 * The minimum number of geofences that need to be programmed onto the device. This value is almost always zero.
-	 *  <override type="System.UInt32" />
 	 */
-	minGeofenceCount: int = NaN;
+	minGeofenceCount: uint = NaN;
 	/**
 	 * A tree-structure of configurations required (or optionally available) for programming a device.
 	 */

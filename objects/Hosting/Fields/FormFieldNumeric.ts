@@ -8,9 +8,8 @@ import { FormFieldNumericSize } from "./FormFieldNumericSize";
 
 /**
  * A numeric value input control with multiple contexts available.
- *  <remarks>
+ * @tutorial
  * For this field, the {@link FormFieldBase.kind} is just a helper for the UI, and does not affect input validation.
- *  </remarks>
  */
 export class FormFieldNumeric
 	extends FormFieldBase {

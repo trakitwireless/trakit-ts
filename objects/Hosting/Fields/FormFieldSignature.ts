@@ -4,10 +4,9 @@ import { FormFieldBase } from './FormFieldBase';
 
 /**
  * A control to capture a signature from the user.
- *  <remarks>
+ * @tutorial
  * The device making the capture must save the image to the server some other way.
  * When submitting the {@link FormResult}, the value must be a path to the signature file.
- *  </remarks>
  */
 export class FormFieldSignature
 	extends FormFieldBase {

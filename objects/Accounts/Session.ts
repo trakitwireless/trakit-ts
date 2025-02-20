@@ -50,7 +50,7 @@ export class Session
 	 */
 	ipAddress: string;
 	/**
-	 *  <c>UserAgent</c> identification string
+	 * `UserAgent` identification string
 	 */
 	userAgent: string;
 	/**

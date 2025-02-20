@@ -43,7 +43,6 @@ export class FormTemplate
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * Name of this form.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -52,26 +51,18 @@ export class FormTemplate
 	notes: string = "";
 	/**
 	 * Codified label names used to relate forms to {@link Asset}s.
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
 	labels: codified[] = [];
 	/**
 	 * The fill/background colour of the icon.
-	 *  <override max-length="22" format="colour" />
 	 */
 	fill: colour = "";
 	/**
 	 * Outline and graphic colour.
-	 *  <override max-length="22" format="colour" />
 	 */
 	stroke: colour = "";
 	/**
 	 * The name of the symbol for this template.
-	 *  <override max-length="22" format="codified" />
 	 */
 	graphic: codified = "";
 	/**

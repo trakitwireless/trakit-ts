@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { ulong } from "../API/Types";
+import { email, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, REPORT_TEMPLATES } from "../Storage";
 import { ReportNotifications } from "./ReportNotifications";
@@ -45,12 +45,10 @@ export class ReportSchedule
 	/**
 	 * Login of the user who has ownership of this report schedule.
 	 * {@link User.login}
-	 *  <override max-length="254" format="email" />
 	 */
-	owner: string = "";
+	owner: email = "";
 	/**
 	 * Name of this report.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

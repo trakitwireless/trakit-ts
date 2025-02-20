@@ -7,13 +7,13 @@ import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
-import { ulong } from "../API/Types";
+import { codified, datetimetemplate, email, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, CONTACTS } from "../Storage";
 import { Contact } from "./Contact";
 import { SystemsOfUnits } from "./SystemsOfUnits";
-import { UserNotifications } from "./UserNotifications";
 import { User } from "./User";
+import { UserNotifications } from "./UserNotifications";
 
 /**
  * Credentials, information, and preferences about a user.
@@ -24,9 +24,8 @@ export class UserGeneral
 	/**
 	 * The unique public email address used to access the system.
 	 * {@link User.login}
-	 *  <override min-length="6" max-length="254" format="email" />
 	 */
-	login: string = "";
+	login: email = "";
 	/**
 	 * The company to which this user belongs.
 	 * {@link Company.id}
@@ -47,7 +46,6 @@ export class UserGeneral
 	enabled: boolean = false;
 	/**
 	 * Human friendly name for these credentials
-	 *  <override max-length="100" />
 	 */
 	nickname: string = "";
 	/**
@@ -69,35 +67,23 @@ export class UserGeneral
 	/**
 	 * Preferred region/language for the UI and notifications.
 	 * Valid formats use &lt;ISO 639-1&gt;&lt;dash&gt;&lt;ISO 3166-2&gt; such as "fr-CA" or "en-US".
-	 *  <override min-length="2" max-length="5" format="codified" />
 	 */
-	language: string = "";
+	language: codified = "";
 	/**
 	 * The format strings defining the preferred way to display ambiguous values.
-	 *  <override>
-	 *  <keys format="codified" />
-	 *  <values max-length="20" format="datetimetemplate" />
-	 *  </override>
 	 */
-	formats: Map<string, string> = new Map;
+	formats: Map<codified, datetimetemplate> = new Map;
 	/**
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
-	 *  <override>
-	 *  <keys format="codified" />
-	 *  </override>
 	 */
-	measurements: Map<string, SystemsOfUnits> = new Map;
+	measurements: Map<codified, SystemsOfUnits> = new Map;
 	/**
 	 * Additional options which do not fit in with the formats or measurements preferences.
-	 *  <override>
-	 *  <keys format="codified" />
-	 *  <values max-length="20" />
-	 *  </override>
+
 	 */
-	options: Map<string, string> = new Map;
+	options: Map<codified, string> = new Map;
 	/**
 	 * Definition of how and when to send alerts to the user.
-	 *  <override max-count="7" />
 	 */
 	notify: UserNotifications[] = [];
 

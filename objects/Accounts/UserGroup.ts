@@ -32,7 +32,6 @@ export class UserGroup
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * A name given to this group.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

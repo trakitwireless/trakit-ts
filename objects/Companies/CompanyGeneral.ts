@@ -30,7 +30,6 @@ export class CompanyGeneral
 	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**
 	 * The organizational name.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

@@ -31,7 +31,6 @@ export class ProviderConfiguration
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The nickname given to this configuration
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

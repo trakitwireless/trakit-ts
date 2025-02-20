@@ -60,7 +60,6 @@ export class BillingReportServiceBreakdown
 	kind: AssetType = AssetType.asset;
 	/**
 	 * Asset's name.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -90,11 +89,6 @@ export class BillingReportServiceBreakdown
 	/**
 	 * Codified label names.
 	 * {@link LabelStyle.code}
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
 	labels: codified[] = [];
 	/**
@@ -110,9 +104,6 @@ export class BillingReportServiceBreakdown
 	set providers(value: Provider[]) { this.providerIds = value?.map(p => p.id) ?? []; }
 	/**
 	 * The list of phone numbers for this asset.
-	 *  <override>
-	 *  <values format="phone" />
-	 *  </override>
 	 */
 	phoneNumbers: phone[] = [];
 	/**

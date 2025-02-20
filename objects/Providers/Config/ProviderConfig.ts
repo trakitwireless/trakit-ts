@@ -42,7 +42,6 @@ export class ProviderConfig
 	set script(value: ProviderScript) { this.scriptId = value?.id ?? NaN; }
 	/**
 	 * The nickname given to this configuration
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

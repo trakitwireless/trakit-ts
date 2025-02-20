@@ -30,7 +30,6 @@ export class Document
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The file name of this file.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -39,7 +38,6 @@ export class Document
 	notes: string = "";
 	/**
 	 * The URL/path to find this file.
-	 *  <override max-length="200" />
 	 */
 	src: string = "";
 	/**
@@ -48,7 +46,6 @@ export class Document
 	bytes: ulong = NaN;
 	/**
 	 * The MIME type of the file.
-	 *  <override max-length="50" />
 	 */
 	mime: string = "";
 	/**
@@ -57,10 +54,6 @@ export class Document
 	expiry: Date = DATE();
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
-	 *  <override max-count="10">
-	 *  <keys max-length="20" />
-	 *  <values max-length="100" />
-	 *  </override>
 	 */
 	references: Map<string, string> = new Map;
 

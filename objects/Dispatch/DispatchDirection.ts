@@ -41,7 +41,6 @@ export class DispatchDirection
 	instructions: string = "";
 	/**
 	 * A <format id="polyline">route path</format> to display on a map.
-	 *  <override type="System.String" format="polyline" />
 	 */
 	path: LatLng[] = [];
 	/**

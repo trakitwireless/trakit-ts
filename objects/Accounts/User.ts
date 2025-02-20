@@ -6,7 +6,7 @@ import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { MERGE } from "../API/Objects";
 import { Timezone } from "../API/Timezone";
-import { codified, datetimetemplate, ulong } from "../API/Types";
+import { codified, datetimetemplate, email, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Contact } from "./Contact";
 import { Permission } from "./Permissions/Permission";
@@ -35,9 +35,8 @@ export class User
 	/**
 	 * The unique public email address used to access the system.
 	 * {@link User.login}
-	 *  <override min-length="6" max-length="254" format="email" />
 	 */
-	get login(): string {
+	get login(): email {
 		return this.general.login
 			?? this.advanced.login;
 	}
@@ -72,7 +71,6 @@ export class User
 	set enabled(value: boolean) { this.general.enabled = value; }
 	/**
 	 * Human friendly name for these credentials
-	 *  <override max-length="100" />
 	 */
 	get nickname(): string { return this.general.nickname; }
 	set nickname(value: string) { this.general.nickname = value; }
@@ -97,39 +95,26 @@ export class User
 	/**
 	 * Preferred region/language for the UI and notifications.
 	 * Valid formats use &lt;ISO 639-1&gt;&lt;dash&gt;&lt;ISO 3166-2&gt; such as "fr-CA" or "en-US".
-	 *  <override min-length="2" max-length="5" format="codified" />
 	 */
-	get language(): string { return this.general.language; }
-	set language(value: string) { this.general.language = value; }
+	get language(): codified { return this.general.language; }
+	set language(value: codified) { this.general.language = value; }
 	/**
 	 * The format strings defining the preferred way to display ambiguous values.
-	 *  <override>
-	 *  <keys format="codified" />
-	 *  <values max-length="20" format="datetimetemplate" />
-	 *  </override>
 	 */
 	get formats(): Map<codified, datetimetemplate> { return this.general.formats; }
 	set formats(value: Map<codified, datetimetemplate>) { this.general.formats = value; }
 	/**
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
-	 *  <override>
-	 *  <keys format="codified" />
-	 *  </override>
 	 */
 	get measurements(): Map<codified, SystemsOfUnits> { return this.general.measurements; }
 	set measurements(value: Map<codified, SystemsOfUnits>) { this.general.measurements = value; }
 	/**
 	 * Additional options which do not fit in with the formats or measurements preferences.
-	 *  <override>
-	 *  <keys format="codified" />
-	 *  <values max-length="20" />
-	 *  </override>
 	 */
 	get options(): Map<codified, string> { return this.general.options; }
 	set options(value: Map<codified, string>) { this.general.options = value; }
 	/**
 	 * Definition of how and when to send alerts to the user.
-	 *  <override max-count="7" />
 	 */
 	get notify(): UserNotifications[] { return this.general.notify; }
 	set notify(value: UserNotifications[]) { this.general.notify = value; }

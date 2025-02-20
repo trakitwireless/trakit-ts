@@ -75,7 +75,6 @@ export class Provider
 	get general(): ProviderGeneral { return this.#general; }
 	/**
 	 * This thing's name.
-	 *  <override max-length="100" />
 	 */
 	get name(): string { return this.#general.name; }
 	set name(value: string) { this.#general.name = value; }
@@ -99,13 +98,11 @@ export class Provider
 	set configuration(value: ulong) { this.#general.configurationId = value; }
 	/**
 	 * The password programmed on the device used to ensure the system is the only client authorized to make changes.
-	 *  <override max-length="50" />
 	 */
 	get password(): string { return this.#general.password; }
 	set password(value: string) { this.#general.password = value; }
 	/**
 	 * The firmware/application version number.
-	 *  <override max-length="100" />
 	 */
 	get firmware(): string { return this.#general.firmware; }
 	set firmware(value: string) { this.#general.firmware = value; }
@@ -116,11 +113,6 @@ export class Provider
 	set phoneNumber(value: phone) { this.#general.phoneNumber = value ?? NaN; }
 	/**
 	 * A list of read-only values about the device like IMEI, ESN, firmware version, hardware revision, etc...
-	 *  <override>
-	 *  <keys>
-	 * {@link DataName}
-	 *  </keys>
-	 *  </override>
 	 */
 	get information(): Map<string, string> { return this.#general.information; }
 	set information(value: Map<string, string>) { this.#general.information = value; }

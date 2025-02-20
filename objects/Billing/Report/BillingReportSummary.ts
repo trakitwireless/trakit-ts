@@ -44,7 +44,6 @@ export class BillingReportSummary
 	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**
 	 * Target's name.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

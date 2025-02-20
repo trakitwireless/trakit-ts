@@ -4,7 +4,6 @@ import { BillableHostingType } from './BillableHostingType';
 
 /**
  * A discount rule for assets
- *  <override skip="true" />
  * @deprecated Never implemented.
  */
 export class BillableHostingDiscount

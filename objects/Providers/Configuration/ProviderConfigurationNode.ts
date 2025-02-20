@@ -61,7 +61,6 @@ export class ProviderConfigurationNode
 	type: string;
 	/**
 	 * Unit hint used to help the script processor format the value.
-	 *  <override type="Vorgon.Units" />
 	 */
 	unit: string;
 	/**

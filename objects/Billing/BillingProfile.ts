@@ -54,13 +54,11 @@ export class BillingProfile
 	 */
 	get billee(): Company { return COMPANIES.get(this.billeeId) as Company; }
 	/**
-	 * The name for this profile
-	 *  <override max-length="254" />
+	 * The name for this profile.
 	 */
 	name: string = "";
 	/**
 	 * Notes about the billing profile for the billee or target.
-	 *  <override max-length="1000" />
 	 */
 	notes: string = "";
 	/**

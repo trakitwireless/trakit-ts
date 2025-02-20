@@ -24,14 +24,13 @@ function MAKE_CHOICES(array?: (string | null)[]) {
 
 /**
  * A true/false (or either-or) input control.
- *  <remarks>
+ * @tutorial
  * For choices, the field definition will be an array of three values.
  * The first value is the "true", second is the "false", and third is "indeterminate".
  * For example:
  * - "true", "false", ""
  * - "on", "off", "unknown"
  * - "yes", "no", "maybe"
- *  </remarks>
  */
 export class FormFieldBoolean
 	extends FormFieldBase {

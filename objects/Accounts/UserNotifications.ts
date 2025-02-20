@@ -31,7 +31,6 @@ export class UserNotifications
 	
 	/**
 	 * A common name like "Weekdays" or "Off Hours".
-	 *  <override max-length="100" />
 	 */
 	name: string;
 	/**
@@ -42,7 +41,6 @@ export class UserNotifications
 	 * A 7 item, boolean array, determines if the user should be notified on that day of the week.
 	 * The days of the week are defined in local time, not UTC.
 	 * {@link UserGeneral.timezone}
-	 *  <override count="7" />
 	 */
 	weekdays: boolean[];
 	/**
@@ -61,7 +59,6 @@ export class UserNotifications
 	 * Email address where the sent is sent.
 	 * If not specified, the email address from the User's {@link Contact} is taken.
 	 * If the contact has no email address, the alert is sent to the user's login.
-	 *  <override min-length="6" max-length="254" format="email" />
 	 */
 	email: email;
 	/**

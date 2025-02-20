@@ -125,7 +125,7 @@ export abstract class DashcamBase
 	// IRequestable
 	/**
 	 * For dashcams, this is either a unique identifier, or a combination of the {@link assetId}, {@link providerId}, and {@link camera} values.
-	 *  <returns>A string unique for this type of object.</returns>
+	 * @returns A string unique for this type of object.
 	 */
 	abstract getKey(): string;
 }

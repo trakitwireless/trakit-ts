@@ -40,7 +40,6 @@ export class MaintenanceSchedule
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The name of the work to be done.  Like "oil change".
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -58,23 +57,19 @@ export class MaintenanceSchedule
 
 	/**
 	 * The fill/background colour of the icon.
-	 *  <override max-length="22" format="colour" />
 	 */
 	fill: colour = "";
 	/**
 	 * Outline and graphic colour.
-	 *  <override max-length="22" format="colour" />
 	 */
 	stroke: colour = "";
 	/**
 	 * The name of the symbol for this schedule.
-	 *  <override max-length="22" format="codified" />
 	 */
 	graphic: codified = "";
 
 	/**
 	 * The number of days in advance to predict a job will become pending.
-	 *  <override min-value="5" max-value="180" />
 	 */
 	predictionDays: uint = DEFAULT_PREDICTION_DAYS;
 	/**
@@ -91,18 +86,12 @@ export class MaintenanceSchedule
 	recurEngineHours: double = NaN;
 	/**
 	 * The per-asset details calculated by the system to help predict the creation of Maintenance Jobs.
-	 *  <override>
-	 *  <keys>
-	 * {@link Asset.id}
-	 *  </keys>
-	 *  </override>
 	 */
 	intervals: Map<ulong, MaintenanceInterval> = new Map;
 
 	// ------------ repair details ------------
 	/**
 	 * The name of the garage or service facility where the work is done.
-	 *  <override max-length="100" />
 	 */
 	garage: string = "";
 	/**
@@ -114,8 +103,7 @@ export class MaintenanceSchedule
 	 */
 	cost: double = NaN;
 	/**
-	 * A reference code used to track this job
-	 *  <override max-length="100" />
+	 * A reference code used to track this job.
 	 */
 	reference: string = "";
 

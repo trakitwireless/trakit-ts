@@ -10,7 +10,7 @@ import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { MERGE } from "../API/Objects";
-import { ulong } from "../API/Types";
+import { codified, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -60,7 +60,6 @@ export class AssetGeneral
 	kind: AssetType = AssetType.asset;
 	/**
 	 * This thing's name.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -78,13 +77,8 @@ export class AssetGeneral
 	notes: string = "";
 	/**
 	 * Codified label names.
-	 *  <override>
-	 *  <values format="codified">
-	 * {@link LabelStyle.code}
-	 *  </values>
-	 *  </override>
 	 */
-	labels: string[] = [];
+	labels: codified[] = [];
 	/**
 	 * {@link Picture.id}s of this asset.
 	 */
@@ -96,15 +90,10 @@ export class AssetGeneral
 	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }
 	/**
 	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
-	 *  <override max-length="254" />
 	 */
 	messagingAddress: string = "";
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
-	 *  <override max-count="10">
-	 *  <keys max-length="20" />
-	 *  <values max-length="100" />
-	 *  </override>
 	 */
 	references: Map<string, string> = new Map;
 

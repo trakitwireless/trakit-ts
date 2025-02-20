@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { byte, email, ulong } from "../API/Types";
 import { ReportStatus } from './ReportStatus';
-import { ReportDataTotal } from './ReportDataTotal';
+import { ReportTotal } from './ReportTotal';
 import { ReportType } from './ReportType';
 import { ReportOptions } from './ReportOptions';
 import { ReportScorecard } from './ReportScorecard';
@@ -120,7 +120,7 @@ export class ReportResult
 	/**
 	 * After processing, the report totals the values from all summary instances for a quick overview of the kind of results generated.
 	 */
-	totals: ReportDataTotal[] = [];
+	totals: ReportTotal[] = [];
 	/**
 	 * Scorecards for all the targeted assets based on the scorecard rules.
 	 */
@@ -177,7 +177,7 @@ export class ReportResult
 			this.bounds = LatLngBounds.fromJSON(json["bounds"]);
 			this.targeted = (json["targeted"] || []).map(ID);
 			this.filtered = (json["filtered"] || []).map(ID);
-			this.totals = (json["totals"] || []).map(ReportDataTotal.fromJSON);
+			this.totals = (json["totals"] || []).map(ReportTotal.fromJSON);
 			this.scorecards = (json["scorecards"] || []).map(ReportScorecard.fromJSON);
 			this.error = json["error"] || "";
 		}

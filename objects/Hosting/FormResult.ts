@@ -53,7 +53,6 @@ export class FormResult
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
 	 * Name of this form.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

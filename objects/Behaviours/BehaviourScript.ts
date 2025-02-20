@@ -33,7 +33,6 @@ export class BehaviourScript
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
 	 * The nickname given to this script.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -46,7 +45,6 @@ export class BehaviourScript
 	global: boolean = false;
 	/**
 	 * The source code.
-	 *  <override max-length="8060" />
 	 */
 	source: string = "";
 	/**
@@ -59,17 +57,14 @@ export class BehaviourScript
 	parameters: Map<string, BehaviourParameter> = new Map;
 	/**
 	 * The background colour given to this script for easy visual identification.
-	 *  <override max-length="22" format="colour" />
 	 */
 	fill: colour = "";
 	/**
 	 * The text/graphic colour given to this script for easy visual identification.
-	 *  <override max-length="22" format="colour" />
 	 */
 	stroke: colour = "";
 	/**
 	 * The codified graphic name given to this script for easy visual identification.
-	 *  <override max-length="22" format="codified" />
 	 */
 	graphic: codified = "";
 

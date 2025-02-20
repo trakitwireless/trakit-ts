@@ -42,7 +42,6 @@ export class Behaviour
 	get script(): BehaviourScript { return BEHAVIOUR_SCRIPTS.get(this.scriptId) as BehaviourScript; }
 	/**
 	 * The name of this behaviour.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**

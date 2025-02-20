@@ -57,7 +57,6 @@ export class BillingReport
 	get profile(): BillingProfile { return BILLING_PROFILES.get(this.profileId) as BillingProfile; }
 	/**
 	 * Name of this report.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -87,7 +86,6 @@ export class BillingReport
 	/**
 	 * A field which contains report error details if the {@link status} is {@link BillingReportStatus.failed}.
 	 * {@link BillingReportStatus}
-	 *  <override max-length="250" />
 	 */
 	error: string = "";
 	/**
