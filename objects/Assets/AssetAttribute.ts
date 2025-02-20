@@ -1,7 +1,7 @@
 import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { ulong } from "../API/Types";
+import { datetime, ulong } from "../API/Types";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, PROVIDERS } from "../Storage";
 import { Asset } from "./Asset";
@@ -84,7 +84,7 @@ export class AssetAttribute
 		unit?: string,
 		provider?: string,
 		asset?: ulong,
-		dts?: Date,
+		dts?: Date | number | datetime,
 		global?: boolean
 	) {
 		this.name = name || "";

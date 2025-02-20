@@ -3,7 +3,7 @@ import { DATE, ID, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { Size } from "../API/Geometry/Size";
 import { MERGE } from "../API/Objects";
 import { TimeSpan } from "../API/TimeSpan";
-import { byte, double, guid, single, ulong } from "../API/Types";
+import { byte, datetime, double, guid, single, ulong } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
 
@@ -84,8 +84,8 @@ export class Dashcam
 		guid?: guid,
 		kind?: DashcamMediaType,
 		fps?: single,
-		start?: Date | string | number,
-		end?: Date | string | number,
+		start?: Date | number | datetime,
+		end?: Date | number | datetime,
 		eventName?: string
 	) {
 		super(

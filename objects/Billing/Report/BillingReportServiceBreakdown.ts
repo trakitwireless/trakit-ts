@@ -5,7 +5,7 @@ import { IBelongAsset } from "../../API/Interfaces/IBelongAsset";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { MAP_FILTERED_BY_KEYS } from "../../API/Maps";
-import { codified, double, phone, ulong } from "../../API/Types";
+import { codified, datetime, double, phone, ulong } from "../../API/Types";
 import { Asset } from "../../Assets/Asset";
 import { AssetType } from "../../Assets/AssetType";
 import { Provider } from "../../Providers/Provider";
@@ -145,15 +145,15 @@ export class BillingReportServiceBreakdown
 		kind?: AssetType,
 		name?: string,
 		notes?: string,
-		created?: Date | string | number,
-		deleted?: Date | string | number,
-		suspended?: Date | string | number,
-		restored?: Date | string | number,
-		revived?: Date | string | number,
+		created?: Date | number | datetime,
+		deleted?: Date | number | datetime,
+		suspended?: Date | number | datetime,
+		restored?: Date | number | datetime,
+		revived?: Date | number | datetime,
 		labels?: codified[],
 		providers?: string[],
 		phoneNumbers?: phone[],
-		updatedDts?: Date | string | number,
+		updatedDts?: Date | number | datetime,
 		billableDays?: double,
 		cost?: double,
 		suspendedDays?: double,

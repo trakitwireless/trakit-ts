@@ -112,7 +112,7 @@ export function ID(value: any): number {
  * Creates a Date object out of the given value.
  * @param value
  */
-export function DATE(value?: datetime | number | Date): Date {
+export function DATE(value?: Date | number | datetime): Date {
 	return new Date(
 		value instanceof Date
 			? value.valueOf()

@@ -1,6 +1,6 @@
 import { DATE, JSON_DATE, IS_AN } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
-import { ulong } from "../../API/Types";
+import { datetime, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
@@ -31,8 +31,8 @@ export class FormFieldDate
 		id?: ulong,
 		name?: string,
 		kind?: FormFieldType,
-		minimum?: Date,
-		maximum?: Date,
+		minimum?: Date | number | datetime,
+		maximum?: Date | number | datetime,
 		notes?: string,
 		required?: boolean,
 		value?: string | null,

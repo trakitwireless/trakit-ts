@@ -2,7 +2,7 @@ import { FLOAT } from "../../API/Constants";
 import { DATE, JSON_DATE, JSON_NUMBER, PHONE_PARSE } from "../../API/Functions";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { double, ulong } from "../../API/Types";
+import { datetime, double, ulong } from "../../API/Types";
 import { Provider } from "../../Providers/Provider";
 import { ProviderType } from "../../Providers/ProviderType";
 import { PROVIDERS } from "../../Storage";
@@ -91,8 +91,8 @@ export class BillingReportLicenseBreakdown
 		kind?: ProviderType,
 		name?: string,
 		notes?: string,
-		created?: Date | string | number,
-		deleted?: Date | string | number,
+		created?: Date | number | datetime,
+		deleted?: Date | number | datetime,
 		phoneNumber?: ulong,
 		firmware?: string,
 		billableDays?: double,

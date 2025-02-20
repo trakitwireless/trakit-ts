@@ -1,5 +1,6 @@
 import { DATE, JSON_DATE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
+import { datetime } from "../API/Types";
 import { AssetPlaceStatusType } from "./AssetPlaceStatusType";
 
 /**
@@ -34,8 +35,8 @@ export class AssetPlaceStatus
 
 	constructor(
 		kind?: AssetPlaceStatusType,
-		enter?: Date | number | string,
-		latest?: Date | number | string
+		enter?: Date | number | datetime,
+		latest?: Date | number | datetime
 	) {
 		this.kind = AssetPlaceStatusType[kind as AssetPlaceStatusType] || AssetPlaceStatusType.inside;
 		this.enter = DATE(enter);

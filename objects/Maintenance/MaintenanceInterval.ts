@@ -2,7 +2,7 @@ import { FLOAT } from "../API/Constants";
 import { DATE, JSON_DATE, ID } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { double, ulong } from "../API/Types";
+import { datetime, double, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { ASSETS, MAINTENANCE_JOBS } from "../Storage";
 import { MaintenanceJob } from "./MaintenanceJob";
@@ -55,7 +55,7 @@ export class MaintenanceInterval
 
 	constructor(
 		asset?: ulong,
-		date?: Date | number | string,
+		date?: Date | number | datetime,
 		odometer?: double,
 		engineHours?: double,
 		lastJob?: ulong

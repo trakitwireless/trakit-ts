@@ -1,5 +1,6 @@
 import { FLOAT } from '../Constants';
 import { DATE, JSON_DATE, JSON_NUMBER } from '../Functions';
+import { datetime } from '../Types';
 import { IPosition, IStreetAddress } from './Interfaces';
 import { LatLng, } from './LatLng';
 import { StreetAddress, } from './StreetAddress';
@@ -57,7 +58,7 @@ export class Position
 		speed?: number,
 		bearing?: number,
 		accuracy?: number,
-		dts?: Date | string | number,
+		dts?: Date | number | datetime,
 		limit?: number,
 		altitude?: number,
 		street?: IStreetAddress

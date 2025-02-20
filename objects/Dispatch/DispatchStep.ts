@@ -5,7 +5,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { timespan, ulong } from "../API/Types";
+import { datetime, timespan, ulong } from "../API/Types";
 import { Place } from "../Places/Place";
 import { PLACES } from "../Storage";
 import { DispatchStepState } from "./DispatchStepState";
@@ -130,7 +130,7 @@ export class DispatchStep
 		id?: ulong,
 		name?: string,
 		states?: Map<DispatchStepStatus, DispatchStepState>,
-		eta?: Date,
+		eta?: Date | number | datetime,
 		duration?: TimeSpan | timespan | number,
 		place?: ulong,
 		address?: string,

@@ -2,7 +2,7 @@ import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { int, ulong } from "../API/Types";
+import { datetime, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../Storage";
 import { SessionStatus } from "./SessionStatus";
@@ -97,10 +97,10 @@ export class Session
 		sockets?: int,
 		login?: string,
 		status?: SessionStatus,
-		created?: Date | number | string,
-		expiry?: Date | number | string,
+		created?: Date | number | datetime,
+		expiry?: Date | number | datetime,
 		lastCommand?: string,
-		lastActivity?: Date | number | string
+		lastActivity?: Date | number | datetime
 	) {
 		this.handle = handle || "";
 		this.companyId = ID(company);

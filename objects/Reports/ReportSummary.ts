@@ -5,7 +5,7 @@ import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { double, uint, ulong } from "../API/Types";
+import { datetime, double, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { ASSETS } from "../Storage";
 import { ReportSummaryReason } from './ReportSummaryReason';
@@ -101,9 +101,9 @@ export class ReportSummary
 		stateDetail?: string,
 		instance?: uint,
 		instancesCount?: uint,
-		startingUtc?: Date | number | string,
+		startingUtc?: Date | number | datetime,
 		startingReason?: ReportSummaryReason,
-		endingUtc?: Date | number | string,
+		endingUtc?: Date | number | datetime,
 		endingReason?: ReportSummaryReason,
 		distance?: double,
 		polyline?: LatLng[],
