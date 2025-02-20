@@ -203,7 +203,7 @@ export class SearchPattern {
 	 * Creates an array of {@link SearchPattern}s for easier matching.  Used for doing OR matching.
 	 * @param expression
 	 */
-	static parse(expression: string): SearchPattern[] {
+	static parse(expression?: string | null): SearchPattern[] {
 		const patterns = (expression ?? "").split(SearchPattern_splitter),
 			searches: SearchPattern[] = []
 		let pattern = "";
@@ -222,7 +222,7 @@ export class SearchPattern {
 	 * Creates a single string from the given array of {@link SearchPattern}s for easier serialization.
 	 * @param patterns
 	 */
-	static stringify(patterns: SearchPattern[]): string | null {
+	static stringify(patterns?: SearchPattern[] | null): string | null {
 		const expressions = (patterns || []).map(p => p.toString());
 		return expressions.length === 0
 			? null
@@ -236,7 +236,7 @@ export class SearchPattern {
 	 * considered matched.
 	 * Operators are formatted as "operator:terms".
 	 */
-	operators: Map<string, string[]> = new Map();
+	operators: Map<string, string[]> = new Map;
 	/**
 	 * If any term matches, then the search should be considered matched.
 	 * Terms are any string contained by single/double-quotes or not parsed as an
@@ -281,7 +281,7 @@ export class SearchPattern {
 	 * Returns a new, identical instance of the pattern.
 	 */
 	copy(): SearchPattern {
-		var search = new SearchPattern();
+		var search = new SearchPattern;
 		this.operators.forEach((v, k) => search.operators.set(k, [...v]));
 		search.terms = [...this.terms];
 		return search;

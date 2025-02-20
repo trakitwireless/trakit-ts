@@ -1,7 +1,7 @@
 ﻿import { IS_AN } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { TimeSpan } from "../../API/TimeSpan";
-import { ulong } from "../../API/Types";
+import { timespan, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
@@ -42,8 +42,8 @@ export class FormFieldTime
 		id?: ulong,
 		name?: string,
 		kind?: FormFieldType,
-		minimum?: TimeSpan,
-		maximum?: TimeSpan,
+		minimum?: TimeSpan | timespan | number,
+		maximum?: TimeSpan | timespan | number,
 		notes?: string,
 		required?: boolean,
 		value?: string | null,

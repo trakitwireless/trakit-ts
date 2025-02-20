@@ -3,7 +3,8 @@ import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../../API/
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
-import { expression, ulong } from "../../API/Types";
+import { SearchPattern } from "../../API/SearchPattern";
+import { ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES, PROVIDER_SCRIPTS } from "../../Storage";
 import { ProviderScript } from "./ProviderScript";
@@ -57,9 +58,8 @@ export class ProviderConfig
 	 * Use null to disable.
 	 * Use "*" to match all the Places the Provider's Asset can match.
 	 * Or use "#123456" or "label:term" like other Place search patterns.
-	 *  <override type="System.String" format="expression" />
 	 */
-	geofences: expression = "";
+	geofences: SearchPattern[] | null = null;
 
 	toJSON() {
 		return {
@@ -70,7 +70,7 @@ export class ProviderConfig
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"parameters": MAP_TO_OBJECT(this.parameters),
-			"geofences": this.geofences || "",
+			"geofences": SearchPattern.stringify(this.geofences),
 		};
 	}
 	fromJSON(json: any, force?: boolean): boolean {
@@ -82,7 +82,7 @@ export class ProviderConfig
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
 			this.parameters = OBJECT_TO_MAP(json["parameters"] || {});
-			this.geofences = json["geofences"] || "";
+			this.geofences = SearchPattern.parse(json["geofences"]);
 		}
 		return update;
 	}

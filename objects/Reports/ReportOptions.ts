@@ -1,9 +1,9 @@
-﻿import { ReportParameter } from './ReportParameter';
-import { ReportScorecardRules } from './ReportScorecardRules';
-import { ReportFilterMode } from './ReportFilterMode';
+﻿import { ARRAY_TO_JSON } from '../API/Arrays';
 import { ISerializable } from '../API/Interfaces/ISerializable';
-import { ARRAY_TO_JSON } from '../API/Arrays';
-import { expression } from '../API/Types';
+import { SearchPattern } from '../API/SearchPattern';
+import { ReportFilterMode } from './ReportFilterMode';
+import { ReportParameter } from './ReportParameter';
+import { ReportScorecardRules } from './ReportScorecardRules';
 
 /**
  * The options used by the report runner to process results.
@@ -17,9 +17,9 @@ export class ReportOptions
 	static fromJSON(json: any) {
 		return new ReportOptions(
 			(json["parameters"] as any[]).map(ReportParameter.fromJSON),
-			json["targets"] || "",
+			SearchPattern.parse(json["targets"]),
 			ReportFilterMode[json["filtering"] as ReportFilterMode],
-			json["places"] || "",
+			SearchPattern.parse(json["places"]),
 			json["regions"] as any[],
 			json["scorecardRules"]
 				? ReportScorecardRules.fromJSON(json["scorecardRules"])
@@ -34,7 +34,7 @@ export class ReportOptions
 	/**
 	 * A targeting expression for including/excluding Assets.
 	 */
-	targets: expression;
+	targets: SearchPattern[] | null;
 	/**
 	 * The mechanism to use for filtering based on places and regions.
 	 */
@@ -42,7 +42,7 @@ export class ReportOptions
 	/**
 	 * A targeting expression for limiting results which only include data from Assets interacting with the targeted Places.
 	 */
-	places: expression;
+	places: SearchPattern[] | null;
 	/**
 	 * A list of provinces and states, where only assets within those regions will be included in the results.
 	 */
@@ -54,16 +54,16 @@ export class ReportOptions
 
 	constructor(
 		parameters?: ReportParameter[],
-		targets?: string,
+		targets?: SearchPattern[] | null,
 		filtering?: ReportFilterMode,
-		places?: string,
+		places?: SearchPattern[] | null,
 		regions?: string[],
 		scorecardRules?: ReportScorecardRules | null
 	) {
 		this.parameters = parameters ?? [];
-		this.targets = targets || "";
+		this.targets = targets || null;
 		this.filtering = ReportFilterMode[filtering as ReportFilterMode] || ReportFilterMode.none;
-		this.places = places || "";
+		this.places = places || null;
 		this.regions = regions ?? [];
 		this.scorecardRules = scorecardRules || null;
 	}
@@ -71,9 +71,9 @@ export class ReportOptions
 	toJSON() {
 		return {
 			"parameters": this.parameters?.map(ARRAY_TO_JSON) ?? [],
-			"targets": this.targets || "",
+			"targets": SearchPattern.stringify(this.targets),
 			"filtering": ReportFilterMode[this.filtering] || ReportFilterMode.none,
-			"places": this.places || "",
+			"places": SearchPattern.stringify(this.places),
 			"regions": [...this.regions],
 			"scorecardRules": this.scorecardRules?.toJSON() ?? null,
 		};

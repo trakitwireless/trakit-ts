@@ -1,7 +1,8 @@
 ﻿import { Contact } from "../Accounts/Contact";
 import { UserGeneral } from "../Accounts/UserGeneral";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { email, expression } from "../API/Types";
+import { SearchPattern } from "../API/SearchPattern";
+import { email } from "../API/Types";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 
 /**
@@ -16,7 +17,7 @@ export class ReportNotifications
 	static fromJSON(json: any) {
 		return new ReportNotifications(
 			json["users"] || [],
-			json["assets"],
+			SearchPattern.parse(json["assets"])
 		);
 	}
 	/**
@@ -31,20 +32,20 @@ export class ReportNotifications
 	 * To receive the emailed results, the Asset must have a {@link AssetGeneral.messagingAddress},
 	 * or for a Person type asset, their {@link Contact.emails}["Email"].
 	 */
-	assets: expression;
+	assets: SearchPattern[] | null;
 	
 	constructor(
 		users?: email[],
-		assets?: expression
+		assets?: SearchPattern[] | null
 	) {
 		this.users = [...(users || [])];
-		this.assets = assets || "";
+		this.assets = assets || null;
 	}
 
 	toJSON() {
 		return {
 			"users": [...(this.users || [])],
-			"assets": this.assets || "",
+			"assets": SearchPattern.stringify(this.assets),
 		};
 	}
 }

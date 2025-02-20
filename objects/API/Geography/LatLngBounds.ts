@@ -52,7 +52,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * @param object 
 	 */
 	static fromJSON(object: any): LatLngBounds {
-		const bounds = new LatLngBounds();
+		const bounds = new LatLngBounds;
 		if (ILatLngBounds_instanceOf(object)) {
 			bounds.east = object.east;
 			bounds.north = object.north;

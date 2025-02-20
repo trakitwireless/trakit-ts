@@ -29,7 +29,7 @@ export class DispatchStep
 				(k, v) => [k as DispatchStepStatus, DispatchStepState.fromJSON(v)]
 			),
 			DATE(json["eta"]),
-			new TimeSpan(json["duration"]),
+			json["duration"] as timespan,
 			ID(json["place"]),
 			json["address"] || "",
 			LatLng.fromJSON(json["latlng"]),
@@ -86,7 +86,7 @@ export class DispatchStep
 	/**
 	 * The optional expected duration of the work for this step.
 	 */
-	duration: TimeSpan = new TimeSpan(0);
+	duration: TimeSpan = new TimeSpan;
 	/**
 	 * The total number of seconds in the {@link duration}.
 	 */

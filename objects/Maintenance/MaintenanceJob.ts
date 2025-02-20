@@ -102,9 +102,8 @@ export class MaintenanceJob
 	garage: string = "";
 	/**
 	 * Time it took to complete the job.
-	 *  <override format="timespan" />
 	 */
-	duration: TimeSpan | null = null;
+	duration: TimeSpan = new TimeSpan;
 	/**
 	 * How much the job cost in dollars.
 	 */

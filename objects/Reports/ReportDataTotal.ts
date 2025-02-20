@@ -13,6 +13,19 @@ import { ASSETS } from "../Storage";
 export class ReportDataTotal
 	implements ISerializable {
 	/**
+	 * 
+	 * @param json 
+	 */
+	static fromJSON(json: any) {
+		return new ReportDataTotal(
+			ID(json["asset"]),
+			json["stateDetail"],
+			ID(json["summaryCount"]),
+			json["duration"] as timespan,
+			FLOAT(json["distance"])
+		);
+	}
+	/**
 	 * The asset to which this report total belongs.
 	 * {@link Asset.id}
 	 */
@@ -44,7 +57,7 @@ export class ReportDataTotal
 		asset?: ulong,
 		stateDetail?: string,
 		summaryCount?: uint,
-		duration?: TimeSpan | timespan,
+		duration?: TimeSpan | timespan | number,
 		distance?: double
 	) {
 		this.assetId = ID(asset);

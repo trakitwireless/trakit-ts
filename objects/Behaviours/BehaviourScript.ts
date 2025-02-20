@@ -1,16 +1,15 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
+import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { byte, codified, colour, ulong } from "../API/Types";
-import { Company } from "../Companies/Company";
-import { BEHAVIOUR_SCRIPTS, COMPANIES } from "../Storage";
-import { BehaviourParameter } from "./BehaviourParameter";
-import { ISerializable } from "../API/Interfaces/ISerializable";
-import { BehaviourParameterType } from "./BehaviourParameterType";
-import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IVisual } from "../API/Interfaces/IVisual";
+import { SearchPattern } from "../API/SearchPattern";
+import { codified, colour, ulong } from "../API/Types";
+import { Company } from "../Companies/Company";
+import { COMPANIES } from "../Storage";
+import { BehaviourParameter } from "./BehaviourParameter";
 
 /**
  * Business logic run by the system to react to GPS events and device information.
@@ -52,9 +51,8 @@ export class BehaviourScript
 	source: string = "";
 	/**
 	 * A list of targeting expressions.  These expressions are defaults for derived Behaviours.
-	 *  <override type="System.String" format="expression" />
 	 */
-	filters: string = "";
+	filters: SearchPattern[] | null = null;
 	/**
 	 * Listed parameters for the Behaviour function.
 	 */
@@ -84,7 +82,7 @@ export class BehaviourScript
 			"notes": this.notes || "",
 			"global": !!this.global,
 			"source": this.source || "",
-			"filters": this.filters || "",
+			"filters": SearchPattern.stringify(this.filters),
 			"parameters": MAP_TO_OBJECT_VALUE_JSON(this.parameters),
 			"fill": this.fill || "",
 			"stroke": this.stroke || "",
@@ -100,7 +98,7 @@ export class BehaviourScript
 			this.notes = json["notes"] || "";
 			this.global = !!json["global"];
 			this.source = json["source"] || "";
-			this.filters = json["filters"] || "";
+			this.filters = SearchPattern.parse(json["filters"]);
 			this.parameters = OBJECT_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
 			this.fill = json["fill"] || "";
 			this.stroke = json["stroke"] || "";

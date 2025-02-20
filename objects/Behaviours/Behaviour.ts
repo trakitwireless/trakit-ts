@@ -3,6 +3,7 @@ import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from 
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
+import { SearchPattern } from "../API/SearchPattern";
 import { byte, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { BEHAVIOUR_SCRIPTS, COMPANIES } from "../Storage";
@@ -54,14 +55,12 @@ export class Behaviour
 	priority: byte = 255;
 	/**
 	 * The search pattern used to target the assets which will embed this behaviour in their execution context.
-	 *  <override type="System.String" format="expression" />
 	 */
-	targets: string = "";
+	targets: SearchPattern[] | null = null;
 	/**
 	 * A search pattern used to filter the providers which can implement this behaviour.
-	 *  <override type="System.String" format="expression" />
 	 */
-	filters: string = "";
+	filters: SearchPattern[] | null = null;
 	/**
 	 * The list of defined variable name/value pairs for the script requires.
 	 */
@@ -71,13 +70,13 @@ export class Behaviour
 		return {
 			"id": this.id || null,
 			"v": this.v,
-			"company": this.companyId|| null,
-			"script": this.scriptId|| null,
-			"name": this.name||"",
-			"notes": this.notes||"",
-			"targets": this.targets||"*",
-			"filters": this.filters||"",
-			"priority": this.priority||255,
+			"company": this.companyId || null,
+			"script": this.scriptId || null,
+			"name": this.name || "",
+			"notes": this.notes || "",
+			"targets": SearchPattern.stringify(this.targets),
+			"filters": SearchPattern.stringify(this.filters),
+			"priority": this.priority || 255,
 			"parameters": MAP_TO_OBJECT_VALUE_JSON(this.parameters),
 		};
 	}
@@ -90,8 +89,8 @@ export class Behaviour
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
 			this.priority = ID(json["priority"]);
-			this.targets = json["targets"] || "*";
-			this.filters = json["filters"] || "";
+			this.targets = SearchPattern.parse(json["targets"]);
+			this.filters = SearchPattern.parse(json["filters"]);
 			this.parameters = OBJECT_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
 		}
 		return update;

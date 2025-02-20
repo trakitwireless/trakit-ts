@@ -1,5 +1,5 @@
 ﻿import { ARRAY_TO_ENUMS } from "../API/Arrays";
-import { IS_AN, PHONE_PARSE, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
+import { IS_AN, PHONE_PARSE, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
@@ -20,8 +20,8 @@ export class UserNotifications
 			json["name"] || "",
 			!!json["enabled"],
 			WEEKDAYS_PARSE(json["weekdays"] as string),
-			new TimeSpan(json["start"]),
-			new TimeSpan(json["end"]),
+			json["start"] as timespan,
+			json["end"] as timespan,
 			json["email"] || "",
 			PHONE_PARSE(json["sms"]),
 			ARRAY_TO_ENUMS(NotificationMethod, json["online"] || []),

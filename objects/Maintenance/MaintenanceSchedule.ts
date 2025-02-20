@@ -5,8 +5,9 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
+import { SearchPattern } from "../API/SearchPattern";
 import { TimeSpan } from "../API/TimeSpan";
-import { codified, colour, double, int, uint, ulong } from "../API/Types";
+import { codified, colour, double, email, int, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../Storage";
@@ -49,16 +50,11 @@ export class MaintenanceSchedule
 	/**
 	 * The targeting expression to select which Vehicles and Trailers require this maintenance work.
 	 */
-	targets: string = "";
+	targets: SearchPattern[] | null = null;
 	/**
 	 * List of Users to send notifications.
-	 *  <override>
-	 *  <values format="email">
-	 * {@link User.login}
-	 *  </values>
-	 *  </override>
 	 */
-	notify: string[] = [];
+	notify: email[] = [];
 
 	/**
 	 * The fill/background colour of the icon.
@@ -131,7 +127,7 @@ export class MaintenanceSchedule
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"notify": [...this.notify],
-			"targets": this.targets || "",
+			"targets": SearchPattern.stringify(this.targets),
 			"fill": this.fill || "",
 			"stroke": this.stroke || "",
 			"graphic": this.graphic || "",
@@ -154,7 +150,7 @@ export class MaintenanceSchedule
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
 			this.notify = json["notify"] || [];
-			this.targets = json["targets"] || "*";
+			this.targets = SearchPattern.parse(json["targets"]);
 			this.fill = json["fill"] || "";
 			this.stroke = json["stroke"] || "";
 			this.graphic = json["graphic"] || "";

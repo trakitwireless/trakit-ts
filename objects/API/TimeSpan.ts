@@ -72,7 +72,7 @@ export class TimeSpan {
 	/**
 	 * @param duration		A time-span formatted string, or a number representing milliseconds
 	 */
-	constructor(duration?: TimeSpan | timespan | number) {
+	constructor(duration?: TimeSpan | timespan | number | null) {
 		if (duration) this.add(duration);
 	}
 
@@ -122,7 +122,7 @@ export class TimeSpan {
 	 * The format follows the {@link timespan} definition.
 	 * @param format	Use format strings like "HH:mm" for just hours and minutes.  Valid flags are d, h, H, m, s, and f.  If you use 
 	 */
-	toString(format: timespan = "") {
+	toString(format: timespan = ""): timespan {
 		if (format) {
 			var pieces = format.split(/(\\.|[hHmstT]{1,2}|[df]{1,6})/gm),
 				hasDays = pieces.includes("d");
@@ -157,7 +157,7 @@ export class TimeSpan {
 	 * @expose
 	 * @this {TimeSpan}
 	 */
-	toJSON = toString;
+	toJSON = this.toString;
 	/**
 	 * Gets the comparable value of this time-span as total milliseconds.
 	 * @override

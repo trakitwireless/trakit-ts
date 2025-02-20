@@ -4,7 +4,8 @@ import { IBelongBillingProfile } from '../../API/Interfaces/IBelongBillingProfil
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { MERGE } from '../../API/Objects';
-import { expression, uint } from '../../API/Types';
+import { SearchPattern } from '../../API/SearchPattern';
+import { uint } from '../../API/Types';
 import { BillableBase } from '../BillableBase';
 
 /**
@@ -21,7 +22,7 @@ export abstract class BillableHostingBase
 	/**
 	 * Which assets are targeted by this hosting rule.
 	 */
-	targets: expression = "";
+	targets: SearchPattern[] | null = null;
 	/**
 	 * Does this hosting rule apply to suspended resources.
 	 */
@@ -32,7 +33,7 @@ export abstract class BillableHostingBase
 			super.toJSON(),
 			{
 				"limit": JSON_NUMBER(this.limit),
-				"targets": this.targets || "",
+				"targets": SearchPattern.stringify(this.targets),
 				"suspended": !!this.suspended,
 			}
 		);
@@ -42,7 +43,7 @@ export abstract class BillableHostingBase
 		super.fromJSON(json, update);
 		if (update) {
 			this.limit = FLOAT(json["limit"]);
-			this.targets = json["targets"] || "";
+			this.targets = SearchPattern.parse(json["targets"]);
 			this.suspended = !!json["suspended"];
 		}
 		return update;

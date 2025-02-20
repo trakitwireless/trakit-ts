@@ -18,7 +18,7 @@ export class DispatchDirection
 	static fromJSON(json: any): DispatchDirection {
 		return new DispatchDirection(
 			FLOAT(json["distance"]),
-			new TimeSpan(json["duration"]),
+			json["duration"] as timespan,
 			json["instructions"] || "",
 			(json["path"] as any[])?.map(LatLng.fromJSON) as LatLng[],
 			(json["directions"] as any[])?.map(DispatchDirection.fromJSON),
