@@ -1,10 +1,10 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER, OBJECT_TO_MAP } from "../API/Functions";
 import { LatLngBounds } from "../API/Geography/LatLngBounds";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { byte, ulong } from "../API/Types";
+import { byte, email, ulong } from "../API/Types";
 import { ReportStatus } from './ReportStatus';
 import { ReportDataTotal } from './ReportDataTotal';
 import { ReportType } from './ReportType';
@@ -15,6 +15,7 @@ import { COMPANIES, REPORT_SCHEDULES, REPORT_TEMPLATES } from "../Storage";
 import { Timezone } from "../API/Timezone";
 import { ReportSchedule } from "./ReportSchedule";
 import { ReportTemplate } from "./ReportTemplate";
+import { TIMEZONE_FIND } from "../API/Timezones";
 
 /**
  * Report results
@@ -42,7 +43,6 @@ export class ReportResult
 	kind: ReportType = ReportType.full;
 	/**
 	 * Name of this report.
-	 *  <override max-length="100" />
 	 */
 	name: string = "";
 	/**
@@ -87,9 +87,8 @@ export class ReportResult
 	/**
 	 * The login of the user that ran this report.
 	 * {@link User.login}
-	 *  <override max-length="254" format="email" />
 	 */
-	runBy: string = "";
+	runBy: email = "";
 	/**
 	 * The date/time this result was requested.
 	 */
@@ -129,27 +128,58 @@ export class ReportResult
 	/**
 	 * A field which contains report error details if the {@link status} is {@link ReportStatus.failed}.
 	 * {@link ReportStatus}
-	 *  <override max-length="250" />
 	 */
 	error: string = "";
 
-	override toJSON() {
-		throw new Error("Method not implemented.");
+	toJSON() {
+		return {
+			"id": JSON_NUMBER(this.id),
+			"company": JSON_NUMBER(this.companyId),
+			"kind": ReportType[this.kind],
+			"name": this.name || "",
+			"notes": this.notes || "",
+			"options": this.options?.toJSON() ?? null,
+			"template": JSON_NUMBER(this.templateId),
+			"schedule": JSON_NUMBER(this.scheduleId),
+			"archive": !!this.archive,
+			"timezone": this.timezone?.code ?? "",
+			"runBy": this.runBy || "",
+			"created": this.created?.toISOString() ?? "",
+			"completed": this.completed?.toISOString() ?? "",
+			"status": ReportStatus[this.status] || ReportStatus.created,
+			"progress": this.progress || 0,
+			"bounds": this.bounds?.toJSON() ?? null,
+			"targeted": this.targeted || null,
+			"filtered": this.filtered || null,
+			"totals": this.totals || null,
+			"scorecards": this.scorecards || null,
+			"error": this.error || "",
+		};
 	}
 	fromJSON(json: any, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-
-
-
-			
-			this.scriptId = ID(json["script"]);
+			this.kind = ReportType[json["kind"] as ReportType];
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
-			this.parameters = OBJECT_TO_MAP(json["parameters"] || {});
-			this.geofences = json["geofences"] || "";
+			this.options = ReportOptions.fromJSON(json["options"]);
+			this.templateId = ID(json["template"]);
+			this.scheduleId = ID(json["schedule"]);
+			this.archive = !!json["archive"];
+			this.timezone = TIMEZONE_FIND(json["timezone"]) || Timezone.utc;
+			this.runBy = json["runBy"] || "";
+			this.created = DATE(json["created"]);
+			this.completed = DATE(json["completed"]);
+			this.status = ReportStatus[json["status"] as ReportStatus] || ReportStatus.created;
+			this.progress = ID(json["progress"]);
+			this.bounds = LatLngBounds.fromJSON(json["bounds"]);
+			this.targeted = (json["targeted"] || []).map(ID);
+			this.filtered = (json["filtered"] || []).map(ID);
+			this.totals = (json["totals"] || []).map(ReportDataTotal.fromJSON);
+			this.scorecards = (json["scorecards"] || []).map(ReportScorecard.fromJSON);
+			this.error = json["error"] || "";
 		}
 		return update;
 	}
