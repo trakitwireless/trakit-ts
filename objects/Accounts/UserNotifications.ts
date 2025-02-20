@@ -104,7 +104,7 @@ export class UserNotifications
 	/**
 	 * 
 	 */
-	toJSON(): any {
+	toJSON() {
 		return {
 			"name": this.name || "",
 			"enabled": !!this.enabled,

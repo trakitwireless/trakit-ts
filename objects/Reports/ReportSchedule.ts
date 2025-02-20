@@ -74,7 +74,7 @@ export class ReportSchedule
 	 */
 	notify: ReportNotifications | null = null;
 
-	override toJSON(): any {
+	override toJSON() {
 		return {
 			"id": this.id || null,
 			"company": this.companyId || null,

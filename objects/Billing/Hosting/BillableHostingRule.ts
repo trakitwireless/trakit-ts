@@ -12,7 +12,7 @@ export class BillableHostingRule
 	 */
 	service: BillableHostingType = BillableHostingType.asset;
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"service": BillableHostingType[this.service],
 		});

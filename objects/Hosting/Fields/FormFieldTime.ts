@@ -62,7 +62,7 @@ export class FormFieldTime
 		this.maximum = maximum || IS_AN(maximum) ? new TimeSpan(maximum) : null;
 	}
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"minimum": IS_AN(this.minimum?.valueOf())
 				? this.minimum.toString()

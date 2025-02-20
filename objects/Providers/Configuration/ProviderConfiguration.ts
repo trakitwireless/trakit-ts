@@ -57,7 +57,7 @@ export class ProviderConfiguration
 	 */
 	geofences: ulong[] = [];
 
-	override toJSON(): any {
+	override toJSON() {
 		return {
 			"id": this.id,
 			"company": this.companyId,

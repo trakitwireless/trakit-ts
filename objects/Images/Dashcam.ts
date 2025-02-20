@@ -109,7 +109,7 @@ export class Dashcam
 		this.eventName = eventName || "";
 	}
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(
 			super.toJSON(),
 			{

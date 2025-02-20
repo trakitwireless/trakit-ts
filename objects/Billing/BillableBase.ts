@@ -74,7 +74,7 @@ export abstract class BillableBase
 	 */
 	amount: double = NaN;
 
-	override toJSON(): any {
+	override toJSON() {
 		return {
 			"id": this.id || null,
 			"v": this.v,

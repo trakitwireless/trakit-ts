@@ -71,7 +71,7 @@ export class FormFieldBoolean
 		);
 		this.choices = [...(choices || [])];
 	}
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"choices": [...this.choices],
 		});

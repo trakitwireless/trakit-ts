@@ -28,6 +28,7 @@ export class ProviderAdvanced
 	 * {@link Company.id}
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
+	set company(value: Company) { this.companyId = value?.id ?? NaN; }
 	/**
 	 * The last IP address of the device.
 	 *  <override type="System.String" format="ipv4" />

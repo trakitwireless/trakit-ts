@@ -207,7 +207,7 @@ export abstract class FormFieldBase
 		}
 	}
 	
-	toJSON(): any {
+	toJSON() {
 		return {
 			"id": this.id || null,
 			"kind": this.kind,

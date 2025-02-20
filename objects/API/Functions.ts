@@ -123,12 +123,6 @@ export function DATE(value?: datetime | number | Date): Date {
 }
 
 /**
- * 
- */
-interface PREDICATE_DOUGLASPEUCKER<TCoord> {
-	(firstCoord: TCoord, middleCoord: TCoord, lastCoord: TCoord): number;
-}
-/**
  * An implementation of the Douglas-Peucker path reduction algorithm.
  * @template TCoord			A type of coordinate like a pixel or lat/lng.
  * @param source			Array of coordinates.
@@ -138,7 +132,7 @@ interface PREDICATE_DOUGLASPEUCKER<TCoord> {
  */
 export function DOUGLASPEUCKER_INTERNAL<TCoord>(
 	source: TCoord[],
-	triangleHeight: PREDICATE_DOUGLASPEUCKER<TCoord>,
+	triangleHeight: (first: TCoord, middle: TCoord, last: TCoord) => number,
 	tolerance: number
 ): boolean[] {
 	// references the indexes in the source array that should be kept
@@ -203,7 +197,7 @@ export function DOUGLASPEUCKER_INTERNAL<TCoord>(
  */
 export function DOUGLASPEUCKER<TCoord>(
 	source: TCoord[],
-	triangleHeight: PREDICATE_DOUGLASPEUCKER<TCoord>,
+	triangleHeight: (first: TCoord, middle: TCoord, last: TCoord) => number,
 	tolerance: number
 ): TCoord[] {
 	if (!Array.isArray(source)) throw new TypeError("source is not an Array.");
@@ -296,12 +290,6 @@ export function ZERO_PADDED(
 
 /**
  * 
- */
-interface PREDICATE_MAP_TO_OBJECT<K, V> {
-	(key: K, value: V): [string, any];
-}
-/**
- * 
  * @param source 
  * @param deep 
  * @returns 
@@ -323,7 +311,7 @@ export function MAP_TO_OBJECT(
  */
 export function MAP_TO_OBJECT_PREDICATE<K, V>(
 	source: Map<K, V>,
-	predicate: PREDICATE_MAP_TO_OBJECT<K, V>
+	predicate: (key: K, value: V)=> [string, any]
 ): object {
 	const target: any = {};
 	for (let [k, v] of source.entries()) {
@@ -335,17 +323,11 @@ export function MAP_TO_OBJECT_PREDICATE<K, V>(
 
 /**
  * 
- */
-interface PREDICATE_MAP_TO_OBJECT_JSON {
-	toJSON(): any;
-}
-/**
- * 
  * @param source 
  * @param deep 
  * @returns 
  */
-export function MAP_TO_OBJECT_VALUE_JSON<V extends PREDICATE_MAP_TO_OBJECT_JSON>(
+export function MAP_TO_OBJECT_VALUE_JSON<V extends ISerializable>(
 	source: Map<any, V>
 ): object {
 	return MAP_TO_OBJECT_PREDICATE(
@@ -356,19 +338,13 @@ export function MAP_TO_OBJECT_VALUE_JSON<V extends PREDICATE_MAP_TO_OBJECT_JSON>
 
 /**
  * 
- */
-interface PREDICATE_OBJECT_TO_MAP<K, V> {
-	(key: string, value: any): [K, V];
-}
-/**
- * 
  * @param map 
  * @param deep 
  * @returns 
  */
 export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
 	source: object,
-	predicate: PREDICATE_OBJECT_TO_MAP<K, V>
+	predicate: (key: string, value: any) => [K, V]
 ) {
 	const keys = KEYS(source),
 		target: Map<K, V> = new Map;

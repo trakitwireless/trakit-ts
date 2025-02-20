@@ -36,7 +36,7 @@ export class BillableSmsProfile
 		this.amount = FLOAT(amount as any);
 	}
 
-	toJSON(): any {
+	toJSON() {
 		return {
 			"limit": JSON_NUMBER(this.limit),
 			"amount": JSON_NUMBER(this.amount),

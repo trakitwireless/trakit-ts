@@ -93,7 +93,7 @@ export class FormFieldNumeric
 		this.minimum = FLOAT(minimum as any);
 		this.maximum = FLOAT(maximum as any);
 	}
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"size": FormFieldNumericSize[this.size] ?? FormFieldNumericSize.medium,
 			"precision": JSON_NUMBER(this.precision),

@@ -58,6 +58,11 @@ export class Provider
 			?? this.#advanced.company
 			?? this.#control.company;
 	}
+	set company(value: Company) {
+		this.general.company = value;
+		this.advanced.company = value;
+		this.control.company = value;
+	}
 	/**
 	 * The kind of communication protocol this device uses.
 	 */

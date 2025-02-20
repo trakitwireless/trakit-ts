@@ -18,7 +18,7 @@ export class BillableHostingDiscount
 	 */
 	percentage: boolean = false;
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"services": [...this.services],
 			"percentage": !!this.percentage,

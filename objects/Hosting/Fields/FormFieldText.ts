@@ -58,7 +58,7 @@ export class FormFieldText
 		this.minimum = FLOAT(minimum as any);
 		this.maximum = FLOAT(maximum as any);
 	}
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(super.toJSON(), {
 			"rows": JSON_NUMBER(this.rows),
 			"minimum": JSON_NUMBER(this.minimum),

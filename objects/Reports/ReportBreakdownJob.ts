@@ -33,7 +33,7 @@ export class ReportBreakdownJob
 		this.job = job;
 	}
 
-	override toJSON(): any {
+	override toJSON() {
 		return MERGE(
 			super.toJSON(),
 			{
