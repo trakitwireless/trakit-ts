@@ -3,10 +3,11 @@ import { DATE, ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP, OBJECT_TO_M
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
+import { COMPANIES } from "../Storage";
 import { ColourStyle } from "./ColourStyle";
+import { Company } from "./Company";
 import { NotificationServerEmail } from "./NotificationServerEmail";
 import { NotificationServerSms } from "./NotificationServerSms";
-
 
 /**
  * Defines the seller company's details for white-labelling.
@@ -24,6 +25,11 @@ export class CompanyReseller
 	 * {@link Company.id}
 	 */
 	parentId: ulong = NaN;
+	/**
+	 * The unique identifier of this company's parent organization.
+	 * {@link Company.id}
+	 */
+	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**
 	 * A list of Contacts for company specific things like Technical Support, Billing, etc...
 	 * {@link Contact.id}

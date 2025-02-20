@@ -13,7 +13,7 @@ import {
 } from "./Constants";
 import { ISerializable } from "./Interfaces/ISerializable";
 import { MERGE_INTERNAL } from "./Objects";
-import { ulong } from "./Types";
+import { datetime, ulong } from "./Types";
 
 /**
  * Checks for both null and undefined
@@ -112,7 +112,7 @@ export function ID(value: any): number {
  * Creates a Date object out of the given value.
  * @param value
  */
-export function DATE(value?: string | number | Date): Date {
+export function DATE(value?: datetime | number | Date): Date {
 	return new Date(
 		value instanceof Date
 			? value.valueOf()

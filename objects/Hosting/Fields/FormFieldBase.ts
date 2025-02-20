@@ -2,7 +2,7 @@
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
 import { ISerializable } from '../../API/Interfaces/ISerializable';
-import { ulong } from '../../API/Types';
+import { byte, ulong, ushort } from '../../API/Types';
 import { FormFieldType } from '../FormFieldType';
 import { FormFieldAttachments } from './FormFieldAttachments';
 import { FormFieldBoolean } from './FormFieldBoolean';
@@ -28,15 +28,15 @@ export abstract class FormFieldBase
 		switch (json["kind"]) {
 			case FormFieldType.text:
 				return new FormFieldText(
-					json["id"],
-					json["name"],
-					json["rows"],
-					json["minimum"],
-					json["maximum"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["rows"] as byte,
+					json["minimum"] as ushort,
+					json["maximum"] as ushort,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean
 				);
 			case FormFieldType.choice:
 			case FormFieldType.dropdown:

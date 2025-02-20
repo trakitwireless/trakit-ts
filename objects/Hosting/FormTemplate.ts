@@ -1,5 +1,6 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
+import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ILabelled } from "../API/Interfaces/ILabelled";
@@ -10,6 +11,7 @@ import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../Storage";
 import { FormFieldAttachments } from './Fields/FormFieldAttachments';
+import { FormFieldBase } from "./Fields/FormFieldBase";
 import { FormFieldBoolean } from './Fields/FormFieldBoolean';
 import { FormFieldChoice } from './Fields/FormFieldChoice';
 import { FormFieldDate } from './Fields/FormFieldDate';
@@ -83,21 +85,33 @@ export class FormTemplate
 	 */
 	getKey(): string { return this.id.toString(); }
 	
-	override toJSON(): any {
+	override toJSON() {
 		return {
-			"id": this.id,
-			"company": this.companyId,
+			"id": JSON_NUMBER(this.id),
+			"company": JSON_NUMBER(this.companyId),
 			"v": this.v,
-			"name": this.name,
-			"notes": this.notes,
+			"name": this.name || "",
+			"notes": this.notes || "",
 			"labels": [...this.labels],
 			"fields": this.fields.map(ARRAY_TO_JSON),
-			"fill": this.fill,
-			"stroke": this.stroke,
-			"graphic": this.graphic,
+			"fill": this.fill || "",
+			"stroke": this.stroke || "",
+			"graphic": this.graphic || "",
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
-		throw new Error("Method not implemented.");
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!IS_AN(this.id)) this.id = ID(json["id"]);
+			this.companyId = ID(json["companyId"]);
+			this.name = json["name"] || "";
+			this.notes = json["notes"] || "";
+			this.labels = [...(json["labels"] || [])];
+			this.fields = (json["fields"] || []).map(FormFieldBase.fromJSON);
+			this.fill = json["fill"] || "";
+			this.stroke = json["stroke"] || "";
+			this.graphic = json["graphic"] || "";
+		}
+		return update;
 	}
 }

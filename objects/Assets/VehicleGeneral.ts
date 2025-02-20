@@ -39,14 +39,16 @@ export class VehicleGeneral
 	colour: string = "";
 
 	override toJSON(): any {
-		return MERGE(super.toJSON(), {
-			"vin": this.vin || "",
-			"plate": this.plate || "",
-			"make": this.make || "",
-			"model": this.model || "",
-			"year": this.year || null,
-			"colour": this.colour || "",
-		});
+		return this.suspended
+			? super.toJSON()
+			: MERGE(super.toJSON(), {
+				"vin": this.vin || "",
+				"plate": this.plate || "",
+				"make": this.make || "",
+				"model": this.model || "",
+				"year": this.year || null,
+				"colour": this.colour || "",
+			});
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);

@@ -3,7 +3,8 @@ import { BaseCompound } from "../API/BaseCompound";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { ipv4, ulong } from "../API/Types";
+import { MERGE } from "../API/Objects";
+import { ipv4, phone, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { ProviderAdvanced } from "./ProviderAdvanced";
 import { ProviderCommand } from "./ProviderCommand";
@@ -24,9 +25,9 @@ export class Provider
 	 */
 	get pieces(): BaseComponent[] {
 		return [
-			this.general,
-			this.advanced,
-			this.control,
+			this.#general,
+			this.#advanced,
+			this.#control,
 		];
 	}
 
@@ -35,109 +36,79 @@ export class Provider
 	 * {@link Asset.id}
 	 */
 	get id(): string {
-		return this.general.id
-			?? this.advanced.id
-			?? this.control.id;
+		return this.#general.id
+			?? this.#advanced.id
+			?? this.#control.id;
 	}
 	/**
 	 * The company to which this device belongs.
 	 * {@link Company.id}
 	 */
 	get companyId(): ulong {
-		return this.general.companyId
-			?? this.advanced.companyId
-			?? this.control.companyId;
+		return this.#general.companyId
+			?? this.#advanced.companyId
+			?? this.#control.companyId;
 	}
 	/**
 	 * The company to which this device belongs.
 	 * {@link Company.id}
 	 */
 	get company(): Company {
-		return this.general.company
-			?? this.advanced.company
-			?? this.control.company;
+		return this.#general.company
+			?? this.#advanced.company
+			?? this.#control.company;
 	}
 	/**
 	 * The kind of communication protocol this device uses.
 	 */
-	get kind(): ProviderType {
-		return this.general.kind;
-	}
+	get kind(): ProviderType { return this.#general.kind; }
 
 	/**
 	 *  
 	 */
-	general: ProviderGeneral = new ProviderGeneral;
+	#general: ProviderGeneral = new ProviderGeneral;
+	get general(): ProviderGeneral { return this.#general; }
 	/**
 	 * This thing's name.
 	 *  <override max-length="100" />
 	 */
-	get name(): string {
-		return this.general.name;
-	}
-	set name(value: string) {
-		this.general.name = value;
-	}
+	get name(): string { return this.#general.name; }
+	set name(value: string) { this.#general.name = value; }
 	/**
 	 * Notes about it.
 	 */
-	get notes(): string {
-		return this.general.notes;
-	}
-	set notes(value: string) {
-		this.general.notes = value;
-	}
+	get notes(): string { return this.#general.notes; }
+	set notes(value: string) { this.#general.notes = value; }
 	/**
 	 * The asset for which this device provides field data.
 	 * {@link Asset.id}
 	 */
-	get asset(): ulong {
-		return this.general.assetId;
-	}
-	set asset(value: ulong) {
-		this.general.assetId = value;
-	}
+	get asset(): ulong { return this.#general.assetId; }
+	set asset(value: ulong) { this.#general.assetId = value; }
 	/**
 	 * The provider's current (or pending) configuration profile.
 	 * {@link ProviderConfig.id}
 	 * {@link ProviderConfiguration.id}
 	 */
-	get configuration(): ulong {
-		return this.general.configuration;
-	}
-	set configuration(value: ulong) {
-		this.general.configuration = value;
-	}
+	get configuration(): ulong { return this.#general.configurationId; }
+	set configuration(value: ulong) { this.#general.configurationId = value; }
 	/**
 	 * The password programmed on the device used to ensure the system is the only client authorized to make changes.
 	 *  <override max-length="50" />
 	 */
-	get password(): string {
-		return this.general.password;
-	}
-	set password(value: string) {
-		this.general.password = value;
-	}
+	get password(): string { return this.#general.password; }
+	set password(value: string) { this.#general.password = value; }
 	/**
 	 * The firmware/application version number.
 	 *  <override max-length="100" />
 	 */
-	get firmware(): string {
-		return this.general.firmware;
-	}
-	set firmware(value: string) {
-		this.general.firmware = value;
-	}
+	get firmware(): string { return this.#general.firmware; }
+	set firmware(value: string) { this.#general.firmware = value; }
 	/**
 	 * The phone number of this device.
-	 *  <override format="phone" />
 	 */
-	get phoneNumber(): ulong {
-		return this.general.phoneNumber;
-	}
-	set phoneNumber(value: ulong) {
-		this.general.phoneNumber = value ?? NaN;
-	}
+	get phoneNumber(): phone { return this.#general.phoneNumber; }
+	set phoneNumber(value: phone) { this.#general.phoneNumber = value ?? NaN; }
 	/**
 	 * A list of read-only values about the device like IMEI, ESN, firmware version, hardware revision, etc...
 	 *  <override>
@@ -146,73 +117,64 @@ export class Provider
 	 *  </keys>
 	 *  </override>
 	 */
-	get information(): Map<string, string> {
-		return this.general.information;
-	}
-	set information(value: Map<string, string>) {
-		this.general.information = value;
-	}
+	get information(): Map<string, string> { return this.#general.information; }
+	set information(value: Map<string, string>) { this.#general.information = value; }
 	/**
 	 * ICCID of the SIM card installed in this provider
 	 */
-	get sim(): string {
-		return this.general.sim;
-	}
-	set sim(value: string) {
-		this.general.sim = value;
-	}
+	get sim(): string { return this.#general.sim; }
+	set sim(value: string) { this.#general.sim = value; }
 
 	/**
 	 *  
 	 */
-	advanced: ProviderAdvanced = new ProviderAdvanced;
+	#advanced: ProviderAdvanced = new ProviderAdvanced;
+	get advanced(): ProviderAdvanced { return this.#advanced; }
 	/**
 	 * The last IP address of the device.
 	 */
-	get lastIP(): ipv4 {
-		return this.advanced.lastIP;
-	}
-	set lastIP(value: ipv4) {
-		this.advanced.lastIP = value;
-	}
+	get lastIP(): ipv4 { return this.#advanced.lastIP; }
+	set lastIP(value: ipv4) { this.#advanced.lastIP = value; }
 	/**
 	 * Often changing values like latitude, longitude, speed, wiring state, VBus information, etc...
 	 */
-	get attributes(): Map<string, Map<string, ProviderData>> {
-		return this.advanced.attributes;
-	}
-	set attributes(value: Map<string, Map<string, ProviderData>>) {
-		this.advanced.attributes = value;
-	}
+	get attributes(): Map<string, Map<string, ProviderData>> { return this.#advanced.attributes; }
+	set attributes(value: Map<string, Map<string, ProviderData>>) { this.#advanced.attributes = value; }
 	/**
 	 * Store-and-forward information like last sequence number of SnF window
 	 */
-	get snf(): Map<string, string> {
-		return this.advanced.snf;
-	}
-	set snf(value: Map<string, string>) {
-		this.advanced.snf = value;
-	}
+	get snf(): Map<string, string> { return this.#advanced.snf; }
+	set snf(value: Map<string, string>) { this.#advanced.snf = value; }
 
 	/**
 	 *  
 	 */
-	control: ProviderControl = new ProviderControl;
+	#control: ProviderControl = new ProviderControl;
+	get control(): ProviderControl { return this.#control; }
 	/**
 	 * Collection of commands for this provider.
 	 */
-	get commands(): Map<ProviderCommandType, ProviderCommand> {
-		return this.control.commands;
-	}
-	set commands(value: Map<ProviderCommandType, ProviderCommand>) {
-		this.control.commands = value;
-	}
+	get commands(): Map<ProviderCommandType, ProviderCommand> { return this.#control.commands; }
+	set commands(value: Map<ProviderCommandType, ProviderCommand>) { this.#control.commands = value; }
 
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return this.suspended
+			? this.#general.toJSON()
+			: MERGE(
+				{
+					"id": this.id || "",
+					"v": this.v,
+					"control": this.#control.toJSON(),
+				},
+				this.#general.toJSON(),
+				this.#advanced.toJSON()
+			);
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
-		throw new Error("Method not implemented.");
+		const general = this.#general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json), force),
+			advanced = this.#advanced.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json), force),
+			control = this.#control.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json["control"]), force);
+		return general || advanced || control;
 	}
 	
 	// IRequestable
@@ -225,11 +187,9 @@ export class Provider
 	/**
 	 * Indicates whether this object is suspended from event processing.
 	 */
-	get suspended(): boolean {
-		return this.general.suspended;
-	}
+	get suspended(): boolean { return this.#general.suspended; }
 	/**
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
-	get since(): Date { return this.general.since; }
+	get since(): Date { return this.#general.since; }
 }

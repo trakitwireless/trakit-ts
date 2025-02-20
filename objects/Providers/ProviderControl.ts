@@ -1,8 +1,9 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
+import { ID, JSON_NUMBER, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
+import { COMPANIES } from "../Storage";
 import { ProviderCommand } from "./ProviderCommand";
 import { ProviderCommandType } from "./ProviderCommandType";
 
@@ -34,10 +35,27 @@ export class ProviderControl
 	commands: Map<ProviderCommandType, ProviderCommand> = new Map;
 
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"id": this.id || null,
+			"v": this.v,
+			"company": JSON_NUMBER(this.companyId),
+			"commands": MAP_TO_OBJECT_VALUE_JSON(this.commands),
+		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
-		throw new Error("Method not implemented.");
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			if (!this.id) this.id = json["id"] || "";
+			this.companyId = ID(json["company"]);
+			this.commands = OBJECT_TO_MAP_BY_PREDICATE(
+				json["commands"] || {},
+				(k, v) => [
+					ProviderCommandType[k as ProviderCommandType],
+					ProviderCommand.fromJSON(v)
+				]
+			);
+		}
+		return update;
 	}
 
 	// IRequestable

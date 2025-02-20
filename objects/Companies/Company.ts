@@ -1,7 +1,7 @@
 import { Contact } from '../Accounts/Contact';
 import { BaseComponent } from '../API/BaseComponent';
 import { BaseCompound } from '../API/BaseCompound';
-import { IS_AN, JSON_NUMBER } from '../API/Functions';
+import { JSON_NUMBER } from '../API/Functions';
 import { IAmCompany } from '../API/Interfaces/IAmCompany';
 import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../API/Interfaces/IIdUlong';
@@ -55,16 +55,20 @@ export class Company
 	 * {@link Company.id}
 	 */
 	get parent(): Company {
-		throw new Error('Method not implemented.');
+		return this.general.parent
+			?? this.directory.parent
+			?? this.policies.parent
+			?? this.styles.parent
+			?? this.reseller?.parent;
 	}
-	set parent(parent: Company) {
-		throw new Error('Method not implemented.');
-	}
-	get parentId(): number {
-		throw new Error('Method not implemented.');
-	}
+	set parent(value: Company) { this.parentId = value?.id ?? NaN; }
+	get parentId(): number { return this.parent?.id ?? NaN; }
 	set parentId(value: number) {
-		throw new Error('Method not implemented.');
+		this.general.parentId = value;
+		this.directory.parentId = value;
+		this.policies.parentId = value;
+		this.styles.parentId = value;
+		if (this.reseller) this.reseller.parentId = value;
 	}
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	get companyId(): number { return this.parentId; }

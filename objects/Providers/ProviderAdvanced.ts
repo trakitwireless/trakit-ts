@@ -1,8 +1,9 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
+import { ID, MAP_TO_OBJECT, MAP_TO_OBJECT_PREDICATE, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ipv4, ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
 import { Company } from "../Companies/Company";
+import { COMPANIES } from "../Storage";
 import { ProviderData } from "./ProviderData";
 
 /**
@@ -42,10 +43,40 @@ export class ProviderAdvanced
 	snf: Map<string, string> = new Map;
 
 	override toJSON() {
-		throw new Error("Method not implemented.");
+		return {
+			"id": this.id || null,
+			"v": this.v,
+			"company": this.companyId,
+			"lastIP": this.lastIP || "",
+			"attributes": MAP_TO_OBJECT_PREDICATE(
+				this.attributes,
+				(group, data) => [group, MAP_TO_OBJECT_VALUE_JSON(data)]
+			),
+			"snf": MAP_TO_OBJECT(this.snf),
+		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
-		throw new Error("Method not implemented.");
+		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		if (update) {
+			this.id = json["id"] || "";
+			this.companyId = ID(json["company"]);
+			this.lastIP = json["lastIP"] || "";
+			this.attributes = OBJECT_TO_MAP_BY_PREDICATE(
+				json["attributes"] || {},
+				(group, data) => [
+					group,
+					OBJECT_TO_MAP_BY_PREDICATE(
+						data || {},
+						(n, d) => [
+							n,
+							ProviderData.fromJSON(d)
+						]
+					)
+				]
+			);
+			this.snf = OBJECT_TO_MAP(json["snf"] || {});
+		}
+		return update;
 	}
 
 	// IRequestable

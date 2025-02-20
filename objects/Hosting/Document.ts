@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, OBJECT_TO_MAP } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -74,9 +74,7 @@ export class Document
 			"src": this.src || "",
 			"mime": this.mime || "",
 			"bytes": this.bytes || 0,
-			"expiry": IS_AN(this.expiry?.valueOf())
-				? this.expiry.toISOString()
-				: "",
+			"expiry": JSON_DATE(this.expiry),
 			"references": OBJECT_TO_MAP(this.references),
 		};
 	}

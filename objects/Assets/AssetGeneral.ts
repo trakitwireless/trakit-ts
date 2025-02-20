@@ -9,6 +9,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
+import { MERGE } from "../API/Objects";
 import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
@@ -108,21 +109,28 @@ export class AssetGeneral
 	references: Map<string, string> = new Map;
 
 	override toJSON() {
-		return {
-			"id": this.id || null,
-			"v": this.v,
-			"company": this.companyId,
-			"kind": this.kind,
-			"suspended": !!this.suspended,
-			"since": this.suspended && JSON_DATE(this.since),
-			"name": this.name,
-			"notes": this.notes,
-			"references": MAP_TO_OBJECT(this.references),
-			"labels": [...this.labels],
-			"messagingAddress": this.messagingAddress,
-			"icon": this.iconId,
-			"pictures": [...this.pictureIds],
-		};
+		return MERGE(
+			{
+				"id": this.id || null,
+				"v": this.v,
+				"company": this.companyId,
+				"kind": AssetType[this.kind] || null,
+				"name": this.name || "",
+				"notes": this.notes || "",
+				"icon": this.iconId,
+				"labels": [...this.labels],
+			},
+			this.suspended
+				? {
+					"suspended": true,
+					"since": JSON_DATE(this.since),
+				}
+				: {
+					"references": MAP_TO_OBJECT(this.references),
+					"messagingAddress": this.messagingAddress,
+					"pictures": [...this.pictureIds],
+				}
+		);
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);

@@ -22,10 +22,12 @@ export class PersonGeneral
 	get contact(): Contact { return CONTACTS.get(this.contactId) as Contact; }
 	set contact(value: Contact) { this.contactId = value.id; }
 	
-	override toJSON(): any {
-		return MERGE(super.toJSON(), {
-			"contact": this.contactId,
-		});
+	override toJSON() {
+		return this.suspended
+			? super.toJSON()
+			: MERGE(super.toJSON(), {
+				"contact": this.contactId,
+			});
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
