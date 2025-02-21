@@ -115,7 +115,9 @@ export class FormResult
 			this.labels = [...(json["labels"] || [])];
 			this.fields = OBJECT_TO_MAP_KEY_ULONG(json["fields"] || {});
 			this.completed = DATE(json["completed"]);
-			this.latlng = LatLng.fromJSON(json["latlng"]);
+			this.latlng = json["latlng"]
+				? LatLng.fromJSON(json["latlng"])
+				: null;
 			this.driver = json["driver"] || "";
 		}
 		return update;

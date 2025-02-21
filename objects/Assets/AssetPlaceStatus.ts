@@ -14,9 +14,9 @@ export class AssetPlaceStatus
 	 */
 	static fromJSON(json: any) {
 		return new AssetPlaceStatus(
-			AssetPlaceStatusType[json["kind"] as AssetPlaceStatusType],
-			DATE(json["enter"]),
-			DATE(json["latest"])
+			json["kind"] as AssetPlaceStatusType,
+			json["enter"] as datetime,
+			json["latest"] as datetime,
 		);
 	}
 	
@@ -36,7 +36,7 @@ export class AssetPlaceStatus
 	constructor(
 		kind?: AssetPlaceStatusType,
 		enter?: Date | number | datetime,
-		latest?: Date | number | datetime
+		latest?: Date | number | datetime,
 	) {
 		this.kind = AssetPlaceStatusType[kind as AssetPlaceStatusType] || AssetPlaceStatusType.inside;
 		this.enter = DATE(enter);

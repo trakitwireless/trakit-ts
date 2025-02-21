@@ -25,22 +25,22 @@ export class ReportBreakdown
 		if (typeof json["job"] === "object") {
 			return new ReportBreakdownJob(
 				new DispatchJob(json["job"]),
-				ID(json["asset"]),
-				ID(json["instance"]),
+				json["asset"] as ulong,
+				json["instance"] as uint,
 				json["summaryInstances"]?.map(ID),
 				json["general"]
 					? AssetGeneral.fromJSON(json["general"])
 					: json["general"],
 				json["advanced"]
 					? AssetAdvanced.fromJSON(json["advanced"])
-					: json["advanced"]
+					: json["advanced"],
 			);
 		}
 		if (typeof json["message"] === "object") {
 			return new ReportBreakdownMessage(
 				new AssetMessage(json["message"]),
-				ID(json["asset"]),
-				ID(json["instance"]),
+				json["asset"] as ulong,
+				json["instance"] as uint,
 				json["summaryInstances"]?.map(ID),
 				json["general"]
 					? AssetGeneral.fromJSON(json["general"])
@@ -53,8 +53,8 @@ export class ReportBreakdown
 		if (typeof json["task"] === "object") {
 			return new ReportBreakdownTask(
 				new DispatchTask(json["task"]),
-				ID(json["asset"]),
-				ID(json["instance"]),
+				json["asset"] as ulong,
+				json["instance"] as uint,
 				json["summaryInstances"]?.map(ID),
 				json["general"]
 					? AssetGeneral.fromJSON(json["general"])
@@ -65,8 +65,8 @@ export class ReportBreakdown
 			);
 		}
 		return new ReportBreakdown(
-			ID(json["asset"]),
-			ID(json["instance"]),
+			json["asset"] as ulong,
+			json["instance"] as uint,
 			json["summaryInstances"]?.map(ID),
 			json["general"]
 				? AssetGeneral.fromJSON(json["general"])
@@ -107,7 +107,7 @@ export class ReportBreakdown
 		instance?: uint,
 		summaryInstances?: uint[],
 		general?: AssetGeneral | null,
-		advanced?: AssetAdvanced | null
+		advanced?: AssetAdvanced | null,
 	) {
 		this.assetId = ID(asset);
 		this.instance = ID(instance);

@@ -1,6 +1,6 @@
 ﻿import { ID } from "../../API/Functions";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { uint } from "../../API/Types";
+import { int, uint } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderGeofenceCircular } from "./ProviderGeofenceCircular";
 import { ProviderGeofencePoint } from "./ProviderGeofencePoint";
@@ -21,24 +21,24 @@ export abstract class ProviderGeofenceBase
 		switch (PlaceType[json["type"] as PlaceType]) {
 			case PlaceType.point:
 				return new ProviderGeofencePoint(
-					json["maxGeofenceCount"]
+					json["maxGeofenceCount"]as uint,
 				);
 			case PlaceType.radial:
 				return new ProviderGeofenceCircular(
-					json["maxGeofenceCount"],
-					json["minRadius"],
-					json["maxRadius"]
+					json["maxGeofenceCount"]as uint,
+					json["minRadius"]as uint,
+					json["maxRadius"]as uint,
 				);
 			case PlaceType.rectangle:
 				return new ProviderGeofenceRectangle(
-					json["maxGeofenceCount"],
-					json["maxLength"],
-					json["maxWidth"]
+					json["maxGeofenceCount"]as uint,
+					json["maxLength"]as uint,
+					json["maxWidth"]as int,
 				);
 			case PlaceType.polygon:
 				return new ProviderGeofencePolygon(
-					json["maxGeofenceCount"],
-					json["maxVertices"]
+					json["maxGeofenceCount"]as uint,
+					json["maxVertices"]as uint,
 				);
 			default:
 				throw new Error("Unsopported type:" + json["type"]);
@@ -55,7 +55,7 @@ export abstract class ProviderGeofenceBase
 	maxGeofenceCount: uint;
 	
 	constructor(
-		maxGeofenceCount?: uint
+		maxGeofenceCount?: uint,
 	) {
 		this.maxGeofenceCount = ID(maxGeofenceCount) || 0;
 	}

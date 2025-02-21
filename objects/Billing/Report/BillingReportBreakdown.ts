@@ -13,9 +13,9 @@ export class BillingReportBreakdown
 	implements ISerializable {
 	static fromJSON(json: any) {
 		return new BillingReportBreakdown(
-			json["target"],
+			json["target"] as ulong,
 			(json["services"] as any[])?.map(BillingReportServiceBreakdown.fromJSON),
-			(json["licenses"] as any[])?.map(BillingReportLicenseBreakdown.fromJSON)
+			(json["licenses"] as any[])?.map(BillingReportLicenseBreakdown.fromJSON),
 		);
 	}
 	/**
@@ -40,7 +40,7 @@ export class BillingReportBreakdown
 	constructor(
 		target?: ulong,
 		services?: BillingReportServiceBreakdown[],
-		licenses?: BillingReportLicenseBreakdown[]
+		licenses?: BillingReportLicenseBreakdown[],
 	) {
 		this.targetId = ID(target);
 		this.services = [...(services || [])];

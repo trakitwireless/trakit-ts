@@ -12,8 +12,8 @@ export class ReportParameter
 	 */
 	static fromJSON(json: any) {
 		return new ReportParameter(
-			ReportParameterType[json["kind"] as ReportParameterType],
-			json["value"]
+			json["kind"] as ReportParameterType,
+			json["value"] as string,
 		);
 	}
 
@@ -28,7 +28,7 @@ export class ReportParameter
 
 	constructor(
 		kind?: ReportParameterType,
-		value?: string
+		value?: string,
 	) {
 		this.kind = ReportParameterType[kind as ReportParameterType];
 		this.value = value || "";

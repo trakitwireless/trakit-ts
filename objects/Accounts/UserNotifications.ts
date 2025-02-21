@@ -3,7 +3,7 @@ import { IS_AN, PHONE_PARSE, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functi
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { email, timespan, ulong } from "../API/Types";
+import { email, phone, timespan, ulong } from "../API/Types";
 import { NotificationMethod } from "./NotificationMethod";
 
 /**
@@ -17,15 +17,15 @@ export class UserNotifications
 	 */
 	static fromJSON(json: any) {
 		return new UserNotifications(
-			json["name"] || "",
-			!!json["enabled"],
-			WEEKDAYS_PARSE(json["weekdays"] as string),
+			json["name"] as string,
+			json["enabled"] as boolean,
+			json["weekdays"] as string,
 			json["start"] as timespan,
 			json["end"] as timespan,
-			json["email"] || "",
-			PHONE_PARSE(json["sms"]),
-			ARRAY_TO_ENUMS(NotificationMethod, json["online"] || []),
-			ARRAY_TO_ENUMS(NotificationMethod, json["offline"] || [])
+			json["email"] as email,
+			json["sms"] as phone,
+			json["online"] as NotificationMethod[],
+			json["offline"] as NotificationMethod[],
 		);
 	}
 	
@@ -85,7 +85,7 @@ export class UserNotifications
 		email?: email,
 		sms?: ulong,
 		online?: NotificationMethod[],
-		offline?: NotificationMethod[]
+		offline?: NotificationMethod[],
 	) {
 		this.name = name || "";
 		this.enabled = !!enabled;

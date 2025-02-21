@@ -13,10 +13,10 @@ export class BehaviourParameter
 	 */
 	static fromJSON(json: any) {
 		return new BehaviourParameter(
-			BehaviourParameterType[(json["kind"] || json["type"]) as BehaviourParameterType],
-			json["value"],
-			json["notes"],
-			json["context"]
+			(json["kind"] || json["type"]) as BehaviourParameterType,
+			json["value"] as string,
+			json["notes"] as string,
+			json["context"] as string,
 		);
 	}
 	/**
@@ -41,7 +41,7 @@ export class BehaviourParameter
 		kind?: BehaviourParameterType,
 		value?: string,
 		notes?: string,
-		context?: string
+		context?: string,
 	) {
 		this.kind = BehaviourParameterType[kind as BehaviourParameterType] || BehaviourParameterType.text;
 		this.value = value || "";

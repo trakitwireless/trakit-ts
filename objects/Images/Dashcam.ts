@@ -1,5 +1,6 @@
 import { FLOAT } from "../API/Constants";
 import { DATE, ID, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { ISize } from "../API/Geometry/Interfaces";
 import { Size } from "../API/Geometry/Size";
 import { MERGE } from "../API/Objects";
 import { TimeSpan } from "../API/TimeSpan";
@@ -18,23 +19,23 @@ export class Dashcam
 	 */
 	static fromJSON(json: any) {
 		return new Dashcam(
-			ID(json["bytes"]),
-			Size.fromJSON(json["size"]),
-			json["provider"] || "",
-			ID(json["company"]),
-			ID(json["asset"]),
-			ID(json["camera"]),
-			FLOAT(json["latitude"]),
-			FLOAT(json["longitude"]),
-			FLOAT(json["speed"]),
-			FLOAT(json["heading"]),
-			FLOAT(json["altitude"]),
-			json["guid"] || "",
-			DashcamMediaType[json["kind"] as DashcamMediaType],
-			FLOAT(json["fps"]),
-			DATE(json["start"]),
-			DATE(json["end"]),
-			json["eventName"] || "",
+			json["bytes"] as ulong,
+			json["size"] as ISize,
+			json["provider"] as string,
+			json["company"] as ulong,
+			json["asset"] as ulong,
+			json["camera"] as byte,
+			json["latitude"] as double,
+			json["longitude"] as double,
+			json["speed"] as double,
+			json["heading"] as double,
+			json["altitude"] as double,
+			json["guid"] as guid,
+			json["kind"] as DashcamMediaType,
+			json["fps"] as double,
+			json["start"] as datetime,
+			json["end"] as datetime,
+			json["eventName"] as string,
 		);
 	}
 	
@@ -71,7 +72,7 @@ export class Dashcam
 
 	constructor(
 		bytes?: ulong,
-		size?: Size,
+		size?: Size|ISize,
 		provider?: string,
 		company?: ulong,
 		asset?: ulong,

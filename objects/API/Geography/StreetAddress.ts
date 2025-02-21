@@ -10,16 +10,16 @@ export class StreetAddress
 	 * 
 	 * @param street 
 	 */
-	static fromJSON(address: any): StreetAddress {
+	static fromJSON(json: any): StreetAddress {
 		return new StreetAddress(
-			address["number"],
-			address["street"],
-			address["city"],
-			address["region"],
-			address["province"],
-			address["country"],
-			address["postal"],
-			address["isToll"] || false
+			json["number"] as string,
+			json["street"] as string,
+			json["city"] as string,
+			json["region"] as string,
+			json["province"] as string,
+			json["country"] as string,
+			json["postal"] as string,
+			json["isToll"] as boolean,
 		);
 	}
 
@@ -66,7 +66,7 @@ export class StreetAddress
 		province?: string,
 		country?: string,
 		postal?: string | null,
-		isToll: boolean = false
+		isToll?: boolean,
 	) {
 		this.number = number?.trim() ?? "";
 		this.street = street?.trim() ?? "";

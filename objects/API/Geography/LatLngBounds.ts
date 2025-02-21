@@ -49,15 +49,15 @@ export interface ILatLngBounds {
 export class LatLngBounds implements ILatLngBounds, ISerializable {
 	/**
 	 * 
-	 * @param object 
+	 * @param json 
 	 */
-	static fromJSON(object: any): LatLngBounds {
+	static fromJSON(json: any): LatLngBounds {
 		const bounds = new LatLngBounds;
-		if (ILatLngBounds_instanceOf(object)) {
-			bounds.east = object.east;
-			bounds.north = object.north;
-			bounds.west = object.west;
-			bounds.south = object.south;
+		if (ILatLngBounds_instanceOf(json)) {
+			bounds.east = json.east;
+			bounds.north = json.north;
+			bounds.west = json.west;
+			bounds.south = json.south;
 		}
 		return bounds.validate();
 	}

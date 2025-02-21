@@ -23,24 +23,24 @@ export class BillingReportServiceBreakdown
 	 */
 	static fromJSON(json: any) {
 		return new BillingReportServiceBreakdown(
-			json["asset"],
-			json["kind"],
-			json["name"],
-			json["notes"],
-			json["created"],
-			json["deleted"],
-			json["suspended"],
-			json["restored"],
-			json["revived"],
-			json["labels"],
-			json["providers"],
-			json["phoneNumbers"],
-			json["updatedDts"],
-			json["billableDays"],
-			json["cost"],
-			json["suspendedDays"],
-			json["suspendedCost"],
-			json["total"]
+			json["asset"] as ulong,
+			json["kind"] as AssetType,
+			json["name"] as string,
+			json["notes"] as string,
+			json["created"] as datetime,
+			json["deleted"] as datetime,
+			json["suspended"] as datetime,
+			json["restored"] as datetime,
+			json["revived"] as datetime,
+			json["labels"] as codified[],
+			json["providers"] as string[],
+			json["phoneNumbers"] as phone[],
+			json["updatedDts"] as datetime,
+			json["billableDays"] as double,
+			json["cost"] as double,
+			json["suspendedDays"] as double,
+			json["suspendedCost"] as double,
+			json["total"] as double,
 		);
 	}
 	/**

@@ -1,5 +1,6 @@
 ﻿import { FLOAT } from "../API/Constants";
 import { ID, JSON_NUMBER } from "../API/Functions";
+import { ISize } from "../API/Geometry/Interfaces";
 import { Size } from "../API/Geometry/Size";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IRequestable } from "../API/Interfaces/IRequestable";
@@ -80,7 +81,7 @@ export abstract class DashcamBase
 
 	constructor(
 		bytes?: ulong,
-		size?: Size,
+		size?: Size | ISize,
 		provider?: string,
 		company?: ulong,
 		asset?: ulong,
@@ -89,10 +90,12 @@ export abstract class DashcamBase
 		longitude?: double,
 		speed?: double,
 		heading?: double,
-		altitude?: double
+		altitude?: double,
 	) {
 		this.bytes = ID(bytes);
-		this.size = size || new Size(0, 0);
+		this.size = size
+			? Size.fromJSON(size)
+			: new Size(0, 0);
 		this.providerId = provider || "";
 		this.companyId = ID(company);
 		this.assetId = ID(asset);

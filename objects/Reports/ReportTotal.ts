@@ -17,11 +17,11 @@ export class ReportTotal
 	 */
 	static fromJSON(json: any) {
 		return new ReportTotal(
-			ID(json["asset"]),
-			json["stateDetail"],
-			ID(json["summaryCount"]),
+			json["asset"]as ulong,
+			json["stateDetail"]as string,
+			json["summaryCount"]as uint,
 			json["duration"] as timespan,
-			FLOAT(json["distance"])
+			json["distance"]as double,
 		);
 	}
 	/**
@@ -56,7 +56,7 @@ export class ReportTotal
 		stateDetail?: string,
 		summaryCount?: uint,
 		duration?: TimeSpan | timespan | number,
-		distance?: double
+		distance?: double,
 	) {
 		this.assetId = ID(asset);
 		this.stateDetail = stateDetail || "";

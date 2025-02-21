@@ -14,12 +14,12 @@ export class SessionPolicy
 	 */
 	static fromJSON(json: any) {
 		return new SessionPolicy(
-			json["applications"] || [],
-			json["ipv4Ranges"] || [],
-			SessionMultiUser[json["multiUser"] as SessionMultiUser],
-			!!json["idleAllowed"],
-			ID(json["expireTimeout"]) || 0,
-			ID(json["maxSessions"]) || 0
+			json["applications"] as string[],
+			json["ipv4Ranges"] as ipv4[],
+			json["multiUser"] as SessionMultiUser,
+			json["idleAllowed"] as boolean,
+			json["expireTimeout"] as ushort,
+			json["maxSessions"] as byte,
 		);
 	}
 
@@ -55,7 +55,7 @@ export class SessionPolicy
 		multiUser?: SessionMultiUser,
 		idleAllowed?: boolean,
 		expireTimeout?: ushort,
-		maxSessions?: byte
+		maxSessions?: byte,
 	) {
 		this.applications = [...(applications || [])];
 		this.ipv4Ranges = [...(ipv4Ranges || [])];

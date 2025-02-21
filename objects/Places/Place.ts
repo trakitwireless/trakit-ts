@@ -136,7 +136,9 @@ export class Place
 			this.colour = json["colour"] || "";
 			this.pictureIds = (json["pictures"] || []).map(ID);
 			this.reference = json["reference"] || "";
-			this.anchor = LatLng.fromJSON(json["anchor"]);
+			this.anchor = json["anchor"]
+				? LatLng.fromJSON(json["anchor"])
+				: null;
 			this.radius = FLOAT(json["radius"]);
 			this.points = (
 				typeof json["shape"] === "string"
@@ -144,7 +146,7 @@ export class Place
 					: json["shape"]
 						? json["shape"]
 						: null
-			)?.map(LatLng.fromJSON) as LatLng[] ?? null;
+			)?.map(LatLng.fromJSON) ?? null;
 		}
 		return update;
 	}

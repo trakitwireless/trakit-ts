@@ -17,8 +17,8 @@ export class Timezone
 		return new Timezone(
 			json["code"] as string,
 			json["name"] as string,
-			ID(json["offset"] as short) || 0,
-			!!(json["dst"] as boolean)
+			json["offset"] as short,
+			json["dst"] as boolean,
 		);
 	}
 
@@ -48,7 +48,7 @@ export class Timezone
 		code: string,
 		name: string,
 		offset: short,
-		dst: boolean
+		dst: boolean,
 	) {
 		this.code = code;
 		this.name = name;

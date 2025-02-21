@@ -16,8 +16,8 @@ export class ReportScorecardRules
 	 */
 	static fromJSON(json: any) {
 		return new ReportScorecardRules(
-			FLOAT(json["baseScore"]),
-			(json["parameters"] || []).map(ReportScorecardParameter.fromJSON),
+			json["baseScore"] as double,
+			(json["parameters"] as any[])?.map(ReportScorecardParameter.fromJSON),
 		);
 	}
 	/**

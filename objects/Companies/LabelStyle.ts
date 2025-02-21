@@ -15,11 +15,11 @@ export class LabelStyle
 	 */
 	static fromJSON(json: any) {
 		return new LabelStyle(
-			json["name"] || "",
-			json["fill"] || "",
-			json["stroke"] || "",
-			json["graphic"] || "",
-			json["notes"] || ""
+			json["name"] as string,
+			json["fill"] as colour,
+			json["stroke"] as colour,
+			json["graphic"] as codified,
+			json["notes"] as string,
 		);
 	}
 
@@ -53,7 +53,7 @@ export class LabelStyle
 		fill?: colour,
 		stroke?: colour,
 		graphic?: codified,
-		notes?: string
+		notes?: string,
 	) {
 		this.name = name || "";
 		this.fill = fill || "";

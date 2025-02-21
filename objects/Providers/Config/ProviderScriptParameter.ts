@@ -16,11 +16,11 @@ export class ProviderScriptParameter
 	static fromJSON(json: any) {
 		return new ProviderScriptParameter(
 			json["kind"] as ProviderScriptParameterType,
-			json["value"] || "",
-			json["notes"] || "",
-			json["context"] || "",
-			ID(json["order"]),
-			!!json["advanced"]
+			json["value"] as string,
+			json["notes"] as string,
+			json["context"] as string,
+			json["order"] as uint,
+			json["advanced"] as boolean,
 		);
 	}
 	/**
@@ -56,7 +56,7 @@ export class ProviderScriptParameter
 		notes?: string,
 		context?: string,
 		order?: uint,
-		advanced?: boolean
+		advanced?: boolean,
 	) {
 		this.kind = ProviderScriptParameterType[kind as ProviderScriptParameterType] || ProviderScriptParameterType.text;
 		this.value = value || "";

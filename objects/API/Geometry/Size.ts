@@ -9,10 +9,10 @@ import {
  * Dimensions on a flat surface.
  */
 export class Size implements ISize {
-	static fromJSON(json: any) :Size{
+	static fromJSON(json: any): Size {
 		return new Size(
-			json?.width,
-			json?.height
+			json?.width as number,
+			json?.height as number,
 		);
 	}
 	/**

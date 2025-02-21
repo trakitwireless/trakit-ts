@@ -14,17 +14,17 @@ export class ReportRecurrence
 	 */
 	static fromJSON(json: any) {
 		return new ReportRecurrence(
-			ReportRecurrenceType[json["kind"] as ReportRecurrenceType],
-			WEEKDAYS_PARSE(json["weekdays"]),
-			ID(json["weekday"]),
-			DATE(json["start"]),
-			DATE(json["end"]),
-			ID(json["iterations"]),
-			ID(json["lastResult"]),
-			DATE(json["nextStartDate"]),
-			DATE(json["nextEndDate"]),
-			DATE(json["lastStartDate"]),
-			DATE(json["lastEndDate"])
+			json["kind"] as ReportRecurrenceType,
+			json["weekdays"] as string,
+			json["weekday"] as byte,
+			json["start"] as datetime,
+			json["end"] as datetime,
+			json["iterations"] as ushort,
+			json["lastResult"] as ulong,
+			json["nextStartDate"] as datetime,
+			json["nextEndDate"] as datetime,
+			json["lastStartDate"] as datetime,
+			json["lastEndDate"] as datetime,
 		);
 	}
 

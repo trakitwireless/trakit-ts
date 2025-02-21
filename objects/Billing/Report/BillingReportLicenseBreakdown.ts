@@ -2,7 +2,7 @@ import { FLOAT } from "../../API/Constants";
 import { DATE, JSON_DATE, JSON_NUMBER, PHONE_PARSE } from "../../API/Functions";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { datetime, double, ulong } from "../../API/Types";
+import { datetime, double, phone, ulong } from "../../API/Types";
 import { Provider } from "../../Providers/Provider";
 import { ProviderType } from "../../Providers/ProviderType";
 import { PROVIDERS } from "../../Storage";
@@ -18,17 +18,17 @@ export class BillingReportLicenseBreakdown
 	 */
 	static fromJSON(json: any) {
 		return new BillingReportLicenseBreakdown(
-			json["provider"],
-			json["kind"],
-			json["name"],
-			json["notes"],
-			json["created"],
-			json["deleted"],
-			json["phoneNumber"],
-			json["firmware"],
-			json["billableDays"],
-			json["cost"],
-			json["total"]
+			json["provider"] as string,
+			json["kind"] as ProviderType,
+			json["name"] as string,
+			json["notes"] as string,
+			json["created"] as datetime,
+			json["deleted"] as datetime,
+			json["phoneNumber"] as phone,
+			json["firmware"] as string,
+			json["billableDays"] as double,
+			json["cost"] as double,
+			json["total"] as double,
 		);
 	}
 
@@ -95,7 +95,7 @@ export class BillingReportLicenseBreakdown
 		firmware?: string,
 		billableDays?: double,
 		cost?: double,
-		total?: double
+		total?: double,
 	) {
 		this.providerId = provider || "";
 		this.kind = ProviderType[kind as ProviderType] || ProviderType.unknown;

@@ -14,12 +14,12 @@ export class MaintenanceInterval
 	implements IBelongAsset, ISerializable {
 	static fromJSON(json: any) {
 		return new MaintenanceInterval(
-			ID(json["asset"]),
-			DATE(json["date"]),
-			FLOAT(json["odometer"]),
-			FLOAT(json["engineHours"]),
-			ID(json["lastJob"])
-		)
+			json["asset"] as ulong,
+			json["date"] as datetime,
+			json["odometer"] as double,
+			json["engineHours"] as double,
+			json["lastJob"] as ulong,
+		);
 	}
 	/**
 	 * The Vehicle or Trailer to which this recurrence detail belongs.
@@ -57,7 +57,7 @@ export class MaintenanceInterval
 		date?: Date | number | datetime,
 		odometer?: double,
 		engineHours?: double,
-		lastJob?: ulong
+		lastJob?: ulong,
 	) {
 		this.assetId = ID(asset);
 		this.date = DATE(date);

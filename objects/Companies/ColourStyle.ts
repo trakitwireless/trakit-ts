@@ -12,8 +12,8 @@ export class ColourStyle
 	 */
 	static fromJSON(json: any) {
 		return new ColourStyle(
-			json["fill"] || "",
-			json["stroke"] || ""
+			json["fill"] as colour,
+			json["stroke"] as colour,
 		);
 	}
 
@@ -28,7 +28,7 @@ export class ColourStyle
 
 	constructor(
 		fill?: colour,
-		stroke?: colour
+		stroke?: colour,
 	) {
 		this.fill = fill || "";
 		this.stroke = stroke || "";

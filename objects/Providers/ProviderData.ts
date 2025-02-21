@@ -15,7 +15,7 @@ export class ProviderData
 		return new ProviderData(
 			json["value"],
 			json["dts"] as datetime,
-			json["unit"] as string
+			json["unit"] as string,
 		);
 	}
 
@@ -35,7 +35,7 @@ export class ProviderData
 	constructor(
 		value?: any,
 		dts?: Date | number | datetime,
-		unit?: string
+		unit?: string,
 	) {
 		this.value = IS_NOTHING(value) ? null : value;
 		this.dts = DATE(dts);

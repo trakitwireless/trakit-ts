@@ -14,11 +14,11 @@ export class BillingReportSummary
 	implements INamed, ISerializable {
 	static fromJSON(json: any) {
 		return new BillingReportSummary(
-			json["target"],
-			json["parent"],
-			json["name"],
-			json["notes"],
-			((json["hosting"] || []) as any[])?.map(BillingReportHostingSummary.fromJSON)
+			json["target"] as ulong,
+			json["parent"] as ulong,
+			json["name"] as string,
+			json["notes"] as string,
+			(json["hosting"] as any[])?.map(BillingReportHostingSummary.fromJSON),
 		);
 	}
 
@@ -60,7 +60,7 @@ export class BillingReportSummary
 		parent?: ulong,
 		name?: string,
 		notes?: string,
-		hosting?: BillingReportHostingSummary[]
+		hosting?: BillingReportHostingSummary[],
 	) {
 		this.targetId = ID(target);
 		this.parentId = ID(parent);

@@ -16,9 +16,9 @@ export class ProviderCommand
 	static fromJSON(json: any) {
 		return new ProviderCommand(
 			json["status"] as ProviderCommandStatus,
-			json["parameters"] || [],
+			json["parameters"] as string[],
 			json["created"] as datetime,
-			json["processed"] as datetime
+			json["processed"] as datetime,
 		);
 	}
 
@@ -43,7 +43,7 @@ export class ProviderCommand
 		status?: ProviderCommandStatus,
 		parameters?: string[],
 		created?: Date | number | datetime,
-		processed?: Date | number | datetime
+		processed?: Date | number | datetime,
 	) {
 		this.status = ProviderCommandStatus[status as ProviderCommandStatus] || ProviderCommandStatus.created;
 		this.parameters = [...(parameters || [])];

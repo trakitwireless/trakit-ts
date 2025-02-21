@@ -168,7 +168,9 @@ export class DispatchTask
 			this.references = OBJECT_TO_MAP(json["references"]);
 			this.placeId = ID(json["place"]);
 			this.address = json["address"] || "";
-			this.latlng = LatLng.fromJSON(json["latlng"]) || LatLng.INVALID;
+			this.latlng = json["latlng"]
+				? LatLng.fromJSON(json["latlng"])
+				: LatLng.INVALID;
 			this.status = DispatchTaskStatus[json["status"] as DispatchTaskStatus] || DispatchTaskStatus.created;
 			this.created = DATE(json["created"]);
 			this.eta = DATE(json["eta"]);

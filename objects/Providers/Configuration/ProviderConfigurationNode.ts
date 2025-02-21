@@ -13,8 +13,11 @@ export class ProviderConfigurationNode
 	 * @param json 
 	 */
 	static nodesFromJSON(json: any) {
-		const dict = new Map<string, ProviderConfigurationNode>();
-		KEYS(json).forEach(key => dict.set(key, ProviderConfigurationNode.fromJSON(json[key] || {})));
+		const dict: Map<string, ProviderConfigurationNode> = new Map;
+		KEYS(json).forEach(key => dict.set(
+			key,
+			ProviderConfigurationNode.fromJSON(json[key] || {})
+		));
 		return dict;
 	}
 	/**
@@ -23,15 +26,15 @@ export class ProviderConfigurationNode
 	 */
 	static fromJSON(json: any) {
 		return new ProviderConfigurationNode(
-			json["id"] || "",
-			json["notes"] || "",
-			!!json["isAdvanced"],
-			json["type"] || "",
-			json["min"],
-			json["max"],
-			json["value"],
-			json["unit"] || "",
-			ProviderConfigurationNode.nodesFromJSON(json["nodes"])
+			json["id"] as string,
+			json["notes"] as string,
+			json["isAdvanced"] as boolean,
+			json["type"] as string,
+			json["min"] as any,
+			json["max"] as any,
+			json["value"] as any,
+			json["unit"] as string,
+			ProviderConfigurationNode.nodesFromJSON(json["nodes"]),
 		);
 	}
 
@@ -81,7 +84,7 @@ export class ProviderConfigurationNode
 		max?: any,
 		value?: any,
 		unit?: string,
-		nodes?: Map<string, ProviderConfigurationNode>
+		nodes?: Map<string, ProviderConfigurationNode>,
 	) {
 		this.id = id || "";
 		this.notes = notes || "";

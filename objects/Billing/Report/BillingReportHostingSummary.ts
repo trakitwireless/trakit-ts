@@ -15,10 +15,10 @@ export class BillingReportHostingSummary
 	 */
 	static fromJSON(json: any) {
 		return new BillingReportHostingSummary(
-			json["sku"],
-			FLOAT(json["cost"]),
-			ID(json["count"]),
-			FLOAT(json["total"])
+			json["sku"] as string,
+			json["cost"] as double,
+			json["count"] as double,
+			json["total"] as double,
 		);
 	}
 	/**
@@ -42,7 +42,7 @@ export class BillingReportHostingSummary
 		sku?: string,
 		cost?: double,
 		count?: double,
-		total?: double
+		total?: double,
 	) {
 		this.sku = sku || "";
 		this.cost = FLOAT(cost as any);

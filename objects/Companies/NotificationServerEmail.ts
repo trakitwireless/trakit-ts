@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { email, uint, ushort } from "../API/Types";
+import { colour, email, uint, ushort } from "../API/Types";
 
 /**
  * The types of email protocols supported for incoming mail servers.
@@ -36,18 +36,18 @@ export class NotificationServerEmail
 	 */
 	static fromJSON(json: any) {
 		return new NotificationServerEmail(
-			IncomingEmailServerType[json["incomingType"] as IncomingEmailServerType] || IncomingEmailServerType.IMAP,
-			json["incomingAddress"] || "",
-			ID(json["incomingPort"]),
-			json["incomingLogin"] || "",
-			!!json["incomingSecure"],
-			ID(json["incomingMessageNumber"]),
-			OutgoingEmailServerType[json["outgoingType"] as OutgoingEmailServerType] || OutgoingEmailServerType.SMTP,
-			json["outgoingAddress"] || "",
-			ID(json["outgoingPort"]),
-			json["outgoingLogin"] || "",
-			!!json["outgoingSecure"],
-			json["outgoingReplyTo"] || ""
+			json["incomingType"] as IncomingEmailServerType,
+			json["incomingAddress"] as string,
+			json["incomingPort"] as ushort,
+			json["incomingLogin"] as string,
+			json["incomingSecure"] as boolean,
+			json["incomingMessageNumber"] as uint,
+			json["outgoingType"] as OutgoingEmailServerType,
+			json["outgoingAddress"] as email,
+			json["outgoingPort"] as ushort,
+			json["outgoingLogin"] as string,
+			json["outgoingSecure"] as boolean,
+			json["outgoingReplyTo"] as email,
 		);
 	}
 	
@@ -114,7 +114,7 @@ export class NotificationServerEmail
 		outgoingPort?: ushort,
 		outgoingLogin?: string,
 		outgoingSecure?: boolean,
-		outgoingReplyTo?: string
+		outgoingReplyTo?: string,
 	) {
 		this.incomingType = IncomingEmailServerType[incomingType as IncomingEmailServerType] || IncomingEmailServerType.IMAP;
 		this.incomingAddress = incomingAddress || "";

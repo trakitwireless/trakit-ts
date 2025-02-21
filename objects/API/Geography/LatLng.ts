@@ -30,10 +30,11 @@ export class LatLng
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any): LatLng | null {
-		return json
-			? new LatLng(json["lat"], json["lng"])
-			: null;
+	static fromJSON(json: any): LatLng  {
+		return new LatLng(
+			json?.lat as number,
+			json?.lng as number,
+		);
 	}
 	/**
 	 * Latitude

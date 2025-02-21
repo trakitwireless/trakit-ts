@@ -17,13 +17,13 @@ export class IconGlyph
 	 */
 	static fromJSON(json: any) {
 		return new IconGlyph(
-			json["tags"] || [],
-			json["src"] || "",
-			Size.fromJSON(json["size"]),
-			Point.fromJSON(json["anchor"]),
-			IconLayer[json["layer"] as IconLayer],
-			ID(json["zIndex"]) || 0,
-			!!json["rotates"]
+			json["tags"] as string[],
+			json["src"] as string,
+			json["size"] as ISize,
+			json["anchor"] as IPoint,
+			json["layer"] as IconLayer,
+			json["zIndex"] as ushort,
+			json["rotates"] as boolean,
 		);
 	}
 	
@@ -63,7 +63,7 @@ export class IconGlyph
 		anchor?: IPoint,
 		layer?: IconLayer,
 		zIndex?: ushort,
-		rotates?: boolean
+		rotates?: boolean,
 	) {
 		this.tags = [...(tags || [])];
 		this.src = src || "";

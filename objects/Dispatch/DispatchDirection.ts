@@ -17,13 +17,13 @@ export class DispatchDirection
 	 */
 	static fromJSON(json: any): DispatchDirection {
 		return new DispatchDirection(
-			FLOAT(json["distance"]),
+			json["distance"] as double,
 			json["duration"] as timespan,
-			json["instructions"] || "",
-			(json["path"] as any[])?.map(LatLng.fromJSON) as LatLng[],
+			json["instructions"] as string,
+			(json["path"] as any[])?.map(LatLng.fromJSON),
 			(json["directions"] as any[])?.map(DispatchDirection.fromJSON),
-			ID(json["job"]),
-			ID(json["step"])
+			json["job"] as ulong,
+			json["step"] as ulong,
 		);
 	}
 	

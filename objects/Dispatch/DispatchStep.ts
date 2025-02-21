@@ -22,20 +22,20 @@ export class DispatchStep
 	 */
 	static fromJSON(json: any) {
 		return new DispatchStep(
-			ID(json["id"]),
+			json["id"] as ulong,
 			json["name"] || "",
 			OBJECT_TO_MAP_BY_PREDICATE(
 				json["states"] || {},
 				(k, v) => [k as DispatchStepStatus, DispatchStepState.fromJSON(v)]
 			),
-			DATE(json["eta"]),
+			json["eta"] as datetime,
 			json["duration"] as timespan,
-			ID(json["place"]),
-			json["address"] || "",
-			LatLng.fromJSON(json["latlng"]),
-			json["notes"] || "",
-			!!json["signature"],
-			json["signatory"] || "",
+			json["place"] as ulong,
+			json["address"] as string,
+			json["latlng"] as ILatLng,
+			json["notes"] as string,
+			json["signature"] as boolean,
+			json["signatory"] as string,
 		);
 	}
 
@@ -134,13 +134,15 @@ export class DispatchStep
 		latlng?: LatLng | ILatLng | null,
 		notes?: string,
 		signature?: boolean,
-		signatory?: string
+		signatory?: string,
 	) {
 		this.id = ID(id);
 		this.address = address || "";
 		this.duration = new TimeSpan(duration);
 		this.eta = DATE(eta);
-		this.latlng = LatLng.fromJSON(latlng);
+		this.latlng = latlng
+			? LatLng.fromJSON(latlng)
+			: null;
 		this.name = name || "";
 		this.notes = notes || "";
 		this.placeId = ID(place);

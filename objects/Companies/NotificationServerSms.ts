@@ -13,8 +13,8 @@ export class NotificationServerSms
 	 */
 	static fromJSON(json: any) {
 		return new NotificationServerSms(
-			ID(json["notifyLimit"]),
-			OBJECT_TO_MAP(json["phoneNumbers"] || {})
+			json["notifyLimit"] as ushort,
+			OBJECT_TO_MAP(json["phoneNumbers"] || {}),
 		);
 	}
 	
@@ -29,7 +29,7 @@ export class NotificationServerSms
 
 	constructor(
 		notifyLimit?: ushort,
-		phoneNumbers?: Map<string, ulong[]>
+		phoneNumbers?: Map<string, ulong[]>,
 	) {
 		this.notifyLimit = ID(notifyLimit);
 		this.phoneNumbers = phoneNumbers ?? new Map;

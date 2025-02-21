@@ -14,13 +14,13 @@ export class PasswordPolicy
 	 */
 	static fromJSON(json: any) {
 		return new PasswordPolicy(
-			ID(json["minimumLength"]),
-			!!json["includeLetters"],
-			!!json["includeNumbers"],
-			!!json["includeUpperLower"],
-			!!json["includeSpecial"],
-			PasswordExpiryMode[json["expireMode"] as PasswordExpiryMode],
-			ID(json["expireThreshold"])
+			json["minimumLength"] as byte,
+			json["includeLetters"] as boolean,
+			json["includeNumbers"] as boolean,
+			json["includeUpperLower"] as boolean,
+			json["includeSpecial"] as boolean,
+			json["expireMode"] as PasswordExpiryMode,
+			json["expireThreshold"] as byte,
 		);
 	}
 
@@ -60,7 +60,7 @@ export class PasswordPolicy
 		includeUpperLower?: boolean,
 		includeSpecial?: boolean,
 		expireMode?: PasswordExpiryMode,
-		expireThreshold?: byte
+		expireThreshold?: byte,
 	) {
 		this.minimumLength = ID(minimumLength);
 		this.includeLetters = !!includeLetters;

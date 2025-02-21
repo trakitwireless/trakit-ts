@@ -12,10 +12,10 @@ export class ProviderScriptBlock
 	 */
 	static fromJSON(json: any) {
 		return new ProviderScriptBlock(
-			json["content"] || "",
-			json["replace"] || "",
-			json["condition"] || "",
-			json["validate"] || ""
+			json["content"] as string,
+			json["replace"] as string,
+			json["condition"] as string,
+			json["validate"] as string,
 		);
 	}
 	
@@ -45,7 +45,7 @@ export class ProviderScriptBlock
 		content?: string,
 		replace?: string,
 		condition?: string,
-		validate?: string
+		validate?: string,
 	) {
 		this.content = content || "";
 		this.replace = replace || "";

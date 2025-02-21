@@ -15,8 +15,8 @@ export class DispatchStepState
 	 */
 	static fromJSON(json: any) {
 		return new DispatchStepState(
-			DATE(json["updated"]),
-			json["latlng"] || null
+			json["updated"] as datetime,
+			json["latlng"] as ILatLng,
 		);
 	}
 	
@@ -31,10 +31,12 @@ export class DispatchStepState
 	
 	constructor(
 		updated?: Date | number | datetime,
-		latlng?: LatLng | ILatLng | null
+		latlng?: LatLng | ILatLng | null,
 	) {
 		this.updated = DATE(updated);
-		this.latlng = LatLng.fromJSON(latlng);
+		this.latlng = latlng
+			? LatLng.fromJSON(latlng)
+			: null;
 	}
 
 	toJSON() {

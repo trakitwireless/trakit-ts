@@ -1,14 +1,15 @@
-﻿import { ID } from '../../API/Functions';
+﻿import { ID, OBJECT_TO_MAP } from '../../API/Functions';
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
 import { ISerializable } from '../../API/Interfaces/ISerializable';
-import { byte, ulong, ushort } from '../../API/Types';
+import { byte, datetime, double, timespan, ulong, ushort } from '../../API/Types';
 import { FormFieldType } from '../FormFieldType';
 import { FormFieldAttachments } from './FormFieldAttachments';
 import { FormFieldBoolean } from './FormFieldBoolean';
 import { FormFieldChoice } from './FormFieldChoice';
 import { FormFieldDate } from './FormFieldDate';
 import { FormFieldNumeric } from './FormFieldNumeric';
+import { FormFieldNumericSize } from './FormFieldNumericSize';
 import { FormFieldSignature } from './FormFieldSignature';
 import { FormFieldText } from './FormFieldText';
 import { FormFieldTime } from './FormFieldTime';
@@ -35,33 +36,33 @@ export abstract class FormFieldBase
 					json["notes"] as string,
 					json["required"] as boolean,
 					json["value"] as string | null,
-					json["editable"] as boolean
+					json["editable"] as boolean,
 				);
 			case FormFieldType.choice:
 			case FormFieldType.dropdown:
 				return new FormFieldChoice(
-					json["id"],
-					json["name"],
-					json["kind"],
-					json["choices"],
-					json["minimum"],
-					json["maximum"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["kind"] as FormFieldType,
+					OBJECT_TO_MAP(json["choices"]),
+					json["minimum"] as byte,
+					json["maximum"] as byte,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			case FormFieldType.checkbox:
 			case FormFieldType.toggle:
 				return new FormFieldBoolean(
-					json["id"],
-					json["name"],
-					json["kind"],
-					json["choices"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["kind"] as FormFieldType,
+					json["choices"] as string[],
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			case FormFieldType.area:
 			case FormFieldType.numeric:
@@ -75,76 +76,76 @@ export abstract class FormFieldBase
 			case FormFieldType.fuelEconomy:
 			case FormFieldType.currency:
 				return new FormFieldNumeric(
-					json["id"],
-					json["name"],
-					json["kind"],
-					json["size"],
-					json["precision"],
-					json["step"],
-					json["units"],
-					json["minimum"],
-					json["maximum"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["kind"] as FormFieldType,
+					json["size"] as FormFieldNumericSize,
+					json["precision"] as byte,
+					json["step"] as double,
+					json["units"] as string,
+					json["minimum"] as double,
+					json["maximum"] as double,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			case FormFieldType.datetime:
 			case FormFieldType.date:
 				return new FormFieldDate(
-					json["id"],
-					json["name"],
-					json["kind"],
-					json["minimum"],
-					json["maximum"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["kind"] as FormFieldType,
+					json["minimum"] as datetime,
+					json["maximum"] as datetime,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			case FormFieldType.duration:
 			case FormFieldType.time:
 				return new FormFieldTime(
-					json["id"],
-					json["name"],
-					json["kind"],
-					json["minimum"],
-					json["maximum"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["kind"] as FormFieldType,
+					json["minimum"] as timespan,
+					json["maximum"] as timespan,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			case FormFieldType.signature:
 				return new FormFieldSignature(
-					json["id"],
-					json["name"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			case FormFieldType.pictures:
 			case FormFieldType.files:
 				return new FormFieldAttachments(
-					json["id"],
-					json["name"],
-					json["kind"],
-					json["minimum"],
-					json["maximum"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["kind"] as FormFieldType,
+					json["minimum"] as byte,
+					json["maximum"] as byte,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			case FormFieldType.timezone:
 				return new FormFieldTimezone(
-					json["id"],
-					json["name"],
-					json["notes"],
-					json["required"],
-					json["value"],
-					json["editable"]
+					json["id"] as ulong,
+					json["name"] as string,
+					json["notes"] as string,
+					json["required"] as boolean,
+					json["value"] as string | null,
+					json["editable"] as boolean,
 				);
 			default:
 				throw new Error("kind unsupported");
@@ -192,7 +193,7 @@ export abstract class FormFieldBase
 		notes?: string,
 		required?: boolean,
 		value?: string | null,
-		editable?: boolean
+		editable?: boolean,
 	) {
 		this.id = ID(id);
 		this.kind = FormFieldType[kind as FormFieldType];

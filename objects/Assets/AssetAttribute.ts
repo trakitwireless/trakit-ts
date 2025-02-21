@@ -17,15 +17,15 @@ export class AssetAttribute
 	 */
 	static fromJSON(json: any) {
 		return new AssetAttribute(
-			json["name"] || "",
-			json["simple"] || "",
-			json["complex"] || "",
-			json["raw"] || null,
-			json["unit"] || "",
-			json["provider"] || "",
-			ID(json["asset"]),
-			DATE(json["dts"]),
-			!!json["global"]
+			json["name"] as string,
+			json["simple"] as string,
+			json["complex"] as string,
+			json["raw"] as any,
+			json["unit"] as string,
+			json["provider"] as string,
+			json["asset"] as ulong,
+			json["dts"] as datetime,
+			json["global"] as boolean,
 		);
 	}
 
@@ -84,7 +84,7 @@ export class AssetAttribute
 		provider?: string,
 		asset?: ulong,
 		dts?: Date | number | datetime,
-		global?: boolean
+		global?: boolean,
 	) {
 		this.name = name || "";
 		this.simple = simple || "";

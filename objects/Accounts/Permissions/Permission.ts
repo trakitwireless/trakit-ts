@@ -20,11 +20,11 @@ export class Permission
 	 */
 	static fromJSON(json: any) {
 		return new Permission(
-			ID(json["company"]),
-			PermissionType[json["kind"] as PermissionType],
-			PermissionLevel[json["level"] as PermissionLevel],
-			PermissionMethod[json["method"] as PermissionMethod],
-			json["labels"] || []
+			json["company"] as ulong,
+			json["kind"] as PermissionType,
+			json["level"] as PermissionLevel,
+			json["method"] as PermissionMethod,
+			json["labels"] as string[],
 		);
 	}
 	/**
@@ -69,7 +69,7 @@ export class Permission
 		kind?: PermissionType,
 		level: PermissionLevel = PermissionLevel.read,
 		method: PermissionMethod = PermissionMethod.grant,
-		labels?: codified[] | null
+		labels?: codified[] | null,
 	) {
 		this.companyId = ID(company);
 		this.kind = PermissionType[kind as PermissionType];

@@ -16,14 +16,14 @@ export class ReportOptions
 	 */
 	static fromJSON(json: any) {
 		return new ReportOptions(
-			(json["parameters"] as any[]).map(ReportParameter.fromJSON),
+			(json["parameters"] as any[])?.map(ReportParameter.fromJSON),
 			SearchPattern.parse(json["targets"]),
-			ReportFilterMode[json["filtering"] as ReportFilterMode],
+			json["filtering"] as ReportFilterMode,
 			SearchPattern.parse(json["places"]),
-			json["regions"] as any[],
+			json["regions"] as string[],
 			json["scorecardRules"]
 				? ReportScorecardRules.fromJSON(json["scorecardRules"])
-				: null
+				: null,
 		);
 	}
 	
@@ -58,7 +58,7 @@ export class ReportOptions
 		filtering?: ReportFilterMode,
 		places?: SearchPattern[] | null,
 		regions?: string[],
-		scorecardRules?: ReportScorecardRules | null
+		scorecardRules?: ReportScorecardRules | null,
 	) {
 		this.parameters = parameters ?? [];
 		this.targets = targets || null;

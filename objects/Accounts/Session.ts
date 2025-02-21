@@ -2,7 +2,7 @@ import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, int, ulong } from "../API/Types";
+import { datetime, email, int, ipv4, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../Storage";
 import { SessionStatus } from "./SessionStatus";
@@ -18,17 +18,17 @@ export class Session
 	 */
 	static fromJSON(json: any) {
 		return new Session(
-			json["handle"] || "",
-			ID(json["company"]),
-			json["ipAddress"] || "",
-			json["userAgent"] || "",
-			ID(json["sockets"]) || 0,
-			json["login"] || "",
-			SessionStatus[json["status"] as SessionStatus],
-			DATE(json["created"]),
-			DATE(json["expires"]),
+			json["handle"] as string,
+			json["company"] as ulong,
+			json["ipAddress"] as ipv4,
+			json["userAgent"] as string,
+			json["sockets"] as ulong,
+			json["login"] as email,
+			json["status"] as SessionStatus,
+			json["created"] as datetime,
+			json["expires"] as datetime,
 			json["lastCommand"],
-			DATE(json["lastActivity"])
+			json["lastActivity"] as datetime,
 		);
 	}
 
@@ -100,7 +100,7 @@ export class Session
 		created?: Date | number | datetime,
 		expiry?: Date | number | datetime,
 		lastCommand?: string,
-		lastActivity?: Date | number | datetime
+		lastActivity?: Date | number | datetime,
 	) {
 		this.handle = handle || "";
 		this.companyId = ID(company);

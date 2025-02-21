@@ -21,18 +21,22 @@ export class ReportSummary
 	 */
 	static fromJSON(json: any) {
 		return new ReportSummary(
-			ID(json["asset"]),
-			json["stateDetail"],
-			ID(json["instance"]),
-			ID(json["instancesCount"]),
-			DATE(json["startingUtc"]),
+			json["asset"] as ulong,
+			json["stateDetail"] as string,
+			json["instance"] as uint,
+			json["instancesCount"] as uint,
+			json["startingUtc"] as datetime,
 			json["startingReason"],
-			DATE(json["endingUtc"]),
+			json["endingUtc"] as datetime,
 			json["endingReason"],
-			FLOAT(json["distance"]),
-			(json["polyline"] as any[])?.map(LatLng.fromJSON) as LatLng[],
-			Asset.fromJSON(json["firstState"]),
-			Asset.fromJSON(json["lastState"])
+			json["distance"] as double,
+			(json["polyline"] as any[])?.map(LatLng.fromJSON),
+			json["firstState"]
+				? Asset.fromJSON(json["firstState"])
+				: null,
+			json["lastState"]
+				? Asset.fromJSON(json["lastState"])
+				: null,
 		);
 	}
 
@@ -106,8 +110,8 @@ export class ReportSummary
 		endingReason?: ReportSummaryReason,
 		distance?: double,
 		polyline?: LatLng[],
-		firstState?: Asset,
-		lastState?: Asset
+		firstState?: Asset | null,
+		lastState?: Asset | null,
 	) {
 		this.assetId = ID(asset);
 		this.stateDetail = stateDetail || "";

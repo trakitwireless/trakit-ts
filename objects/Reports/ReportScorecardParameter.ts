@@ -15,9 +15,9 @@ export class ReportScorecardParameter
 	 */
 	static fromJSON(json: any) {
 		return new ReportScorecardParameter(
-			json["condition"],
-			new TimeSpan(json["duration"]),
-			FLOAT(json["points"]),
+			json["condition"] as string,
+			json["duration"] as timespan,
+			json["points"] as double,
 		);
 	}
 	/**
@@ -36,7 +36,7 @@ export class ReportScorecardParameter
 	constructor(
 		condition?: string,
 		duration?: TimeSpan | timespan | number,
-		points?: double
+		points?: double,
 	) {
 		this.condition = condition || "";
 		this.duration = new TimeSpan(duration);

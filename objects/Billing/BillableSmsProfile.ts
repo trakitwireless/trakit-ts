@@ -14,8 +14,8 @@ export class BillableSmsProfile
 	 */
 	static fromJSON(json: any) {
 		return new BillableSmsProfile(
-			json["limit"],
-			json["amount"]
+			json["limit"] as uint,
+			json["amount"] as double,
 		);
 	}
 	/**
@@ -30,7 +30,7 @@ export class BillableSmsProfile
 
 	constructor(
 		limit?: uint,
-		amount?: double
+		amount?: double,
 	) {
 		this.limit = ID(limit);
 		this.amount = FLOAT(amount as any);
