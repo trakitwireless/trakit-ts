@@ -1,6 +1,7 @@
 ﻿import { ARRAY_TO_JSON } from "../API/Arrays";
 import { FLOAT } from "../API/Constants";
 import { ID } from "../API/Functions";
+import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
@@ -20,7 +21,7 @@ export class DispatchDirection
 			json["distance"] as double,
 			json["duration"] as timespan,
 			json["instructions"] as string,
-			(json["path"] as any[])?.map(LatLng.fromJSON),
+			json["path"] as ILatLng[]),
 			(json["directions"] as any[])?.map(DispatchDirection.fromJSON),
 			json["job"] as ulong,
 			json["step"] as ulong,
@@ -60,7 +61,7 @@ export class DispatchDirection
 		distance?: double,
 		duration?: TimeSpan | timespan | number,
 		instructions?: string,
-		path?: LatLng[],
+		path?: ILatLng[],
 		directions?: DispatchDirection[],
 		job?: ulong,
 		step?: ulong
@@ -68,7 +69,7 @@ export class DispatchDirection
 		this.distance = FLOAT(distance as any);
 		this.duration = new TimeSpan(duration);
 		this.instructions = instructions || "";
-		this.path = path ?? [];
+		this.path = path?.map(LatLng.fromJSON) ?? [];
 		this.directions = directions ?? [];
 		this.job = ID(job);
 		this.step = ID(step);

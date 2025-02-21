@@ -1,4 +1,4 @@
-import { DATE, ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { DATE, ID, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -131,7 +131,7 @@ export class DispatchStep
 		duration?: TimeSpan | timespan | number,
 		place?: ulong,
 		address?: string,
-		latlng?: LatLng | ILatLng | null,
+		latlng?: ILatLng | null,
 		notes?: string,
 		signature?: boolean,
 		signatory?: string,
@@ -163,7 +163,7 @@ export class DispatchStep
 			"place": this.placeId || null,
 			"signature": !!this.signature,
 			"signatory": this.signatory || "",
-			"states": MAP_TO_OBJECT(this.states),
+			"states": MAP_TO_OBJECT_VALUE_JSON(this.states),
 		};
 	}
 }

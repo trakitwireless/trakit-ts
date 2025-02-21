@@ -31,7 +31,7 @@ export class DispatchStepState
 	
 	constructor(
 		updated?: Date | number | datetime,
-		latlng?: LatLng | ILatLng | null,
+		latlng?: ILatLng | null,
 	) {
 		this.updated = DATE(updated);
 		this.latlng = latlng

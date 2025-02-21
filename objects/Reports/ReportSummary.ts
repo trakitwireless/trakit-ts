@@ -1,6 +1,7 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { FLOAT } from "../API/Constants";
 import { DATE, ID, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
@@ -30,7 +31,7 @@ export class ReportSummary
 			json["endingUtc"] as datetime,
 			json["endingReason"],
 			json["distance"] as double,
-			(json["polyline"] as any[])?.map(LatLng.fromJSON),
+			json["polyline"] as ILatLng[],
 			json["firstState"]
 				? Asset.fromJSON(json["firstState"])
 				: null,
@@ -109,7 +110,7 @@ export class ReportSummary
 		endingUtc?: Date | number | datetime,
 		endingReason?: ReportSummaryReason,
 		distance?: double,
-		polyline?: LatLng[],
+		polyline?: ILatLng[],
 		firstState?: Asset | null,
 		lastState?: Asset | null,
 	) {
@@ -122,7 +123,7 @@ export class ReportSummary
 		this.endingUtc = DATE(endingUtc);
 		this.endingReason = ReportSummaryReason[endingReason as ReportSummaryReason] || ReportSummaryReason.outsideRange;
 		this.distance = FLOAT(distance as any);
-		this.polyline = [...(polyline || [])];
+		this.polyline = polyline?.map(LatLng.fromJSON) ?? [];
 		this.firstState = firstState || null;
 		this.lastState = lastState || null;
 	}
