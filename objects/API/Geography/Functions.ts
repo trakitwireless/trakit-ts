@@ -6,6 +6,8 @@ import {
 	ATAN2,
 	COS,
 	DEGREES_TO_RADIANS,
+	EXP,
+	LOG,
 	PI,
 	POW,
 	RADIANS_TO_DEGREES,
@@ -14,12 +16,15 @@ import {
 	TAN
 } from '../Constants';
 import {
+	CLIP,
 	DOUGLASPEUCKER_INTERNAL,
 	IS_AN,
 	IS_NUMBER,
 	ROUND_TO
 } from '../Functions';
-import { ILatLng } from './Interfaces';
+import { IPoint } from '../Geometry/Interfaces';
+import { int } from '../Types';
+import { ILatLng, ILatLngBounds } from './Interfaces';
 
 //#region Hiigara
 /**
@@ -60,6 +65,9 @@ export const EARTH_RADIUS_COM: number = EARTH_RADIUS_ECCENT / 2;
 //#endregion Hiigara
 
 //#region Map tiles (Mercator)
+// Bing Maps Tile System => https://msdn.microsoft.com/en-us/library/bb259689.aspx
+// Google Overlay Map Types => https://developers.google.com/maps/documentation/javascript/coordinates
+
 /**
  * 
  */
@@ -72,6 +80,97 @@ export const MAX_TILE_LAT: number = 85.05112878;
  * 
  */
 export const MAX_TILE_LNG: number = 180;
+
+/**
+ * Determines the map width and height (in pixels) at a specified level of detail.
+ * @param zoom	Level of detail, from 1 (lowest detail) to 23 (highest detail).
+ * @returns The map width and height in pixels.
+ */
+export function tileMapSize(zoom: int): int { return TILE_SIZE_PX << zoom; }
+/**
+ * Converts tile coordinates into pixel coordinates of the upper-left pixel of the specified tile.
+ * @param tile	
+*/
+export function tileToPixel(tile: IPoint): IPoint { return { x: tile.x * TILE_SIZE_PX, y: tile.y * TILE_SIZE_PX, }; }
+/**
+ * Converts pixel coordinates into tile coordinates of the tile containing the specified pixel.
+ * @param pixel	
+ */
+export function pixelToTile(pixel: IPoint): IPoint { return { x: pixel.x / TILE_SIZE_PX, y: pixel.y / TILE_SIZE_PX, }; }
+
+/**
+ * Converts a pixel coordinate into a LatLng at a specified level of detail.
+ * @param pixel	
+ * @param zoom	Level of detail, from 1 (lowest detail) to 23 (highest detail).
+ */
+export function pixelToLatlng(pixel: IPoint, zoom: int): ILatLng {
+	const mapSize = tileMapSize(zoom),
+		x = (CLIP(pixel.x, 0, mapSize - 1) / mapSize) - 0.5,
+		y = 0.5 - (CLIP(pixel.y, 0, mapSize - 1) / mapSize);
+	return {
+		lat: LATITUDE_NORMALIZED(90 - 360 * ATAN(EXP(-y * 2 * Math.PI)) / PI),
+		lng: LONGITUDE_NORMALIZED(360 * x),
+	};
+}
+
+/**
+ * Converts a LatLng into a pixel coordinate at a specified level of detail.
+ * @param latlng	
+ * @param zoom	Level of detail, from 1 (lowest detail) to 23 (highest detail).
+ */
+export function latlngToPixel(latlng: ILatLng, zoom: int): IPoint {
+	const mapSize = tileMapSize(zoom),
+		latitude = CLIP(latlng.lat, -MAX_TILE_LAT, MAX_TILE_LAT),
+		longitude = CLIP(latlng.lng, -MAX_TILE_LNG, MAX_TILE_LNG),
+		x = (longitude + 180) / 360,
+		sinLatitude = SIN(latitude * Math.PI / 180),
+		y = 0.5 - LOG((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
+	return {
+		x: CLIP(x * mapSize + 0.5, 0, mapSize - 1),
+		y: CLIP(y * mapSize + 0.5, 0, mapSize - 1),
+	};
+}
+/**
+ * Converts tile coordinates into a lat/lng boundary representing a complete tile.
+ * @param tile	
+ * @param zoom	Level of detail, from 1 (lowest detail) to 23 (highest detail).
+ * @param grow	Number of pixels to grow the tilesize (helps with detecting stroke/border overlaps).
+ */
+export function tileToBounds(tile: IPoint, zoom: int, grow: number = 0): ILatLngBounds {
+	return pixelToBounds(
+		tileToPixel(tile),
+		zoom,
+		grow
+	);
+}
+/**
+ * Converts pixel coordinates of a tile into a lat/lng boundary.
+ * @param pixel	
+ * @param zoom	Level of detail, from 1 (lowest detail) to 23 (highest detail).
+ * @param grow	Number of pixels to grow the tilesize (helps with detecting stroke/border overlaps).
+ */
+export function pixelToBounds(pixel: IPoint, zoom: int, grow: number = 0): ILatLngBounds {
+	const tl = pixelToLatlng({ x: pixel.x - grow, y: pixel.y - grow }, zoom),
+		br = pixelToLatlng({ x: pixel.x + TILE_SIZE_PX + grow, y: pixel.y + TILE_SIZE_PX + grow }, zoom);
+	return {
+		west: tl.lat,
+		east: br.lat,
+		north: tl.lat,
+		south: br.lat,
+	};
+}
+/**
+ * Returns the number of meters per pixel at the given latitude and zoom level.
+ * @param lat	
+ * @param zoom	
+ */
+export function metresPerPixel(lat: number, zoom: int): number {
+	return COS(CLIP(lat, -MAX_TILE_LAT, MAX_TILE_LAT) * DEGREES_TO_RADIANS)
+		* 2
+		* Math.PI
+		* EARTH_RADIUS
+		/ tileMapSize(zoom);
+}
 //#endregion Map tiles (Mercator)
 
 /**
@@ -334,6 +433,25 @@ export function LATLNG_MIDPOINT(first: ILatLng, last: ILatLng): ILatLng {
 		lat: lat3 * RADIANS_TO_DEGREES,
 		lng: lng3 * RADIANS_TO_DEGREES,
 	};
+}
+/**
+ * Calculates the spherical-cap area occupied by the given radial distance.
+ * @param pin		The coordinate at which to calculate the area.
+ * @param radius	The distance from the centre of the circle to any point along the edge.
+ */
+export function SPHERECAP_AREA(pin: ILatLng, radius: number) {
+	throw "not implemented";
+	/*var b = EARTH_RADIUS,
+		a = EARTH_RADIUS,
+		d = radius,
+		D = (d / EARTH_RADIUS),
+		c = SQRT((EARTH_RADIUS * EARTH_RADIUS) + (EARTH_RADIUS * EARTH_RADIUS) - 2 * EARTH_RADIUS * EARTH_RADIUS * COS(D));
+	
+	var angle = d / EARTH_RADIUS,
+		area = EARTH_RADIUS * EARTH_RADIUS * (SIN(angle) / 2),
+		height = 2 * (area / EARTH_RADIUS),
+		centreToHeight = (SIN(90 - angle) * height) / SIN(angle);
+		*/
 }
 //#endregion LatLng helpers
 
@@ -635,25 +753,5 @@ export function GEOFENCE_CONTAINS(route: ILatLng[], pin: ILatLng): boolean {
  */
 export function GEOFENCE_WRAPPER(route: ILatLng[]): ILatLng[] {
 	throw "not implemented";
-}
-
-/**
- * Calculates the spherical-cap area occupied by the given radial distance.
- * @param pin		The coordinate at which to calculate the area.
- * @param radius	The distance from the centre of the circle to any point along the edge.
- */
-export function SPHERECAP_AREA(pin: ILatLng, radius: number) {
-	throw "not implemented";
-	/*var b = EARTH_RADIUS,
-		a = EARTH_RADIUS,
-		d = radius,
-		D = (d / EARTH_RADIUS),
-		c = SQRT((EARTH_RADIUS * EARTH_RADIUS) + (EARTH_RADIUS * EARTH_RADIUS) - 2 * EARTH_RADIUS * EARTH_RADIUS * COS(D));
-	
-	var angle = d / EARTH_RADIUS,
-		area = EARTH_RADIUS * EARTH_RADIUS * (SIN(angle) / 2),
-		height = 2 * (area / EARTH_RADIUS),
-		centreToHeight = (SIN(90 - angle) * height) / SIN(angle);
-		*/
 }
 //#endregion Polygon helpers

@@ -1,10 +1,7 @@
-﻿import {
-	ILatLng,
-	ILatLng_instanceOf,
-	ILatLngBounds_instanceOf,
-	LatLngBoundsExpansion,
-} from './Interfaces';
-import { LatLng, } from './LatLng';
+﻿import { ABS, } from '../Constants';
+import {
+	IS_AN
+} from '../Functions';
 import { ISerializable } from '../Interfaces/ISerializable';
 import {
 	LATITUDE_NORMALIZED,
@@ -17,36 +14,19 @@ import {
 	MAX_SAME_DISTANCE
 } from './Functions';
 import {
-	IS_AN,
-	ROUND_TO,
-} from '../Functions';
-import { ABS, } from '../Constants';
+	ILatLng,
+	ILatLng_instanceOf,
+	ILatLngBounds,
+	ILatLngBounds_instanceOf,
+	LatLngBoundsExpansion,
+} from './Interfaces';
+import { LatLng, } from './LatLng';
 
 /**
  * A boundary on the globe
  */
-export interface ILatLngBounds {
-	/**
-	 * Northern latitude
-	 */
-	north: number;
-	/**
-	 * Eastern longitude
-	 */
-	east: number;
-	/**
-	 * Southern latitude
-	 */
-	south: number;
-	/**
-	 * Western longitude
-	 */
-	west: number;
-}
-/**
- * A boundary on the globe
- */
-export class LatLngBounds implements ILatLngBounds, ISerializable {
+export class LatLngBounds
+	implements ILatLngBounds, ISerializable {
 	/**
 	 * 
 	 * @param json 
@@ -147,7 +127,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * Checks if a {@link LatLng} is contained within this boundary.
 	 * @param pin	The point to check
 	 */
-	contains(pin: ILatLng) :boolean{
+	contains(pin: ILatLng): boolean {
 		this.validate();
 		const lat = LATITUDE_NORMALIZED(pin.lat),
 			lng = LONGITUDE_NORMALIZED(pin.lng, lat) + 360;
@@ -170,7 +150,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * @this {LatLngBounds}
 	 * @param bounds	The other boundary to check
 	 */
-	encloses(bounds: ILatLngBounds):boolean {
+	encloses(bounds: ILatLngBounds): boolean {
 		this.validate();
 		const north = LATITUDE_NORMALIZED(bounds.north),
 			east = LONGITUDE_NORMALIZED(bounds.east, north) + 360,
@@ -194,7 +174,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	 * Also returns true if either boundary's {@link LatLngBounds#encloses} returns true.
 	 * @param other	The other boundary to check
 	 */
-	overlaps(other: ILatLngBounds) :boolean{
+	overlaps(other: ILatLngBounds): boolean {
 		this.validate();
 		const bounds = new LatLngBounds(other);
 		return (
@@ -293,7 +273,7 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	/**
 	 * Extends the boundary to envelop the given point(s) and automatically validates
 	 */
-	extend(latlngs: LatLngBoundsExpansion):this {
+	extend(latlngs: LatLngBoundsExpansion): this {
 		this.__expander(latlngs);
 		return this.validate();
 	}
@@ -337,40 +317,40 @@ export class LatLngBounds implements ILatLngBounds, ISerializable {
 	/**
 	 * The mid-point coordinate between the south east and south west corners.
 	 */
-	getSouthMiddle():LatLng {
+	getSouthMiddle(): LatLng {
 		const latlng = LATLNG_MIDPOINT(this.getSouthEast(), this.getSouthWest());
 		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * The mid-point coordinate between the north east and north west corners.
 	 */
-	getEastMiddle() :LatLng{
+	getEastMiddle(): LatLng {
 		const latlng = LATLNG_MIDPOINT(this.getNorthEast(), this.getSouthEast());
 		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * The mid-point coordinate between the south east and south west corners.
 	 */
-	getWestMiddle():LatLng {
+	getWestMiddle(): LatLng {
 		const latlng = LATLNG_MIDPOINT(this.getNorthWest(), this.getSouthWest());
 		return new LatLng(latlng.lat, latlng.lng);
 	}
 	/**
 	 * The distance in meters between the north-east corner and the south-west corner.
 	 */
-	getDiagonalDistance() :number{
+	getDiagonalDistance(): number {
 		return LATLNG_DISTANCE(this.getNorthEast(), this.getSouthWest());
 	}
 	/**
 	 * The distance in meters between the north-most border and the south-most border.
 	 */
-	getLatitudinalDistance() :number{
+	getLatitudinalDistance(): number {
 		return LATLNG_DISTANCE(this.getNorthEast(), this.getSouthEast());
 	}
 	/**
 	 * The distance in meters between the east-most and the west-most points along the border closest to the equator.
 	 */
-	getLongitudinalDistance():number {
+	getLongitudinalDistance(): number {
 		return ABS(this.north) < ABS(this.south)
 			? LATLNG_DISTANCE(this.getNorthEast(), this.getNorthWest())
 			: LATLNG_DISTANCE(this.getSouthEast(), this.getSouthWest());
