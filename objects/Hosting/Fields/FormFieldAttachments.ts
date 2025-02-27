@@ -10,6 +10,14 @@ import { MERGE } from '../../API/Objects';
 export class FormFieldAttachments
 	extends FormFieldBase {
 	/**
+	 * Takes a string as input and returns an array split by comma with trimmed items.
+	 * @param values 
+	 */
+	static splitValues(values: string): string[] {
+		return values?.split(',').map(s => s.trim()) ?? [];
+	}
+	
+	/**
 	 * These are the attachment types.
 	 */
 	protected override get supported(): FormFieldType[] {
@@ -57,8 +65,9 @@ export class FormFieldAttachments
 		});
 	}
 	override isValid(value: string): boolean {
-		const values = value?.split(",") ?? [];
-		return (!IS_AN(this.minimum) || this.minimum <= values.length)
+		const values = FormFieldAttachments.splitValues(value);
+		return values.length > 0		// null is not a valid value
+			&& (!IS_AN(this.minimum) || this.minimum <= values.length)
 			&& (!IS_AN(this.maximum) || this.maximum >= values.length)
 			&& values.every(function (s) { return IS_AN(ID(s)); });
 	}

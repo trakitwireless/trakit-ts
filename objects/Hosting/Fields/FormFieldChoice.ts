@@ -5,10 +5,32 @@ import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
 /**
+ * Used to split on comma so long as it is not after a backslash.
+ */
+const FormFieldChoice_SPLITTER = /(?<!\\),/;
+
+/**
  * A single- or multiple-choice input control.
  */
 export class FormFieldChoice
 	extends FormFieldBase {
+	/**
+	 * Splits the given value using commas (so long as the comma did not get escaped).
+	 * @param values 
+	 */
+	static splitValues(values: string): string[] {
+		return values?.split(FormFieldChoice_SPLITTER)
+			.map(s => s.trim().replaceAll("\\,", ","))
+			?? [];
+	}
+	/**
+	 * Replaces all the commas in a given value with backslash-comma.
+	 * @param value 
+	 */
+	static escapeValue(value: string) {
+		return (value = value?.trim())?.replaceAll(",", "\\,");
+	}
+	
 	/**
 	 * Just {@link FormFieldType.choice} control type.
 	 */
@@ -64,10 +86,11 @@ export class FormFieldChoice
 		});
 	}
 	override isValid(value: string): boolean {
-		const values = value?.split(',') ?? [];
+		const values = FormFieldChoice.splitValues(value),
+			choices = [...this.choices.values()];
 		return values.length > 0
 			&& (!IS_AN(this.minimum) || this.minimum <= values.length)
 			&& (!IS_AN(this.maximum) || this.maximum >= values.length)
-			&& values.filter((v) => this.choices.has(v)).length == values.length;
+			&& values.filter((v) => choices.includes(v)).length == values.length;
 	}
 }

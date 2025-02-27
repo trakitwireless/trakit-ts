@@ -4,25 +4,6 @@ import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
 /**
- * If no choices are given, then these choices are used.
- **/
-const DEFAULT_CHOICES = [
-	"true",
-	"false",
-	"",
-];
-/**
- * Returns an array of 3 strings representing the checked, unchecked, and indeterminate values.
- * @param array
- **/
-function MAKE_CHOICES(array?: (string | null)[]) {
-	return (array ?? [])
-		.concat([null, null, null])
-		.slice(0, 3)
-		.map((v, i) => v?.trim() ?? DEFAULT_CHOICES[i]);
-}
-
-/**
  * A true/false (or either-or) input control.
  * @tutorial
  * For choices, the field definition will be an array of three values.
@@ -34,6 +15,28 @@ function MAKE_CHOICES(array?: (string | null)[]) {
  */
 export class FormFieldBoolean
 	extends FormFieldBase {
+	/**
+	 * If no choices are given, then these choices are used.
+	 **/
+	static DEFAULT_CHOICES: [string, string, string] = [
+		"true",
+		"false",
+		"",
+	];
+	
+	/**
+	 * Returns an array of 3 strings representing the checked, unchecked, and indeterminate values.
+	 * @param choices 
+	 * @returns 
+	 */
+	static parseChoices(choices?: (string | null)[] | null): [string, string, string] {
+		return (choices ?? [])
+			.concat([null, null, null])
+			.slice(0, 3)
+			.map((v, i) => v?.trim() ?? FormFieldBoolean.DEFAULT_CHOICES[i]) as [string, string, string];
+	}
+	
+	
 	/**
 	 * These are the boolean control types.
 	 */
@@ -47,7 +50,7 @@ export class FormFieldBoolean
 	 * These three values are the values of the choices presented.
 	 * The first value is the "checked" value, second is the "unchecked" value, and third is "indeterminate" value.
 	 */
-	choices: string[] = [];
+	choices: [string, string, string];
 
 	constructor(
 		id?: ulong,
@@ -68,7 +71,7 @@ export class FormFieldBoolean
 			value,
 			editable
 		);
-		this.choices = [...(choices || [])];
+		this.choices = FormFieldBoolean.parseChoices(choices);
 	}
 	override toJSON() {
 		return MERGE(super.toJSON(), {
@@ -76,7 +79,7 @@ export class FormFieldBoolean
 		});
 	}
 	override isValid(value: string): boolean {
-		return MAKE_CHOICES(this.choices)
+		return FormFieldBoolean.parseChoices(this.choices)
 			.slice(0, this.required ? 2 : 3)
 			.includes(value?.trim());
 	}

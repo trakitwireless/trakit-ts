@@ -64,10 +64,8 @@ export class FormFieldText
 		});
 	}
 	override isValid(value: string): boolean {
-		value = IS_NOTHING(value)
-			? ""
-			: String(value).trim();
-		return (!!value || !this.required)
+		value = String(value ?? "").trim();
+		return !!value
 			&& (!IS_AN(this.minimum) || this.minimum <= value.length)
 			&& (!IS_AN(this.maximum) || this.maximum >= value.length);
 	}
