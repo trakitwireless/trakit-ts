@@ -580,7 +580,7 @@ export function ROUTE_DECODE(route: string, precision: number = 5): ILatLng[] {
  * @param route		The array of coordinates representing a path
  * @return			An array of three items; the first is the widest distance, and the others are the start and end index within the given route.
  */
-export function GEOFENCE_WIDEST(route: ILatLng[]): number[] {
+export function GEOFENCE_WIDEST(route: ILatLng[]): [number, number, number] {
 	const coords = [...route],
 		length = route.length;
 	let widest = 0,
@@ -618,9 +618,7 @@ export function GEOFENCE_PEUCKER(route: ILatLng[], tolerance: number = MAX_SAME_
 	let coords = [...route],
 		length = route.length;
 	if (length > 2) {
-		const widest = GEOFENCE_WIDEST(coords),
-			startIndex = widest[1],
-			endIndex = widest[2];
+		const [distance, startIndex, endIndex] = GEOFENCE_WIDEST(coords);
 		if (!(tolerance > 0)) tolerance = MAX_SAME_DISTANCE;
 
 		// re-order the points with the new starting point (faster method)
@@ -657,9 +655,13 @@ export function GEOFENCE_AREA(route: ILatLng[]) {
 		index = 0,
 		lastIndex = coords.length - 1,
 		latlngA = coords[index],
-		latlngB = coords[index],
+		latlngB,
 		latlngC = coords[lastIndex];
-	if (LATLNG_DISTANCE(latlngA, latlngB) <= MAX_SAME_DISTANCE) {
+	if (
+		latlngA
+		&& latlngC
+		&& LATLNG_DISTANCE(latlngA, latlngC) <= MAX_SAME_DISTANCE
+	) {
 		coords.pop();
 		lastIndex--;
 	}
