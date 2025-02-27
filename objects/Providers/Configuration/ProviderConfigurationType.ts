@@ -58,7 +58,7 @@ export class ProviderConfigurationType
 			"maxGeofenceCount": JSON_NUMBER(this.maxGeofenceCount),
 			"minGeofenceCount": JSON_NUMBER(this.minGeofenceCount),
 			"scriptOptions": MAP_TO_OBJECT_VALUE_JSON(this.scriptOptions),
-			"geofenceTypes": this.geofenceTypes?.map(g => PlaceType[g] || null) ?? [],
+			"geofenceTypes": this.geofenceTypes.map(g => PlaceType[g] || null),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
@@ -71,7 +71,7 @@ export class ProviderConfigurationType
 			this.maxGeofenceCount = ID(json["maxGeofenceCount"]);
 			this.minGeofenceCount = ID(json["minGeofenceCount"]);
 			this.scriptOptions = ProviderConfigurationNode.nodesFromJSON(json["scriptOptions"]);
-			this.geofenceTypes = (json["geofenceTypes"] as any[])?.map(g => PlaceType[g as PlaceType]);
+			this.geofenceTypes = (json["geofenceTypes"] as any[])?.map(g => PlaceType[g as PlaceType]) ?? [];
 		}
 		return update;
 	}

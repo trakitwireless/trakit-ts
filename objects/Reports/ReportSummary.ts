@@ -139,7 +139,7 @@ export class ReportSummary
 			"endingUtc": JSON_DATE(this.endingUtc),
 			"endingReason": ReportSummaryReason[this.endingReason] || ReportSummaryReason.outsideRange,
 			"distance": JSON_NUMBER(this.distance),
-			"polyline": this.polyline?.map(ARRAY_TO_JSON) ?? [],
+			"polyline": this.polyline.map(ARRAY_TO_JSON),
 			"firstState": this.firstState?.toJSON() ?? null,
 			"lastState": this.lastState?.toJSON() ?? null,
 		};

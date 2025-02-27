@@ -70,7 +70,7 @@ export class ReportOptions
 
 	toJSON() {
 		return {
-			"parameters": this.parameters?.map(ARRAY_TO_JSON) ?? [],
+			"parameters": this.parameters.map(ARRAY_TO_JSON),
 			"targets": SearchPattern.stringify(this.targets),
 			"filtering": ReportFilterMode[this.filtering] || ReportFilterMode.none,
 			"places": SearchPattern.stringify(this.places),

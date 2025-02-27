@@ -78,8 +78,8 @@ export class IconGlyph
 		return {
 			"tags": [...this.tags],
 			"src": this.src || "",
-			"size": this.size?.toJSON() ?? null,
-			"anchor": this.anchor?.toJSON() ?? null,
+			"size": this.size.toJSON(),
+			"anchor": this.anchor.toJSON(),
 			"layer": IconLayer[this.layer] || IconLayer.markers,
 			"zIndex": JSON_NUMBER(this.zIndex),
 			"rotates": !!this.rotates,

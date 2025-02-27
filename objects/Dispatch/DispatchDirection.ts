@@ -21,7 +21,7 @@ export class DispatchDirection
 			json["distance"] as double,
 			json["duration"] as timespan,
 			json["instructions"] as string,
-			json["path"] as ILatLng[]),
+			json["path"] as ILatLng[],
 			(json["directions"] as any[])?.map(DispatchDirection.fromJSON),
 			json["job"] as ulong,
 			json["step"] as ulong,
@@ -31,11 +31,11 @@ export class DispatchDirection
 	/**
 	 * The total distance of these directions (including sub-directions if applicable).
 	 */
-	distance: double = NaN;
+	distance: double;
 	/**
 	 * The total duration of these directions (including sub-directions if applicable).
 	 */
-	duration: TimeSpan | null = null;
+	duration: TimeSpan;
 	/**
 	 * Text hint for the driver for the action to perform.
 	 */
@@ -43,19 +43,19 @@ export class DispatchDirection
 	/**
 	 * A <format id="polyline">route path</format> to display on a map.
 	 */
-	path: LatLng[] = [];
+	path: LatLng[];
 	/**
 	 * For complex routes, the sub-directions provide a breakdown or additional details.
 	 */
-	directions: DispatchDirection[] = [];
+	directions: DispatchDirection[];
 	/**
 	 * Unique identifier of the {@link DispatchJob} or {@link DispatchTask}.
 	 */
-	job: ulong = NaN;
+	job: ulong;
 	/**
 	 * The {@link DispatchStep.id}, if this direction is for {@link DispatchJob}s.
 	 */
-	step: ulong = NaN;
+	step: ulong;
 
 	constructor(
 		distance?: double,
@@ -78,7 +78,7 @@ export class DispatchDirection
 	toJSON() {
 		return {
 			"distance": this.distance || 0,
-			"duration": this.duration?.toString() || null,
+			"duration": this.duration.toString() || null,
 			"instructions": this.instructions || "",
 			"path": this.path.map(ARRAY_TO_JSON),
 			"directions": this.directions.map(ARRAY_TO_JSON),

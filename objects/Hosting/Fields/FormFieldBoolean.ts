@@ -81,6 +81,6 @@ export class FormFieldBoolean
 	override isValid(value: string): boolean {
 		return FormFieldBoolean.parseChoices(this.choices)
 			.slice(0, this.required ? 2 : 3)
-			.includes(value?.trim());
+			.includes(String(value ?? "").trim());
 	}
 }

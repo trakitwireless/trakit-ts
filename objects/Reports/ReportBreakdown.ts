@@ -27,7 +27,7 @@ export class ReportBreakdown
 				new DispatchJob(json["job"]),
 				json["asset"] as ulong,
 				json["instance"] as uint,
-				json["summaryInstances"]?.map(ID),
+				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
 					? AssetGeneral.fromJSON(json["general"])
 					: json["general"],
@@ -41,7 +41,7 @@ export class ReportBreakdown
 				new AssetMessage(json["message"]),
 				json["asset"] as ulong,
 				json["instance"] as uint,
-				json["summaryInstances"]?.map(ID),
+				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
 					? AssetGeneral.fromJSON(json["general"])
 					: json["general"],
@@ -55,7 +55,7 @@ export class ReportBreakdown
 				new DispatchTask(json["task"]),
 				json["asset"] as ulong,
 				json["instance"] as uint,
-				json["summaryInstances"]?.map(ID),
+				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
 					? AssetGeneral.fromJSON(json["general"])
 					: json["general"],
@@ -67,7 +67,7 @@ export class ReportBreakdown
 		return new ReportBreakdown(
 			json["asset"] as ulong,
 			json["instance"] as uint,
-			json["summaryInstances"]?.map(ID),
+			(json["summaryInstances"] as ulong[])?.map(ID),
 			json["general"]
 				? AssetGeneral.fromJSON(json["general"])
 				: json["general"],

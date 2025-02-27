@@ -1,4 +1,4 @@
-﻿import { IS_AN } from "../../API/Functions";
+﻿import { IS_AN, IS_NOTHING } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { TimeSpan } from "../../API/TimeSpan";
 import { timespan, ulong } from "../../API/Types";
@@ -73,15 +73,15 @@ export class FormFieldTime
 		});
 	}
 	override isValid(value: string): boolean {
-		let valid = !!value,
+		let success = !!value || !IS_NOTHING(value),
 			time = new TimeSpan(value),
 			min = this.minimum,
 			max = this.maximum;
-		if (valid && this.kind == FormFieldType.time) {
+		if (success && this.kind == FormFieldType.time) {
 			if (!IS_AN(min?.valueOf()) || min < MINIMUM_TIME_OF_DAY) min = MINIMUM_TIME_OF_DAY;
 			if (!IS_AN(max?.valueOf()) || max > MAXIMUM_TIME_OF_DAY) max = MAXIMUM_TIME_OF_DAY;
 		}
-		return valid
+		return success
 			&& (!IS_AN(min?.valueOf()) || min <= time)
 			&& (!IS_AN(max?.valueOf()) || max >= time);
 	}

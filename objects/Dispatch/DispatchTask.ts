@@ -89,7 +89,7 @@ export class DispatchTask
 	/**
 	 * The optional expected duration of the work for this task.
 	 */
-	duration: TimeSpan | null = null;
+	duration: TimeSpan = new TimeSpan;
 	/**
 	 * The date/time stamp of when the asset arrived at this task.
 	 */
@@ -142,11 +142,11 @@ export class DispatchTask
 			"references": MAP_TO_OBJECT(this.references),
 			"place": this.placeId || null,
 			"address": this.address || "",
-			"latlng": this.latlng?.toJSON() || null,
+			"latlng": this.latlng.toJSON(),
 			"status": DispatchTaskStatus[this.status] || null,
 			"created": JSON_DATE(this.created),
 			"eta": JSON_DATE(this.eta),
-			"duration": this.duration?.toString() ?? null,
+			"duration": this.duration.toString(),
 			"arrived": JSON_DATE(this.arrived),
 			"completed": JSON_DATE(this.completed),
 			"instructions": this.instructions || "",

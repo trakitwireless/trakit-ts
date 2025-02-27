@@ -40,7 +40,7 @@ export class ReportScorecardRules
 	toJSON() {
 		return {
 			"baseScore": JSON_NUMBER(this.baseScore),
-			"parameters": this.parameters?.map(ARRAY_TO_JSON),
+			"parameters": this.parameters.map(ARRAY_TO_JSON),
 		};
 	}
 }

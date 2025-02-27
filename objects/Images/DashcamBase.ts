@@ -112,7 +112,7 @@ export abstract class DashcamBase
 	toJSON() {
 		return {
 			"bytes": JSON_NUMBER(this.bytes),
-			"size": this.size?.toJSON() ?? null,
+			"size": this.size.toJSON(),
 			"provider": this.providerId || "",
 			"company": JSON_NUMBER(this.companyId),
 			"asset": JSON_NUMBER(this.assetId),

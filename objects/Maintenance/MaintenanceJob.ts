@@ -142,7 +142,7 @@ export class MaintenanceJob
 			"engineHours": this.engineHours,
 			"garage": this.garage,
 			"cost": this.cost,
-			"duration": this.duration?.toString() ?? null,
+			"duration": this.duration.toString(),
 			"reference": this.reference,
 			"technician": this.technician,
 			"pictures": [...this.pictureIds],

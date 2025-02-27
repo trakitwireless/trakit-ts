@@ -102,8 +102,8 @@ export class BillingProfile
 			"messages": this.messages?.map(ARRAY_TO_JSON) ?? [],
 			"cycle": BillingCycle[this.cycle] || BillingCycle.monthly,
 			"currency": BillingCurrency[this.currency] || BillingCurrency.CAD,
-			"cycleStart": IS_AN(this.cycleStart?.valueOf()) ? this.cycleStart.toISOString() : null,
-			"cycleEnd": IS_AN(this.cycleStart?.valueOf()) ? this.cycleEnd.toISOString() : null,
+			"cycleStart": IS_AN(this.cycleStart.valueOf()) ? this.cycleStart.toISOString() : null,
+			"cycleEnd": IS_AN(this.cycleStart.valueOf()) ? this.cycleEnd.toISOString() : null,
 			"cyclePostDated": !!this.cyclePostDated,
 			"googleServicesEnabled": !!this.googleServicesEnabled,
 		};

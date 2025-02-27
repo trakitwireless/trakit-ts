@@ -46,7 +46,7 @@ export class ReportScorecardParameter
 	toJSON() {
 		return {
 			"condition": this.condition || "",
-			"duration": this.duration?.toString() || "",
+			"duration": this.duration.toString(),
 			"points": JSON_NUMBER(this.points),
 		};
 	}

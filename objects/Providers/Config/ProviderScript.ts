@@ -84,9 +84,9 @@ export class ProviderScript
 			"fill": this.fill || "",
 			"stroke": this.stroke || "",
 			"graphic": this.graphic || "",
-			"global": !!this.global ,
+			"global": !!this.global,
 			"kind": ProviderType[this.kind] || ProviderType.unknown,
-			"blocks": this.blocks?.map(ARRAY_TO_JSON) ?? [],
+			"blocks": this.blocks.map(ARRAY_TO_JSON),
 			"parameters": MAP_TO_OBJECT_VALUE_JSON(this.parameters),
 		};
 	}
@@ -103,7 +103,7 @@ export class ProviderScript
 			this.graphic = json["graphic"] || "";
 			this.global = !!json["global"];
 			this.kind = ProviderType[json["kind"] as ProviderType] || ProviderType.unknown;
-			this.blocks = (json["blocks"] as any[])?.map(ProviderScriptBlock.fromJSON)
+			this.blocks = (json["blocks"] as any[])?.map(ProviderScriptBlock.fromJSON) ?? [];
 			this.parameters = OBJECT_TO_MAP_BY_PREDICATE(
 				json["parameters"] || {},
 				(k, v) => [k, ProviderScriptParameter.fromJSON(v)]

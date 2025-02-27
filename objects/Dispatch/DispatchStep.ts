@@ -155,7 +155,7 @@ export class DispatchStep
 		return {
 			"id": this.id || null,
 			"address": this.address || "",
-			"duration": this.duration?.toString() ?? null,
+			"duration": this.duration.toString() ?? null,
 			"eta": this.eta.toISOString(),
 			"latlng": this.latlng?.toJSON() ?? null,
 			"name": this.name || "",

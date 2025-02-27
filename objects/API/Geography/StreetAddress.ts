@@ -68,13 +68,13 @@ export class StreetAddress
 		postal?: string | null,
 		isToll?: boolean,
 	) {
-		this.number = number?.trim() ?? "";
-		this.street = street?.trim() ?? "";
-		this.city = city?.trim() ?? "";
-		this.region = region?.trim() ?? "";
-		this.province = province?.trim() ?? "";
-		this.country = country?.trim() ?? "";
-		this.postal = postal?.trim() ?? "";
+		this.number = String(number ?? "").trim();
+		this.street = String(street ?? "").trim();
+		this.city = String(city ?? "").trim();
+		this.region = String(region ?? "").trim();
+		this.province = String(province ?? "").trim();
+		this.country = String(country ?? "").trim();
+		this.postal = String(postal ?? "").trim();
 		this.isToll = !!isToll;
 	}
 

@@ -39,6 +39,6 @@ export class FormFieldSignature
 	}
 	
 	override isValid(value: string): boolean {
-		return !!(value?.trim());
+		return !!String(value ?? "").trim();
 	}
 }
