@@ -18,17 +18,24 @@ export class FormFieldChoice
 	 * Splits the given value using commas (so long as the comma did not get escaped).
 	 * @param values 
 	 */
-	static splitValues(values: string): string[] {
+	static split(values: string): string[] {
 		return values?.split(FormFieldChoice_SPLITTER)
-			.map(s => s.trim().replaceAll("\\,", ","))
+			.map(FormFieldChoice.unescape)
 			?? [];
 	}
 	/**
 	 * Replaces all the commas in a given value with backslash-comma.
 	 * @param value 
 	 */
-	static escapeValue(value: string) {
-		return (value = value?.trim())?.replaceAll(",", "\\,");
+	static escape(value: string) {
+		return value?.trim()?.replaceAll(",", "\\,");
+	}
+	/**
+	 * Replaces all the commas in a given value with backslash-comma.
+	 * @param value 
+	 */
+	static unescape(value: string) {
+		return value?.trim().replaceAll("\\,", ",");
 	}
 	
 	/**
@@ -86,11 +93,10 @@ export class FormFieldChoice
 		});
 	}
 	override isValid(value: string): boolean {
-		const values = FormFieldChoice.splitValues(value),
-			choices = [...this.choices.values()];
-		return values.length > 0
+		const values = FormFieldChoice.split(value);
+		return values.length > 0	// null is not a valid value
 			&& (!IS_AN(this.minimum) || this.minimum <= values.length)
 			&& (!IS_AN(this.maximum) || this.maximum >= values.length)
-			&& values.filter((v) => choices.includes(v)).length == values.length;
+			&& values.filter(v => this.choices.has(v)).length == values.length;
 	}
 }

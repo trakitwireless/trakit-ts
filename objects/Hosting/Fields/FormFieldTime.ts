@@ -6,20 +6,21 @@ import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
 /**
- * For a 24 hour day, anything negative span would be considered invalid.
- * As such, the minimum time for a {@link FormFieldType.time} is midnight (zero).
- */
-const MINIMUM_TIME_OF_DAY = TimeSpan.fromDays(0);
-/**
- * For a 24 hour day, anything over a 24 hour span would be considered invalid.
- * As such, the maximum time for a {@link FormFieldType.time} is midnight the next day.
- */
-const MAXIMUM_TIME_OF_DAY = TimeSpan.fromDays(1);
-/**
  * A control to choose a time or duration longer than 24 hours.
  */
 export class FormFieldTime
 	extends FormFieldBase {
+	/**
+	 * For a 24 hour day, anything negative span would be considered invalid.
+	 * As such, the minimum time for a {@link FormFieldType.time} is midnight (zero).
+	 */
+	static readonly MINIMUM_TIME_OF_DAY = TimeSpan.fromDays(0);
+	/**
+	 * For a 24 hour day, anything over a 24 hour span would be considered invalid.
+	 * As such, the maximum time for a {@link FormFieldType.time} is midnight the next day.
+	 */
+	static readonly MAXIMUM_TIME_OF_DAY = TimeSpan.fromDays(1);
+	
 	/**
 	 * These are the clock control types.
 	 */
@@ -73,13 +74,13 @@ export class FormFieldTime
 		});
 	}
 	override isValid(value: string): boolean {
-		let success = !!value || !IS_NOTHING(value),
+		let success = !IS_NOTHING(value),
 			time = new TimeSpan(value),
 			min = this.minimum,
 			max = this.maximum;
 		if (success && this.kind == FormFieldType.time) {
-			if (!IS_AN(min?.valueOf()) || min < MINIMUM_TIME_OF_DAY) min = MINIMUM_TIME_OF_DAY;
-			if (!IS_AN(max?.valueOf()) || max > MAXIMUM_TIME_OF_DAY) max = MAXIMUM_TIME_OF_DAY;
+			if (!IS_AN(min?.valueOf()) || min < FormFieldTime.MINIMUM_TIME_OF_DAY) min = FormFieldTime.MINIMUM_TIME_OF_DAY;
+			if (!IS_AN(max?.valueOf()) || max > FormFieldTime.MAXIMUM_TIME_OF_DAY) max = FormFieldTime.MAXIMUM_TIME_OF_DAY;
 		}
 		return success
 			&& (!IS_AN(min?.valueOf()) || min <= time)

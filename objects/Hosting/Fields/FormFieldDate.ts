@@ -1,4 +1,4 @@
-import { DATE, JSON_DATE, IS_AN } from "../../API/Functions";
+import { DATE, IS_AN, JSON_DATE } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { datetime, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";

@@ -35,6 +35,8 @@ export class FormFieldTimezone
 		);
 	}
 	override isValid(value: string): boolean {
-		return !!TIMEZONE_FIND(value);
+		value = String(value ?? "");
+		return !!value
+			&& !!TIMEZONE_FIND(value);
 	}
 }

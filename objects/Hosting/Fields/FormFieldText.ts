@@ -1,5 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
-import { ID, IS_AN, IS_NOTHING, JSON_NUMBER } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { byte, ulong, ushort } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";

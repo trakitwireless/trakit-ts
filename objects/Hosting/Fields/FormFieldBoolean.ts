@@ -18,7 +18,7 @@ export class FormFieldBoolean
 	/**
 	 * If no choices are given, then these choices are used.
 	 **/
-	static DEFAULT_CHOICES: [string, string, string] = [
+	static readonly DEFAULT_CHOICES: [string, string, string] = [
 		"true",
 		"false",
 		"",
@@ -27,15 +27,13 @@ export class FormFieldBoolean
 	/**
 	 * Returns an array of 3 strings representing the checked, unchecked, and indeterminate values.
 	 * @param choices 
-	 * @returns 
 	 */
-	static parseChoices(choices?: (string | null)[] | null): [string, string, string] {
+	static normalize(choices?: (string | null)[] | null): [string, string, string] {
 		return (choices ?? [])
 			.concat([null, null, null])
 			.slice(0, 3)
 			.map((v, i) => v?.trim() ?? FormFieldBoolean.DEFAULT_CHOICES[i]) as [string, string, string];
 	}
-	
 	
 	/**
 	 * These are the boolean control types.
@@ -56,7 +54,7 @@ export class FormFieldBoolean
 		id?: ulong,
 		name?: string,
 		kind?: FormFieldType,
-		choices?: string[],
+		choices?: (string | null)[] | null,
 		notes?: string,
 		required?: boolean,
 		value?: string | null,
@@ -71,7 +69,7 @@ export class FormFieldBoolean
 			value,
 			editable
 		);
-		this.choices = FormFieldBoolean.parseChoices(choices);
+		this.choices = FormFieldBoolean.normalize(choices);
 	}
 	override toJSON() {
 		return MERGE(super.toJSON(), {
@@ -79,7 +77,7 @@ export class FormFieldBoolean
 		});
 	}
 	override isValid(value: string): boolean {
-		return FormFieldBoolean.parseChoices(this.choices)
+		return FormFieldBoolean.normalize(this.choices)
 			.slice(0, this.required ? 2 : 3)
 			.includes(String(value ?? "").trim());
 	}

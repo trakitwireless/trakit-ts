@@ -1,8 +1,8 @@
-﻿import { byte, ulong } from '../../API/Types';
-import { FormFieldBase } from './FormFieldBase';
-import { FormFieldType } from '../FormFieldType';
-import { ID, IS_AN, JSON_NUMBER } from '../../API/Functions';
+﻿import { ID, IS_AN, JSON_NUMBER } from '../../API/Functions';
 import { MERGE } from '../../API/Objects';
+import { byte, ulong } from '../../API/Types';
+import { FormFieldType } from '../FormFieldType';
+import { FormFieldBase } from './FormFieldBase';
 
 /**
  * A control to allow the user to attach {@link Picture}s or {@link Document}s.
@@ -13,7 +13,7 @@ export class FormFieldAttachments
 	 * Takes a string as input and returns an array split by comma with trimmed items.
 	 * @param values 
 	 */
-	static splitValues(values: string): string[] {
+	static split(values: string): string[] {
 		return values?.split(',').map(s => s.trim()) ?? [];
 	}
 	
@@ -65,7 +65,7 @@ export class FormFieldAttachments
 		});
 	}
 	override isValid(value: string): boolean {
-		const values = FormFieldAttachments.splitValues(value);
+		const values = FormFieldAttachments.split(value);
 		return values.length > 0		// null is not a valid value
 			&& (!IS_AN(this.minimum) || this.minimum <= values.length)
 			&& (!IS_AN(this.maximum) || this.maximum >= values.length)
