@@ -12,7 +12,7 @@ const obfuscate = {
   //   toplevel: true,
   // },
   sourceMap: {
-    filename: '../_publish/objects.min.js',
+    filename: '../_publish/trakit-ts-objects.min.js',
   },
 };
 
@@ -21,11 +21,11 @@ export default [
     input: 'objects.ts',
     output: [
       // {
-      //   file: '../_publish/objects.js',
+      //   file: '../_publish/trakit-ts-objects.js',
       //   format: 'es',
       // },
       {
-        file: '../_publish/objects.min.js',
+        file: '../_publish/trakit-ts-objects.min.js',
         format: 'es',
         plugins: [terser(obfuscate)]
       }

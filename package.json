@@ -1,22 +1,22 @@
 {
-  "name": "trakit-ts",
+  "name": "trakit-ts-objects",
   "type": "module",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "objects.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trakitwireless/trakit-ts.git"
+    "url": "git+https://github.com/trakitwireless/trakit-ts-objects.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "AGPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/trakitwireless/trakit-ts/issues"
+    "url": "https://github.com/trakitwireless/trakit-ts-objects/issues"
   },
-  "homepage": "https://github.com/trakitwireless/trakit-ts#readme",
+  "homepage": "https://github.com/trakitwireless/trakit-ts-objects#readme",
   "description": "",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
