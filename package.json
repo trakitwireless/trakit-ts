@@ -1,8 +1,8 @@
 {
-  "name": "trakit-ts-objects",
+  "name": "@trakit/objects",
   "type": "module",
-  "version": "1.0.0",
-  "main": "objects.ts",
+  "version": "0.0.1",
+  "main": "objects.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,15 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/trakitwireless/trakit-ts-objects.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "trakit"
+  ],
+  "author": "Alex Lein",
   "license": "AGPL-3.0-only",
   "bugs": {
     "url": "https://github.com/trakitwireless/trakit-ts-objects/issues"
   },
   "homepage": "https://github.com/trakitwireless/trakit-ts-objects#readme",
-  "description": "",
-  "devDependencies": {
+  "description": "Trak-iT uses these object definitions to interact with all our APIs.",
+   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^4.35.0",
     "rollup-plugin-typescript2": "^0.36.0"

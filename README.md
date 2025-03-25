@@ -1,14 +1,13 @@
 # Trak-iT API Object Model
 
-All of the Trak-iT APIs use the same object definitions.  Use this package in your .NET project for either standard, code, or framework.
-Other Trak-iT API libraries are available on GitHub.
-https://github.com/trakitwireless
+All of the Trak-iT APIs use the same object definitions.
+Other Trak-iT API libraries are available on [GitHub](https://github.com/trakitwireless) and [npm](https://www.npmjs.com/org/trakit).
 
 ### Prerequisites
 
-We rely on the `Newtonsoft.Json` package for serialization between your application and the Trak-iT API services.
+We do not require any other packages, however, we are targetting `ESNext`, so if your project uses CommonJS or another module manager, you will need to account for that yourself.
 
 ## Questions and Feedback
 
 If you have any questions, please start for the project on GitHub
-https://github.com/trakitwireless/trakit-ts/issues
+https://github.com/trakitwireless/trakit-ts-objects/issues
