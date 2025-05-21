@@ -136,15 +136,15 @@ export function CODIFY(input: string): string {
 /**
  * The quotation marks and appostrophes removed from a codified string, as an optional {@link RegExp} character pattern.
  * This pattern is inserted between each character of the search words.
- **/
+ */
 const HIGHLIGHT_ASTERIXES = '[' + QUOTATIONS.join("") + ']*';
 
 /**
- * Wraps the {@code input} using the codified {@code terms} with the {@code prefix} and {@code suffix} tags.
- * @param input		The non-HTML string to add HTML highlights to.
+ * Wraps the {@code input} using the codified {@code terms} with the {@code prefix}s and {@code suffix}s.
+ * @param input		The string to add HTML highlights to.
  * @param terms		Codified search terms from {@link CODIFY}.
- * @param prefix	
- * @param suffix	
+ * @param prefix	Added to the beginning of each of the {@code terms}.
+ * @param suffix	Added to the end of each of the {@code terms}.
  */
 export function HIGHLIGHT(input: string, terms: codified[], [prefix, suffix] = ["<b>", "</b>"]): string {
 	if (!input || !terms || !terms.length) return input;
