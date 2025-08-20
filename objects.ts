@@ -1,9 +1,9 @@
 ﻿/**
  * Object definitions that work with our various APIs.
- * {@link https://github.com/trakitwireless/trakit-ts|TypeScript API documentation.}
+ * {@link https://github.com/trakitwireless/trakit-ts-objects|TypeScript API documentation.}
  * Last updated on Thu Feb 27 2025 11:59:01 
  * @copyright Trak-iT Wireless Inc. 2025
- */
+ **/
 import { Contact } from "./Accounts/Contact";
 import { Machine } from "./Accounts/Machine";
 import { NotificationMethod } from "./Accounts/NotificationMethod";

@@ -3,6 +3,7 @@
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "node",
+        "composite": true,
         "declaration": true, // Optionally generate types
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
