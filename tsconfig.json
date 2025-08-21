@@ -11,15 +11,15 @@
 
         "outDir": "./_publish",  // Output directory
         "sourceMap": true,
-        "composite": true,
 
         "strict": true,
         "noImplicitAny": true,
         "noImplicitOverride": true,
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
+        "baseUrl": ".",
     },
-    "files": [
-        "objects/objects.ts",
-    ],
+    "include": [
+        "objects/**/*"
+    ]
 }

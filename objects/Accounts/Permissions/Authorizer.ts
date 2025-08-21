@@ -250,7 +250,7 @@ return a.order > b.order
 		: 0;
 }
 /**
- *
+ * 
  * @param	targetCompanyId
  * @param	userCompanyId
  * @param	groupPermissions
