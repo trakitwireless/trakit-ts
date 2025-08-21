@@ -1,6 +1,6 @@
 ﻿/**
  * Object definitions that work with our various APIs.
- * {@link https://github.com/trakitwireless/trakit-ts-objects|TypeScript API documentation.}
+ * {@link https://github.com/trakitwireless/trakit-ts-objects|TypeScript Object definition.}
  * Last updated on Thu Feb 27 2025 11:59:01 
  * @copyright Trak-iT Wireless Inc. 2025
  **/
@@ -48,7 +48,7 @@ import { UserGeneral } from "./Accounts/UserGeneral";
 import { UserGroup } from "./Accounts/UserGroup";
 import { UserNotifications } from "./Accounts/UserNotifications";
 import { ARRAY_EXCEPT } from "./API/Arrays";
-import { CODIFY, } from "./API/Codifier";
+import { CODIFY, HIGHLIGHT, } from "./API/Codifier";
 import { FREEZE, KEYS } from "./API/Constants";
 import { CONVERT, } from './API/Conversion';
 import {
@@ -363,6 +363,7 @@ export default {
     //#region Utility, conversion, and encoding functions
     utility: {
         codify: CODIFY,
+        highlight: HIGHLIGHT,
         guid: GUID,
         isNothing: IS_NOTHING,
         isntNaN: IS_AN,

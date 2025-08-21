@@ -11,6 +11,7 @@
 
         "outDir": "./_publish",  // Output directory
         "sourceMap": true,
+        "composite": true,
 
         "strict": true,
         "noImplicitAny": true,
@@ -18,5 +19,7 @@
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
     },
-    "files": ["objects.ts"],
+    "files": [
+        "objects/objects.ts",
+    ],
 }

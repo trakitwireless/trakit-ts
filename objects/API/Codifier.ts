@@ -1,4 +1,5 @@
 ﻿import { IS_STRING } from "./Functions";
+import { codified } from "./Types";
 
 /**
  * A mapping for non-accented lower-case characters.
@@ -130,4 +131,43 @@ export function CODIFY(input: string): string {
 	return dash
 		? output.slice(0, -1)
 		: output;
+}
+
+/**
+ * The quotation marks and appostrophes removed from a codified string, as an optional {@link RegExp} character pattern.
+ * This pattern is inserted between each character of the search words.
+ */
+const HIGHLIGHT_ASTERIXES = '[' + QUOTATIONS.join("") + ']*';
+
+/**
+ * Wraps the {@code input} using the codified {@code terms} with the {@code prefix}s and {@code suffix}s.
+ * @param input		The string to add HTML highlights to.
+ * @param terms		Codified search terms from {@link CODIFY}.
+ * @param prefix	Added to the beginning of each of the {@code terms}.
+ * @param suffix	Added to the end of each of the {@code terms}.
+ */
+export function HIGHLIGHT(input: string, terms: codified[], [prefix, suffix] = ["<b>", "</b>"]): string {
+	if (!input || !terms || !terms.length) return input;
+	let match: RegExpExecArray | null,
+		output: string = "",
+		index: number = 0;
+	const regex = new RegExp(
+		terms.map(function (term) {
+			return term.split("-").map(function (t) {
+				return t.split("")
+					.map(function (c) {
+						return HIGHLIGHT_ASTERIXES + c;
+					})
+					.join("")
+					+ HIGHLIGHT_ASTERIXES;
+			}).join("[^a-z0-9]+");
+		}).join("|"),
+		"gim"
+	);
+	while (match = regex.exec(input)) {
+		output += input.slice(index, match.index)
+			+ prefix + match[0] + suffix;
+		index = match.index + match[0].length;
+	}
+	return output + input.slice(index);
 }
