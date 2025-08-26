@@ -194,7 +194,7 @@ export class Machine
 		// Import the secret key
 		const cryptoKey = await crypto.subtle.importKey(
 			'raw',
-			Uint8Array.from(atob(this.secret as string), c => c.charCodeAt(0)),
+			Uint8Array.from(atob(this.secret), c => c.charCodeAt(0)),
 			{ name: 'HMAC', hash: { name: 'SHA-256' } },
 			false,
 			['sign']
