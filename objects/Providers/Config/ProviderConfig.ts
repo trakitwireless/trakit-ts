@@ -63,7 +63,7 @@ export class ProviderConfig
 	toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
-			"v": this.v,
+			"v": [...this.v],
 			"company": JSON_NUMBER(this.companyId),
 			"script": JSON_NUMBER(this.scriptId),
 			"name": this.name || "",

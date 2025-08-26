@@ -85,7 +85,7 @@ export class BehaviourLog
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"asset": this.assetId || null,
 			"company": this.companyId || null,
 			"behaviour": this.behaviourId || null,

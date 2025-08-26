@@ -42,7 +42,7 @@ export class CompanyStyles
 	toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
-			"v": this.v,
+			"v": [...this.v],
 			"parent": this.parentId,
 			"labels": MAP_TO_OBJECT_VALUE_JSON(this.labels),
 			"tags": MAP_TO_OBJECT_VALUE_JSON(this.tags),

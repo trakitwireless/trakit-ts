@@ -44,7 +44,7 @@ export class ProviderAdvanced
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"lastIP": this.lastIP || "",
 			"attributes": MAP_TO_OBJECT_PREDICATE(

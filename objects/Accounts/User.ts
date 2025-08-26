@@ -146,7 +146,7 @@ export class User
 		return MERGE(
 			{
 				"login": this.login,
-				"v": this.v,
+				"v": [...this.v],
 				"company": this.companyId,
 			},
 			this.general.toJSON(),

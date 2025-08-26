@@ -64,7 +64,7 @@ export class ReportTemplate
 		return {
 			"id": this.id || null,
 			"company": this.companyId || null,
-			"v": this.v,
+			"v": [...this.v],
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"options": this.options?.toJSON() ?? null,

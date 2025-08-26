@@ -160,7 +160,7 @@ export class Provider
 			: MERGE(
 				{
 					"id": this.id || "",
-					"v": this.v,
+					"v": [...this.v],
 					"control": this.#control.toJSON(),
 				},
 				this.#general.toJSON(),

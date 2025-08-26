@@ -146,7 +146,7 @@ export class Company
 		return MERGE(
 			{
 				"id": JSON_NUMBER(this.id),
-				"v": this.v,
+				"v": [...this.v],
 				"parent": this.parentId,
 			},
 			this.general.toJSON(),

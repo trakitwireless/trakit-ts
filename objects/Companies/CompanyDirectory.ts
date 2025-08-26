@@ -40,7 +40,7 @@ export class CompanyDirectory
 	toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
-			"v": this.v,
+			"v": [...this.v],
 			"parent": this.parentId,
 			"directory": MAP_TO_OBJECT(this.employees),
 		};

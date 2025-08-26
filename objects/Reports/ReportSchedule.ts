@@ -77,7 +77,7 @@ export class ReportSchedule
 			"id": this.id || null,
 			"company": this.companyId || null,
 			"template": this.templateId || null,
-			"v": this.v,
+			"v": [...this.v],
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"owner": this.owner || "",

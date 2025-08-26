@@ -37,7 +37,7 @@ export class ProviderControl
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": JSON_NUMBER(this.companyId),
 			"commands": MAP_TO_OBJECT_VALUE_JSON(this.commands),
 		};

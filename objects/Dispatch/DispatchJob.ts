@@ -98,7 +98,7 @@ export class DispatchJob
 		return {
 			"id": this.id || null,
 			"company": this.companyId || null,
-			"v": this.v,
+			"v": [...this.v],
 			"driver": this.driver || "",
 			"created": JSON_DATE(this.created),
 			"name": this.name || "",

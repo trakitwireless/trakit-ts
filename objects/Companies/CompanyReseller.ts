@@ -126,7 +126,7 @@ export class CompanyReseller
 	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
-			"v": this.v,
+			"v": [...this.v],
 			"parent": this.parentId,
 			"contactInfo": MAP_TO_OBJECT(this.contactInfo),
 			"serviceName": this.serviceName || "",

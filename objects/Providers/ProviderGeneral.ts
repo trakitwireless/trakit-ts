@@ -99,7 +99,7 @@ export class ProviderGeneral
 		return MERGE(
 			{
 				"id": this.id || null,
-				"v": this.v,
+				"v": [...this.v],
 				"company": JSON_NUMBER(this.companyId),
 				"name": this.name || "",
 				"notes": this.notes || "",

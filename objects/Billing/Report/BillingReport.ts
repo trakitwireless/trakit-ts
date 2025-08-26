@@ -100,7 +100,7 @@ export class BillingReport
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"billee": this.billeeId,
 			"profile": this.profileId,

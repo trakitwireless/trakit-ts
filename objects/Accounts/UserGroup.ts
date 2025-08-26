@@ -46,7 +46,7 @@ export class UserGroup
 	override toJSON() {
 		return {
 			"id": this.id,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"name": this.name || "",
 			"notes": this.notes || "",

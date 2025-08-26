@@ -50,7 +50,7 @@ export class UserAdvanced
 	override toJSON() {
 		return {
 			"login": this.login.toLowerCase(),
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"groups": [...this.groupIds],
 			"permissions": this.permissions.map(ARRAY_TO_JSON),

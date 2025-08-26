@@ -137,7 +137,7 @@ export class DispatchTask
 			"id": this.id || null,
 			"company": this.companyId || null,
 			"asset": this.assetId || null,
-			"v": this.v,
+			"v": [...this.v],
 			"name": this.name || "",
 			"references": MAP_TO_OBJECT(this.references),
 			"place": this.placeId || null,

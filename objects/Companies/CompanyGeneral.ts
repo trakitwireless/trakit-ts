@@ -44,7 +44,7 @@ export class CompanyGeneral
 	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
-			"v": this.v,
+			"v": [...this.v],
 			"parent": this.parentId,
 			"name": this.name,
 			"notes": this.notes,

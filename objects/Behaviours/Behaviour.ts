@@ -68,7 +68,7 @@ export class Behaviour
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId || null,
 			"script": this.scriptId || null,
 			"name": this.name || "",

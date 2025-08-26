@@ -41,7 +41,7 @@ export class CompanyPolicies
 	toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
-			"v": this.v,
+			"v": [...this.v],
 			"parent": this.parentId,
 			"sessionPolicy": this.sessionPolicy?.toJSON() ?? null,
 			"passwordPolicy": this.passwordPolicy?.toJSON() ?? null,

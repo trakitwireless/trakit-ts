@@ -101,7 +101,7 @@ export class AssetGeneral
 		return MERGE(
 			{
 				"id": this.id || null,
-				"v": this.v,
+				"v": [...this.v],
 				"company": this.companyId,
 				"kind": AssetType[this.kind] || null,
 				"name": this.name || "",

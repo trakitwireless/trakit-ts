@@ -177,7 +177,7 @@ export class Contact
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"name": this.name || "",
 			"notes": this.notes || "",

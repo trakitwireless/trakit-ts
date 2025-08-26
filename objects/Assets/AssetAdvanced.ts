@@ -92,7 +92,7 @@ export class AssetAdvanced
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"position": this.position?.toJSON() || null,
 			"odometer": this.odometer || 0,

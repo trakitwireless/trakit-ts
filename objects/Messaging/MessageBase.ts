@@ -88,7 +88,7 @@ export abstract class MessageBase
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"status": MessageStatus[this.status] || MessageStatus.created,
 			"kind": MessageType[this.kind]||MessageType.unknown,

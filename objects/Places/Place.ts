@@ -106,7 +106,7 @@ export class Place
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"icon": this.iconId,
 			"name": this.name || "",

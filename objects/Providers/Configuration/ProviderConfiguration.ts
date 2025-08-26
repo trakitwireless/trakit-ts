@@ -60,7 +60,7 @@ export class ProviderConfiguration
 		return {
 			"id": this.id,
 			"company": this.companyId,
-			"v": this.v,
+			"v": [...this.v],
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"type": this.typeId || null,

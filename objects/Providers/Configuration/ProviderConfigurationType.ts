@@ -51,7 +51,7 @@ export class ProviderConfigurationType
 	override toJSON() {
 		return {
 			"id": this.id,
-			"v": this.v,
+			"v": [...this.v],
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"providerType": ProviderType[this.providerType] || ProviderType.unknown,

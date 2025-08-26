@@ -90,7 +90,7 @@ export class UserGeneral
 	override toJSON() {
 		return {
 			"login": this.login.toLowerCase(),
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"nickname": this.nickname,
 			"enabled": !!this.enabled,

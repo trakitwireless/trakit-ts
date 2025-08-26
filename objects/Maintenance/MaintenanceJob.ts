@@ -129,7 +129,7 @@ export class MaintenanceJob
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"asset": this.assetId,
 			"schedule": this.scheduleId,

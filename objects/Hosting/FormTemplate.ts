@@ -80,7 +80,7 @@ export class FormTemplate
 		return {
 			"id": JSON_NUMBER(this.id),
 			"company": JSON_NUMBER(this.companyId),
-			"v": this.v,
+			"v": [...this.v],
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"labels": [...this.labels],

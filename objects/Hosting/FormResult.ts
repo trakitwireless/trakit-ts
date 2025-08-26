@@ -91,7 +91,7 @@ export class FormResult
 		return {
 			"id": this.id,
 			"company": this.companyId,
-			"v": this.v,
+			"v": [...this.v],
 			"template": this.templateId || null,
 			"asset": this.assetId || null,
 			"name": this.name || "",

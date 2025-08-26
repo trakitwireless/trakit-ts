@@ -93,7 +93,7 @@ export class BillingProfile
 	override toJSON() {
 		return {
 			"id": this.id || null,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"target": this.targetId,
 			"billee": this.billeeId,
