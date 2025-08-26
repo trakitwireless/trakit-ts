@@ -25,7 +25,7 @@ export class Machine
 	/**
 	 * The unique idenifier used to access the system.
 	 */
-	key: string = "";
+	key: string = '';
 	/**
 	 * The company to which this user belongs.
 	 */
@@ -41,15 +41,15 @@ export class Machine
 	/**
 	 * A token used to encode or validate requests.
 	 */
-	secret: string | null = null;
+	secret: string = '';
 	/**
 	 * Human friendly name for these credentials
 	 */
-	nickname: string = "";
+	nickname: string = '';
 	/**
 	 * Notes about this machine.
 	 */
-	notes: string = "";
+	notes: string = '';
 	/**
 	 * An optional timestamp that restricts this machine account from being used before the given date.
 	 */
@@ -66,7 +66,7 @@ export class Machine
 	 * Preferred region/language for the UI and notifications.
 	 * Valid formats use &lt;ISO 639-1&gt;&lt;dash&gt;&lt;ISO 3166-2&gt; such as "fr-CA" or "en-US".
 	 */
-	language: string = "";
+	language: string = '';
 	/**
 	 * The format strings defining the preferred way to display ambiguous values.
 	 */
@@ -116,7 +116,7 @@ export class Machine
 	override toJSON() {
 		return {
 			"key": this.key,
-			"v": this.v,
+			"v": [...this.v],
 			"company": this.companyId,
 			"nickname": this.nickname,
 			"notes": this.notes,
@@ -139,18 +139,18 @@ export class Machine
 	override fromJSON(json: any, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
-			if (!this.key) this.key = json["key"] || "";
+			if (!this.key) this.key = json["key"] || '';
 			this.companyId = ID(json["company"]);
 			this.secret = typeof json["secret"] === "string"
 				? json["secret"]
-				: "";
-			this.nickname = json["nickname"] || "";
-			this.notes = json["notes"] || "";
+				: '';
+			this.nickname = json["nickname"] || '';
+			this.notes = json["notes"] || '';
 			this.enabled = !!json["enabled"];
 			this.notBefore = DATE(json["notBefore"]);
 			this.notAfter = DATE(json["notAfter"]);
-			this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
-			this.language = json["language"] || "";
+			this.timezone = TIMEZONE_FIND(json["timezone"] || '') || Timezone.utc;
+			this.language = json["language"] || '';
 			this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
 			this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
 			this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
@@ -169,4 +169,43 @@ export class Machine
 	 * The {@link key} is the key (how about that).
 	 */
 	getKey(): string { return this.key; }
+
+	/**
+	 * Creates an HMAC256 signed input for use in requests.
+	 * @param absoluteUri	URL of the request.
+	 * @param method		HTTP verb of the request.
+	 * @param contentLength	Content length of the request.
+	 * @param date			Timestamp for when the request is created.
+	 */
+	async createHmacSignature(
+		absoluteUri: URL | string,
+		method: string = "GET",
+		contentLength: number = 0,
+		date: Date = new Date()
+	): Promise<string> {
+		const encoder = new TextEncoder();
+		const utf8Input = encoder.encode([
+			this.key,
+			date.toISOString().replace(/[-T:]/g, '').slice(0, 14),	// yyyyMMddHHmmss in UTC
+			method.toUpperCase(),
+			absoluteUri.toString(),
+			contentLength
+		].join('\n'));
+		// Import the secret key
+		const cryptoKey = await crypto.subtle.importKey(
+			'raw',
+			Uint8Array.from(atob(this.secret as string), c => c.charCodeAt(0)),
+			{ name: 'HMAC', hash: { name: 'SHA-256' } },
+			false,
+			['sign']
+		);
+		// Generate the HMAC
+		const signature = new Uint8Array(await crypto.subtle.sign(
+			'HMAC',
+			cryptoKey,
+			utf8Input
+		));
+		// Returned as base64
+		return btoa(String.fromCharCode(...signature))
+	}
 }
