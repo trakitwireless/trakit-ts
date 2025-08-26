@@ -1,6 +1,7 @@
 ﻿/**
- * Object definitions that work with our various APIs.
- * {@link https://github.com/trakitwireless/trakit-ts-objects|TypeScript Object definition.}
+ * Trak-iT API Object Model.
+ * {@link https://github.com/trakitwireless/trakit-ts-objects|Object definition.}
+ * All of the Trak-iT APIs use the same object definitions. Use this package in your TypeScript or JavaScript project.
  * Last updated on Thu Feb 27 2025 11:59:01 
  * @copyright Trak-iT Wireless Inc. 2025
  **/
@@ -62,6 +63,7 @@ import {
     PASSWORD_DECODE,
     PASSWORD_ENCODE,
     PHONE_PARSE,
+    PLURAL,
     PYTHAGORA,
     ROUND_TO,
 } from "./API/Functions";
@@ -297,7 +299,7 @@ import {
 /**
  * Version number for this release.
  */
-const version = 5.02;
+const version = 5.03;
 
 export default {
     version,
@@ -376,6 +378,7 @@ export default {
         fileSize: FILESIZE_HELPER,
         findTimeZoneById: TIMEZONE_FIND,
         phoneNumber: PHONE_PARSE,
+        plural: PLURAL,
     },
     SearchPattern,
     TimeSpan,

@@ -212,26 +212,18 @@ export function DOUGLASPEUCKER<TCoord>(
 }
 
 /**
- * The key used for encoding/decoding Provider passwords.
+ * Returns a plural version of the given word.
+ * This obviously doesn't work for every word imaginable, but covers the standard object names in the Trak-iT APIs.
+ * @param word 
+ * @returns 
  */
-const PASSWORD_KEY = INT("33", 36); //111
-/**
- * Encodes the given string as a Provider password.
- */
-export function PASSWORD_ENCODE(value: string): string {
-	return escape(value.split("").reduce(function (encoded, char) {
-		return encoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
-	}, ""));
+export function PLURAL(word: string): string {
+	return word.endsWith("y")
+		? word.slice(0, -1) + "ies" // company  => companies
+		: word.endsWith("ch")
+			? word + "es"			// dispatch => dispatches
+			: word + "s";			// other    => others
 }
-/**
- * Decodes the given Provider password as a human readable value.
- */
-export function PASSWORD_DECODE(value: string): string {
-	return unescape(value).split("").reduce(function (decoded, char) {
-		return decoded + String.fromCharCode(char.charCodeAt(0) ^ PASSWORD_KEY);
-	}, "");
-}
-
 
 /**
  * For validating phone numbers using the 1 prefix (ie: 14161234567)
