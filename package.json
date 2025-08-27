@@ -2,7 +2,14 @@
   "name": "@trakit/objects",
   "type": "module",
   "version": "0.0.1",
-  "main": "objects.min.js",
+  "main": "./_publish/trakit-ts-objects.min.js",
+  "types": "./_publish/objects.ts.d",
+  "exports": {
+    ".": {
+      "import": "./_publish/trakit-ts-objects.min.js",
+      "types": "./_publish/objects.d.ts"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

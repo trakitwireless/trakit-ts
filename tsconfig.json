@@ -9,6 +9,7 @@
         "allowSyntheticDefaultImports": true,
         "isolatedModules": true,
 
+        "rootDir": "./objects",
         "outDir": "./_publish",  // Output directory
         "sourceMap": true,
 
