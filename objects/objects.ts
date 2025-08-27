@@ -52,6 +52,7 @@ import { ARRAY_EXCEPT } from "./API/Arrays";
 import { CODIFY, HIGHLIGHT, } from "./API/Codifier";
 import { FREEZE, KEYS } from "./API/Constants";
 import { CONVERT, } from './API/Conversion';
+import { PASSWORD_DECODE, PASSWORD_ENCODE } from "./API/Encoding";
 import {
     FILESIZE_HELPER,
     NUMBER_GROUPS,
@@ -60,8 +61,6 @@ import {
     DOUGLASPEUCKER,
     IS_AN,
     IS_NOTHING,
-    PASSWORD_DECODE,
-    PASSWORD_ENCODE,
     PHONE_PARSE,
     PLURAL,
     PYTHAGORA,

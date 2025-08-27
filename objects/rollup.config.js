@@ -2,15 +2,19 @@ import typescript from 'rollup-plugin-typescript2';
 import terser from '@rollup/plugin-terser';
 
 const obfuscate = {
-  ecma: 2016,
-  // compress: {
-  //   drop_console: true,
-  //   drop_debugger: true,
-  //   hoist_funs: true,
-  //   join_vars: true,
-  //   module: true,
-  //   toplevel: true,
-  // },
+  ecma: 2020,
+  compress: {
+    keep_classnames: true,
+    // drop_console: true,
+    // drop_debugger: true,
+    // hoist_funs: true,
+    // join_vars: true,
+    // module: true,
+    // toplevel: true,
+  },
+  mangle: {
+    keep_classnames: true,
+  },
   sourceMap: {
     filename: '../_publish/trakit-ts-objects.min.js',
   },
