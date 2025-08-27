@@ -300,6 +300,10 @@ import {
  */
 export const version = 5.03;
 
+/**
+ * Local Maps that store various instances of objects.
+ * The storage is used by the sync system.
+ */
 export const storage = {
     companies: COMPANIES,
 
@@ -360,6 +364,9 @@ export const storage = {
 };
 
 //#region Utility, conversion, and encoding functions
+/**
+ * A group of utility functions for common tasks like dealing with strings.
+ */
 export const utility = {
     codify: CODIFY,
     highlight: HIGHLIGHT,
@@ -377,21 +384,26 @@ export const utility = {
     phoneNumber: PHONE_PARSE,
     plural: PLURAL,
 };
+/**
+ * A group of functions for converting between different measurement systems.
+ */
+export const convert = CONVERT;
+/**
+ * Functions for encoding and decoding device passwords.
+ */
+export const encoding = {
+    toPassword: PASSWORD_ENCODE,
+    fromPassword: PASSWORD_DECODE,
+};
 export {
     SearchPattern,
     TimeSpan,
     Timezone,
 };
-
-export const convert = CONVERT;
-export const encoding = {
-    toPassword: PASSWORD_ENCODE,
-    fromPassword: PASSWORD_DECODE,
-};
 //#endregion Utility, conversion, and encoding functions
 //#region Drawing and trigonometry
 /**
- * A utility library exposing algorithms for a flat plane.
+ * Utility functions exposing algorithms for a flat plane.
  */
 export const geometry = {
     pathLength: PATH_LENGTH,
@@ -419,6 +431,9 @@ export {
 };
 //#endregion Drawing and trigonometry
 //#region Coordinates and geography
+/**
+ * Utility functions exposing algorithms for a WGS84/NAD83 spheroid.
+ */
 export const geography = {
     earthRadius: EARTH_RADIUS,
 
@@ -450,9 +465,11 @@ export {
     LatLngBounds,
     Position,
     StreetAddress,
-    //#endregion Coordinates and geography
+};
+//#endregion Coordinates and geography
 
-    //#region Company
+//#region Company
+export {
     ColourStyle,
     Company,
     CompanyGeneral,
@@ -470,6 +487,9 @@ export {
 };
 //#endregion Company
 //#region Accounts
+/**
+ * Functions and collections for validating account permissions.
+ */
 export const authorizer = {
     // Generic / global compute
     computeAll,
@@ -506,11 +526,11 @@ export const authorizer = {
      */
     implied: FREEZE(IMPLIED_PERMS),
     /**
-     * The {@link PermissionType}s which are calculated using labels.
+     * {@link PermissionType}s which do not use labels to calculate access.
      */
     simple: FREEZE(ARRAY_EXCEPT(KEYS(PermissionType) as PermissionType[], LABEL_BASED_PERMS)),
     /**
-     * {@link PermissionType}s which do not use labels to calculate access.
+     * The {@link PermissionType}s which are calculated using labels.
      */
     complex: FREEZE(LABEL_BASED_PERMS),
 };
