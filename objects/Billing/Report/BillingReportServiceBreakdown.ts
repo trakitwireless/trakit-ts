@@ -9,7 +9,7 @@ import { codified, datetime, double, phone, ulong } from "../../API/Types";
 import { Asset } from "../../Assets/Asset";
 import { AssetType } from "../../Assets/AssetType";
 import { Provider } from "../../Providers/Provider";
-import { ASSETS, PROVIDERS } from "../../Storage";
+import { ASSETS, PROVIDERS } from "../../storage";
 
 /**
  * Full breakdown of billable details per targeted asset.

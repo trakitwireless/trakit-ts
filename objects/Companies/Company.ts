@@ -10,7 +10,7 @@ import { MAP_FILTERED_BY_COMPANY } from '../API/Maps';
 import { MERGE } from '../API/Objects';
 import { codified, ulong } from '../API/Types';
 import { Picture } from '../Images/Picture';
-import { COMPANIES, CONTACTS, PICTURES } from '../Storage';
+import { COMPANIES, CONTACTS, PICTURES } from '../storage';
 import { CompanyDirectory } from './CompanyDirectory';
 import { CompanyGeneral } from './CompanyGeneral';
 import { CompanyPolicies } from './CompanyPolicies';

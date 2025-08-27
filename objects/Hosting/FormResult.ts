@@ -9,7 +9,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { codified, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
-import { ASSETS, COMPANIES, FORM_TEMPLATES } from "../Storage";
+import { ASSETS, COMPANIES, FORM_TEMPLATES } from "../storage";
 import { FormTemplate } from "./FormTemplate";
 
 /**

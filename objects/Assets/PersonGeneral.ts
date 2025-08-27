@@ -2,7 +2,7 @@
 import { ID } from "../API/Functions";
 import { MERGE } from "../API/Objects";
 import { ulong } from "../API/Types";
-import { CONTACTS } from "../Storage";
+import { CONTACTS } from "../storage";
 import { AssetGeneral } from "./AssetGeneral";
 
 /**

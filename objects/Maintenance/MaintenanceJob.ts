@@ -13,7 +13,7 @@ import { double, int, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Picture } from "../Images/Picture";
-import { ASSETS, COMPANIES, MAINTENANCE_SCHEDULES, PICTURES } from "../Storage";
+import { ASSETS, COMPANIES, MAINTENANCE_SCHEDULES, PICTURES } from "../storage";
 import { MaintenanceJobStatus } from "./MaintenanceJobStatus";
 import { MaintenanceSchedule } from "./MaintenanceSchedule";
 

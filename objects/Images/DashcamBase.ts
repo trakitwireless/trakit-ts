@@ -9,7 +9,7 @@ import { byte, double, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
-import { ASSETS, COMPANIES, PROVIDERS } from "../Storage";
+import { ASSETS, COMPANIES, PROVIDERS } from "../storage";
 
 /**
  * A base class for Dashcam meta-data.

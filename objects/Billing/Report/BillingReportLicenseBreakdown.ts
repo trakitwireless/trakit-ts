@@ -5,7 +5,7 @@ import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { datetime, double, phone, ulong } from "../../API/Types";
 import { Provider } from "../../Providers/Provider";
 import { ProviderType } from "../../Providers/ProviderType";
-import { PROVIDERS } from "../../Storage";
+import { PROVIDERS } from "../../storage";
 
 /**
  * Full breakdown of licensing details per targeted provider.

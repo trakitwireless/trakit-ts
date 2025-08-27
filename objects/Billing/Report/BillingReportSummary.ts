@@ -5,7 +5,7 @@ import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
-import { COMPANIES } from "../../Storage";
+import { COMPANIES } from "../../storage";
 import { BillingReportHostingSummary } from "./BillingReportHostingSummary";
 /**
  * Summarized bill per target.

@@ -3,7 +3,7 @@ import { DATE, ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP, OBJECT_TO_M
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { codified, colour, ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { ColourStyle } from "./ColourStyle";
 import { Company } from "./Company";
 import { NotificationServerEmail } from "./NotificationServerEmail";

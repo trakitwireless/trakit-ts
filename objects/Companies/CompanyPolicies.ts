@@ -3,7 +3,7 @@ import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 import { PasswordPolicy } from "./PasswordPolicy";
 import { SessionPolicy } from "./SessionPolicy";

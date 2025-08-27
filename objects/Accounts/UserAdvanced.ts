@@ -6,7 +6,7 @@ import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { email, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES, GROUPS } from "../Storage";
+import { COMPANIES, GROUPS } from "../storage";
 import { Permission } from "./Permissions/Permission";
 import { UserGroup } from "./UserGroup";
 

@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { email, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES, REPORT_TEMPLATES } from "../Storage";
+import { COMPANIES, REPORT_TEMPLATES } from "../storage";
 import { ReportNotifications } from "./ReportNotifications";
 import { ReportOptions } from "./ReportOptions";
 import { ReportRecurrence } from "./ReportRecurrence";

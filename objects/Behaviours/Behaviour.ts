@@ -6,7 +6,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { SearchPattern } from "../API/SearchPattern";
 import { byte, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { BEHAVIOUR_SCRIPTS, COMPANIES } from "../Storage";
+import { BEHAVIOUR_SCRIPTS, COMPANIES } from "../storage";
 import { BehaviourParameter } from "./BehaviourParameter";
 import { BehaviourScript } from "./BehaviourScript";
 

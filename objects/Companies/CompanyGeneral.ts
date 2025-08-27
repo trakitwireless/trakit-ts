@@ -4,7 +4,7 @@ import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 
 /**

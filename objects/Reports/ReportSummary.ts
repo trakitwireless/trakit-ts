@@ -8,7 +8,7 @@ import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
 import { datetime, double, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
-import { ASSETS } from "../Storage";
+import { ASSETS } from "../storage";
 import { ReportSummaryReason } from './ReportSummaryReason';
 
 /**

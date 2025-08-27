@@ -3,7 +3,7 @@ import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { datetime, ulong } from "../API/Types";
 import { Provider } from "../Providers/Provider";
-import { ASSETS, PROVIDERS } from "../Storage";
+import { ASSETS, PROVIDERS } from "../storage";
 import { Asset } from "./Asset";
 
 /**

@@ -16,7 +16,7 @@ import { codified, colour, double, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
-import { COMPANIES, ICONS, PICTURES } from "../Storage";
+import { COMPANIES, ICONS, PICTURES } from "../storage";
 import { PlaceType } from "./PlaceType";
 
 /**

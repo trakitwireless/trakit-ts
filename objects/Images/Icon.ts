@@ -8,7 +8,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { Company } from "../Companies/Company";
 import { DATE, ID } from "../API/Functions";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { CODIFY } from "../API/Codifier";
 

@@ -4,7 +4,7 @@ import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { datetime, email, int, ipv4, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { SessionStatus } from "./SessionStatus";
 
 /**

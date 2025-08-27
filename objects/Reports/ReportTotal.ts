@@ -4,7 +4,7 @@ import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
 import { double, timespan, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
-import { ASSETS } from "../Storage";
+import { ASSETS } from "../storage";
 
 /**
  * Totalled information from all the results of the report.

@@ -11,7 +11,7 @@ import { ReportType } from './ReportType';
 import { ReportOptions } from './ReportOptions';
 import { ReportScorecard } from './ReportScorecard';
 import { Company } from "../Companies/Company";
-import { COMPANIES, REPORT_SCHEDULES, REPORT_TEMPLATES } from "../Storage";
+import { COMPANIES, REPORT_SCHEDULES, REPORT_TEMPLATES } from "../storage";
 import { Timezone } from "../API/Timezone";
 import { ReportSchedule } from "./ReportSchedule";
 import { ReportTemplate } from "./ReportTemplate";

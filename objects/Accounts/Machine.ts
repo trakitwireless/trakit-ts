@@ -11,7 +11,7 @@ import { Timezone } from '../API/Timezone';
 import { TIMEZONE_FIND } from '../API/Timezones';
 import { codified, ipv4, ulong, url } from '../API/Types';
 import { Company } from '../Companies/Company';
-import { COMPANIES, GROUPS } from '../Storage';
+import { COMPANIES, GROUPS } from '../storage';
 import { Permission } from './Permissions/Permission';
 import { SystemsOfUnits } from './SystemsOfUnits';
 import { UserGroup } from './UserGroup';

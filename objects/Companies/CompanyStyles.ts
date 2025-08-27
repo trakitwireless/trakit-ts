@@ -5,7 +5,7 @@ import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PRED
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { codified, ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 import { LabelStyle } from "./LabelStyle";
 

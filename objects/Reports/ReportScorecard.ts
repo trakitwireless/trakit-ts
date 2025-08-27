@@ -4,7 +4,7 @@ import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { datetime, double, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
-import { ASSETS } from "../Storage";
+import { ASSETS } from "../storage";
 
 /**
  * Scorecard generated from the results of this report.

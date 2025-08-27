@@ -8,7 +8,7 @@ import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
 import { double, ulong } from '../../API/Types';
 import { Company } from '../../Companies/Company';
-import { BILLING_PROFILES, COMPANIES } from '../../Storage';
+import { BILLING_PROFILES, COMPANIES } from '../../storage';
 import { BillingCurrency } from '../BillingCurrency';
 import { BillingProfile } from '../BillingProfile';
 import { BillingReportBreakdown } from "./BillingReportBreakdown";

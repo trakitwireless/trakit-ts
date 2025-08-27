@@ -9,7 +9,7 @@ import { email, phone, ulong } from "../../API/Types";
 import { User } from "../../Accounts/User";
 import { Asset } from "../../Assets/Asset";
 import { Company } from "../../Companies/Company";
-import { ASSETS, COMPANIES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATIONS, USERS } from "../../Storage";
+import { ASSETS, COMPANIES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATIONS, USERS } from "../../storage";
 import { ProviderConfiguration } from "../Configuration/ProviderConfiguration";
 import { ProviderType } from "../ProviderType";
 import { ProviderConfig } from "./ProviderConfig";

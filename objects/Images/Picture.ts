@@ -11,7 +11,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { uint, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 
 /**
  * An image stored by the system.

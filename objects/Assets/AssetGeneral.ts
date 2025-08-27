@@ -14,7 +14,7 @@ import { codified, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
-import { COMPANIES, ICONS, PICTURES } from "../Storage";
+import { COMPANIES, ICONS, PICTURES } from "../storage";
 import { AssetType } from "./AssetType";
 import { PersonGeneral } from "./PersonGeneral";
 import { TrailerGeneral } from "./TrailerGeneral";

@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
-import { ASSETS, BEHAVIOUR_SCRIPTS, BEHAVIOURS, COMPANIES } from "../Storage";
+import { ASSETS, BEHAVIOUR_SCRIPTS, BEHAVIOURS, COMPANIES } from "../storage";
 import { Behaviour } from "./Behaviour";
 import { BehaviourLogType } from "./BehaviourLogType";
 import { BehaviourScript } from "./BehaviourScript";

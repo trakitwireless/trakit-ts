@@ -9,7 +9,7 @@ import { ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Place } from "../Places/Place";
-import { ASSETS, COMPANIES, DOCUMENTS, PLACES } from "../Storage";
+import { ASSETS, COMPANIES, DOCUMENTS, PLACES } from "../storage";
 import { DispatchTaskStatus } from "./DispatchTaskStatus";
 import { Document } from "../Hosting/Document";
 import { ARRAY_TO_IDS } from "../API/Arrays";

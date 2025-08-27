@@ -5,7 +5,7 @@ import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
-import { COMPANIES, PROVIDER_CONFIGURATION_TYPES } from "../../Storage";
+import { COMPANIES, PROVIDER_CONFIGURATION_TYPES } from "../../storage";
 import { ProviderConfigurationType } from "./ProviderConfigurationType";
 
 /**

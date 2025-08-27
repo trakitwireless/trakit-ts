@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { BillableSmsProfile } from "./BillableSmsProfile";
 import { BillingCurrency } from "./BillingCurrency";
 import { BillingCycle } from "./BillingCycle";

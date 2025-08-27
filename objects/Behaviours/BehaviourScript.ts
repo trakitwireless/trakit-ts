@@ -8,7 +8,7 @@ import { IVisual } from "../API/Interfaces/IVisual";
 import { SearchPattern } from "../API/SearchPattern";
 import { codified, colour, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { BehaviourParameter } from "./BehaviourParameter";
 
 /**

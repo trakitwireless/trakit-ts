@@ -3,7 +3,7 @@ import { ID, MAP_TO_OBJECT, MAP_TO_OBJECT_PREDICATE, MAP_TO_OBJECT_VALUE_JSON, O
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ipv4, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { ProviderData } from "./ProviderData";
 
 /**

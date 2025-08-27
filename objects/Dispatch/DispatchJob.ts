@@ -10,7 +10,7 @@ import { codified, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { FormResult } from "../Hosting/FormResult";
-import { ASSETS, COMPANIES, FORM_RESULTS } from "../Storage";
+import { ASSETS, COMPANIES, FORM_RESULTS } from "../storage";
 import { DispatchJobPriority } from "./DispatchJobPriority";
 import { DispatchStep } from "./DispatchStep";
 

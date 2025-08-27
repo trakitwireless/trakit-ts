@@ -3,7 +3,7 @@ import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Fun
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { codified, ulong } from "../API/Types";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 
 /**

@@ -7,7 +7,7 @@ import { MERGE } from "../API/Objects";
 import { phone, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
-import { ASSETS, COMPANIES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATIONS } from "../Storage";
+import { ASSETS, COMPANIES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATIONS } from "../storage";
 import { ProviderConfig } from "./Config/ProviderConfig";
 import { ProviderConfiguration } from "./Configuration/ProviderConfiguration";
 import { ProviderType } from "./ProviderType";

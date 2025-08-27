@@ -3,7 +3,7 @@ import { ID, JSON_NUMBER, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE }
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { ProviderCommand } from "./ProviderCommand";
 import { ProviderCommandType } from "./ProviderCommandType";
 

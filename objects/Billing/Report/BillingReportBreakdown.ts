@@ -2,7 +2,7 @@
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
-import { COMPANIES } from "../../Storage";
+import { COMPANIES } from "../../storage";
 import { BillingReportLicenseBreakdown } from "./BillingReportLicenseBreakdown";
 import { BillingReportServiceBreakdown } from "./BillingReportServiceBreakdown";
 

@@ -10,7 +10,7 @@ import { TimeSpan } from "../API/TimeSpan";
 import { codified, colour, double, email, int, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { MaintenanceInterval } from "./MaintenanceInterval";
 
 /**

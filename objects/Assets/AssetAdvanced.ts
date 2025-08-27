@@ -9,7 +9,7 @@ import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { codified, double, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
-import { ASSETS, COMPANIES, PROVIDERS } from "../Storage";
+import { ASSETS, COMPANIES, PROVIDERS } from "../storage";
 import { Asset } from "./Asset";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";

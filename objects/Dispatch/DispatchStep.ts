@@ -7,7 +7,7 @@ import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
 import { datetime, timespan, ulong } from "../API/Types";
 import { Place } from "../Places/Place";
-import { PLACES } from "../Storage";
+import { PLACES } from "../storage";
 import { DispatchStepState } from "./DispatchStepState";
 import { DispatchStepStatus } from "./DispatchStepStatus";
 

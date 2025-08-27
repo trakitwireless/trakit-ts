@@ -7,7 +7,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { email, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
-import { ASSETS, COMPANIES, USERS } from "../Storage";
+import { ASSETS, COMPANIES, USERS } from "../storage";
 import { MessageStatus } from './MessageStatus';
 import { MessageType } from './MessageType';
 

@@ -10,7 +10,7 @@ import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { codified, email, phone, ulong, url } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Picture } from "../Images/Picture";
-import { COMPANIES, PICTURES } from "../Storage";
+import { COMPANIES, PICTURES } from "../storage";
 
 /**
  * Key names used for legacy getters/setters.

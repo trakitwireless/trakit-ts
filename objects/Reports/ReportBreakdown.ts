@@ -7,7 +7,7 @@ import { AssetGeneral } from "../Assets/AssetGeneral";
 import { DispatchJob } from "../Dispatch/DispatchJob";
 import { DispatchTask } from "../Dispatch/DispatchTask";
 import { AssetMessage } from "../Messaging/AssetMessage";
-import { ASSETS } from "../Storage";
+import { ASSETS } from "../storage";
 import { ReportBreakdownJob } from "./ReportBreakdownJob";
 import { ReportBreakdownMessage } from "./ReportBreakdownMessage";
 import { ReportBreakdownTask } from "./ReportBreakdownTask";

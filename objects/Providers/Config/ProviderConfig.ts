@@ -6,7 +6,7 @@ import { INamed } from "../../API/Interfaces/INamed";
 import { SearchPattern } from "../../API/SearchPattern";
 import { ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
-import { COMPANIES, PROVIDER_SCRIPTS } from "../../Storage";
+import { COMPANIES, PROVIDER_SCRIPTS } from "../../storage";
 import { ProviderScript } from "./ProviderScript";
 
 /**

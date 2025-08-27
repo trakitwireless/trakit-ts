@@ -9,7 +9,7 @@ import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
 import { codified, datetimetemplate, email, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES, CONTACTS } from "../Storage";
+import { COMPANIES, CONTACTS } from "../storage";
 import { Contact } from "./Contact";
 import { SystemsOfUnits } from "./SystemsOfUnits";
 import { User } from "./User";

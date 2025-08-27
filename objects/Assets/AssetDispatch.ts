@@ -8,7 +8,7 @@ import { ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { DispatchDirection } from "../Dispatch/DispatchDirection";
 import { DispatchJob } from "../Dispatch/DispatchJob";
-import { COMPANIES, DISPATCH_JOBS } from "../Storage";
+import { COMPANIES, DISPATCH_JOBS } from "../storage";
 
 /**
  * The current state of an asset's {@link DispatchJob} route progress.

@@ -9,7 +9,7 @@ import { IVisual } from "../API/Interfaces/IVisual";
 import { codified, colour, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../Storage";
+import { COMPANIES } from "../storage";
 import { FormFieldAttachments } from './Fields/FormFieldAttachments';
 import { FormFieldBase } from "./Fields/FormFieldBase";
 import { FormFieldBoolean } from './Fields/FormFieldBoolean';

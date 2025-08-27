@@ -5,7 +5,7 @@ import { PermissionMethod } from './PermissionMethod';
 import { ISerializable } from '../../API/Interfaces/ISerializable';
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { Company } from '../../Companies/Company';
-import { COMPANIES } from '../../Storage';
+import { COMPANIES } from '../../storage';
 import { ID, IS_NUMBER, JSON_NUMBER } from '../../API/Functions';
 
 /**
