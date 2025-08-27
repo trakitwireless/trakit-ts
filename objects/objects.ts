@@ -293,156 +293,159 @@ import {
     REPORT_TEMPLATES,
     SESSIONS,
     USERS,
-} from "./Storage";
+} from "./storage";
 
 /**
  * Version number for this release.
  */
-const version = 5.03;
+export const version = 5.03;
 
-export default {
-    version,
-    storage: {
-        companies: COMPANIES,
-    
-        //#region Accounts
-        contacts: CONTACTS,
-        machines: MACHINES,
-        users: USERS,
-        userGroups: GROUPS,
-        sessions: SESSIONS,
-        //#endregion Accounts
-        //#region Assets
-        assets: ASSETS,
-        assetMessages: MESSAGES,
-        //#endregion Assets
-        //#region Behaviours
-        behaviours: BEHAVIOURS,
-        behaviourScripts: BEHAVIOUR_SCRIPTS,
-        behaviourLogs: BEHAVIOUR_LOGS,
-        //#endregion Behaviours
-        //#region Billing
-        billingProfiles: BILLING_PROFILES,
-        billingReports: BILLING_REPORTS,
-        billableHostingRules: BILLING_RULES,
-        billableHostingLicenses: BILLING_LICENSES,
-        //#endregion Billing
-        //#region Dispatch
-        dispatchTasks: DISPATCH_TASKS,
-        dispatchJobs: DISPATCH_JOBS,
-        //#endregion Dispatch
-        //#region Hosting
-        documents: DOCUMENTS,
-        formTemplates: FORM_TEMPLATES,
-        formResults: FORM_RESULTS,
-        //#endregion Hosting
-        //#region Images
-        pictures: PICTURES,
-        icons: ICONS,
-        //#endregion Images
-        //#region Maintenance
-        maintenanceSchedules: MAINTENANCE_SCHEDULES,
-        maintenanceJobs: MAINTENANCE_JOBS,
-        //#endregion Maintenance
-        //#region Places
-        places: PLACES,
-        //#endregion Places
-        //#region Providers
-        providers: PROVIDERS,
-        providerScripts: PROVIDER_SCRIPTS,
-        providerConfigs: PROVIDER_CONFIGS,
-        providerConfigurationTypes: PROVIDER_CONFIGURATION_TYPES,
-        providerConfigurations: PROVIDER_CONFIGURATIONS,
-        //#endregion Providers
-        //#region Reports
-        reportTemplates: REPORT_TEMPLATES,
-        reportSchedules: REPORT_SCHEDULES,
-        reportResults: REPORT_RESULTS,
-        //#endregion Reports
-    },
+export const storage = {
+    companies: COMPANIES,
 
-    //#region Utility, conversion, and encoding functions
-    utility: {
-        codify: CODIFY,
-        highlight: HIGHLIGHT,
-        guid: GUID,
-        isNothing: IS_NOTHING,
-        isntNaN: IS_AN,
-        roundTo: ROUND_TO,
-        merge: MERGE,
-        parseTime: TIMESPACE_PARSE,
-        stringifyTime: TIMESPACE_STRINGIFY,
-        douglasPeucker: DOUGLASPEUCKER,
-        numberGroups: NUMBER_GROUPS,
-        fileSize: FILESIZE_HELPER,
-        findTimeZoneById: TIMEZONE_FIND,
-        phoneNumber: PHONE_PARSE,
-        plural: PLURAL,
-    },
+    //#region Accounts
+    contacts: CONTACTS,
+    machines: MACHINES,
+    users: USERS,
+    userGroups: GROUPS,
+    sessions: SESSIONS,
+    //#endregion Accounts
+    //#region Assets
+    assets: ASSETS,
+    assetMessages: MESSAGES,
+    //#endregion Assets
+    //#region Behaviours
+    behaviours: BEHAVIOURS,
+    behaviourScripts: BEHAVIOUR_SCRIPTS,
+    behaviourLogs: BEHAVIOUR_LOGS,
+    //#endregion Behaviours
+    //#region Billing
+    billingProfiles: BILLING_PROFILES,
+    billingReports: BILLING_REPORTS,
+    billableHostingRules: BILLING_RULES,
+    billableHostingLicenses: BILLING_LICENSES,
+    //#endregion Billing
+    //#region Dispatch
+    dispatchTasks: DISPATCH_TASKS,
+    dispatchJobs: DISPATCH_JOBS,
+    //#endregion Dispatch
+    //#region Hosting
+    documents: DOCUMENTS,
+    formTemplates: FORM_TEMPLATES,
+    formResults: FORM_RESULTS,
+    //#endregion Hosting
+    //#region Images
+    pictures: PICTURES,
+    icons: ICONS,
+    //#endregion Images
+    //#region Maintenance
+    maintenanceSchedules: MAINTENANCE_SCHEDULES,
+    maintenanceJobs: MAINTENANCE_JOBS,
+    //#endregion Maintenance
+    //#region Places
+    places: PLACES,
+    //#endregion Places
+    //#region Providers
+    providers: PROVIDERS,
+    providerScripts: PROVIDER_SCRIPTS,
+    providerConfigs: PROVIDER_CONFIGS,
+    providerConfigurationTypes: PROVIDER_CONFIGURATION_TYPES,
+    providerConfigurations: PROVIDER_CONFIGURATIONS,
+    //#endregion Providers
+    //#region Reports
+    reportTemplates: REPORT_TEMPLATES,
+    reportSchedules: REPORT_SCHEDULES,
+    reportResults: REPORT_RESULTS,
+    //#endregion Reports
+};
+
+//#region Utility, conversion, and encoding functions
+export const utility = {
+    codify: CODIFY,
+    highlight: HIGHLIGHT,
+    guid: GUID,
+    isNothing: IS_NOTHING,
+    isntNaN: IS_AN,
+    roundTo: ROUND_TO,
+    merge: MERGE,
+    parseTime: TIMESPACE_PARSE,
+    stringifyTime: TIMESPACE_STRINGIFY,
+    douglasPeucker: DOUGLASPEUCKER,
+    numberGroups: NUMBER_GROUPS,
+    fileSize: FILESIZE_HELPER,
+    findTimeZoneById: TIMEZONE_FIND,
+    phoneNumber: PHONE_PARSE,
+    plural: PLURAL,
+};
+export {
     SearchPattern,
     TimeSpan,
     Timezone,
+};
 
-    convert: CONVERT,
-    encoding: {
-        toPassword: PASSWORD_ENCODE,
-        fromPassword: PASSWORD_DECODE,
-    },
-    //#endregion Utility, conversion, and encoding functions
-    //#region Drawing and trigonometry
-    /**
-     * A utility library exposing algorithms for a flat plane.
-     */
-    geometry: {
-        pathLength: PATH_LENGTH,
-        pathOrthogonal: PATH_ORTHOGONAL,
-        pathReduce: PATH_PEUCKER,
-        pointAngle: POINT_ANGLE,
-        pointDistance: POINT_DISTANCE,
-        //	pointFarthest: POINT_FARTHEST,
-        pointPythagora: PYTHAGORA,
-        pointVector: POINT_VECTOR,
-        polyArea: POLY_AREA,
-        polyContains: POLY_CONTAINS,
-        polyReduce: POLY_PEUCKER,
-        polyWrapper: POLY_WRAPPER,
-        radialCircumference: RADIAL_CIRCUMFERENCE,
-        radialArea: RADIAL_AREA,
-        radialSmallest: RADIAL_BADOIU_CLARKSON,
-        radialOverlapsRectangle: RADIAL_OVERLAP_RECTANGLE,
-    },
+export const convert = CONVERT;
+export const encoding = {
+    toPassword: PASSWORD_ENCODE,
+    fromPassword: PASSWORD_DECODE,
+};
+//#endregion Utility, conversion, and encoding functions
+//#region Drawing and trigonometry
+/**
+ * A utility library exposing algorithms for a flat plane.
+ */
+export const geometry = {
+    pathLength: PATH_LENGTH,
+    pathOrthogonal: PATH_ORTHOGONAL,
+    pathReduce: PATH_PEUCKER,
+    pointAngle: POINT_ANGLE,
+    pointDistance: POINT_DISTANCE,
+    //	pointFarthest: POINT_FARTHEST,
+    pointPythagora: PYTHAGORA,
+    pointVector: POINT_VECTOR,
+    polyArea: POLY_AREA,
+    polyContains: POLY_CONTAINS,
+    polyReduce: POLY_PEUCKER,
+    polyWrapper: POLY_WRAPPER,
+    radialCircumference: RADIAL_CIRCUMFERENCE,
+    radialArea: RADIAL_AREA,
+    radialSmallest: RADIAL_BADOIU_CLARKSON,
+    radialOverlapsRectangle: RADIAL_OVERLAP_RECTANGLE,
+};
+export {
     Point,
     Radial,
     Rectangle,
     Size,
-    //#endregion Drawing and trigonometry
-    //#region Coordinates and geography
-    geography: {
-        earthRadius: EARTH_RADIUS,
+};
+//#endregion Drawing and trigonometry
+//#region Coordinates and geography
+export const geography = {
+    earthRadius: EARTH_RADIUS,
 
-        clampLat: LATITUDE_NORMALIZED,
-        clampLng: LONGITUDE_NORMALIZED,
+    clampLat: LATITUDE_NORMALIZED,
+    clampLng: LONGITUDE_NORMALIZED,
 
-        pathLength: ROUTE_LENGTH,
-        pathReduce: ROUTE_PEUCKER,
-        pathEncode: ROUTE_ENCODE,
-        pathDecode: ROUTE_DECODE,
+    pathLength: ROUTE_LENGTH,
+    pathReduce: ROUTE_PEUCKER,
+    pathEncode: ROUTE_ENCODE,
+    pathDecode: ROUTE_DECODE,
 
-        pointAngle: LATLNG_ANGLE,
-        pointDistance: LATLNG_DISTANCE,
-        pointMiddle: LATLNG_MIDPOINT,
-        pointOrthogonal: LATLNG_GREAT_CIRCLE,
-        pointTranslate: LATLNG_TRANSLATE,
-        pointVincenty: LATLNG_DISTANCE_VINCENTY,
+    pointAngle: LATLNG_ANGLE,
+    pointDistance: LATLNG_DISTANCE,
+    pointMiddle: LATLNG_MIDPOINT,
+    pointOrthogonal: LATLNG_GREAT_CIRCLE,
+    pointTranslate: LATLNG_TRANSLATE,
+    pointVincenty: LATLNG_DISTANCE_VINCENTY,
 
-        polyArea: GEOFENCE_AREA,
-        polyContains: GEOFENCE_CONTAINS,
-        polyReduce: GEOFENCE_PEUCKER,
-        polyWidest: GEOFENCE_WIDEST,
-        //	polyWrapper: GEOFENCE_WRAPPER,
+    polyArea: GEOFENCE_AREA,
+    polyContains: GEOFENCE_CONTAINS,
+    polyReduce: GEOFENCE_PEUCKER,
+    polyWidest: GEOFENCE_WIDEST,
+    //	polyWrapper: GEOFENCE_WRAPPER,
 
-        //	radialArea: SPHERECAP_AREA,
-    },
+    //	radialArea: SPHERECAP_AREA,
+};
+export {
     LatLng,
     LatLngBounds,
     Position,
@@ -464,52 +467,54 @@ export default {
     LabelStyle,
     NotificationServerEmail,
     NotificationServerSms,
-    //#endregion Company
-    //#region Accounts
-    authorizer: {
-        // Generic / global compute
-        computeAll,
-        compute,
+};
+//#endregion Company
+//#region Accounts
+export const authorizer = {
+    // Generic / global compute
+    computeAll,
+    compute,
+
+    // Simple Permissions
+    computeAllSimple,
+    computeSimple,
+    computeSimpleLevels,
+    getSimpleLevel,
+    hasSimple,
+    findSimple,
+    findSimpleLevel,
+
+    // Complex Permissions
+    computeAllComplex,
+    computeComplex,
+    getComplexLevel,
+    findComplexLevel,
+    hasComplex,
+    findComplex,
+    hasAnyComplex,
+    findAnyComplex,
     
-        // Simple Permissions
-        computeAllSimple,
-        computeSimple,
-        computeSimpleLevels,
-        getSimpleLevel,
-        hasSimple,
-        findSimple,
-        findSimpleLevel,
+    // Escalations
+    findAllEscalations,
+    findEscalations,
+    findAllLabelEscalations,
+    findLabelEscalation,
     
-        // Complex Permissions
-        computeAllComplex,
-        computeComplex,
-        getComplexLevel,
-        findComplexLevel,
-        hasComplex,
-        findComplex,
-        hasAnyComplex,
-        findAnyComplex,
-        
-        // Escalations
-        findAllEscalations,
-        findEscalations,
-        findAllLabelEscalations,
-        findLabelEscalation,
-        
-        // exposed properties
-        /**
-         * A list of {@link PermissionType}s which are implied for each user's own company.
-         */
-        implied: FREEZE(IMPLIED_PERMS),
-        /**
-         * The {@link PermissionType}s which are calculated using labels.
-         */
-        simple: FREEZE(ARRAY_EXCEPT(KEYS(PermissionType) as PermissionType[], LABEL_BASED_PERMS)),
-        /**
-         * {@link PermissionType}s which do not use labels to calculate access.
-         */
-        complex: FREEZE(LABEL_BASED_PERMS),
-    },
+    // exposed properties
+    /**
+     * A list of {@link PermissionType}s which are implied for each user's own company.
+     */
+    implied: FREEZE(IMPLIED_PERMS),
+    /**
+     * The {@link PermissionType}s which are calculated using labels.
+     */
+    simple: FREEZE(ARRAY_EXCEPT(KEYS(PermissionType) as PermissionType[], LABEL_BASED_PERMS)),
+    /**
+     * {@link PermissionType}s which do not use labels to calculate access.
+     */
+    complex: FREEZE(LABEL_BASED_PERMS),
+};
+export {
     Contact,
     Machine,
     NotificationMethod,
@@ -528,8 +533,10 @@ export default {
     UserAdvanced,
     UserGroup,
     UserNotifications,
-    //#endregion Accounts
-    //#region Assets
+};
+//#endregion Accounts
+//#region Assets
+export {
     Asset,
     AssetAdvanced,
     AssetAttribute,
@@ -551,16 +558,20 @@ export default {
     MessageFolder,
     MessageStatus,
     MessageType,
-    //#endregion Assets
-    //#region Behaviours
+};
+//#endregion Assets
+//#region Behaviours
+export {
     Behaviour,
     BehaviourLog,
     BehaviourLogType,
     BehaviourParameter,
     BehaviourParameterType,
     BehaviourScript,
-    //#endregion Behaviours
-    //#region Billing
+};
+//#endregion Behaviours
+//#region Billing
+export {
     BillableHostingDiscount,
     BillableHostingLicense,
     BillableHostingLicenseType,
@@ -576,8 +587,10 @@ export default {
     BillingReportServiceBreakdown,
     BillingReportStatus,
     BillingReportSummary,
-    //#endregion Billing
-    //#region Dispatch
+};
+//#endregion Billing
+//#region Dispatch
+export {
     DispatchDirection,
     DispatchJob,
     DispatchJobPriority,
@@ -586,8 +599,10 @@ export default {
     DispatchStepStatus,
     DispatchTask,
     DispatchTaskStatus,
-    //#endregion Dispatch
-    //#region Hosting
+};
+//#endregion Dispatch
+//#region Hosting
+export {
     Document,
     FormResult,
     FormTemplate,
@@ -603,8 +618,10 @@ export default {
     FormFieldText,
     FormFieldTime,
     FormFieldTimezone,
-    //#endregion Hosting
-    //#region Images
+};
+//#endregion Hosting
+//#region Images
+export {
     DashcamBase,
     Dashcam,
     DashcamLive,
@@ -614,18 +631,24 @@ export default {
     IconLabel,
     IconLayer,
     Picture,
-    //#endregion Images
-    //#region Maintenance
+};
+//#endregion Images
+//#region Maintenance
+export {
     MaintenanceInterval,
     MaintenanceJob,
     MaintenanceJobStatus,
     MaintenanceSchedule,
-    //#endregion Maintenance
-    //#region Places
+};
+//#endregion Maintenance
+//#region Places
+export {
     Place,
     PlaceType,
-    //#endregion Places
-    //#region Providers
+};
+//#endregion Places
+//#region Providers
+export {
     Provider,
     ProviderAdvanced,
     ProviderData,
@@ -648,8 +671,10 @@ export default {
     ProviderGeofencePoint,
     ProviderGeofencePolygon,
     ProviderGeofenceRectangle,
-    //#endregion Providers
-    //#region Reports
+};
+//#endregion Providers
+//#region Reports
+export {
     ReportResult,
     ReportResultData,
     ReportSchedule,
@@ -673,5 +698,5 @@ export default {
     ReportSummary,
     ReportSummaryReason,
     ReportType,
-    //#endregion Reports
 };
+//#endregion Reports
