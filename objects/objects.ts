@@ -49,6 +49,9 @@ import { UserGeneral } from "./Accounts/UserGeneral";
 import { UserGroup } from "./Accounts/UserGroup";
 import { UserNotifications } from "./Accounts/UserNotifications";
 import { ARRAY_EXCEPT } from "./API/Arrays";
+import { Base } from "./API/Base";
+import { BaseComponent } from "./API/BaseComponent";
+import { BaseCompound } from "./API/BaseCompound";
 import { CODIFY, HIGHLIGHT, } from "./API/Codifier";
 import { FREEZE, KEYS } from "./API/Constants";
 import { CONVERT, } from './API/Conversion';
@@ -458,8 +461,13 @@ export const encoding = {
     toPassword: PASSWORD_ENCODE,
     fromPassword: PASSWORD_DECODE,
 };
-// common classes
+/**
+ * Common classes used throughout the API, and the Base classes used for synchronizable objects.
+ */
 export {
+    Base,
+    BaseComponent,
+    BaseCompound,
     SearchPattern,
     TimeSpan,
     Timezone,
