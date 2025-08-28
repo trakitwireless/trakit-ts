@@ -1,5 +1,5 @@
-﻿import { ABS, FLOAT, ROUND, } from "./Constants";
-import { IS_NUMBER, ZERO_PADDED, } from "./Functions";
+﻿import { ABS, FLOAT, FLOOR } from "./Constants";
+import { IS_NOTHING, IS_NUMBER, ZERO_PADDED } from "./Functions";
 import { timespan, } from "./Types";
 
 /**
@@ -46,76 +46,94 @@ export class TimeSpan {
 	}
 
 	/**
-	 * 
+	 * The underlying value of the time-span in milliseconds.
 	 */
-	private __total = 0;
-	/**
-	 * 
-	 */
-	private __days = 0;
-	/**
-	 * 
-	 */
-	private __hours = 0;
-	/**
-	 * 
-	 */
-	private __minutes = 0;
-	/**
-	 * 
-	 */
-	private __seconds = 0;
-	/**
-	 * 
-	 */
-	private __milli = 0;
+	#value = 0;
+
 	/**
 	 * @param duration		A time-span formatted string, or a number representing milliseconds
 	 */
 	constructor(duration?: TimeSpan | timespan | number | null) {
-		if (duration) this.add(duration);
+		if (!IS_NOTHING(duration)) this.add(duration);
 	}
 
 	/**
 	 * Days component of the time-span.
 	 */
-	get days() { return this.__days; }
+	get days() {
+		return FLOOR(this.#value / MILLI_PER_DAY);
+	}
 	/**
 	 * Hours component of the time-span.
 	 */
-	get hours() { return this.__hours; }
+	get hours() {
+		return FLOOR(
+			(
+				this.#value
+				- (this.days * MILLI_PER_DAY)
+			)
+			/ MILLI_PER_HOUR
+		);
+	}
 	/**
 	 * Minutes component of the time-span.
 	 */
-	get minutes() { return this.__minutes; }
+	get minutes() {
+		return FLOOR(
+			this.#value
+			- (
+				(this.days * MILLI_PER_DAY)
+				+ (this.hours * MILLI_PER_HOUR)
+			)
+			/ MILLI_PER_MINUTE
+		);
+	}
 	/**
 	 * Seconds component of the time-span.
 	 */
-	get seconds() { return this.__seconds; }
+	get seconds() {
+		return FLOOR(
+			this.#value
+			- (
+				(this.days * MILLI_PER_DAY)
+				+ (this.hours * MILLI_PER_HOUR)
+				+ (this.minutes * MILLI_PER_MINUTE)
+			)
+			/ MILLI_PER_SECOND
+		);
+	}
 	/**
 	 * Millisecond component of the time-span.
 	 */
-	get milliseconds() { return this.__milli; }
+	get milliseconds() {
+		return this.#value
+			- (
+				(this.days * MILLI_PER_DAY)
+				+ (this.hours * MILLI_PER_HOUR)
+				+ (this.minutes * MILLI_PER_MINUTE)
+				+ (this.seconds * MILLI_PER_SECOND)
+			);
+	}
 	/**
 	 * Total time-span value in decimal days.
 	 */
-	get totalDays() { return this.__total / MILLI_PER_DAY; }
+	get totalDays() { return this.#value / MILLI_PER_DAY; }
 	/**
 	 * Total time-span value in decimal hours.
 	 */
-	get totalHours() { return this.__total / MILLI_PER_HOUR; }
+	get totalHours() { return this.#value / MILLI_PER_HOUR; }
 	/**
 	 * Total time-span value in decimal minutes.
 	 */
-	get totalMinutes() { return this.__total / MILLI_PER_MINUTE; }
+	get totalMinutes() { return this.#value / MILLI_PER_MINUTE; }
 	/**
 	 * Total time-span value in decimal seconds.
 	 */
-	get totalSeconds() { return this.__total / MILLI_PER_SECOND; }
+	get totalSeconds() { return this.#value / MILLI_PER_SECOND; }
 	/**
 	 * Total time-span value in milliseconds.
 	 */
-	get totalMilliseconds() { return this.__total; }
+	get totalMilliseconds() { return this.#value; }
 
 	/**
 	 * Parses the time-span into a serialized TimeSpan string.
@@ -137,14 +155,14 @@ export class TimeSpan {
 					default: span += piece; break;
 				}
 				return span;
-			}, this.__total < 0 ? "-" : "");
+			}, this.#value < 0 ? "-" : "");
 		} else {
-			var days = ABS(this.__days),
-				hours = ABS(this.__hours),
-				minutes = ABS(this.__minutes),
-				seconds = ABS(this.__seconds),
-				milli = ABS(this.__milli);
-			return (this.__total < 0 ? "-" : "")
+			var days = ABS(this.days),
+				hours = ABS(this.hours),
+				minutes = ABS(this.minutes),
+				seconds = ABS(this.seconds),
+				milli = ABS(this.milliseconds);
+			return (this.#value < 0 ? "-" : "")
 				+ (!days ? "" : days + ".")
 				+ (hours > 9 ? hours : "0" + hours) + ":"
 				+ (minutes > 9 ? minutes : "0" + minutes) + ":"
@@ -154,87 +172,59 @@ export class TimeSpan {
 	}
 	/**
 	 * Same as {@link TimeSpan#toString}.
-	 * @expose
-	 * @this {TimeSpan}
 	 */
 	toJSON = this.toString;
 	/**
 	 * Gets the comparable value of this time-span as total milliseconds.
-	 * @override
-	 * @this {TimeSpan}
 	 */
-	valueOf() {
-		return this.__total;
+	valueOf(): number {
+		return this.#value;
 	}
 	/**
 	 * Adds the given value to the current time-span.
-	 * @expose
-	 * @this {TimeSpan}
 	 * @param duration	A time-span formatted string, or a number representing milliseconds
-	 * @param subtract				When true, the value is subtracted from the time-span instead of added.
+	 * @param subtract	When true, the value is subtracted from the time-span instead of added.
 	 */
-	add(duration: TimeSpan | timespan | number, subtract: boolean = false) {
-		let value = 0;
-		if (IS_NUMBER(duration)) {
-			const negatory = (duration < 0 ? -1 : 1)
-							* (subtract ? -1 : 1);
-			while (value >= MILLI_PER_DAY) {
-				this.__days += negatory;
-				value -= MILLI_PER_DAY;
-			}
-			while (value >= MILLI_PER_HOUR) {
-				this.__hours += negatory;
-				value -= MILLI_PER_HOUR;
-			}
-			while (value >= MILLI_PER_MINUTE) {
-				this.__minutes += negatory;
-				value -= MILLI_PER_MINUTE;
-			}
-			while (value >= MILLI_PER_SECOND) {
-				this.__seconds += negatory;
-				value -= MILLI_PER_SECOND;
-			}
-			this.__milli += ROUND(value) * negatory;
+	add(duration: TimeSpan | timespan | number, subtract: boolean = false): number {
+		if (IS_NUMBER(duration)) {	// can be NaN
+			this.#value += duration;
 		} else if (duration = String(duration).trim()) {
-			const numbers = duration.match(/^(-?)(?:(\d+)\.)?(\d*):(\d*)(?::(\d+)(?:\.(\d+))?)?$/)
+			const numbers = (
+				duration.match(/^(-?)(?:(\d+)\.)?(\d*):(\d*)(?::(\d+)(?:\.(\d+))?)?$/)
 				|| [
 					duration,									// whole string
 					duration[0],								// minus sign
-					(duration[0] === "-" ? -1 : 1) * FLOAT(duration)	// days (valid if numeric)
-				];
+					FLOAT(duration),	// days (valid if numeric)
+				]
+			) as [string, string, string, string, string, string, string];
 			if (numbers[1] === "-") {
 				subtract = !subtract;
 			}
-			if (value = (MILLI_PER_DAY * FLOAT(numbers[2] as string))) {
-				this.add(value, subtract);
+			let value: number;
+			if (value = FLOAT(numbers[2])) {
+				this.add(value * MILLI_PER_DAY, subtract);
 			}
-			if (value = (MILLI_PER_HOUR * FLOAT(numbers[3] as string))) {
-				this.add(value, subtract);
+			if (value = FLOAT(numbers[3])) {
+				this.add(value * MILLI_PER_HOUR, subtract);
 			}
-			if (value = (MILLI_PER_MINUTE * FLOAT(numbers[4] as string))) {
-				this.add(value, subtract);
+			if (value = FLOAT(numbers[4])) {
+				this.add(value * MILLI_PER_MINUTE, subtract);
 			}
-			if (value = (MILLI_PER_SECOND * FLOAT(numbers[5] as string))) {
-				this.add(value, subtract);
+			if (value = FLOAT(numbers[5])) {
+				this.add(value * MILLI_PER_SECOND, subtract);
 			}
-			if (value = (ROUND(FLOAT("0." + (numbers[6] && numbers[6] + "000".slice((numbers[6] as string).length))) * MILLI_PER_SECOND))) {
+			if (value = FLOAT((numbers[6] + "000").slice(0, -numbers[6]?.length))) {
 				this.add(value, subtract);
 			}
 		}
-		return this.__total = (this.__days * MILLI_PER_DAY)
-			+ (this.__hours * MILLI_PER_HOUR)
-			+ (this.__minutes * MILLI_PER_MINUTE)
-			+ (this.__seconds * MILLI_PER_SECOND)
-			+ (this.__milli);
+		return this.#value;
 	}
 	/**
 	 * Subtracts the given value from the time-span.
-	 * @expose
-	 * @this {TimeSpan}
 	 * @param duration	A time-span formatted string, or a number representing milliseconds
-	 * @param add					When true, the value is added from the time-span instead of subtracted.
+	 * @param add		When true, the value is added from the time-span instead of subtracted.
 	 */
-	subtract(duration: TimeSpan | timespan | number, add: boolean = false) {
+	subtract(duration: TimeSpan | timespan | number, add: boolean = false): number {
 		return this.add(duration, !add);
 	}
 }
@@ -265,7 +255,7 @@ export function TIMESPACE_PARSE(duration: TimeSpan | timespan | number): number 
 		+ seconds
 		+ milli;
 	 */
-	return (new TimeSpan(String(duration))).totalSeconds;
+	return (new TimeSpan(duration)).totalSeconds;
 }
 /**
  * Parses a number representing the total seconds into a serialized TimeSpan string.
