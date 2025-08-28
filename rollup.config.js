@@ -22,13 +22,12 @@ export default [
     input: 'objects/objects.ts',
     output: [
       // {
-      //   file: '_publish/trakit-ts-objects.js',
+      //   file: '_publish/trakit-objects.js',
       //   format: 'es',
       // },
       {
-        file: '_publish/trakit-ts-objects.min.js',
+        file: '_publish/trakit-objects.min.js',
         format: 'es',
-        sourcemap: true,
         plugins: [terser(obfuscate)]
       }
     ],

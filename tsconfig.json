@@ -19,8 +19,5 @@
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
         "baseUrl": ".",
-    },
-    "include": [
-        "objects/**/*"
-    ]
+    }
 }
