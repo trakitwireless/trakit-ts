@@ -58,7 +58,10 @@ import {
     NUMBER_GROUPS,
 } from "./API/Files";
 import {
+    CLIP,
+    DATE,
     DOUGLASPEUCKER,
+    ID,
     IS_AN,
     IS_NOTHING,
     PHONE_PARSE,
@@ -425,21 +428,24 @@ export type {
  * A group of utility functions for common tasks like dealing with strings.
  */
 export const utility = {
+    clip: CLIP,
     codify: CODIFY,
-    highlight: HIGHLIGHT,
-    guid: GUID,
-    isNothing: IS_NOTHING,
-    isntNaN: IS_AN,
-    roundTo: ROUND_TO,
-    merge: MERGE,
-    parseTime: TIMESPACE_PARSE,
-    stringifyTime: TIMESPACE_STRINGIFY,
+    date: DATE,
     douglasPeucker: DOUGLASPEUCKER,
-    numberGroups: NUMBER_GROUPS,
     fileSize: FILESIZE_HELPER,
     findTimeZoneById: TIMEZONE_FIND,
+    guid: GUID,
+    highlight: HIGHLIGHT,
+    id: ID,
+    isNothing: IS_NOTHING,
+    isntNaN: IS_AN,
+    merge: MERGE,
+    numberGroups: NUMBER_GROUPS,
+    roundTo: ROUND_TO,
+    parseTime: TIMESPACE_PARSE,
     phoneNumber: PHONE_PARSE,
     plural: PLURAL,
+    stringifyTime: TIMESPACE_STRINGIFY,
 };
 /**
  * A group of functions for converting between different measurement systems.
