@@ -120,6 +120,30 @@ import {
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
 import { TIMEZONE_FIND, } from "./API/Timezones";
+import {
+    byte,
+    codified,
+    colour,
+    datetime,
+    datetimetemplate,
+    double,
+    email,
+    expression,
+    guid,
+    int,
+    ipv4,
+    long,
+    phone,
+    polyline,
+    sbyte,
+    short,
+    single,
+    timespan,
+    uint,
+    ulong,
+    url,
+    ushort
+} from "./API/Types";
 import { Asset } from "./Assets/Asset";
 import { AssetAdvanced } from "./Assets/AssetAdvanced";
 import { AssetAttribute } from "./Assets/AssetAttribute";
@@ -365,6 +389,39 @@ export const storage = {
 
 //#region Utility, conversion, and encoding functions
 /**
+ * Common types used throughout the application.
+ * These are simply numbers or strings of a specific format.
+ */
+export type {
+    //#region numbers
+    byte,
+    double,
+    int,
+    long,
+    phone,
+    sbyte,
+    short,
+    single,
+    uint,
+    ulong,
+    ushort,
+    //#endregion numbers
+    //#region strings
+    codified,
+    colour,
+    datetime,
+    datetimetemplate,
+    email,
+    expression,
+    guid,
+    ipv4,
+    polyline,
+    timespan,
+    url,
+    //#endregion strings
+};
+
+/**
  * A group of utility functions for common tasks like dealing with strings.
  */
 export const utility = {
@@ -395,6 +452,7 @@ export const encoding = {
     toPassword: PASSWORD_ENCODE,
     fromPassword: PASSWORD_DECODE,
 };
+// common classes
 export {
     SearchPattern,
     TimeSpan,
