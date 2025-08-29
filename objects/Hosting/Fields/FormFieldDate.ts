@@ -47,8 +47,8 @@ export class FormFieldDate
 			value,
 			editable
 		);
-		this.minimum = DATE(minimum);
-		this.maximum = DATE(maximum);
+		this.minimum = DATE(minimum as datetime);
+		this.maximum = DATE(maximum as datetime);
 	}
 	override toJSON() {
 		return MERGE(super.toJSON(), {
