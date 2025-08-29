@@ -1,4 +1,4 @@
-﻿import { codified, ulong } from "../../API/Types";
+﻿import { codified, nothing, ulong } from "../../API/Types";
 import { PermissionEscalationState } from "./PermissionEscalationState";
 import { PermissionEscalationType } from "./PermissionEscalationType";
 import { PermissionLevel } from "./PermissionLevel";
@@ -36,9 +36,9 @@ export class PermissionEscalation {
 		company: ulong,
 		kind: PermissionType,
 		levelAfter: PermissionLevel,
-		labelsAfter: codified[] | null,
-		levelBefore?: PermissionLevel,
-		labelsBefore?: codified[] | null
+		labelsAfter?: codified[] | nothing,
+		levelBefore?: PermissionLevel | nothing,
+		labelsBefore?: codified[] | nothing,
 	) {
 		this.direction = direction;
 		this.company = company;

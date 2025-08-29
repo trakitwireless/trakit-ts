@@ -5,7 +5,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { datetime, timespan, ulong } from "../API/Types";
+import { datetime, nothing, timespan, ulong } from "../API/Types";
 import { Place } from "../Places/Place";
 import { PLACES } from "../storage";
 import { DispatchStepState } from "./DispatchStepState";
@@ -124,22 +124,22 @@ export class DispatchStep
 	signatory: string = "";
 	
 	constructor(
-		id?: ulong,
-		name?: string,
-		states?: Map<DispatchStepStatus, DispatchStepState>,
-		eta?: Date | number | datetime,
-		duration?: TimeSpan | timespan | number,
-		place?: ulong,
-		address?: string,
-		latlng?: ILatLng | null,
-		notes?: string,
-		signature?: boolean,
-		signatory?: string,
+		id?: ulong | nothing,
+		name?: string | nothing,
+		states?: Map<DispatchStepStatus, DispatchStepState> | nothing,
+		eta?: Date | number | datetime | nothing,
+		duration?: TimeSpan | timespan | number | nothing,
+		place?: ulong | nothing,
+		address?: string | nothing,
+		latlng?: ILatLng | nothing,
+		notes?: string | nothing,
+		signature?: boolean | nothing,
+		signatory?: string | nothing,
 	) {
 		this.id = ID(id);
 		this.address = address || "";
 		this.duration = new TimeSpan(duration);
-		this.eta = DATE(eta);
+		this.eta = DATE(eta as datetime);
 		this.latlng = latlng
 			? LatLng.fromJSON(latlng)
 			: null;

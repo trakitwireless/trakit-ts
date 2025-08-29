@@ -1,4 +1,4 @@
-﻿import { codified } from "../../API/Types";
+﻿import { codified, nothing } from "../../API/Types";
 import { PermissionLevel } from "./PermissionLevel";
 
 /**
@@ -16,8 +16,8 @@ export class PermissionEscalationState {
 	labels: codified[] | null;
 
 	constructor(
-		level?: PermissionLevel | null,
-		labels?: codified[] | null
+		level?: PermissionLevel | nothing,
+		labels?: codified[] | nothing,
 	) {
 		this.level = level || null;
 		this.labels = labels || null;

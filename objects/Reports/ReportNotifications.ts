@@ -2,7 +2,7 @@
 import { UserGeneral } from "../Accounts/UserGeneral";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { SearchPattern } from "../API/SearchPattern";
-import { email } from "../API/Types";
+import { email, nothing } from "../API/Types";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 
 /**
@@ -35,8 +35,8 @@ export class ReportNotifications
 	assets: SearchPattern[] | null;
 	
 	constructor(
-		users?: email[],
-		assets?: SearchPattern[] | null
+		users?: email[] | nothing,
+		assets?: SearchPattern[] | nothing,
 	) {
 		this.users = [...(users || [])];
 		this.assets = assets || null;

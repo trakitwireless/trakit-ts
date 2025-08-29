@@ -2,7 +2,7 @@ import { DATE, JSON_DATE } from "../API/Functions";
 import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime } from "../API/Types";
+import { datetime, nothing } from "../API/Types";
 
 /**
  * Details about the lifetime of a {@link DispatchStep}.
@@ -30,10 +30,10 @@ export class DispatchStepState
 	latlng: LatLng | null;
 	
 	constructor(
-		updated?: Date | number | datetime,
-		latlng?: ILatLng | null,
+		updated?: Date | number | datetime | nothing,
+		latlng?: ILatLng | nothing,
 	) {
-		this.updated = DATE(updated);
+		this.updated = DATE(updated as datetime);
 		this.latlng = latlng
 			? LatLng.fromJSON(latlng)
 			: null;

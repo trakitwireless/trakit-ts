@@ -1,6 +1,6 @@
 ﻿import { ID, IS_AN, JSON_NUMBER } from '../../API/Functions';
 import { MERGE } from '../../API/Objects';
-import { byte, ulong } from '../../API/Types';
+import { byte, nothing, ulong } from '../../API/Types';
 import { FormFieldType } from '../FormFieldType';
 import { FormFieldBase } from './FormFieldBase';
 
@@ -36,15 +36,15 @@ export class FormFieldAttachments
 	maximum: byte;
 	
 	constructor(
-		id?: ulong,
-		name?: string,
-		kind?: FormFieldType,
-		minimum?: byte,
-		maximum?: byte,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean
+		id?: ulong | nothing,
+		name?: string | nothing,
+		kind?: FormFieldType | nothing,
+		minimum?: byte | nothing,
+		maximum?: byte | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		super(
 			id,

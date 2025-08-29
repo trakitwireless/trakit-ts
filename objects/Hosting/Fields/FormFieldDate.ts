@@ -1,6 +1,6 @@
 import { DATE, IS_AN, JSON_DATE } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
-import { datetime, ulong } from "../../API/Types";
+import { datetime, nothing, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
@@ -28,15 +28,15 @@ export class FormFieldDate
 	maximum: Date;
 
 	constructor(
-		id?: ulong,
-		name?: string,
-		kind?: FormFieldType,
-		minimum?: Date | number | datetime,
-		maximum?: Date | number | datetime,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean
+		id?: ulong | nothing,
+		name?: string | nothing,
+		kind?: FormFieldType | nothing,
+		minimum?: Date | number | datetime | nothing,
+		maximum?: Date | number | datetime | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		super(
 			id,

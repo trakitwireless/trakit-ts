@@ -1,5 +1,5 @@
 ﻿import { MERGE } from "../../API/Objects";
-import { ulong } from "../../API/Types";
+import { nothing, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
@@ -28,7 +28,7 @@ export class FormFieldBoolean
 	 * Returns an array of 3 strings representing the checked, unchecked, and indeterminate values.
 	 * @param choices 
 	 */
-	static normalize(choices?: (string | null)[] | null): [string, string, string] {
+	static normalize(choices?: (string | nothing)[] | nothing): [string, string, string] {
 		return (choices ?? [])
 			.concat([null, null, null])
 			.slice(0, 3)
@@ -51,14 +51,14 @@ export class FormFieldBoolean
 	choices: [string, string, string];
 
 	constructor(
-		id?: ulong,
-		name?: string,
-		kind?: FormFieldType,
-		choices?: (string | null)[] | null,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean
+		id?: ulong | nothing,
+		name?: string | nothing,
+		kind?: FormFieldType | nothing,
+		choices?: (string | nothing)[] | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		super(
 			id,

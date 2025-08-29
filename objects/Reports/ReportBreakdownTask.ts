@@ -1,5 +1,5 @@
 ﻿import { MERGE } from "../API/Objects";
-import { uint, ulong } from "../API/Types";
+import { nothing, uint, ulong } from "../API/Types";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 import { DispatchTask } from "../Dispatch/DispatchTask";
@@ -17,11 +17,11 @@ export class ReportBreakdownTask
 	
 	constructor(
 		task: DispatchTask,
-		asset?: ulong,
-		instance?: uint,
-		summaryInstances?: uint[],
-		general?: AssetGeneral | null,
-		advanced?: AssetAdvanced | null
+		asset: ulong,
+		instance: uint,
+		summaryInstances?: uint[] | nothing,
+		general?: AssetGeneral | nothing,
+		advanced?: AssetAdvanced | nothing,
 	) {
 		super(
 			asset,

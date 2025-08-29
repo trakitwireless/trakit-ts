@@ -6,7 +6,7 @@ import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { MERGE } from "../API/Objects";
 import { Timezone } from "../API/Timezone";
-import { codified, datetimetemplate, email, ulong } from "../API/Types";
+import { codified, datetimetemplate, email, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Contact } from "./Contact";
 import { Permission } from "./Permissions/Permission";
@@ -79,13 +79,13 @@ export class User
 	 * {@link Contact.id}
 	 */
 	get contactId(): ulong { return this.general.contactId; }
-	set contactId(value: ulong | null | undefined) { this.general.contactId = value || NaN; }
+	set contactId(value: ulong | nothing) { this.general.contactId = value || NaN; }
 	/**
 	 * Contact information for this user.
 	 * {@link Contact.id}
 	 */
 	get contact(): Contact { return this.general.contact; }
-	set contact(value: Contact | null | undefined) { this.general.contactId = value?.id || NaN; }
+	set contact(value: Contact | nothing) { this.general.contactId = value?.id || NaN; }
 	/**
 	 * The user's local timezone.
 	 * {@link Timezone.code}

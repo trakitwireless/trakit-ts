@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { uint, ulong } from "../API/Types";
+import { nothing, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
@@ -103,11 +103,11 @@ export class ReportBreakdown
 	advanced: AssetAdvanced | null;
 
 	constructor(
-		asset?: ulong,
-		instance?: uint,
-		summaryInstances?: uint[],
-		general?: AssetGeneral | null,
-		advanced?: AssetAdvanced | null,
+		asset: ulong,
+		instance: uint,
+		summaryInstances?: uint[] | nothing,
+		general?: AssetGeneral | nothing,
+		advanced?: AssetAdvanced | nothing,
 	) {
 		this.assetId = ID(asset);
 		this.instance = ID(instance);

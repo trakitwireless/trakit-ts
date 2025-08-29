@@ -2,7 +2,7 @@
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
 import { ISerializable } from '../../API/Interfaces/ISerializable';
-import { byte, datetime, double, timespan, ulong, ushort } from '../../API/Types';
+import { byte, datetime, double, nothing, timespan, ulong, ushort } from '../../API/Types';
 import { FormFieldType } from '../FormFieldType';
 import { FormFieldAttachments } from './FormFieldAttachments';
 import { FormFieldBoolean } from './FormFieldBoolean';
@@ -187,13 +187,13 @@ export abstract class FormFieldBase
 	editable: boolean;
 
 	constructor(
-		id?: ulong,
-		name?: string,
-		kind?: FormFieldType,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean,
+		id?: ulong | nothing,
+		name?: string | nothing,
+		kind?: FormFieldType | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		this.id = ID(id);
 		this.kind = FormFieldType[kind as FormFieldType];

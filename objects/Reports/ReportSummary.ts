@@ -6,7 +6,7 @@ import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { datetime, double, uint, ulong } from "../API/Types";
+import { datetime, double, nothing, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { ASSETS } from "../storage";
 import { ReportSummaryReason } from './ReportSummaryReason';
@@ -101,18 +101,18 @@ export class ReportSummary
 	lastState: Asset | null;
 
 	constructor(
-		asset?: ulong,
-		stateDetail?: string,
-		instance?: uint,
-		instancesCount?: uint,
-		startingUtc?: Date | number | datetime,
-		startingReason?: ReportSummaryReason,
-		endingUtc?: Date | number | datetime,
-		endingReason?: ReportSummaryReason,
-		distance?: double,
-		polyline?: ILatLng[],
-		firstState?: Asset | null,
-		lastState?: Asset | null,
+		asset: ulong,
+		stateDetail: string,
+		instance: uint,
+		instancesCount: uint,
+		startingUtc: Date | number | datetime,
+		startingReason: ReportSummaryReason,
+		endingUtc: Date | number | datetime,
+		endingReason: ReportSummaryReason,
+		distance?: double | nothing,
+		polyline?: ILatLng[] | nothing,
+		firstState?: Asset | nothing,
+		lastState?: Asset | nothing,
 	) {
 		this.assetId = ID(asset);
 		this.stateDetail = stateDetail || "";

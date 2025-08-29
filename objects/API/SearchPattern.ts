@@ -1,4 +1,5 @@
 ﻿import { CODIFY, } from './Codifier';
+import { nothing } from './Types';
 
 //#region examples
 /*
@@ -203,7 +204,7 @@ export class SearchPattern {
 	 * Creates an array of {@link SearchPattern}s for easier matching.  Used for doing OR matching.
 	 * @param expression
 	 */
-	static parse(expression?: string | null): SearchPattern[] {
+	static parse(expression?: string | nothing): SearchPattern[] {
 		const patterns = (expression ?? "").split(SearchPattern_splitter),
 			searches: SearchPattern[] = []
 		let pattern = "";
@@ -222,7 +223,7 @@ export class SearchPattern {
 	 * Creates a single string from the given array of {@link SearchPattern}s for easier serialization.
 	 * @param patterns
 	 */
-	static stringify(patterns?: SearchPattern[] | null): string | null {
+	static stringify(patterns?: SearchPattern[] | nothing): string | nothing {
 		const expressions = (patterns || []).map(p => p.toString());
 		return expressions.length === 0
 			? null

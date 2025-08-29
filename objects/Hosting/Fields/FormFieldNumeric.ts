@@ -1,7 +1,7 @@
 ﻿import { FLOAT } from "../../API/Constants";
 import { ID, IS_AN, JSON_NUMBER, ROUND_TO } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
-import { byte, double, ulong } from "../../API/Types";
+import { byte, double, nothing, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 import { FormFieldNumericSize } from "./FormFieldNumericSize";
@@ -62,19 +62,19 @@ export class FormFieldNumeric
 	maximum: double;
 
 	constructor(
-		id?: ulong,
-		name?: string,
-		kind?: FormFieldType,
-		size?: FormFieldNumericSize,
-		precision?: byte,
-		step?: double,
-		units?: string,
-		minimum?: double,
-		maximum?: double,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean
+		id?: ulong | nothing,
+		name?: string | nothing,
+		kind?: FormFieldType | nothing,
+		size?: FormFieldNumericSize | nothing,
+		precision?: byte | nothing,
+		step?: double | nothing,
+		units?: string | nothing,
+		minimum?: double | nothing,
+		maximum?: double | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		super(
 			id,

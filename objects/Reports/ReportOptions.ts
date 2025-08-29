@@ -1,4 +1,5 @@
-﻿import { ARRAY_TO_JSON } from '../API/Arrays';
+﻿import { nothing } from 'objects/API/Types';
+import { ARRAY_TO_JSON } from '../API/Arrays';
 import { ISerializable } from '../API/Interfaces/ISerializable';
 import { SearchPattern } from '../API/SearchPattern';
 import { ReportFilterMode } from './ReportFilterMode';
@@ -53,12 +54,12 @@ export class ReportOptions
 	scorecardRules: ReportScorecardRules | null;
 
 	constructor(
-		parameters?: ReportParameter[],
-		targets?: SearchPattern[] | null,
-		filtering?: ReportFilterMode,
-		places?: SearchPattern[] | null,
-		regions?: string[],
-		scorecardRules?: ReportScorecardRules | null,
+		parameters?: ReportParameter[] | nothing,
+		targets?: SearchPattern[] | nothing,
+		filtering?: ReportFilterMode | nothing,
+		places?: SearchPattern[] | nothing,
+		regions?: string[] | nothing,
+		scorecardRules?: ReportScorecardRules | nothing,
 	) {
 		this.parameters = parameters ?? [];
 		this.targets = targets || null;

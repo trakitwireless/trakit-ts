@@ -1,7 +1,7 @@
 ﻿import { IS_AN, IS_NOTHING } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { TimeSpan } from "../../API/TimeSpan";
-import { timespan, ulong } from "../../API/Types";
+import { nothing, timespan, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
@@ -40,15 +40,15 @@ export class FormFieldTime
 	maximum: TimeSpan | null;
 	
 	constructor(
-		id?: ulong,
-		name?: string,
-		kind?: FormFieldType,
-		minimum?: TimeSpan | timespan | number,
-		maximum?: TimeSpan | timespan | number,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean
+		id?: ulong | nothing,
+		name?: string | nothing,
+		kind?: FormFieldType | nothing,
+		minimum?: TimeSpan | timespan | number | nothing,
+		maximum?: TimeSpan | timespan | number | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		super(
 			id,

@@ -1,4 +1,4 @@
-﻿import { ulong } from '../../API/Types';
+﻿import { nothing, ulong } from '../../API/Types';
 import { FormFieldType } from '../FormFieldType';
 import { FormFieldBase } from './FormFieldBase';
 
@@ -20,12 +20,12 @@ export class FormFieldSignature
 	}
 
 	constructor(
-		id?: ulong,
-		name?: string,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean
+		id?: ulong | nothing,
+		name?: string | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		super(
 			id,

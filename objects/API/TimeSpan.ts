@@ -1,6 +1,6 @@
 ﻿import { ABS, FLOAT, FLOOR } from "./Constants";
 import { IS_NOTHING, IS_NUMBER, ZERO_PADDED } from "./Functions";
-import { timespan, } from "./Types";
+import { nothing, timespan, } from "./Types";
 
 /**
  * The number of milliseconds in other kinds of time measurements.
@@ -53,7 +53,7 @@ export class TimeSpan {
 	/**
 	 * @param duration		A time-span formatted string, or a number representing milliseconds
 	 */
-	constructor(duration?: TimeSpan | timespan | number | null) {
+	constructor(duration?: TimeSpan | timespan | number | nothing) {
 		if (!IS_NOTHING(duration)) this.add(duration);
 	}
 

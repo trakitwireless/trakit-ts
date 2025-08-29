@@ -1,4 +1,4 @@
-﻿import { codified, ulong } from '../../API/Types';
+﻿import { codified, nothing, ulong } from '../../API/Types';
 import { PermissionType } from './PermissionType';
 import { PermissionLevel } from './PermissionLevel';
 import { PermissionMethod } from './PermissionMethod';
@@ -65,16 +65,16 @@ export class Permission
 	labels: codified[];
 
 	constructor(
-		company?: ulong,
-		kind?: PermissionType,
-		level: PermissionLevel = PermissionLevel.read,
-		method: PermissionMethod = PermissionMethod.grant,
-		labels?: codified[] | null,
+		company?: ulong | nothing,
+		kind?: PermissionType | nothing,
+		level: PermissionLevel | nothing = PermissionLevel.read,
+		method: PermissionMethod | nothing = PermissionMethod.grant,
+		labels?: codified[] | nothing,
 	) {
 		this.companyId = ID(company);
 		this.kind = PermissionType[kind as PermissionType];
-		this.level = PermissionLevel[level] || PermissionLevel.read;
-		this.method = PermissionMethod[method] || PermissionMethod.grant;
+		this.level = PermissionLevel[level as PermissionLevel] || PermissionLevel.read;
+		this.method = PermissionMethod[method as PermissionMethod] || PermissionMethod.grant;
 		this.labels = labels || [];
 	}
 

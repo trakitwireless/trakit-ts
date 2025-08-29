@@ -1,4 +1,5 @@
 ﻿import { ISerializable } from "../Interfaces/ISerializable";
+import { nothing } from "../Types";
 import { IStreetAddress, } from "./Interfaces";
 
 /**
@@ -59,14 +60,14 @@ export class StreetAddress
 	isToll: boolean;
 
 	constructor(
-		number?: string | null,
-		street?: string | null,
-		city?: string | null,
-		region?: string | null,
-		province?: string,
-		country?: string,
-		postal?: string | null,
-		isToll?: boolean,
+		number?: string | nothing,
+		street?: string | nothing,
+		city?: string | nothing,
+		region?: string | nothing,
+		province?: string | nothing,
+		country?: string | nothing,
+		postal?: string | nothing,
+		isToll?: boolean | nothing,
 	) {
 		this.number = String(number ?? "").trim();
 		this.street = String(street ?? "").trim();

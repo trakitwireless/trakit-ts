@@ -1,7 +1,7 @@
 ﻿import { FLOAT } from "../../API/Constants";
 import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
-import { byte, ulong, ushort } from "../../API/Types";
+import { byte, nothing, ulong, ushort } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
@@ -33,15 +33,15 @@ export class FormFieldText
 	maximum: ushort;
 	
 	constructor(
-		id?: ulong,
-		name?: string,
-		rows?: byte,
-		minimum?: ushort,
-		maximum?: ushort,
-		notes?: string,
-		required?: boolean,
-		value?: string | null,
-		editable?: boolean
+		id?: ulong | nothing,
+		name?: string | nothing,
+		rows?: byte | nothing,
+		minimum?: ushort | nothing,
+		maximum?: ushort | nothing,
+		notes?: string | nothing,
+		required?: boolean | nothing,
+		value?: string | nothing,
+		editable?: boolean | nothing,
 	) {
 		super(
 			id,
