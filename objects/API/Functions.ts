@@ -13,13 +13,13 @@ import {
 } from "./Constants";
 import { ISerializable } from "./Interfaces/ISerializable";
 import { MERGE_INTERNAL } from "./Objects";
-import { datetime, ulong } from "./Types";
+import { datetime, nothing, ulong } from "./Types";
 
 /**
  * Checks for both null and undefined
  * @param value The variable to check
  */
-export function IS_NOTHING(value: any): value is null | undefined {
+export function IS_NOTHING(value: any): value is nothing {
 	return value === null
 		|| typeof value === "undefined";
 }

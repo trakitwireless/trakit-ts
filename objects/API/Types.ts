@@ -1,4 +1,9 @@
-﻿//#region Number formats
+﻿/**
+ * Represents the absence of a value.
+ **/
+export type nothing = undefined | null;
+
+//#region Number formats
 /**
  * 8bit integer
  * @example minimum value (-128) to maximum value (127)
