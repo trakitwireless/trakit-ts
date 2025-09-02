@@ -666,7 +666,7 @@ export {
 //#endregion Behaviours
 //#region Billing
 export {
-    BillableHostingDiscount,
+    // BillableHostingDiscount,
     BillableHostingLicense,
     BillableHostingLicenseType,
     BillableHostingRule,

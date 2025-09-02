@@ -223,7 +223,7 @@ export class SearchPattern {
 	 * Creates a single string from the given array of {@link SearchPattern}s for easier serialization.
 	 * @param patterns
 	 */
-	static stringify(patterns?: SearchPattern[] | nothing): string | nothing {
+	static stringify(patterns?: SearchPattern[] | nothing): string | null {
 		const expressions = (patterns || []).map(p => p.toString());
 		return expressions.length === 0
 			? null
