@@ -1,3 +1,4 @@
+import { IBelongCompany } from "objects/API/Interfaces/IBelongCompany";
 import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
@@ -12,7 +13,7 @@ import { Company } from "./Company";
  */
 export class CompanyGeneral
 	extends BaseComponent
-	implements IIdUlong, INamed, IAmCompany {
+	implements IIdUlong, INamed, IAmCompany, IBelongCompany {
 	/**
 	 * Unique identifier of the Company.
 	 * {@link Company.id}
@@ -68,4 +69,10 @@ export class CompanyGeneral
 	 * The {@link id} is the key.
 	 */
 	getKey(): string { return this.id.toString(); }
+	
+	// IBelongCompany
+	set companyId(value: number) { this.parentId = value; }
+	get companyId(): number { return this.parentId; }
+	set company(value: Company) { this.parentId = value?.id ?? NaN; }
+	get company(): Company { return this.parent; }
 }

@@ -10,7 +10,7 @@ import { MAP_FILTERED_BY_COMPANY } from '../API/Maps';
 import { MERGE } from '../API/Objects';
 import { codified, ulong } from '../API/Types';
 import { Picture } from '../Images/Picture';
-import { COMPANIES, CONTACTS, PICTURES } from '../storage';
+import { CONTACTS, PICTURES } from '../storage';
 import { CompanyDirectory } from './CompanyDirectory';
 import { CompanyGeneral } from './CompanyGeneral';
 import { CompanyPolicies } from './CompanyPolicies';
@@ -70,9 +70,6 @@ export class Company
 		this.styles.parentId = value;
 		if (this.reseller) this.reseller.parentId = value;
 	}
-	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
-	get companyId(): number { return this.parentId; }
-	set companyId(value: number) { this.parentId = value; }
 
 	/**
 	 *  
@@ -188,6 +185,12 @@ export class Company
 	 * The {@link id} is the key.
 	 */
 	getKey(): string { return this.id.toString(); }
+	
+	// IBelongCompany
+	set companyId(value: number) { this.parentId = value; }
+	get companyId(): number { return this.parentId; }
+	set company(value: Company) { this.parentId = value?.id ?? NaN; }
+	get company(): Company { return this.parent; }
 
 	/**
 	 * 

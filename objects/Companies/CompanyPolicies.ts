@@ -1,4 +1,5 @@
-﻿import { BaseComponent } from "../API/BaseComponent";
+﻿import { IBelongCompany } from "objects/API/Interfaces/IBelongCompany";
+import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -13,7 +14,7 @@ import { SessionPolicy } from "./SessionPolicy";
  */
 export class CompanyPolicies
 	extends BaseComponent
-	implements IIdUlong, IAmCompany {
+	implements IIdUlong, IAmCompany, IBelongCompany {
 	/**
 	 * Unique identifier of the Company.
 	 * {@link Company.id}
@@ -62,4 +63,10 @@ export class CompanyPolicies
 	 * The {@link id} is the key.
 	 */
 	getKey(): string { return this.id.toString(); }
+
+	// IBelongCompany
+	set companyId(value: number) { this.parentId = value; }
+	get companyId(): number { return this.parentId; }
+	set company(value: Company) { this.parentId = value?.id ?? NaN; }
+	get company(): Company { return this.parent; }
 }
