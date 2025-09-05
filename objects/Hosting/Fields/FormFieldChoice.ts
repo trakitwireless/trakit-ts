@@ -1,4 +1,4 @@
-﻿import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT } from "../../API/Functions";
+﻿import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON } from "../../API/Functions";
 import { MERGE } from "../../API/Objects";
 import { byte, nothing, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
@@ -87,7 +87,7 @@ export class FormFieldChoice
 	}
 	override toJSON() {
 		return MERGE(super.toJSON(), {
-			"choices": MAP_TO_OBJECT(this.choices),
+			"choices": MAP_TO_JSON(this.choices),
 			"minimum": JSON_NUMBER(this.minimum),
 			"maximum": JSON_NUMBER(this.maximum),
 		});

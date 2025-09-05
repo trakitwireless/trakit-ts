@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -78,7 +78,7 @@ export class BehaviourScript
 			"global": !!this.global,
 			"source": this.source || "",
 			"filters": SearchPattern.stringify(this.filters),
-			"parameters": MAP_TO_OBJECT_VALUE_JSON(this.parameters),
+			"parameters": MAP_TO_JSON(this.parameters),
 			"fill": this.fill || "",
 			"stroke": this.stroke || "",
 			"graphic": this.graphic || "",
@@ -94,7 +94,7 @@ export class BehaviourScript
 			this.global = !!json["global"];
 			this.source = json["source"] || "";
 			this.filters = SearchPattern.parse(json["filters"]);
-			this.parameters = OBJECT_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
+			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
 			this.fill = json["fill"] || "";
 			this.stroke = json["stroke"] || "";
 			this.graphic = json["graphic"] || "";

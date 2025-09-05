@@ -1,5 +1,5 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
-import { ID, MAP_TO_OBJECT, MAP_TO_OBJECT_PREDICATE, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, MAP_TO_JSON, MAP_TO_JSON_PREDICATE, JSON_TO_MAP, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { ipv4, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -47,11 +47,11 @@ export class ProviderAdvanced
 			"v": [...this.v],
 			"company": this.companyId,
 			"lastIP": this.lastIP || "",
-			"attributes": MAP_TO_OBJECT_PREDICATE(
+			"attributes": MAP_TO_JSON_PREDICATE(
 				this.attributes,
-				(group, data) => [group, MAP_TO_OBJECT_VALUE_JSON(data)]
+				(group, data) => [group, MAP_TO_JSON(data)]
 			),
-			"snf": MAP_TO_OBJECT(this.snf),
+			"snf": MAP_TO_JSON(this.snf),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
@@ -60,11 +60,11 @@ export class ProviderAdvanced
 			this.id = json["id"] || "";
 			this.companyId = ID(json["company"]);
 			this.lastIP = json["lastIP"] || "";
-			this.attributes = OBJECT_TO_MAP_BY_PREDICATE(
+			this.attributes = JSON_TO_MAP_BY_PREDICATE(
 				json["attributes"] || {},
 				(group, data) => [
 					group,
-					OBJECT_TO_MAP_BY_PREDICATE(
+					JSON_TO_MAP_BY_PREDICATE(
 						data || {},
 						(n, d) => [
 							n,
@@ -73,7 +73,7 @@ export class ProviderAdvanced
 					)
 				]
 			);
-			this.snf = OBJECT_TO_MAP(json["snf"] || {});
+			this.snf = JSON_TO_MAP(json["snf"] || {});
 		}
 		return update;
 	}

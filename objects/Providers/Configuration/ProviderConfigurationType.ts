@@ -1,5 +1,5 @@
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT_VALUE_JSON } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON } from "../../API/Functions";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { uint, ulong } from "../../API/Types";
@@ -57,7 +57,7 @@ export class ProviderConfigurationType
 			"providerType": ProviderType[this.providerType] || ProviderType.unknown,
 			"maxGeofenceCount": JSON_NUMBER(this.maxGeofenceCount),
 			"minGeofenceCount": JSON_NUMBER(this.minGeofenceCount),
-			"scriptOptions": MAP_TO_OBJECT_VALUE_JSON(this.scriptOptions),
+			"scriptOptions": MAP_TO_JSON(this.scriptOptions),
 			"geofenceTypes": this.geofenceTypes.map(g => PlaceType[g] || null),
 		};
 	}

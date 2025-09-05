@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, JSON_DATE, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP, PHONE_PARSE } from "../API/Functions";
+import { DATE, ID, JSON_DATE, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP, PHONE_PARSE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
@@ -116,7 +116,7 @@ export class ProviderGeneral
 					"password": this.password || "",
 					"firmware": this.firmware || "",
 					"phoneNumber": JSON_NUMBER(this.phoneNumber),
-					"information": MAP_TO_OBJECT(this.information),
+					"information": MAP_TO_JSON(this.information),
 					"sim": this.sim || "",
 				}
 		);
@@ -134,7 +134,7 @@ export class ProviderGeneral
 			this.password = json["password"] || "";
 			this.firmware = json["firmware"] || "";
 			this.phoneNumber = PHONE_PARSE(json["phoneNumber"]);
-			this.information = OBJECT_TO_MAP(json["information"] || {});
+			this.information = JSON_TO_MAP(json["information"] || {});
 			this.sim = json["sim"] || "";
 			this.suspended = !!json["suspended"];
 			this.since = DATE(json["since"]);

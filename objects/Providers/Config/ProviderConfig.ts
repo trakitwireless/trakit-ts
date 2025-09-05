@@ -1,5 +1,5 @@
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
@@ -68,7 +68,7 @@ export class ProviderConfig
 			"script": JSON_NUMBER(this.scriptId),
 			"name": this.name || "",
 			"notes": this.notes || "",
-			"parameters": MAP_TO_OBJECT(this.parameters),
+			"parameters": MAP_TO_JSON(this.parameters),
 			"geofences": SearchPattern.stringify(this.geofences),
 		};
 	}
@@ -80,7 +80,7 @@ export class ProviderConfig
 			this.scriptId = ID(json["script"]);
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
-			this.parameters = OBJECT_TO_MAP(json["parameters"] || {});
+			this.parameters = JSON_TO_MAP(json["parameters"] || {});
 			this.geofences = SearchPattern.parse(json["geofences"]);
 		}
 		return update;

@@ -73,6 +73,18 @@ export function IS_AN(value: any): value is number {
 		&& !isNaN(value)
 		&& isFinite(value);
 }
+/**
+ * Almost the same as {@link isNaN}.
+ * This function returns {@code false} if the {@param value} is not a number, or if the number is {@code NaN} or {@code Infinity}.
+ * @param value The variable to check
+ */
+export function IS_NAN(value: any): value is number {
+	return IS_NUMBER(value)
+		&& (
+			isNaN(value)
+			|| !isFinite(value)
+		);
+}
 
 /**
  * Rounds a number to the desired number of decimal places. Using a negative places value will round to the nearest ten.
@@ -286,13 +298,20 @@ export function ZERO_PADDED(
  * @param deep 
  * @returns 
  */
-export function MAP_TO_OBJECT(
+export function MAP_TO_JSON(
 	source: Map<any, any>,
 	deep: boolean = true
 ): object {
-	return MAP_TO_OBJECT_PREDICATE(
+	return MAP_TO_JSON_PREDICATE(
 		source,
-		(k, v) => [k, deep ? MERGE_INTERNAL(v) : v]
+		(k, v) => [
+			k,
+			(typeof v?.toJSON) === "function"
+				? v.toJSON()
+				: deep
+					? MERGE_INTERNAL(v)
+					: v
+		]
 	);
 }
 /**
@@ -301,7 +320,7 @@ export function MAP_TO_OBJECT(
  * @param deep 
  * @returns 
  */
-export function MAP_TO_OBJECT_PREDICATE<K, V>(
+export function MAP_TO_JSON_PREDICATE<K, V>(
 	source: Map<K, V>,
 	predicate: (key: K, value: V)=> [string, any]
 ): object {
@@ -313,20 +332,20 @@ export function MAP_TO_OBJECT_PREDICATE<K, V>(
 	return target;
 }
 
-/**
- * 
- * @param source 
- * @param deep 
- * @returns 
- */
-export function MAP_TO_OBJECT_VALUE_JSON<V extends ISerializable>(
-	source: Map<any, V>
-): object {
-	return MAP_TO_OBJECT_PREDICATE(
-		source,
-		(k, v) => [k, v.toJSON()]
-	);
-}
+// /**
+//  * 
+//  * @param source 
+//  * @param deep 
+//  * @returns 
+//  */
+// export function MAP_TO_OBJECT_VALUE_JSON<V extends ISerializable>(
+// 	source: Map<any, V>
+// ): object {
+// 	return MAP_TO_OBJECT_PREDICATE(
+// 		source,
+// 		(k, v) => [k, v.toJSON()]
+// 	);
+// }
 
 /**
  * 
@@ -334,14 +353,13 @@ export function MAP_TO_OBJECT_VALUE_JSON<V extends ISerializable>(
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
+export function JSON_TO_MAP_BY_PREDICATE<K, V>(
 	source: object,
 	predicate: (key: string, value: any) => [K, V]
 ) {
-	const keys = KEYS(source),
-		target: Map<K, V> = new Map;
-	for (let i = 0; i < keys.length; i++) {
-		const [key, value] = predicate(keys[i], (source as any)[keys[i]]);
+	const target: Map<K, V> = new Map;
+	for (const [objKey, objValue] of Object.entries(source)) {
+		const [key, value] = predicate(objKey, objValue);
 		target.set(key, value);
 	}
 	return target;
@@ -352,11 +370,11 @@ export function OBJECT_TO_MAP_BY_PREDICATE<K, V>(
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP(
+export function JSON_TO_MAP(
 	source: object,
 	deep: boolean = false
 ) {
-	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
+	return JSON_TO_MAP_BY_PREDICATE<string, any>(
 		source,
 		(k, v) => [k, deep ? MERGE_INTERNAL(v) : v]
 	);
@@ -367,11 +385,11 @@ export function OBJECT_TO_MAP(
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP_KEY_CODIFIED(
+export function JSON_TO_MAP_KEY_CODIFIED(
 	source: object,
 	deep: boolean = false
 ) {
-	return OBJECT_TO_MAP_BY_PREDICATE<string, any>(
+	return JSON_TO_MAP_BY_PREDICATE<string, any>(
 		source,
 		(k, v) => [CODIFY(k), deep ? MERGE_INTERNAL(v) : v]
 	);
@@ -382,11 +400,11 @@ export function OBJECT_TO_MAP_KEY_CODIFIED(
  * @param deep 
  * @returns 
  */
-export function OBJECT_TO_MAP_KEY_ULONG(
+export function JSON_TO_MAP_KEY_ULONG(
 	source: object,
 	deep: boolean = false
 ) {
-	return OBJECT_TO_MAP_BY_PREDICATE<ulong, any>(
+	return JSON_TO_MAP_BY_PREDICATE<ulong, any>(
 		source,
 		(k, v) => [ID(k), deep ? MERGE_INTERNAL(v) : v]
 	);

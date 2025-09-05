@@ -66,7 +66,12 @@ import {
     DOUGLASPEUCKER,
     ID,
     IS_AN,
+    IS_NAN,
     IS_NOTHING,
+    JSON_TO_MAP,
+    JSON_TO_MAP_BY_PREDICATE,
+    MAP_TO_JSON,
+    MAP_TO_JSON_PREDICATE,
     PHONE_PARSE,
     PLURAL,
     PYTHAGORA,
@@ -443,6 +448,7 @@ export const utility = {
     highlight: HIGHLIGHT,
     id: ID,
     isNothing: IS_NOTHING,
+    isNaN: IS_NAN,
     isntNaN: IS_AN,
     merge: MERGE,
     numberGroups: NUMBER_GROUPS,
@@ -462,6 +468,15 @@ export const convert = CONVERT;
 export const encoding = {
     toPassword: PASSWORD_ENCODE,
     fromPassword: PASSWORD_DECODE,
+};
+/**
+ * Functions for converting between JSON objects using our custom serialization.
+ */
+export const json = {
+	fromMap: MAP_TO_JSON,
+	fromMapPredicate: MAP_TO_JSON_PREDICATE,
+	toMap: JSON_TO_MAP,
+	toMapPredicate: JSON_TO_MAP_BY_PREDICATE,
 };
 /**
  * Common classes used throughout the API, and the Base classes used for synchronizable objects.

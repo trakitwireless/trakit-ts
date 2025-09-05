@@ -1,6 +1,6 @@
 import { IBelongCompany } from "objects/API/Interfaces/IBelongCompany";
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -49,7 +49,7 @@ export class CompanyGeneral
 			"parent": this.parentId,
 			"name": this.name,
 			"notes": this.notes,
-			"references": MAP_TO_OBJECT(this.references),
+			"references": MAP_TO_JSON(this.references),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
@@ -59,7 +59,7 @@ export class CompanyGeneral
 			this.parentId = ID(json["parent"]);
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
-			this.references = OBJECT_TO_MAP(json["references"] || {});
+			this.references = JSON_TO_MAP(json["references"] || {});
 		}
 		return update;
 	}

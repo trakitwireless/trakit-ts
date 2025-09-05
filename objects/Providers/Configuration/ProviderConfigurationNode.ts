@@ -1,5 +1,5 @@
 ﻿import { KEYS } from '../../API/Constants';
-import { MAP_TO_OBJECT_VALUE_JSON } from '../../API/Functions';
+import { MAP_TO_JSON } from '../../API/Functions';
 import { ISerializable, } from '../../API/Interfaces/ISerializable';
 
 /**
@@ -107,7 +107,7 @@ export class ProviderConfigurationNode
 			"unit": this.unit || "",
 			"notes": this.notes || "",
 			"isAdvanced": !!this.isAdvanced,
-			"nodes": MAP_TO_OBJECT_VALUE_JSON(this.nodes),
+			"nodes": MAP_TO_JSON(this.nodes),
 		}
 	}
 }
