@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, JSON_DATE, ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -104,7 +104,7 @@ export class DispatchJob
 			"name": this.name || "",
 			"instructions": this.instructions || "",
 			"priority": this.priority || DispatchJobPriority.standby,
-			"references": MAP_TO_OBJECT(this.references),
+			"references": MAP_TO_JSON(this.references),
 			"labels": [...this.labels],
 			"tags": this.tags || [],
 			"forms": [...this.formIds],
@@ -123,7 +123,7 @@ export class DispatchJob
 			this.name = json["name"] || "";
 			this.instructions = json["instructions"] || "";
 			this.priority = DispatchJobPriority[json["priority"] as DispatchJobPriority] || DispatchJobPriority.standby;
-			this.references = OBJECT_TO_MAP(json["references"]);
+			this.references = JSON_TO_MAP(json["references"]);
 			this.labels = [...(json["labels"] || [])];
 			this.tags = [...(json["tags"] || [])];
 			this.formIds = (json["forms"] || []).map(ID);

@@ -1,6 +1,6 @@
 ﻿import { IBelongCompany } from "objects/API/Interfaces/IBelongCompany";
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, JSON_NUMBER, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { codified, ulong } from "../API/Types";
@@ -43,7 +43,7 @@ export class CompanyDirectory
 			"id": JSON_NUMBER(this.id),
 			"v": [...this.v],
 			"parent": this.parentId,
-			"directory": MAP_TO_OBJECT(this.employees),
+			"directory": MAP_TO_JSON(this.employees),
 		};
 	}
 	/**
@@ -55,7 +55,7 @@ export class CompanyDirectory
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.employees = OBJECT_TO_MAP(json["directory"] || {});
+			this.employees = JSON_TO_MAP(json["directory"] || {});
 		}
 		return update;
 	}

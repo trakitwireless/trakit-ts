@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, JSON_DATE, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, ID, JSON_DATE, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -115,7 +115,7 @@ export class AssetGeneral
 					"since": JSON_DATE(this.since),
 				}
 				: {
-					"references": MAP_TO_OBJECT(this.references),
+					"references": MAP_TO_JSON(this.references),
 					"messagingAddress": this.messagingAddress,
 					"pictures": [...this.pictureIds],
 				}
@@ -130,7 +130,7 @@ export class AssetGeneral
 			this.notes = json["notes"] || "";
 			this.suspended = !!json["suspended"];
 			this.since = DATE(json["since"]);
-			this.references = OBJECT_TO_MAP(json["references"] || {});
+			this.references = JSON_TO_MAP(json["references"] || {});
 			this.labels = [...(json["labels"] || [])];
 			this.iconId = ID(json["icon"]);
 			this.pictureIds = (json["pictures"] || []).map(ID);

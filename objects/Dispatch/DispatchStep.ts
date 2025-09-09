@@ -1,4 +1,4 @@
-import { DATE, ID, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { DATE, ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -24,7 +24,7 @@ export class DispatchStep
 		return new DispatchStep(
 			json["id"] as ulong,
 			json["name"] || "",
-			OBJECT_TO_MAP_BY_PREDICATE(
+			JSON_TO_MAP_BY_PREDICATE(
 				json["states"] || {},
 				(k, v) => [k as DispatchStepStatus, DispatchStepState.fromJSON(v)]
 			),
@@ -163,7 +163,7 @@ export class DispatchStep
 			"place": this.placeId || null,
 			"signature": !!this.signature,
 			"signatory": this.signatory || "",
-			"states": MAP_TO_OBJECT_VALUE_JSON(this.states),
+			"states": MAP_TO_JSON(this.states),
 		};
 	}
 }

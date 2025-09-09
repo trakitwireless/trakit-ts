@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -76,7 +76,7 @@ export class Behaviour
 			"targets": SearchPattern.stringify(this.targets),
 			"filters": SearchPattern.stringify(this.filters),
 			"priority": this.priority || 255,
-			"parameters": MAP_TO_OBJECT_VALUE_JSON(this.parameters),
+			"parameters": MAP_TO_JSON(this.parameters),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
@@ -90,7 +90,7 @@ export class Behaviour
 			this.priority = ID(json["priority"]);
 			this.targets = SearchPattern.parse(json["targets"]);
 			this.filters = SearchPattern.parse(json["filters"]);
-			this.parameters = OBJECT_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
+			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
 		}
 		return update;
 	}

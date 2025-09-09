@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, IS_AN, MAP_TO_OBJECT, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, JSON_DATE, ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -139,7 +139,7 @@ export class DispatchTask
 			"asset": this.assetId || null,
 			"v": [...this.v],
 			"name": this.name || "",
-			"references": MAP_TO_OBJECT(this.references),
+			"references": MAP_TO_JSON(this.references),
 			"place": this.placeId || null,
 			"address": this.address || "",
 			"latlng": this.latlng.toJSON(),
@@ -165,7 +165,7 @@ export class DispatchTask
 			this.companyId = ID(json["company"]);
 			this.assetId = ID(json["asset"]);
 			this.name = json["name"] || "";
-			this.references = OBJECT_TO_MAP(json["references"]);
+			this.references = JSON_TO_MAP(json["references"]);
 			this.placeId = ID(json["place"]);
 			this.address = json["address"] || "";
 			this.latlng = json["latlng"]

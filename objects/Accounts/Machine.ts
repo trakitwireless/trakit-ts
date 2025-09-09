@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
 import { BaseComponent, } from '../API/BaseComponent';
 import { CODIFY } from '../API/Codifier';
-import { DATE, JSON_DATE, ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from '../API/Functions';
+import { DATE, JSON_DATE, ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
@@ -125,9 +125,9 @@ export class Machine
 			"notAfter": JSON_DATE(this.notAfter),
 			"timezone": this.timezone?.code || Timezone.utc.code,
 			"language": this.language,
-			"formats": MAP_TO_OBJECT(this.formats),
-			"measurements": MAP_TO_OBJECT(this.measurements),
-			"options": MAP_TO_OBJECT(this.options),
+			"formats": MAP_TO_JSON(this.formats),
+			"measurements": MAP_TO_JSON(this.measurements),
+			"options": MAP_TO_JSON(this.options),
 			"groups": [...this.groupIds],
 			"permissions": this.permissions?.map(ARRAY_TO_JSON) ?? [],
 			"services": [...this.services],
@@ -151,9 +151,9 @@ export class Machine
 			this.notAfter = DATE(json["notAfter"]);
 			this.timezone = TIMEZONE_FIND(json["timezone"] || '') || Timezone.utc;
 			this.language = json["language"] || '';
-			this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
-			this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-			this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
+			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] || {});
+			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] || {});
 			this.groupIds = (json["groups"] || []).map(ID);
 			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
 			this.services = json["services"] || [];

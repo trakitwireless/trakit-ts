@@ -1,7 +1,7 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { ID, MAP_TO_OBJECT, OBJECT_TO_MAP_BY_PREDICATE, OBJECT_TO_MAP_KEY_CODIFIED } from "../API/Functions";
+import { ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
@@ -98,9 +98,9 @@ export class UserGeneral
 			"passwordExpired": !!this.passwordExpired,
 			"timezone": this.timezone?.code ?? Timezone.utc.code,
 			"language": this.language,
-			"formats": MAP_TO_OBJECT(this.formats),
-			"measurements": MAP_TO_OBJECT(this.measurements),
-			"options": MAP_TO_OBJECT(this.options),
+			"formats": MAP_TO_JSON(this.formats),
+			"measurements": MAP_TO_JSON(this.measurements),
+			"options": MAP_TO_JSON(this.options),
 			"notify": this.notify.map(ARRAY_TO_JSON),
 		};
 	}
@@ -115,9 +115,9 @@ export class UserGeneral
 			this.passwordExpired = !!json["passwordExpired"];
 			this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
 			this.language = json["language"] || "";
-			this.formats = OBJECT_TO_MAP_KEY_CODIFIED(json["formats"] || {});
-			this.measurements = OBJECT_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-			this.options = OBJECT_TO_MAP_KEY_CODIFIED(json["options"] || {});
+			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] || {});
+			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] || {});
 			this.notify = (json["notify"] || []).map((notify: any) => new UserNotifications(notify));
 		}
 		return update;

@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { DATE, ID, IS_AN, MAP_TO_OBJECT, MAP_TO_OBJECT_PREDICATE, OBJECT_TO_MAP, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_TO_MAP, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -181,13 +181,13 @@ export class Contact
 			"company": this.companyId,
 			"name": this.name || "",
 			"notes": this.notes || "",
-			"otherNames": MAP_TO_OBJECT(this.otherNames),
-			"emails": MAP_TO_OBJECT(this.emails),
-			"phones": MAP_TO_OBJECT(this.phones),
-			"addresses": MAP_TO_OBJECT(this.addresses),
-			"urls": MAP_TO_OBJECT(this.urls),
-			"dates": MAP_TO_OBJECT_PREDICATE(this.dates, (k, v) => [k, v.toISOString()]),
-			"options": MAP_TO_OBJECT(this.options),
+			"otherNames": MAP_TO_JSON(this.otherNames),
+			"emails": MAP_TO_JSON(this.emails),
+			"phones": MAP_TO_JSON(this.phones),
+			"addresses": MAP_TO_JSON(this.addresses),
+			"urls": MAP_TO_JSON(this.urls),
+			"dates": MAP_TO_JSON(this.dates),
+			"options": MAP_TO_JSON(this.options),
 			"roles": [...this.roles],
 			"pictures": [...this.pictureIds],
 		};
@@ -199,13 +199,13 @@ export class Contact
 			this.companyId = ID(json["company"]);
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
-			this.emails = OBJECT_TO_MAP(json["emails"] || {}, false);
-			this.phones = OBJECT_TO_MAP(json["phones"] || {}, false);
-			this.addresses = OBJECT_TO_MAP(json["addresses"] || {}, false);
-			this.urls = OBJECT_TO_MAP(json["urls"] || {}, false);
-			this.dates = OBJECT_TO_MAP_BY_PREDICATE(json["dates"] || {}, (k, v) => [k, DATE(v)]);
-			this.options = OBJECT_TO_MAP(json["options"] || {}, false);
-			this.otherNames = OBJECT_TO_MAP(json["otherNames"] || {}, false);
+			this.emails = JSON_TO_MAP(json["emails"] || {}, false);
+			this.phones = JSON_TO_MAP(json["phones"] || {}, false);
+			this.addresses = JSON_TO_MAP(json["addresses"] || {}, false);
+			this.urls = JSON_TO_MAP(json["urls"] || {}, false);
+			this.dates = JSON_TO_MAP_BY_PREDICATE(json["dates"] || {}, (k, v) => [k, DATE(v)]);
+			this.options = JSON_TO_MAP(json["options"] || {}, false);
+			this.otherNames = JSON_TO_MAP(json["otherNames"] || {}, false);
 			this.roles = (json["roles"] || []).map(CODIFY);
 			this.pictureIds = (json["pictures"] || []).map(ID);
 		}

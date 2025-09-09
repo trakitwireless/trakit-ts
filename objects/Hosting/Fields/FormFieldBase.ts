@@ -1,4 +1,4 @@
-﻿import { ID, OBJECT_TO_MAP } from '../../API/Functions';
+﻿import { ID, JSON_TO_MAP } from '../../API/Functions';
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
 import { ISerializable } from '../../API/Interfaces/ISerializable';
@@ -44,7 +44,7 @@ export abstract class FormFieldBase
 					json["id"] as ulong,
 					json["name"] as string,
 					json["kind"] as FormFieldType,
-					OBJECT_TO_MAP(json["choices"]),
+					JSON_TO_MAP(json["choices"]),
 					json["minimum"] as byte,
 					json["maximum"] as byte,
 					json["notes"] as string,

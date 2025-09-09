@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, MAP_TO_OBJECT, OBJECT_TO_MAP_KEY_ULONG } from "../API/Functions";
+import { DATE, JSON_DATE, ID, MAP_TO_JSON, JSON_TO_MAP_KEY_ULONG } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -97,7 +97,7 @@ export class FormResult
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"labels": [...this.labels],
-			"fields": MAP_TO_OBJECT(this.fields),
+			"fields": MAP_TO_JSON(this.fields),
 			"completed": JSON_DATE(this.completed),
 			"latlng": this.latlng?.toJSON() ?? null,
 			"driver": this.driver || null,
@@ -113,7 +113,7 @@ export class FormResult
 			this.name = json["name"] || "";
 			this.notes = json["notes"] || "";
 			this.labels = [...(json["labels"] || [])];
-			this.fields = OBJECT_TO_MAP_KEY_ULONG(json["fields"] || {});
+			this.fields = JSON_TO_MAP_KEY_ULONG(json["fields"] || {});
 			this.completed = DATE(json["completed"]);
 			this.latlng = json["latlng"]
 				? LatLng.fromJSON(json["latlng"])

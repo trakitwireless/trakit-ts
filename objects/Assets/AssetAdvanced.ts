@@ -1,7 +1,7 @@
 ﻿import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -97,10 +97,10 @@ export class AssetAdvanced
 			"position": this.position?.toJSON() || null,
 			"odometer": this.odometer || 0,
 			"tags": [...this.tags],
-			"attributes": MAP_TO_OBJECT_VALUE_JSON(this.attributes),
+			"attributes": MAP_TO_JSON(this.attributes),
 			"providers": [...this.providerIds],
 			"relationships": [...this.relationshipIds],
-			"places": MAP_TO_OBJECT_VALUE_JSON(this.places),
+			"places": MAP_TO_JSON(this.places),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
@@ -124,9 +124,9 @@ export class AssetAdvanced
 				);
 			this.odometer = FLOAT(json["odometer"]);
 			this.tags = [...(json["tags"] || [])];
-			this.attributes = OBJECT_TO_MAP_BY_PREDICATE(json["attributes"] || {}, (key, attr) => [key, new AssetAttribute(attr)]);
+			this.attributes = JSON_TO_MAP_BY_PREDICATE(json["attributes"] || {}, (key, attr) => [key, new AssetAttribute(attr)]);
 			this.relationshipIds = (json["relationships"] || []).map(ID);
-			this.places = OBJECT_TO_MAP_BY_PREDICATE(json["places"] || {}, (id, ps) => [ID(id), new AssetPlaceStatus(ps)]);
+			this.places = JSON_TO_MAP_BY_PREDICATE(json["places"] || {}, (id, ps) => [ID(id), new AssetPlaceStatus(ps)]);
 		}
 		return update;
 	}

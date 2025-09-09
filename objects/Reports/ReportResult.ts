@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_NUMBER, OBJECT_TO_MAP } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER, JSON_TO_MAP } from "../API/Functions";
 import { LatLngBounds } from "../API/Geography/LatLngBounds";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";

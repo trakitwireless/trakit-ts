@@ -1,6 +1,6 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN, MAP_TO_OBJECT_VALUE_JSON, OBJECT_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -127,7 +127,7 @@ export class MaintenanceSchedule
 			"recurDays": this.recurDays || null,
 			"recurDistance": this.recurDistance || null,
 			"recurEngineHours": this.recurEngineHours || null,
-			"intervals": MAP_TO_OBJECT_VALUE_JSON(this.intervals),
+			"intervals": MAP_TO_JSON(this.intervals),
 		};
 	}
 	override fromJSON(json: any, force?: boolean): boolean {
@@ -150,7 +150,7 @@ export class MaintenanceSchedule
 			this.recurDays = ID(json["recurDays"]);
 			this.recurDistance = FLOAT(json["recurDistance"]);
 			this.recurEngineHours = FLOAT(json["recurEngineHours"]);
-			this.intervals = OBJECT_TO_MAP_BY_PREDICATE(
+			this.intervals = JSON_TO_MAP_BY_PREDICATE(
 				json["intervals"] || {},
 				(k, v) => [ID(k), MaintenanceInterval.fromJSON(v)]
 			);
