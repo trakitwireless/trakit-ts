@@ -26,9 +26,7 @@ type Spread<A extends readonly [...any]> = A extends [infer L, ...infer R]
 /**
  * Does a deep copy of values from one object to another.
  * If multiple objects are given, properties are not overwritten.
- * @param target
  * @param sources
- * @returns target
  */
 export function MERGE<A extends object[]>(...sources: [...A]): Spread<A> {
   const target: any = {};
@@ -48,7 +46,6 @@ export function MERGE<A extends object[]>(...sources: [...A]): Spread<A> {
 /**
  * Used internally by {@link MERGE}.
  * @param value
- * @param goDeep
  */
 export function MERGE_INTERNAL(value: any): any {
   if (value instanceof Array) {

@@ -303,7 +303,7 @@ export function MAP_TO_OBJECT(
  */
 export function MAP_TO_OBJECT_PREDICATE<K, V>(
 	source: Map<K, V>,
-	predicate: (key: K, value: V)=> [string, any]
+	predicate: (key: K, value: V) => [string, any]
 ): object {
 	const target: any = {};
 	for (let [k, v] of source.entries()) {
