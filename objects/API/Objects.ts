@@ -70,7 +70,7 @@ export function MERGE_INTERNAL(value: any): any {
 		);
 	} else if (IS_NOTHING(value) || IS_NAN(value)) {
 		return null;
-	} else if (value && typeof value === "object") {
+	} else if (typeof value === "object") {
 		return MERGE({}, value);
 	} else {
 		return value;
