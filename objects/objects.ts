@@ -472,7 +472,7 @@ export const encoding = {
 /**
  * Functions for converting between JSON objects using our custom serialization.
  */
-export const json = {
+export const serialization = {
 	fromMap: MAP_TO_JSON,
 	fromMapPredicate: MAP_TO_JSON_PREDICATE,
 	toMap: JSON_TO_MAP,
