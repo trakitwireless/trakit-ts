@@ -10,6 +10,23 @@ import { PermissionType } from "./PermissionType";
  */
 export class PermissionEscalation {
 	/**
+	 * Parses a JSON object into a PermissionEscalation instance.
+	 * @param json The JSON to parse.
+	 * @returns A PermissionEscalation instance.
+	 */
+	static fromJSON(json: any): PermissionEscalation {
+		return new PermissionEscalation(
+			json?.direction,
+			json?.company,
+			json?.kind,
+			json?.after?.level,
+			json?.after?.labels,
+			json?.before?.level,
+			json?.before?.labels,
+		);
+	}
+
+	/**
 	 * Gets the direction of the escalation.
 	 */
 	direction: PermissionEscalationType;
