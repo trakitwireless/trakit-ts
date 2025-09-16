@@ -30,7 +30,7 @@ export class Rectangle implements IRectangle {
 	/**
 	 * Returns a new {@link Radial} from the given object.
 	 */
-	static fromObject(rectangle: any): IRectangle {
+	static fromJSON(rectangle: any): IRectangle {
 		rectangle = rectangle || {};
 		const hasLeft = IS_AN(rectangle.left),
 			hasTop = IS_AN(rectangle.top),

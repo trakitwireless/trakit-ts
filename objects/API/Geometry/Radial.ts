@@ -22,7 +22,7 @@ export class Radial
 	 * Returns a new {@link Radial} from the given object.
 	 * @param object	
 	 */
-	static fromObject(object: any): Radial {
+	static fromJSON(object: any): Radial {
 		return new Radial(
 			object.x,
 			object.y,
