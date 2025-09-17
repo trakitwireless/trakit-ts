@@ -11,8 +11,8 @@ import {
 export class Size implements ISize {
 	static fromJSON(json: any): Size {
 		return new Size(
-			json?.width as number,
-			json?.height as number,
+			json?.width,
+			json?.height,
 		);
 	}
 	/**

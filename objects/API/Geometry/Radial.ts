@@ -24,9 +24,9 @@ export class Radial
 	 */
 	static fromJSON(object: any): Radial {
 		return new Radial(
-			object.x,
-			object.y,
-			object.r
+			object?.x,
+			object?.y,
+			object?.r
 		);
 	}
 
@@ -50,9 +50,9 @@ export class Radial
 	)
 	constructor(...args: (number | undefined | RadialExpansion)[]) {
 		if (IS_AN(args[0]) && IS_AN(args[1]) && IS_AN(args[2])) {
-			this.x = FLOAT(args[0] as any);
-			this.y = FLOAT(args[1] as any);
-			this.r = FLOAT(args[2] as any);
+			this.x = args[0];
+			this.y = args[1];
+			this.r = args[2];
 		} else {
 			this.__expander(args as RadialExpansion[]);
 		}

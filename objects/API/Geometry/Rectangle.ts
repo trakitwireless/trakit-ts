@@ -31,13 +31,12 @@ export class Rectangle implements IRectangle {
 	 * Returns a new {@link Radial} from the given object.
 	 */
 	static fromJSON(rectangle: any): IRectangle {
-		rectangle = rectangle || {};
-		const hasLeft = IS_AN(rectangle.left),
-			hasTop = IS_AN(rectangle.top),
-			hasRight = IS_AN(rectangle.right),
-			hasBottom = IS_AN(rectangle.bottom),
-			hasWidth = IS_AN(rectangle.width),
-			hasHeight = IS_AN(rectangle.height);
+		const hasLeft = IS_AN(rectangle?.left),
+			hasTop = IS_AN(rectangle?.top),
+			hasRight = IS_AN(rectangle?.right),
+			hasBottom = IS_AN(rectangle?.bottom),
+			hasWidth = IS_AN(rectangle?.width),
+			hasHeight = IS_AN(rectangle?.height);
 		return new Rectangle(
 			hasLeft
 				? rectangle.left
@@ -95,12 +94,12 @@ export class Rectangle implements IRectangle {
 	)
 	constructor(...args: (number | undefined | RectangleExpansion)[]) {
 		if (IS_AN(args[0]) && IS_AN(args[1]) && IS_AN(args[2]) && IS_AN(args[3])) {
-			this.left = FLOAT(args[0] as any);
-			this.top = FLOAT(args[1] as any);
-			this.right = FLOAT(args[2] as any);
-			this.bottom = FLOAT(args[3] as any);
+			this.left = args[0];
+			this.top = args[1];
+			this.right = args[2];
+			this.bottom = args[3];
 		} else {
-			this.__expander(args as RectangleExpansion[]);
+			this.#expander(args as RectangleExpansion[]);
 		}
 	}
 
@@ -237,20 +236,20 @@ export class Rectangle implements IRectangle {
 	 * Worker function that actually extends the boundary to envelop the given point(s)/boundary(s).
 	 * @param object	The objects used to extend the boundary
 	 */
-	private __expander(object: RectangleExpansion) {
+	#expander(object: RectangleExpansion) {
 		if (object instanceof Array) {
-			object.forEach(this.__expander, this);
+			object.forEach(this.#expander, this);
 		} else if (IRadial_instanceOf(object)) {
-			this.__expander({ x: object.x + object.r, y: object.y + object.r });
-			this.__expander({ x: object.x - object.r, y: object.y - object.r });
+			this.#expander({ x: object.x + object.r, y: object.y + object.r });
+			this.#expander({ x: object.x - object.r, y: object.y - object.r });
 		} else if (IPoint_instanceOf(object)) {
 			if (object.y < this.top || !IS_AN(this.top)) this.top = object.y;
 			if (object.x < this.left || !IS_AN(this.left)) this.left = object.x;
 			if (object.x > this.right || !IS_AN(this.right)) this.right = object.x;
 			if (object.y > this.bottom || !IS_AN(this.bottom)) this.bottom = object.y;
 		} else if (IRectangle_instanceOf(object)) {
-			this.__expander({ x: object.left, y: object.top });
-			this.__expander({ x: object.right, y: object.bottom });
+			this.#expander({ x: object.left, y: object.top });
+			this.#expander({ x: object.right, y: object.bottom });
 		}
 	}
 	/**
@@ -275,7 +274,7 @@ export class Rectangle implements IRectangle {
 	 * @param object	The objects used to extend the boundary
 	 */
 	expand(object: RectangleExpansion): this {
-		this.__expander(object);
+		this.#expander(object);
 		return this;
 	}
 	/**
@@ -283,7 +282,7 @@ export class Rectangle implements IRectangle {
 	 * @param object	The objects used to extend the boundary
 	 */
 	extend(object: RectangleExpansion): this {
-		this.__expander(object);
+		this.#expander(object);
 		return this.validate();
 	}
 	/**

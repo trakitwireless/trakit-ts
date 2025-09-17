@@ -23,8 +23,8 @@ export class Point
 	 */
 	static fromJSON(json: any): Point {
 		return new Point(
-			json?.x as number,
-			json?.y as number,
+			json?.x,
+			json?.y,
 		);
 	}
 
