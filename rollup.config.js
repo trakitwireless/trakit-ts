@@ -19,7 +19,7 @@ const obfuscate = {
 
 export default [
   {
-    input: 'objects/objects.ts',
+    input: 'objects/index.ts',
     output: [
       // {
       //   file: '_publish/trakit-objects.js',

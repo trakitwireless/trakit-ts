@@ -32,7 +32,7 @@ import {
     hasSimple,
     IMPLIED_PERMS,
     LABEL_BASED_PERMS,
-} from './Accounts/Permissions/Authorizer';
+} from "./Accounts/Permissions/Authorizer";
 import { Permission } from "./Accounts/Permissions/Permission";
 import { PermissionEscalation } from "./Accounts/Permissions/PermissionEscalation";
 import { PermissionEscalationState } from "./Accounts/Permissions/PermissionEscalationState";
@@ -54,7 +54,7 @@ import { BaseComponent } from "./API/BaseComponent";
 import { BaseCompound } from "./API/BaseCompound";
 import { CODIFY, HIGHLIGHT, } from "./API/Codifier";
 import { FREEZE, KEYS } from "./API/Constants";
-import { CONVERT, } from './API/Conversion';
+import { CONVERT, } from "./API/Conversion";
 import { PASSWORD_DECODE, PASSWORD_ENCODE } from "./API/Encoding";
 import {
     FILESIZE_HELPER,

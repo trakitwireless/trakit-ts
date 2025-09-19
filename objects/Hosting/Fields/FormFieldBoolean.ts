@@ -29,8 +29,7 @@ export class FormFieldBoolean
 	 * @param choices 
 	 */
 	static normalize(choices?: (string | nothing)[] | nothing): [string, string, string] {
-		return (choices ?? [])
-			.concat([null, null, null])
+		return [...(choices ?? []), null, null, null]
 			.slice(0, 3)
 			.map((v, i) => v?.trim() ?? FormFieldBoolean.DEFAULT_CHOICES[i]) as [string, string, string];
 	}
