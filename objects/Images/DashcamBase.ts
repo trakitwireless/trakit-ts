@@ -81,7 +81,7 @@ export abstract class DashcamBase
 
 	constructor(
 		bytes?: ulong,
-		size?: Size | ISize,
+		size?: Size | ISize | JsonObject,
 		provider?: string,
 		company?: ulong,
 		asset?: ulong,

@@ -9,7 +9,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { uint, ulong, JsonObject } from "../API/Types";
+import { uint, ulong, JsonObject, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 
@@ -77,23 +77,15 @@ export class Picture
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.src = json["src"] || "";
-			this.size = !json["size"]
-				? new Size(0, 0)
-				: new Size(
-					json["size"]["width"],
-					json["size"]["height"]
-				);
-			this.focals = (json["focals"] || []).map((r: IRectangle) => new Rectangle(
-				new Point(r["left"], r["top"]),
-				new Point(r["right"], r["bottom"])
-			));
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.src = json["src"] as string || "";
+			this.size = Size.fromJSON(json["size"] as JsonObject);
+			this.focals = (json["focals"] as (IRectangle | JsonObject)[] || []).map((r: IRectangle | JsonObject) => Rectangle.fromJSON(r as JsonObject));
 			this.bytes = ID(json["bytes"]);
 			this.uses = ID(json["uses"]);
 		}

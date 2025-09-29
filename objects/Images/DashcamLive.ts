@@ -19,7 +19,7 @@ export class DashcamLive
 	static fromJSON(json: JsonObject) {
 		return new DashcamLive(
 			json["bytes"] as ulong,
-			json["size"] as ISize,
+			json["size"] as ISize | JsonObject,
 			json["provider"] as string,
 			json["company"] as ulong,
 			json["asset"] as ulong,
@@ -43,7 +43,7 @@ export class DashcamLive
 
 	constructor(
 		bytes?: ulong,
-		size?: Size | ISize,
+		size?: Size | ISize | JsonObject,
 		provider?: string,
 		company?: ulong,
 		asset?: ulong,

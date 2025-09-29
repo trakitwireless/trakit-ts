@@ -19,8 +19,8 @@ export class IconGlyph
 		return new IconGlyph(
 			json["tags"] as string[],
 			json["src"] as string,
-			json["size"] as ISize,
-			json["anchor"] as IPoint,
+			json["size"] as ISize | JsonObject,
+			json["anchor"] as IPoint | JsonObject,
 			json["layer"] as IconLayer,
 			json["zIndex"] as ushort,
 			json["rotates"] as boolean,
@@ -59,16 +59,16 @@ export class IconGlyph
 	constructor(
 		tags?: codified[],
 		src?: string,
-		size?: ISize,
-		anchor?: IPoint,
+		size?: ISize | JsonObject,
+		anchor?: IPoint | JsonObject,
 		layer?: IconLayer,
 		zIndex?: ushort,
 		rotates?: boolean,
 	) {
 		this.tags = [...(tags || [])];
 		this.src = src || "";
-		this.size = Size.fromJSON(size);
-		this.anchor = Point.fromJSON(anchor);
+		this.size = Size.fromJSON(size as JsonObject);
+		this.anchor = Point.fromJSON(anchor as JsonObject);
 		this.layer = IconLayer[layer as IconLayer] || IconLayer.markers;
 		this.zIndex = ID(zIndex) || 0;
 		this.rotates = !!rotates;

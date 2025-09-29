@@ -14,7 +14,7 @@ export class IconLabel
 	 */
 	static fromJSON(json: JsonObject) {
 		return new IconLabel(
-			json["anchor"] as IPoint,
+			json["anchor"] as IPoint | JsonObject,
 			json["align"] as string,
 			json["colour"] as colour,
 		);
@@ -34,11 +34,11 @@ export class IconLabel
 	colour: colour;
 
 	constructor(
-		anchor?: IPoint,
+		anchor?: IPoint | JsonObject,
 		align?: string,
 		colour?: colour,
 	) {
-		this.anchor = Point.fromJSON(anchor);
+		this.anchor = Point.fromJSON(anchor as JsonObject);
 		this.align = align || "right top";
 		this.colour = colour || "#cccccc"
 	}

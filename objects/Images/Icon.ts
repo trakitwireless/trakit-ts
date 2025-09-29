@@ -1,16 +1,16 @@
+import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { ulong, JsonObject } from "../API/Types";
-import { IconLabel } from "./IconLabel";
-import { IconGlyph } from "./IconGlyph";
+import { CODIFY } from "../API/Codifier";
+import { ID } from "../API/Functions";
+import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
+import { JsonObject, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { DATE, ID } from "../API/Functions";
 import { COMPANIES } from "../storage";
-import { ARRAY_TO_JSON } from "../API/Arrays";
-import { CODIFY } from "../API/Codifier";
+import { IconGlyph } from "./IconGlyph";
+import { IconLabel } from "./IconLabel";
 
 /**
  * A visual representation of a thing on a map or in a list.
@@ -83,17 +83,17 @@ export class Icon
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.category = json["category"] || "";
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.category = json["category"] as string || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.global = !!json["global"];
-			this.usage = (json["usage"] || []).map(CODIFY);
-			this.label = new IconLabel(json["label"]);
-			this.badge = new IconLabel(json["badge"]);
+			this.usage = (json["usage"] as string[] || []).map(CODIFY);
+			this.label = IconLabel.fromJSON(json["label"] as JsonObject);
+			this.badge = IconLabel.fromJSON(json["badge"] as JsonObject);
 			this.glyphs = ((json["glyphs"] || []) as any[]).map(g => new IconGlyph(g));
 		}
 		return update;
