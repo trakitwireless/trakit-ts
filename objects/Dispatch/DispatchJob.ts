@@ -1,12 +1,12 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, ulong, JsonObject } from "../API/Types";
+import { codified, datetime, int, JsonObject, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { FormResult } from "../Hosting/FormResult";
@@ -112,21 +112,21 @@ export class DispatchJob
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.created = DATE(json["created"]);
+			this.name = json["name"] as string || "";
+			this.created = DATE(json["created"] as datetime);
 			this.assetId = ID(json["asset"]) || NaN;
-			this.driver = json["driver"] || "";
-			this.name = json["name"] || "";
-			this.instructions = json["instructions"] || "";
+			this.driver = json["driver"] as string || "";
+			this.name = json["name"] as string || "";
+			this.instructions = json["instructions"] as string || "";
 			this.priority = DispatchJobPriority[json["priority"] as DispatchJobPriority] || DispatchJobPriority.standby;
-			this.references = JSON_TO_MAP(json["references"]);
-			this.labels = [...(json["labels"] || [])];
-			this.tags = [...(json["tags"] || [])];
-			this.formIds = (json["forms"] || []).map(ID);
+			this.references = JSON_TO_MAP(json["references"] as JsonObject || {});
+			this.labels = [...(json["labels"] as codified[] || [])];
+			this.tags = [...(json["tags"] as codified[] || [])];
+			this.formIds = (json["forms"] as ulong[] || []).map(ID);
 			this.steps = ((json["steps"] || []) as any[]).map(s => new DispatchStep(s));
 		}
 		return update;

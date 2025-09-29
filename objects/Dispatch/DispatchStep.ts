@@ -23,16 +23,16 @@ export class DispatchStep
 	static fromJSON(json: JsonObject) {
 		return new DispatchStep(
 			json["id"] as ulong,
-			json["name"] || "",
+			json["name"] as string || "",
 			JSON_TO_MAP_BY_PREDICATE(
-				json["states"] || {},
+				json["states"] as object || {},
 				(k, v) => [k as DispatchStepStatus, DispatchStepState.fromJSON(v)]
 			),
 			json["eta"] as datetime,
 			json["duration"] as timespan,
 			json["place"] as ulong,
 			json["address"] as string,
-			json["latlng"] as ILatLng,
+			json["latlng"] as ILatLng | JsonObject,
 			json["notes"] as string,
 			json["signature"] as boolean,
 			json["signatory"] as string,
@@ -131,7 +131,7 @@ export class DispatchStep
 		duration?: TimeSpan | timespan | number | nothing,
 		place?: ulong | nothing,
 		address?: string | nothing,
-		latlng?: ILatLng | nothing,
+		latlng?: ILatLng | JsonObject | nothing,
 		notes?: string | nothing,
 		signature?: boolean | nothing,
 		signatory?: string | nothing,

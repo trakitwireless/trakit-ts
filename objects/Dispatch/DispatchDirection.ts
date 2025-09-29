@@ -21,7 +21,7 @@ export class DispatchDirection
 			json["distance"] as double,
 			json["duration"] as timespan,
 			json["instructions"] as string,
-			json["path"] as ILatLng[],
+			json["path"] as (ILatLng | JsonObject)[],
 			(json["directions"] as any[])?.map(DispatchDirection.fromJSON),
 			json["job"] as ulong,
 			json["step"] as ulong,
@@ -61,7 +61,7 @@ export class DispatchDirection
 		distance?: double,
 		duration?: TimeSpan | timespan | number,
 		instructions?: string,
-		path?: ILatLng[],
+		path?: (ILatLng | JsonObject)[],
 		directions?: DispatchDirection[],
 		job?: ulong,
 		step?: ulong

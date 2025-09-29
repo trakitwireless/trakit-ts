@@ -1,19 +1,19 @@
+import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
+import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { TimeSpan } from "../API/TimeSpan";
-import { ulong, JsonObject } from "../API/Types";
+import { JsonObject, datetime, int, timespan, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
+import { Document } from "../Hosting/Document";
 import { Place } from "../Places/Place";
 import { ASSETS, COMPANIES, DOCUMENTS, PLACES } from "../storage";
 import { DispatchTaskStatus } from "./DispatchTaskStatus";
-import { Document } from "../Hosting/Document";
-import { ARRAY_TO_IDS } from "../API/Arrays";
-import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 
 /**
  * A task assigned to an asset which represents a coordinate on the map which must be visited.
@@ -159,31 +159,31 @@ export class DispatchTask
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.assetId = ID(json["asset"]);
-			this.name = json["name"] || "";
-			this.references = JSON_TO_MAP(json["references"]);
+			this.name = json["name"] as string || "";
+			this.references = JSON_TO_MAP(json["references"] as JsonObject || {});
 			this.placeId = ID(json["place"]);
-			this.address = json["address"] || "";
+			this.address = json["address"] as string || "";
 			this.latlng = json["latlng"]
-				? LatLng.fromJSON(json["latlng"])
+				? LatLng.fromJSON(json["latlng"] as JsonObject)
 				: LatLng.INVALID;
 			this.status = DispatchTaskStatus[json["status"] as DispatchTaskStatus] || DispatchTaskStatus.created;
-			this.created = DATE(json["created"]);
-			this.eta = DATE(json["eta"]);
-			this.duration = new TimeSpan(json["duration"]);
-			this.arrived = DATE(json["arrived"]);
-			this.completed = DATE(json["completed"]);
-			this.instructions = json["instructions"] || "";
+			this.created = DATE(json["created"] as datetime);
+			this.eta = DATE(json["eta"] as datetime);
+			this.duration = new TimeSpan(json["duration"] as timespan);
+			this.arrived = DATE(json["arrived"] as datetime);
+			this.completed = DATE(json["completed"] as datetime);
+			this.instructions = json["instructions"] as string || "";
 			this.signature = !!json["signature"];
-			this.signatory = json["signatory"] || "";
-			this.notes = json["notes"] || "";
-			this.attachmentIds = (json["attachments"] || []).map(ID);
-			this.updatedBy = json["updatedBy"] || "";
-			this.updatedUtc = DATE(json["updatedUtc"]);
+			this.signatory = json["signatory"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.attachmentIds = (json["attachments"] as ulong[] || []).map(ID);
+			this.updatedBy = json["updatedBy"] as string || "";
+			this.updatedUtc = DATE(json["updatedUtc"] as datetime);
 		}
 		return update;
 	}
