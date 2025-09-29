@@ -143,6 +143,7 @@ import {
     guid,
     int,
     ipv4,
+    JsonValue,
     long,
     nothing,
     phone,
@@ -405,6 +406,7 @@ export const storage = {
  * These are simply numbers or strings of a specific format.
  */
 export type {
+	JsonValue,
     //#region numbers
     byte,
     double,
