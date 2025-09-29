@@ -1,5 +1,6 @@
 ﻿import { ISerializable } from "../API/Interfaces/ISerializable";
 import { BehaviourParameterType } from "./BehaviourParameterType";
+import { JsonObject } from "../API/Types";
 
 /**
  * Definition of an argument passed to a Behaviour Script.
@@ -11,7 +12,7 @@ export class BehaviourParameter
 	 * @param json 
 	 * @returns 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new BehaviourParameter(
 			(json["kind"] || json["type"]) as BehaviourParameterType,
 			json["value"] as string,

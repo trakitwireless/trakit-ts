@@ -2,7 +2,7 @@ import { DATE, JSON_DATE } from "../API/Functions";
 import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, nothing } from "../API/Types";
+import { datetime, nothing, JsonObject } from "../API/Types";
 
 /**
  * Details about the lifetime of a {@link DispatchStep}.
@@ -13,7 +13,7 @@ export class DispatchStepState
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new DispatchStepState(
 			json["updated"] as datetime,
 			json["latlng"] as ILatLng,

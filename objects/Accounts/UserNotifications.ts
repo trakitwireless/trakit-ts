@@ -3,7 +3,7 @@ import { IS_AN, PHONE_PARSE, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functi
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { email, phone, timespan, ulong } from "../API/Types";
+import { email, phone, timespan, ulong, JsonObject } from "../API/Types";
 import { NotificationMethod } from "./NotificationMethod";
 
 /**
@@ -15,7 +15,7 @@ export class UserNotifications
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new UserNotifications(
 			json["name"] as string,
 			json["enabled"] as boolean,

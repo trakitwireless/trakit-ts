@@ -4,7 +4,7 @@ import { ISize } from "../API/Geometry/Interfaces";
 import { Size } from "../API/Geometry/Size";
 import { MERGE } from "../API/Objects";
 import { TimeSpan } from "../API/TimeSpan";
-import { byte, datetime, double, guid, single, ulong } from "../API/Types";
+import { byte, datetime, double, guid, single, ulong, JsonObject } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
 
@@ -17,7 +17,7 @@ export class Dashcam
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new Dashcam(
 			json["bytes"] as ulong,
 			json["size"] as ISize,

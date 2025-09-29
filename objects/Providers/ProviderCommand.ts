@@ -1,7 +1,7 @@
 
 import { DATE, JSON_DATE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime } from "../API/Types";
+import { datetime, JsonObject } from "../API/Types";
 import { ProviderCommandStatus } from "./ProviderCommandStatus";
 
 /**
@@ -13,7 +13,7 @@ export class ProviderCommand
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ProviderCommand(
 			json["status"] as ProviderCommandStatus,
 			json["parameters"] as string[],

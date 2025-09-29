@@ -1,6 +1,6 @@
 ﻿import { ID } from "../API/Functions";
 import { MERGE } from "../API/Objects";
-import { colour, ushort } from "../API/Types";
+import { colour, ushort, JsonObject } from "../API/Types";
 import { AssetGeneral } from "./AssetGeneral";
 
 /**
@@ -45,7 +45,7 @@ export class TrailerGeneral
 				"colour": this.colour || "",
 			});
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {

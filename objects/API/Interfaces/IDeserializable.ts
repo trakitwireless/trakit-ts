@@ -1,3 +1,5 @@
+import { JsonObject } from "../../API/Types";
+
 /**
  * An interface for types that are updated using JSON values.
  */
@@ -8,5 +10,5 @@ export interface IDeserializable {
      * @param forced    When true, forces the update.
      * @returns True when an update was completed.
      */
-    fromJSON(json: any, force?: boolean): boolean;
+    fromJSON(json: JsonObject, force?: boolean): boolean;
 }

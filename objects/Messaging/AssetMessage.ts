@@ -1,5 +1,5 @@
 ﻿import { MERGE } from '../API/Objects';
-import { email } from '../API/Types';
+import { email, JsonObject } from '../API/Types';
 import { MessageBase } from './MessageBase';
 import { MessageFolder } from './MessageFolder';
 
@@ -32,7 +32,7 @@ export class AssetMessage
 			}
 		);
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {

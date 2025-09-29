@@ -1,7 +1,7 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
 import { ID, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { ulong } from "../API/Types";
+import { ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { ProviderCommand } from "./ProviderCommand";
@@ -42,7 +42,7 @@ export class ProviderControl
 			"commands": MAP_TO_JSON(this.commands),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!this.id) this.id = json["id"] || "";

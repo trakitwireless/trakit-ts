@@ -13,7 +13,7 @@ export class LabelStyle
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new LabelStyle(
 			json["name"] as string,
 			json["fill"] as colour,

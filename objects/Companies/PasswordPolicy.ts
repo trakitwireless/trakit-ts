@@ -12,7 +12,7 @@ export class PasswordPolicy
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new PasswordPolicy(
 			json["minimumLength"] as byte,
 			json["includeLetters"] as boolean,

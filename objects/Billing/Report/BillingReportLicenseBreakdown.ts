@@ -16,7 +16,7 @@ export class BillingReportLicenseBreakdown
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new BillingReportLicenseBreakdown(
 			json["provider"] as string,
 			json["kind"] as ProviderType,

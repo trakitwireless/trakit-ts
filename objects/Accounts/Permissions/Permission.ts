@@ -1,4 +1,4 @@
-﻿import { codified, nothing, ulong } from '../../API/Types';
+﻿import { codified, JsonObject, nothing, ulong } from '../../API/Types';
 import { PermissionType } from './PermissionType';
 import { PermissionLevel } from './PermissionLevel';
 import { PermissionMethod } from './PermissionMethod';
@@ -18,7 +18,7 @@ export class Permission
 	 * @param json 
 	 * @returns 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new Permission(
 			json["company"] as ulong,
 			json["kind"] as PermissionType,

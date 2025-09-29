@@ -5,7 +5,7 @@ import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { INamed } from "../../API/Interfaces/INamed";
 import { IRequestable } from "../../API/Interfaces/IRequestable";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { email, phone, ulong } from "../../API/Types";
+import { email, phone, ulong, JsonObject } from "../../API/Types";
 import { User } from "../../Accounts/User";
 import { Asset } from "../../Assets/Asset";
 import { Company } from "../../Companies/Company";
@@ -126,7 +126,7 @@ export class ProviderRegistration
 			"phoneNumber": this.phoneNumber || null,
 		};
 	}
-	fromJSON(json: any, force?: boolean): boolean {
+	fromJSON(json: JsonObject, force?: boolean): boolean {
 		if (!IS_AN(ID(this.code))) this.code = json["code"];
 		this.companyId = ID(json["company"]);
 		this.name = json["name"] || "";

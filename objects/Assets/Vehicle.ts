@@ -1,5 +1,5 @@
 ﻿import { MERGE } from "../API/Objects";
-import { colour, double, ushort } from "../API/Types";
+import { colour, double, ushort, JsonObject } from "../API/Types";
 import { Asset } from "./Asset";
 import { VehicleGeneral } from "./VehicleGeneral";
 import { VehicleAdvanced } from "./VehicleAdvanced";

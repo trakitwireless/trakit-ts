@@ -10,7 +10,7 @@ export class ColourStyle
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ColourStyle(
 			json["fill"] as colour,
 			json["stroke"] as colour,

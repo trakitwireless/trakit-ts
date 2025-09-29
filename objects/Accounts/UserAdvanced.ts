@@ -4,7 +4,7 @@ import { ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { email, ulong } from "../API/Types";
+import { email, JsonObject, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, GROUPS } from "../storage";
 import { Permission } from "./Permissions/Permission";
@@ -56,7 +56,7 @@ export class UserAdvanced
 			"permissions": this.permissions.map(ARRAY_TO_JSON),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!this.login) this.login = (json["login"] || "").toLowerCase();

@@ -1,4 +1,4 @@
-﻿import { ulong } from '../API/Types';
+﻿import { ulong, JsonObject } from '../API/Types';
 import { ReportBreakdown } from './ReportBreakdown';
 import { ReportResult } from './ReportResult';
 import { ReportSummary } from './ReportSummary';

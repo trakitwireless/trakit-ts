@@ -1,5 +1,5 @@
 import { IDeserializable } from './Interfaces/IDeserializable';
-import { nothing } from './Types';
+import { JsonObject, nothing } from './Types';
 
 /**
  * A base class used to construct objects from the sync system.
@@ -11,7 +11,7 @@ export abstract class Base
      * Almost all objects can be constructed using a simple JSON object.
      * @param json 
      */
-    constructor(json?: any | nothing) {
+    constructor(json?: JsonObject | nothing) {
         if (json) this.fromJSON(json);
     }
 
@@ -21,5 +21,5 @@ export abstract class Base
      * @param forced    When true, forces the update.
      * @returns True when an update was completed.
      */
-    abstract fromJSON(json: any, force?: boolean): boolean;
+    abstract fromJSON(json: JsonObject, force?: boolean): boolean;
 }

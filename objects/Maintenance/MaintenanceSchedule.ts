@@ -130,7 +130,7 @@ export class MaintenanceSchedule
 			"intervals": MAP_TO_JSON(this.intervals),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

@@ -5,7 +5,7 @@ import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { double, timespan, ulong } from "../API/Types";
+import { double, timespan, ulong, JsonObject } from "../API/Types";
 
 /**
  * Driving directions and details like duration and distance.
@@ -16,7 +16,7 @@ export class DispatchDirection
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any): DispatchDirection {
+	static fromJSON(json: JsonObject): DispatchDirection {
 		return new DispatchDirection(
 			json["distance"] as double,
 			json["duration"] as timespan,

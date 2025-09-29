@@ -3,7 +3,7 @@ import { DATE, JSON_DATE, ID, IS_AN } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { uint, ulong } from "../API/Types";
+import { uint, ulong, JsonObject } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, BEHAVIOUR_SCRIPTS, BEHAVIOURS, COMPANIES } from "../storage";
@@ -97,7 +97,7 @@ export class BehaviourLog
 			"character": this.character || -1,
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

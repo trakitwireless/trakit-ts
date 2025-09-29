@@ -21,7 +21,7 @@ export class BillingReportServiceBreakdown
 	 * @param json 
 	 * @returns 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new BillingReportServiceBreakdown(
 			json["asset"] as ulong,
 			json["kind"] as AssetType,

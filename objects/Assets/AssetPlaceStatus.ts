@@ -1,6 +1,6 @@
 import { DATE, JSON_DATE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime } from "../API/Types";
+import { datetime, JsonObject } from "../API/Types";
 import { AssetPlaceStatusType } from "./AssetPlaceStatusType";
 
 /**
@@ -12,7 +12,7 @@ export class AssetPlaceStatus
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new AssetPlaceStatus(
 			json["kind"] as AssetPlaceStatusType,
 			json["enter"] as datetime,

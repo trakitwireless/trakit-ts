@@ -1,6 +1,6 @@
 ﻿import { FLOAT } from "../API/Constants";
 import { MERGE } from "../API/Objects";
-import { double } from "../API/Types";
+import { double, JsonObject } from "../API/Types";
 import { AssetAdvanced } from "./AssetAdvanced";
 
 /**
@@ -18,7 +18,7 @@ export class VehicleAdvanced
 			"engineHours": this.engineHours || null,
 		});
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {

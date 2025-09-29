@@ -12,7 +12,7 @@ export class SessionPolicy
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new SessionPolicy(
 			json["applications"] as string[],
 			json["ipv4Ranges"] as ipv4[],

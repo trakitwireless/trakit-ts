@@ -2,7 +2,7 @@ import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, email, int, ipv4, ulong } from "../API/Types";
+import { datetime, email, int, ipv4, JsonObject, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { SessionStatus } from "./SessionStatus";
@@ -16,7 +16,7 @@ export class Session
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject): Session {
 		return new Session(
 			json["handle"] as string,
 			json["company"] as ulong,
@@ -27,7 +27,7 @@ export class Session
 			json["status"] as SessionStatus,
 			json["created"] as datetime,
 			json["expires"] as datetime,
-			json["lastCommand"],
+			json["lastCommand"] as string,
 			json["lastActivity"] as datetime,
 		);
 	}

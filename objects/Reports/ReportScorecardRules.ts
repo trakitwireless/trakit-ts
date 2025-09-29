@@ -2,7 +2,7 @@
 import { FLOAT } from "../API/Constants";
 import { JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { double } from "../API/Types";
+import { double, JsonObject } from "../API/Types";
 import { ReportScorecardParameter } from "./ReportScorecardParameter";
 
 /**
@@ -14,7 +14,7 @@ export class ReportScorecardRules
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ReportScorecardRules(
 			json["baseScore"] as double,
 			(json["parameters"] as any[])?.map(ReportScorecardParameter.fromJSON),

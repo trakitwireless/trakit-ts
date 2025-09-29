@@ -1,6 +1,6 @@
 import { DATE, IS_NOTHING, JSON_DATE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime } from "../API/Types";
+import { datetime, JsonObject } from "../API/Types";
 
 /**
  * A fragment of data given by a device.
@@ -11,7 +11,7 @@ export class ProviderData
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ProviderData(
 			json["value"],
 			json["dts"] as datetime,

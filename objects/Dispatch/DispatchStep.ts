@@ -5,7 +5,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { datetime, nothing, timespan, ulong } from "../API/Types";
+import { datetime, nothing, timespan, ulong, JsonObject } from "../API/Types";
 import { Place } from "../Places/Place";
 import { PLACES } from "../storage";
 import { DispatchStepState } from "./DispatchStepState";
@@ -20,7 +20,7 @@ export class DispatchStep
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new DispatchStep(
 			json["id"] as ulong,
 			json["name"] || "",

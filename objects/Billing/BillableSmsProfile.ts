@@ -1,7 +1,7 @@
 ﻿import { FLOAT } from "../API/Constants";
 import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { double, uint } from "../API/Types";
+import { double, uint, JsonObject } from "../API/Types";
 
 /**
  * Description of a tiered SMS messaging limit
@@ -12,7 +12,7 @@ export class BillableSmsProfile
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new BillableSmsProfile(
 			json["limit"] as uint,
 			json["amount"] as double,

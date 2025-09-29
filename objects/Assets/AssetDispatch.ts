@@ -4,7 +4,7 @@ import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { ulong } from "../API/Types";
+import { ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { DispatchDirection } from "../Dispatch/DispatchDirection";
 import { DispatchJob } from "../Dispatch/DispatchJob";
@@ -20,7 +20,7 @@ export class AssetDispatch
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new AssetDispatch(json);
 	}
 
@@ -69,7 +69,7 @@ export class AssetDispatch
 			"lastDispatched": this.lastDispatched.toISOString(),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);

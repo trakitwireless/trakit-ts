@@ -2,7 +2,7 @@
 import { UserGeneral } from "../Accounts/UserGeneral";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { SearchPattern } from "../API/SearchPattern";
-import { email, nothing } from "../API/Types";
+import { email, nothing, JsonObject } from "../API/Types";
 import { AssetGeneral } from "../Assets/AssetGeneral";
 
 /**
@@ -14,7 +14,7 @@ export class ReportNotifications
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ReportNotifications(
 			json["users"] as email[],
 			SearchPattern.parse(json["assets"]),

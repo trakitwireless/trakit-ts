@@ -6,7 +6,7 @@ import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, double, ulong } from "../API/Types";
+import { codified, double, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, COMPANIES, PROVIDERS } from "../storage";
@@ -26,7 +26,7 @@ export class AssetAdvanced
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		switch (json["kind"] as AssetType) {
 			case AssetType.vehicle: return new VehicleAdvanced(json);
 			case AssetType.person:
@@ -103,7 +103,7 @@ export class AssetAdvanced
 			"places": MAP_TO_JSON(this.places),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);

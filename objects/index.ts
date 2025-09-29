@@ -143,6 +143,8 @@ import {
     guid,
     int,
     ipv4,
+    JsonArray,
+    JsonObject,
     JsonValue,
     long,
     nothing,
@@ -406,6 +408,8 @@ export const storage = {
  * These are simply numbers or strings of a specific format.
  */
 export type {
+	JsonArray,
+	JsonObject,
 	JsonValue,
     //#region numbers
     byte,

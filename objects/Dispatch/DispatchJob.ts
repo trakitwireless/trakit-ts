@@ -6,7 +6,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, ulong } from "../API/Types";
+import { codified, ulong, JsonObject } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { FormResult } from "../Hosting/FormResult";
@@ -111,7 +111,7 @@ export class DispatchJob
 			"steps": (this.steps || []).map(ARRAY_TO_JSON),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

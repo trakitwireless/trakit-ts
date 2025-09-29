@@ -3,7 +3,7 @@ import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { codified, ulong } from "../API/Types";
+import { codified, ulong, JsonObject } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 
@@ -50,7 +50,7 @@ export class CompanyDirectory
 	 * 
 	 * @param json 
 	 */
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

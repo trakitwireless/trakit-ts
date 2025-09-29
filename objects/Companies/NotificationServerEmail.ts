@@ -34,7 +34,7 @@ export class NotificationServerEmail
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new NotificationServerEmail(
 			json["incomingType"] as IncomingEmailServerType,
 			json["incomingAddress"] as string,

@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { nothing, uint, ulong } from "../API/Types";
+import { nothing, uint, ulong, JsonObject } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { AssetAdvanced } from "../Assets/AssetAdvanced";
 import { AssetGeneral } from "../Assets/AssetGeneral";
@@ -21,7 +21,7 @@ export class ReportBreakdown
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		if (typeof json["job"] === "object") {
 			return new ReportBreakdownJob(
 				new DispatchJob(json["job"]),

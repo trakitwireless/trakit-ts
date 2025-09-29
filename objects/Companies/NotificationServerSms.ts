@@ -11,7 +11,7 @@ export class NotificationServerSms
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new NotificationServerSms(
 			json["notifyLimit"] as ushort,
 			JSON_TO_MAP(json["phoneNumbers"] || {}),

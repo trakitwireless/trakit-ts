@@ -2,7 +2,7 @@
 import { JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { double, timespan } from "../API/Types";
+import { double, timespan, JsonObject } from "../API/Types";
 
 /**
  * Infraction parameter used to generate scorecard
@@ -13,7 +13,7 @@ export class ReportScorecardParameter
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ReportScorecardParameter(
 			json["condition"] as string,
 			json["duration"] as timespan,

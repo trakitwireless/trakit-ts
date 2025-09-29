@@ -1,5 +1,5 @@
 ﻿import { ISerializable } from "../Interfaces/ISerializable";
-import { nothing } from "../Types";
+import { JsonObject, nothing } from "../Types";
 import { IStreetAddress, } from "./Interfaces";
 
 /**
@@ -11,7 +11,7 @@ export class StreetAddress
 	 * 
 	 * @param street 
 	 */
-	static fromJSON(json: any): StreetAddress {
+	static fromJSON(json: JsonObject): StreetAddress {
 		return new StreetAddress(
 			json["number"] as string,
 			json["street"] as string,

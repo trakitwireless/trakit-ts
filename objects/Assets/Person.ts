@@ -1,5 +1,5 @@
 ﻿import { Contact } from '../Accounts/Contact';
-import { ulong } from '../API/Types';
+import { ulong, JsonObject } from '../API/Types';
 import { Asset } from './Asset';
 import { PersonGeneral } from './PersonGeneral';
 

@@ -1,4 +1,4 @@
-﻿import { nothing } from 'objects/API/Types';
+﻿import { nothing, JsonObject } from 'objects/API/Types';
 import { ARRAY_TO_JSON } from '../API/Arrays';
 import { ISerializable } from '../API/Interfaces/ISerializable';
 import { SearchPattern } from '../API/SearchPattern';
@@ -15,7 +15,7 @@ export class ReportOptions
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ReportOptions(
 			(json["parameters"] as any[])?.map(ReportParameter.fromJSON),
 			SearchPattern.parse(json["targets"]),

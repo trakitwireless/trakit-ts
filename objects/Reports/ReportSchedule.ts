@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { email, ulong } from "../API/Types";
+import { email, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, REPORT_TEMPLATES } from "../storage";
 import { ReportNotifications } from "./ReportNotifications";
@@ -87,7 +87,7 @@ export class ReportSchedule
 			"notify": this.notify?.toJSON() ?? null,
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

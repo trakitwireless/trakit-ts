@@ -2,7 +2,7 @@
 import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { double, timespan, uint, ulong } from "../API/Types";
+import { double, timespan, uint, ulong, JsonObject } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { ASSETS } from "../storage";
 
@@ -15,7 +15,7 @@ export class ReportTotal
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ReportTotal(
 			json["asset"]as ulong,
 			json["stateDetail"]as string,

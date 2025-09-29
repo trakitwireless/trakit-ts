@@ -1,6 +1,6 @@
 import { DATE, ID, JSON_DATE, JSON_NUMBER, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { byte, datetime, ulong, ushort } from "../API/Types";
+import { byte, datetime, ulong, ushort, JsonObject } from "../API/Types";
 import { ReportRecurrenceType } from "./ReportRecurrenceType";
 
 /**
@@ -12,7 +12,7 @@ export class ReportRecurrence
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ReportRecurrence(
 			json["kind"] as ReportRecurrenceType,
 			json["weekdays"] as string,

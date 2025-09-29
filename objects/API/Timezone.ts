@@ -1,7 +1,7 @@
 ﻿import { IRequestable } from "./Interfaces/IRequestable";
 import { ISerializable } from "./Interfaces/ISerializable";
 import { IDeserializable } from "./Interfaces/IDeserializable";
-import { short } from "./Types";
+import { short, JsonObject } from "./Types";
 import { ID } from "./Functions";
 
 /**
@@ -13,7 +13,7 @@ export class Timezone
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new Timezone(
 			json["code"] as string,
 			json["name"] as string,

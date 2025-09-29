@@ -11,7 +11,7 @@ import { BillingReportServiceBreakdown } from "./BillingReportServiceBreakdown";
  */
 export class BillingReportBreakdown
 	implements ISerializable {
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new BillingReportBreakdown(
 			json["target"] as ulong,
 			(json["services"] as any[])?.map(BillingReportServiceBreakdown.fromJSON),

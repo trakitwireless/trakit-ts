@@ -9,7 +9,7 @@ import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
 import { MAP_FILTERED_BY_KEYS } from '../API/Maps';
 import { Timezone } from '../API/Timezone';
 import { TIMEZONE_FIND } from '../API/Timezones';
-import { codified, ipv4, ulong, url } from '../API/Types';
+import { codified, ipv4, JsonObject, ulong, url } from '../API/Types'; // JsonObject already present, no change needed
 import { Company } from '../Companies/Company';
 import { COMPANIES, GROUPS } from '../storage';
 import { Permission } from './Permissions/Permission';
@@ -136,7 +136,7 @@ export class Machine
 			"insecure": !!this.insecure,
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!this.key) this.key = json["key"] || '';

@@ -5,7 +5,7 @@ import { IBelongBillingProfile } from "../API/Interfaces/IBelongBillingProfile";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { double, ulong } from "../API/Types";
+import { double, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { BILLING_PROFILES, COMPANIES } from "../storage";
 import { BillingProfile } from "./BillingProfile";
@@ -86,7 +86,7 @@ export abstract class BillableBase
 			"amount": JSON_NUMBER(this.amount),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

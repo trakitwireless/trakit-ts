@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { SearchPattern } from "../API/SearchPattern";
-import { byte, ulong } from "../API/Types";
+import { byte, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { BEHAVIOUR_SCRIPTS, COMPANIES } from "../storage";
 import { BehaviourParameter } from "./BehaviourParameter";
@@ -79,7 +79,7 @@ export class Behaviour
 			"parameters": MAP_TO_JSON(this.parameters),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

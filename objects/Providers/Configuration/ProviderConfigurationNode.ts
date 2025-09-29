@@ -1,6 +1,7 @@
 ﻿import { KEYS } from '../../API/Constants';
 import { MAP_TO_JSON } from '../../API/Functions';
 import { ISerializable, } from '../../API/Interfaces/ISerializable';
+import { JsonObject } from '../../API/Types';
 
 /**
  * This tree-like structure is given to the script processor for the device type so that the device can follow a program.
@@ -12,7 +13,7 @@ export class ProviderConfigurationNode
 	 * 
 	 * @param json 
 	 */
-	static nodesFromJSON(json: any) {
+	static nodesFromJSON(json: JsonObject) {
 		const dict: Map<string, ProviderConfigurationNode> = new Map;
 		KEYS(json).forEach(key => dict.set(
 			key,
@@ -24,7 +25,7 @@ export class ProviderConfigurationNode
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ProviderConfigurationNode(
 			json["id"] as string,
 			json["notes"] as string,

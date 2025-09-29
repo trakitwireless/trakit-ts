@@ -1,7 +1,7 @@
 import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, ulong } from "../API/Types";
+import { datetime, ulong, JsonObject } from "../API/Types";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, PROVIDERS } from "../storage";
 import { Asset } from "./Asset";
@@ -15,7 +15,7 @@ export class AssetAttribute
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new AssetAttribute(
 			json["name"] as string,
 			json["simple"] as string,

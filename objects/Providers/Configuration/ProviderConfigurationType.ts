@@ -2,7 +2,7 @@ import { BaseComponent } from "../../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON } from "../../API/Functions";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
-import { uint, ulong } from "../../API/Types";
+import { uint, ulong, JsonObject } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderType } from "../ProviderType";
 import { ProviderConfigurationNode } from "./ProviderConfigurationNode";
@@ -61,7 +61,7 @@ export class ProviderConfigurationType
 			"geofenceTypes": this.geofenceTypes.map(g => PlaceType[g] || null),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

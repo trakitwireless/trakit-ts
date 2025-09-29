@@ -12,7 +12,7 @@ import { MaintenanceJob } from "./MaintenanceJob";
  */
 export class MaintenanceInterval
 	implements IBelongAsset, ISerializable {
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new MaintenanceInterval(
 			json["asset"] as ulong,
 			json["date"] as datetime,

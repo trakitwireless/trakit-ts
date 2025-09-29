@@ -13,7 +13,7 @@ export class BillingReportHostingSummary
 	 * @param json 
 	 * @returns 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new BillingReportHostingSummary(
 			json["sku"] as string,
 			json["cost"] as double,

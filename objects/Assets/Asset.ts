@@ -9,7 +9,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MERGE } from "../API/Objects";
-import { codified, double, ulong } from "../API/Types";
+import { codified, double, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -34,7 +34,7 @@ export class Asset
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		switch (json["kind"] as AssetType) {
 			case AssetType.person: return new Person(json);
 			case AssetType.vehicle: return new Vehicle(json);
@@ -214,7 +214,7 @@ export class Asset
 				this.#dispatch.toJSON(),
 			);
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const general = this.#general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json), force),
 			advanced = this.#advanced.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json), force),
 			dispatch = this.#dispatch.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json), force);

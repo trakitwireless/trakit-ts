@@ -17,7 +17,7 @@ export class BillableHostingRule
 			"service": BillableHostingType[this.service],
 		});
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {

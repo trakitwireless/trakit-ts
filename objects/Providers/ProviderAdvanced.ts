@@ -1,7 +1,7 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
 import { ID, MAP_TO_JSON, MAP_TO_JSON_PREDICATE, JSON_TO_MAP, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { ipv4, ulong } from "../API/Types";
+import { ipv4, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { ProviderData } from "./ProviderData";
@@ -54,7 +54,7 @@ export class ProviderAdvanced
 			"snf": MAP_TO_JSON(this.snf),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			this.id = json["id"] || "";

@@ -3,7 +3,7 @@ import { IPoint, ISize } from "../API/Geometry/Interfaces";
 import { Point } from "../API/Geometry/Point";
 import { Size } from "../API/Geometry/Size";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { codified, ushort } from "../API/Types";
+import { codified, ushort, JsonObject } from "../API/Types";
 import { IconLayer } from "./IconLayer";
 
 /**
@@ -15,7 +15,7 @@ export class IconGlyph
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new IconGlyph(
 			json["tags"] as string[],
 			json["src"] as string,

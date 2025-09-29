@@ -9,7 +9,8 @@ import {
  * Dimensions on a flat surface.
  */
 export class Size implements ISize {
-	static fromJSON(json: any): Size {
+import { JsonObject } from '../Types';
+	static fromJSON(json: JsonObject): Size {
 		return new Size(
 			json?.width,
 			json?.height,

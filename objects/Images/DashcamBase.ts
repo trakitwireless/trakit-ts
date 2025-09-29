@@ -5,7 +5,7 @@ import { Size } from "../API/Geometry/Size";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { byte, double, ulong } from "../API/Types";
+import { byte, double, ulong, JsonObject } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";

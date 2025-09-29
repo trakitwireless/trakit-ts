@@ -1,6 +1,6 @@
 ﻿import { ID } from "../../API/Functions";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { int, uint } from "../../API/Types";
+import { int, uint, JsonObject } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderGeofenceCircular } from "./ProviderGeofenceCircular";
 import { ProviderGeofencePoint } from "./ProviderGeofencePoint";
@@ -17,7 +17,7 @@ export abstract class ProviderGeofenceBase
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		switch (PlaceType[json["type"] as PlaceType]) {
 			case PlaceType.point:
 				return new ProviderGeofencePoint(

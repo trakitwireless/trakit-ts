@@ -1,4 +1,4 @@
-﻿import { codified, nothing, ulong } from "../../API/Types";
+﻿import { codified, JsonObject, nothing, ulong } from "../../API/Types";
 import { PermissionEscalationState } from "./PermissionEscalationState";
 import { PermissionEscalationType } from "./PermissionEscalationType";
 import { PermissionLevel } from "./PermissionLevel";
@@ -14,7 +14,7 @@ export class PermissionEscalation {
 	 * @param json The JSON to parse.
 	 * @returns A PermissionEscalation instance.
 	 */
-	static fromJSON(json: any): PermissionEscalation {
+	static fromJSON(json: JsonObject): PermissionEscalation {
 		return new PermissionEscalation(
 			json?.direction,
 			json?.company,

@@ -6,7 +6,7 @@ import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { datetime, double, nothing, uint, ulong } from "../API/Types";
+import { datetime, double, nothing, uint, ulong, JsonObject } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { ASSETS } from "../storage";
 import { ReportSummaryReason } from './ReportSummaryReason';
@@ -20,7 +20,7 @@ export class ReportSummary
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ReportSummary(
 			json["asset"] as ulong,
 			json["stateDetail"] as string,

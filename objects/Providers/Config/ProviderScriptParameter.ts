@@ -1,6 +1,6 @@
 ﻿import { ID } from "../../API/Functions";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { uint } from "../../API/Types";
+import { uint, JsonObject } from "../../API/Types";
 import { ProviderScriptParameterType } from "./ProviderScriptParameterType";
 
 /**
@@ -13,7 +13,7 @@ export class ProviderScriptParameter
 	 * @param json  
 	 * @returns 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ProviderScriptParameter(
 			json["kind"] as ProviderScriptParameterType,
 			json["value"] as string,

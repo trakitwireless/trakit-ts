@@ -4,7 +4,7 @@ import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { SearchPattern } from "../../API/SearchPattern";
-import { ulong } from "../../API/Types";
+import { ulong, JsonObject } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES, PROVIDER_SCRIPTS } from "../../storage";
 import { ProviderScript } from "./ProviderScript";
@@ -72,7 +72,7 @@ export class ProviderConfig
 			"geofences": SearchPattern.stringify(this.geofences),
 		};
 	}
-	fromJSON(json: any, force?: boolean): boolean {
+	fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

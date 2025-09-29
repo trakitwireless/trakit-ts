@@ -1,7 +1,7 @@
 ﻿import { Contact } from "../Accounts/Contact";
 import { ID } from "../API/Functions";
 import { MERGE } from "../API/Objects";
-import { ulong } from "../API/Types";
+import { ulong, JsonObject } from "../API/Types";
 import { CONTACTS } from "../storage";
 import { AssetGeneral } from "./AssetGeneral";
 
@@ -29,7 +29,7 @@ export class PersonGeneral
 				"contact": this.contactId,
 			});
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {

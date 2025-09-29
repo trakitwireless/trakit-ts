@@ -8,7 +8,7 @@ import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
 import { MAP_FILTERED_BY_COMPANY } from '../API/Maps';
 import { MERGE } from '../API/Objects';
-import { codified, ulong } from '../API/Types';
+import { codified, ulong, JsonObject } from '../API/Types';
 import { Picture } from '../Images/Picture';
 import { CONTACTS, PICTURES } from '../storage';
 import { CompanyDirectory } from './CompanyDirectory';
@@ -157,7 +157,7 @@ export class Company
 	 * 
 	 * @param json 
 	 */
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const general = this.general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json)),
 			//reserved = this.reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json)),
 			directory = this.directory.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json)),

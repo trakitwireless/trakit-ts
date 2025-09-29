@@ -2,7 +2,7 @@
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
 import { ISerializable } from '../../API/Interfaces/ISerializable';
-import { byte, datetime, double, nothing, timespan, ulong, ushort } from '../../API/Types';
+import { byte, datetime, double, nothing, timespan, ulong, ushort, JsonObject } from '../../API/Types';
 import { FormFieldType } from '../FormFieldType';
 import { FormFieldAttachments } from './FormFieldAttachments';
 import { FormFieldBoolean } from './FormFieldBoolean';
@@ -24,7 +24,7 @@ export abstract class FormFieldBase
 	 * Instantiates a form field based on the kind property in the given JSON.
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		switch (json["kind"]) {
 			case FormFieldType.text:
 				return new FormFieldText(

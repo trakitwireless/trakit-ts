@@ -1,4 +1,5 @@
 ﻿import { ISerializable } from "../../API/Interfaces/ISerializable";
+import { JsonObject } from "../../API/Types";
 
 /**
  * A chunk of script and variables used to assemble a working ProviderScript.
@@ -10,7 +11,7 @@ export class ProviderScriptBlock
 	 * @param json 
 	 * @returns 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new ProviderScriptBlock(
 			json["content"] as string,
 			json["replace"] as string,

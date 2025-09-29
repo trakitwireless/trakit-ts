@@ -10,7 +10,7 @@ import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { MERGE } from "../API/Objects";
-import { codified, ulong } from "../API/Types";
+import { codified, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -30,7 +30,7 @@ export class AssetGeneral
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		switch (json["kind"] as AssetType) {
 			case AssetType.person: return new PersonGeneral(json);
 			case AssetType.vehicle: return new VehicleGeneral(json);
@@ -121,7 +121,7 @@ export class AssetGeneral
 				}
 		);
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);

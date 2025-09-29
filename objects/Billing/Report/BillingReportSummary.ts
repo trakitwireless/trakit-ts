@@ -12,7 +12,7 @@ import { BillingReportHostingSummary } from "./BillingReportHostingSummary";
  */
 export class BillingReportSummary
 	implements INamed, ISerializable {
-	static fromJSON(json: any) {
+	static fromJSON(json: JsonObject) {
 		return new BillingReportSummary(
 			json["target"] as ulong,
 			json["parent"] as ulong,

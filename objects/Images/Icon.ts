@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { ulong } from "../API/Types";
+import { ulong, JsonObject } from "../API/Types";
 import { IconLabel } from "./IconLabel";
 import { IconGlyph } from "./IconGlyph";
 import { IGlobal } from "../API/Interfaces/IGlobal";
@@ -82,7 +82,7 @@ export class Icon
 			"glyphs": this.glyphs.map(ARRAY_TO_JSON),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);

@@ -7,7 +7,7 @@ import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
-import { codified, datetimetemplate, email, ulong } from "../API/Types";
+import { codified, datetimetemplate, email, ulong, JsonObject } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, CONTACTS } from "../storage";
 import { Contact } from "./Contact";
@@ -104,7 +104,7 @@ export class UserGeneral
 			"notify": this.notify.map(ARRAY_TO_JSON),
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"]) || !!(force && json);
 		if (update) {
 			if (!this.login) this.login = (json["login"] || "").toLowerCase();

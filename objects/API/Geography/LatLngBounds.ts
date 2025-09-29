@@ -31,7 +31,7 @@ export class LatLngBounds
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: any): LatLngBounds {
+	static fromJSON(json: JsonObject): LatLngBounds {
 		const bounds = new LatLngBounds;
 		if (ILatLngBounds_instanceOf(json)) {
 			bounds.east = json.east;

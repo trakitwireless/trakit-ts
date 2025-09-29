@@ -16,12 +16,13 @@ import { ISerializable } from '../Interfaces/ISerializable';
  * A coordinate on a flat surface.
  */
 export class Point
+import { JsonObject } from '../Types';
 	implements IPoint, ISerializable {
 	/**
 	 * Returns a new {@link Radial} from the given object.
 	 * @param json	
 	 */
-	static fromJSON(json: any): Point {
+	static fromJSON(json: JsonObject): Point {
 		return new Point(
 			json?.x,
 			json?.y,
