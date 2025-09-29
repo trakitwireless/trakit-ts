@@ -1,31 +1,31 @@
 ﻿import { FLOAT, } from '../Constants';
 import { ROUND_TO, } from '../Functions';
+import { ISerializable } from '../Interfaces/ISerializable';
+import { JsonObject } from '../Types';
+import {
+	POINT_ANGLE,
+	POINT_DISTANCE,
+	POINT_VECTOR,
+} from './Functions';
 import {
 	IPoint,
 	IPoint_instanceOf,
 } from './Interfaces';
-import {
-	POINT_DISTANCE,
-	POINT_VECTOR,
-	POINT_ANGLE,
-} from './Functions';
 import { Radial, } from './Radial';
-import { ISerializable } from '../Interfaces/ISerializable';
 
 /**
  * A coordinate on a flat surface.
  */
 export class Point
-import { JsonObject } from '../Types';
 	implements IPoint, ISerializable {
 	/**
 	 * Returns a new {@link Radial} from the given object.
 	 * @param json	
 	 */
-	static fromJSON(json: JsonObject): Point {
+	static fromJSON(json: IPoint | JsonObject): Point {
 		return new Point(
-			json?.x,
-			json?.y,
+			json?.x as number,
+			json?.y as number,
 		);
 	}
 

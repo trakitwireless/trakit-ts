@@ -1,6 +1,7 @@
-﻿import { FLOAT, } from '../Constants';
+﻿import { IS_AN, ROUND_TO, } from '../Functions';
+import { ISerializable } from '../Interfaces/ISerializable';
+import { JsonObject } from '../Types';
 import { POINT_DISTANCE, POINT_VECTOR, } from './Functions';
-import { IS_AN, ROUND_TO, } from '../Functions';
 import {
 	IPoint,
 	IPoint_instanceOf,
@@ -9,9 +10,8 @@ import {
 	RadialExpansion,
 } from './Interfaces';
 import { Point, } from './Point';
-import { Size, } from './Size';
 import { Rectangle, } from './Rectangle';
-import { ISerializable } from '../Interfaces/ISerializable';
+import { Size, } from './Size';
 
 /**
  * A boundary on a flat surface based on a centre point and a radius.
@@ -22,11 +22,11 @@ export class Radial
 	 * Returns a new {@link Radial} from the given object.
 	 * @param object	
 	 */
-	static fromJSON(object: any): Radial {
+	static fromJSON(json:IRadial|JsonObject): Radial {
 		return new Radial(
-			object?.x,
-			object?.y,
-			object?.r
+			json?.x as number,
+			json?.y as number,
+			json?.r as number,
 		);
 	}
 

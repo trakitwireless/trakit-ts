@@ -11,7 +11,7 @@ export class StreetAddress
 	 * 
 	 * @param street 
 	 */
-	static fromJSON(json: JsonObject): StreetAddress {
+	static fromJSON(json: IStreetAddress | JsonObject): StreetAddress {
 		return new StreetAddress(
 			json["number"] as string,
 			json["street"] as string,

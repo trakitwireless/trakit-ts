@@ -6,6 +6,7 @@
 } from '../Constants';
 import { IS_AN, PYTHAGORA } from '../Functions';
 import { Point } from '../Geometry/Point';
+import { JsonObject } from '../Types';
 import {
 	LATLNG_ANGLE,
 	LATLNG_DISTANCE,
@@ -30,7 +31,7 @@ export class LatLng
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: JsonObject): LatLng  {
+	static fromJSON(json: ILatLng | JsonObject): LatLng {
 		return new LatLng(
 			json?.lat as number,
 			json?.lng as number,

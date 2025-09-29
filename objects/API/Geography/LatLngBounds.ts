@@ -3,6 +3,7 @@ import {
 	IS_AN
 } from '../Functions';
 import { ISerializable } from '../Interfaces/ISerializable';
+import { JsonObject } from '../Types';
 import {
 	LATITUDE_NORMALIZED,
 	LATLNG_ANGLE,
@@ -31,7 +32,7 @@ export class LatLngBounds
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: JsonObject): LatLngBounds {
+	static fromJSON(json: ILatLngBounds | JsonObject): LatLngBounds {
 		const bounds = new LatLngBounds;
 		if (ILatLngBounds_instanceOf(json)) {
 			bounds.east = json.east;

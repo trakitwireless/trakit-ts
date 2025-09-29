@@ -1,4 +1,5 @@
 ﻿import { IS_NUMBER, IS_STRING } from '../Functions';
+import { nothing } from '../Types';
 import { LatLngBounds, } from './LatLngBounds';
 
 //#region LatLng
@@ -47,19 +48,19 @@ export interface IPosition extends ILatLng {
 	/**
 	Speed
 	 */
-	speed: number | null;
+	speed: number | nothing;
 	/**
 	Direction of travel
 	 */
-	bearing: number | null;
+	bearing: number | nothing;
 	/**
 	Distance in meters from the sea level
 	 */
-	altitude: number | null;
+	altitude: number | nothing;
 	/**
 	Threshold in meters for the accuracy of a position
 	 */
-	accuracy: number | null;
+	accuracy: number | nothing;
 	/**
 	The Date/Time of the GPS reading
 	 */
@@ -67,11 +68,11 @@ export interface IPosition extends ILatLng {
 	/**
 	A better description of the current road-segment
 	 */
-	streetAddress: IStreetAddress | null;
+	streetAddress: IStreetAddress | nothing;
 	/**
 	The posted speed limit for the road segment
 	 */
-	speedLimit: number | null;
+	speedLimit: number | nothing;
 }
 /**
  * Returns true if the given pin conforms to the {@link IPosition} interface.

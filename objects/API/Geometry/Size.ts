@@ -4,16 +4,22 @@ import {
 	ISize,
 	ISize_instanceOf,
 } from './Interfaces';
+import { JsonObject } from '../Types';
 
 /**
  * Dimensions on a flat surface.
  */
-export class Size implements ISize {
-import { JsonObject } from '../Types';
-	static fromJSON(json: JsonObject): Size {
+export class Size
+	implements ISize {
+	/**
+	 * 
+	 * @param json 
+	 * @returns 
+	 */
+	static fromJSON(json: ISize | JsonObject): Size {
 		return new Size(
-			json?.width,
-			json?.height,
+			json?.width as number,
+			json?.height as number,
 		);
 	}
 	/**
