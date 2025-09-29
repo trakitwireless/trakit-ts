@@ -127,22 +127,22 @@ export type url = string;
 //#endregion String formats
 
 //#region JSON
-// /**
-//  * 
-//  */
-// export type JsonObject = object | { [key: string]: JsonValue };
-// /**
-//  * 
-//  */
-// export type JsonArray = JsonValue[];
-// /**
-//  * 
-//  */
-// export type JsonValue =
-//   | null
-//   | boolean
-//   | number
-//   | string
-//   | JsonArray
-//   | JsonObject;
+/**
+ * A JSON object is an unordered collection of key/value pairs.
+ */
+export type JsonObject = { [key: string]: JsonValue };
+/**
+ * An array of any valid JSON value.
+ */
+export type JsonArray = JsonValue[];
+/**
+ * Any valid JSON value.
+ */
+export type JsonValue =
+	null
+	| boolean
+	| number
+	| string
+	| JsonArray
+	| JsonObject;
 //#endregion JSON

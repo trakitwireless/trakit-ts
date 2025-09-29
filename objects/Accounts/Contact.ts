@@ -7,7 +7,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, email, phone, ulong, url } from "../API/Types";
+import { codified, datetime, email, int, JsonObject, phone, ulong, url } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Picture } from "../Images/Picture";
 import { COMPANIES, PICTURES } from "../storage";
@@ -192,22 +192,22 @@ export class Contact
 			"pictures": [...this.pictureIds],
 		};
 	}
-	override fromJSON(json: any, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
+		const update = this.updateVersion(json["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.emails = JSON_TO_MAP(json["emails"] || {}, false);
-			this.phones = JSON_TO_MAP(json["phones"] || {}, false);
-			this.addresses = JSON_TO_MAP(json["addresses"] || {}, false);
-			this.urls = JSON_TO_MAP(json["urls"] || {}, false);
-			this.dates = JSON_TO_MAP_BY_PREDICATE(json["dates"] || {}, (k, v) => [k, DATE(v)]);
-			this.options = JSON_TO_MAP(json["options"] || {}, false);
-			this.otherNames = JSON_TO_MAP(json["otherNames"] || {}, false);
-			this.roles = (json["roles"] || []).map(CODIFY);
-			this.pictureIds = (json["pictures"] || []).map(ID);
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.emails = JSON_TO_MAP(json["emails"] as { [key: string]: email } || {}, false);
+			this.phones = JSON_TO_MAP(json["phones"] as { [key: string]: phone } || {}, false);
+			this.addresses = JSON_TO_MAP(json["addresses"] as { [key: string]: string } || {}, false);
+			this.urls = JSON_TO_MAP(json["urls"] as { [key: string]: url } || {}, false);
+			this.dates = JSON_TO_MAP_BY_PREDICATE(json["dates"] as { [key: string]: datetime } || {}, (k, v) => [k, DATE(v)]);
+			this.options = JSON_TO_MAP(json["options"] as { [key: string]: string } || {}, false);
+			this.otherNames = JSON_TO_MAP(json["otherNames"] as { [key: string]: string } || {}, false);
+			this.roles = (json["roles"] as string[])?.map(CODIFY) ?? [];
+			this.pictureIds = (json["pictures"] as string[])?.map(ID) ?? [];
 		}
 		return update;
 	}
