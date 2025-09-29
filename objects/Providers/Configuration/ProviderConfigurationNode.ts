@@ -17,7 +17,7 @@ export class ProviderConfigurationNode
 		const dict: Map<string, ProviderConfigurationNode> = new Map;
 		KEYS(json).forEach(key => dict.set(
 			key,
-			ProviderConfigurationNode.fromJSON(json[key] || {})
+			ProviderConfigurationNode.fromJSON(json[key] as JsonObject || {})
 		));
 		return dict;
 	}
@@ -35,7 +35,7 @@ export class ProviderConfigurationNode
 			json["max"] as any,
 			json["value"] as any,
 			json["unit"] as string,
-			ProviderConfigurationNode.nodesFromJSON(json["nodes"]),
+			ProviderConfigurationNode.nodesFromJSON(json["nodes"] as JsonObject),
 		);
 	}
 

@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MERGE } from "../API/Objects";
-import { ipv4, phone, ulong, JsonObject } from "../API/Types";
+import { JsonObject, int, ipv4, phone, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { ProviderAdvanced } from "./ProviderAdvanced";
 import { ProviderCommand } from "./ProviderCommand";
@@ -168,9 +168,10 @@ export class Provider
 			);
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const general = this.#general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json), force),
-			advanced = this.#advanced.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json), force),
-			control = this.#control.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json["control"]), force);
+		const version = json?.["v"] as int[] ?? [],
+			general = this.#general.fromJSON(MERGE({ "v": version.slice(0, 1) }, json), force),
+			advanced = this.#advanced.fromJSON(MERGE({ "v": version.slice(1, 2) }, json), force),
+			control = this.#control.fromJSON(MERGE({ "v": version.slice(2, 3) }, json["control"] as JsonObject), force);
 		return general || advanced || control;
 	}
 	

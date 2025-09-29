@@ -1,12 +1,12 @@
 import { ARRAY_TO_JSON } from "../../API/Arrays";
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../../API/Interfaces/IGlobal";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { IVisual } from "../../API/Interfaces/IVisual";
-import { codified, colour, ulong, JsonObject } from "../../API/Types";
+import { JsonObject, codified, colour, int, ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES } from "../../storage";
 import { ProviderType } from "../ProviderType";
@@ -91,21 +91,21 @@ export class ProviderScript
 		};
 	}
 	fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 
-			this.fill = json["fill"] || "";
-			this.stroke = json["stroke"] || "";
-			this.graphic = json["graphic"] || "";
+			this.fill = json["fill"] as string || "";
+			this.stroke = json["stroke"] as string || "";
+			this.graphic = json["graphic"] as string || "";
 			this.global = !!json["global"];
 			this.kind = ProviderType[json["kind"] as ProviderType] || ProviderType.unknown;
 			this.blocks = (json["blocks"] as any[])?.map(ProviderScriptBlock.fromJSON) ?? [];
 			this.parameters = JSON_TO_MAP_BY_PREDICATE(
-				json["parameters"] || {},
+				json["parameters"] as object || {},
 				(k, v) => [k, ProviderScriptParameter.fromJSON(v)]
 			);
 		}

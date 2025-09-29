@@ -2,7 +2,7 @@ import { BaseComponent } from "../../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON } from "../../API/Functions";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
-import { uint, ulong, JsonObject } from "../../API/Types";
+import { JsonObject, int, uint, ulong } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderType } from "../ProviderType";
 import { ProviderConfigurationNode } from "./ProviderConfigurationNode";
@@ -62,15 +62,15 @@ export class ProviderConfigurationType
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.providerType = ProviderType[json["providerType"] as ProviderType] || ProviderType.unknown;
 			this.maxGeofenceCount = ID(json["maxGeofenceCount"]);
 			this.minGeofenceCount = ID(json["minGeofenceCount"]);
-			this.scriptOptions = ProviderConfigurationNode.nodesFromJSON(json["scriptOptions"]);
+			this.scriptOptions = ProviderConfigurationNode.nodesFromJSON(json["scriptOptions"] as JsonObject);
 			this.geofenceTypes = (json["geofenceTypes"] as any[])?.map(g => PlaceType[g as PlaceType]) ?? [];
 		}
 		return update;

@@ -1,10 +1,10 @@
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { SearchPattern } from "../../API/SearchPattern";
-import { ulong, JsonObject } from "../../API/Types";
+import { JsonObject, int, ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES, PROVIDER_SCRIPTS } from "../../storage";
 import { ProviderScript } from "./ProviderScript";
@@ -73,15 +73,15 @@ export class ProviderConfig
 		};
 	}
 	fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.scriptId = ID(json["script"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.parameters = JSON_TO_MAP(json["parameters"] || {});
-			this.geofences = SearchPattern.parse(json["geofences"]);
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.parameters = JSON_TO_MAP(json["parameters"] as object || {});
+			this.geofences = SearchPattern.parse(json["geofences"] as string);
 		}
 		return update;
 	}

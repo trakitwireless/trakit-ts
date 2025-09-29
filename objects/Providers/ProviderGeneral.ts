@@ -1,10 +1,10 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, JSON_DATE, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP, PHONE_PARSE } from "../API/Functions";
+import { DATE, ID, JSON_DATE, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON, PHONE_PARSE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MERGE } from "../API/Objects";
-import { phone, ulong, JsonObject } from "../API/Types";
+import { JsonObject, datetime, int, phone, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, COMPANIES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATIONS } from "../storage";
@@ -122,22 +122,22 @@ export class ProviderGeneral
 		);
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
-			if (!this.id) this.id = json["id"] || "";
+			if (!this.id) this.id = json["id"] as string || "";
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.kind = ProviderType[json["kind"] as ProviderType] || ProviderType.unknown;
 			this.assetId = ID(json["asset"]);
 			this.configurationId = ID(json["configuration"]);
-			this.password = json["password"] || "";
-			this.firmware = json["firmware"] || "";
-			this.phoneNumber = PHONE_PARSE(json["phoneNumber"]);
-			this.information = JSON_TO_MAP(json["information"] || {});
-			this.sim = json["sim"] || "";
+			this.password = json["password"] as string || "";
+			this.firmware = json["firmware"] as string || "";
+			this.phoneNumber = PHONE_PARSE(json["phoneNumber"] as phone);
+			this.information = JSON_TO_MAP(json["information"] as object || {});
+			this.sim = json["sim"] as string || "";
 			this.suspended = !!json["suspended"];
-			this.since = DATE(json["since"]);
+			this.since = DATE(json["since"] as datetime);
 		}
 		return update;
 	}

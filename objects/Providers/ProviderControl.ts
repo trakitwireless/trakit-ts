@@ -1,7 +1,7 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
-import { ID, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, JSON_NUMBER, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { ulong, JsonObject } from "../API/Types";
+import { JsonObject, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { ProviderCommand } from "./ProviderCommand";
@@ -43,12 +43,12 @@ export class ProviderControl
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
-			if (!this.id) this.id = json["id"] || "";
+			if (!this.id) this.id = json["id"] as string || "";
 			this.companyId = ID(json["company"]);
 			this.commands = JSON_TO_MAP_BY_PREDICATE(
-				json["commands"] || {},
+				json["commands"] as object || {},
 				(k, v) => [
 					ProviderCommandType[k as ProviderCommandType],
 					ProviderCommand.fromJSON(v)
