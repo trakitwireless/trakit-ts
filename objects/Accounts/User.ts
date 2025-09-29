@@ -6,7 +6,7 @@ import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { MERGE } from "../API/Objects";
 import { Timezone } from "../API/Timezone";
-import { codified, datetimetemplate, email, JsonObject, nothing, ulong } from "../API/Types";
+import { codified, datetimetemplate, email, int, JsonObject, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Contact } from "./Contact";
 import { Permission } from "./Permissions/Permission";
@@ -154,8 +154,9 @@ export class User
 		);
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const general = this.general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json), force),
-			advanced = this.advanced.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json), force);
+		const version = json?.["v"] as int[] || [],
+			general = this.general.fromJSON(MERGE({ "v": version.slice(0, 1) }, json), force),
+			advanced = this.advanced.fromJSON(MERGE({ "v": version.slice(1, 2) }, json), force);
 		return general || advanced;
 	}
 	

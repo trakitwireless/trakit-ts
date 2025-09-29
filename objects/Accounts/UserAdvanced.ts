@@ -4,7 +4,7 @@ import { ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { email, JsonObject, ulong } from "../API/Types";
+import { email, int, JsonObject, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, GROUPS } from "../storage";
 import { Permission } from "./Permissions/Permission";
@@ -57,12 +57,12 @@ export class UserAdvanced
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
-			if (!this.login) this.login = (json["login"] || "").toLowerCase();
+			if (!this.login) this.login = (json["login"] as email || "").toLowerCase();
 			this.companyId = ID(json["company"]);
-			this.groupIds = json["groups"] || [];
-			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
+			this.groupIds = json["groups"] as ulong[] || [];
+			this.permissions = (json["permissions"] as JsonObject[] || []).map(Permission.fromJSON);
 		}
 		return update;
 	}

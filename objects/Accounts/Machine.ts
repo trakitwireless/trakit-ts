@@ -9,7 +9,7 @@ import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
 import { MAP_FILTERED_BY_KEYS } from '../API/Maps';
 import { Timezone } from '../API/Timezone';
 import { TIMEZONE_FIND } from '../API/Timezones';
-import { codified, ipv4, JsonObject, ulong, url } from '../API/Types'; // JsonObject already present, no change needed
+import { codified, datetime, int, ipv4, JsonObject, ulong, url } from '../API/Types'; // JsonObject already present, no change needed
 import { Company } from '../Companies/Company';
 import { COMPANIES, GROUPS } from '../storage';
 import { Permission } from './Permissions/Permission';
@@ -137,28 +137,28 @@ export class Machine
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
-			if (!this.key) this.key = json["key"] || '';
+			if (!this.key) this.key = json["key"] as string || '';
 			this.companyId = ID(json["company"]);
 			this.secret = typeof json["secret"] === "string"
 				? json["secret"]
 				: '';
-			this.nickname = json["nickname"] || '';
-			this.notes = json["notes"] || '';
+			this.nickname = json["nickname"] as string || '';
+			this.notes = json["notes"] as string || '';
 			this.enabled = !!json["enabled"];
-			this.notBefore = DATE(json["notBefore"]);
-			this.notAfter = DATE(json["notAfter"]);
-			this.timezone = TIMEZONE_FIND(json["timezone"] || '') || Timezone.utc;
-			this.language = json["language"] || '';
-			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] || {});
-			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] || {});
-			this.groupIds = (json["groups"] || []).map(ID);
-			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
-			this.services = json["services"] || [];
-			this.referrers = json["referrers"] || [];
-			this.ipRanges = json["ipRanges"] || [];
+			this.notBefore = DATE(json["notBefore"] as datetime);
+			this.notAfter = DATE(json["notAfter"] as datetime);
+			this.timezone = TIMEZONE_FIND(json["timezone"] as codified || '') || Timezone.utc;
+			this.language = json["language"] as codified || '';
+			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] as object || {});
+			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] as object || {});
+			this.groupIds = (json["groups"] as ulong[] || []).map(ID);
+			this.permissions = (json["permissions"] as JsonObject[] || []).map(Permission.fromJSON);
+			this.services = json["services"] as url[] || [];
+			this.referrers = json["referrers"] as url[] || [];
+			this.ipRanges = json["ipRanges"] as ipv4[] || [];
 			this.insecure = !!json["insecure"];
 		}
 		return update;

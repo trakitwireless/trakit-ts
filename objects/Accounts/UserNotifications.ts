@@ -1,9 +1,8 @@
-﻿import { ARRAY_TO_ENUMS } from "../API/Arrays";
-import { IS_AN, PHONE_PARSE, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
+﻿import { IS_AN, PHONE_PARSE, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { TimeSpan } from "../API/TimeSpan";
-import { email, phone, timespan, ulong, JsonObject } from "../API/Types";
+import { email, JsonObject, phone, timespan, ulong } from "../API/Types";
 import { NotificationMethod } from "./NotificationMethod";
 
 /**

@@ -7,7 +7,7 @@ import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
-import { codified, datetimetemplate, email, ulong, JsonObject } from "../API/Types";
+import { codified, datetimetemplate, email, ulong, JsonObject, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, CONTACTS } from "../storage";
 import { Contact } from "./Contact";
@@ -105,20 +105,20 @@ export class UserGeneral
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
-			if (!this.login) this.login = (json["login"] || "").toLowerCase();
+			if (!this.login) this.login = (json["login"] as email || "").toLowerCase();
 			this.companyId = ID(json["company"]);
-			this.nickname = json["nickname"] || "";
+			this.nickname = json["nickname"] as string || "";
 			this.enabled = !!json["enabled"];
 			this.contactId = ID(json["contact"]);
 			this.passwordExpired = !!json["passwordExpired"];
-			this.timezone = TIMEZONE_FIND(json["timezone"] || "") || Timezone.utc;
-			this.language = json["language"] || "";
-			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] || {});
-			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] || {});
-			this.notify = (json["notify"] || []).map((notify: any) => new UserNotifications(notify));
+			this.timezone = TIMEZONE_FIND(json["timezone"] as codified || "") || Timezone.utc;
+			this.language = json["language"] as codified || "";
+			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] as object || {});
+			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] as object || {});
+			this.notify = (json["notify"] as JsonObject[] || []).map((notify: any) => UserNotifications.fromJSON(notify));
 		}
 		return update;
 	}
