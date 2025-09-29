@@ -1,4 +1,5 @@
-﻿import { ARRAY_TO_IDS } from "../API/Arrays";
+﻿import { IPosition } from "objects/API/Geography/Interfaces";
+import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
 import { ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
@@ -6,7 +7,7 @@ import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, double, ulong, JsonObject } from "../API/Types";
+import { codified, double, ulong, JsonObject, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, COMPANIES, PROVIDERS } from "../storage";
@@ -104,29 +105,18 @@ export class AssetAdvanced
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.position = !json["position"]
 				? null
-				: new Position(
-					json["position"]["lat"],
-					json["position"]["lng"],
-					json["position"]["speed"],
-					json["position"]["bearing"],
-					json["position"]["accuracy"],
-					json["position"]["dts"],
-					//json["position"]["address"],
-					json["position"]["speedLimit"] || json["position"]["limit"],
-					json["position"]["altitude"],
-					json["position"]["streetAddress"]
-				);
-			this.odometer = FLOAT(json["odometer"]);
-			this.tags = [...(json["tags"] || [])];
-			this.attributes = JSON_TO_MAP_BY_PREDICATE(json["attributes"] || {}, (key, attr) => [key, new AssetAttribute(attr)]);
-			this.relationshipIds = (json["relationships"] || []).map(ID);
-			this.places = JSON_TO_MAP_BY_PREDICATE(json["places"] || {}, (id, ps) => [ID(id), new AssetPlaceStatus(ps)]);
+				: Position.fromJSON(json["position"] as unknown as IPosition);
+			this.odometer = FLOAT(json["odometer"] as any);
+			this.tags = [...(json["tags"] as codified[] || [])];
+			this.attributes = JSON_TO_MAP_BY_PREDICATE(json["attributes"] as object || {}, (key, attr) => [key, new AssetAttribute(attr)]);
+			this.relationshipIds = (json["relationships"] as ulong[] || []).map(ID);
+			this.places = JSON_TO_MAP_BY_PREDICATE(json["places"] as object || {}, (id, ps) => [ID(id), new AssetPlaceStatus(ps)]);
 		}
 		return update;
 	}

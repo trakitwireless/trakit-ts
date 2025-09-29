@@ -70,7 +70,7 @@ export class AssetDispatch
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);

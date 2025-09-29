@@ -46,7 +46,7 @@ export class VehicleGeneral
 			});
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {
 			this.plate = json["plate"] || "";

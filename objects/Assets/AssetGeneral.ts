@@ -10,7 +10,7 @@ import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { MERGE } from "../API/Objects";
-import { codified, ulong, JsonObject } from "../API/Types";
+import { codified, ulong, JsonObject, int, datetime, email } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -122,19 +122,19 @@ export class AssetGeneral
 		);
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.suspended = !!json["suspended"];
-			this.since = DATE(json["since"]);
-			this.references = JSON_TO_MAP(json["references"] || {});
-			this.labels = [...(json["labels"] || [])];
+			this.since = DATE(json["since"] as datetime);
+			this.references = JSON_TO_MAP(json["references"] as object || {});
+			this.labels = [...(json["labels"] as codified[] || [])];
 			this.iconId = ID(json["icon"]);
-			this.pictureIds = (json["pictures"] || []).map(ID);
-			this.messagingAddress = json["messagingAddress"] || "";
+			this.pictureIds = (json["pictures"] as ulong[] || []).map(ID);
+			this.messagingAddress = json["messagingAddress"] as email || "";
 		}
 		return update;
 	}
