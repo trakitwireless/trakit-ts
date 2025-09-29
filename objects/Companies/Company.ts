@@ -8,7 +8,7 @@ import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
 import { MAP_FILTERED_BY_COMPANY } from '../API/Maps';
 import { MERGE } from '../API/Objects';
-import { codified, ulong, JsonObject } from '../API/Types';
+import { codified, ulong, JsonObject, int } from '../API/Types';
 import { Picture } from '../Images/Picture';
 import { CONTACTS, PICTURES } from '../storage';
 import { CompanyDirectory } from './CompanyDirectory';
@@ -158,16 +158,17 @@ export class Company
 	 * @param json 
 	 */
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const general = this.general.fromJSON(MERGE({ "v": json["v"].slice(0, 1) }, json)),
+		const versions = (json?.["v"] as int[]) || [],
+			general = this.general.fromJSON(MERGE({ "v": versions.slice(0, 1) }, json), force),
 			//reserved = this.reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json)),
-			directory = this.directory.fromJSON(MERGE({ "v": json["v"].slice(2, 3) }, json)),
-			styles = this.styles.fromJSON(MERGE({ "v": json["v"].slice(3, 4) }, json)),
-			policies = this.policies.fromJSON(MERGE({ "v": json["v"].slice(4, 5) }, json));
+			directory = this.directory.fromJSON(MERGE({ "v": versions.slice(2, 3) }, json), force),
+			styles = this.styles.fromJSON(MERGE({ "v": versions.slice(3, 4) }, json), force),
+			policies = this.policies.fromJSON(MERGE({ "v": versions.slice(4, 5) }, json), force);
 		let reseller;
-		if (json?.["v"]?.[5] > 0) {
+		if (versions[5] > 0) {
 			reseller = !this.reseller;
 			if (reseller) this.reseller = new CompanyReseller;
-			reseller = this.reseller?.fromJSON(MERGE({ "v": json["v"].slice(5, 6) }, json))
+			reseller = this.reseller?.fromJSON(MERGE({ "v": versions.slice(5, 6) }, json), force)
 				?? reseller;
 		} else {
 			reseller = !!this.reseller;

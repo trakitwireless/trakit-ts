@@ -85,19 +85,19 @@ export class BehaviourScript
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.global = !!json["global"];
-			this.source = json["source"] || "";
+			this.source = json["source"] as string || "";
 			this.filters = SearchPattern.parse(json["filters"]);
-			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
-			this.fill = json["fill"] || "";
-			this.stroke = json["stroke"] || "";
-			this.graphic = json["graphic"] || "";
+			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] as object || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
+			this.fill = json["fill"] as string || "";
+			this.stroke = json["stroke"] as string || "";
+			this.graphic = json["graphic"] as string || "";
 		}
 		return update;
 	}

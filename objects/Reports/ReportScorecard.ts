@@ -21,7 +21,7 @@ export class ReportScorecard
 			json["asset"] as ulong,
 			json["score"] as double,
 			JSON_TO_MAP_BY_PREDICATE(
-				json["rulePoints"] || {},
+				json["rulePoints"] as object || {},
 				(k, v) => [k, FLOAT(v)]
 			),
 		);

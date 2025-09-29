@@ -91,17 +91,17 @@ export class FormTemplate
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["companyId"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.labels = [...(json["labels"] || [])];
 			this.fields = (json["fields"] || []).map(FormFieldBase.fromJSON);
-			this.fill = json["fill"] || "";
-			this.stroke = json["stroke"] || "";
-			this.graphic = json["graphic"] || "";
+			this.fill = json["fill"] as string || "";
+			this.stroke = json["stroke"] as string || "";
+			this.graphic = json["graphic"] as string || "";
 		}
 		return update;
 	}

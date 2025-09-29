@@ -80,17 +80,17 @@ export class Behaviour
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.scriptId = ID(json["script"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.priority = ID(json["priority"]);
 			this.targets = SearchPattern.parse(json["targets"]);
 			this.filters = SearchPattern.parse(json["filters"]);
-			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
+			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] as object || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
 		}
 		return update;
 	}

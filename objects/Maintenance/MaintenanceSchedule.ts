@@ -131,27 +131,27 @@ export class MaintenanceSchedule
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.notify = json["notify"] || [];
 			this.targets = SearchPattern.parse(json["targets"]);
-			this.fill = json["fill"] || "";
-			this.stroke = json["stroke"] || "";
-			this.graphic = json["graphic"] || "";
-			this.garage = json["garage"] || "";
+			this.fill = json["fill"] as string || "";
+			this.stroke = json["stroke"] as string || "";
+			this.graphic = json["graphic"] as string || "";
+			this.garage = json["garage"] as string || "";
 			this.cost = FLOAT(json["cost"]);
 			this.duration = new TimeSpan(json["duration"]);
-			this.reference = json["reference"] || "";
+			this.reference = json["reference"] as string || "";
 			this.predictionDays = ID(json["predictionDays"]) || DEFAULT_PREDICTION_DAYS;
 			this.recurDays = ID(json["recurDays"]);
 			this.recurDistance = FLOAT(json["recurDistance"]);
 			this.recurEngineHours = FLOAT(json["recurEngineHours"]);
 			this.intervals = JSON_TO_MAP_BY_PREDICATE(
-				json["intervals"] || {},
+				json["intervals"] as object || {},
 				(k, v) => [ID(k), MaintenanceInterval.fromJSON(v)]
 			);
 		}

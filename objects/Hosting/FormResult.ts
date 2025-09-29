@@ -104,21 +104,21 @@ export class FormResult
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.templateId = ID(json["template"]);
 			this.assetId = ID(json["asset"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.labels = [...(json["labels"] || [])];
-			this.fields = JSON_TO_MAP_KEY_ULONG(json["fields"] || {});
+			this.fields = JSON_TO_MAP_KEY_ULONG(json["fields"] as object || {});
 			this.completed = DATE(json["completed"]);
 			this.latlng = json["latlng"]
 				? LatLng.fromJSON(json["latlng"])
 				: null;
-			this.driver = json["driver"] || "";
+			this.driver = json["driver"] as string || "";
 		}
 		return update;
 	}

@@ -4,7 +4,7 @@ import { CODIFY } from "../API/Codifier";
 import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { codified, ulong, JsonObject } from "../API/Types";
+import { codified, ulong, JsonObject, int } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 import { LabelStyle } from "./LabelStyle";
@@ -49,12 +49,12 @@ export class CompanyStyles
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.labels = JSON_TO_MAP_BY_PREDICATE(json["labels"], OBJECT_TO_LABELSTYLE);
-			this.tags = JSON_TO_MAP_BY_PREDICATE(json["tags"], OBJECT_TO_LABELSTYLE);
+			this.labels = JSON_TO_MAP_BY_PREDICATE(json["labels"] as object, OBJECT_TO_LABELSTYLE);
+			this.tags = JSON_TO_MAP_BY_PREDICATE(json["tags"] as object, OBJECT_TO_LABELSTYLE);
 		}
 		return update;
 	}
@@ -77,6 +77,6 @@ export class CompanyStyles
  * @param value 
  * @returns 
  */
-function OBJECT_TO_LABELSTYLE(key: string, value: any): [string, LabelStyle] {
+function OBJECT_TO_LABELSTYLE(key: string, value: any): [codified, LabelStyle] {
 	return [CODIFY(key), new LabelStyle(value)];
 }

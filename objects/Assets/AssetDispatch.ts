@@ -4,7 +4,7 @@ import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { ulong, JsonObject } from "../API/Types";
+import { JsonObject, datetime, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { DispatchDirection } from "../Dispatch/DispatchDirection";
 import { DispatchJob } from "../Dispatch/DispatchJob";
@@ -75,9 +75,9 @@ export class AssetDispatch
 			this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			//if ("tasks" in json) this.tasks = json["tasks"].map();
-			this.jobIds = (json["jobs"] || []).map(ID);
+			this.jobIds = (json["jobs"] as ulong[] || []).map(ID);
 			this.directions = ((json["directions"] || []) as any[]).map(DispatchDirection.fromJSON);
-			this.lastDispatched = DATE(json["lastDispatched"]);
+			this.lastDispatched = DATE(json["lastDispatched"] as datetime);
 		}
 		return update;
 	}

@@ -4,7 +4,7 @@ import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functio
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { ulong, JsonObject } from "../API/Types";
+import { ulong, JsonObject, int } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 
@@ -53,13 +53,13 @@ export class CompanyGeneral
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.references = JSON_TO_MAP(json["references"] || {});
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.references = JSON_TO_MAP(json["references"] as object || {});
 		}
 		return update;
 	}

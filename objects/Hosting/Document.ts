@@ -72,17 +72,17 @@ export class Document
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.src = json["src"] || "";
-			this.mime = json["mime"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.src = json["src"] as string || "";
+			this.mime = json["mime"] as string || "";
 			this.bytes = ID(json["bytes"]) || 0;
 			this.expiry = DATE(json["expiry"]);
-			this.references = JSON_TO_MAP(json["references"] || {});
+			this.references = JSON_TO_MAP(json["references"] as object || {});
 		}
 		return update;
 	}

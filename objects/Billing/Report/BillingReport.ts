@@ -117,20 +117,20 @@ export class BillingReport
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.billeeId = ID(json["billee"]);
 			this.profileId = ID(json["profile"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.startDate = DATE(json["startDate"]);
 			this.endDate = DATE(json["endDate"]);
 			this.total = FLOAT(json["total"]);
 			this.currency = BillingCurrency[json["cycle"] as BillingCurrency] || BillingCurrency.CAD;
 			this.status = BillingReportStatus[json["status"] as BillingReportStatus] || BillingReportStatus.created;
-			this.error = json["error"] || "";
+			this.error = json["error"] as string || "";
 			this.summary = (json["summary"] || []).map(BillingReportSummary.fromJSON);
 			this.breakdown = (json["breakdown"] || []).map(BillingReportBreakdown.fromJSON);
 		}

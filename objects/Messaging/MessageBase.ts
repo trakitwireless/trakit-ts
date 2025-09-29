@@ -103,20 +103,20 @@ export abstract class MessageBase
 		}
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.status = MessageStatus[json["status"] as MessageStatus] || MessageStatus.created;
 			this.kind = MessageType[json["kind"] as MessageType] || MessageType.unknown;
-			this.to = json["to"] || "";
-			this.from = json["from"] || "";
-			this.body = json["body"] || "";
+			this.to = json["to"] as string || "";
+			this.from = json["from"] as string || "";
+			this.body = json["body"] as string || "";
 			this.processed = DATE(json["processed"]);
 			this.delivered = DATE(json["delivered"]);
-			this.subject = json["subject"] || "";
+			this.subject = json["subject"] as string || "";
 			this.assetId = ID(json["asset"]);
-			this.userLogin = json["user"] || "";
+			this.userLogin = json["userLogin"] as string || "";
 		}
 		return update;
 	}

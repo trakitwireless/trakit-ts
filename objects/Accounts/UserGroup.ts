@@ -58,8 +58,8 @@ export class UserGroup
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
 		}
 		return update;

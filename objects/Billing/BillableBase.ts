@@ -87,15 +87,15 @@ export abstract class BillableBase
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.profileId = ID(json["profile"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.reference = json["reference"] || "";
-			this.sku = json["sku"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.reference = json["reference"] as string || "";
+			this.sku = json["sku"] as string || "";
 			this.start = DATE(json["start"]);
 			this.end = DATE(json["end"]);
 			this.amount = FLOAT(json["amount"]);

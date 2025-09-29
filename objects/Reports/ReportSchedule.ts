@@ -88,14 +88,14 @@ export class ReportSchedule
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.templateId = ID(json["template"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.owner = json["owner"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.owner = json["owner"] as string || "";
 			this.enabled = !!json["enabled"];
 			this.repetition = json["repetition"]
 				? ReportRecurrence.fromJSON(json["repetition"])

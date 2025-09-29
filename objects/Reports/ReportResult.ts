@@ -157,19 +157,19 @@ export class ReportResult
 		};
 	}
 	fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.kind = ReportType[json["kind"] as ReportType];
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.options = ReportOptions.fromJSON(json["options"]);
 			this.templateId = ID(json["template"]);
 			this.scheduleId = ID(json["schedule"]);
 			this.archive = !!json["archive"];
 			this.timezone = TIMEZONE_FIND(json["timezone"]) || Timezone.utc;
-			this.runBy = json["runBy"] || "";
+			this.runBy = json["runBy"] as string || "";
 			this.created = DATE(json["created"]);
 			this.completed = DATE(json["completed"]);
 			this.status = ReportStatus[json["status"] as ReportStatus] || ReportStatus.created;
@@ -179,7 +179,7 @@ export class ReportResult
 			this.filtered = (json["filtered"] || []).map(ID);
 			this.totals = (json["totals"] || []).map(ReportTotal.fromJSON);
 			this.scorecards = (json["scorecards"] || []).map(ReportScorecard.fromJSON);
-			this.error = json["error"] || "";
+			this.error = json["error"] as string || "";
 		}
 		return update;
 	}

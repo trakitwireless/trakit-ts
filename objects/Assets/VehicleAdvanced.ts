@@ -1,6 +1,6 @@
 ﻿import { FLOAT } from "../API/Constants";
 import { MERGE } from "../API/Objects";
-import { double, JsonObject } from "../API/Types";
+import { double, int, JsonObject } from "../API/Types";
 import { AssetAdvanced } from "./AssetAdvanced";
 
 /**
@@ -22,7 +22,7 @@ export class VehicleAdvanced
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {
-			this.engineHours = FLOAT(json["engineHours"]);
+			this.engineHours = FLOAT(json["engineHours"] as any);
 		}
 		return update;
 	}

@@ -123,19 +123,19 @@ export class Place
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.iconId = ID(json["icon"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
-			this.address = json["address"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
+			this.address = json["address"] as string || "";
 			this.kind = PlaceType[json["kind"] as PlaceType] || PlaceType.point;
 			this.labels = (json["labels"] || []).map(CODIFY);
-			this.colour = json["colour"] || "";
+			this.colour = json["colour"] as string || "";
 			this.pictureIds = (json["pictures"] || []).map(ID);
-			this.reference = json["reference"] || "";
+			this.reference = json["reference"] as string || "";
 			this.anchor = json["anchor"]
 				? LatLng.fromJSON(json["anchor"])
 				: null;

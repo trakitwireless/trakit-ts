@@ -109,14 +109,14 @@ export class BillingProfile
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
 			this.targetId = ID(json["target"]);
 			this.billeeId = ID(json["billee"]);
-			this.name = json["name"] || "";
-			this.notes = json["notes"] || "";
+			this.name = json["name"] as string || "";
+			this.notes = json["notes"] as string || "";
 			this.messages = ((json["messages"] || []) as any[]).map(BillableSmsProfile.fromJSON);
 			this.cycle = BillingCycle[json["cycle"] as BillingCycle] || BillingCycle.monthly;
 			this.cycleStart = DATE(json["cycleStart"]);

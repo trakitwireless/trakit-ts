@@ -3,7 +3,7 @@ import { BaseComponent } from "../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { ulong, JsonObject } from "../API/Types";
+import { ulong, JsonObject, int } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 import { PasswordPolicy } from "./PasswordPolicy";
@@ -49,12 +49,12 @@ export class CompanyPolicies
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.sessionPolicy = new SessionPolicy(json["sessionPolicy"]);
-			this.passwordPolicy = new PasswordPolicy(json["passwordPolicy"]);
+			this.sessionPolicy = SessionPolicy.fromJSON(json["sessionPolicy"]);
+			this.passwordPolicy = PasswordPolicy.fromJSON(json["passwordPolicy"]);
 		}
 		return update;
 	}

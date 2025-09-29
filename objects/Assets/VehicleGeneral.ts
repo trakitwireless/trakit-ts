@@ -49,12 +49,12 @@ export class VehicleGeneral
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {
-			this.plate = json["plate"] || "";
-			this.vin = json["vin"] || "";
-			this.make = json["make"] || "";
-			this.model = json["model"] || "";
+			this.plate = json["plate"] as string || "";
+			this.vin = json["vin"] as string || "";
+			this.make = json["make"] as string || "";
+			this.model = json["model"] as string || "";
 			this.year = ID(json["year"]) || 0;
-			this.colour = json["colour"] || "";
+			this.colour = json["colour"] as string || "";
 		}
 		return update;
 	}

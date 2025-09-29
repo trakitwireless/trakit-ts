@@ -3,7 +3,7 @@ import { BaseComponent } from "../API/BaseComponent";
 import { DATE, ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { codified, colour, ulong, JsonObject } from "../API/Types";
+import { codified, colour, ulong, JsonObject, int, datetime } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { ColourStyle } from "./ColourStyle";
 import { Company } from "./Company";
@@ -149,26 +149,26 @@ export class CompanyReseller
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.contactInfo = JSON_TO_MAP_BY_PREDICATE(json["contactInfo"] || {}, (k, v) => [k, ID(v)]);
-			this.serviceName = json["serviceName"] || "";
-			this.logo = json["logo"] || "";
-			this.icon = json["icon"] || "";
-			this.favourite = json["favourite"] || "";
-			this.domain = json["domain"] || json["URN"] || json["urn"] || "";
-			this.website = JSON_TO_MAP(json["website"] || {});
-			this.graphics = JSON_TO_MAP(json["graphics"] || {});
-			this.gamut = JSON_TO_MAP_BY_PREDICATE(json["gamut"] || {}, (k, v) => [k, ColourStyle.fromJSON(v)]);
-			this.languages = [...(json["languages"] || [])];
+			this.contactInfo = JSON_TO_MAP_BY_PREDICATE(json["contactInfo"] as object || {}, (k, v) => [k, ID(v)]);
+			this.serviceName = json["serviceName"] as string || "";
+			this.logo = json["logo"] as string || "";
+			this.icon = json["icon"] as string || "";
+			this.favourite = json["favourite"] as string || "";
+			this.domain = json["domain"] as string || json["URN"] as string || json["urn"] as string || "";
+			this.website = JSON_TO_MAP(json["website"] as object || {});
+			this.graphics = JSON_TO_MAP(json["graphics"] as object || {});
+			this.gamut = JSON_TO_MAP_BY_PREDICATE(json["gamut"] as object || {}, (k, v) => [k, ColourStyle.fromJSON(v)]);
+			this.languages = [...(json["languages"] as codified[] || [])];
 			this.notifyEmail = NotificationServerEmail.fromJSON(json["notifyEmail"]);
 			this.notifySms = NotificationServerSms.fromJSON(json["notifySms"]);
-			this.termsPreamble = json["termsPreamble"] || "";
-			this.termsUpdated = DATE(json["termsUpdated"]);
-			this.recoverSubject = json["recoverSubject"] || "";
-			this.recoverBody = json["recoverBody"] || "";
+			this.termsPreamble = json["termsPreamble"] as string || "";
+			this.termsUpdated = DATE(json["termsUpdated"] as datetime);
+			this.recoverSubject = json["recoverSubject"] as string || "";
+			this.recoverBody = json["recoverBody"] as string || "";
 			this.recoverIsHtml = !!json["recoverIsHtml"];
 		}
 		return update;

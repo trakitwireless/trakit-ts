@@ -33,12 +33,12 @@ export class AssetMessage
 		);
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {
 			this.folder = MessageFolder[json["folder"] as MessageFolder] || MessageFolder.archive;
 			this.incoming = !!json["incoming"];
-			this.readBy = json["readBy"] || "";
+			this.readBy = json["readBy"] as string || "";
 		}
 		return update;
 	}

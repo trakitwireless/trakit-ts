@@ -98,7 +98,7 @@ export class BehaviourLog
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const update = this.updateVersion(json?.["v"]) || !!(force && json);
+		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.assetId = ID(json["asset"]);
@@ -107,7 +107,7 @@ export class BehaviourLog
 			this.scriptId = ID(json["script"]);
 			this.kind = BehaviourLogType[json["kind"] as BehaviourLogType] || BehaviourLogType.log;
 			this.dts = DATE(json["dts"]);
-			this.message = json["message"] || "";
+			this.message = json["message"] as string || "";
 			this.line = ID(json["line"]);
 			this.character = ID(json["character"]);
 		}
