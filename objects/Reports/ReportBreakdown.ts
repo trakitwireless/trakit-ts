@@ -24,44 +24,44 @@ export class ReportBreakdown
 	static fromJSON(json: JsonObject) {
 		if (typeof json["job"] === "object") {
 			return new ReportBreakdownJob(
-				new DispatchJob(json["job"]),
+				new DispatchJob(json["job"] as JsonObject),
 				json["asset"] as ulong,
 				json["instance"] as uint,
 				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
-					? AssetGeneral.fromJSON(json["general"])
-					: json["general"],
+					? AssetGeneral.fromJSON(json["general"] as JsonObject)
+					: null,
 				json["advanced"]
-					? AssetAdvanced.fromJSON(json["advanced"])
-					: json["advanced"],
+					? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+					: null,
 			);
 		}
 		if (typeof json["message"] === "object") {
 			return new ReportBreakdownMessage(
-				new AssetMessage(json["message"]),
+				new AssetMessage(json["message"] as JsonObject),
 				json["asset"] as ulong,
 				json["instance"] as uint,
 				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
-					? AssetGeneral.fromJSON(json["general"])
-					: json["general"],
+					? AssetGeneral.fromJSON(json["general"] as JsonObject)
+					: null,
 				json["advanced"]
-					? AssetAdvanced.fromJSON(json["advanced"])
-					: json["advanced"]
+					? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+					: null,
 			);
 		}
 		if (typeof json["task"] === "object") {
 			return new ReportBreakdownTask(
-				new DispatchTask(json["task"]),
+				new DispatchTask(json["task"] as JsonObject),
 				json["asset"] as ulong,
 				json["instance"] as uint,
 				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
-					? AssetGeneral.fromJSON(json["general"])
-					: json["general"],
+					? AssetGeneral.fromJSON(json["general"] as JsonObject)
+					: null,
 				json["advanced"]
-					? AssetAdvanced.fromJSON(json["advanced"])
-					: json["advanced"]
+					? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+					: null,
 			);
 		}
 		return new ReportBreakdown(
@@ -69,11 +69,11 @@ export class ReportBreakdown
 			json["instance"] as uint,
 			(json["summaryInstances"] as ulong[])?.map(ID),
 			json["general"]
-				? AssetGeneral.fromJSON(json["general"])
-				: json["general"],
+				? AssetGeneral.fromJSON(json["general"] as JsonObject)
+				: null,
 			json["advanced"]
-				? AssetAdvanced.fromJSON(json["advanced"])
-				: json["advanced"]
+				? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+				: null,
 		);
 	}
 

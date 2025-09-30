@@ -1,21 +1,21 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_NUMBER, JSON_TO_MAP } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { LatLngBounds } from "../API/Geography/LatLngBounds";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { byte, email, ulong, JsonObject } from "../API/Types";
-import { ReportStatus } from './ReportStatus';
-import { ReportTotal } from './ReportTotal';
-import { ReportType } from './ReportType';
-import { ReportOptions } from './ReportOptions';
-import { ReportScorecard } from './ReportScorecard';
+import { Timezone } from "../API/Timezone";
+import { TIMEZONE_FIND } from "../API/Timezones";
+import { JsonObject, byte, codified, datetime, email, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, REPORT_SCHEDULES, REPORT_TEMPLATES } from "../storage";
-import { Timezone } from "../API/Timezone";
+import { ReportOptions } from './ReportOptions';
 import { ReportSchedule } from "./ReportSchedule";
+import { ReportScorecard } from './ReportScorecard';
+import { ReportStatus } from './ReportStatus';
 import { ReportTemplate } from "./ReportTemplate";
-import { TIMEZONE_FIND } from "../API/Timezones";
+import { ReportTotal } from './ReportTotal';
+import { ReportType } from './ReportType';
 
 /**
  * Report results
@@ -164,21 +164,21 @@ export class ReportResult
 			this.kind = ReportType[json["kind"] as ReportType];
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
-			this.options = ReportOptions.fromJSON(json["options"]);
+			this.options = ReportOptions.fromJSON(json["options"] as JsonObject);
 			this.templateId = ID(json["template"]);
 			this.scheduleId = ID(json["schedule"]);
 			this.archive = !!json["archive"];
-			this.timezone = TIMEZONE_FIND(json["timezone"]) || Timezone.utc;
+			this.timezone = TIMEZONE_FIND(json["timezone"] as codified) || Timezone.utc;
 			this.runBy = json["runBy"] as string || "";
-			this.created = DATE(json["created"]);
-			this.completed = DATE(json["completed"]);
+			this.created = DATE(json["created"] as datetime);
+			this.completed = DATE(json["completed"] as datetime);
 			this.status = ReportStatus[json["status"] as ReportStatus] || ReportStatus.created;
 			this.progress = ID(json["progress"]);
-			this.bounds = LatLngBounds.fromJSON(json["bounds"]);
-			this.targeted = (json["targeted"] || []).map(ID);
-			this.filtered = (json["filtered"] || []).map(ID);
-			this.totals = (json["totals"] || []).map(ReportTotal.fromJSON);
-			this.scorecards = (json["scorecards"] || []).map(ReportScorecard.fromJSON);
+			this.bounds = LatLngBounds.fromJSON(json["bounds"] as JsonObject);
+			this.targeted = (json["targeted"] as ulong[] || []).map(ID);
+			this.filtered = (json["filtered"] as ulong[] || []).map(ID);
+			this.totals = (json["totals"] as JsonObject[] || []).map(ReportTotal.fromJSON);
+			this.scorecards = (json["scorecards"] as JsonObject[] || []).map(ReportScorecard.fromJSON);
 			this.error = json["error"] as string || "";
 		}
 		return update;

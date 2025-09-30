@@ -17,7 +17,7 @@ export class ReportNotifications
 	static fromJSON(json: JsonObject) {
 		return new ReportNotifications(
 			json["users"] as email[],
-			SearchPattern.parse(json["assets"]),
+			SearchPattern.parse(json["assets"] as string),
 		);
 	}
 	/**

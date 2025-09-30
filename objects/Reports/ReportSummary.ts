@@ -27,16 +27,16 @@ export class ReportSummary
 			json["instance"] as uint,
 			json["instancesCount"] as uint,
 			json["startingUtc"] as datetime,
-			json["startingReason"],
+			json["startingReason"] as ReportSummaryReason,
 			json["endingUtc"] as datetime,
-			json["endingReason"],
+			json["endingReason"] as ReportSummaryReason,
 			json["distance"] as double,
-			json["polyline"] as ILatLng[],
+			json["polyline"] as (ILatLng | JsonObject)[],
 			json["firstState"]
-				? Asset.fromJSON(json["firstState"])
+				? Asset.fromJSON(json["firstState"] as JsonObject)
 				: null,
 			json["lastState"]
-				? Asset.fromJSON(json["lastState"])
+				? Asset.fromJSON(json["lastState"] as JsonObject)
 				: null,
 		);
 	}
@@ -110,7 +110,7 @@ export class ReportSummary
 		endingUtc: Date | number | datetime,
 		endingReason: ReportSummaryReason,
 		distance?: double | nothing,
-		polyline?: ILatLng[] | nothing,
+		polyline?: (ILatLng | JsonObject)[] | nothing,
 		firstState?: Asset | nothing,
 		lastState?: Asset | nothing,
 	) {

@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { email, ulong, JsonObject } from "../API/Types";
+import { email, ulong, JsonObject, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, REPORT_TEMPLATES } from "../storage";
 import { ReportNotifications } from "./ReportNotifications";
@@ -98,13 +98,13 @@ export class ReportSchedule
 			this.owner = json["owner"] as string || "";
 			this.enabled = !!json["enabled"];
 			this.repetition = json["repetition"]
-				? ReportRecurrence.fromJSON(json["repetition"])
+				? ReportRecurrence.fromJSON(json["repetition"] as JsonObject)
 				: null;
 			this.options = json["options"]
-				? ReportOptions.fromJSON(json["options"])
+				? ReportOptions.fromJSON(json["options"] as JsonObject)
 				: null;
 			this.notify = json["notify"]
-				? ReportNotifications.fromJSON(json["notify"])
+				? ReportNotifications.fromJSON(json["notify"] as JsonObject)
 				: null;
 		}
 		return update;

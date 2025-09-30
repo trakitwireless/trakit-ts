@@ -1,4 +1,4 @@
-﻿import { nothing, JsonObject } from 'objects/API/Types';
+﻿import { JsonObject, nothing } from 'objects/API/Types';
 import { ARRAY_TO_JSON } from '../API/Arrays';
 import { ISerializable } from '../API/Interfaces/ISerializable';
 import { SearchPattern } from '../API/SearchPattern';
@@ -18,12 +18,12 @@ export class ReportOptions
 	static fromJSON(json: JsonObject) {
 		return new ReportOptions(
 			(json["parameters"] as any[])?.map(ReportParameter.fromJSON),
-			SearchPattern.parse(json["targets"]),
+			SearchPattern.parse(json["targets"] as string),
 			json["filtering"] as ReportFilterMode,
-			SearchPattern.parse(json["places"]),
+			SearchPattern.parse(json["places"] as string),
 			json["regions"] as string[],
 			json["scorecardRules"]
-				? ReportScorecardRules.fromJSON(json["scorecardRules"])
+				? ReportScorecardRules.fromJSON(json["scorecardRules"] as JsonObject)
 				: null,
 		);
 	}

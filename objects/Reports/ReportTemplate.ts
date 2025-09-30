@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
-import { codified, colour, ulong, JsonObject } from "../API/Types";
+import { JsonObject, codified, colour, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { ReportOptions } from "./ReportOptions";
@@ -81,11 +81,11 @@ export class ReportTemplate
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
 			this.options = json["options"]
-				? ReportOptions.fromJSON(json["options"])
+				? ReportOptions.fromJSON(json["options"] as JsonObject)
 				: null;
 			this.fill = json["fill"] as string || "";
 			this.stroke = json["stroke"] as string || "";
-			this.graphic = json["graphic"] as string || "";
+			this.graphic = json["graphic"] as codified || "";
 		}
 		return update;
 	}
