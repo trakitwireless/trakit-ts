@@ -158,7 +158,7 @@ export class Company
 	 * @param json 
 	 */
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const versions = (json?.["v"] as int[]) || [],
+		const versions = json?.["v"] as int[] || [],
 			general = this.general.fromJSON(MERGE({ "v": versions.slice(0, 1) }, json), force),
 			//reserved = this.reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json)),
 			directory = this.directory.fromJSON(MERGE({ "v": versions.slice(2, 3) }, json), force),

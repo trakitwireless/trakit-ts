@@ -24,7 +24,7 @@ class ComputedPermission
 		kind: PermissionType,
 		level: PermissionLevel = PermissionLevel.read,
 		method: PermissionMethod = PermissionMethod.grant,
-		labels: string[],
+		labels: codified[],
 		order: byte
 	) {
 		super(
