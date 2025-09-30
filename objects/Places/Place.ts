@@ -12,7 +12,7 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, colour, double, ulong, JsonObject } from "../API/Types";
+import { codified, colour, double, ulong, JsonObject, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -132,19 +132,19 @@ export class Place
 			this.notes = json["notes"] as string || "";
 			this.address = json["address"] as string || "";
 			this.kind = PlaceType[json["kind"] as PlaceType] || PlaceType.point;
-			this.labels = (json["labels"] || []).map(CODIFY);
+			this.labels = (json["labels"]as codified[] || []).map(CODIFY);
 			this.colour = json["colour"] as string || "";
-			this.pictureIds = (json["pictures"] || []).map(ID);
+			this.pictureIds = (json["pictures"]as ulong[] || []).map(ID);
 			this.reference = json["reference"] as string || "";
 			this.anchor = json["anchor"]
-				? LatLng.fromJSON(json["anchor"])
+				? LatLng.fromJSON(json["anchor"] as JsonObject)
 				: null;
-			this.radius = FLOAT(json["radius"]);
+			this.radius = FLOAT(json["radius"] as any);
 			this.points = (
 				typeof json["shape"] === "string"
 					? ROUTE_DECODE(json["shape"], 6)
 					: json["shape"]
-						? json["shape"]
+						? json["shape"] as JsonObject[]
 						: null
 			)?.map(LatLng.fromJSON) ?? null;
 		}

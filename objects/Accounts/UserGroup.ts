@@ -4,7 +4,7 @@ import { ID, IS_AN } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { ulong, JsonObject } from "../API/Types";
+import { ulong, JsonObject, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { Permission } from "./Permissions/Permission";
@@ -60,7 +60,7 @@ export class UserGroup
 			this.companyId = ID(json["company"]);
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
-			this.permissions = (json["permissions"] || []).map(Permission.fromJSON);
+			this.permissions = (json["permissions"] as JsonObject[] || []).map(Permission.fromJSON);
 		}
 		return update;
 	}

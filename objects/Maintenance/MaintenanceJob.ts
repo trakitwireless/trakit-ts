@@ -9,7 +9,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { TimeSpan } from "../API/TimeSpan";
-import { double, int, ulong } from "../API/Types";
+import { datetime, double, int, JsonObject, timespan, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Picture } from "../Images/Picture";
@@ -158,16 +158,16 @@ export class MaintenanceJob
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
 			this.status = MaintenanceJobStatus[json["status"] as MaintenanceJobStatus] || MaintenanceJobStatus.pending;
-			this.created = DATE(json["created"]);
-			this.completed = DATE(json["completed"]);
-			this.odometer = FLOAT(json["odometer"]);
-			this.engineHours = FLOAT(json["engineHours"]);
+			this.created = DATE(json["created"] as datetime);
+			this.completed = DATE(json["completed"] as datetime);
+			this.odometer = FLOAT(json["odometer"] as any);
+			this.engineHours = FLOAT(json["engineHours"] as any);
 			this.garage = json["garage"] as string || "";
-			this.cost = FLOAT(json["cost"]);
-			this.duration = new TimeSpan(json["duration"]);
+			this.cost = FLOAT(json["cost"] as any);
+			this.duration = new TimeSpan(json["duration"] as timespan);
 			this.reference = json["reference"] as string || "";
 			this.technician = json["technician"] as string || "";
-			this.pictureIds = (json["pictures"] || []).map(ID);
+			this.pictureIds = (json["pictures"] as ulong[] || []).map(ID);
 		}
 		return update;
 	}

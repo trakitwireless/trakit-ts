@@ -1,9 +1,9 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, IS_AN } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { uint, ulong, JsonObject } from "../API/Types";
+import { datetime, int, JsonObject, uint, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, BEHAVIOUR_SCRIPTS, BEHAVIOURS, COMPANIES } from "../storage";
@@ -106,7 +106,7 @@ export class BehaviourLog
 			this.behaviourId = ID(json["behaviour"]);
 			this.scriptId = ID(json["script"]);
 			this.kind = BehaviourLogType[json["kind"] as BehaviourLogType] || BehaviourLogType.log;
-			this.dts = DATE(json["dts"]);
+			this.dts = DATE(json["dts"] as datetime);
 			this.message = json["message"] as string || "";
 			this.line = ID(json["line"]);
 			this.character = ID(json["character"]);

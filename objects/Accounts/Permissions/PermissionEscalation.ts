@@ -16,13 +16,13 @@ export class PermissionEscalation {
 	 */
 	static fromJSON(json: JsonObject): PermissionEscalation {
 		return new PermissionEscalation(
-			json?.direction,
-			json?.company,
-			json?.kind,
-			json?.after?.level,
-			json?.after?.labels,
-			json?.before?.level,
-			json?.before?.labels,
+			json?.direction as PermissionEscalationType,
+			json?.company as ulong,
+			json?.kind as PermissionType,
+			(json?.after as JsonObject)?.level as PermissionLevel,
+			(json?.after as JsonObject)?.labels as codified[] | nothing,
+			(json?.before as JsonObject)?.level as PermissionLevel | nothing,
+			(json?.before as JsonObject)?.labels as codified[] | nothing,
 		);
 	}
 

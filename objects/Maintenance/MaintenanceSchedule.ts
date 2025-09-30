@@ -1,14 +1,13 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
 import { SearchPattern } from "../API/SearchPattern";
 import { TimeSpan } from "../API/TimeSpan";
-import { codified, colour, double, email, int, uint, ulong } from "../API/Types";
-import { Asset } from "../Assets/Asset";
+import { codified, colour, double, email, int, JsonObject, timespan, uint, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { MaintenanceInterval } from "./MaintenanceInterval";
@@ -137,21 +136,21 @@ export class MaintenanceSchedule
 			this.companyId = ID(json["company"]);
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
-			this.notify = json["notify"] || [];
-			this.targets = SearchPattern.parse(json["targets"]);
+			this.notify = json["notify"] as email[] || [];
+			this.targets = SearchPattern.parse(json["targets"] as string);
 			this.fill = json["fill"] as string || "";
 			this.stroke = json["stroke"] as string || "";
 			this.graphic = json["graphic"] as string || "";
 			this.garage = json["garage"] as string || "";
-			this.cost = FLOAT(json["cost"]);
-			this.duration = new TimeSpan(json["duration"]);
+			this.cost = FLOAT(json["cost"] as any);
+			this.duration = new TimeSpan(json["duration"] as timespan);
 			this.reference = json["reference"] as string || "";
 			this.predictionDays = ID(json["predictionDays"]) || DEFAULT_PREDICTION_DAYS;
 			this.recurDays = ID(json["recurDays"]);
-			this.recurDistance = FLOAT(json["recurDistance"]);
-			this.recurEngineHours = FLOAT(json["recurEngineHours"]);
+			this.recurDistance = FLOAT(json["recurDistance"] as any);
+			this.recurEngineHours = FLOAT(json["recurEngineHours"] as any);
 			this.intervals = JSON_TO_MAP_BY_PREDICATE(
-				json["intervals"] as object || {},
+				json["intervals"] as JsonObject || {},
 				(k, v) => [ID(k), MaintenanceInterval.fromJSON(v)]
 			);
 		}

@@ -1,7 +1,7 @@
 ﻿import { Contact } from "../Accounts/Contact";
 import { ID } from "../API/Functions";
 import { MERGE } from "../API/Objects";
-import { ulong, JsonObject } from "../API/Types";
+import { ulong, JsonObject, int } from "../API/Types";
 import { CONTACTS } from "../storage";
 import { AssetGeneral } from "./AssetGeneral";
 

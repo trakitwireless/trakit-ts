@@ -1,4 +1,5 @@
 ﻿import { MERGE } from '../API/Objects';
+import { JsonObject, int } from '../API/Types';
 import { AlertPriority } from './AlertPriority';
 import { MessageBase } from './MessageBase';
 

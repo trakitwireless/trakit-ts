@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
 import { SearchPattern } from "../API/SearchPattern";
-import { codified, colour, ulong, JsonObject } from "../API/Types";
+import { codified, colour, ulong, JsonObject, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { BehaviourParameter } from "./BehaviourParameter";
@@ -93,7 +93,7 @@ export class BehaviourScript
 			this.notes = json["notes"] as string || "";
 			this.global = !!json["global"];
 			this.source = json["source"] as string || "";
-			this.filters = SearchPattern.parse(json["filters"]);
+			this.filters = SearchPattern.parse(json["filters"] as string);
 			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] as object || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
 			this.fill = json["fill"] as string || "";
 			this.stroke = json["stroke"] as string || "";

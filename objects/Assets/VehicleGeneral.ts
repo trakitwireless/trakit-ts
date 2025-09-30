@@ -1,6 +1,6 @@
 ﻿import { ID } from "../API/Functions";
 import { MERGE } from "../API/Objects";
-import { colour, ushort, JsonObject } from "../API/Types";
+import { JsonObject, colour, int, ushort } from "../API/Types";
 import { AssetGeneral } from "./AssetGeneral";
 
 /**

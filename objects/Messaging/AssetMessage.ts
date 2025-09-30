@@ -1,5 +1,5 @@
 ﻿import { MERGE } from '../API/Objects';
-import { email, JsonObject } from '../API/Types';
+import { email, int, JsonObject } from '../API/Types';
 import { MessageBase } from './MessageBase';
 import { MessageFolder } from './MessageFolder';
 

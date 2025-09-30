@@ -5,7 +5,7 @@ import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { INamed } from "../../API/Interfaces/INamed";
 import { IRequestable } from "../../API/Interfaces/IRequestable";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { email, phone, ulong, JsonObject } from "../../API/Types";
+import { email, phone, ulong, JsonObject, datetime } from "../../API/Types";
 import { User } from "../../Accounts/User";
 import { Asset } from "../../Assets/Asset";
 import { Company } from "../../Companies/Company";
@@ -127,7 +127,7 @@ export class ProviderRegistration
 		};
 	}
 	fromJSON(json: JsonObject, force?: boolean): boolean {
-		if (!IS_AN(ID(this.code))) this.code = json["code"];
+		if (!IS_AN(ID(this.code))) this.code = json["code"] as string;
 		this.companyId = ID(json["company"]);
 		this.name = json["name"] as string || "";
 		this.notes = json["notes"] as string || "";
@@ -135,12 +135,12 @@ export class ProviderRegistration
 		this.userLogin = json["userLogin"] as string || "";
 		this.configId = ID(json["config"]);
 		this.kind = ProviderType[json["kind"] as ProviderType] || ProviderType.unknown;
-		this.since = DATE(json["password"]);
-		this.completed = DATE(json["completed"]);
-		this.expires = DATE(json["expires"]);
+		this.since = DATE(json["password"] as datetime);
+		this.completed = DATE(json["completed"] as datetime);
+		this.expires = DATE(json["expires"] as datetime);
 		this.identifier = json["identifier"] as string || "";
 		this.assetId = ID(json["asset"]);
-		this.phoneNumber = PHONE_PARSE(json["phoneNumber"]);
+		this.phoneNumber = PHONE_PARSE(json["phoneNumber"] as phone);
 		return true;
 	}
 
