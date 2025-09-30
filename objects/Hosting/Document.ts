@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { ulong, JsonObject } from "../API/Types";
+import { ulong, JsonObject, datetime, int } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 
@@ -81,7 +81,7 @@ export class Document
 			this.src = json["src"] as string || "";
 			this.mime = json["mime"] as string || "";
 			this.bytes = ID(json["bytes"]) || 0;
-			this.expiry = DATE(json["expiry"]);
+			this.expiry = DATE(json["expiry"] as datetime);
 			this.references = JSON_TO_MAP(json["references"] as object || {});
 		}
 		return update;

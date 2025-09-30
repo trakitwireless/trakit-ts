@@ -6,7 +6,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
-import { codified, ulong, JsonObject } from "../API/Types";
+import { codified, ulong, JsonObject, datetime, int } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, COMPANIES, FORM_TEMPLATES } from "../storage";
@@ -112,11 +112,11 @@ export class FormResult
 			this.assetId = ID(json["asset"]);
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
-			this.labels = [...(json["labels"] || [])];
+			this.labels = [...(json["labels"] as codified[] || [])];
 			this.fields = JSON_TO_MAP_KEY_ULONG(json["fields"] as object || {});
-			this.completed = DATE(json["completed"]);
+			this.completed = DATE(json["completed"] as datetime);
 			this.latlng = json["latlng"]
-				? LatLng.fromJSON(json["latlng"])
+				? LatLng.fromJSON(json["latlng"] as JsonObject)
 				: null;
 			this.driver = json["driver"] as string || "";
 		}

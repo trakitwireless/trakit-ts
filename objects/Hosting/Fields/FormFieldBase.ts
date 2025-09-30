@@ -44,7 +44,7 @@ export abstract class FormFieldBase
 					json["id"] as ulong,
 					json["name"] as string,
 					json["kind"] as FormFieldType,
-					JSON_TO_MAP(json["choices"]),
+					JSON_TO_MAP(json["choices"] as object),
 					json["minimum"] as byte,
 					json["maximum"] as byte,
 					json["notes"] as string,
