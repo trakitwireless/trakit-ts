@@ -2,7 +2,7 @@
 import { INamed } from "../API/Interfaces/INamed";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { IVisual } from "../API/Interfaces/IVisual";
-import { codified, colour } from "../API/Types";
+import { codified, colour, JsonObject } from "../API/Types";
 
 /**
  * Visual style identification helper.

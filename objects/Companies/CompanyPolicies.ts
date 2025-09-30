@@ -53,8 +53,8 @@ export class CompanyPolicies
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.sessionPolicy = SessionPolicy.fromJSON(json["sessionPolicy"]);
-			this.passwordPolicy = PasswordPolicy.fromJSON(json["passwordPolicy"]);
+			this.sessionPolicy = SessionPolicy.fromJSON(json["sessionPolicy"] as JsonObject);
+			this.passwordPolicy = PasswordPolicy.fromJSON(json["passwordPolicy"] as JsonObject);
 		}
 		return update;
 	}

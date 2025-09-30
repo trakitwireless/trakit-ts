@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { byte } from "../API/Types";
+import { byte, JsonObject } from "../API/Types";
 import { PasswordExpiryMode } from "./PasswordExpiryMode";
 
 /**

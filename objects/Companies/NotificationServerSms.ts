@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { ulong, ushort } from "../API/Types";
+import { JsonObject, ulong, ushort } from "../API/Types";
 
 /**
  * Definition for load-balanced outbound SMS numbers for the White-labelling profile.

@@ -1,5 +1,5 @@
 ﻿import { ISerializable } from "../API/Interfaces/ISerializable";
-import { colour } from "../API/Types";
+import { colour, JsonObject } from "../API/Types";
 
 /**
  * Part of the White-labelling profile definitions.

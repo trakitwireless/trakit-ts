@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { colour, email, uint, ushort } from "../API/Types";
+import { colour, email, JsonObject, uint, ushort } from "../API/Types";
 
 /**
  * The types of email protocols supported for incoming mail servers.

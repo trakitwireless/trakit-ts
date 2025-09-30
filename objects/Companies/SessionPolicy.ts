@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { byte, ipv4, ushort } from "../API/Types";
+import { byte, ipv4, JsonObject, ushort } from "../API/Types";
 import { SessionMultiUser } from "./SessionMultiUser";
 
 /**
