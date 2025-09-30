@@ -1,7 +1,7 @@
 ﻿import { FLOAT } from "../../API/Constants";
 import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { double } from "../../API/Types";
+import { double, JsonObject } from "../../API/Types";
 
 /**
  * Amount billed for a type of hosting (service or license) per target company.

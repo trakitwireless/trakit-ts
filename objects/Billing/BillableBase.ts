@@ -5,7 +5,7 @@ import { IBelongBillingProfile } from "../API/Interfaces/IBelongBillingProfile";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { double, ulong, JsonObject } from "../API/Types";
+import { JsonObject, datetime, double, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { BILLING_PROFILES, COMPANIES } from "../storage";
 import { BillingProfile } from "./BillingProfile";
@@ -96,9 +96,9 @@ export abstract class BillableBase
 			this.notes = json["notes"] as string || "";
 			this.reference = json["reference"] as string || "";
 			this.sku = json["sku"] as string || "";
-			this.start = DATE(json["start"]);
-			this.end = DATE(json["end"]);
-			this.amount = FLOAT(json["amount"]);
+			this.start = DATE(json["start"] as datetime);
+			this.end = DATE(json["end"] as datetime);
+			this.amount = FLOAT(json["amount"] as any);
 		}
 		return update;
 	}

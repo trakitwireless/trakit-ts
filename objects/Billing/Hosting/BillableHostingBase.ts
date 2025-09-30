@@ -5,7 +5,7 @@ import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { MERGE } from '../../API/Objects';
 import { SearchPattern } from '../../API/SearchPattern';
-import { uint } from '../../API/Types';
+import { int, JsonObject, uint } from '../../API/Types';
 import { BillableBase } from '../BillableBase';
 
 /**
@@ -42,8 +42,8 @@ export abstract class BillableHostingBase
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {
-			this.limit = FLOAT(json["limit"]);
-			this.targets = SearchPattern.parse(json["targets"]);
+			this.limit = FLOAT(json["limit"] as any);
+			this.targets = SearchPattern.parse(json["targets"] as string);
 			this.suspended = !!json["suspended"];
 		}
 		return update;

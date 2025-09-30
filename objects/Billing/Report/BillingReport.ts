@@ -6,7 +6,7 @@ import { IBelongBillingProfile } from '../../API/Interfaces/IBelongBillingProfil
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
 import { INamed } from '../../API/Interfaces/INamed';
-import { double, ulong } from '../../API/Types';
+import { datetime, double, int, JsonObject, ulong } from '../../API/Types';
 import { Company } from '../../Companies/Company';
 import { BILLING_PROFILES, COMPANIES } from '../../storage';
 import { BillingCurrency } from '../BillingCurrency';
@@ -125,14 +125,14 @@ export class BillingReport
 			this.profileId = ID(json["profile"]);
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
-			this.startDate = DATE(json["startDate"]);
-			this.endDate = DATE(json["endDate"]);
-			this.total = FLOAT(json["total"]);
+			this.startDate = DATE(json["startDate"] as datetime);
+			this.endDate = DATE(json["endDate"] as datetime);
+			this.total = FLOAT(json["total"] as any);
 			this.currency = BillingCurrency[json["cycle"] as BillingCurrency] || BillingCurrency.CAD;
 			this.status = BillingReportStatus[json["status"] as BillingReportStatus] || BillingReportStatus.created;
 			this.error = json["error"] as string || "";
-			this.summary = (json["summary"] || []).map(BillingReportSummary.fromJSON);
-			this.breakdown = (json["breakdown"] || []).map(BillingReportBreakdown.fromJSON);
+			this.summary = (json["summary"] as JsonObject[] || []).map(BillingReportSummary.fromJSON);
+			this.breakdown = (json["breakdown"] as JsonObject[] || []).map(BillingReportBreakdown.fromJSON);
 		}
 		return update;
 	}

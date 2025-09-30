@@ -1,4 +1,5 @@
 ﻿import { MERGE } from '../../API/Objects';
+import { JsonObject, int } from '../../API/Types';
 import { BillableHostingBase } from './BillableHostingBase';
 import { BillableHostingLicenseType } from './BillableHostingLicenseType';
 

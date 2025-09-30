@@ -1,9 +1,9 @@
 ﻿
 import { ARRAY_TO_JSON } from "../../API/Arrays";
-import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
+import { ID, JSON_NUMBER } from "../../API/Functions";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { ulong } from "../../API/Types";
+import { JsonObject, ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES } from "../../storage";
 import { BillingReportHostingSummary } from "./BillingReportHostingSummary";

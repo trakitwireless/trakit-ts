@@ -1,4 +1,5 @@
 ﻿import { MERGE } from '../../API/Objects';
+import { JsonObject, int } from '../../API/Types';
 import { BillableHostingBase } from './BillableHostingBase';
 import { BillableHostingType } from './BillableHostingType';
 
@@ -27,7 +28,7 @@ export class BillableHostingDiscount
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		super.fromJSON(json, update);
 		if (update) {
-			this.services = [...(json["services"] || [])];
+			this.services = [...(json["services"] as BillableHostingType[] || [])];
 			this.percentage = !!json["percentage"];
 		}
 		return update;

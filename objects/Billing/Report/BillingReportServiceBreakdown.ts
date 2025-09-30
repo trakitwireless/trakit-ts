@@ -5,7 +5,7 @@ import { IBelongAsset } from "../../API/Interfaces/IBelongAsset";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { MAP_FILTERED_BY_KEYS } from "../../API/Maps";
-import { codified, datetime, double, phone, ulong } from "../../API/Types";
+import { codified, datetime, double, JsonObject, phone, ulong } from "../../API/Types";
 import { Asset } from "../../Assets/Asset";
 import { AssetType } from "../../Assets/AssetType";
 import { Provider } from "../../Providers/Provider";
