@@ -13,7 +13,7 @@ import {
 } from "./Constants";
 import { ISerializable } from "./Interfaces/ISerializable";
 import { MERGE_INTERNAL } from "./Objects";
-import { datetime, nothing, ulong } from "./Types";
+import { datetime, JsonObject, nothing, ulong } from "./Types";
 
 /**
  * Checks for both null and undefined
@@ -72,18 +72,6 @@ export function IS_AN(value: any): value is number {
 	return IS_NUMBER(value)
 		&& !isNaN(value)
 		&& isFinite(value);
-}
-/**
- * Almost the same as {@link isNaN}.
- * This function returns {@code false} if the {@param value} is not a number, or if the number is {@code NaN} or {@code Infinity}.
- * @param value The variable to check
- */
-export function IS_NAN(value: any): value is number {
-	return IS_NUMBER(value)
-		&& (
-			isNaN(value)
-			|| !isFinite(value)
-		);
 }
 
 /**
@@ -301,7 +289,7 @@ export function ZERO_PADDED(
 export function MAP_TO_JSON(
 	source: Map<any, any>,
 	deep: boolean = true
-): object {
+): JsonObject {
 	return MAP_TO_JSON_PREDICATE(
 		source,
 		(k, v) => [
@@ -323,8 +311,8 @@ export function MAP_TO_JSON(
 export function MAP_TO_JSON_PREDICATE<K, V>(
 	source: Map<K, V>,
 	predicate: (key: K, value: V) => [string, any]
-): object {
-	const target: any = {};
+): JsonObject {
+	const target: JsonObject = {};
 	for (let [k, v] of source.entries()) {
 		const [key, value] = predicate(k, v);
 		target[key] = value;

@@ -1,5 +1,5 @@
 ﻿import { KEYS } from './Constants';
-import { IS_NAN, IS_NOTHING, IS_NUMBER } from './Functions';
+import { IS_AN, IS_NOTHING, IS_NUMBER } from './Functions';
 
 /**
  * https://stackoverflow.com/questions/49682569/typescript-merge-object-types#answer-49683575
@@ -68,7 +68,7 @@ export function MERGE_INTERNAL(value: any): any {
 			+ (value.ignoreCase ? "i" : "")
 			+ (value.multiline ? "m" : "")
 		);
-	} else if (IS_NOTHING(value) || IS_NAN(value)) {
+	} else if (IS_NOTHING(value) || (IS_NUMBER(value) && !IS_AN(value))) {
 		return null;
 	} else if (typeof value === "object") {
 		return MERGE({}, value);
