@@ -3,7 +3,7 @@ import { Machine } from './Accounts/Machine';
 import { Session } from './Accounts/Session';
 import { User } from './Accounts/User';
 import { UserGroup } from './Accounts/UserGroup';
-import { email, ulong } from './API/Types';
+import { email, guid, ulong } from './API/Types';
 import { Asset } from './Assets/Asset';
 import { Behaviour } from './Behaviours/Behaviour';
 import { BehaviourLog } from './Behaviours/BehaviourLog';
@@ -18,6 +18,7 @@ import { DispatchTask } from './Dispatch/DispatchTask';
 import { Document } from './Hosting/Document';
 import { FormResult } from './Hosting/FormResult';
 import { FormTemplate } from './Hosting/FormTemplate';
+import { Dashcam } from './Images/Dashcam';
 import { Icon } from './Images/Icon';
 import { Picture } from './Images/Picture';
 import { MaintenanceJob } from './Maintenance/MaintenanceJob';
@@ -25,6 +26,7 @@ import { MaintenanceSchedule } from './Maintenance/MaintenanceSchedule';
 import { AssetMessage } from './Messaging/AssetMessage';
 import { Place } from './Places/Place';
 import { ProviderConfig } from './Providers/Config/ProviderConfig';
+import { ProviderRegistration } from './Providers/Config/ProviderRegistration';
 import { ProviderScript } from './Providers/Config/ProviderScript';
 import { ProviderConfiguration } from './Providers/Configuration/ProviderConfiguration';
 import { ProviderConfigurationType } from './Providers/Configuration/ProviderConfigurationType';
@@ -135,6 +137,10 @@ export const PICTURES: Map<ulong, Picture> = new Map;
  * 
  */
 export const ICONS: Map<ulong, Icon> = new Map;
+/**
+ * 
+ */
+export const DASHCAMS: Map<guid, Dashcam> = new Map;
 //#endregion Images
 //#region Maintenance
 /**
@@ -173,6 +179,10 @@ export const PROVIDER_CONFIGURATION_TYPES: Map<ulong, ProviderConfigurationType>
  * 
  */
 export const PROVIDER_CONFIGURATIONS: Map<ulong, ProviderConfiguration> = new Map;
+/**
+ * 
+ */
+export const PROVIDER_REGISTRATIONS: Map<string, ProviderRegistration> = new Map;
 //#endregion Providers
 //#region Reports
 /**
