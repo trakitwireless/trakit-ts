@@ -347,6 +347,7 @@ export type classes =
 	// Companies
 	"Company"
 	| "CompanyGeneral"
+	| "CompanyStyles"
 	| "CompanyDirectory"
 	| "CompanyPolicies"
 	| "CompanyReseller"
@@ -414,6 +415,7 @@ export const objects: { [key in classes]: { new(): IRequestable } } = {
 	// Companies
 	"Company": Company,
 	"CompanyGeneral": CompanyGeneral,
+	"CompanyStyles": CompanyStyles,
 	"CompanyDirectory": CompanyDirectory,
 	"CompanyPolicies": CompanyPolicies,
 	"CompanyReseller": CompanyReseller,
@@ -481,6 +483,7 @@ export const storage: { [key in classes]: Map<string | guid | email | ulong, IRe
 	// Companies
 	"Company": COMPANIES,
 	"CompanyGeneral": COMPANIES,
+	"CompanyStyles": COMPANIES,
 	"CompanyDirectory": COMPANIES,
 	"CompanyPolicies": COMPANIES,
 	"CompanyReseller": COMPANIES,
