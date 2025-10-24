@@ -34,7 +34,7 @@ export class Asset
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: JsonObject) {
+	static fromJSON(json: JsonObject): Person | Vehicle | Trailer | Asset {
 		switch (json["kind"] as AssetType) {
 			case AssetType.person: return new Person(json);
 			case AssetType.vehicle: return new Vehicle(json);
