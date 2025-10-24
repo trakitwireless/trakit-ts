@@ -121,7 +121,9 @@ import { Radial } from "./API/Geometry/Radial";
 import { Rectangle, } from "./API/Geometry/Rectangle";
 import { Size, } from "./API/Geometry/Size";
 import { GUID, } from "./API/Guid";
+import { IDeserializable } from "./API/Interfaces/IDeserializable";
 import { IRequestable } from "./API/Interfaces/IRequestable";
+import { ISerializable } from "./API/Interfaces/ISerializable";
 import { MERGE, } from "./API/Objects";
 import { SearchPattern, } from "./API/SearchPattern";
 import {
@@ -580,6 +582,9 @@ export type {
 	timespan,
 	url,
 	//#endregion strings
+	IRequestable,
+	IDeserializable,
+	ISerializable,
 };
 
 /**
