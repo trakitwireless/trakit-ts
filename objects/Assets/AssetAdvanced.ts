@@ -1,13 +1,13 @@
-﻿import { IPosition } from "objects/API/Geography/Interfaces";
-import { ARRAY_TO_IDS } from "../API/Arrays";
+﻿import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { IPosition } from "../API/Geography/Interfaces";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, double, ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, codified, double, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, COMPANIES, PROVIDERS } from "../storage";

@@ -1,9 +1,9 @@
-﻿import { IBelongCompany } from "objects/API/Interfaces/IBelongCompany";
-import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
+﻿import { BaseComponent } from "../API/BaseComponent";
+import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
+import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { codified, ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, codified, int, ulong } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 
