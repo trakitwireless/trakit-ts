@@ -1,7 +1,7 @@
 ﻿import { Base, } from './Base';
 import { IRequestable, } from './Interfaces/IRequestable';
 import { ISerializable, } from './Interfaces/ISerializable';
-import { int } from './Types';
+import { email, guid, int, ulong } from './Types';
 
 /**
  * Any derived class can/should be serialized and given to a user.
@@ -44,11 +44,11 @@ export abstract class BaseComponent
 	}
 
 	/**
-	 * Returns a string which can be used as a unique identifier for this object.
-	 * Strings are unique for each type of object, but can be identical for different object types.
-	 * @returns A string unique for this type of object.
+	 * Returns a value which can be used as a unique identifier for this object.
+	 * Values are unique for each type of object, but can be identical for different object types.
+	 * @returns A value unique for this type of object.
 	 */
-	abstract getKey(): string;
+	abstract getKey(): ulong | email | guid | string;
 
 	/**
 	 * Creates a literal of this {@link BaseComponent}.
