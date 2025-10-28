@@ -1,7 +1,7 @@
 ﻿import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IPosition } from "../API/Geography/Interfaces";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -28,12 +28,9 @@ export class AssetAdvanced
 	 * @param json 
 	 */
 	static fromJSON(json: JsonObject): VehicleAdvanced | AssetAdvanced {
-		switch (json["kind"] as AssetType) {
-			case AssetType.vehicle: return new VehicleAdvanced(json);
-			case AssetType.person:
-			case AssetType.trailer:
-			default: return new AssetAdvanced(json);
-		}
+		return json["kind"] === AssetType.vehicle || IS_AN(json["engineHours"])
+			? new VehicleAdvanced(json)
+			: new AssetAdvanced(json);
 	}
 	
 	/**
