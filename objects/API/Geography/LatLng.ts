@@ -4,10 +4,11 @@
 	PI,
 	SIN
 } from '../Constants';
-import { IS_AN, PYTHAGORA } from '../Functions';
+import { IS_AN, PYTHAGORA, ROUND_TO } from '../Functions';
 import { Point } from '../Geometry/Point';
 import { JsonObject } from '../Types';
 import {
+	DEFAULT_PRECISION,
 	LATLNG_ANGLE,
 	LATLNG_DISTANCE,
 	LATLNG_MIDPOINT,
@@ -68,8 +69,14 @@ export class LatLng
 	 */
 	toJSON(): ILatLng {
 		return this.isValid()
-			? { "lat": this.lat, "lng": this.lng, }
-			: { "lat": 0, "lng": 0, }
+			? {
+				"lat": ROUND_TO(this.lat, DEFAULT_PRECISION),
+				"lng": ROUND_TO(this.lng, DEFAULT_PRECISION)
+			}
+			: {
+				"lat": 0,
+				"lng": 0,
+			};
 	}
 	/**
 	 * Compares this LatLng to another to see if they are equivalent.

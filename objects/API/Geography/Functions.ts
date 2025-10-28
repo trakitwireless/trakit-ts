@@ -26,6 +26,11 @@ import { IPoint } from '../Geometry/Interfaces';
 import { int } from '../Types';
 import { ILatLng, ILatLngBounds } from './Interfaces';
 
+/**
+ * The default precision used to serialize latlngs.
+ */
+export const DEFAULT_PRECISION = 6;
+
 //#region Hiigara
 /**
  * The radius of the Earth in meters taken from the GRS-80, NAD83, and WGS-84 standards.
@@ -517,7 +522,7 @@ function ROUTE_ENCODE_CHAR(value: number, factor: number): string {
 		shifted >>= 0x05;
 	}
 	chars.push(shifted + 0x3f);
-	return String.fromCharCode.apply(chars, chars);
+	return String.fromCharCode(...chars);
 }
 /**
  * An implementation of Google's Encoded Polyline Algorithm format.
@@ -525,7 +530,7 @@ function ROUTE_ENCODE_CHAR(value: number, factor: number): string {
  * @param route		The array of coordinates representing a path.
  * @param precision			Optional number of decimal places to use to calculate the results.  Default is 5.
  */
-export function ROUTE_ENCODE(route: ILatLng[], precision: number = 5): string {
+export function ROUTE_ENCODE(route: ILatLng[], precision: number = DEFAULT_PRECISION): string {
 	const factor = POW(10, precision);
 	let output = ROUTE_ENCODE_CHAR(route[0].lat, factor)
 				+ ROUTE_ENCODE_CHAR(route[0].lng, factor);
@@ -543,10 +548,10 @@ export function ROUTE_ENCODE(route: ILatLng[], precision: number = 5): string {
  * @param route			The encoded string which represents the coordinates in a path.
  * @param precision			Optional number of decimal places used to recalculate the results.  Default is 5.
  */
-export function ROUTE_DECODE(route: string, precision: number = 5): ILatLng[] {
+export function ROUTE_DECODE(route: string, precision: number = DEFAULT_PRECISION): ILatLng[] {
 	const length = route.length,
 		path: ILatLng[] = [],
-		factor = POW(10, precision || 5);
+		factor = POW(10, precision || DEFAULT_PRECISION);
 	let index = 0,
 		lat = index,
 		lng = index;
