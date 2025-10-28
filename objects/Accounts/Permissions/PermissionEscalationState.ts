@@ -1,10 +1,11 @@
-﻿import { codified, nothing } from "../../API/Types";
+﻿import { ISerializable } from "../../API/Interfaces/ISerializable";
+import { codified, JsonObject, nothing } from "../../API/Types";
 import { PermissionLevel } from "./PermissionLevel";
 
 /**
  * Describes the changes in state that raised the escalation.
  */
-export class PermissionEscalationState {
+export class PermissionEscalationState implements ISerializable{
 	/**
 	 * The level of access defined before the proposed change.
 	 */
@@ -21,5 +22,12 @@ export class PermissionEscalationState {
 	) {
 		this.level = level || null;
 		this.labels = labels || null;
+	}
+
+	toJSON(): JsonObject {
+		return {
+			"level": this.level,
+			"labels": this.labels?.slice() ?? null,
+		};
 	}
 }

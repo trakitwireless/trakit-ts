@@ -1,4 +1,5 @@
-﻿import { codified, JsonObject, nothing, ulong } from "../../API/Types";
+﻿import { ISerializable } from "../../API/Interfaces/ISerializable";
+import { codified, JsonObject, nothing, ulong } from "../../API/Types";
 import { PermissionEscalationState } from "./PermissionEscalationState";
 import { PermissionEscalationType } from "./PermissionEscalationType";
 import { PermissionLevel } from "./PermissionLevel";
@@ -8,7 +9,7 @@ import { PermissionType } from "./PermissionType";
  * Used to throw permission escalation exceptions, this is similar to a {@link Permission},
  * but defines a {@link before} and {@link after} for a proposed change.
  */
-export class PermissionEscalation {
+export class PermissionEscalation implements ISerializable {
 	/**
 	 * Parses a JSON object into a PermissionEscalation instance.
 	 * @param json The JSON to parse.
@@ -62,5 +63,15 @@ export class PermissionEscalation {
 		this.kind = kind;
 		this.after = new PermissionEscalationState(levelAfter, labelsAfter);
 		this.before = new PermissionEscalationState(levelBefore, labelsBefore);
+	}
+
+	toJSON(): JsonObject {
+		return {
+			"direction": this.direction,
+			"company": this.company,
+			"kind": this.kind,
+			"after": this.after.toJSON(),
+			"before": this.before.toJSON(),
+		};
 	}
 }
