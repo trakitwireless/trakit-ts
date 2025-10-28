@@ -1,5 +1,4 @@
 ﻿import { ID, JSON_NUMBER } from "../../API/Functions";
-import { MERGE } from "../../API/Objects";
 import { int, uint } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderGeofenceBase } from "./ProviderGeofenceBase";
@@ -35,9 +34,10 @@ export class ProviderGeofenceRectangle
 	}
 	
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"maxLength": JSON_NUMBER(this.maxLength),
 			"maxWidth": JSON_NUMBER(this.maxWidth),
-		});
+		};
 	}
 }

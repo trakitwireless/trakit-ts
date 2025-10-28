@@ -1,6 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
-import { IS_AN, JSON_NUMBER } from "../../API/Functions";
-import { MERGE } from "../../API/Objects";
+import { JSON_NUMBER } from "../../API/Functions";
 import { uint } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderGeofenceBase } from "./ProviderGeofenceBase";
@@ -37,9 +36,10 @@ export class ProviderGeofenceCircular
 	}
 
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"minRadius": JSON_NUMBER(this.minRadius),
 			"maxRadius": JSON_NUMBER(this.maxRadius),
-		});
+		};
 	}
 }

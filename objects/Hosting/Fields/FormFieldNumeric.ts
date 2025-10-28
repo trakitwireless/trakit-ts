@@ -1,6 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
 import { ID, IS_AN, JSON_NUMBER, ROUND_TO } from "../../API/Functions";
-import { MERGE } from "../../API/Objects";
 import { byte, double, nothing, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
@@ -93,14 +92,15 @@ export class FormFieldNumeric
 		this.maximum = FLOAT(maximum as any);
 	}
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"size": FormFieldNumericSize[this.size] ?? FormFieldNumericSize.medium,
 			"precision": JSON_NUMBER(this.precision),
 			"step": JSON_NUMBER(this.step),
 			"units": this.units || "",
 			"minimum": JSON_NUMBER(this.minimum),
 			"maximum": JSON_NUMBER(this.maximum),
-		});
+		};
 	}
 	override isValid(value: string): boolean {
 		let min = this.minimum,

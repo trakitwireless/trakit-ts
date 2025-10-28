@@ -1,5 +1,4 @@
 import { DATE, IS_AN, JSON_DATE } from "../../API/Functions";
-import { MERGE } from "../../API/Objects";
 import { datetime, nothing, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
@@ -51,10 +50,11 @@ export class FormFieldDate
 		this.maximum = DATE(maximum as datetime);
 	}
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"minimum": JSON_DATE(this.minimum),
 			"maximum": JSON_DATE(this.maximum),
-		});
+		};
 	}
 	override isValid(value: string): boolean {
 		let stamp = DATE(value),

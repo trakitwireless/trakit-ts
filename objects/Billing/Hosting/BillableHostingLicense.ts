@@ -1,5 +1,4 @@
-﻿import { MERGE } from '../../API/Objects';
-import { JsonObject, int } from '../../API/Types';
+﻿import { JsonObject, int } from '../../API/Types';
 import { BillableHostingBase } from './BillableHostingBase';
 import { BillableHostingLicenseType } from './BillableHostingLicenseType';
 
@@ -14,9 +13,10 @@ export class BillableHostingLicense
 	kind: BillableHostingLicenseType = BillableHostingLicenseType.bewhere;
 
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"kind": BillableHostingLicenseType[this.kind],
-		});
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

@@ -1,5 +1,4 @@
 ﻿import { ID, IS_AN, JSON_NUMBER } from '../../API/Functions';
-import { MERGE } from '../../API/Objects';
 import { byte, nothing, ulong } from '../../API/Types';
 import { FormFieldType } from '../FormFieldType';
 import { FormFieldBase } from './FormFieldBase';
@@ -59,10 +58,11 @@ export class FormFieldAttachments
 		this.maximum = ID(maximum);
 	}
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"minimum": JSON_NUMBER(this.minimum),
 			"maximum": JSON_NUMBER(this.maximum),
-		});
+		};
 	}
 	override isValid(value: string): boolean {
 		const values = FormFieldAttachments.split(value);

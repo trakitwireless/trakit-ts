@@ -1,5 +1,4 @@
-﻿import { MERGE } from "../../API/Objects";
-import { nothing, ulong } from "../../API/Types";
+﻿import { nothing, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
 
@@ -71,9 +70,10 @@ export class FormFieldBoolean
 		this.choices = FormFieldBoolean.normalize(choices);
 	}
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"choices": [...this.choices],
-		});
+		};
 	}
 	override isValid(value: string): boolean {
 		return FormFieldBoolean.normalize(this.choices)

@@ -3,7 +3,6 @@ import { JSON_NUMBER } from '../../API/Functions';
 import { IBelongBillingProfile } from '../../API/Interfaces/IBelongBillingProfile';
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../../API/Interfaces/IIdUlong';
-import { MERGE } from '../../API/Objects';
 import { SearchPattern } from '../../API/SearchPattern';
 import { int, JsonObject, uint } from '../../API/Types';
 import { BillableBase } from '../BillableBase';
@@ -29,14 +28,12 @@ export abstract class BillableHostingBase
 	suspended: boolean = false;
 	
 	override toJSON() {
-		return MERGE(
-			super.toJSON(),
-			{
-				"limit": JSON_NUMBER(this.limit),
-				"targets": SearchPattern.stringify(this.targets),
-				"suspended": !!this.suspended,
-			}
-		);
+		return {
+			...super.toJSON(),
+			"limit": JSON_NUMBER(this.limit),
+			"targets": SearchPattern.stringify(this.targets),
+			"suspended": !!this.suspended,
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

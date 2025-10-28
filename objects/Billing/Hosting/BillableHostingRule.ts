@@ -1,5 +1,4 @@
-﻿import { MERGE } from '../../API/Objects';
-import { JsonObject, int } from '../../API/Types';
+﻿import { JsonObject, int } from '../../API/Types';
 import { BillableHostingBase } from './BillableHostingBase';
 import { BillableHostingType } from './BillableHostingType';
 
@@ -14,9 +13,10 @@ export class BillableHostingRule
 	service: BillableHostingType = BillableHostingType.asset;
 
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"service": BillableHostingType[this.service],
-		});
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

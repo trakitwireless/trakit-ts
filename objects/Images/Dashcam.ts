@@ -1,10 +1,9 @@
 import { FLOAT } from "../API/Constants";
-import { DATE, ID, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { ISize } from "../API/Geometry/Interfaces";
 import { Size } from "../API/Geometry/Size";
-import { MERGE } from "../API/Objects";
 import { TimeSpan } from "../API/TimeSpan";
-import { byte, datetime, double, guid, single, ulong, JsonObject } from "../API/Types";
+import { byte, datetime, double, guid, JsonObject, single, ulong } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
 
@@ -111,22 +110,20 @@ export class Dashcam
 	}
 
 	override toJSON() {
-		return MERGE(
-			super.toJSON(),
-			{
-				guid: this.guid || "",
-				kind: DashcamMediaType[this.kind] || DashcamMediaType.unknown,
-				fps: JSON_NUMBER(this.fps),
-				start: JSON_DATE(this.start),
-				end: JSON_DATE(this.end),
-				eventName: this.eventName || "",
-			}
-		);
+		return {
+			...super.toJSON(),
+			guid: this.guid || "",
+			kind: DashcamMediaType[this.kind] || DashcamMediaType.unknown,
+			fps: JSON_NUMBER(this.fps),
+			start: JSON_DATE(this.start),
+			end: JSON_DATE(this.end),
+			eventName: this.eventName || "",
+		};
 	}
 	
 	// IRequestable
 	/**
 	 * The {@link guid} is the key.
 	 */
-	getKey() { return this.guid.toString(); }
+	getKey() { return this.guid; }
 }

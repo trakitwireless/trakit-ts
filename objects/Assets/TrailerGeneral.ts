@@ -1,6 +1,5 @@
 ﻿import { ID } from "../API/Functions";
-import { MERGE } from "../API/Objects";
-import { colour, ushort, JsonObject, int } from "../API/Types";
+import { JsonObject, colour, int, ushort } from "../API/Types";
 import { AssetGeneral } from "./AssetGeneral";
 
 /**
@@ -36,14 +35,15 @@ export class TrailerGeneral
 	override toJSON() {
 		return this.suspended
 			? super.toJSON()
-			: MERGE(super.toJSON(), {
+			: {
+				...super.toJSON(),
 				"serial": this.serial || "",
 				"plate": this.plate || "",
 				"make": this.make || "",
 				"model": this.model || "",
 				"year": this.year || null,
 				"colour": this.colour || "",
-			});
+			};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

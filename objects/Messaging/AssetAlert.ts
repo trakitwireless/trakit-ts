@@ -1,5 +1,4 @@
-﻿import { MERGE } from '../API/Objects';
-import { JsonObject, int } from '../API/Types';
+﻿import { JsonObject, int } from '../API/Types';
 import { AlertPriority } from './AlertPriority';
 import { MessageBase } from './MessageBase';
 
@@ -14,12 +13,10 @@ export class AssetAlert
 	priority: AlertPriority = AlertPriority.normal;
 
 	override toJSON() {
-		return MERGE(
-			super.toJSON(),
-			{
-				"priority": AlertPriority[this.priority] || AlertPriority.normal,
-			}
-		);
+		return {
+			...super.toJSON(),
+			"priority": AlertPriority[this.priority] || AlertPriority.normal,
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

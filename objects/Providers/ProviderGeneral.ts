@@ -3,7 +3,6 @@ import { DATE, ID, JSON_DATE, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON, PHONE_PARSE
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { MERGE } from "../API/Objects";
 import { JsonObject, datetime, int, phone, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
@@ -96,30 +95,30 @@ export class ProviderGeneral
 	sim: string = "";
 
 	override toJSON() {
-		return MERGE(
-			{
-				"id": this.id || null,
-				"v": [...this.v],
-				"company": JSON_NUMBER(this.companyId),
-				"name": this.name || "",
-				"notes": this.notes || "",
-				"kind": ProviderType[this.kind] || ProviderType.unknown,
-				"configuration": JSON_NUMBER(this.configurationId),
-			},
-			this.suspended
-				? {
-					"suspended": true,
-					"since": JSON_DATE(this.since),
-				}
-				: {
-					"asset": JSON_NUMBER(this.assetId),
-					"password": this.password || "",
-					"firmware": this.firmware || "",
-					"phoneNumber": JSON_NUMBER(this.phoneNumber),
-					"information": MAP_TO_JSON(this.information),
-					"sim": this.sim || "",
-				}
-		);
+		return {
+			"id": this.id || null,
+			"v": [...this.v],
+			"company": JSON_NUMBER(this.companyId),
+			"name": this.name || "",
+			"notes": this.notes || "",
+			"kind": ProviderType[this.kind] || ProviderType.unknown,
+			"configuration": JSON_NUMBER(this.configurationId),
+			...(
+				this.suspended
+					? {
+						"suspended": true,
+						"since": JSON_DATE(this.since),
+					}
+					: {
+						"asset": JSON_NUMBER(this.assetId),
+						"password": this.password || "",
+						"firmware": this.firmware || "",
+						"phoneNumber": JSON_NUMBER(this.phoneNumber),
+						"information": MAP_TO_JSON(this.information),
+						"sim": this.sim || "",
+					}
+			)
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

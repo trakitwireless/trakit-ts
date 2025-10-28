@@ -1,4 +1,4 @@
-﻿import { ushort, JsonObject } from '../API/Types';
+﻿import { ushort } from '../API/Types';
 import { Asset } from './Asset';
 import { TrailerGeneral } from './TrailerGeneral';
 

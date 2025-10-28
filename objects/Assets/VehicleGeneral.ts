@@ -1,5 +1,4 @@
 ﻿import { ID } from "../API/Functions";
-import { MERGE } from "../API/Objects";
 import { JsonObject, colour, int, ushort } from "../API/Types";
 import { AssetGeneral } from "./AssetGeneral";
 
@@ -36,14 +35,15 @@ export class VehicleGeneral
 	override toJSON(): any {
 		return this.suspended
 			? super.toJSON()
-			: MERGE(super.toJSON(), {
+			: {
+				...super.toJSON(),
 				"vin": this.vin || "",
 				"plate": this.plate || "",
 				"make": this.make || "",
 				"model": this.model || "",
 				"year": this.year || null,
 				"colour": this.colour || "",
-			});
+			};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

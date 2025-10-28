@@ -1,5 +1,4 @@
-﻿import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
-import { MERGE } from "../../API/Objects";
+﻿import { ID, JSON_NUMBER } from "../../API/Functions";
 import { uint } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderGeofenceBase } from "./ProviderGeofenceBase";
@@ -27,8 +26,9 @@ export class ProviderGeofencePolygon
 		this.maxVertices = ID(maxVertices);
 	}
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"maxVertices": JSON_NUMBER(this.maxVertices),
-		});
+		};
 	}
 }

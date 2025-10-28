@@ -1,6 +1,5 @@
 ﻿import { FLOAT } from "../../API/Constants";
 import { ID, IS_AN, JSON_NUMBER } from "../../API/Functions";
-import { MERGE } from "../../API/Objects";
 import { byte, nothing, ulong, ushort } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
 import { FormFieldBase } from "./FormFieldBase";
@@ -57,11 +56,12 @@ export class FormFieldText
 		this.maximum = FLOAT(maximum as any);
 	}
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"rows": JSON_NUMBER(this.rows),
 			"minimum": JSON_NUMBER(this.minimum),
 			"maximum": JSON_NUMBER(this.maximum),
-		});
+		};
 	}
 	override isValid(value: string): boolean {
 		value = String(value ?? "").trim();

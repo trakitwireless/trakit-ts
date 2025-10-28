@@ -1,5 +1,4 @@
 ﻿import { FLOAT } from "../API/Constants";
-import { MERGE } from "../API/Objects";
 import { double, int, JsonObject } from "../API/Types";
 import { AssetAdvanced } from "./AssetAdvanced";
 
@@ -14,9 +13,10 @@ export class VehicleAdvanced
 	engineHours: double = NaN;
 
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"engineHours": this.engineHours || null,
-		});
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

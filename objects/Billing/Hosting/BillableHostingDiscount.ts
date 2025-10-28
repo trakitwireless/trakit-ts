@@ -1,5 +1,4 @@
-﻿import { MERGE } from '../../API/Objects';
-import { JsonObject, int } from '../../API/Types';
+﻿import { JsonObject, int } from '../../API/Types';
 import { BillableHostingBase } from './BillableHostingBase';
 import { BillableHostingType } from './BillableHostingType';
 
@@ -19,10 +18,11 @@ export class BillableHostingDiscount
 	percentage: boolean = false;
 
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"services": [...this.services],
 			"percentage": !!this.percentage,
-		});
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

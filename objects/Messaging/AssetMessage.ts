@@ -1,5 +1,4 @@
-﻿import { MERGE } from '../API/Objects';
-import { email, int, JsonObject } from '../API/Types';
+﻿import { email, int, JsonObject } from '../API/Types';
 import { MessageBase } from './MessageBase';
 import { MessageFolder } from './MessageFolder';
 
@@ -23,14 +22,12 @@ export class AssetMessage
 	readBy: email = "";
 
 	override toJSON() {
-		return MERGE(
-			super.toJSON(),
-			{
-				"folder": MessageFolder[this.folder] || MessageFolder.archive,
-				"incoming": !!this.incoming,
-				"readBy": this.readBy || "",
-			}
-		);
+		return {
+			...super.toJSON(),
+			"folder": MessageFolder[this.folder] || MessageFolder.archive,
+			"incoming": !!this.incoming,
+			"readBy": this.readBy || "",
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

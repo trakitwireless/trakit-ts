@@ -1,5 +1,4 @@
 ﻿import { IS_AN, IS_NOTHING } from "../../API/Functions";
-import { MERGE } from "../../API/Objects";
 import { TimeSpan } from "../../API/TimeSpan";
 import { nothing, timespan, ulong } from "../../API/Types";
 import { FormFieldType } from "../FormFieldType";
@@ -64,14 +63,15 @@ export class FormFieldTime
 	}
 
 	override toJSON() {
-		return MERGE(super.toJSON(), {
+		return {
+			...super.toJSON(),
 			"minimum": IS_AN(this.minimum?.valueOf())
 				? this.minimum.toString()
 				: null,
 			"maximum": IS_AN(this.maximum?.valueOf())
 				? this.maximum.toString()
 				: null,
-		});
+		};
 	}
 	override isValid(value: string): boolean {
 		let success = !IS_NOTHING(value),

@@ -1,9 +1,7 @@
-import { FLOAT } from "../API/Constants";
-import { DATE, ID, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { ISize } from "../API/Geometry/Interfaces";
 import { Size } from "../API/Geometry/Size";
-import { MERGE } from "../API/Objects";
-import { byte, datetime, double, ulong, JsonObject } from "../API/Types";
+import { byte, datetime, double, JsonObject, ulong } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
 
@@ -72,13 +70,11 @@ export class DashcamLive
 	}
 	
 	override toJSON() {
-		return MERGE(
-			super.toJSON(),
-			{
-				"kind": DashcamMediaType.image,
-				"dts": JSON_DATE(this.dts),
-			}
-		);
+		return {
+			...super.toJSON(),
+			"kind": DashcamMediaType.image,
+			"dts": JSON_DATE(this.dts),
+		};
 	}
 
 	// IRequestable

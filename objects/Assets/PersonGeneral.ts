@@ -1,7 +1,6 @@
 ﻿import { Contact } from "../Accounts/Contact";
 import { ID } from "../API/Functions";
-import { MERGE } from "../API/Objects";
-import { ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, int, ulong } from "../API/Types";
 import { CONTACTS } from "../storage";
 import { AssetGeneral } from "./AssetGeneral";
 
@@ -25,9 +24,10 @@ export class PersonGeneral
 	override toJSON() {
 		return this.suspended
 			? super.toJSON()
-			: MERGE(super.toJSON(), {
+			: {
+				...super.toJSON(),
 				"contact": this.contactId,
-			});
+			};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
