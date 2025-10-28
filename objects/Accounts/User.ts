@@ -4,7 +4,6 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
-import { MERGE } from "../API/Objects";
 import { Timezone } from "../API/Timezone";
 import { codified, datetimetemplate, email, int, JsonObject, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -143,20 +142,16 @@ export class User
 	set permissions(value: Permission[]) { this.advanced.permissions = value; }
 
 	override toJSON() {
-		return MERGE(
-			{
-				"login": this.login,
-				"v": [...this.v],
-				"company": this.companyId,
-			},
-			this.general.toJSON(),
-			this.advanced.toJSON(),
-		);
+		return {
+			...this.general.toJSON(),
+			...this.advanced.toJSON(),
+			"v": [...this.v],
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const version = json?.["v"] as int[] || [],
-			general = this.general.fromJSON(MERGE({ "v": version.slice(0, 1) }, json), force),
-			advanced = this.advanced.fromJSON(MERGE({ "v": version.slice(1, 2) }, json), force);
+			general = this.general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
+			advanced = this.advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force);
 		return general || advanced;
 	}
 	

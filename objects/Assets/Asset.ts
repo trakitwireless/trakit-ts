@@ -8,7 +8,6 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { MERGE } from "../API/Objects";
 import { JsonObject, codified, double, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
@@ -203,22 +202,18 @@ export class Asset
 	override toJSON() {
 		return this.#general.suspended
 			? this.#general.toJSON()
-			: MERGE(
-				{
-					"id": this.id || null,
-					"v": [...this.v],
-					"company": this.companyId,
-				},
-				this.#general.toJSON(),
-				this.#advanced.toJSON(),
-				this.#dispatch.toJSON(),
-			);
+			: {
+				...this.#general.toJSON(),
+				...this.#advanced.toJSON(),
+				...this.#dispatch.toJSON(),
+				"v": [...this.v],
+			};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const version = json?.["v"] as int[];
-		const general = this.#general.fromJSON(MERGE({ "v": version.slice(0, 1) }, json), force),
-			advanced = this.#advanced.fromJSON(MERGE({ "v": version.slice(1, 2) }, json), force),
-			dispatch = this.#dispatch.fromJSON(MERGE({ "v": version.slice(2, 3) }, json), force);
+		const general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
+			advanced = this.#advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
+			dispatch = this.#dispatch.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
 		return general || advanced || dispatch;
 	}
 

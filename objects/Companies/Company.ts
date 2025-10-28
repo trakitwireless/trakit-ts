@@ -1,14 +1,12 @@
 import { Contact } from '../Accounts/Contact';
 import { BaseComponent } from '../API/BaseComponent';
 import { BaseCompound } from '../API/BaseCompound';
-import { JSON_NUMBER } from '../API/Functions';
 import { IAmCompany } from '../API/Interfaces/IAmCompany';
 import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
 import { MAP_FILTERED_BY_COMPANY } from '../API/Maps';
-import { MERGE } from '../API/Objects';
-import { codified, ulong, JsonObject, int } from '../API/Types';
+import { JsonObject, codified, int, ulong } from '../API/Types';
 import { Picture } from '../Images/Picture';
 import { CONTACTS, PICTURES } from '../storage';
 import { CompanyDirectory } from './CompanyDirectory';
@@ -140,18 +138,14 @@ export class Company
 	 * 
 	 */
 	override toJSON() {
-		return MERGE(
-			{
-				"id": JSON_NUMBER(this.id),
-				"v": [...this.v],
-				"parent": this.parentId,
-			},
-			this.general.toJSON(),
-			this.directory.toJSON(),
-			this.styles.toJSON(),
-			this.policies.toJSON(),
-			this.reseller?.toJSON() ?? {}
-		);
+		return {
+			...this.general?.toJSON(),
+			...this.directory?.toJSON(),
+			...this.styles?.toJSON(),
+			...this.policies?.toJSON(),
+			...this.reseller?.toJSON(),
+			"v": [...this.v],
+		};
 	}
 	/**
 	 * 
@@ -159,16 +153,16 @@ export class Company
 	 */
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const versions = json?.["v"] as int[] || [],
-			general = this.general.fromJSON(MERGE({ "v": versions.slice(0, 1) }, json), force),
-			//reserved = this.reserved.fromJSON(MERGE({ "v": json["v"].slice(1, 2) }, json)),
-			directory = this.directory.fromJSON(MERGE({ "v": versions.slice(2, 3) }, json), force),
-			styles = this.styles.fromJSON(MERGE({ "v": versions.slice(3, 4) }, json), force),
-			policies = this.policies.fromJSON(MERGE({ "v": versions.slice(4, 5) }, json), force);
+			general = this.general.fromJSON({ ...json, "v": versions.slice(0, 1) }, force),
+			//reserved = this.reserved.fromJSON({ ...json, "v": versions.slice(1, 2) }, force),
+			directory = this.directory.fromJSON({ ...json, "v": versions.slice(2, 3) }, force),
+			styles = this.styles.fromJSON({ ...json, "v": versions.slice(3, 4) }, force),
+			policies = this.policies.fromJSON({ ...json, "v": versions.slice(4, 5) }, force);
 		let reseller;
 		if (versions[5] > 0) {
 			reseller = !this.reseller;
 			if (reseller) this.reseller = new CompanyReseller;
-			reseller = this.reseller?.fromJSON(MERGE({ "v": versions.slice(5, 6) }, json), force)
+			reseller = this.reseller?.fromJSON({ "v": versions.slice(5, 6) }, force)
 				?? reseller;
 		} else {
 			reseller = !!this.reseller;

@@ -125,7 +125,6 @@ import { GUID, } from "./API/Guid";
 import { IDeserializable } from "./API/Interfaces/IDeserializable";
 import { IRequestable } from "./API/Interfaces/IRequestable";
 import { ISerializable } from "./API/Interfaces/ISerializable";
-import { MERGE, } from "./API/Objects";
 import { SearchPattern, } from "./API/SearchPattern";
 import {
 	TIMESPACE_PARSE,
@@ -604,7 +603,6 @@ export const utility = {
 	id: ID,
 	isNothing: IS_NOTHING,
 	isntNaN: IS_AN,
-	merge: MERGE,
 	numberGroups: NUMBER_GROUPS,
 	roundTo: ROUND_TO,
 	parseTime: TIMESPACE_PARSE,
