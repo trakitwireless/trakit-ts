@@ -1,8 +1,7 @@
-﻿import { MERGE } from "../API/Objects";
-import { colour, double, ushort, JsonObject } from "../API/Types";
+﻿import { colour, double, ushort } from "../API/Types";
 import { Asset } from "./Asset";
-import { VehicleGeneral } from "./VehicleGeneral";
 import { VehicleAdvanced } from "./VehicleAdvanced";
+import { VehicleGeneral } from "./VehicleGeneral";
 
 /**
  * The full details of a Vehicle, containing all the properties from the {@link VehicleGeneral} and {@link VehicleAdvanced} objects.
@@ -52,19 +51,4 @@ export class Vehicle
 	 */
 	get engineHours(): double { return this.advanced.engineHours; }
 	set engineHours(value: double) { this.advanced.engineHours = value; }
-
-	override toJSON() {
-		return MERGE(
-			super.toJSON(),
-			{
-				"plate": this.plate || "",
-				"vin": this.vin || "",
-				"make": this.make || "",
-				"model": this.model || "",
-				"year": this.year || 0,
-				"colour": this.colour || "",
-				"engineHours": this.engineHours || 0,
-			}
-		);
-	}
 }
