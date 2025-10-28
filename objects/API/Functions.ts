@@ -226,6 +226,18 @@ export function PLURAL(word: string): string {
 }
 
 /**
+ * Returns the given word with the first letter capitalized (or lower-cased).
+ * @param word 
+ * @param upper 
+ * @returns 
+ */
+export function CAPITALIZE(word: string, upper: boolean = true): string {
+	return word[0][upper ? "toUpperCase" : "toLowerCase"]()
+		+ word.slice(1);
+}
+
+
+/**
  * For validating phone numbers using the 1 prefix (ie: 14161234567)
  */
 const PHONE_ELEVEN = 1e10;

@@ -61,6 +61,7 @@ import {
 	NUMBER_GROUPS,
 } from "./API/Files";
 import {
+	CAPITALIZE,
 	CLIP,
 	DATE,
 	DOUGLASPEUCKER,
@@ -591,6 +592,7 @@ export type {
  * A group of utility functions for common tasks like dealing with strings.
  */
 export const utility = {
+	capitalize: CAPITALIZE,
 	clip: CLIP,
 	codify: CODIFY,
 	date: DATE,
