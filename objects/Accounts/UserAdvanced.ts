@@ -71,5 +71,5 @@ export class UserAdvanced
 	/**
 	 * The {@link login} is the key.
 	 */
-	getKey(): string { return this.login; }
+	getKey() { return this.login; }
 }

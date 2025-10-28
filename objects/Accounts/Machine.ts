@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
 import { BaseComponent, } from '../API/BaseComponent';
 import { CODIFY } from '../API/Codifier';
-import { DATE, JSON_DATE, ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED } from '../API/Functions';
+import { DATE, ID, JSON_DATE, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
@@ -168,7 +168,7 @@ export class Machine
 	/**
 	 * The {@link key} is the key (how about that).
 	 */
-	getKey(): string { return this.key; }
+	getKey() { return this.key; }
 
 	/**
 	 * Creates an HMAC256 signed input for use in requests.

@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, JSON_DATE, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
+import { DATE, ID, JSON_DATE, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -10,7 +10,7 @@ import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { MERGE } from "../API/Objects";
-import { codified, ulong, JsonObject, int, datetime, email } from "../API/Types";
+import { JsonObject, codified, datetime, email, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -143,7 +143,7 @@ export class AssetGeneral
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id.toString(); }
+	getKey() { return this.id; }
 
 	// ISuspendable
 	/**

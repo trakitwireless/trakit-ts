@@ -148,5 +148,5 @@ export class ProviderRegistration
 	/**
 	 * The {@link code} is the key.
 	 */
-	getKey(): string { return this.code; }
+	getKey() { return this.code; }
 }

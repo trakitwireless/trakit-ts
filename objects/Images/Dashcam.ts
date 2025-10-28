@@ -128,5 +128,5 @@ export class Dashcam
 	/**
 	 * The {@link guid} is the key.
 	 */
-	getKey(): string { return this.guid.toString(); }
+	getKey() { return this.guid.toString(); }
 }

@@ -67,5 +67,5 @@ export class Timezone
 	/**
 	 * The {@link code} is the key.
 	 */
-	getKey(): string { return this.code; }
+	getKey() { return this.code; }
 }

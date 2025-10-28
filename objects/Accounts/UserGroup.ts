@@ -4,7 +4,7 @@ import { ID, IS_AN } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { Permission } from "./Permissions/Permission";
@@ -69,5 +69,5 @@ export class UserGroup
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id.toString(); }
+	getKey() { return this.id; }
 }

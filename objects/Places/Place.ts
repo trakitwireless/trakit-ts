@@ -1,9 +1,9 @@
-import { ARRAY_TO_IDS, ARRAY_TO_JSON } from "../API/Arrays";
+import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
 import { FLOAT } from "../API/Constants";
 import { ID, IS_AN } from "../API/Functions";
-import { ROUTE_DECODE } from "../API/Geography/Functions";
+import { ROUTE_DECODE, ROUTE_ENCODE } from "../API/Geography/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
@@ -12,7 +12,7 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, colour, double, ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, codified, colour, double, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -119,7 +119,9 @@ export class Place
 			"reference": this.reference || "",
 			"anchor": this.anchor?.toJSON() ?? null,
 			"radius": this.radius || null,
-			"shape": this.points?.map(ARRAY_TO_JSON) ?? null
+			"shape": this.points?.length as number > 0
+				? ROUTE_ENCODE(this.points || [])
+				: null
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
@@ -155,5 +157,5 @@ export class Place
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id.toString(); }
+	getKey() { return this.id; }
 }

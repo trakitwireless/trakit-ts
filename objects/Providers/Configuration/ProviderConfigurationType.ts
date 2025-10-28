@@ -80,5 +80,5 @@ export class ProviderConfigurationType
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id.toString(); }
+	getKey() { return this.id; }
 }

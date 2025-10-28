@@ -146,7 +146,7 @@ export class ProviderGeneral
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id; }
+	getKey() { return this.id; }
 
 	// ISuspendable
 	/**

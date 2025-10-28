@@ -9,7 +9,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MERGE } from "../API/Objects";
-import { codified, double, ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, codified, double, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -226,7 +226,7 @@ export class Asset
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id.toString(); }
+	getKey() { return this.id; }
 
 	// ISuspendable
 	/**

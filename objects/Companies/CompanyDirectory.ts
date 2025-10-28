@@ -64,7 +64,7 @@ export class CompanyDirectory
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id.toString(); }
+	getKey() { return this.id; }
 	
 	// IBelongCompany
 	set companyId(value: number) { this.parentId = value; }

@@ -1,13 +1,13 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED } from "../API/Functions";
+import { ID, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
-import { codified, datetimetemplate, email, ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, codified, datetimetemplate, email, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, CONTACTS } from "../storage";
 import { Contact } from "./Contact";
@@ -127,5 +127,5 @@ export class UserGeneral
 	/**
 	 * The {@link login} is the key.
 	 */
-	getKey(): string { return this.login; }
+	getKey() { return this.login; }
 }

@@ -1,12 +1,12 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
 import { SearchPattern } from "../API/SearchPattern";
-import { codified, colour, ulong, JsonObject, int } from "../API/Types";
+import { JsonObject, codified, colour, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { BehaviourParameter } from "./BehaviourParameter";
@@ -106,5 +106,5 @@ export class BehaviourScript
 	/**
 	 * The {@link id} is the key.
 	 */
-	getKey(): string { return this.id.toString(); }
+	getKey() { return this.id; }
 }

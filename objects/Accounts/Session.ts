@@ -139,5 +139,5 @@ export class Session
 	/**
 	 * The {@link handle} is the key.
 	 */
-	getKey(): string { return this.handle; }
+	getKey() { return this.handle; }
 }
