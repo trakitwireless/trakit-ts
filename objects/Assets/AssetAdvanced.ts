@@ -83,11 +83,11 @@ export class AssetAdvanced
 	//#endregion VehicleAdvanced
 
 	override toJSON() {
-		const json = {
+		const json: JsonObject = {
 			"id": this.id || null,
 			"v": [...this.v],
 			"company": this.companyId,
-			"position": this.position?.toJSON() || null,
+			"position": (this.position?.toJSON() || null) as JsonObject | null,
 			"odometer": this.odometer || 0,
 			"tags": [...this.tags],
 			"attributes": MAP_TO_JSON(this.attributes),

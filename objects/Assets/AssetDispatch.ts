@@ -58,14 +58,14 @@ export class AssetDispatch
 	 */
 	lastDispatched: Date = DATE();
 
-	override toJSON() {
+	override toJSON(): JsonObject  {
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
 			"companyId": this.companyId || null,
 			"jobs": [...this.jobIds],
 			//"tasks": [...this.taskIds],
-			"directions": [...this.directions],
+			"directions": this.directions.map(d => d.toJSON()),
 			"lastDispatched": this.lastDispatched.toISOString(),
 		};
 	}

@@ -127,16 +127,7 @@ export class AssetGeneral
 	serial: string = "";
 	//#endregion TrailerGeneral
 
-	constructor(json?: JsonObject | nothing) {
-		if (json && !json["kind"]) {
-			if (IS_AN(json["engineHours"])) {
-				json["kind"] = AssetType.vehicle;
-			}
-		}
-		super(json);
-	}
-
-	override toJSON() {
+	override toJSON(): JsonObject {
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
@@ -172,6 +163,7 @@ export class AssetGeneral
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
+		if (!json["kind"] && IS_AN(json["engineHours"])) json["kind"] = AssetType.vehicle;
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			this.id = ID(json["id"]);

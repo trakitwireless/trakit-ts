@@ -29,17 +29,6 @@ export class Asset
 	extends BaseCompound
 	implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
 	/**
-	 * 
-	 * @param json 
-	 */
-	static fromJSON(json: JsonObject): Asset {
-		if (!json["kind"] && IS_AN(json["engineHours"])) {
-			json["kind"] = AssetType.vehicle;
-		}
-		return new Asset(json);
-	}
-	
-	/**
 	 *  
 	 */
 	get pieces(): BaseComponent[] {
@@ -272,8 +261,8 @@ export class Asset
 			};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const version = json?.["v"] as int[];
-		const general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
+		const version = json?.["v"] as int[],
+			general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
 			advanced = this.#advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
 			dispatch = this.#dispatch.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
 		return general || advanced || dispatch;
