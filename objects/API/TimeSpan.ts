@@ -186,8 +186,8 @@ export class TimeSpan {
 	 * @param subtract	When true, the value is subtracted from the time-span instead of added.
 	 */
 	add(duration: TimeSpan | timespan | number, subtract: boolean = false): number {
-		if (IS_NUMBER(duration)) {	// can be NaN
-			this.#value += duration;
+		if (IS_NUMBER(duration?.valueOf())) {	// can be NaN
+			this.#value += duration.valueOf() as number;
 		} else if (duration = String(duration).trim()) {
 			const numbers = (
 				duration.match(/^(-?)(?:(\d+)\.)?(\d*):(\d*)(?::(\d+)(?:\.(\d+))?)?$/)
