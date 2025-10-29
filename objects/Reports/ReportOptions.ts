@@ -1,7 +1,7 @@
-﻿import { JsonObject, nothing } from 'objects/API/Types';
-import { ARRAY_TO_JSON } from '../API/Arrays';
+﻿import { ARRAY_TO_JSON } from '../API/Arrays';
 import { ISerializable } from '../API/Interfaces/ISerializable';
 import { SearchPattern } from '../API/SearchPattern';
+import { JsonObject, nothing } from '../API/Types';
 import { ReportFilterMode } from './ReportFilterMode';
 import { ReportParameter } from './ReportParameter';
 import { ReportScorecardRules } from './ReportScorecardRules';

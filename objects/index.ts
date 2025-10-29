@@ -169,13 +169,6 @@ import { AssetGeneral } from "./Assets/AssetGeneral";
 import { AssetPlaceStatus } from "./Assets/AssetPlaceStatus";
 import { AssetPlaceStatusType } from "./Assets/AssetPlaceStatusType";
 import { AssetType } from "./Assets/AssetType";
-import { Person } from "./Assets/Person";
-import { PersonGeneral } from "./Assets/PersonGeneral";
-import { Trailer } from "./Assets/Trailer";
-import { TrailerGeneral } from "./Assets/TrailerGeneral";
-import { Vehicle } from "./Assets/Vehicle";
-import { VehicleAdvanced } from "./Assets/VehicleAdvanced";
-import { VehicleGeneral } from "./Assets/VehicleGeneral";
 import { Behaviour } from "./Behaviours/Behaviour";
 import { BehaviourLog } from "./Behaviours/BehaviourLog";
 import { BehaviourLogType } from "./Behaviours/BehaviourLogType";
@@ -806,13 +799,6 @@ export {
 	AssetPlaceStatus,
 	AssetPlaceStatusType,
 	AssetType,
-	Person,
-	PersonGeneral,
-	Trailer,
-	TrailerGeneral,
-	Vehicle,
-	VehicleGeneral,
-	VehicleAdvanced,
 	AssetAlert,
 	AssetMessage,
 	AlertPriority,

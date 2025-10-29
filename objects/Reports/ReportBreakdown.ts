@@ -29,10 +29,10 @@ export class ReportBreakdown
 				json["instance"] as uint,
 				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
-					? AssetGeneral.fromJSON(json["general"] as JsonObject)
+					? new AssetGeneral(json["general"] as JsonObject)
 					: null,
 				json["advanced"]
-					? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+					? new AssetAdvanced(json["advanced"] as JsonObject)
 					: null,
 			);
 		}
@@ -43,10 +43,10 @@ export class ReportBreakdown
 				json["instance"] as uint,
 				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
-					? AssetGeneral.fromJSON(json["general"] as JsonObject)
+					? new AssetGeneral(json["general"] as JsonObject)
 					: null,
 				json["advanced"]
-					? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+					? new AssetAdvanced(json["advanced"] as JsonObject)
 					: null,
 			);
 		}
@@ -57,10 +57,10 @@ export class ReportBreakdown
 				json["instance"] as uint,
 				(json["summaryInstances"] as ulong[])?.map(ID),
 				json["general"]
-					? AssetGeneral.fromJSON(json["general"] as JsonObject)
+					? new AssetGeneral(json["general"] as JsonObject)
 					: null,
 				json["advanced"]
-					? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+					? new AssetAdvanced(json["advanced"] as JsonObject)
 					: null,
 			);
 		}
@@ -69,10 +69,10 @@ export class ReportBreakdown
 			json["instance"] as uint,
 			(json["summaryInstances"] as ulong[])?.map(ID),
 			json["general"]
-				? AssetGeneral.fromJSON(json["general"] as JsonObject)
+				? new AssetGeneral(json["general"] as JsonObject)
 				: null,
 			json["advanced"]
-				? AssetAdvanced.fromJSON(json["advanced"] as JsonObject)
+				? new AssetAdvanced(json["advanced"] as JsonObject)
 				: null,
 		);
 	}

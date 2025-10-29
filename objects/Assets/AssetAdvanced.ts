@@ -14,8 +14,6 @@ import { ASSETS, COMPANIES, PROVIDERS } from "../storage";
 import { Asset } from "./Asset";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";
-import { AssetType } from "./AssetType";
-import { VehicleAdvanced } from "./VehicleAdvanced";
 
 /**
  * Often changing details about a thing.
@@ -23,16 +21,6 @@ import { VehicleAdvanced } from "./VehicleAdvanced";
 export class AssetAdvanced
 	extends BaseComponent
 	implements IIdUlong, IBelongCompany {
-	/**
-	 * 
-	 * @param json 
-	 */
-	static fromJSON(json: JsonObject): VehicleAdvanced | AssetAdvanced {
-		return json["kind"] === AssetType.vehicle || IS_AN(json["engineHours"])
-			? new VehicleAdvanced(json)
-			: new AssetAdvanced(json);
-	}
-	
 	/**
 	 * Unique identifier of this asset.
 	 * {@link Asset.id}
@@ -87,8 +75,15 @@ export class AssetAdvanced
 	 */
 	places: Map<ulong, AssetPlaceStatus> = new Map;
 
+	//#region VehicleAdvanced
+	/**
+	 * The cumulative duration that the vehicle's engine has been running (in decimal hours).
+	 */
+	engineHours: double = NaN;
+	//#endregion VehicleAdvanced
+
 	override toJSON() {
-		return {
+		const json = {
 			"id": this.id || null,
 			"v": [...this.v],
 			"company": this.companyId,
@@ -100,6 +95,8 @@ export class AssetAdvanced
 			"relationships": [...this.relationshipIds],
 			"places": MAP_TO_JSON(this.places),
 		};
+		if (IS_AN(this.engineHours)) (json as JsonObject)["engineHours"] = this.engineHours;
+		return json;
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
@@ -114,6 +111,8 @@ export class AssetAdvanced
 			this.attributes = JSON_TO_MAP_BY_PREDICATE(json["attributes"] as object || {}, (key, attr) => [key, new AssetAttribute(attr)]);
 			this.relationshipIds = (json["relationships"] as ulong[] || []).map(ID);
 			this.places = JSON_TO_MAP_BY_PREDICATE(json["places"] as object || {}, (id, ps) => [ID(id), new AssetPlaceStatus(ps)]);
+			// vehicle
+			this.engineHours = FLOAT(json["engineHours"] as any);
 		}
 		return update;
 	}

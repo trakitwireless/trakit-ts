@@ -1,3 +1,4 @@
+import { Contact } from "../Accounts/Contact";
 import { BaseComponent } from "../API/BaseComponent";
 import { BaseCompound } from "../API/BaseCompound";
 import { IS_AN } from "../API/Functions";
@@ -9,7 +10,7 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { JsonObject, codified, double, int, ulong } from "../API/Types";
+import { JsonObject, codified, colour, double, int, ulong, ushort } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -20,9 +21,6 @@ import { AssetDispatch } from "./AssetDispatch";
 import { AssetGeneral } from "./AssetGeneral";
 import { AssetPlaceStatus } from "./AssetPlaceStatus";
 import { AssetType } from "./AssetType";
-import { Person } from "./Person";
-import { Trailer } from "./Trailer";
-import { Vehicle } from "./Vehicle";
 
 /**
  * The full details of an Asset, containing all the properties from the {@link AssetGeneral} and {@link AssetAdvanced} objects.
@@ -34,16 +32,11 @@ export class Asset
 	 * 
 	 * @param json 
 	 */
-	static fromJSON(json: JsonObject): Person | Vehicle | Trailer | Asset {
+	static fromJSON(json: JsonObject): Asset {
 		if (!json["kind"] && IS_AN(json["engineHours"])) {
 			json["kind"] = AssetType.vehicle;
 		}
-		switch (json["kind"] as AssetType) {
-			case AssetType.person: return new Person(json);
-			case AssetType.vehicle: return new Vehicle(json);
-			case AssetType.trailer: return new Trailer(json);
-			default: return new Asset(json);
-		}
+		return new Asset(json);
 	}
 	
 	/**
@@ -89,6 +82,7 @@ export class Asset
 	 */
 	get kind(): AssetType { return this.#general.kind; }
 
+	//#region AssetGeneral
 	#general: AssetGeneral = new AssetGeneral;
 	/**
 	 *  
@@ -144,7 +138,61 @@ export class Asset
 	 */
 	get references(): Map<string, string> { return this.#general.references; }
 	set references(value: Map<string, string>) { this.#general.references = value; }
+	//#endregion AssetGeneral
+	//#region PersonGeneral
+	/**
+	 * Contact information for this user.
+	 * {@link Contact.id}
+	 */
+	get contactId(): ulong { return this.general.contactId; }
+	set contactId(value: ulong) { this.general.contactId = value; }
+	/**
+	 * Contact information for this user.
+	 * {@link Contact.id}
+	 */
+	get contact(): Contact { return this.general.contact; }
+	set contact(value: Contact) { this.general.contact = value; }
+	//#endregion PersonGeneral
+	//#region VehicleGeneral
+	/**
+	 * The license plate.
+	 */
+	get plate(): string { return this.general.plate; }
+	/**
+	 * Manufacturer's unique identification number (Vehicle Identification Number).
+	 */
+	get vin(): string { return this.general.vin; }
+	set vin(value: string) { this.general.vin = value; }
+	/**
+	 * Manufacturer's name.
+	 */
+	get make(): string { return this.general.make; }
+	set make(value: string) { this.general.make = value; }
+	/**
+	 * Manufacturer's model name/number.
+	 */
+	get model(): string { return this.general.model; }
+	set model(value: string) { this.general.model = value; }
+	/**
+	 * Year of manufacturing.
+	 */
+	get year(): ushort { return this.general.year; }
+	set year(value: ushort) { this.general.year = value; }
+	/**
+	 * Primary colour of the trailer (given in 24bit hex; #RRGGBB)
+	 */
+	get colour(): colour { return this.general.colour; }
+	set colour(value: colour) { this.general.colour = value; }
+	//#endregion VehicleGeneral
+	//#region TrailerGeneral
+	/**
+	 * Manufacturer's unique identification number for this trailer.
+	 */
+	get serial(): string { return this.general.serial; }
+	set serial(value: string) { this.general.serial = value; }
+	//#endregion TrailerGeneral
 
+	//#region AssetAdvanced
 	#advanced: AssetAdvanced = new AssetAdvanced;
 	/**
 	 *  
@@ -196,12 +244,22 @@ export class Asset
 	 */
 	get places(): Map<ulong, AssetPlaceStatus> { return this.#advanced.places; }
 	set places(value: Map<ulong, AssetPlaceStatus>) { this.#advanced.places = value; }
-
+	//#endregion AssetAdvanced
+	//#region VehicleAdvanced
+	/**
+	 * The cumulative duration that the vehicle's engine has been running (in decimal hours).
+	 */
+	get engineHours(): double { return this.advanced.engineHours; }
+	set engineHours(value: double) { this.advanced.engineHours = value; }
+	//#endregion VehicleAdvanced
+	
+	//#region AssetDispatch
 	#dispatch: AssetDispatch = new AssetDispatch;
 	/**
 	 *  
 	 */
 	get dispatch(): AssetDispatch { return this.#dispatch; }
+	//#endregion AssetDispatch
 
 	override toJSON() {
 		return this.#general.suspended

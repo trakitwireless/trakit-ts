@@ -1,6 +1,7 @@
+import { Contact } from "../Accounts/Contact";
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, JSON_DATE, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -9,15 +10,12 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { JsonObject, codified, datetime, email, int, ulong } from "../API/Types";
+import { JsonObject, codified, colour, datetime, email, int, nothing, ulong, ushort } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
-import { COMPANIES, ICONS, PICTURES } from "../storage";
+import { COMPANIES, CONTACTS, ICONS, PICTURES } from "../storage";
 import { AssetType } from "./AssetType";
-import { PersonGeneral } from "./PersonGeneral";
-import { TrailerGeneral } from "./TrailerGeneral";
-import { VehicleGeneral } from "./VehicleGeneral";
 
 /**
  * Seldom changing details about a thing.
@@ -25,19 +23,6 @@ import { VehicleGeneral } from "./VehicleGeneral";
 export class AssetGeneral
 	extends BaseComponent
 	implements IIdUlong, INamed, IIconic, IBelongCompany, ILabelled, IPictured, ISuspendable {
-	/**
-	 * 
-	 * @param json 
-	 */
-	static fromJSON(json: JsonObject) {
-		switch (json["kind"] as AssetType) {
-			case AssetType.person: return new PersonGeneral(json);
-			case AssetType.vehicle: return new VehicleGeneral(json);
-			case AssetType.trailer: return new TrailerGeneral(json);
-			default: return new AssetGeneral(json);
-		}
-	}
-	
 	/**
 	 * Unique identifier of this asset.
 	 * {@link Asset.id}
@@ -96,6 +81,61 @@ export class AssetGeneral
 	 */
 	references: Map<string, string> = new Map;
 
+	//#region PersonGeneral
+	/**
+	 * A reference to their Company's Contact information.
+	 * {@link Contact.id}
+	 */
+	contactId: ulong = NaN;
+	/**
+	 * Contact information for this person.
+	 * {@link Contact.id}
+	 */
+	get contact(): Contact { return CONTACTS.get(this.contactId) as Contact; }
+	set contact(value: Contact) { this.contactId = value.id; }
+	//#endregion PersonGeneral
+	//#region VehicleGeneral
+	/**
+	 * Manufacturer's unique identification number (Vehicle Identification Number).
+	 */
+	vin: string = "";
+	/**
+	 * The license plate.
+	 */
+	plate: string = "";
+	/**
+	 * Manufacturer's name.
+	 */
+	make: string = "";
+	/**
+	 * Manufacturer's model name/number.
+	 */
+	model: string = "";
+	/**
+	 * Year of manufacturing.
+	 */
+	year: ushort = NaN;
+	/**
+	 * Primary colour of the vehicle (given in 24bit hex; #RRGGBB)
+	 */
+	colour: colour = "";
+	//#endregion VehicleGeneral
+	//#region TrailerGeneral
+	/**
+	 * Manufacturer's unique identification number for this trailer.
+	 */
+	serial: string = "";
+	//#endregion TrailerGeneral
+
+	constructor(json?: JsonObject | nothing) {
+		if (json && !json["kind"]) {
+			if (IS_AN(json["engineHours"])) {
+				json["kind"] = AssetType.vehicle;
+			}
+		}
+		super(json);
+	}
+
 	override toJSON() {
 		return {
 			"id": this.id || null,
@@ -116,6 +156,17 @@ export class AssetGeneral
 						"references": MAP_TO_JSON(this.references),
 						"messagingAddress": this.messagingAddress,
 						"pictures": [...this.pictureIds],
+						// person
+						"contact": this.contactId,
+						// vehicle
+						"vin": this.vin || "",
+						"plate": this.plate || "",
+						"make": this.make || "",
+						"model": this.model || "",
+						"year": this.year || null,
+						"colour": this.colour || "",
+						// trailer
+						"serial": this.serial || "",
 					}
 			),
 		};
@@ -134,6 +185,17 @@ export class AssetGeneral
 			this.iconId = ID(json["icon"]);
 			this.pictureIds = (json["pictures"] as ulong[] || []).map(ID);
 			this.messagingAddress = json["messagingAddress"] as email || "";
+			// person
+			this.contactId = ID(json["contact"]);
+			// vehicle
+			this.plate = json["plate"] as string || "";
+			this.vin = json["vin"] as string || "";
+			this.make = json["make"] as string || "";
+			this.model = json["model"] as string || "";
+			this.year = ID(json["year"]) || 0;
+			this.colour = json["colour"] as string || "";
+			// trailer
+			this.serial = json["serial"] as string || "";
 		}
 		return update;
 	}
