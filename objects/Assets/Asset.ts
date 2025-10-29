@@ -1,5 +1,6 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { BaseCompound } from "../API/BaseCompound";
+import { IS_AN } from "../API/Functions";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
@@ -34,6 +35,9 @@ export class Asset
 	 * @param json 
 	 */
 	static fromJSON(json: JsonObject): Person | Vehicle | Trailer | Asset {
+		if (!json["kind"] && IS_AN(json["engineHours"])) {
+			json["kind"] = AssetType.vehicle;
+		}
 		switch (json["kind"] as AssetType) {
 			case AssetType.person: return new Person(json);
 			case AssetType.vehicle: return new Vehicle(json);
