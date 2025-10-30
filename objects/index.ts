@@ -193,9 +193,9 @@ import { ColourStyle } from "./Companies/ColourStyle";
 import { Company } from "./Companies/Company";
 import { CompanyDirectory } from "./Companies/CompanyDirectory";
 import { CompanyGeneral } from "./Companies/CompanyGeneral";
-import { CompanyPolicies } from "./Companies/CompanyPolicies";
+import { CompanyPolicy } from "./Companies/CompanyPolicy";
 import { CompanyReseller } from "./Companies/CompanyReseller";
-import { CompanyStyles } from "./Companies/CompanyStyles";
+import { CompanyStyle } from "./Companies/CompanyStyle";
 import { LabelStyle } from "./Companies/LabelStyle";
 import { NotificationServerEmail } from "./Companies/NotificationServerEmail";
 import { NotificationServerSms } from "./Companies/NotificationServerSms";
@@ -342,9 +342,9 @@ export type classes =
 	// Companies
 	"Company"
 	| "CompanyGeneral"
-	| "CompanyStyles"
+	| "CompanyStyle"
 	| "CompanyDirectory"
-	| "CompanyPolicies"
+	| "CompanyPolicy"
 	| "CompanyReseller"
 	// Accounts
 	| "Contact"
@@ -410,9 +410,9 @@ export const objects: { [key in classes]: { new(): IRequestable } } = {
 	// Companies
 	"Company": Company,
 	"CompanyGeneral": CompanyGeneral,
-	"CompanyStyles": CompanyStyles,
+	"CompanyStyle": CompanyStyle,
 	"CompanyDirectory": CompanyDirectory,
-	"CompanyPolicies": CompanyPolicies,
+	"CompanyPolicy": CompanyPolicy,
 	"CompanyReseller": CompanyReseller,
 	// Accounts
 	"Contact": Contact,
@@ -478,9 +478,9 @@ export const storage: { [key in classes]: Map<string | guid | email | ulong, IRe
 	// Companies
 	"Company": COMPANIES,
 	"CompanyGeneral": COMPANIES,
-	"CompanyStyles": COMPANIES,
+	"CompanyStyle": COMPANIES,
 	"CompanyDirectory": COMPANIES,
-	"CompanyPolicies": COMPANIES,
+	"CompanyPolicy": COMPANIES,
 	"CompanyReseller": COMPANIES,
 	// Accounts
 	"Contact": CONTACTS,
@@ -708,9 +708,9 @@ export {
 	Company,
 	CompanyDirectory,
 	CompanyGeneral,
-	CompanyPolicies,
+	CompanyPolicy,
 	CompanyReseller,
-	CompanyStyles,
+	CompanyStyle,
 	LabelStyle,
 	NotificationServerEmail,
 	NotificationServerSms,

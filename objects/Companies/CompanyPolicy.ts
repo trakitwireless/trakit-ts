@@ -1,18 +1,18 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
-import { CODIFY } from "../API/Codifier";
-import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { JsonObject, codified, int, ulong } from "../API/Types";
+import { JsonObject, int, ulong } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
-import { LabelStyle } from "./LabelStyle";
+import { PasswordPolicy } from "./PasswordPolicy";
+import { SessionPolicy } from "./SessionPolicy";
 
 /**
- * The colours and styles used by this company to tag and label Assets, Places, and other things.
+ * The password and session lifetime policies for this Company.
  */
-export class CompanyStyles
+export class CompanyPolicy
 	extends BaseComponent
 	implements IIdUlong, IAmCompany, IBelongCompany {
 	/**
@@ -31,21 +31,21 @@ export class CompanyStyles
 	 */
 	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**
-	 * The styles for labels added to Assets, Places, and other things.
+	 * The session lifetime policy.
 	 */
-	labels: Map<codified, LabelStyle> = new Map;
+	sessionPolicy: SessionPolicy = new SessionPolicy;
 	/**
-	 * The styles for status tags added to Assets.
+	 * The password complexity and expiry policy.
 	 */
-	tags: Map<codified, LabelStyle> = new Map;
+	passwordPolicy: PasswordPolicy = new PasswordPolicy;
 
 	toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
 			"v": [...this.v],
 			"parent": this.parentId,
-			"labels": MAP_TO_JSON(this.labels),
-			"tags": MAP_TO_JSON(this.tags),
+			"sessionPolicy": this.sessionPolicy?.toJSON() ?? null,
+			"passwordPolicy": this.passwordPolicy?.toJSON() ?? null,
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
@@ -53,8 +53,8 @@ export class CompanyStyles
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.labels = JSON_TO_MAP_BY_PREDICATE(json["labels"] as object, OBJECT_TO_LABELSTYLE);
-			this.tags = JSON_TO_MAP_BY_PREDICATE(json["tags"] as object, OBJECT_TO_LABELSTYLE);
+			this.sessionPolicy = SessionPolicy.fromJSON(json["sessionPolicy"] as JsonObject);
+			this.passwordPolicy = PasswordPolicy.fromJSON(json["passwordPolicy"] as JsonObject);
 		}
 		return update;
 	}
@@ -63,20 +63,10 @@ export class CompanyStyles
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
-	
+
 	// IBelongCompany
 	set companyId(value: number) { this.parentId = value; }
 	get companyId(): number { return this.parentId; }
 	set company(value: Company) { this.parentId = value?.id ?? NaN; }
 	get company(): Company { return this.parent; }
-}
-
-/**
- * 
- * @param key 
- * @param value 
- * @returns 
- */
-function OBJECT_TO_LABELSTYLE(key: string, value: any): [codified, LabelStyle] {
-	return [CODIFY(key), new LabelStyle(value)];
 }
