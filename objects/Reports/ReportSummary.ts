@@ -33,10 +33,10 @@ export class ReportSummary
 			json["distance"] as double,
 			json["polyline"] as (ILatLng | JsonObject)[],
 			json["firstState"]
-				? Asset.fromJSON(json["firstState"] as JsonObject)
+				? new Asset(json["firstState"] as JsonObject)
 				: null,
 			json["lastState"]
-				? Asset.fromJSON(json["lastState"] as JsonObject)
+				? new Asset(json["lastState"] as JsonObject)
 				: null,
 		);
 	}
