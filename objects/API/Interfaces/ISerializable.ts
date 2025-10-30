@@ -8,5 +8,5 @@ export interface ISerializable {
 	 * Creates a literal of this {@link ISerializable} object.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): JsonObject;
+	toJSON(): any;
 }

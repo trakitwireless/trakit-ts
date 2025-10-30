@@ -79,7 +79,7 @@ export class Icon
 			"usage": [...this.usage],
 			"label": this.label.toJSON(),
 			"badge": this.badge.toJSON(),
-			"glyphs": this.glyphs.map(ARRAY_TO_JSON),
+			"glyphs": this.glyphs.map(ARRAY_TO_JSON) as JsonObject[],
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
