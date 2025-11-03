@@ -4,7 +4,10 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { JsonObject, int, ipv4, phone, ulong } from "../API/Types";
+import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
+import { ProviderConfig } from "./Config/ProviderConfig";
+import { ProviderConfiguration } from "./Configuration/ProviderConfiguration";
 import { ProviderAdvanced } from "./ProviderAdvanced";
 import { ProviderCommand } from "./ProviderCommand";
 import { ProviderCommandType } from "./ProviderCommandType";
@@ -86,15 +89,28 @@ export class Provider
 	 * The asset for which this device provides field data.
 	 * {@link Asset.id}
 	 */
-	get asset(): ulong { return this.#general.assetId; }
-	set asset(value: ulong) { this.#general.assetId = value; }
+	get assetId(): ulong { return this.#general.assetId; }
+	set assetId(value: ulong) { this.#general.assetId = value; }
+	/**
+	 * The asset for which this device provides field data.
+	 * {@link Asset.id}
+	 */
+	get asset(): Asset { return this.#general.asset; }
+	set asset(value: Asset) { this.#general.asset = value; }
 	/**
 	 * The provider's current (or pending) configuration profile.
 	 * {@link ProviderConfig.id}
 	 * {@link ProviderConfiguration.id}
 	 */
-	get configuration(): ulong { return this.#general.configurationId; }
-	set configuration(value: ulong) { this.#general.configurationId = value; }
+	get configurationId(): ulong { return this.#general.configurationId; }
+	set configurationId(value: ulong) { this.#general.configurationId = value; }
+	/**
+	 * The provider's current (or pending) configuration profile.
+	 * {@link ProviderConfig.id}
+	 * {@link ProviderConfiguration.id}
+	 */
+	get configuration(): ProviderConfig | ProviderConfiguration { return this.#general.configuration; }
+	set configuration(value: ProviderConfig | ProviderConfiguration) { this.#general.configuration = value; }
 	/**
 	 * The password programmed on the device used to ensure the system is the only client authorized to make changes.
 	 */
