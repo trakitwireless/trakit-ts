@@ -224,6 +224,21 @@ export function PLURAL(word: string): string {
 			? word + "es"			// dispatch => dispatches
 			: word + "s";			// other    => others
 }
+/**
+ * Returns a singular version of the given word.
+ * This obviously doesn't work for every word imaginable, but covers the standard object names in the Trak-iT APIs.
+ * @param word 
+ * @returns 
+ */
+export function SINGULAR(word: string): string {
+	return word.endsWith("ies")
+		? word.slice(0, -3) + "y"	// companies => company
+		: word.endsWith("ches")
+			? word.slice(0, -2)		// dispatches => dispatch
+			: word.endsWith("s")
+				? word.slice(0, -1)	// others     => other
+				: word;				// sheep      => sheep
+}
 
 /**
  * Returns the given word with the first letter capitalized (or lower-cased).

@@ -76,6 +76,7 @@ import {
 	PLURAL,
 	PYTHAGORA,
 	ROUND_TO,
+	SINGULAR,
 } from "./API/Functions";
 import {
 	EARTH_RADIUS,
@@ -601,6 +602,7 @@ export const utility = {
 	parseTime: TIMESPACE_PARSE,
 	phoneNumber: PHONE_PARSE,
 	plural: PLURAL,
+	singular: SINGULAR,
 	stringifyTime: TIMESPACE_STRINGIFY,
 };
 /**
