@@ -73,10 +73,10 @@ import {
 	MAP_TO_JSON,
 	MAP_TO_JSON_PREDICATE,
 	PHONE_PARSE,
-	PLURAL,
+	PLURALIZE,
 	PYTHAGORA,
 	ROUND_TO,
-	SINGULAR,
+	SINGULARIZE,
 } from "./API/Functions";
 import {
 	EARTH_RADIUS,
@@ -334,7 +334,7 @@ import {
 /**
  * Version number for this release.
  */
-export const version = 5.03;
+export const version = 5.04;
 
 /**
  * The names of all main object types in the Trak-iT Object Model.
@@ -601,8 +601,8 @@ export const utility = {
 	roundTo: ROUND_TO,
 	parseTime: TIMESPACE_PARSE,
 	phoneNumber: PHONE_PARSE,
-	plural: PLURAL,
-	singular: SINGULAR,
+	pluralize: PLURALIZE,
+	singularize: SINGULARIZE,
 	stringifyTime: TIMESPACE_STRINGIFY,
 };
 /**

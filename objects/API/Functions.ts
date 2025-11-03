@@ -217,7 +217,7 @@ export function DOUGLASPEUCKER<TCoord>(
  * @param word 
  * @returns 
  */
-export function PLURAL(word: string): string {
+export function PLURALIZE(word: string): string {
 	return word.endsWith("y")
 		? word.slice(0, -1) + "ies" // company  => companies
 		: word.endsWith("ch")
@@ -230,7 +230,7 @@ export function PLURAL(word: string): string {
  * @param word 
  * @returns 
  */
-export function SINGULAR(word: string): string {
+export function SINGULARIZE(word: string): string {
 	return word.endsWith("ies")
 		? word.slice(0, -3) + "y"	// companies => company
 		: word.endsWith("ches")
