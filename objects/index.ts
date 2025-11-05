@@ -128,8 +128,8 @@ import { IRequestable } from "./API/Interfaces/IRequestable";
 import { ISerializable } from "./API/Interfaces/ISerializable";
 import { SearchPattern, } from "./API/SearchPattern";
 import {
-	TIMESPACE_PARSE,
-	TIMESPACE_STRINGIFY,
+	TIMESPAN_PARSE,
+	TIMESPAN_STRINGIFY,
 	TimeSpan,
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
@@ -599,11 +599,11 @@ export const utility = {
 	isntNaN: IS_AN,
 	numberGroups: NUMBER_GROUPS,
 	roundTo: ROUND_TO,
-	parseTime: TIMESPACE_PARSE,
+	parseTime: TIMESPAN_PARSE,
 	phoneNumber: PHONE_PARSE,
 	pluralize: PLURALIZE,
 	singularize: SINGULARIZE,
-	stringifyTime: TIMESPACE_STRINGIFY,
+	stringifyTime: TIMESPAN_STRINGIFY,
 };
 /**
  * A group of functions for converting between different measurement systems.

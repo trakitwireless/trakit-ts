@@ -61,7 +61,14 @@ export class TimeSpan {
 	 * Days component of the time-span.
 	 */
 	get days() {
-		return FLOOR(this.#value / MILLI_PER_DAY);
+		return FLOOR(
+			ABS(this.#value)
+			/ MILLI_PER_DAY
+		) * (
+				this.#value < 0
+					? -1
+					: 1
+			);
 	}
 	/**
 	 * Hours component of the time-span.
@@ -69,49 +76,75 @@ export class TimeSpan {
 	get hours() {
 		return FLOOR(
 			(
-				this.#value
-				- (this.days * MILLI_PER_DAY)
+				ABS(this.#value)
+				- (
+					ABS(this.days) * MILLI_PER_DAY
+				)
 			)
 			/ MILLI_PER_HOUR
-		);
+		) * (
+				this.#value < 0
+					? -1
+					: 1
+			);
 	}
 	/**
 	 * Minutes component of the time-span.
 	 */
 	get minutes() {
 		return FLOOR(
-			this.#value
-			- (
-				(this.days * MILLI_PER_DAY)
-				+ (this.hours * MILLI_PER_HOUR)
+			(
+				ABS(this.#value)
+				- (
+					(ABS(this.days) * MILLI_PER_DAY)
+					+ (ABS(this.hours) * MILLI_PER_HOUR)
+				)
 			)
 			/ MILLI_PER_MINUTE
-		);
+		) * (
+				this.#value < 0
+					? -1
+					: 1
+			);
 	}
 	/**
 	 * Seconds component of the time-span.
 	 */
 	get seconds() {
 		return FLOOR(
-			this.#value
-			- (
-				(this.days * MILLI_PER_DAY)
-				+ (this.hours * MILLI_PER_HOUR)
-				+ (this.minutes * MILLI_PER_MINUTE)
+			(
+				ABS(this.#value)
+				- (
+					(ABS(this.days) * MILLI_PER_DAY)
+					+ (ABS(this.hours) * MILLI_PER_HOUR)
+					+ (ABS(this.minutes) * MILLI_PER_MINUTE)
+				)
 			)
 			/ MILLI_PER_SECOND
-		);
+		) * (
+				this.#value < 0
+					? -1
+					: 1
+			);
 	}
 	/**
 	 * Millisecond component of the time-span.
 	 */
 	get milliseconds() {
-		return this.#value
-			- (
-				(this.days * MILLI_PER_DAY)
-				+ (this.hours * MILLI_PER_HOUR)
-				+ (this.minutes * MILLI_PER_MINUTE)
-				+ (this.seconds * MILLI_PER_SECOND)
+		return FLOOR(
+			(
+				ABS(this.#value)
+				- (
+					(ABS(this.days) * MILLI_PER_DAY)
+					+ (ABS(this.hours) * MILLI_PER_HOUR)
+					+ (ABS(this.minutes) * MILLI_PER_MINUTE)
+					+ (ABS(this.seconds) * MILLI_PER_SECOND)
+				)
+			)
+		) * (
+				this.#value < 0
+					? -1
+					: 1
 			);
 	}
 	/**
@@ -234,7 +267,7 @@ export class TimeSpan {
  * For example the string "1.07:42:03.467" equals 114123.467, which is 1 day, 7 hours, 42 minutes, 3 seconds, and 467 milliseconds.
  * @param duration	A valid timespan string.  The format is [-]( d | [d.]hh:mm[:ss[.fff]] )
  */
-export function TIMESPACE_PARSE(duration: TimeSpan | timespan | number): number {
+export function TIMESPAN_PARSE(duration: TimeSpan | timespan | number): number {
 	/*
 	var days = 0, hours = 0, minutes = 0, seconds = 0, milli = 0;
 	if (duration = String(duration).trim()) {
@@ -262,7 +295,7 @@ export function TIMESPACE_PARSE(duration: TimeSpan | timespan | number): number 
  * For example the number 114123.467 would be serialized as "1.07:42:03.467".
  * @param value		Use a decimal to show milliseconds.
  */
-export function TIMESPACE_STRINGIFY(value: number): timespan {
+export function TIMESPAN_STRINGIFY(value: number): timespan {
 	/*
 	var days = 0, hours = days, minutes = hours, seconds = minutes;
 	while (value >= 24 * 60 * 60 && ++days) value -= 24 * 60 * 60;
