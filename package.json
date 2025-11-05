@@ -21,9 +21,10 @@
   },
   "homepage": "https://github.com/trakitwireless/trakit-ts-objects#readme",
   "description": "Trak-iT uses these object definitions to interact with all our APIs.",
-   "devDependencies": {
+  "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^4.35.0",
-    "rollup-plugin-typescript2": "^0.36.0"
+    "rollup-plugin-typescript2": "^0.36.0",
+    "vitest": "^4.0.7"
   }
 }
