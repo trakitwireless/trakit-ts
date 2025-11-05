@@ -17,5 +17,8 @@
         "noImplicitOverride": true,
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
-    }
+    },
+	"include": [
+		"./objects/**/*.ts"
+	]
 }

@@ -9,6 +9,10 @@ const MILLI_PER_SECOND = 1000,
 	MILLI_PER_MINUTE = MILLI_PER_SECOND * 60,
 	MILLI_PER_HOUR = MILLI_PER_MINUTE * 60,
 	MILLI_PER_DAY = MILLI_PER_HOUR * 24;
+/**
+ * A regular expression to parse a timespan string.
+ */
+const TIMESPAN_PARSER = /^(-)?(?:(\d+)\.)?(\d*):(\d*)(?::(\d+)(?:\.(\d+))?)?$/;
 
 /**
  * An object which represents an interval of time.
@@ -220,16 +224,16 @@ export class TimeSpan {
 	 */
 	add(duration: TimeSpan | timespan | number, subtract: boolean = false): number {
 		if (IS_NUMBER(duration?.valueOf())) {	// can be NaN
-			this.#value += duration.valueOf() as number;
+			this.#value += duration.valueOf() as number * (subtract ? -1 : 1);
 		} else if (duration = String(duration).trim()) {
 			const numbers = (
-				duration.match(/^(-?)(?:(\d+)\.)?(\d*):(\d*)(?::(\d+)(?:\.(\d+))?)?$/)
+				duration.match(TIMESPAN_PARSER)
 				|| [
-					duration,									// whole string
-					duration[0],								// minus sign
-					FLOAT(duration),	// days (valid if numeric)
+					,							// whole string
+					,							// minus sign
+					FLOAT(duration),			// days (valid if numeric)
 				]
-			) as [string, string, string, string, string, string, string];
+			) as [unknown, string, string, string, string, string, string];
 			if (numbers[1] === "-") {
 				subtract = !subtract;
 			}
