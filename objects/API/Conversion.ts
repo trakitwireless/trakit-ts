@@ -230,7 +230,7 @@ export function CONVERT_TONNE_TO_TON_UK(weight: number): number { return weight 
  * Value in pounds converted to kilograms.
  * @param weight
  */
-export function CONVERT_LBS_TO_KG(weight: number): number { return weight / CONVERT_TONNE_PER_TON_UK; }
+export function CONVERT_LBS_TO_KG(weight: number): number { return weight / CONVERT_KG_PER_LBS; }
 /**
  * Value in ounces converted to grams.
  * @param weight
@@ -248,8 +248,8 @@ export function CONVERT_TON_US_TO_TONNE(weight: number): number { return weight 
 export function CONVERT_TON_UK_TO_TONNE(weight: number): number { return weight / CONVERT_TONNE_PER_TON_UK; }
 //#endregion Conversion - Weight
 //#region Conversion - Fuel Economy
-const CONVERT_MPG_PER_L100KM = CONVERT_LITRE_PER_GALLON_US * CONVERT_KM_PER_MILE * 100,
-	CONVERT_MPGUK_PER_L100KM = CONVERT_LITRE_PER_GALLON_UK * CONVERT_KM_PER_MILE * 100;
+const CONVERT_MPG_PER_L100KM = (1 / CONVERT_LITRE_PER_GALLON_US) * CONVERT_KM_PER_MILE * 100,
+	CONVERT_MPGUK_PER_L100KM = (1 / CONVERT_LITRE_PER_GALLON_UK) * CONVERT_KM_PER_MILE * 100;
 
 /**
  * Returns the corollary of either miles per US standard gallon or litres per 100 kilometres.

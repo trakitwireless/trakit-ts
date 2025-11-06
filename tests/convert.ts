@@ -1,11 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { ID, IS_AN, IS_NOTHING, ROUND_TO } from '../objects/API/Functions';
+import { describe, expect, it } from 'vitest';
 import { CONVERT } from '../objects/API/Conversion';
-import { CODIFY } from '../objects/API/Codifier';
-import { GUID } from '../objects/API/Guid';
-import { SearchPattern } from '../objects/API/SearchPattern';
-import { TIMESPAN_PARSE, TIMESPAN_STRINGIFY } from '../objects/API/TimeSpan';
-import { NUMBER_GROUPS } from '../objects/API/Files';
 
 describe("convert", () => {
 	// temperature
