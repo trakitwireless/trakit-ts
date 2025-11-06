@@ -214,9 +214,7 @@ export class TimeSpan {
 	/**
 	 * Gets the comparable value of this time-span as total milliseconds.
 	 */
-	valueOf(): number {
-		return this.#value;
-	}
+	valueOf(): number { return this.#value; }
 	/**
 	 * Adds the given value to the current time-span.
 	 * @param duration	A time-span formatted string, or a number representing milliseconds

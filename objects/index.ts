@@ -586,7 +586,7 @@ export type {
  */
 export const utility = {
 	capitalize: CAPITALIZE,
-	clip: CLIP,
+	//clip: CLIP,
 	codify: CODIFY,
 	date: DATE,
 	douglasPeucker: DOUGLASPEUCKER,

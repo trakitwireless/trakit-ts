@@ -123,7 +123,7 @@ describe("SearchPattern", function () {
 			expect(col7.terms).toEqual(["again"]);
 			expect(col8.operators).toEqual(new Map([["!label", ["term-other", "!another"]]]));
 			expect(col8.terms).toEqual(["again"]);
-			expect(col9.operators).toEqual(new Map([["!label", ["term-other", "!another"]]]	));
+			expect(col9.operators).toEqual(new Map([["!label", ["term-other", "!another"]]]));
 			expect(col9.terms).toEqual(["!again"]);
 			expect(cola.operators).toEqual(new Map([["label", ["term-other", "another"]]]));
 			expect(cola.terms).toEqual(["pre-term-again"]);
@@ -224,7 +224,7 @@ describe("SearchPattern", function () {
 		});
 		it("operators first", function () {
 			var col1 = new SearchPattern("value operator:terms"),
-			col2 = col1.copy();
+				col2 = col1.copy();
 		});
 		it("multiple operators", function () {
 			var col1 = new SearchPattern("operator:terms,for fun:and,profit"),
@@ -288,6 +288,23 @@ describe("SearchPattern", function () {
 			expect(col3.length).toEqual(1);
 			expect(col3[0].operators).toEqual(new Map([["label", ["stuff", "dude"]]]));
 			expect(col3[0].terms).toEqual(["truck-1-removed"]);
+		});
+		it("a blank input to parseSearch returns a blank array", () => {
+			expect(SearchPattern.parse("")).toEqual([]);
+			expect(SearchPattern.parse(null)).toEqual([]);
+		});
+		it("single search expressions give an array with only one item", () => {
+			expect(SearchPattern.parse("*").length).toEqual(1);
+			expect(SearchPattern.parse("hello").length).toEqual(1);
+			expect(SearchPattern.parse("assets:name").length).toEqual(1);
+		});
+		it("multiple expressions separated by pipe character", () => {
+			expect(SearchPattern.parse("assets:derp | asset:hurr").length).toEqual(2);
+			expect(SearchPattern.parse("assets:derp|asset:hurr|asset:herp").length).toEqual(3);
+		});
+		it("pipes contained in strings do not affect expression count", () => {
+			expect(SearchPattern.parse("assets:'derp | hurr'").length).toEqual(1);
+			expect(SearchPattern.parse("assets:'derp | hurr'|assets:herp").length).toEqual(2);
 		});
 	});
 });

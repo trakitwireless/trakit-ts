@@ -247,8 +247,10 @@ export function SINGULARIZE(word: string): string {
  * @returns 
  */
 export function CAPITALIZE(word: string, upper: boolean = true): string {
-	return word[0][upper ? "toUpperCase" : "toLowerCase"]()
-		+ word.slice(1);
+	return word?.length
+		? word[0][upper ? "toUpperCase" : "toLowerCase"]()
+		+ word.slice(1)
+		: "";
 }
 
 
