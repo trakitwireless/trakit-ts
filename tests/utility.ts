@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { CODIFY } from '../objects/API/Codifier';
-import { NUMBER_GROUPS } from '../objects/API/Files';
-import { CAPITALIZE, ID, IS_AN, IS_NOTHING, ROUND_TO } from '../objects/API/Functions';
+import { FILESIZE_HELPER, NUMBER_GROUPS } from '../objects/API/Files';
+import { CAPITALIZE, DATE, DOUGLASPEUCKER, ID, IS_AN, IS_NOTHING, ROUND_TO } from '../objects/API/Functions';
+import { PATH_ORTHOGONAL } from '../objects/API/Geometry/Functions';
+import { Point } from '../objects/API/Geometry/Point';
 import { GUID } from '../objects/API/Guid';
 
 describe("capitalize", () => {
@@ -26,8 +28,71 @@ describe("capitalize", () => {
 		expect(CAPITALIZE("HEllO")).toBe("HEllO");
 	});
 });
-
-
+describe("date", () => {
+	const now = new Date(),
+		then = new Date(1979, 8, 11, 10, 30, 15, 500),
+		invalid = new Date(NaN);
+	it("strings", () => {
+		expect(DATE(now.toISOString())).toEqual(now);
+		expect(DATE(then.toISOString())).toEqual(then);
+		expect(DATE("1979-09-11T14:30:15.500Z")).toEqual(then);
+	});
+	it("numbers", () => {
+		expect(DATE(0)).toEqual(new Date(0));
+		expect(DATE(now.valueOf())).toEqual(now);
+		expect(DATE(then.valueOf())).toEqual(then);
+		expect(DATE(NaN)).toEqual(invalid);
+	});
+	it("dates", () => {
+		expect(DATE(now)).toEqual(now);
+		expect(DATE(then)).toEqual(then);
+	});
+	it("invalid", () => {
+		expect(DATE("hello")).toEqual(invalid);
+		expect(DATE("")).toEqual(invalid);
+		expect(DATE()).toEqual(invalid);
+		expect(DATE(null)).toEqual(invalid);
+		expect(DATE(undefined)).toEqual(invalid);
+	});
+});
+describe("douglasPeucker", function() {
+	const point1 = new Point(0, 0),
+		point2 = new Point(10, 10),
+		point3 = new Point(0, 10),
+		array = [
+			point1,
+			point2,
+			point3,
+		];
+	function calc(a: Point, b: Point, c: Point) {
+		return PATH_ORTHOGONAL(a, b, c);
+	}
+	it("invalid inputs", function() {
+		expect(function() { DOUGLASPEUCKER(); }).toThrow();
+		expect(function() { DOUGLASPEUCKER({}); }).toThrow();
+		expect(function() { DOUGLASPEUCKER(""); }).toThrow();
+		expect(function() { DOUGLASPEUCKER([], null); }).toThrow();
+		expect(function() { DOUGLASPEUCKER([], function() { }, NaN); }).toThrow();
+		expect(function() { DOUGLASPEUCKER([], function() { }, -1); }).toThrow();
+	});
+	it("invalid output", function() {
+		expect(function() { DOUGLASPEUCKER(array, function() { return NaN }, 0); }).toThrow();
+	});
+	it("correct output", function() {
+		expect(DOUGLASPEUCKER(array, calc, 0)).toEqual(array);
+		expect(DOUGLASPEUCKER(array, calc, 10)).toEqual(array);
+		expect(DOUGLASPEUCKER(array, calc, 11)).toEqual([point1, point3]);
+	});
+});
+describe("fileSize", () => {
+	it("returns 0 for empty files", () => {
+		expect(FILESIZE_HELPER("")).toBe(0);
+	});
+	it("returns the correct size for non-empty files", () => {
+		expect(FILESIZE_HELPER("hello")).toBe(5);
+		expect(FILESIZE_HELPER("hello world")).toBe(11);
+	});
+});
 
 describe("codify", () => {
 	it("removes appostrophes", () => {
