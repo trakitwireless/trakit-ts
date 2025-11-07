@@ -1,10 +1,10 @@
 ﻿import { FLOAT } from '../Constants';
-import { ROUND_TO, } from '../Functions';
+import { IS_AN, ROUND_TO, } from '../Functions';
+import { JsonObject } from '../Types';
 import {
 	ISize,
 	ISize_instanceOf,
 } from './Interfaces';
-import { JsonObject } from '../Types';
 
 /**
  * Dimensions on a flat surface.
@@ -84,6 +84,7 @@ export class Size
 	 * @param width
 	 */
 	resizeToWidth(width: number): Size {
+		if (!IS_AN(width)) width = this.width;
 		return this.resize(width / this.width);
 	}
 	/**
@@ -91,6 +92,7 @@ export class Size
 	 * @param height
 	 */
 	resizeToHeight(height: number): Size {
+		if (!IS_AN(height)) height = this.height;
 		return this.resize(height / this.height);
 	}
 }

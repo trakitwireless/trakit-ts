@@ -76,7 +76,7 @@ export class Point
 	 * @param point	The other {@link Point} to compare.
 	 * @param precision	The degree of precision to use; default is full precision.
 	 */
-	isEquals(point: IPoint, precision: number = 18): point is IPoint {
+	isEqual(point: IPoint, precision: number = 18): point is IPoint {
 		return IPoint_instanceOf(point)
 			&& ROUND_TO(this.x, precision) == ROUND_TO(point.x, precision)
 			&& ROUND_TO(this.y, precision) == ROUND_TO(point.y, precision);
