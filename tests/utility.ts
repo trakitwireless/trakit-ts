@@ -302,7 +302,43 @@ describe("isAn", () => {
 		expect(IS_AN(Number.POSITIVE_INFINITY)).toBe(false);
 	});
 });
-
+describe("numberGroups", () => {
+	it("zero", () => {
+		expect(NUMBER_GROUPS(0)).toEqual("0");
+		expect(NUMBER_GROUPS(-0)).toEqual("0");
+		expect(NUMBER_GROUPS(0.0)).toEqual("0");
+		expect(NUMBER_GROUPS(-0.0)).toEqual("0");
+	});
+	it("integer numbers", () => {
+		expect(NUMBER_GROUPS(42)).toEqual("42");
+		expect(NUMBER_GROUPS(1234)).toEqual("1,234");
+		expect(NUMBER_GROUPS(123456789)).toEqual("123,456,789");
+	});
+	it("floating numbers", () => {
+		expect(NUMBER_GROUPS(42.69)).toEqual("42.69");
+		expect(NUMBER_GROUPS(12.3456789)).toEqual("12.345,678,9");
+	});
+	it("grouping size", () => {
+		expect(NUMBER_GROUPS(12, 2)).toEqual("12");
+		expect(NUMBER_GROUPS(1234, 2)).toEqual("12,34");
+		expect(NUMBER_GROUPS(12345678, 2)).toEqual("12,34,56,78");
+		expect(NUMBER_GROUPS(123456789, 2)).toEqual("1,23,45,67,89");
+	});
+	it("delimiter", () => {
+		expect(NUMBER_GROUPS(12, 3, " ")).toEqual("12");
+		expect(NUMBER_GROUPS(1234, 3, " ")).toEqual("1 234");
+		expect(NUMBER_GROUPS(1234567, 3, " ")).toEqual("1 234 567");
+	});
+	it("decimalDelimiter", () => {
+		expect(NUMBER_GROUPS(12.345, 3, ",", " ")).toEqual("12.345");
+		expect(NUMBER_GROUPS(12.3456789, 3, ",", " ")).toEqual("12.345 678 9");
+		expect(NUMBER_GROUPS(1234.56789, 3, " ")).toEqual("1 234.567 89");
+	});
+	it("point", () => {
+		expect(NUMBER_GROUPS(12.345, 3, " ", " ", ",")).toEqual("12,345");
+		expect(NUMBER_GROUPS(12.3456789, 3, " ", " ", ",")).toEqual("12,345 678 9");
+	});
+});
 describe("roundTo", () => {
 	it("rounds to integers normally", () => {
 		expect(ROUND_TO(3)).toBe(3);
