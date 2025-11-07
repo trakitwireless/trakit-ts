@@ -381,6 +381,7 @@ describe("roundTo", () => {
 	it("rounds to integers normally", () => {
 		expect(ROUND_TO(3)).toBe(3);
 		expect(ROUND_TO(3, 0)).toBe(3);
+		expect(ROUND_TO(3, NaN)).toBe(3);
 	});
 	it("rounds decimals properly", () => {
 		expect(ROUND_TO(3.14, 2)).toBe(3.14);
