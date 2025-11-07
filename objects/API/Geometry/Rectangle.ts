@@ -110,9 +110,9 @@ export class Rectangle implements IRectangle {
 	 */
 	toString(delimiter: string = ","): string {
 		this.validate();
-		return [this.left, this.top, this.right, this.bottom].join(delimiter ?? "");
+		return [this.left, this.top, this.right, this.bottom,].join(delimiter ?? "");
 	}
-	/**`
+	/**
 	 * Creates a literal of this {@link Rectangle}.
 	 * Used internally by {@link JSON.stringify}.
 	 */

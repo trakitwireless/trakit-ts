@@ -2,15 +2,16 @@
 import {
 	ABS,
 	ATAN2,
-	SIN,
 	COS,
-	PI,
 	DEGREES_TO_RADIANS,
+	PI,
 	RADIANS_TO_DEGREES,
+	SIN,
 } from '../Constants';
 import {
 	DOUGLASPEUCKER_INTERNAL,
 	PYTHAGORA,
+	ROUND_TO,
 } from '../Functions';
 import {
 	IPoint,
@@ -74,8 +75,8 @@ export function POINT_SORT(a: IPoint, b: IPoint): number {
 export function POINT_VECTOR(distance: number, degrees: number): IPoint {
 	var radians = (degrees - 90) * DEGREES_TO_RADIANS;
 	return {
-		x: COS(radians) * distance,
-		y: SIN(radians) * distance,
+		x: ROUND_TO(COS(radians) * distance, 14),
+		y: ROUND_TO(SIN(radians) * distance, 14),
 	};
 }
 //#endregion Point helpers
