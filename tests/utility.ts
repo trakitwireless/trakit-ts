@@ -238,6 +238,22 @@ describe("highlight", () => {
 		expect(HIGHLIGHT("The world's largest ball of yarn", ["World's","LARGEST BALL"])).toBe("The <b>world's</b> <b>largest ball</b> of yarn");
 	});
 });
+describe("id", () => {
+	it("returns true for numeric values", () => {
+		expect(ID(42)).toBe(42);
+		expect(ID("42.0")).toBe(42);
+		expect(ID(42.01)).toBe(42);
+		expect(ID(new Number(42))).toBe(42);
+	});
+	it("returns NaN for anthing not a number", () => {
+		expect(ID(null)).toBeNaN();
+		expect(ID(undefined)).toBeNaN();
+		expect(ID("")).toBeNaN();
+		expect(ID(true)).toBeNaN();
+		expect(ID({})).toBeNaN();
+		expect(ID(NaN)).toBeNaN();
+	});
+});
 
 
 describe("isNothing", () => {
@@ -260,22 +276,6 @@ describe("isNothing", () => {
 	});
 	it("returns false for objects", () => {
 		expect(IS_NOTHING({})).toBe(false);
-	});
-});
-describe("id", () => {
-	it("returns true for numeric values", () => {
-		expect(ID(42)).toBe(42);
-		expect(ID("42.0")).toBe(42);
-		expect(ID(42.01)).toBe(42);
-		expect(ID(new Number(42))).toBe(42);
-	});
-	it("returns NaN for anthing not a number", () => {
-		expect(ID(null)).toBeNaN();
-		expect(ID(undefined)).toBeNaN();
-		expect(ID("")).toBeNaN();
-		expect(ID(true)).toBeNaN();
-		expect(ID({})).toBeNaN();
-		expect(ID(NaN)).toBeNaN();
 	});
 });
 describe("isAn", () => {

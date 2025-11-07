@@ -3,6 +3,7 @@ import { ISerializable } from "./Interfaces/ISerializable";
 import { IDeserializable } from "./Interfaces/IDeserializable";
 import { short, JsonObject } from "./Types";
 import { ID } from "./Functions";
+import { CODIFY } from "./Codifier";
 
 /**
  * Timezone definition
@@ -46,14 +47,14 @@ export class Timezone
 
 	constructor(
 		code: string,
-		name: string,
-		offset: short,
-		dst: boolean,
+		name?: string,
+		offset?: short,
+		dst?: boolean,
 	) {
-		this.code = code;
-		this.name = name;
-		this.offset = offset;
-		this.dst = dst;
+		this.code = CODIFY(code || "");
+		this.name = name || code || "";
+		this.offset = offset || 0;
+		this.dst = !!dst;
 	}
 
 	toJSON() {
