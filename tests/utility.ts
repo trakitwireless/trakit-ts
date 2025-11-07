@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { CODIFY, HIGHLIGHT } from '../objects/API/Codifier';
 import { FILESIZE_HELPER, NUMBER_GROUPS } from '../objects/API/Files';
-import { CAPITALIZE, DATE, DOUGLASPEUCKER, ID, IS_AN, IS_NOTHING, ROUND_TO } from '../objects/API/Functions';
+import { CAPITALIZE, DATE, DOUGLASPEUCKER, ID, IS_AN, IS_NOTHING, PLURALIZE, ROUND_TO, SINGULARIZE } from '../objects/API/Functions';
 import { PATH_ORTHOGONAL } from '../objects/API/Geometry/Functions';
 import { Point } from '../objects/API/Geometry/Point';
 import { GUID } from '../objects/API/Guid';
@@ -392,5 +392,33 @@ describe("roundTo", () => {
 	it("rounds into the tens", () => {
 		expect(ROUND_TO(305, -1)).toBe(310);
 		expect(ROUND_TO(305, -2)).toBe(300);
+	});
+});
+describe("pluralize", () => {
+	it("pluralizes words correctly", () => {
+		expect(PLURALIZE("asset")).toBe("assets");
+		expect(PLURALIZE("task")).toBe("tasks");
+	});
+	it("preserves capitalization", () => {
+		expect(PLURALIZE("Asset")).toBe("Assets");
+		expect(PLURALIZE("Task")).toBe("Tasks");
+	});
+	it("handles irregular plurals", () => {
+		expect(PLURALIZE("company")).toBe("companies");
+		expect(PLURALIZE("dispatch")).toBe("dispatches");
+	});
+});
+describe("singularize", () => {
+	it("singularizes words correctly", () => {
+		expect(SINGULARIZE("assets")).toBe("asset");
+		expect(SINGULARIZE("tasks")).toBe("task");
+	});
+	it("preserves capitalization", () => {
+		expect(SINGULARIZE("Assets")).toBe("Asset");
+		expect(SINGULARIZE("Tasks")).toBe("Task");
+	});
+	it("handles irregular plurals", () => {
+		expect(SINGULARIZE("companies")).toBe("company");
+		expect(SINGULARIZE("dispatches")).toBe("dispatch");
 	});
 });
