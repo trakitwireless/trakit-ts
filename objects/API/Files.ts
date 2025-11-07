@@ -9,15 +9,15 @@ import { IS_AN, ROUND_TO } from "./Functions";
  * An array of filesize suffixes where the index in the array represents the "level" of size.
  */
 const FILESIZE_SUFFIX = [
-	"B",		// byte				= 1
-	"KB",	// Kilobyte			= 1,000
-	"MB",	// Megabyte			= 1,000,000
-	"GB",	// Gigabyte			= 1,000,000,000
+	"B",	// byte					= 1
+	"KB",	// Kilobyte				= 1,000
+	"MB",	// Megabyte				= 1,000,000
+	"GB",	// Gigabyte				= 1,000,000,000
 //	int32 max						= 2,147,483,647
-//	uint32 max					= 4,294,967,295
-	"TB",	// Terabyte			= 1,000,000,000,000
-	"PB",	// Petabyte			= 1,000,000,000,000,000
-	"EB",	// Exabyte			= 1,000,000,000,000,000,000
+//	uint32 max						= 4,294,967,295
+	"TB",	// Terabyte				= 1,000,000,000,000
+	"PB",	// Petabyte				= 1,000,000,000,000,000
+	"EB",	// Exabyte				= 1,000,000,000,000,000,000
 //	int64 max						= 9,223,372,036,854,775,807
 //	uint64 max value				= 18,446,744,073,709,551,615
 	"ZB",	// Zettabyte			= 1,000,000,000,000,000,000,000
@@ -26,6 +26,14 @@ const FILESIZE_SUFFIX = [
 	"SB",	// Shilentnobyte		= 1,000,000,000,000,000,000,000,000,000,000
 	"DB",	// Domegemegrottebyte	= 1,000,000,000,000,000,000,000,000,000,000,000
 ];
+/**
+ * The default filesize suffix to use when one is not provided.
+ */
+const DEFAULT_FILESIZE_SUFFIX = "MB";
+/**
+ * The default filesize suffix index to use when one is not provided.
+ */
+const DEFAULT_FILESIZE_INDEX = FILESIZE_SUFFIX.indexOf(DEFAULT_FILESIZE_SUFFIX);
 
 /**
  * 
@@ -74,17 +82,17 @@ export function NUMBER_GROUPS(
 /**
  * Creates a more human readable string representation of the filesize.
  * @param bytes
- * @param places				The number of decimal places.  Default is 1.
- * @param maxScale			Largest size-scale to use for representing the file-size.  Default is 2 (Megabyte), can be a value between 0 (Byte) and 6 (Exabyte).
+ * @param places			The number of decimal places.  Default is 0.
+ * @param maxScale			Largest size-scale to use for representing the file-size.  Default is "MB" (Megabyte), can be a value between 0 (Byte) and 6 (Exabyte).
  * @param groupSize			Quantity of digits per number group.  The default is 3.
- * @param groupDelimiter		Character(s) to use to divide the integer groups.  The detauls is ",".
+ * @param groupDelimiter	Character(s) to use to divide the integer groups.  The detauls is ",".
  * @param decimalDelimiter	Character(s) to use to divide the decimal groups.  The detauls is same as delimiter.
  * @param point				Character(s) to use to divide the integer groups from the decimal groups. The detauls is ".".
  * */
 export function FILESIZE_HELPER(
 	bytes: number,
 	places: number = 0,
-	maxScale: number = 4,
+	maxScale: string = DEFAULT_FILESIZE_SUFFIX,
 	groupSize: number = 3,
 	groupDelimiter: string = DELIMITER,
 	decimalDelimiter: string = groupDelimiter,
@@ -92,8 +100,10 @@ export function FILESIZE_HELPER(
 ) {
 	let level = 0;
 	if (bytes) {
-		maxScale = MIN(maxScale, FILESIZE_SUFFIX.length - 1);
-		while (level < maxScale && bytes > 1024) {
+		const index = FILESIZE_SUFFIX.includes(maxScale)
+			? FILESIZE_SUFFIX.indexOf(maxScale)
+			: DEFAULT_FILESIZE_INDEX;
+		while (level < index && bytes >= 1024) {
 			bytes /= 1024;
 			level++;
 		}

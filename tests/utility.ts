@@ -85,12 +85,75 @@ describe("douglasPeucker", function() {
 	});
 });
 describe("fileSize", () => {
-	it("returns 0 for empty files", () => {
-		expect(FILESIZE_HELPER("")).toBe(0);
+	const kb = 1024,
+		mb = kb * kb,
+		gb = kb ** 3,
+		tb = kb ** 4,
+		pb = kb ** 5,
+		eb = kb ** 6,
+		zb = kb ** 7,
+		yb = kb ** 8,
+		xb = kb ** 9,
+		sb = kb ** 10,
+		db = kb ** 11;
+	
+	it("returns correct size for bytes", () => {
+		expect(FILESIZE_HELPER(0)).toBe("0 B");
+		expect(FILESIZE_HELPER(512)).toBe("512 B");
 	});
-	it("returns the correct size for non-empty files", () => {
-		expect(FILESIZE_HELPER("hello")).toBe(5);
-		expect(FILESIZE_HELPER("hello world")).toBe(11);
+	it("returns correct size for kilobytes", () => {
+		expect(FILESIZE_HELPER(kb, 0, "KB")).toBe("1 KB");
+		expect(FILESIZE_HELPER(kb + (kb / 2), 1, "KB")).toBe("1.5 KB");
+	});
+	it("returns correct size for megabytes", () => {
+		expect(FILESIZE_HELPER(mb)).toBe("1 MB");
+		expect(FILESIZE_HELPER(mb + (mb / 2), 1)).toBe("1.5 MB");
+		expect(FILESIZE_HELPER(mb, 0, "KB")).toBe("1,024 KB");
+	});
+	it("returns correct size for gigabytes", () => {
+		expect(FILESIZE_HELPER(gb, 0, "GB")).toBe("1 GB");
+		expect(FILESIZE_HELPER(gb + (gb / 2), 1, "GB")).toBe("1.5 GB");
+		expect(FILESIZE_HELPER(gb, 0, "MB")).toBe("1,024 MB");
+	});
+	it("returns correct size for terabytes", () => {
+		expect(FILESIZE_HELPER(tb, 0, "TB")).toBe("1 TB");
+		expect(FILESIZE_HELPER(tb + (tb / 2), 1, "TB")).toBe("1.5 TB");
+		expect(FILESIZE_HELPER(tb, 0, "GB")).toBe("1,024 GB");
+	});
+	it("returns correct size for petabytes", () => {
+		expect(FILESIZE_HELPER(pb, 0, "PB")).toBe("1 PB");
+		expect(FILESIZE_HELPER(pb + (pb / 2), 1, "PB")).toBe("1.5 PB");
+		expect(FILESIZE_HELPER(pb, 0, "TB")).toBe("1,024 TB");
+	});
+	it("returns correct size for exabytes", () => {
+		expect(FILESIZE_HELPER(eb, 0, "EB")).toBe("1 EB");
+		expect(FILESIZE_HELPER(eb + (eb / 2), 1, "EB")).toBe("1.5 EB");
+		expect(FILESIZE_HELPER(eb, 0, "PB")).toBe("1,024 PB");
+	});
+	it("returns correct size for zettabytes", () => {
+		expect(FILESIZE_HELPER(zb, 0, "ZB")).toBe("1 ZB");
+		expect(FILESIZE_HELPER(zb + (zb / 2), 1, "ZB")).toBe("1.5 ZB");
+		expect(FILESIZE_HELPER(zb, 0, "EB")).toBe("1,024 EB");
+	});
+	it("returns correct size for yottabytes", () => {
+		expect(FILESIZE_HELPER(yb, 0, "YB")).toBe("1 YB");
+		expect(FILESIZE_HELPER(yb + (yb / 2), 1, "YB")).toBe("1.5 YB");
+		expect(FILESIZE_HELPER(yb, 0, "ZB")).toBe("1,024 ZB");
+	});
+	it("returns correct size for xenottabytes", () => {
+		expect(FILESIZE_HELPER(xb, 0, "XB")).toBe("1 XB");
+		expect(FILESIZE_HELPER(xb + (xb / 2), 1, "XB")).toBe("1.5 XB");
+		expect(FILESIZE_HELPER(xb, 0, "YB")).toBe("1,024 YB");
+	});
+	it("returns correct size for shilentnobytes", () => {
+		expect(FILESIZE_HELPER(sb, 0, "SB")).toBe("1 SB");
+		expect(FILESIZE_HELPER(sb + (sb / 2), 1, "SB")).toBe("1.5 SB");
+		expect(FILESIZE_HELPER(sb, 0, "XB")).toBe("1,024 XB");
+	});
+	it("returns correct size for domegemegrottebytes", () => {
+		expect(FILESIZE_HELPER(db, 0, "DB")).toBe("1 DB");
+		expect(FILESIZE_HELPER(db + (db / 2), 1, "DB")).toBe("1.5 DB");
+		expect(FILESIZE_HELPER(db, 0, "SB")).toBe("1,024 SB");
 	});
 });
 
