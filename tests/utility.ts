@@ -5,6 +5,7 @@ import { CAPITALIZE, DATE, DOUGLASPEUCKER, ID, IS_AN, IS_NOTHING, ROUND_TO } fro
 import { PATH_ORTHOGONAL } from '../objects/API/Geometry/Functions';
 import { Point } from '../objects/API/Geometry/Point';
 import { GUID } from '../objects/API/Guid';
+import { TIMEZONE_FIND, } from '../objects/API/Timezones';
 
 describe("capitalize", () => {
 	it("capitalizes first letter", () => {
@@ -26,6 +27,27 @@ describe("capitalize", () => {
 	it("does nothing to remaining string", () => {
 		expect(CAPITALIZE("HELLO")).toBe("HELLO");
 		expect(CAPITALIZE("HEllO")).toBe("HEllO");
+	});
+});
+describe("codify", () => {
+	it("removes appostrophes", () => {
+		expect(CODIFY("Jims'")).toBe("jims");
+		expect(CODIFY("Jims`")).toBe("jims");
+	});
+	it("removes quotes", () => {
+		expect(CODIFY("\"Jims\"")).toBe("jims");
+	});
+	it("keeps only alphanumeric characters", () => {
+		expect(CODIFY("abcdefghijklmnopqrstuvwxyz0123456789")).toBe("abcdefghijklmnopqrstuvwxyz0123456789");
+	});
+	it("removes non-alphanumeric characters", () => {
+		expect(CODIFY("!@#$%^&*()_-=+ ?/\\|*.,;:[]{}~")).toBe("");
+	});
+	it("encodes complex strings", () => {
+		expect(CODIFY("Jim's \"Truck\" #123 (removed)")).toBe("jims-truck-123-removed");
+	});
+	it("throws non-string input error", () => {
+		expect(() => { CODIFY(null as any as string) }).toThrow();
 	});
 });
 describe("date", () => {
@@ -156,26 +178,18 @@ describe("fileSize", () => {
 		expect(FILESIZE_HELPER(db, 0, "SB")).toBe("1,024 SB");
 	});
 });
-
-describe("codify", () => {
-	it("removes appostrophes", () => {
-		expect(CODIFY("Jims'")).toBe("jims");
-		expect(CODIFY("Jims`")).toBe("jims");
+describe("findTimeZoneById", () => {
+	it("finds valid time zone", () => {
+		expect(TIMEZONE_FIND("UTC")?.code).toBe("utc");
 	});
-	it("removes quotes", () => {
-		expect(CODIFY("\"Jims\"")).toBe("jims");
+	it("doesn't find invalid time zone", () => {
+		expect(TIMEZONE_FIND("Invalid Timezone")).toBeUndefined();
 	});
-	it("keeps only alphanumeric characters", () => {
-		expect(CODIFY("abcdefghijklmnopqrstuvwxyz0123456789")).toBe("abcdefghijklmnopqrstuvwxyz0123456789");
-	});
-	it("removes non-alphanumeric characters", () => {
-		expect(CODIFY("!@#$%^&*()_-=+ ?/\\|*.,;:[]{}~")).toBe("");
-	});
-	it("encodes complex strings", () => {
-		expect(CODIFY("Jim's \"Truck\" #123 (removed)")).toBe("jims-truck-123-removed");
-	});
-	it("throws non-string input error", () => {
-		expect(() => { CODIFY(null as any as string) }).toThrow();
+	it("finds by codified name", () => {
+		const name = "Eastern Standard Time",
+			code = "eastern-standard-time";
+		expect(TIMEZONE_FIND(name)?.code).toBe(code);
+		expect(TIMEZONE_FIND(code)?.code).toBe(code);
 	});
 });
 describe("guid", () => {
@@ -199,6 +213,9 @@ describe("guid", () => {
 		expect(uniques).toBe(iterations);
 	});
 });
+
+
+
 describe("isNothing", () => {
 	it("returns true for nulls", () => {
 		expect(IS_NOTHING(null)).toBe(true);
