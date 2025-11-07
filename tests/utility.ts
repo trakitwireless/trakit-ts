@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CODIFY } from '../objects/API/Codifier';
+import { CODIFY, HIGHLIGHT } from '../objects/API/Codifier';
 import { FILESIZE_HELPER, NUMBER_GROUPS } from '../objects/API/Files';
 import { CAPITALIZE, DATE, DOUGLASPEUCKER, ID, IS_AN, IS_NOTHING, ROUND_TO } from '../objects/API/Functions';
 import { PATH_ORTHOGONAL } from '../objects/API/Geometry/Functions';
@@ -213,7 +213,31 @@ describe("guid", () => {
 		expect(uniques).toBe(iterations);
 	});
 });
-
+describe("highlight", () => {
+	it("handles blanks", () => {
+		expect(HIGHLIGHT("", ["world"])).toBe("");
+		expect(HIGHLIGHT("world", [])).toBe("world");
+	});
+	it("highlights substrings", () => {
+		expect(HIGHLIGHT("Hello World", ["world"])).toBe("Hello <b>World</b>");
+	});
+	it("highlights multiples", () => {
+		expect(HIGHLIGHT("Hello World", ["hello", "world"])).toBe("<b>Hello</b> <b>World</b>");
+	});
+	it("highlights around apostrophes", () => {
+		expect(HIGHLIGHT("The world's largest ball of yarn", ["worlds"])).toBe("The <b>world's</b> largest ball of yarn");
+	});
+	it("highlights without removing apostrophes", () => {
+		expect(HIGHLIGHT("The \"biggest\" ball", ["biggest"])).toBe("The <b>\"biggest\"</b> ball");
+		expect(HIGHLIGHT("The world's largest ball of yarn", ["world"])).toBe("The <b>world'</b>s largest ball of yarn");
+	});
+	it("highlights through spaces", () => {
+		expect(HIGHLIGHT("The world's largest ball of yarn", ["largest-ball"])).toBe("The world's <b>largest ball</b> of yarn");
+	});
+	it("handles un-codified terms", () => {
+		expect(HIGHLIGHT("The world's largest ball of yarn", ["World's","LARGEST BALL"])).toBe("The <b>world's</b> <b>largest ball</b> of yarn");
+	});
+});
 
 
 describe("isNothing", () => {

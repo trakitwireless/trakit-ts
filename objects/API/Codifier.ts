@@ -141,26 +141,27 @@ const HIGHLIGHT_ASTERIXES = '[' + QUOTATIONS.join("") + ']*';
 
 /**
  * Wraps the {@code input} using the codified {@code terms} with the {@code prefix}s and {@code suffix}s.
+ * When a term is found beside a quotation mark or apostrophe, the mark is included inside the highlight.
  * @param input		The string to add HTML highlights to.
  * @param terms		Codified search terms from {@link CODIFY}.
  * @param prefix	Added to the beginning of each of the {@code terms}.
  * @param suffix	Added to the end of each of the {@code terms}.
  */
 export function HIGHLIGHT(input: string, terms: codified[], [prefix, suffix] = ["<b>", "</b>"]): string {
-	if (!input || !terms || !terms.length) return input;
+	if (!input || !(terms?.length)) return input;
 	let match: RegExpExecArray | null,
 		output: string = "",
 		index: number = 0;
 	const regex = new RegExp(
-		terms.map(function (term) {
-			return term.split("-").map(function (t) {
-				return t.split("")
-					.map(function (c) {
-						return HIGHLIGHT_ASTERIXES + c;
-					})
+		terms.map((term) => {
+			return CODIFY(term)
+				.split("-")
+				.map((t) => t.split("")
+					.map((c) => HIGHLIGHT_ASTERIXES + c)
 					.join("")
-					+ HIGHLIGHT_ASTERIXES;
-			}).join("[^a-z0-9]+");
+					+ HIGHLIGHT_ASTERIXES
+				)
+				.join("[^a-z0-9]+");
 		}).join("|"),
 		"gim"
 	);
