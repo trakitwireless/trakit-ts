@@ -314,15 +314,17 @@ describe("numberGroups", () => {
 		expect(NUMBER_GROUPS(1234)).toEqual("1,234");
 		expect(NUMBER_GROUPS(123456789)).toEqual("123,456,789");
 	});
-	it("floating numbers", () => {
+	it("negative integer numbers", () => {
+		expect(NUMBER_GROUPS(-42)).toEqual("-42");
+		expect(NUMBER_GROUPS(-1234)).toEqual("-1,234");
+		expect(NUMBER_GROUPS(-123456789)).toEqual("-123,456,789");
+	});
+	it("decimal numbers", () => {
+		expect(NUMBER_GROUPS(0.42)).toEqual("0.42");
+		expect(NUMBER_GROUPS(0.1234)).toEqual("0.123,4");
+		expect(NUMBER_GROUPS(1234.56789)).toEqual("1,234.567,89");
 		expect(NUMBER_GROUPS(42.69)).toEqual("42.69");
 		expect(NUMBER_GROUPS(12.3456789)).toEqual("12.345,678,9");
-	});
-	it("grouping size", () => {
-		expect(NUMBER_GROUPS(12, 2)).toEqual("12");
-		expect(NUMBER_GROUPS(1234, 2)).toEqual("12,34");
-		expect(NUMBER_GROUPS(12345678, 2)).toEqual("12,34,56,78");
-		expect(NUMBER_GROUPS(123456789, 2)).toEqual("1,23,45,67,89");
 	});
 	it("delimiter", () => {
 		expect(NUMBER_GROUPS(12, 3, " ")).toEqual("12");
@@ -337,45 +339,6 @@ describe("numberGroups", () => {
 	it("point", () => {
 		expect(NUMBER_GROUPS(12.345, 3, " ", " ", ",")).toEqual("12,345");
 		expect(NUMBER_GROUPS(12.3456789, 3, " ", " ", ",")).toEqual("12,345 678 9");
-	});
-});
-describe("roundTo", () => {
-	it("rounds to integers normally", () => {
-		expect(ROUND_TO(3)).toBe(3);
-		expect(ROUND_TO(3, 0)).toBe(3);
-	});
-	it("rounds decimals properly", () => {
-		expect(ROUND_TO(3.14, 2)).toBe(3.14);
-		expect(ROUND_TO(3.145, 2)).toBe(3.15);
-		expect(ROUND_TO(3.09, 2)).toBe(3.09);
-		expect(ROUND_TO(3.09, 2)).toBe(3.09);
-	});
-	it("rounds into the tens", () => {
-		expect(ROUND_TO(305, -1)).toBe(310);
-		expect(ROUND_TO(305, -2)).toBe(300);
-	});
-});
-describe("numberGroups", () => {
-	it("zero", () => {
-		expect(NUMBER_GROUPS(0)).toEqual("0");
-		expect(NUMBER_GROUPS(-0)).toEqual("0");
-		expect(NUMBER_GROUPS(0.0)).toEqual("0");
-		expect(NUMBER_GROUPS(-0.0)).toEqual("0");
-	});
-	it("integer numbers", () => {
-		expect(NUMBER_GROUPS(42)).toEqual("42");
-		expect(NUMBER_GROUPS(1234)).toEqual("1,234");
-		expect(NUMBER_GROUPS(123456789)).toEqual("123,456,789");
-	});
-	it("negative integer numbers", () => {
-		expect(NUMBER_GROUPS(-42)).toEqual("-42");
-		expect(NUMBER_GROUPS(-1234)).toEqual("-1,234");
-		expect(NUMBER_GROUPS(-123456789)).toEqual("-123,456,789");
-	});
-	it("decimal numbers", () => {
-		expect(NUMBER_GROUPS(0.42)).toEqual("0.42");
-		expect(NUMBER_GROUPS(0.1234)).toEqual("0.123,4");
-		expect(NUMBER_GROUPS(1234.56789)).toEqual("1,234.567,89");
 	});
 	it("negative decimal numbers", () => {
 		expect(NUMBER_GROUPS(-0.42)).toEqual("-0.42");
@@ -412,5 +375,21 @@ describe("numberGroups", () => {
 	});
 	it("invalid inputs", () => {
 		expect(() => { NUMBER_GROUPS(0, -2); }).toThrow();
+	});
+});
+describe("roundTo", () => {
+	it("rounds to integers normally", () => {
+		expect(ROUND_TO(3)).toBe(3);
+		expect(ROUND_TO(3, 0)).toBe(3);
+	});
+	it("rounds decimals properly", () => {
+		expect(ROUND_TO(3.14, 2)).toBe(3.14);
+		expect(ROUND_TO(3.145, 2)).toBe(3.15);
+		expect(ROUND_TO(3.09, 2)).toBe(3.09);
+		expect(ROUND_TO(3.09, 2)).toBe(3.09);
+	});
+	it("rounds into the tens", () => {
+		expect(ROUND_TO(305, -1)).toBe(310);
+		expect(ROUND_TO(305, -2)).toBe(300);
 	});
 });
