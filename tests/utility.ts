@@ -254,8 +254,6 @@ describe("id", () => {
 		expect(ID(NaN)).toBeNaN();
 	});
 });
-
-
 describe("isNothing", () => {
 	it("returns true for nulls", () => {
 		expect(IS_NOTHING(null)).toBe(true);
@@ -299,7 +297,12 @@ describe("isAn", () => {
 		expect(IS_AN(NaN)).toBe(false);
 		expect(IS_AN(new Number(NaN))).toBe(false);
 	});
+	it("returns false for invalid numbers", () => {
+		expect(IS_AN(Number.NEGATIVE_INFINITY)).toBe(false);
+		expect(IS_AN(Number.POSITIVE_INFINITY)).toBe(false);
+	});
 });
+
 describe("roundTo", () => {
 	it("rounds to integers normally", () => {
 		expect(ROUND_TO(3)).toBe(3);
