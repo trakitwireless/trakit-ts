@@ -312,7 +312,7 @@ export function RADIAL_AREA(radius: number): number {
  * @param points	The array of points on which to create the Radial
  * @param iterations	The higher the iterations the slower and more accurate the Radial. Default is 10,000.
  * */
-export function RADIAL_BADOIU_CLARKSON(points: IPoint[], iterations: number): IRadial {
+export function RADIAL_BADOIU_CLARKSON(points: IPoint[], iterations?: number): IRadial {
 	let centre = points[0],
 		radius = 0;
 	// short-circuit for special cases
