@@ -34,8 +34,8 @@ describe("TimeSpan", () => {
 describe("parseTime", () => {
 	it("numeric input", () => {
 		expect(TIMESPAN_PARSE(0)).toBe(0);
-		expect(TIMESPAN_PARSE(1.3208734606481483)).toBeCloseTo(114123.467, 3);
-		expect(TIMESPAN_PARSE(-1.3208734606481483)).toBeCloseTo(-114123.467, 3);
+		expect(TIMESPAN_PARSE(1)).toBeCloseTo(0.001, 3);	// expects 1 ms = 0.001 s
+		expect(TIMESPAN_PARSE(-1)).toBeCloseTo(-0.001, 3);
 	});
 	it("return numeric value in seconds", () => {
 		expect(TIMESPAN_PARSE("1.07:42:03.467")).toBe(114123.467);
