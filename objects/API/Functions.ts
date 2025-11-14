@@ -98,7 +98,7 @@ export function CLIP(n: number, min: number, max: number): number {
  * @param height
  */
 export function PYTHAGORA(width: number, height: number): number {
-	return SQRT(ABS(width * width) + ABS(height * height));
+	return SQRT((width * width) + (height * height));
 }
 /**
  * Parses a base-10 integer number from the given value.
