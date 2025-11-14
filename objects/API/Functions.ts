@@ -370,7 +370,7 @@ export function MAP_TO_JSON_PREDICATE<K, V>(
  * @param deep 
  * @returns 
  */
-export function JSON_TO_MAP_BY_PREDICATE<K, V>(
+export function JSON_TO_MAP_PREDICATE<K, V>(
 	source: object,
 	predicate: (key: string, value: any) => [K, V]
 ) {
@@ -391,7 +391,7 @@ export function JSON_TO_MAP(
 	source: object,
 	deep: boolean = false
 ) {
-	return JSON_TO_MAP_BY_PREDICATE<string, any>(
+	return JSON_TO_MAP_PREDICATE<string, any>(
 		source,
 		(k, v) => [k, deep ? MERGE_INTERNAL(v) : v]
 	);
@@ -406,7 +406,7 @@ export function JSON_TO_MAP_KEY_CODIFIED(
 	source: object,
 	deep: boolean = false
 ) {
-	return JSON_TO_MAP_BY_PREDICATE<string, any>(
+	return JSON_TO_MAP_PREDICATE<string, any>(
 		source,
 		(k, v) => [CODIFY(k), deep ? MERGE_INTERNAL(v) : v]
 	);
@@ -421,7 +421,7 @@ export function JSON_TO_MAP_KEY_ULONG(
 	source: object,
 	deep: boolean = false
 ) {
-	return JSON_TO_MAP_BY_PREDICATE<ulong, any>(
+	return JSON_TO_MAP_PREDICATE<ulong, any>(
 		source,
 		(k, v) => [ID(k), deep ? MERGE_INTERNAL(v) : v]
 	);
