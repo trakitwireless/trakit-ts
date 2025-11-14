@@ -1,8 +1,8 @@
 ﻿import { FLOAT } from "../API/Constants";
-import { ID, MAP_TO_JSON, JSON_TO_MAP, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { ID, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, double, ulong, JsonObject } from "../API/Types";
+import { double, JsonObject, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { ASSETS } from "../storage";
 
@@ -20,7 +20,7 @@ export class ReportScorecard
 		return new ReportScorecard(
 			json["asset"] as ulong,
 			json["score"] as double,
-			JSON_TO_MAP_BY_PREDICATE(
+			JSON_TO_MAP_PREDICATE(
 				json["rulePoints"] as object || {},
 				(k, v) => [k, FLOAT(v)]
 			),

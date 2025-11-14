@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -94,7 +94,7 @@ export class BehaviourScript
 			this.global = !!json["global"];
 			this.source = json["source"] as string || "";
 			this.filters = SearchPattern.parse(json["filters"] as string);
-			this.parameters = JSON_TO_MAP_BY_PREDICATE(json["parameters"] as object || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
+			this.parameters = JSON_TO_MAP_PREDICATE(json["parameters"] as object || {}, (k, v) => [k, BehaviourParameter.fromJSON(v)]);
 			this.fill = json["fill"] as string || "";
 			this.stroke = json["stroke"] as string || "";
 			this.graphic = json["graphic"] as string || "";

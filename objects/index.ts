@@ -69,7 +69,7 @@ import {
 	IS_AN,
 	IS_NOTHING,
 	JSON_TO_MAP,
-	JSON_TO_MAP_BY_PREDICATE,
+	JSON_TO_MAP_PREDICATE,
 	MAP_TO_JSON,
 	MAP_TO_JSON_PREDICATE,
 	PHONE_PARSE,
@@ -623,7 +623,7 @@ export const serialization = {
 	fromMap: MAP_TO_JSON,
 	fromMapPredicate: MAP_TO_JSON_PREDICATE,
 	toMap: JSON_TO_MAP,
-	toMapPredicate: JSON_TO_MAP_BY_PREDICATE,
+	toMapPredicate: JSON_TO_MAP_PREDICATE,
 };
 /**
  * Common classes used throughout the API, and the Base classes used for synchronizable objects.

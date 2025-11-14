@@ -1,7 +1,7 @@
 ﻿import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IPosition } from "../API/Geography/Interfaces";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -108,9 +108,9 @@ export class AssetAdvanced
 				: Position.fromJSON(json["position"] as unknown as IPosition);
 			this.odometer = FLOAT(json["odometer"] as any);
 			this.tags = [...(json["tags"] as codified[] || [])];
-			this.attributes = JSON_TO_MAP_BY_PREDICATE(json["attributes"] as object || {}, (key, attr) => [key, new AssetAttribute(attr)]);
+			this.attributes = JSON_TO_MAP_PREDICATE(json["attributes"] as object || {}, (key, attr) => [key, new AssetAttribute(attr)]);
 			this.relationshipIds = (json["relationships"] as ulong[] || []).map(ID);
-			this.places = JSON_TO_MAP_BY_PREDICATE(json["places"] as object || {}, (id, ps) => [ID(id), new AssetPlaceStatus(ps)]);
+			this.places = JSON_TO_MAP_PREDICATE(json["places"] as object || {}, (id, ps) => [ID(id), new AssetPlaceStatus(ps)]);
 			// vehicle
 			this.engineHours = FLOAT(json["engineHours"] as any);
 		}

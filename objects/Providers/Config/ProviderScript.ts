@@ -1,6 +1,6 @@
 import { ARRAY_TO_JSON } from "../../API/Arrays";
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../../API/Interfaces/IGlobal";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
@@ -104,7 +104,7 @@ export class ProviderScript
 			this.global = !!json["global"];
 			this.kind = ProviderType[json["kind"] as ProviderType] || ProviderType.unknown;
 			this.blocks = (json["blocks"] as any[])?.map(ProviderScriptBlock.fromJSON) ?? [];
-			this.parameters = JSON_TO_MAP_BY_PREDICATE(
+			this.parameters = JSON_TO_MAP_PREDICATE(
 				json["parameters"] as object || {},
 				(k, v) => [k, ProviderScriptParameter.fromJSON(v)]
 			);

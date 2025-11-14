@@ -1,7 +1,7 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { ID, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from "../API/Functions";
+import { ID, JSON_TO_MAP_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
@@ -116,7 +116,7 @@ export class UserGeneral
 			this.timezone = TIMEZONE_FIND(json["timezone"] as codified || "") || Timezone.utc;
 			this.language = json["language"] as codified || "";
 			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] as object || {});
-			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.measurements = JSON_TO_MAP_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
 			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] as object || {});
 			this.notify = (json["notify"] as JsonObject[] || []).map((notify: any) => UserNotifications.fromJSON(notify));
 		}

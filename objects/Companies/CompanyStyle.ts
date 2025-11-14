@@ -1,6 +1,6 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -53,8 +53,8 @@ export class CompanyStyle
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.labels = JSON_TO_MAP_BY_PREDICATE(json["labels"] as object, OBJECT_TO_LABELSTYLE);
-			this.tags = JSON_TO_MAP_BY_PREDICATE(json["tags"] as object, OBJECT_TO_LABELSTYLE);
+			this.labels = JSON_TO_MAP_PREDICATE(json["labels"] as object, OBJECT_TO_LABELSTYLE);
+			this.tags = JSON_TO_MAP_PREDICATE(json["tags"] as object, OBJECT_TO_LABELSTYLE);
 		}
 		return update;
 	}

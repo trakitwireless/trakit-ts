@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -153,7 +153,7 @@ export class CompanyReseller
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.contactInfo = JSON_TO_MAP_BY_PREDICATE(json["contactInfo"] as object || {}, (k, v) => [k, ID(v)]);
+			this.contactInfo = JSON_TO_MAP_PREDICATE(json["contactInfo"] as object || {}, (k, v) => [k, ID(v)]);
 			this.serviceName = json["serviceName"] as string || "";
 			this.logo = json["logo"] as string || "";
 			this.icon = json["icon"] as string || "";
@@ -161,7 +161,7 @@ export class CompanyReseller
 			this.domain = json["domain"] as string || json["URN"] as string || json["urn"] as string || "";
 			this.website = JSON_TO_MAP(json["website"] as object || {});
 			this.graphics = JSON_TO_MAP(json["graphics"] as object || {});
-			this.gamut = JSON_TO_MAP_BY_PREDICATE(json["gamut"] as object || {}, (k, v) => [k, ColourStyle.fromJSON(v)]);
+			this.gamut = JSON_TO_MAP_PREDICATE(json["gamut"] as object || {}, (k, v) => [k, ColourStyle.fromJSON(v)]);
 			this.languages = [...(json["languages"] as codified[] || [])];
 			this.notifyEmail = NotificationServerEmail.fromJSON(json["notifyEmail"] as JsonObject);
 			this.notifySms = NotificationServerSms.fromJSON(json["notifySms"] as JsonObject);

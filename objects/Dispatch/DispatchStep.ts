@@ -1,4 +1,4 @@
-import { DATE, ID, MAP_TO_JSON, JSON_TO_MAP_BY_PREDICATE } from "../API/Functions";
+import { DATE, ID, MAP_TO_JSON, JSON_TO_MAP_PREDICATE } from "../API/Functions";
 import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -24,7 +24,7 @@ export class DispatchStep
 		return new DispatchStep(
 			json["id"] as ulong,
 			json["name"] as string || "",
-			JSON_TO_MAP_BY_PREDICATE(
+			JSON_TO_MAP_PREDICATE(
 				json["states"] as object || {},
 				(k, v) => [k as DispatchStepStatus, DispatchStepState.fromJSON(v)]
 			),

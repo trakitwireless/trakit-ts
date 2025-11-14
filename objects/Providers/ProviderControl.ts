@@ -1,5 +1,5 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
-import { ID, JSON_NUMBER, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, JSON_NUMBER, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { JsonObject, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -47,7 +47,7 @@ export class ProviderControl
 		if (update) {
 			if (!this.id) this.id = json["id"] as string || "";
 			this.companyId = ID(json["company"]);
-			this.commands = JSON_TO_MAP_BY_PREDICATE(
+			this.commands = JSON_TO_MAP_PREDICATE(
 				json["commands"] as object || {},
 				(k, v) => [
 					ProviderCommandType[k as ProviderCommandType],

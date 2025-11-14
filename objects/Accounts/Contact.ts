@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { DATE, ID, IS_AN, JSON_TO_MAP, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -203,7 +203,7 @@ export class Contact
 			this.phones = JSON_TO_MAP(json["phones"] as { [key: string]: phone } || {}, false);
 			this.addresses = JSON_TO_MAP(json["addresses"] as { [key: string]: string } || {}, false);
 			this.urls = JSON_TO_MAP(json["urls"] as { [key: string]: url } || {}, false);
-			this.dates = JSON_TO_MAP_BY_PREDICATE(json["dates"] as { [key: string]: datetime } || {}, (k, v) => [k, DATE(v)]);
+			this.dates = JSON_TO_MAP_PREDICATE(json["dates"] as { [key: string]: datetime } || {}, (k, v) => [k, DATE(v)]);
 			this.options = JSON_TO_MAP(json["options"] as { [key: string]: string } || {}, false);
 			this.otherNames = JSON_TO_MAP(json["otherNames"] as { [key: string]: string } || {}, false);
 			this.roles = (json["roles"] as string[])?.map(CODIFY) ?? [];

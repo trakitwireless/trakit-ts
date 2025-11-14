@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
 import { BaseComponent, } from '../API/BaseComponent';
 import { CODIFY } from '../API/Codifier';
-import { DATE, ID, JSON_DATE, JSON_TO_MAP_BY_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from '../API/Functions';
+import { DATE, ID, JSON_DATE, JSON_TO_MAP_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
@@ -152,7 +152,7 @@ export class Machine
 			this.timezone = TIMEZONE_FIND(json["timezone"] as codified || '') || Timezone.utc;
 			this.language = json["language"] as codified || '';
 			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] as object || {});
-			this.measurements = JSON_TO_MAP_BY_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
+			this.measurements = JSON_TO_MAP_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
 			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] as object || {});
 			this.groupIds = (json["groups"] as ulong[] || []).map(ID);
 			this.permissions = (json["permissions"] as JsonObject[] || []).map(Permission.fromJSON);

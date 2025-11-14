@@ -1,6 +1,6 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN, JSON_TO_MAP_BY_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -149,7 +149,7 @@ export class MaintenanceSchedule
 			this.recurDays = ID(json["recurDays"]);
 			this.recurDistance = FLOAT(json["recurDistance"] as any);
 			this.recurEngineHours = FLOAT(json["recurEngineHours"] as any);
-			this.intervals = JSON_TO_MAP_BY_PREDICATE(
+			this.intervals = JSON_TO_MAP_PREDICATE(
 				json["intervals"] as JsonObject || {},
 				(k, v) => [ID(k), MaintenanceInterval.fromJSON(v)]
 			);
