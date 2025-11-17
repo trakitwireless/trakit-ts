@@ -147,7 +147,7 @@ export class LatLng
 	 * Creates a Point based on the given magnifier.
 	 */
 	toRadians(magnifier: number = 1): Point {
-		var sin = SIN(this.lat * DEGREES_TO_RADIANS);
+		const sin = SIN(this.lat * DEGREES_TO_RADIANS);
 		return new Point(
 			(1 + (this.lng / 180)) * magnifier,
 			(1 - 0.5 / PI * LOG((1 + sin) / (1 - sin))) * magnifier
@@ -158,7 +158,7 @@ export class LatLng
 	 * @param radius	The closest distance (in meters) from this coordinate to the edges of the new LatLngBounds.
 	 */
 	toBounds(radius: number): LatLngBounds {
-		var distance = PYTHAGORA(radius, radius);
+		const distance = PYTHAGORA(radius, radius);
 		return new LatLngBounds(
 			LATLNG_TRANSLATE(this, distance, 45),
 			LATLNG_TRANSLATE(this, distance, -135)

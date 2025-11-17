@@ -258,7 +258,7 @@ export class Rectangle implements IRectangle {
 	 * Also adjusts the width and height values.
 	 */
 	validate(): this {
-		var top = this.top,
+		const top = this.top,
 			left = this.left,
 			bottom = this.bottom,
 			right = this.right;
@@ -373,7 +373,7 @@ export class Rectangle implements IRectangle {
 	 */
 	toRadial(clip: boolean = false): Radial {
 		this.validate();
-		var centre = this.getCentre();
+		const centre = this.getCentre();
 		return new Radial(
 			centre.x,
 			centre.y,

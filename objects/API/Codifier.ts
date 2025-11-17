@@ -115,11 +115,11 @@ const QUOTATIONS = [
  */
 export function CODIFY(input: string): codified {
 	if (!IS_STRING(input)) throw new TypeError("input value is not a string");
-	var dash = true,
+	let dash = true,
 		output = "";
 	input = input.toLowerCase();
-	for (var i = 0, l = input.length; i < l; i++) {
-		var char = input[i],
+	for (let i = 0, l = input.length; i < l; i++) {
+		const char = input[i],
 			letter = (DIACRITICS as any)[char] as string,
 			code = (letter || char).charCodeAt(0),
 			isQuote = !letter && QUOTATIONS.indexOf(char) > -1,

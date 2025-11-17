@@ -31,7 +31,7 @@ export function POINT_ANGLE(
 	starting: IPoint,
 	ending: IPoint
 ): number {
-	var angle = 0.0;
+	let angle = 0.0;
 	if (starting.x !== ending.x || starting.y !== ending.y) {
 		angle = ATAN2(ending.y - starting.y, ending.x - starting.x)
 			* RADIANS_TO_DEGREES
@@ -73,7 +73,7 @@ export function POINT_SORT(a: IPoint, b: IPoint): number {
  * @param degrees
  */
 export function POINT_VECTOR(distance: number, degrees: number): IPoint {
-	var radians = (degrees - 90) * DEGREES_TO_RADIANS;
+	const radians = (degrees - 90) * DEGREES_TO_RADIANS;
 	return {
 		x: ROUND_TO(COS(radians) * distance, 14),
 		y: ROUND_TO(SIN(radians) * distance, 14),
@@ -87,7 +87,7 @@ export function POINT_VECTOR(distance: number, degrees: number): IPoint {
  * @param path	The array of points representing a path
  * */
 export function PATH_LENGTH(path: IPoint[]): number {
-	var value = 0.0,
+	let value = 0.0,
 		i = 0,
 		l = path.length - 1,
 		p1 = path[i],
@@ -113,7 +113,7 @@ export function PATH_ORTHOGONAL(
 	mid: IPoint,
 	last: IPoint
 ): number {
-	var length = POINT_DISTANCE(first, last);
+	const length = POINT_DISTANCE(first, last);
 	return length > 0
 		? POLY_AREA([first, mid, last]) / length * 2
 		: POINT_DISTANCE(first, mid);
@@ -160,7 +160,7 @@ function PATH_PEUCKER_FILTER(
  * @param path	The array of points representing a path
  * */
 export function POLY_AREA(path: IPoint[]): number {
-	var points = path.slice(),
+	let points = path.slice(),
 		value = 0.0,
 		i = 0,
 		l = points.length - 1,
@@ -180,7 +180,7 @@ export function POLY_AREA(path: IPoint[]): number {
  * @param dot	The coordinate of the point to be checked.
  * */
 export function POLY_CONTAINS(poly: IPoint[], dot:IPoint): boolean {
-	var path = poly.slice(),
+	let path = poly.slice(),
 		i = 0,
 		l = path.length,
 		j = l - 1,
@@ -192,7 +192,7 @@ export function POLY_CONTAINS(poly: IPoint[], dot:IPoint): boolean {
 	}
 	if (RECTANGLE_CONTAINS_POINT(RECTANGLE_FROM_POINTS(path), dot)) {
 		for (; i < l; j = i++) {
-			var pointA = path[i],
+			const pointA = path[i],
 				pointB = path[j];
 			if (
 				(pointA.y > dot.y) != (pointB.y > dot.y)
@@ -216,16 +216,16 @@ export function POLY_PEUCKER(path: IPoint[], tolerance: number = 0) {
 	if (length < 3) {
 		return points;
 	} else {
-		var widest = 0.0,
+		let widest = 0.0,
 			startIndex = 0,
 			endIndex = 0;
 		if (!(tolerance > 0)) tolerance = 0.0;
 
 		// find the widest part of the polygon (starting point is the only necessary bit)
-		for (var i = 0; i < length; i++) {
-			var point = points[i];
-			for (var j = i + 1; j < length; j++) {
-				var candidate = points[j],
+		for (let i = 0; i < length; i++) {
+			const point = points[i];
+			for (let j = i + 1; j < length; j++) {
+				const candidate = points[j],
 					distance = POINT_DISTANCE(point, candidate);
 				if (distance > widest) {
 					startIndex = i;
@@ -260,16 +260,16 @@ export function POLY_PEUCKER(path: IPoint[], tolerance: number = 0) {
  * @returns Non-closed path.
  */
 export function POLY_WRAPPER(points: IPoint[]): IPoint[] {
-	var candidates = points.slice().sort(POINT_SORT),
+	let candidates = points.slice().sort(POINT_SORT),
 		point = candidates[0],	// first point is the comparison point, but it is not removed from candidates array
 		path = [point];		// first point is always added to path
 	//	console.warn(candidates.join(" "));
 	while (candidates.length > 1) {	// first point is always present, so length should be higher than 1 to continue
-		var index = 0,		// index of the winning candidate
+		let index = 0,		// index of the winning candidate
 			farthestDistance = 0.0,
 			smallestAngle = 360.0;
-		for (var j = 0, c = candidates.length; j < c; j++) {
-			var candidate = candidates[j],
+		for (let j = 0, c = candidates.length; j < c; j++) {
+			const candidate = candidates[j],
 				angle = POINT_ANGLE(point, candidate),
 				distance = POINT_DISTANCE(point, candidate);
 			if (candidate === point) continue;	// edge case; the candidate is the comparison point during the first loop.  This case does not happen after that.
@@ -333,10 +333,10 @@ export function RADIAL_BADOIU_CLARKSON(points: IPoint[], iterations?: number): I
 	if (!iterations) iterations = 10000;
 
 	for (let iter = 0; iter < iterations; iter++) {
-		var winner = points[0],
+		let winner = points[0],
 			max = 0.0;
 		for (let i = 0; i < points.length; i++) {
-			var point = points[i],
+			const point = points[i],
 				distance = POINT_DISTANCE(centre, point);
 			if (distance > max) {
 				winner = point;
@@ -393,7 +393,7 @@ export function RECTANGLE_FROM_POINTS(dots: IPoint[]):IRectangle {
  * @param rect
  * */
 export function RADIAL_OVERLAP_RECTANGLE(circle: IRadial, rect: IRectangle): boolean {
-	var tall = IRectangle_clone(rect),
+	const tall = IRectangle_clone(rect),
 		wide = IRectangle_clone(rect);
 	tall.top -= circle.r;
 	tall.bottom += circle.r;

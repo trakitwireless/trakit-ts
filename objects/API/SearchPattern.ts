@@ -145,12 +145,12 @@ function SearchPattern_fromMatches(search: SearchPattern, patterns: string[]): S
  * @param pattern
  */
 function SearchPattern_fromMatch(this: SearchPattern, pattern: string) {
-	var operator = (pattern.match(SearchPattern_operators) || [])[0] || "",
+	let operator = (pattern.match(SearchPattern_operators) || [])[0] || "",
 		negatory = (operator[0] || "").trim() === "!" ? "!" : "",
 		key = operator && CODIFY(pattern.substring(0, operator.length - 1)) || "";	// why not CODIFIER(operator)?????
 	if (key) {
 		key = negatory + key;
-		var list = this.operators.get(key);
+		let list = this.operators.get(key);
 		if (!list) this.operators.set(key, list = []);
 		pattern.substring(operator.length).split(SearchPattern_terms).forEach(SearchPattern_unique, list);
 	} else if (pattern = pattern.trim()) {
@@ -163,7 +163,7 @@ function SearchPattern_fromMatch(this: SearchPattern, pattern: string) {
  */
 function SearchPattern_unique(this: string[], term: string) {
 	if (term) {
-		var negatory = term[0] === '!' ? "!" : "";
+		const negatory = term[0] === '!' ? "!" : "";
 		if (negatory) term = term.substring(1);
 		switch (term[0]) {
 			case "*":
@@ -184,7 +184,7 @@ function SearchPattern_unique(this: string[], term: string) {
  * @param values
  */
 function SearchPattern_asterisk(values: string[]) {
-	var index = values.indexOf("*");
+	let index = values.indexOf("*");
 	if (index < 0) {
 		while ((index = values.indexOf("")) > -1) {
 			values.splice(index, 1);
@@ -247,7 +247,7 @@ export class SearchPattern {
 
 	constructor(pattern: string = "") {
 		// init and ensure uniqueness
-		var matches = pattern
+		const matches = pattern
 			? pattern.match(SearchPattern_parser)
 			: null;
 		if (matches?.length) SearchPattern_fromMatches(this, matches);
@@ -282,7 +282,7 @@ export class SearchPattern {
 	 * Returns a new, identical instance of the pattern.
 	 */
 	copy(): SearchPattern {
-		var search = new SearchPattern;
+		const search = new SearchPattern;
 		this.operators.forEach((v, k) => search.operators.set(k, [...v]));
 		search.terms = [...this.terms];
 		return search;

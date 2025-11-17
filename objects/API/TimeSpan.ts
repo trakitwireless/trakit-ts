@@ -179,7 +179,7 @@ export class TimeSpan {
 	 */
 	toString(format: timespan = ""): timespan {
 		if (format) {
-			var pieces = format.split(/(\\.|[hHmstT]{1,2}|[df]{1,6})/gm),
+			const pieces = format.split(/(\\.|[hHmstT]{1,2}|[df]{1,6})/gm),
 				hasDays = pieces.includes("d");
 			return pieces.slice(1, pieces.length - 1).reduce((span, piece) => {
 				switch (piece[0] || "") {
@@ -194,7 +194,7 @@ export class TimeSpan {
 				return span;
 			}, this.#value < 0 ? "-" : "");
 		} else {
-			var days = ABS(this.days),
+			const days = ABS(this.days),
 				hours = ABS(this.hours),
 				minutes = ABS(this.minutes),
 				seconds = ABS(this.seconds),

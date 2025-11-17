@@ -85,7 +85,7 @@ export class StreetAddress
 	 * objects, so don't use this for deserialization.
 	 */
 	toString(): string {
-		var address: string[] = [];
+		const address: string[] = [];
 		if (this.street) address.push((this.number ? this.number + " " : "") + this.street);
 		if (this.city) address.push(this.city);
 		if (this.region) address.push(this.region);
