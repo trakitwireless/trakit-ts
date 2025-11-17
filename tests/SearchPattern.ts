@@ -12,7 +12,7 @@ describe("SearchPattern", function () {
 			expect(typeof SearchPattern).toBe("function");
 		});
 		it("same empty", function () {
-			var col1 = new SearchPattern,
+			const col1 = new SearchPattern,
 				col2 = new SearchPattern(""),
 				col3 = new SearchPattern("*"),
 				col4 = new SearchPattern("`~!@#$%^&()|{}[]-+=.,<>?/\\\'\";:");
@@ -21,7 +21,7 @@ describe("SearchPattern", function () {
 			expect(col1).toEqual(col4);
 		});
 		it("codify terms", function () {
-			var col1 = new SearchPattern("These Terms!"),
+			const col1 = new SearchPattern("These Terms!"),
 				col2 = new SearchPattern("these terms"),
 				col3 = new SearchPattern("term"),
 				col4 = new SearchPattern("#term"),
@@ -49,7 +49,7 @@ describe("SearchPattern", function () {
 			expect(colc.terms).toEqual(["fake-operator"]);
 		});
 		it("codify operators", function () {
-			var col1 = new SearchPattern("label:term"),
+			const col1 = new SearchPattern("label:term"),
 				col2 = new SearchPattern("LABEL:term"),
 				col3 = new SearchPattern("label-:term"),
 				col4 = new SearchPattern("opr-split:term"),
@@ -59,7 +59,7 @@ describe("SearchPattern", function () {
 			expect(col4).toEqual(col5);
 		});
 		it("codify operator values", function () {
-			var col1 = new SearchPattern("label:term"),
+			const col1 = new SearchPattern("label:term"),
 				col2 = new SearchPattern("label:\"Term\""),
 				col3 = new SearchPattern("label:'Term'"),
 				col4 = new SearchPattern("label: 'Term'"),
@@ -97,7 +97,7 @@ describe("SearchPattern", function () {
 			expect(colg.operators.get("!label")).toEqual(["!term"]);
 		});
 		it("codify terms and operator values", function () {
-			var col1 = new SearchPattern("pre label:term"),
+			const col1 = new SearchPattern("pre label:term"),
 				col2 = new SearchPattern("label:term,other"),
 				col3 = new SearchPattern("label:term other"),
 				col4 = new SearchPattern("label:term,!other"),
@@ -133,7 +133,7 @@ describe("SearchPattern", function () {
 			expect(colc.terms).toEqual(["other", "label", "term"]);
 		});
 		it("multiple operators", function () {
-			var col1 = new SearchPattern("label:term opr:value"),
+			const col1 = new SearchPattern("label:term opr:value"),
 				col2 = new SearchPattern("label:term,other opr:value"),
 				col3 = new SearchPattern("label:term,other opr:value also"),
 				col4 = new SearchPattern("label:term,other also opr:value"),
@@ -148,7 +148,7 @@ describe("SearchPattern", function () {
 			expect(col3).toEqual(col5);
 		});
 		it("duplicate operators", function () {
-			var col1 = new SearchPattern("label:term label:value"),
+			const col1 = new SearchPattern("label:term label:value"),
 				col2 = new SearchPattern("label:term,other label:value"),
 				col3 = new SearchPattern("label:term,other label:value also"),
 				col4 = new SearchPattern("label:term,other also label:value"),
@@ -163,7 +163,7 @@ describe("SearchPattern", function () {
 			expect(col3).toEqual(col5);
 		});
 		it("complex", function () {
-			var col1 = new SearchPattern("label:'stuff',Dude! & 'Truck (#1) - removed'"),
+			const col1 = new SearchPattern("label:'stuff',Dude! & 'Truck (#1) - removed'"),
 				col2 = new SearchPattern("label: 'stuff',Dude! & 'Truck (#1) - removed'"),
 				col3 = new SearchPattern("label: 'stuff', Dude! & 'Truck (#1) - removed'"),
 				col4 = new SearchPattern("label: 'stuff', \"Dude!\" & 'Truck (#1) - removed'"),
@@ -177,7 +177,7 @@ describe("SearchPattern", function () {
 			expect(col1.terms).toEqual(["truck-1-removed"]);
 		});
 		it("fake shit", function () {
-			var col1 = new SearchPattern("\"label:term\""),
+			const col1 = new SearchPattern("\"label:term\""),
 				col2 = new SearchPattern("'label:term'");
 
 			expect(col1).toEqual(col2);
@@ -187,59 +187,59 @@ describe("SearchPattern", function () {
 	});
 	describe("toString", function () {
 		it("terms", function () {
-			var col1 = new SearchPattern("search terms"),
+			const col1 = new SearchPattern("search terms"),
 				col2 = new SearchPattern(col1.toString());
 			expect(col1).toEqual(col2);
 		});
 		it("operators", function () {
-			var col1 = new SearchPattern("operator:terms"),
+			const col1 = new SearchPattern("operator:terms"),
 				col2 = new SearchPattern(col1.toString());
 			expect(col1).toEqual(col2);
 		});
 		it("operators first", function () {
-			var col1 = new SearchPattern("value operator:terms");
+			const col1 = new SearchPattern("value operator:terms");
 			expect(col1.toString()).toBe("operator:terms value");
 		});
 		it("multiple operators", function () {
-			var col1 = new SearchPattern("operator:terms,for fun:and,profit"),
+			const col1 = new SearchPattern("operator:terms,for fun:and,profit"),
 				col2 = new SearchPattern(col1.toString());
 			expect(col1).toEqual(col2);
 		});
 		it("both", function () {
-			var col1 = new SearchPattern("operator:terms fun and profit"),
+			const col1 = new SearchPattern("operator:terms fun and profit"),
 				col2 = new SearchPattern(col1.toString());
 			expect(col1).toEqual(col2);
 		});
 	});
 	describe("copy", function () {
 		it("terms", function () {
-			var col1 = new SearchPattern("search terms"),
+			const col1 = new SearchPattern("search terms"),
 				col2 = col1.copy();
 			expect(col1).toEqual(col2);
 		});
 		it("operators", function () {
-			var col1 = new SearchPattern("operator:terms"),
+			const col1 = new SearchPattern("operator:terms"),
 				col2 = col1.copy();
 			expect(col1).toEqual(col2);
 		});
 		it("operators first", function () {
-			var col1 = new SearchPattern("value operator:terms"),
+			const col1 = new SearchPattern("value operator:terms"),
 				col2 = col1.copy();
 		});
 		it("multiple operators", function () {
-			var col1 = new SearchPattern("operator:terms,for fun:and,profit"),
+			const col1 = new SearchPattern("operator:terms,for fun:and,profit"),
 				col2 = col1.copy();
 			expect(col1).toEqual(col2);
 		});
 		it("both", function () {
-			var col1 = new SearchPattern("operator:terms fun and profit"),
+			const col1 = new SearchPattern("operator:terms fun and profit"),
 				col2 = col1.copy();
 			expect(col1).toEqual(col2);
 		});
 	});
 	describe("SearchPattern.parse", function () {
 		it("single", function () {
-			var col1 = SearchPattern.parse("term"),
+			const col1 = SearchPattern.parse("term"),
 				col2 = SearchPattern.parse("label:term"),
 				col3 = SearchPattern.parse("label:term also");
 			col1.every(function (col) {
@@ -256,7 +256,7 @@ describe("SearchPattern", function () {
 			});
 		});
 		it("multiple", function () {
-			var col1 = SearchPattern.parse("term | other |value| white-space"),
+			const col1 = SearchPattern.parse("term | other |value| white-space"),
 				col2 = SearchPattern.parse("label:term | other"),
 				col3 = SearchPattern.parse("label:term,|opr:value");
 			expect(col1.length).toEqual(4);
@@ -276,7 +276,7 @@ describe("SearchPattern", function () {
 			});
 		});
 		it("fake split", function () {
-			var col1 = SearchPattern.parse("\"Term | Other\""),
+			const col1 = SearchPattern.parse("\"Term | Other\""),
 				col2 = SearchPattern.parse("label:\"term | other\""),
 				col3 = SearchPattern.parse("label: 'stuff', \"Dude!\", & 'Truck (#1) | removed'");
 			expect(col1.length).toEqual(1);
