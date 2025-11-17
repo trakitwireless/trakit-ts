@@ -1,5 +1,5 @@
 ﻿import { IS_NUMBER, IS_STRING } from '../Functions';
-import { nothing } from '../Types';
+import { datetime, nothing } from '../Types';
 import { LatLngBounds, } from './LatLngBounds';
 
 //#region LatLng
@@ -46,31 +46,35 @@ export function ILatLng_clone(dot: ILatLng): ILatLng {
  */
 export interface IPosition extends ILatLng {
 	/**
-	Speed
+	 * Speed
 	 */
 	speed: number | nothing;
 	/**
-	Direction of travel
+	 * Direction of travel
 	 */
 	bearing: number | nothing;
 	/**
-	Distance in meters from the sea level
+	 * Distance in meters from the sea level
 	 */
 	altitude: number | nothing;
 	/**
-	Threshold in meters for the accuracy of a position
+	 * Threshold in meters for the accuracy of a position
 	 */
 	accuracy: number | nothing;
 	/**
-	The Date/Time of the GPS reading
+	 * The Date/Time of the GPS reading
 	 */
-	dts: string | Date;
+	dts: datetime;
 	/**
-	A better description of the current road-segment
+	 * A description of the current road-segment
+	 */
+	address: string | nothing;
+	/**
+	 * A better description of the current road-segment
 	 */
 	streetAddress: IStreetAddress | nothing;
 	/**
-	The posted speed limit for the road segment
+	 * The posted speed limit for the road segment
 	 */
 	speedLimit: number | nothing;
 }
@@ -80,7 +84,7 @@ export interface IPosition extends ILatLng {
  * @returns 
  */
 export function IPosition_instanceOf(pin: any): pin is IPosition {
-	return (IS_STRING(pin.dts) || pin.dts instanceof Date)
+	return IS_STRING(pin.dts)
 		// other attributes are all optional (speed+limit, heading, altitude, address)
 		// && IS_NUMBER(pin.speed)
 		// && IS_NUMBER(pin.bearing)

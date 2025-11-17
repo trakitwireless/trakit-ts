@@ -2,17 +2,20 @@
 	DEGREES_TO_RADIANS,
 	LOG,
 	PI,
-	SIN
+	SIN,
+	FLOAT,
 } from '../Constants';
 import { IS_AN, PYTHAGORA, ROUND_TO } from '../Functions';
 import { Point } from '../Geometry/Point';
 import { JsonObject } from '../Types';
 import {
 	DEFAULT_PRECISION,
+	LATITUDE_NORMALIZED,
 	LATLNG_ANGLE,
 	LATLNG_DISTANCE,
 	LATLNG_MIDPOINT,
 	LATLNG_TRANSLATE,
+	LONGITUDE_NORMALIZED,
 	MAX_SAME_DISTANCE
 } from './Functions';
 import { ILatLng, ILatLng_instanceOf } from './Interfaces';
@@ -39,6 +42,17 @@ export class LatLng
 		);
 	}
 	/**
+	 * 
+	 * @param latlng 
+	 * @param delimiter 
+	 * @returns 
+	 */
+	static fromString(latlng: string, delimiter: string = ","): LatLng {
+		const parts = latlng?.split(delimiter ?? ",");
+		return new LatLng(parts?.[0] as any, parts?.[1] as any);
+	}
+
+	/**
 	 * Latitude
 	 */
 	readonly lat: number;
@@ -48,8 +62,8 @@ export class LatLng
 	readonly lng: number;
 
 	constructor(lat: number, lng: number) {
-		this.lat = lat;
-		this.lng = lng;
+		this.lat = LATITUDE_NORMALIZED(lat);
+		this.lng = LONGITUDE_NORMALIZED(lng);
 	}
 	
 	/**
@@ -59,9 +73,9 @@ export class LatLng
 	 */
 	toString(delimiter: string = ","): string {
 		return [
-			this.lat,
-			this.lng,
-		].join(delimiter ?? "");
+			ROUND_TO(this.lat, DEFAULT_PRECISION),
+			ROUND_TO(this.lng, DEFAULT_PRECISION),
+		].join(delimiter ?? ",");
 	}
 	/**
 	 * Creates a literal of this {@link LatLng}.

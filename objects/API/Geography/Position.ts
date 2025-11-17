@@ -1,6 +1,8 @@
+import { CODIFY } from '../Codifier';
 import { FLOAT } from '../Constants';
-import { DATE, JSON_DATE, JSON_NUMBER } from '../Functions';
+import { DATE, JSON_DATE, JSON_NUMBER, IS_NUMBER } from '../Functions';
 import { datetime, JsonObject, nothing } from '../Types';
+import { LONGITUDE_NORMALIZED } from './Functions';
 import { IPosition, IStreetAddress } from './Interfaces';
 import { LatLng, } from './LatLng';
 import { StreetAddress, } from './StreetAddress';
@@ -9,13 +11,14 @@ import { StreetAddress, } from './StreetAddress';
  * GPS position information
  */
 export class Position
+	extends LatLng
 	implements IPosition {
 	/**
 	 * 
 	 * @param json 
 	 * @returns 
 	 */
-	static fromJSON(json: IPosition | JsonObject): Position {
+	static override fromJSON(json: IPosition | JsonObject): Position {
 		return new Position(
 			json?.lat as number,
 			json?.lng as number,
@@ -23,20 +26,13 @@ export class Position
 			json?.bearing as number,
 			json?.accuracy as number,
 			json?.dts as datetime,
+			json?.address as string,
 			json?.speedLimit as number,
 			json?.altitude as number,
 			json?.streetAddress as IStreetAddress | JsonObject
 		);
 	}
 	
-	/**
-	 * Latitude
-	 */
-	readonly lat: number;
-	/**
-	 * Longitude
-	 */
-	readonly lng: number;
 	/**
 	 * Speed
 	 */
@@ -76,7 +72,7 @@ export class Position
 	/**
 	 * The road segment description
 	 */
-	get address(): string { return this.streetAddress?.toString() ?? ""; }
+	readonly address: string;
 
 	constructor(
 		lat?: number | nothing,
@@ -85,16 +81,17 @@ export class Position
 		bearing?: number | nothing,
 		accuracy?: number | nothing,
 		dts?: Date | number | datetime | nothing,
+		address?: string | nothing,
 		limit?: number | nothing,
 		altitude?: number | nothing,
 		street?: IStreetAddress | JsonObject | nothing
 	) {
-		this.lat = FLOAT(lat as any);
-		this.lng = FLOAT(lng as any);
-		this.speed = FLOAT(speed as any);
-		this.bearing = FLOAT(bearing as any);
+		super(lat as any, lng as any);
+		this.speed = !speed || (speed = FLOAT(speed as any)) < 0 ? 0 : speed;
+		this.bearing = LONGITUDE_NORMALIZED(FLOAT(bearing as any));
 		this.accuracy = FLOAT(accuracy as any);
 		this.date = DATE(dts as string);
+		this.address = String(address ?? "");
 		this.speedLimit = FLOAT(limit as any);
 		this.altitude = FLOAT(altitude as any);
 		if (street) this.streetAddress = StreetAddress.fromJSON(street);
@@ -106,11 +103,10 @@ export class Position
 	 * objects, so don't use this for deserialization.
 	 * @param delimiter
 	 */
-	toString(delimiter: string = ","): string {
+	override toString(delimiter: string = ","): string {
 		delimiter = delimiter ?? "";
 		return "("
-			+ this.lat + delimiter
-			+ this.lng + delimiter
+			+ super.toString(delimiter) + delimiter
 			+ this.speed + delimiter
 			+ this.bearing + delimiter
 			+ this.accuracy + delimiter
@@ -118,36 +114,47 @@ export class Position
 			+ JSON_DATE(this.date) + delimiter
 			+ this.speedLimit
 			+ ")"
-			+ this.address;
+			+ (this.streetAddress?.toString() ?? this.address);
 	}
 	/**
 	 * Creates a literal of this {@link Position}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): IPosition {
+	override toJSON(): IPosition {
 		return {
-			"lat": this.lat,
-			"lng": this.lng,
-			"dts": this.date.toISOString(),
+			...super.toJSON(),
+			"dts": this.dts || "",
 			"speed": JSON_NUMBER(this.speed),
 			"speedLimit": JSON_NUMBER(this.speedLimit as number),
 			"bearing": JSON_NUMBER(this.bearing),
 			"altitude": JSON_NUMBER(this.altitude),
 			"accuracy": JSON_NUMBER(this.accuracy),
+			"address": this.address,
 			"streetAddress": this.streetAddress?.toJSON() || null,
 		};
 	}
-}
 
-// Copy all LatLng methods to Position prototype
-// This is done because TypeScript does not support multiple inheritance
-// and we want Position to have all the methods of LatLng without duplicating code.
-for (const key of Object.keys(LatLng.prototype) as (keyof LatLng)[]) {
-	if (!(key in Position.prototype)) {
-		Object.defineProperty(
-			Position.prototype,
-			key,
-			Object.getOwnPropertyDescriptor(LatLng.prototype, key) as PropertyDescriptor
+	/**
+	 * 
+	 * @param position 
+	 * @returns 
+	 */
+	override isEqual(position: Position | IPosition): boolean {
+		return !!(
+			super.isEqual(position)
+			&& IS_NUMBER(position.speed)
+			&& (position.speed === this.speed || isNaN(position.speed) && isNaN(this.speed))
+			&& IS_NUMBER(position.bearing)
+			&& (position.bearing === this.bearing || isNaN(position.bearing) && isNaN(this.bearing))
+			&& IS_NUMBER(position.accuracy)
+			&& (position.accuracy === this.accuracy || isNaN(position.accuracy) && isNaN(this.accuracy))
+			&& (!!position.dts || (position as Position).date instanceof Date)
+			&& (position.dts === this.dts || (position as Position).date?.valueOf() === this.date.valueOf() || (isNaN((position as Position).date?.valueOf()) && isNaN(this.date.valueOf())))
+			&& IS_NUMBER(position.speedLimit)
+			&& (position.speedLimit === this.speedLimit || isNaN(position.speedLimit) && isNaN(this.speedLimit as number))
+			&& IS_NUMBER(position.altitude)
+			&& (position.altitude === this.altitude || isNaN(position.altitude) && isNaN(this.altitude))
+			&& CODIFY((position as Position).address) === CODIFY(this.address)
 		);
 	}
 }
