@@ -60,10 +60,10 @@ export class Size
 	 * @param size		The other Size to compare
 	 * @param precision	The degree of precision to use; default is full precision
 	 */
-	equals(size: ISize, precision: number = 18): size is ISize {
+	isEqual(size: ISize, precision: number = 18): size is ISize {
 		return ISize_instanceOf(size)
-			&& ROUND_TO(this.width, precision) == ROUND_TO(size.width, precision)
-			&& ROUND_TO(this.height, precision) == ROUND_TO(size.height, precision);
+			&& (ROUND_TO(this.width, precision) == ROUND_TO(size.width, precision) || isNaN(this.width) && isNaN(size.width))
+			&& (ROUND_TO(this.height, precision) == ROUND_TO(size.height, precision) || isNaN(this.height) && isNaN(size.height));
 	}
 	/**
 	 * Returns a new instance of a {@link Size} where the width and height are adjusted to the given ratios.

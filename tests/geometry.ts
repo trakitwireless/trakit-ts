@@ -87,19 +87,19 @@ describe("Size", () => {
 	it("toJSON", () => {
 		expect(object1.toJSON()).toEqual({ width: 1, height: 2 });
 	});
-	it("equals", () => {
+	it("isEqual", () => {
 		const object2 = new Size(1, 2),
 			object3 = new Size(3, 4),
 			object4 = new Size(1, 4),
 			object5 = new Size(3, 2);
-		expect(object1.equals(object2)).toBe(true);
-		expect(object1.equals(object3)).toBe(false);
-		expect(object1.equals(object4)).toBe(false);
-		expect(object1.equals(object5)).toBe(false);
+		expect(object1.isEqual(object2)).toBe(true);
+		expect(object1.isEqual(object3)).toBe(false);
+		expect(object1.isEqual(object4)).toBe(false);
+		expect(object1.isEqual(object5)).toBe(false);
 	});
 	it("resize", () => {
 		const object2 = object1.resize();
-		expect(object2.equals(object1)).toBe(true);
+		expect(object2.isEqual(object1)).toBe(true);
 		const object3 = object1.resize(2);
 		expect(object3.width).toBe(object1.width * 2);
 		expect(object3.height).toBe(object1.height * 2);
@@ -112,7 +112,7 @@ describe("Size", () => {
 	});
 	it("resizeToWidth", () => {
 		const object2 = object1.resizeToWidth(NaN);
-		expect(object2.equals(object1)).toBe(true);
+		expect(object2.isEqual(object1)).toBe(true);
 		const object3 = object1.resizeToWidth(2);
 		expect(object3.width).toBe(2);
 		expect(object3.height).toBe(4);
@@ -122,7 +122,7 @@ describe("Size", () => {
 	});
 	it("resizeToHeight", () => {
 		const object2 = object1.resizeToHeight(NaN);
-		expect(object2.equals(object1)).toBe(true);
+		expect(object2.isEqual(object1)).toBe(true);
 		const object3 = object1.resizeToHeight(4);
 		expect(object3.width).toBe(object1.width * 2);
 		expect(object3.height).toBe(4);
@@ -431,8 +431,8 @@ describe("Rectangle", () => {
 	});
 });
 
-describe("pathLength", function() {
-	it("lines", function() {
+describe("pathLength", () => {
+	it("lines", () => {
 		expect(PATH_LENGTH([
 			new Point(0, 0),
 			new Point(0, 10)
@@ -442,7 +442,7 @@ describe("pathLength", function() {
 			new Point(3, 4)
 		])).toBe(5);
 	});
-	it("triangles", function() {
+	it("triangles", () => {
 		expect(PATH_LENGTH([
 			new Point(0, 0),
 			new Point(3, 0),
@@ -450,7 +450,7 @@ describe("pathLength", function() {
 			new Point(0, 0)
 		])).toBe(12);
 	});
-	it("squares", function() {
+	it("squares", () => {
 		expect(PATH_LENGTH([
 			new Point(0, 0),
 			new Point(0, 10),
@@ -459,7 +459,7 @@ describe("pathLength", function() {
 			new Point(0, 0)
 		])).toBe(40);
 	});
-	it("rectangles", function() {
+	it("rectangles", () => {
 		expect(PATH_LENGTH([
 			new Point(0, 0),
 			new Point(0, 20),
@@ -468,7 +468,7 @@ describe("pathLength", function() {
 			new Point(0, 0)
 		])).toBe(60);
 	});
-	it("complex", function() {
+	it("complex", () => {
 		expect(PATH_LENGTH([
 			new Point(0, 0),
 			new Point(0, 10),
@@ -482,19 +482,19 @@ describe("pathLength", function() {
 		])).toBe(70);
 	});
 });
-describe("pathReduce", function() {
-	it("paths with too few points are returned unmolested", function() {
+describe("pathReduce", () => {
+	it("paths with too few points are returned unmolested", () => {
 		expect(PATH_PEUCKER([new Point(0, 0), new Point(0, 10)])).toEqual([new Point(0, 0), new Point(0, 10)]);
 		expect(PATH_PEUCKER([new Point(0, 0)])).toEqual([new Point(0, 0)]);
 	});
-	it("straight paths to be trimmed", function() {
+	it("straight paths to be trimmed", () => {
 		expect(PATH_PEUCKER([
 			new Point(0, 0), new Point(0, 5), new Point(0, 10)
 		])).toEqual([
 			new Point(0, 0), new Point(0, 10)
 		]);
 	});
-	it("overlapping points are trimmed", function() {
+	it("overlapping points are trimmed", () => {
 		expect(PATH_PEUCKER([
 			new Point(0, 0), new Point(0, 0), new Point(0, 10)
 		])).toEqual([
@@ -511,7 +511,7 @@ describe("pathReduce", function() {
 			new Point(0, 0), new Point(0, 10)
 		]);
 	});
-	it("tolerance trims extra points", function() {
+	it("tolerance trims extra points", () => {
 		expect(PATH_PEUCKER([
 			new Point(0, 0), new Point(5, 5), new Point(0, 10)
 		], 10)).toEqual([
@@ -528,7 +528,7 @@ describe("pathReduce", function() {
 			new Point(0, 0), new Point(0, 10)
 		]);
 	});
-	it("tolerance does not trim higher points", function() {
+	it("tolerance does not trim higher points", () => {
 		expect(PATH_PEUCKER([
 			new Point(0, 0), new Point(5, 5), new Point(0, 10)
 		], 1)).toEqual([
@@ -541,76 +541,76 @@ describe("pathReduce", function() {
 		]);
 	});
 });
-describe("pointAngle", function() {
-	it("up is zero", function() {
+describe("pointAngle", () => {
+	it("up is zero", () => {
 		expect(POINT_ANGLE(new Point(0, 10), new Point(0, 0))).toBe(0);
 		expect(POINT_ANGLE(new Point(0, 0), new Point(0, -10))).toBe(0);
 	});
-	it("degrees increase clockwise", function() {
+	it("degrees increase clockwise", () => {
 		expect(POINT_ANGLE(new Point(0, 0), new Point(10, 0))).toBe(90);
 		expect(POINT_ANGLE(new Point(0, 0), new Point(0, 10))).toBe(180);
 		expect(POINT_ANGLE(new Point(10, 0), new Point(0, 0))).toBe(270);
 	});
-	it("distance does not affect angle", function() {
+	it("distance does not affect angle", () => {
 		expect(POINT_ANGLE(new Point(0, 0), new Point(3, 4))).toBe(POINT_ANGLE(new Point(0, 0), new Point(300, 400)));
 	});
-	it("no negative numbers", function() {
+	it("no negative numbers", () => {
 		expect(POINT_ANGLE(new Point(0, 0), new Point(-10, -10))).toBeGreaterThan(0);
 	});
 });
-describe("pointDistance", function() {
-	it("identical points are 0 apart", function() {
+describe("pointDistance", () => {
+	it("identical points are 0 apart", () => {
 		expect(POINT_DISTANCE(new Point(0, 0), new Point(0, 0))).toBe(0);
 	});
-	it("straight lines", function() {
+	it("straight lines", () => {
 		expect(POINT_DISTANCE(new Point(0, 0), new Point(10, 0))).toBe(10);
 		expect(POINT_DISTANCE(new Point(0, 0), new Point(0, 10))).toBe(10);
 	});
-	it("diagonals", function() {
+	it("diagonals", () => {
 		expect(POINT_DISTANCE(new Point(0, 0), new Point(3, 4))).toBe(5);
 	});
 });
-describe("pointOrthogonal", function() {
+describe("pointOrthogonal", () => {
 	const point1 = new Point(0, 0),
 		point2 = new Point(10, 10),
 		point3 = new Point(0, 10);
-	it("flat triangle", function() {
+	it("flat triangle", () => {
 		expect(PATH_ORTHOGONAL(point1, point3, point1)).toBe(10);
 		expect(PATH_ORTHOGONAL(point2, point3, point2)).toBe(10);
 	});
-	it("zero triangle", function() {
+	it("zero triangle", () => {
 		expect(PATH_ORTHOGONAL(point1, point1, point1)).toBe(0);
 	});
-	it("triangle height", function() {
+	it("triangle height", () => {
 		expect(PATH_ORTHOGONAL(point1, point2, point3)).toBe(10);
 	});
 });
-describe("pointPythagora", function() {
-	it("diagonal length is zero if width of height is 0", function() {
+describe("pointPythagora", () => {
+	it("diagonal length is zero if width of height is 0", () => {
 		expect(PYTHAGORA(0, 0)).toEqual(0);
 		expect(PYTHAGORA(-0, 0)).toEqual(0);
 		expect(PYTHAGORA(-0, -0)).toEqual(0);
 		expect(PYTHAGORA(0, -0)).toEqual(0);
 	});
-	it("flat tiranlges length is equal to width or height", function() {
+	it("flat tiranlges length is equal to width or height", () => {
 		const rand = Math.random() * 100;
 		expect(PYTHAGORA(0, 100)).toEqual(100);
 		expect(PYTHAGORA(100, 0)).toEqual(100);
 		expect(PYTHAGORA(0, rand)).toEqual(rand);
 		expect(PYTHAGORA(rand, 0)).toEqual(rand);
 	});
-	it("diagonal length is correct", function() {
+	it("diagonal length is correct", () => {
 		expect(PYTHAGORA(3, 4)).toEqual(5);
 		expect(PYTHAGORA(100, 1)).toEqual(PYTHAGORA(1, 100));
 	});
-	it("negatives result in positive length", function() {
+	it("negatives result in positive length", () => {
 		expect(PYTHAGORA(3, -4)).toEqual(5);
 		expect(PYTHAGORA(-3, 4)).toEqual(5);
 		expect(PYTHAGORA(-3, -4)).toEqual(5);
 	});
 });
-describe("pointVector", function () {
-	it("vector is zero when distance is 0, no matter the direction", function () {
+describe("pointVector", () => {
+	it("vector is zero when distance is 0, no matter the direction", () => {
 		[
 			0,
 			90,
@@ -626,21 +626,21 @@ describe("pointVector", function () {
 			expect(point.y).toBeCloseTo(0);
 		});
 	});
-	it("straight", function() {
+	it("straight", () => {
 		expect(POINT_VECTOR(10, 0)).toEqual(new Point(0, -10));
 		expect(POINT_VECTOR(10, 90)).toEqual(new Point(10, 0));
 		expect(POINT_VECTOR(10, 180)).toEqual(new Point(0, 10));
 		expect(POINT_VECTOR(10, 270)).toEqual(new Point(-10, 0));
 	});
-	it("diagonal", function() {
+	it("diagonal", () => {
 		expect(POINT_VECTOR(14.142135623730951, 45)).toEqual(new Point(10, -10));
 		expect(POINT_VECTOR(14.142135623730951, 135)).toEqual(new Point(10, 10));
 		expect(POINT_VECTOR(14.142135623730951, 225)).toEqual(new Point(-10, 10));
 		expect(POINT_VECTOR(14.142135623730951, 315)).toEqual(new Point(-10, -10));
 	});
 });
-describe("polyArea", function() {
-	it("lines", function() {
+describe("polyArea", () => {
+	it("lines", () => {
 		expect(POLY_AREA([
 			new Point(0, 0),
 			new Point(0, 10)
@@ -650,7 +650,7 @@ describe("polyArea", function() {
 			new Point(10, 10)
 		])).toBe(0);
 	});
-	it("triangles", function() {
+	it("triangles", () => {
 		expect(POLY_AREA([
 			new Point(0, 0),
 			new Point(0, 10),
@@ -663,7 +663,7 @@ describe("polyArea", function() {
 			new Point(10, 10)
 		])).toBe(50);
 	});
-	it("squares", function() {
+	it("squares", () => {
 		expect(POLY_AREA([
 			new Point(0, 0),
 			new Point(0, 10),
@@ -678,7 +678,7 @@ describe("polyArea", function() {
 			new Point(10, 0)
 		])).toBe(100);
 	});
-	it("rectangles", function() {
+	it("rectangles", () => {
 		expect(POLY_AREA([
 			new Point(0, 0),
 			new Point(0, 20),
@@ -693,7 +693,7 @@ describe("polyArea", function() {
 			new Point(0, 0)
 		])).toBe(200);
 	});
-	it("complex", function() {
+	it("complex", () => {
 		expect(POLY_AREA([
 			new Point(0, 0),
 			new Point(0, 10),
@@ -715,8 +715,8 @@ describe("polyArea", function() {
 		])).toBe(162.5);
 	});
 });
-describe("polyReduce", function() {
-	it("polygons with too few points are returned unmolested", function() {
+describe("polyReduce", () => {
+	it("polygons with too few points are returned unmolested", () => {
 		expect(POLY_PEUCKER([
 			new Point(0, 0), new Point(0, 10)
 		])).toEqual([
@@ -728,14 +728,14 @@ describe("polyReduce", function() {
 			new Point(0, 0)
 		]);
 	});
-	it("flat polygons to be trimmed", function() {
+	it("flat polygons to be trimmed", () => {
 		expect(POLY_PEUCKER([
 			new Point(0, 0), new Point(0, 5), new Point(0, 10)
 		])).toEqual([
 			new Point(0, 0), new Point(0, 10)
 		]);
 	});
-	it("overlapping points are trimmed", function() {
+	it("overlapping points are trimmed", () => {
 		expect(POLY_PEUCKER([
 			new Point(0, 0), new Point(0, 0), new Point(0, 10)
 		])).toEqual([
@@ -752,7 +752,7 @@ describe("polyReduce", function() {
 			new Point(0, 0), new Point(0, 10)
 		]);
 	});
-	it("tolerance trims extra points", function() {
+	it("tolerance trims extra points", () => {
 		expect(POLY_PEUCKER([
 			new Point(0, 0), new Point(5, 5), new Point(0, 10)
 		], 10)).toEqual([
@@ -769,7 +769,7 @@ describe("polyReduce", function() {
 			new Point(0, 0), new Point(0, 10)
 		]);
 	});
-	it("tolerance does not trim higher points", function() {
+	it("tolerance does not trim higher points", () => {
 		expect(POLY_PEUCKER([
 			new Point(0, 0), new Point(5, 5), new Point(0, 10)
 		], 1)).toEqual([
@@ -781,7 +781,7 @@ describe("polyReduce", function() {
 			new Point(0, 0), new Point(5, 5), new Point(0, 10)
 		]);
 	});
-	it("indexes are cycled for optimal reduction", function() {
+	it("indexes are cycled for optimal reduction", () => {
 		expect(POLY_PEUCKER([
 			new Point(0, 5), new Point(0, 0), new Point(0, 10)
 		])).toEqual([
@@ -794,8 +794,8 @@ describe("polyReduce", function() {
 		]);
 	});
 });
-describe("polyWrapper", function() {
-	it("excludes overlapping/intersecting points", function() {
+describe("polyWrapper", () => {
+	it("excludes overlapping/intersecting points", () => {
 		expect(POLY_WRAPPER([
 			new Point(0, 0), new Point(0, 5), new Point(0, 10),
 			new Point(10, 10), new Point(10, 5), new Point(10, 0)
@@ -811,7 +811,7 @@ describe("polyWrapper", function() {
 			new Point(10, 10), new Point(0, 10)
 		]);
 	});
-	it("works for any order", function() {
+	it("works for any order", () => {
 		function rand(a:Point, b:Point) { return Math.random() > 0.5 ? 1 : -1; }
 		let iterations = 100,
 			points = [
@@ -826,7 +826,7 @@ describe("polyWrapper", function() {
 		]);
 	});
 });
-describe("polyContains", function() {
+describe("polyContains", () => {
 	const triangle = [
 		new Point(0, 0),
 		new Point(10, 10),
@@ -849,7 +849,7 @@ describe("polyContains", function() {
 	*
 	*
 	*
-	it("doens't contains its own vertexes", function() {
+	it("doens't contains its own vertexes", () => {
 		triangle.forEach(function(vertex) {
 			expect(POLY_CONTAINS(triangle, vertex.x, vertex.y)).toBe(false);
 		});
@@ -858,37 +858,37 @@ describe("polyContains", function() {
 		});
 	});
 	*/
-	it("triangle", function() {
+	it("triangle", () => {
 		expect(POLY_CONTAINS(triangle, new Point(1, 5))).toBe(true);
 		expect(POLY_CONTAINS(triangle, new Point(10, 0))).toBe(false);
 	});
-	it("ushape", function() {
+	it("ushape", () => {
 		expect(POLY_CONTAINS(ushape, new Point(7, 3))).toBe(true);
 		expect(POLY_CONTAINS(ushape, new Point(7, 7))).toBe(false);
 	});
 });
-describe("radialArea", function() {
-	it("provide correct results", function() {
+describe("radialArea", () => {
+	it("provide correct results", () => {
 		expect(RADIAL_AREA(100)).toBe(Math.PI * (100 * 100));
 	});
 });
-describe("radialCircumference", function() {
-	it("provide correct results", function() {
+describe("radialCircumference", () => {
+	it("provide correct results", () => {
 		expect(RADIAL_CIRCUMFERENCE(100)).toBe(Math.PI * 100 * 2);
 	});
 });
-describe("radialSmallest", function() {
-	it("creates zero-width circles", function() {
+describe("radialSmallest", () => {
+	it("creates zero-width circles", () => {
 		expect(RADIAL_BADOIU_CLARKSON([new Point(0, 0)]).r).toBe(0);
 		expect(RADIAL_BADOIU_CLARKSON([new Point(1, 2)]).r).toBe(0);
 	});
-	it("using two points creates a circle with a radius equal to half the distance between the points", function() {
+	it("using two points creates a circle with a radius equal to half the distance between the points", () => {
 		const object1 = new Point(0, 0),
 			object2 = new Point(1, 2),
 			distance = POINT_DISTANCE(object1, object2);
 		expect(RADIAL_BADOIU_CLARKSON([object1, object2]).r).toBe(distance / 2);
 	});
-	it("best case scenario", function() {
+	it("best case scenario", () => {
 		const radial = RADIAL_BADOIU_CLARKSON([
 			new Point(0, 0),
 			new Point(1, 1),
@@ -900,7 +900,7 @@ describe("radialSmallest", function() {
 		expect(radial.y).toBe(5);
 		expect(radial.r).toBeCloseTo(7.07177, 3);
 	});
-	it("worst case scenario", function() {
+	it("worst case scenario", () => {
 		const radial = RADIAL_BADOIU_CLARKSON([
 			new Point(0, 0),
 			new Point(0, 30),

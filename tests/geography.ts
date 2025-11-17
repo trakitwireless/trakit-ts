@@ -1,13 +1,18 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
+import {
+	LATITUDE_NORMALIZED,
+	LATLNG_ANGLE,
+	LATLNG_DISTANCE,
+	LONGITUDE_NORMALIZED,
+	EARTH_RADIUS,
+} from '../objects/API/Geography/Functions';
 import { LatLng } from '../objects/API/Geography/LatLng';
 import { LatLngBounds } from '../objects/API/Geography/LatLngBounds';
 import { Position } from '../objects/API/Geography/Position';
-import { StreetAddress } from '../objects/API/Geography/StreetAddress';
-import { LATLNG_DISTANCE } from '../objects/API/Geography/Functions';
 
 describe("LatLng", () => {
 	it("constructor", () => {
-		var object1 = new LatLng(43.123456789, -79.123456789),
+		const object1 = new LatLng(43.123456789, -79.123456789),
 			object2 = new LatLng(403.123456789, -439.123456789);	// 360 + lat, 360 + lng
 		expect(object1.lat).toBeCloseTo(43.123456789, 8);
 		expect(object1.lng).toBeCloseTo(-79.123456789, 8);
@@ -15,23 +20,23 @@ describe("LatLng", () => {
 		expect(object2.lng).toBeCloseTo(-79.123456789, 8);
 	});
 	//it("read-only", () => {
-	//	var object1 = new LatLng(43.123456789, -79.123456789);
+	//	const object1 = new LatLng(43.123456789, -79.123456789);
 	//	object1.lat += 1;
 	//	object1.lng += 1;
 	//	expect(object1).toEqual(new LatLng(43.123456789, -79.123456789));
 	//	expect(object1).not.toEqual(new LatLng(44.123456789, -78.123456789));
 	//});
 	it("toString", () => {
-		var object1 = new LatLng(43.123456789, -79.123456789);
+		const object1 = new LatLng(43.123456789, -79.123456789);
 		expect(object1.toString()).toEqual("43.123457,-79.123457");	// only 8 decimal places
 		expect(object1.toString(" ")).toEqual("43.123457 -79.123457");
 	});
 	it("toJSON", () => {
-		var object1 = new LatLng(43.123456789, -79.123456789);
+		const object1 = new LatLng(43.123456789, -79.123456789);
 		expect(object1.toJSON()).toEqual({ lat: 43.123457, lng: -79.123457 });	// only 6 decimal places in JSON
 	});
 	it("isEqual", () => {
-		var object1 = new LatLng(43.123456789, -79.123456789),
+		const object1 = new LatLng(43.123456789, -79.123456789),
 			object2 = new LatLng(43.123456789, -79.123456789),
 			object3 = new LatLng(43, -79);
 		expect(object1.isEqual(object1)).toBe(true);
@@ -39,7 +44,7 @@ describe("LatLng", () => {
 		expect(object1.isEqual(object3)).not.toBe(true);
 	});
 	it("toTranslated", () => {
-		var object1 = new LatLng(0, 0),
+		const object1 = new LatLng(0, 0),
 			ne = LATLNG_DISTANCE(object1, new LatLng(1, 1)),
 			sw = LATLNG_DISTANCE(object1, new LatLng(-1, -1)),
 			object2 = object1.toTranslated(ne, 45),
@@ -52,7 +57,7 @@ describe("LatLng", () => {
 });
 describe("LatLngBounds", () => {
 	it("constructor", () => {
-		var object1 = new LatLngBounds(new LatLng(45, 45)),
+		const object1 = new LatLngBounds(new LatLng(45, 45)),
 			object2 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45)),
 			object3 = new LatLngBounds(new LatLng(45, 45), new LatLng(0, 0));
 		expect(object1.north).toBe(45);
@@ -71,13 +76,13 @@ describe("LatLngBounds", () => {
 		expect(object2.west).toBe(0);
 	});
 	it("serializable", () => {
-		var object1 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45));
+		const object1 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45));
 		expect(object1.toString()).toEqual("45,45,0,0");
 		expect(object1.toString(" ")).toEqual("45 45 0 0");
 		expect(object1.toJSON()).toEqual({ north: 45, east: 45, south: 0, west: 0 });
 	});
 	it("isEqual", () => {
-		var object1 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45)),
+		const object1 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45)),
 			object2 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45)),
 			object3 = new LatLngBounds(new LatLng(0, 0));
 		expect(object1.isEqual(object1)).toBe(true);
@@ -86,7 +91,7 @@ describe("LatLngBounds", () => {
 		expect(object1).toEqual(new LatLngBounds(object1));
 	});
 	it("validity", () => {
-		var object1 = new LatLngBounds(new LatLng(0, 0)),
+		const object1 = new LatLngBounds(new LatLng(0, 0)),
 			object2 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45));
 		object1.south = 45;
 		object1.west = 45;
@@ -95,7 +100,7 @@ describe("LatLngBounds", () => {
 		expect(object1.isEqual(object2)).toBe(true);
 	});
 	it("extendable", () => {
-		var object1 = new LatLngBounds(new LatLng(10, 10), new LatLng(45, 45));
+		const object1 = new LatLngBounds(new LatLng(10, 10), new LatLng(45, 45));
 		object1.extend(new LatLng(0, 0));
 		expect(object1.north).toBe(45);
 		expect(object1.east).toBe(45);
@@ -106,7 +111,7 @@ describe("LatLngBounds", () => {
 	});
 //	/*
 //	it("growable", () => {
-//		var object1 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45)),
+//		const object1 = new LatLngBounds(new LatLng(0, 0), new LatLng(45, 45)),
 //			object2 = object1.copy(),
 //			object3 = object1.copy(),
 //			object4 = object1.copy(),
@@ -145,7 +150,7 @@ describe("LatLngBounds", () => {
 //	*/
 //	/*
 //	it("translations", () => {
-//		var object1 = new LatLngBounds(new LatLng(10, 10), new LatLng(45, 45)),
+//		const object1 = new LatLngBounds(new LatLng(10, 10), new LatLng(45, 45)),
 //			latlng1 = object1.getCentre(),
 //			ne = geography.latlngDistance(10, 0, 1, 1),
 //			sw = geography.latlngDistance(0, 0, -1, -1),
@@ -160,7 +165,7 @@ describe("LatLngBounds", () => {
 });
 describe("Position", () => {
 	it("constructor", () => {
-		var now = new Date(),
+		const now = new Date(),
 			object1 = new Position(
 				43.123456789, -79.123456789,
 				25, -90, 5,
@@ -207,7 +212,7 @@ describe("Position", () => {
 		expect(object3.altitude).toBeNaN();
 	});
 	//it("read-only", () => {
-	//	var now = new Date(),
+	//	const now = new Date(),
 	//		object1 = new Position(
 	//			43.123456789, -79.123456789,
 	//			25, -90, 5,
@@ -229,7 +234,7 @@ describe("Position", () => {
 	//	expect(object1).not.toEqual(object3);
 	//});
 	it("serializable", () => {
-		var now = new Date().toISOString(),
+		const now = new Date().toISOString(),
 			object1 = new Position(
 				43.12345678, -79.12345678,
 				25, -90, 5,
@@ -250,7 +255,7 @@ describe("Position", () => {
 		});
 	});
 	it("isEqual", () => {
-		var now = new Date(),
+		const now = new Date(),
 			object1 = new Position(
 				43.123456789, -79.123456789,
 				0, -90, NaN,
@@ -275,7 +280,7 @@ describe("Position", () => {
 //	it("constructor", () => {
 //		throw "untested";
 //		/*
-//		var now = new Date(),
+//		const now = new Date(),
 //			object1 = new StreetAddress(
 //				// number,
 //				// street,
@@ -339,7 +344,7 @@ describe("Position", () => {
 //	});
 //	/*
 //	it("read-only", () => {
-//		var now = new Date(),
+//		const now = new Date(),
 //			object1 = new Position(
 //				43.123456789, -79.123456789,
 //				25, -90, 5,
@@ -364,7 +369,7 @@ describe("Position", () => {
 //	it("serializable", () => {
 //		throw "untested";
 //		/*
-//		var now = new Date().toISOString(),
+//		const now = new Date().toISOString(),
 //			object1 = new Position(
 //				43.12345678, -79.12345678,
 //				25, -90, 5,
@@ -378,3 +383,95 @@ describe("Position", () => {
 //	});
 //	*/
 //});
+
+
+describe("clampLat", () => {
+	it("latitudes parse normally", () => {
+		expect(LATITUDE_NORMALIZED(0)).toBe(0);
+		expect(LATITUDE_NORMALIZED(45)).toBe(45);
+		expect(LATITUDE_NORMALIZED(90)).toBe(90);
+		expect(LATITUDE_NORMALIZED(-45)).toBe(-45);
+		expect(LATITUDE_NORMALIZED(-90)).toBe(-90);
+	});
+	it("latitudes norther than north pole", () => {
+		expect(LATITUDE_NORMALIZED(-100)).toBe(-90);
+	});
+	it("latitudes souther than south pole", () => {
+		expect(LATITUDE_NORMALIZED(100)).toBe(90);
+	});
+});
+describe("clampLng", () => {
+	it("longitudes parse normally", () => {
+		expect(LONGITUDE_NORMALIZED(0)).toBe(0);
+		expect(LONGITUDE_NORMALIZED(90)).toBe(90);
+		expect(LONGITUDE_NORMALIZED(180)).toBe(180);
+		expect(LONGITUDE_NORMALIZED(-90)).toBe(-90);
+		expect(LONGITUDE_NORMALIZED(-180)).toBe(-180);
+	});
+	it("longitudes wrap around the east and west poles", () => {
+		expect(LONGITUDE_NORMALIZED(181)).toBe(-179);
+		expect(LONGITUDE_NORMALIZED(360)).toBe(0);
+		expect(LONGITUDE_NORMALIZED(-181)).toBe(179);
+		expect(LONGITUDE_NORMALIZED(-360)).toBe(-0);
+	});
+	it("longitudes that wrap around the planet are reduced", () => {
+		expect(LONGITUDE_NORMALIZED(1080)).toBe(0);
+		expect(LONGITUDE_NORMALIZED(-450)).toBe(-90);
+	});
+});
+describe("pointAngle", () => {
+	it("up is zero", () => {
+		expect(LATLNG_ANGLE(new LatLng(43, -79), new LatLng(44, -79))).toBe(0);
+		expect(LATLNG_ANGLE(new LatLng(0, 0), new LatLng(90, 0))).toBe(0);
+	});
+	it("no negative numbers", () => {
+		const bearing = LATLNG_ANGLE(new LatLng(0, 0), new LatLng(0, -180));
+		expect(bearing).not.toBe(-90);
+		expect(bearing).toBe(270);
+	});
+	it("degrees increase clockwise", () => {
+		expect(LATLNG_ANGLE(new LatLng(0, 0), new LatLng(0, 0))).toBe(0);
+		expect(LATLNG_ANGLE(new LatLng(0, 0), new LatLng(0, 180))).toBe(90);
+		expect(LATLNG_ANGLE(new LatLng(90, 0), new LatLng(0, 0))).toBe(180);
+		expect(LATLNG_ANGLE(new LatLng(0, 0), new LatLng(0, -180))).toBe(270);
+	});
+	it("every direction from North pole is 180", () => {
+		expect(LATLNG_ANGLE(new LatLng(90, 0), new LatLng(0, 0))).toBe(180);
+		expect(LATLNG_ANGLE(new LatLng(90, 0), new LatLng(43, -79))).toBe(180);
+	});
+	it("every direction from South pole is 0", () => {
+		expect(LATLNG_ANGLE(new LatLng(-90, 0), new LatLng(0, 0))).toBe(0);
+		expect(LATLNG_ANGLE(new LatLng(-90, 0), new LatLng(43, -79))).toBe(0);
+	});
+	it("distance does not affect angle", () => {
+		expect(LATLNG_ANGLE(new LatLng(0, 0), new LatLng(0, 1))).toBe(90);
+		expect(LATLNG_ANGLE(new LatLng(0, 0), new LatLng(0, 90))).toBe(90);
+		expect(LATLNG_ANGLE(new LatLng(0, 0), new LatLng(0, 180))).toBe(90);
+	});
+});
+describe("pointDistance", () => {
+	it("identical points are 0 meters apart", () => {
+		expect(LATLNG_DISTANCE(new LatLng(0, 0), new LatLng(0, 0))).toBe(0);
+		expect(LATLNG_DISTANCE(new LatLng(43, -79), new LatLng(43, -79))).toBe(0);
+	});
+	it("points are the poles are all 0 meters apart", () => {
+		expect(LATLNG_DISTANCE(new LatLng(90, 0), new LatLng(90, 0))).toBe(0);
+		expect(LATLNG_DISTANCE(new LatLng(90, 0), new LatLng(90, 90))).toBe(0);
+		expect(LATLNG_DISTANCE(new LatLng(90, 0), new LatLng(90, 180))).toBe(0);
+		expect(LATLNG_DISTANCE(new LatLng(-90, 0), new LatLng(-90, 0))).toBe(0);
+		expect(LATLNG_DISTANCE(new LatLng(-90, 0), new LatLng(-90, 90))).toBe(0);
+		expect(LATLNG_DISTANCE(new LatLng(-90, 0), new LatLng(-90, 180))).toBe(0);
+	});
+	it("poles and equatorial half-way marks are half [Earth's circumference] meters apart", () => {
+		const circumference = EARTH_RADIUS * 2 * Math.PI;
+		expect(LATLNG_DISTANCE(new LatLng(0, 0), new LatLng(0, 90))).toBe(circumference / 4);
+		expect(LATLNG_DISTANCE(new LatLng(90, 0), new LatLng(0, 0))).toBe(circumference / 4);
+		expect(LATLNG_DISTANCE(new LatLng(0, 0), new LatLng(0, 180))).toBe(circumference / 2);
+		expect(LATLNG_DISTANCE(new LatLng(90, 0), new LatLng(-90, 0))).toBe(circumference / 2);
+	});
+	it("vertical distances are identical regardless of longitude", () => {
+		expect(LATLNG_DISTANCE(new LatLng(0, 0), new LatLng(45, 0))).toBe(LATLNG_DISTANCE(new LatLng(0, 90), new LatLng(45, 90)));
+		expect(LATLNG_DISTANCE(new LatLng(45, 0), new LatLng(50, 0))).toBe(LATLNG_DISTANCE(new LatLng(45, 90), new LatLng(50, 90)));
+		expect(LATLNG_DISTANCE(new LatLng(43, -79), new LatLng(44, -79))).toBe(LATLNG_DISTANCE(new LatLng(43, 79), new LatLng(44, 79)));
+	});
+});

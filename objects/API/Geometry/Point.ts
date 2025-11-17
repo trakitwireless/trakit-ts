@@ -78,8 +78,8 @@ export class Point
 	 */
 	isEqual(point: IPoint, precision: number = 18): point is IPoint {
 		return IPoint_instanceOf(point)
-			&& ROUND_TO(this.x, precision) == ROUND_TO(point.x, precision)
-			&& ROUND_TO(this.y, precision) == ROUND_TO(point.y, precision);
+			&& (ROUND_TO(this.x, precision) === ROUND_TO(point.x, precision) || isNaN(this.x) && isNaN(point.x))
+			&& (ROUND_TO(this.y, precision) === ROUND_TO(point.y, precision) || isNaN(this.y) && isNaN(point.y));
 	}
 	/**
 	 * Calculates the distance between two {@link Point}s.

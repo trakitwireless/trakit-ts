@@ -95,9 +95,9 @@ export class Radial
 	 */
 	isEqual(circle: IRadial, precision: number = 18): boolean {
 		return IRadial_instanceOf(circle)
-			&& ROUND_TO(this.x, precision) == ROUND_TO(circle.x, precision)
-			&& ROUND_TO(this.y, precision) == ROUND_TO(circle.y, precision)
-			&& ROUND_TO(this.r, precision) == ROUND_TO(circle.r, precision);
+			&& (ROUND_TO(this.x, precision) === ROUND_TO(circle.x, precision) || isNaN(this.x) && isNaN(circle.x))
+			&& (ROUND_TO(this.y, precision) === ROUND_TO(circle.y, precision) || isNaN(this.y) && isNaN(circle.y))
+			&& (ROUND_TO(this.r, precision) === ROUND_TO(circle.r, precision) || isNaN(this.r) && isNaN(circle.r));
 	}
 	/**
 	 * Determines if the given {@link IPoint} is contained by this Radial
