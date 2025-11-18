@@ -14,9 +14,9 @@ export class IconLabel
 	 */
 	static fromJSON(json: JsonObject) {
 		return new IconLabel(
-			json["anchor"] as IPoint | JsonObject,
-			json["align"] as string,
-			json["colour"] as colour,
+			json?.anchor as IPoint | JsonObject,
+			json?.align as string,
+			json?.colour as colour,
 		);
 	}
 	
@@ -43,11 +43,20 @@ export class IconLabel
 		this.colour = colour || "#cccccc"
 	}
 
-	toJSON() {
+	toJSON(): JsonObject {
 		return {
 			"align": this.align || "",
-			"anchor": this.anchor.toJSON(),
+			"anchor": this.anchor.toJSON() as any as JsonObject,
 			"colour": this.colour || "",
 		};
+	}
+
+	isEqual(other: IconLabel) {
+		return (
+			!!other
+			&& this.align === other.align
+			&& this.anchor.isEqual(other.anchor)
+			&& this.colour === other.colour
+		);
 	}
 }

@@ -17,7 +17,7 @@ export class IconGlyph
 	 */
 	static fromJSON(json: JsonObject) {
 		return new IconGlyph(
-			json["tags"] as string[],
+			json["tags"] as codified[],
 			json["src"] as string,
 			json["size"] as ISize | JsonObject,
 			json["anchor"] as IPoint | JsonObject,
@@ -74,7 +74,7 @@ export class IconGlyph
 		this.rotates = !!rotates;
 	}
 
-	toJSON() {
+	toJSON(): JsonObject {
 		return {
 			"tags": [...this.tags],
 			"src": this.src || "",
@@ -84,5 +84,19 @@ export class IconGlyph
 			"zIndex": JSON_NUMBER(this.zIndex),
 			"rotates": !!this.rotates,
 		};
+	}
+
+	isEqual(other: IconGlyph) {
+		return (
+			!!other
+			&& this.tags.length === other.tags.length
+			&& this.tags.every((tag, index) => tag === other.tags[index])
+			&& this.src === other.src
+			&& this.size.isEqual(other.size)
+			&& this.anchor.isEqual(other.anchor)
+			&& this.layer === other.layer
+			&& this.zIndex === other.zIndex
+			&& this.rotates === other.rotates
+		);
 	}
 }

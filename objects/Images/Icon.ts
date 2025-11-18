@@ -67,7 +67,7 @@ export class Icon
 	 */
 	glyphs: IconGlyph[] = [];
 
-	override toJSON() {
+	override toJSON(): JsonObject {
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
@@ -91,10 +91,10 @@ export class Icon
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
 			this.global = !!json["global"];
-			this.usage = (json["usage"] as string[] || []).map(CODIFY);
+			this.usage = (json["usage"] as string[])?.map(CODIFY) ?? [];
 			this.label = IconLabel.fromJSON(json["label"] as JsonObject);
 			this.badge = IconLabel.fromJSON(json["badge"] as JsonObject);
-			this.glyphs = ((json["glyphs"] || []) as any[]).map(g => new IconGlyph(g));
+			this.glyphs = (json["glyphs"] as JsonObject[])?.map(g => IconGlyph.fromJSON(g)) ?? [];
 		}
 		return update;
 	}
