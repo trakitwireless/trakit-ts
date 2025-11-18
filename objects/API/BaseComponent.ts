@@ -12,11 +12,11 @@ export abstract class BaseComponent
 	/**
 	 * Object version keys used to validate synchronization for all object properties.
 	 */
-	#version: int = -1;
+	private _version: int = -1;
 	/**
 	 * Object version keys used to validate synchronization for all object properties.
 	 */
-	get v(): int[] { return [this.#version]; }
+	get v(): int[] { return [this._version]; }
 	/**
 	 * 
 	 * @param version 
@@ -27,10 +27,10 @@ export abstract class BaseComponent
 			return this.updateVersion(version[0]);
 		} else {
 			const json = (version + 1) || 0,
-				existing = (this.#version + 1) || 0,
+				existing = (this._version + 1) || 0,
 				update = !existing || json > existing;
 			// if the existing version is -1, accept new value even if it's also -1
-			if (update) this.#version = json - 1;
+			if (update) this._version = json - 1;
 			return update;
 		}
 	}
