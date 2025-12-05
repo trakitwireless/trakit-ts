@@ -10,7 +10,7 @@ import { PlaceType } from "../../Places/PlaceType";
 export abstract class ProviderGeofenceBase
 	implements ISerializable {
 	/**
-	 * Instantiates a geofence based on the kind property in the given JSON.
+	 * Instantiates a geofence based on the type property in the given JSON.
 	 * Implementation is in {@link ProviderGeofenceBase_fromJSON.ts}
 	 * @param json 
 	 */

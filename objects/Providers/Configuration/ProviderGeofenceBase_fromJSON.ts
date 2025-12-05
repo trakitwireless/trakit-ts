@@ -7,7 +7,7 @@ import { ProviderGeofencePolygon } from "./ProviderGeofencePolygon";
 import { ProviderGeofenceRectangle } from "./ProviderGeofenceRectangle";
 
 /**
- * Instantiates a geofence based on the kind property in the given JSON.
+ * Instantiates a geofence based on the type property in the given JSON.
  * @param json 
  * @returns 
  */
