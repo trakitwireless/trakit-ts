@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.2",
   "main": "./_publish/trakit-objects.min.js",
-  "types": "./objects/objects.ts",
+  "types": "./_publish/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
