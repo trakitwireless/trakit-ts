@@ -1,11 +1,7 @@
 ﻿import { ID } from "../../API/Functions";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { int, uint, JsonObject } from "../../API/Types";
+import { JsonObject, uint } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
-import { ProviderGeofenceCircular } from "./ProviderGeofenceCircular";
-import { ProviderGeofencePoint } from "./ProviderGeofencePoint";
-import { ProviderGeofencePolygon } from "./ProviderGeofencePolygon";
-import { ProviderGeofenceRectangle } from "./ProviderGeofenceRectangle";
 
 /**
  * An abstract class used as a base for all Geofence type classes.
@@ -14,36 +10,11 @@ import { ProviderGeofenceRectangle } from "./ProviderGeofenceRectangle";
 export abstract class ProviderGeofenceBase
 	implements ISerializable {
 	/**
-	 * 
+	 * Instantiates a geofence based on the kind property in the given JSON.
+	 * Implementation is in {@link ProviderGeofenceBase_fromJSON.ts}
 	 * @param json 
 	 */
-	static fromJSON(json: JsonObject) {
-		switch (PlaceType[json["type"] as PlaceType]) {
-			case PlaceType.point:
-				return new ProviderGeofencePoint(
-					json["maxGeofenceCount"]as uint,
-				);
-			case PlaceType.radial:
-				return new ProviderGeofenceCircular(
-					json["maxGeofenceCount"]as uint,
-					json["minRadius"]as uint,
-					json["maxRadius"]as uint,
-				);
-			case PlaceType.rectangle:
-				return new ProviderGeofenceRectangle(
-					json["maxGeofenceCount"]as uint,
-					json["maxLength"]as uint,
-					json["maxWidth"]as int,
-				);
-			case PlaceType.polygon:
-				return new ProviderGeofencePolygon(
-					json["maxGeofenceCount"]as uint,
-					json["maxVertices"]as uint,
-				);
-			default:
-				throw new Error("Unsopported type:" + json["type"]);
-		}
-	}
+	static fromJSON: (json: JsonObject) => ProviderGeofenceBase;
 
 	/**
 	 * The supported shape of geofence.
