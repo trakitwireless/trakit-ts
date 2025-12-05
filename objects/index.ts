@@ -215,6 +215,7 @@ import { DispatchTaskStatus } from "./Dispatch/DispatchTaskStatus";
 import { Document } from "./Hosting/Document";
 import { FormFieldAttachments } from "./Hosting/Fields/FormFieldAttachments";
 import { FormFieldBase } from "./Hosting/Fields/FormFieldBase";
+import "./Hosting/Fields/FormFieldFactory";  // Initializes FormFieldBase.fromJSON
 import { FormFieldBoolean } from "./Hosting/Fields/FormFieldBoolean";
 import { FormFieldChoice } from "./Hosting/Fields/FormFieldChoice";
 import { FormFieldDate } from "./Hosting/Fields/FormFieldDate";
