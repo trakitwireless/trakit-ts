@@ -215,7 +215,7 @@ import { DispatchTaskStatus } from "./Dispatch/DispatchTaskStatus";
 import { Document } from "./Hosting/Document";
 import { FormFieldAttachments } from "./Hosting/Fields/FormFieldAttachments";
 import { FormFieldBase } from "./Hosting/Fields/FormFieldBase";
-import "./Hosting/Fields/FormFieldFactory";  // Initializes FormFieldBase.fromJSON
+import "./Hosting/Fields/FormFieldBase_fromJSON";  // Initializes FormFieldBase.fromJSON
 import { FormFieldBoolean } from "./Hosting/Fields/FormFieldBoolean";
 import { FormFieldChoice } from "./Hosting/Fields/FormFieldChoice";
 import { FormFieldDate } from "./Hosting/Fields/FormFieldDate";
@@ -258,6 +258,8 @@ import { ProviderScriptParameterType } from "./Providers/Config/ProviderScriptPa
 import { ProviderConfiguration } from "./Providers/Configuration/ProviderConfiguration";
 import { ProviderConfigurationNode } from "./Providers/Configuration/ProviderConfigurationNode";
 import { ProviderConfigurationType } from "./Providers/Configuration/ProviderConfigurationType";
+import { ProviderGeofenceBase } from "./Providers/Configuration/ProviderGeofenceBase";
+import "./Providers/Configuration/ProviderGeofenceBase_fromJSON";
 import { ProviderGeofenceCircular } from "./Providers/Configuration/ProviderGeofenceCircular";
 import { ProviderGeofencePoint } from "./Providers/Configuration/ProviderGeofencePoint";
 import { ProviderGeofencePolygon } from "./Providers/Configuration/ProviderGeofencePolygon";
@@ -917,6 +919,7 @@ export {
 	ProviderConfiguration,
 	ProviderConfigurationNode,
 	ProviderConfigurationType,
+	ProviderGeofenceBase,
 	ProviderGeofenceCircular,
 	ProviderGeofencePoint,
 	ProviderGeofencePolygon,
