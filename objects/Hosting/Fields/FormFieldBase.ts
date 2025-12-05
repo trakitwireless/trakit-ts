@@ -12,7 +12,7 @@ export abstract class FormFieldBase
 	implements IIdUlong, INamed, ISerializable {
 	/**
 	 * Instantiates a form field based on the kind property in the given JSON.
-	 * Implementation is in FormFieldFactory.ts
+	 * Implementation is in {@link FormFieldBase_fromJSON.ts}
 	 * @param json 
 	 */
 	static fromJSON: (json: JsonObject) => FormFieldBase;

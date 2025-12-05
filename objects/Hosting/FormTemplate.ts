@@ -98,7 +98,7 @@ export class FormTemplate
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
 			this.labels = [...(json["labels"] as codified[] || [])];
-			this.fields = (json["fields"]as JsonObject[] || []).map(FormFieldBase.fromJSON);
+			this.fields = (json["fields"] as JsonObject[] || []).map(FormFieldBase.fromJSON) as (FormFieldText | FormFieldChoice | FormFieldBoolean | FormFieldNumeric | FormFieldDate | FormFieldTime | FormFieldSignature | FormFieldAttachments | FormFieldTimezone)[];
 			this.fill = json["fill"] as string || "";
 			this.stroke = json["stroke"] as string || "";
 			this.graphic = json["graphic"] as string || "";
