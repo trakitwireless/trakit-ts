@@ -274,6 +274,7 @@ import { ProviderData } from "./Providers/ProviderData";
 import { ProviderGeneral } from "./Providers/ProviderGeneral";
 import { ProviderType } from "./Providers/ProviderType";
 import { ReportBreakdown } from "./Reports/ReportBreakdown";
+import "./Reports/ReportBreakdown_fromJSON";
 import { ReportBreakdownJob } from "./Reports/ReportBreakdownJob";
 import { ReportBreakdownMessage } from "./Reports/ReportBreakdownMessage";
 import { ReportBreakdownTask } from "./Reports/ReportBreakdownTask";
