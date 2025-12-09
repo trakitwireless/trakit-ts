@@ -11,9 +11,9 @@ import { ReportBreakdownMessage } from "./ReportBreakdownMessage";
 import { ReportBreakdownTask } from "./ReportBreakdownTask";
 
 /**
- * Instantiates a breakdown based on the shape of the given JSON.
- * @param json 
- * @returns 
+ * Instantiates a {@link ReportBreakdown} or one of its subclasses based on the shape of the JSON.
+ * @param json	The JSON to parse.
+ * @returns		An instance of a {@link ReportBreakdown} or one of its subclasses.
  */
 ReportBreakdown.fromJSON = function (json: JsonObject) {
 	if (typeof json["job"] === "object") {

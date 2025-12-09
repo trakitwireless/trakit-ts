@@ -12,9 +12,10 @@ import { ASSETS } from "../storage";
 export class ReportBreakdown
 	implements ISerializable {
 	/**
-	 * Instantiates a breakdown based on the kind property in the given JSON.
+	 * Instantiates a {@link ReportBreakdown} or one of its subclasses based on the shape of the JSON.
 	 * Implementation is in {@link ReportBreakdown_fromJSON.ts}
-	 * @param json 
+	 * @param json	The JSON to parse.
+	 * @returns		An instance of a {@link ReportBreakdown} or one of its subclasses.
 	 */
 	static fromJSON: (json: JsonObject) => ReportBreakdown;
 
