@@ -14,9 +14,9 @@ import { FormFieldTime } from './FormFieldTime';
 import { FormFieldTimezone } from './FormFieldTimezone';
 
 /**
- * Instantiates a form field based on the kind property in the given JSON.
- * This is added to FormFieldBase to avoid circular dependencies.
- * @param json 
+ * Instantiates a form field subclass based on the `kind` property in the JSON.
+ * @param json	The JSON to parse.
+ * @returns		An instance of a form field subclass, or null if the JSON is null or does not contain a recognized "kind" property.
  */
 FormFieldBase.fromJSON = function(json: JsonObject): FormFieldBase {
 		switch (json["kind"]) {

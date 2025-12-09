@@ -7,9 +7,9 @@ import { ProviderGeofencePolygon } from "./ProviderGeofencePolygon";
 import { ProviderGeofenceRectangle } from "./ProviderGeofenceRectangle";
 
 /**
- * Instantiates a geofence based on the kind property in the given JSON.
- * @param json 
- * @returns 
+ * Instantiates a geofence based on the `kind` property in the given JSON.
+ * @param json	The JSON to parse.
+ * @returns		An instance of a {@link ProviderGeofenceBase} subclass.
  */
 ProviderGeofenceBase.fromJSON = function (json: JsonObject) {
 	switch (PlaceType[json["type"] as PlaceType]) {
