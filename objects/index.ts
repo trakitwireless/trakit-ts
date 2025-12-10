@@ -343,7 +343,7 @@ export const version = 5.04;
 /**
  * The names of all main object types in the Trak-iT Object Model.
  */
-export type classes =
+export type SyncName =
 	// Companies
 	"Company"
 	| "CompanyGeneral"
@@ -355,7 +355,6 @@ export type classes =
 	| "Contact"
 	| "Machine"
 	| "Session"
-	| "User"
 	| "User"
 	| "UserGeneral"
 	| "UserAdvanced"
@@ -411,7 +410,7 @@ export type classes =
 /**
  * A mapping of all main object types in the Trak-iT Object Model to their class constructors.
  */
-export const objects: { [key in classes]: { new(): IRequestable } } = {
+export const classes: { [key in SyncName]: { new(): IRequestable } } = {
 	// Companies
 	"Company": Company,
 	"CompanyGeneral": CompanyGeneral,
@@ -479,7 +478,7 @@ export const objects: { [key in classes]: { new(): IRequestable } } = {
  * Local Maps that store various instances of objects.
  * The storage is used by the sync system.
  */
-export const storage: { [key in classes]: Map<string | guid | email | ulong, IRequestable> } = {
+export const storage: { [key in SyncName]: Map<string | guid | email | ulong, IRequestable> } = {
 	// Companies
 	"Company": COMPANIES,
 	"CompanyGeneral": COMPANIES,
