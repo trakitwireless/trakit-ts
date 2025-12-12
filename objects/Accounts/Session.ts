@@ -71,21 +71,23 @@ export class Session
 	get active(): boolean { return this.sockets > 0; }
 
 	constructor(json?: JsonObject | nothing) {
-		this.fromJSON(json ?? {});
+		if (json) this.fromJSON(json);
 	}
 	fromJSON(json: JsonObject, force?: boolean): boolean {
-		this.handle = json["handle"] as string || "";
-		this.companyId = ID(json["company"] as ulong);
-		this.login = json["login"] as email || "";
-		this.status = SessionStatus[json["status"] as SessionStatus] || SessionStatus.notFound;
-		this.userAgent = json["userAgent"] as string || "";
-		this.ipAddress = json["ipAddress"] as ipv4 || "";
-		this.created = DATE(json["created"] as datetime);
-		this.expiry = DATE(json["expires"] as datetime);
-		this.lastActivity = DATE(json["lastActivity"] as datetime);
-		this.lastCommand = json["lastCommand"] as string || "";
-		this.sockets = ID(json["sockets"] as ulong) || 0;
-		return true;
+		if (json) {
+			this.handle = json["handle"] as string || "";
+			this.companyId = ID(json["company"] as ulong);
+			this.login = json["login"] as email || "";
+			this.status = SessionStatus[json["status"] as SessionStatus] || SessionStatus.notFound;
+			this.userAgent = json["userAgent"] as string || "";
+			this.ipAddress = json["ipAddress"] as ipv4 || "";
+			this.created = DATE(json["created"] as datetime);
+			this.expiry = DATE(json["expires"] as datetime);
+			this.lastActivity = DATE(json["lastActivity"] as datetime);
+			this.lastCommand = json["lastCommand"] as string || "";
+			this.sockets = ID(json["sockets"] as ulong) || 0;
+		}
+		return !!json;
 	}
 
 	/**

@@ -2,10 +2,11 @@
 import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISize } from "../API/Geometry/Interfaces";
 import { Size } from "../API/Geometry/Size";
+import { IDeserializable } from "../API/Interfaces/IDeserializable";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { byte, double, ulong, JsonObject } from "../API/Types";
+import { byte, double, JsonObject, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
@@ -15,20 +16,20 @@ import { ASSETS, COMPANIES, PROVIDERS } from "../storage";
  * A base class for Dashcam meta-data.
  */
 export abstract class DashcamBase
-	implements IRequestable, IFileSize, ISerializable {
+	implements IRequestable, IFileSize, ISerializable, IDeserializable {
 	/**
 	 * Number bytes in the dashcam media file.
 	 */
-	bytes: ulong;
+	bytes!: ulong;
 	/**
 	 * Resolution defined in pixels.
 	 */
-	size: Size;
+	size!: Size;
 	/**
 	 * Unique identifier of the provider that sent the data.
 	 * {@link Provider.id}
 	 */
-	providerId: string;
+	providerId!: string;
 	/**
 	 * Unique identifier of the provider that sent the data.
 	 * {@link Provider.id}
@@ -38,7 +39,7 @@ export abstract class DashcamBase
 	 * Unique identifier of the company of the provider.
 	 * {@link Company.id}
 	 */
-	companyId: ulong;
+	companyId!: ulong;
 	/**
 	 * Unique identifier of the company of the provider.
 	 * {@link Company.id}
@@ -48,7 +49,7 @@ export abstract class DashcamBase
 	 * Unique identifier of the asset tied to the provider at the time.
 	 * {@link Asset.id}
 	 */
-	assetId: ulong;
+	assetId!: ulong;
 	/**
 	 * Unique identifier of the asset tied to the provider at the time.
 	 * {@link Asset.id}
@@ -57,55 +58,50 @@ export abstract class DashcamBase
 	/**
 	 * Number assigned to the camera that took the image/video.
 	 */
-	camera: byte;
+	camera!: byte;
 	/**
 	 * Latitude of the start of the resource.
 	 */
-	latitude: double;
+	latitude!: double;
 	/**
 	 * Longitude of the start of the resource.
 	 */
-	longitude: double;
+	longitude!: double;
 	/**
 	 * Speed of the start of the resource.
 	 */
-	speed: double;
+	speed!: double;
 	/**
 	 * Heading of the start of the resource.
 	 */
-	heading: double;
+	heading!: double;
 	/**
 	 * Altitude of the start of the resource.
 	 */
-	altitude: double;
+	altitude!: double;
 
-	constructor(
-		bytes?: ulong,
-		size?: Size | ISize | JsonObject,
-		provider?: string,
-		company?: ulong,
-		asset?: ulong,
-		camera?: byte,
-		latitude?: double,
-		longitude?: double,
-		speed?: double,
-		heading?: double,
-		altitude?: double,
-	) {
-		this.bytes = ID(bytes);
-		this.size = size
-			? Size.fromJSON(size)
-			: new Size(0, 0);
-		this.providerId = provider || "";
-		this.companyId = ID(company);
-		this.assetId = ID(asset);
-		this.camera = ID(camera);
-		this.latitude = FLOAT(latitude as any);
-		this.longitude = FLOAT(longitude as any);
-		this.speed = FLOAT(speed as any);
-		this.heading = FLOAT(heading as any);
-		this.altitude = FLOAT(altitude as any);
+	constructor(json?: JsonObject) {
+		if (json) this.fromJSON(json);
 	}
+	fromJSON(json: JsonObject, force?: boolean): boolean {
+		if (json) {
+			this.bytes = ID(json["bytes"]);
+			this.size = json["size"]
+				? Size.fromJSON(json["size"] as ISize | JsonObject)
+				: new Size(0, 0);
+			this.providerId = json["provider"] as string || "";
+			this.companyId = ID(json["company"]);
+			this.assetId = ID(json["asset"]);
+			this.camera = ID(json["camera"]);
+			this.latitude = FLOAT(json["latitude"] as any);
+			this.longitude = FLOAT(json["longitude"] as any);
+			this.speed = FLOAT(json["speed"] as any);
+			this.heading = FLOAT(json["heading"] as any);
+			this.altitude = FLOAT(json["altitude"] as any);
+		}
+		return !!json;
+	}
+
 	/**
 	 * 
 	 */

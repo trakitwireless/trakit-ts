@@ -1,65 +1,36 @@
 import { FLOAT } from "../API/Constants";
 import { DATE, JSON_DATE, JSON_NUMBER } from "../API/Functions";
-import { ISize } from "../API/Geometry/Interfaces";
-import { Size } from "../API/Geometry/Size";
 import { TimeSpan } from "../API/TimeSpan";
-import { byte, datetime, double, guid, JsonObject, single, ulong } from "../API/Types";
+import { datetime, guid, JsonObject, single } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
 
 /**
  * An image or video received from a dashcam-enabled provider or asset.
  */
-export class Dashcam
-	extends DashcamBase {
-	/**
-	 * 
-	 * @param json 
-	 */
-	static fromJSON(json: JsonObject) {
-		return new Dashcam(
-			json["bytes"] as ulong,
-			json["size"] as ISize | JsonObject,
-			json["provider"] as string,
-			json["company"] as ulong,
-			json["asset"] as ulong,
-			json["camera"] as byte,
-			json["latitude"] as double,
-			json["longitude"] as double,
-			json["speed"] as double,
-			json["heading"] as double,
-			json["altitude"] as double,
-			json["guid"] as guid,
-			json["kind"] as DashcamMediaType,
-			json["fps"] as double,
-			json["start"] as datetime,
-			json["end"] as datetime,
-			json["eventName"] as string,
-		);
-	}
-	
+export class Dashcam extends DashcamBase {
 	/**
 	 * Unique identifier of this resource.
 	 */
-	guid: guid;
+	guid!: guid;
 	/**
 	 * The type of data being stored.
 	 */
-	kind: DashcamMediaType;
+	kind!: DashcamMediaType;
 	/**
 	 * For {@link DashcamMediaType.video} media files, this indicates the frames-per-second.
 	 */
-	fps: single;
+	fps!: single;
 	/**
 	 * Timestamp of when this resource started.
 	 * For {@link DashcamMediaType.image} media files, the start and end are the same.
 	 */
-	start: Date;
+	start!: Date;
 	/**
 	 * Timestamp of when this resource ended.
 	 * For {@link DashcamMediaType.image} media files, the start and end are the same.
 	 */
-	end: Date;
+	end!: Date;
 	/**
 	 * For {@link DashcamMediaType.video} media files, the duration of the video clip.
 	 */
@@ -67,48 +38,20 @@ export class Dashcam
 	/**
 	 * The reason why we're saving this image/video. Or the event name that triggered it.
 	 */
-	eventName: string;
+	eventName!: string;
 
-	constructor(
-		bytes?: ulong,
-		size?: Size | ISize | JsonObject,
-		provider?: string,
-		company?: ulong,
-		asset?: ulong,
-		camera?: byte,
-		latitude?: double,
-		longitude?: double,
-		speed?: double,
-		heading?: double,
-		altitude?: double,
-		guid?: guid,
-		kind?: DashcamMediaType,
-		fps?: single,
-		start?: Date | number | datetime,
-		end?: Date | number | datetime,
-		eventName?: string
-	) {
-		super(
-			bytes,
-			size,
-			provider,
-			company,
-			asset,
-			camera,
-			latitude,
-			longitude,
-			speed,
-			heading,
-			altitude
-		);
-		this.guid = guid || "";
-		this.kind = DashcamMediaType[kind as DashcamMediaType] || DashcamMediaType.unknown;
-		this.fps = FLOAT(fps as any);
-		this.start = DATE(start);
-		this.end = DATE(end);
-		this.eventName = eventName || "";
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
+		const changed = super.fromJSON(json, force) || !!json;
+		if (json) {
+			this.guid = (json["guid"] as guid) || "";
+			this.kind = DashcamMediaType[json["kind"] as DashcamMediaType] || DashcamMediaType.unknown;
+			this.fps = FLOAT(json["fps"] as any);
+			this.start = DATE(json["start"] as datetime);
+			this.end = DATE(json["end"] as datetime);
+			this.eventName = (json["eventName"] as string) || "";
+		}
+		return changed;
 	}
-
 	override toJSON() {
 		return {
 			...super.toJSON(),
