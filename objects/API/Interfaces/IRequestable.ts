@@ -10,7 +10,7 @@ import { Provider } from "../../Providers/Provider";
 import { ProviderAdvanced } from "../../Providers/ProviderAdvanced";
 import { ProviderControl } from "../../Providers/ProviderControl";
 import { ProviderGeneral } from "../../Providers/ProviderGeneral";
-import { email, guid, ulong } from "../Types";
+import { codified, email, guid, ulong } from "../Types";
 
 /**
  * The main interface for an object in the Trak-iT system.
@@ -31,5 +31,5 @@ export interface IRequestable {
 	 * {@link UserAdvanced.login}
 	 * {@link Timezone.code}
 	 */
-	getKey(): ulong | email | guid | string;
+	getKey(): ulong | email | guid | codified | string;
 }

@@ -478,7 +478,7 @@ export const classes: { [key in SyncName]: { new(): IRequestable } } = {
  * Local Maps that store various instances of objects.
  * The storage is used by the sync system.
  */
-export const storage: { [key in SyncName]: Map<string | guid | email | ulong, IRequestable> } = {
+export const storage: { [key in SyncName]: Map<ulong | guid | email | codified | string, IRequestable> } = {
 	// Companies
 	"Company": COMPANIES,
 	"CompanyGeneral": COMPANIES,
