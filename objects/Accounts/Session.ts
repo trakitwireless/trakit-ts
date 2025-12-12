@@ -1,8 +1,9 @@
 import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
+import { IDeserializable } from "../API/Interfaces/IDeserializable";
 import { IRequestable } from "../API/Interfaces/IRequestable";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, email, int, ipv4, JsonObject, ulong } from "../API/Types";
+import { datetime, email, int, ipv4, JsonObject, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { SessionStatus } from "./SessionStatus";
@@ -11,35 +12,15 @@ import { SessionStatus } from "./SessionStatus";
  * Information about another {@link User}'s {@link Session}.
  */
 export class Session
-	implements IBelongCompany, IRequestable, ISerializable {
-	/**
-	 * 
-	 * @param json 
-	 */
-	static fromJSON(json: JsonObject): Session {
-		return new Session(
-			json["handle"] as string,
-			json["company"] as ulong,
-			json["ipAddress"] as ipv4,
-			json["userAgent"] as string,
-			json["sockets"] as ulong,
-			json["login"] as email,
-			json["status"] as SessionStatus,
-			json["created"] as datetime,
-			json["expires"] as datetime,
-			json["lastCommand"] as string,
-			json["lastActivity"] as datetime,
-		);
-	}
-
+	implements IBelongCompany, IRequestable, ISerializable, IDeserializable {
 	/**
 	 * A "handle" identifying a resource.
 	 */
-	handle: string;
+	handle!: string;
 	/**
 	 * Getter shortcut for the {@link User}'s {@link Company.id}.
 	 */
-	companyId: ulong;
+	companyId!: ulong;
 	/**
 	 * The company to which this contact belongs
 	 * {@link Company.id}
@@ -48,71 +29,63 @@ export class Session
 	/**
 	 * The IP address of the {@link User} last used to connect using this session.
 	 */
-	ipAddress: string;
+	ipAddress!: string;
 	/**
 	 * `UserAgent` identification string
 	 */
-	userAgent: string;
+	userAgent!: string;
 	/**
 	 * The IP address the user last used to connect 
 	/**
 	 * The number of currently connected WebSocket clients.
 	 */
-	sockets: int;
+	sockets!: int;
 	/**
 	 * The {@link User} to which the {@link Session} belongs.
 	 * {@link User.login}
 	 */
-	login: string;
+	login!: string;
 	/**
 	 * This {@link Session}'s current state.
 	 */
-	status: SessionStatus;
+	status!: SessionStatus;
 	/**
 	 * The timestamp from the moment this {@link Session} was created.
 	 */
-	created: Date;
+	created!: Date;
 	/**
 	 * A timestamp for when the {@link RespSession} will expire.
 	 */
-	expiry: Date;
+	expiry!: Date;
 	/**
 	 * The name or path of the last command executed.
 	 */
-	lastCommand: string;
+	lastCommand!: string;
 	/**
 	 * A timestamp from the last command or call to the system.
 	 */
-	lastActivity: Date;
+	lastActivity!: Date;
 	/**
 	 * Indicator that this {@link Session} is using at least one WebSocket connection.
 	 */
 	get active(): boolean { return this.sockets > 0; }
 
-	constructor(
-		handle?: string,
-		company?: ulong,
-		ipAddress?: string,
-		userAgent?: string,
-		sockets?: int,
-		login?: string,
-		status?: SessionStatus,
-		created?: Date | number | datetime,
-		expiry?: Date | number | datetime,
-		lastCommand?: string,
-		lastActivity?: Date | number | datetime,
-	) {
-		this.handle = handle || "";
-		this.companyId = ID(company);
-		this.login = login || "";
-		this.status = SessionStatus[status as SessionStatus] || SessionStatus.notFound;
-		this.userAgent = userAgent || "";
-		this.ipAddress = ipAddress || "";
-		this.created = DATE(created);
-		this.expiry = DATE(expiry);
-		this.lastActivity = DATE(lastActivity);
-		this.lastCommand = lastCommand|| "";
-		this.sockets = ID(sockets) || 0;
+	constructor(json?: JsonObject | nothing) {
+		this.fromJSON(json ?? {});
+	}
+	fromJSON(json: JsonObject, force?: boolean): boolean {
+		this.handle = json["handle"] as string || "";
+		this.companyId = ID(json["company"] as ulong);
+		this.login = json["login"] as email || "";
+		this.status = SessionStatus[json["status"] as SessionStatus] || SessionStatus.notFound;
+		this.userAgent = json["userAgent"] as string || "";
+		this.ipAddress = json["ipAddress"] as ipv4 || "";
+		this.created = DATE(json["created"] as datetime);
+		this.expiry = DATE(json["expires"] as datetime);
+		this.lastActivity = DATE(json["lastActivity"] as datetime);
+		this.lastCommand = json["lastCommand"] as string || "";
+		this.sockets = ID(json["sockets"] as ulong) || 0;
+		return true;
 	}
 
 	/**
@@ -120,18 +93,17 @@ export class Session
 	 */
 	toJSON() {
 		return {
-			"handle": this.handle,
-			"login": this.login,
-			"company": this.companyId,
-
+			"handle": this.handle || "",
+			"company": this.companyId || null,
+			"login": this.login || "",
+			"status": SessionStatus[this.status] || SessionStatus.notFound,
+			"userAgent": this.userAgent || "",
+			"ipAddress": this.ipAddress || "",
 			"created": this.created.toISOString(),
+			"expires": this.expiry.toISOString(),
 			"lastActivity": this.lastActivity.toISOString(),
-			"ipAddress": this.ipAddress,
-			"userAgent": this.userAgent,
-			"lastCommand": this.lastCommand,
-
-			"active": this.active,
-			"sockets": this.sockets,
+			"lastCommand": this.lastCommand || "",
+			"sockets": this.sockets || 0,
 		};
 	}
 
