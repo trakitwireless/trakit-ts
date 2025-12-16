@@ -12,7 +12,7 @@ interface ConvertFunction {
  * @param number
  * @param fromUnit
  * @param toUnit
- **/
+ */
 export function CONVERT_FROM_TO(number: number, fromUnit: string, toUnit: string): number {
 	const converter: ConvertFunction = (CONVERT as any)[fromUnit.toLowerCase() + "To" + toUnit[0].toUpperCase() + toUnit.slice(1).toLowerCase()];
 	if (!converter || converter === CONVERT_FROM_TO) throw new Error("No converter for " + fromUnit + " to " + toUnit);
@@ -265,7 +265,7 @@ export function CONVERT_BETWEEN_MPGUK_AND_L100KM(fuelEconomy: number): number { 
 /**
  * Returns the corollary of either miles per kilowatt hour or kilowatt hour per 100 kilometres.
  * @param electricEconomy
- **/
+ */
 export function CONVERT_BETWEEN_MPKWH_AND_KWH100KM(electricEconomy: number): number { return (100 / (1 / CONVERT_KM_PER_MILE)) / electricEconomy; }
 //#endregion Conversion - Fuel Economy
 

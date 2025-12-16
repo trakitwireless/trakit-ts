@@ -16,7 +16,7 @@ export class FormFieldBoolean
 	extends FormFieldBase {
 	/**
 	 * If no choices are given, then these choices are used.
-	 **/
+	 */
 	static readonly DEFAULT_CHOICES: [string, string, string] = [
 		"true",
 		"false",

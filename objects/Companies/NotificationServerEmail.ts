@@ -4,7 +4,7 @@ import { colour, email, JsonObject, uint, ushort } from "../API/Types";
 
 /**
  * The types of email protocols supported for incoming mail servers.
- **/
+ */
 export enum IncomingEmailServerType {
 	/**
 	 * Internet Message Access Protocol (default)
@@ -17,7 +17,7 @@ export enum IncomingEmailServerType {
 }
 /**
  * The types of email protocols supported for sending messages.
- **/
+ */
 export enum OutgoingEmailServerType {
 	/**
 	 * Simple Mail Transfer Protocol

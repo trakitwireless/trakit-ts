@@ -916,7 +916,7 @@ export function findAnyComplex(
  * @param	before		Initial state of fully computed list of permissions (like returned by returned by {@link authorizer.computeAll}).
  * @param	after		Proposed state of computed permissions (like returned by {@link authorizer.computeAll}).
  * @param	targetCompaniesLabels	{@link Dictionary} of company and list of codified {@link LabelStyle} names available.  If not specified, complex permissions will not be evaluated correctly.
- **/
+ */
 export function findAllEscalations(
 	userCompanyId: ulong,
 	before: Map<ulong, Permission[]>,
@@ -1039,7 +1039,7 @@ export function findEscalations(
  * @param	targetCompanyLabels				List of codified {@link LabelStyle} names available in the {@link Company}.
  * @param	targetBeforeLabels				The labels appled to the ILabelled object before the proposed change.
  * @param	targetAfterLabels				The labels appled to the ILabelled object after the proposed change.
- **/
+ */
 export function findAllLabelEscalations(
 	userCompanyId: ulong,
 	targetCompanyPermissions: Permission[],
@@ -1072,7 +1072,7 @@ export function findAllLabelEscalations(
  * @param	targetCompanyLabels				List of codified {@link LabelStyle} names available in the {@link Company}.
  * @param	targetBeforeLabels				The labels appled to the ILabelled object before the proposed change.
  * @param	targetAfterLabels				The labels appled to the ILabelled object after the proposed change.
- **/
+ */
 export function findLabelEscalation(
 	userCompanyId: ulong,
 	targetCompanyPermissions: Permission[],
@@ -1128,7 +1128,7 @@ export function findLabelEscalation(
  * Used internally by {@link findEscalations} (for labelled objects).
  * @param	before
  * @param	after
- **/
+ */
 function _isEscalatedLevel(before: PermissionLevel | undefined, after: PermissionLevel | undefined) {
 	return PERM_INDEX.indexOf(after as PermissionLevel) > PERM_INDEX.indexOf(before as PermissionLevel);
 }
