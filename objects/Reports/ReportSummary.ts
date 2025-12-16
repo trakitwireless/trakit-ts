@@ -47,8 +47,7 @@ export class ReportSummary
 	 */
 	assetId: ulong;
 	/**
-	 * The asset to which this summary instance belongs.
-	 * {@link Asset.id}
+	 * The {@link Asset} to which this summary instance belongs.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

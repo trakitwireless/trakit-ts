@@ -41,7 +41,6 @@ export class Asset
 
 	/**
 	 * Unique identifier of this asset.
-	 * {@link Asset.id}
 	 */
 	get id(): ulong {
 		return this.#general.id
@@ -58,8 +57,7 @@ export class Asset
 			?? this.#dispatch.companyId;
 	}
 	/**
-	 * The company to which this asset belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this asset belongs.
 	 */
 	get company(): Company {
 		return this.#general.company
@@ -94,8 +92,7 @@ export class Asset
 	get iconId(): ulong { return this.#general.iconId; }
 	set iconId(value: ulong) { this.#general.iconId = value; }
 	/**
-	 * The icon that represents this asset on the map and in lists.
-	 * {@link Icon.id}
+	 * The {@link Icon} that represents this asset on the map and in lists.
 	 */
 	get icon(): Icon { return this.#general.icon; }
 	set icon(value: Icon) { this.#general.icon = value; }
@@ -112,8 +109,7 @@ export class Asset
 	get pictureIds(): ulong[] { return this.#general.pictureIds; }
 	set pictureIds(value: ulong[]) { this.#general.pictureIds = value; }
 	/**
-	 * A list of photos of this thing.
-	 * {@link Picture.id}
+	 * A list of {@link Picture}s of this thing.
 	 */
 	get pictures(): Picture[] { return this.#general.pictures; }
 	set pictures(value: Picture[]) { this.#general.pictures = value; }
@@ -136,8 +132,7 @@ export class Asset
 	get contactId(): ulong { return this.general.contactId; }
 	set contactId(value: ulong) { this.general.contactId = value; }
 	/**
-	 * Contact information for this user.
-	 * {@link Contact.id}
+	 * {@link Contact} information for this user.
 	 */
 	get contact(): Contact { return this.general.contact; }
 	set contact(value: Contact) { this.general.contact = value; }
@@ -222,8 +217,7 @@ export class Asset
 	get relationshipIds(): ulong[] { return this.#advanced.relationshipIds; }
 	set relationshipIds(value: ulong[]) { this.#advanced.relationshipIds = value; }
 	/**
-	 * A list of assets related to this one; like a Person for a Vehicle (driver).
-	 * {@link Asset.id}
+	 * A list of {@link Asset}s related to this one; like a Person for a Vehicle (driver).
 	 */
 	get relationships(): Asset[] { return this.#advanced.relationships; }
 	set relationships(value: Asset[]) { this.#advanced.relationships = value; }

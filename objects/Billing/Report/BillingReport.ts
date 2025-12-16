@@ -31,8 +31,7 @@ export class BillingReport
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this report belongs and is sending the bill.
-	 * {@link Company.id}
+	 * The {@link Company} to which this report belongs and is sending the bill.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -41,8 +40,7 @@ export class BillingReport
 	 */
 	billeeId: ulong = NaN;
 	/**
-	 * Unique identifier of the Company receiving the bill.
-	 * {@link Company.id}
+	 * Unique identifier of the {@link Company} receiving the bill.
 	 */
 	get billee(): Company { return COMPANIES.get(this.billeeId) as Company; }
 	/**

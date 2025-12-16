@@ -27,8 +27,7 @@ export class BehaviourLog
 	 */
 	assetId: ulong = NaN;
 	/**
-	 * The company to which this log message belongs.
-	 * {@link Company.id}
+	 * The {@link Asset} to which this log message belongs.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
@@ -37,8 +36,7 @@ export class BehaviourLog
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this log message belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this log message belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

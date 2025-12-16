@@ -31,8 +31,7 @@ export abstract class DashcamBase
 	 */
 	providerId!: string;
 	/**
-	 * Unique identifier of the provider that sent the data.
-	 * {@link Provider.id}
+	 * The {@link Provider} that sent the data.
 	 */
 	get provider(): Provider { return PROVIDERS.get(this.providerId) as Provider; }
 	/**
@@ -41,8 +40,7 @@ export abstract class DashcamBase
 	 */
 	companyId!: ulong;
 	/**
-	 * Unique identifier of the company of the provider.
-	 * {@link Company.id}
+	 * Unique identifier of the {@link Company} of the provider.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -51,8 +49,7 @@ export abstract class DashcamBase
 	 */
 	assetId!: ulong;
 	/**
-	 * Unique identifier of the asset tied to the provider at the time.
-	 * {@link Asset.id}
+	 * Unique identifier of the {@link Asset} tied to the provider at the time.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

@@ -24,8 +24,7 @@ export class BillingReportBreakdown
 	 */
 	targetId: ulong = NaN;
 	/**
-	 * The target company to which this breakdown instance belongs.
-	 * {@link Company.id}
+	 * The target {@link Company} to which this breakdown instance belongs.
 	 */
 	get target(): Company { return COMPANIES.get(this.targetId) as Company; }
 	/**

@@ -38,8 +38,7 @@ export class BillingReportLicenseBreakdown
 	 */
 	providerId: string = "";
 	/**
-	 * The provider to which this breakdown instance belongs.
-	 * {@link Provider.id}
+	 * The {@link Provider} to which this breakdown instance belongs.
 	 */
 	get provider(): Provider { return PROVIDERS.get(this.providerId) as Provider; }
 	set provider(value: Provider) { this.providerId = value?.id; }

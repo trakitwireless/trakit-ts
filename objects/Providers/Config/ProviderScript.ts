@@ -30,8 +30,7 @@ export class ProviderScript
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this configuration belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this configuration belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

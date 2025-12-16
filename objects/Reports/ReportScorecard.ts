@@ -33,8 +33,7 @@ export class ReportScorecard
 	 */
 	assetId: ulong;
 	/**
-	 * The asset to which this scorecard belongs.
-	 * {@link Asset.id}
+	 * The {@link Asset} to which this scorecard belongs.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

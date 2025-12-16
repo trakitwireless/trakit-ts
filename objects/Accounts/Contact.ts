@@ -38,8 +38,7 @@ export class Contact
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this contact belongs
-	 * {@link Company.id}
+	 * The {@link Company} to which this contact belongs
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -96,11 +95,11 @@ export class Contact
 	 */
 	roles: codified[] = [];
 	/**
-	 * {@link Picture.id}s of this Contact.
+	 * {@link Picture.id}s of this {@link Contact}.
 	 */
 	pictureIds: ulong[] = [];
 	/**
-	 * {@link Picture}s of this Contact.
+	 * {@link Picture}s of this {@link Contact}.
 	 */
 	get pictures(): Picture[] { return MAP_FILTERED_BY_KEYS(PICTURES, this.pictureIds); }
 	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }

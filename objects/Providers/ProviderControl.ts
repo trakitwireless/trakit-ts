@@ -24,8 +24,7 @@ export class ProviderControl
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this device belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this device belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	set company(value: Company) { this.companyId = value?.id ?? NaN; }

@@ -28,7 +28,6 @@ export class MaintenanceInterval
 	assetId: ulong;
 	/**
 	 * The Vehicle or Trailer to which this recurrence detail belongs.
-	 * {@link Asset.id}
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

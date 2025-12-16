@@ -29,7 +29,6 @@ export class FormResult
 	companyId: ulong = NaN;
 	/**
 	 * The {@link Company} to which this form belongs.
-	 * {@link Company.id}
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -48,7 +47,6 @@ export class FormResult
 	assetId: ulong = NaN;
 	/**
 	 * The {@link Asset} to which this form belongs.
-	 * {@link Asset.id}
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

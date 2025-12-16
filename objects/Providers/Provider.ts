@@ -35,7 +35,6 @@ export class Provider
 
 	/**
 	 * Unique identifier of this device.
-	 * {@link Asset.id}
 	 */
 	get id(): string {
 		return this.#general.id
@@ -44,7 +43,6 @@ export class Provider
 	}
 	/**
 	 * The company to which this device belongs.
-	 * {@link Company.id}
 	 */
 	get companyId(): ulong {
 		return this.#general.companyId
@@ -53,7 +51,6 @@ export class Provider
 	}
 	/**
 	 * The company to which this device belongs.
-	 * {@link Company.id}
 	 */
 	get company(): Company {
 		return this.#general.company
@@ -92,8 +89,7 @@ export class Provider
 	get assetId(): ulong { return this.#general.assetId; }
 	set assetId(value: ulong) { this.#general.assetId = value; }
 	/**
-	 * The asset for which this device provides field data.
-	 * {@link Asset.id}
+	 * The {@link Asset} for which this device provides field data.
 	 */
 	get asset(): Asset { return this.#general.asset; }
 	set asset(value: Asset) { this.#general.asset = value; }
@@ -105,9 +101,7 @@ export class Provider
 	get configurationId(): ulong { return this.#general.configurationId; }
 	set configurationId(value: ulong) { this.#general.configurationId = value; }
 	/**
-	 * The provider's current (or pending) configuration profile.
-	 * {@link ProviderConfig.id}
-	 * {@link ProviderConfiguration.id}
+	 * The provider's current (or pending) {@link ProviderConfig} (or {@link ProviderConfiguration}).
 	 */
 	get configuration(): ProviderConfig | ProviderConfiguration { return this.#general.configuration; }
 	set configuration(value: ProviderConfig | ProviderConfiguration) { this.#general.configuration = value; }

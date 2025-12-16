@@ -26,8 +26,7 @@ export class CompanyStyle
 	 */
 	parentId: ulong = NaN;
 	/**
-	 * The unique identifier of this company's parent organization.
-	 * {@link Company.id}
+	 * The unique identifier of this {@link Company}'s parent organization.
 	 */
 	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**

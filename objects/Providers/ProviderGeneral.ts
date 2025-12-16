@@ -28,8 +28,7 @@ export class ProviderGeneral
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this device belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this device belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	set company(value: Company) { this.companyId = value?.id ?? NaN; }
@@ -51,8 +50,7 @@ export class ProviderGeneral
 	 */
 	assetId: ulong = NaN;
 	/**
-	 * The asset for which this device provides field data.
-	 * {@link Asset.id}
+	 * The {@link Asset} for which this device provides field data.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	set asset(value: Asset) { this.assetId = value?.id ?? NaN; }
@@ -63,9 +61,7 @@ export class ProviderGeneral
 	 */
 	configurationId: ulong = NaN;
 	/**
-	 * The provider's current (or pending) configuration profile.
-	 * {@link ProviderConfig.id}
-	 * {@link ProviderConfiguration.id}
+	 * The provider's current (or pending) {@link ProviderConfig} (or {@link ProviderConfiguration}).
 	 */
 	get configuration(): ProviderConfig | ProviderConfiguration {
 		return PROVIDER_CONFIGS.get(this.configurationId) as ProviderConfig

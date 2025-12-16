@@ -30,8 +30,7 @@ export class ProviderRegistration
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which the device will belong.
-	 * {@link Company.id}
+	 * The {@link Company} to which the device will belong.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -63,9 +62,7 @@ export class ProviderRegistration
 	 */
 	configId: ulong = NaN;
 	/**
-	 * The predefined configuration this device will use.
-	 * {@link ProviderConfig.id}
-	 * {@link ProviderConfiguration.id}
+	 * The predefined {@link ProviderConfig} (or {@link ProviderConfiguration}) this device will use.
 	 */
 	get config(): ProviderConfig | ProviderConfiguration {
 		return PROVIDER_CONFIGS.get(this.configId) as ProviderConfig
@@ -98,8 +95,7 @@ export class ProviderRegistration
 	 */
 	assetId: ulong = NaN;
 	/**
-	 * The Asset for which this device will provide data.
-	 * {@link Asset.id}
+	 * The {@link Asset} for which this device will provide data.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

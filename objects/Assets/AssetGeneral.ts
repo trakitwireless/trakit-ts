@@ -34,8 +34,7 @@ export class AssetGeneral
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this asset belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this asset belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -88,8 +87,7 @@ export class AssetGeneral
 	 */
 	contactId: ulong = NaN;
 	/**
-	 * Contact information for this person.
-	 * {@link Contact.id}
+	 * {@link Contact} information for this person.
 	 */
 	get contact(): Contact { return CONTACTS.get(this.contactId) as Contact; }
 	set contact(value: Contact) { this.contactId = value.id; }

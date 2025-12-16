@@ -32,8 +32,7 @@ export class DispatchTask
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this task belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this task belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -42,8 +41,7 @@ export class DispatchTask
 	 */
 	assetId: ulong = NaN;
 	/**
-	 * The asset to which this task belongs.
-	 * {@link Asset.id}
+	 * The {@link Asset} to which this task belongs.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	set asset(value: Asset) { this.assetId = value?.id || NaN; }

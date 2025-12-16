@@ -25,8 +25,7 @@ export class ProviderConfiguration
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this configuration belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this configuration belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -43,8 +42,7 @@ export class ProviderConfiguration
 	 */
 	typeId: ulong = NaN;
 	/**
-	 * The logic type which this configuration implements.
-	 * {@link ProviderConfigurationType.id}
+	 * The {@link ProviderConfigurationType} which this configuration implements.
 	 */
 	get type(): ProviderConfigurationType { return PROVIDER_CONFIGURATION_TYPES.get(this.typeId) as ProviderConfigurationType; }
 	/**

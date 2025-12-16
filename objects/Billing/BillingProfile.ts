@@ -27,8 +27,7 @@ export class BillingProfile
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * Unique identifier of the Company that owns this profile and is sending the bill.
-	 * {@link Company.id}
+	 * The {@link Company} that owns this profile and is sending the bill.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -37,8 +36,7 @@ export class BillingProfile
 	 */
 	targetId: ulong = NaN;
 	/**
-	 * Unique identifier of the Company to which this rule pertains.
-	 * {@link Company.id}
+	 * Unique identifier of the {@link Company} to which this rule pertains.
 	 */
 	get target(): Company { return COMPANIES.get(this.targetId) as Company; }
 	/**
@@ -48,9 +46,8 @@ export class BillingProfile
 	 */
 	billeeId: ulong = NaN;
 	/**
-	 * Unique identifier of the Company receiving the bill.
-	 * Most of the time, this value is the same as the target.
-	 * {@link Company.id}
+	 * Unique identifier of the {@link Company} receiving the bill.
+	 * Most of the time, this value is the same as the {@link target}.
 	 */
 	get billee(): Company { return COMPANIES.get(this.billeeId) as Company; }
 	/**

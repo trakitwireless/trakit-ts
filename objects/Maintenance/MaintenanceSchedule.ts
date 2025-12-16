@@ -33,8 +33,7 @@ export class MaintenanceSchedule
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this schedule belongs
-	 * {@link Company.id}
+	 * The {@link Company} to which this schedule belongs
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

@@ -49,8 +49,7 @@ export class Company
 			?? this.reseller?.id;
 	}
 	/**
-	 * The parent organization for this Company.
-	 * {@link Company.id}
+	 * The parent organization for this {@link Company}.
 	 */
 	get parent(): Company {
 		return this.#general.parent
@@ -60,6 +59,9 @@ export class Company
 			?? this.reseller?.parent;
 	}
 	set parent(value: Company) { this.parentId = value?.id ?? NaN; }
+	/**
+	 * The unique identifier of the parent {@link Company}.
+	 */
 	get parentId(): number { return this.parent?.id ?? NaN; }
 	set parentId(value: number) {
 		this.#general.parentId = value;
@@ -68,7 +70,7 @@ export class Company
 		this.#style.parentId = value;
 		if (this.reseller) this.reseller.parentId = value;
 	}
-
+	
 	/**
 	 *  
 	 */

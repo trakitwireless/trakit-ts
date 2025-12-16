@@ -29,8 +29,7 @@ export class Picture
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this image belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this image belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

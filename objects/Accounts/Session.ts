@@ -22,8 +22,7 @@ export class Session
 	 */
 	companyId!: ulong;
 	/**
-	 * The company to which this contact belongs
-	 * {@link Company.id}
+	 * The {@link Company} to which this contact belongs
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

@@ -30,8 +30,7 @@ export class ReportTotal
 	 */
 	assetId: ulong;
 	/**
-	 * The asset to which this report total belongs.
-	 * {@link Asset.id}
+	 * The {@link Asset} to which this report total belongs.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

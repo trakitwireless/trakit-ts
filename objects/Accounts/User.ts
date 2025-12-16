@@ -48,8 +48,7 @@ export class User
 			?? this.advanced.companyId;
 	}
 	/**
-	 * The company to which this user belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this user belongs.
 	 */
 	get company(): Company { return this.general.company; }
 
@@ -80,14 +79,12 @@ export class User
 	get contactId(): ulong { return this.general.contactId; }
 	set contactId(value: ulong | nothing) { this.general.contactId = value || NaN; }
 	/**
-	 * Contact information for this user.
-	 * {@link Contact.id}
+	 * {@link Contact} information for this user.
 	 */
 	get contact(): Contact { return this.general.contact; }
 	set contact(value: Contact | nothing) { this.general.contactId = value?.id || NaN; }
 	/**
 	 * The user's local timezone.
-	 * {@link Timezone.code}
 	 */
 	get timezone(): Timezone { return this.general.timezone; }
 	set timezone(value: Timezone) { this.general.timezone = value; }
@@ -124,14 +121,13 @@ export class User
 	 */
 	get advanced(): UserAdvanced { return this.#advanced; }
 	/**
-	 * A list of groups to which this user belongs.
+	 * A list of {@link UserGroup}s to which this user belongs.
 	 * {@link UserGroup.id}
 	 */
 	get groupIds(): ulong[] { return this.advanced.groupIds; }
 	set groupIds(value: ulong[]) { this.advanced.groupIds = value; }
 	/**
 	 * A list of groups to which this user belongs.
-	 * {@link UserGroup.id}
 	 */
 	get groups(): UserGroup[] { return this.advanced.groups; }
 	set groups(value: UserGroup[]) { this.advanced.groups = value; }

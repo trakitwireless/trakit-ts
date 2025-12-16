@@ -25,8 +25,7 @@ export class ProviderConfig
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this configuration belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this configuration belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -35,8 +34,7 @@ export class ProviderConfig
 	 */
 	scriptId: ulong = NaN;
 	/**
-	 * The script which this configuration implements.
-	 * {@link ProviderScript.id}
+	 * The {@link ProviderScript} which this configuration implements.
 	 */
 	get script(): ProviderScript { return PROVIDER_SCRIPTS.get(this.scriptId) as ProviderScript; }
 	set script(value: ProviderScript) { this.scriptId = value?.id ?? NaN; }

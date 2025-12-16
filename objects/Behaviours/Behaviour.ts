@@ -26,8 +26,7 @@ export class Behaviour
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this behaviour belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this behaviour belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

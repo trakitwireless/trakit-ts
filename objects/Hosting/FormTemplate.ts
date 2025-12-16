@@ -38,7 +38,6 @@ export class FormTemplate
 	companyId: ulong = NaN;
 	/**
 	 * The {@link Company} to which this form belongs.
-	 * {@link Company.id}
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

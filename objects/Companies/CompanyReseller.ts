@@ -27,13 +27,11 @@ export class CompanyReseller
 	 */
 	parentId: ulong = NaN;
 	/**
-	 * The unique identifier of this company's parent organization.
-	 * {@link Company.id}
+	 * The unique identifier of this {@link Company}'s parent organization.
 	 */
 	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**
-	 * A list of Contacts for company specific things like Technical Support, Billing, etc...
-	 * {@link Contact.id}
+	 * A list of {@link Contact}s for company specific things like Technical Support, Billing, etc...
 	 */
 	contactInfo: Map<string, ulong> = new Map;
 	/**

@@ -24,13 +24,11 @@ export class CompanyDirectory
 	 */
 	parentId: ulong = NaN;
 	/**
-	 * The unique identifier of this company's parent organization.
-	 * {@link Company.id}
+	 * The unique identifier of this {@link Company}'s parent organization.
 	 */
 	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**
-	 * The list of Contacts from this and other companies broken down by contact role.
-	 * {@link Contact.id}
+	 * The list of {@link Contact}s from this and other companies broken down by contact role.
 	 */
 	employees: Map<codified, ulong[]> = new Map;
 

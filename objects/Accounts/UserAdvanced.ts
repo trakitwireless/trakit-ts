@@ -27,8 +27,7 @@ export class UserAdvanced
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this user belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this user belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

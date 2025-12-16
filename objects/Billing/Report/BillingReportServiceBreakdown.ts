@@ -49,8 +49,7 @@ export class BillingReportServiceBreakdown
 	 */
 	assetId: ulong = NaN;
 	/**
-	 * The asset to which this breakdown instance belongs.
-	 * {@link Asset.id}
+	 * The {@link Asset} to which this breakdown instance belongs.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	set asset(value: Asset) { this.assetId = value?.id || NaN; }
@@ -97,8 +96,7 @@ export class BillingReportServiceBreakdown
 	 */
 	providerIds: string[] = [];
 	/**
-	 * The list of devices providing events for this asset.
-	 * {@link Provider.id}
+	 * The list of {@link Provider}s providing events for this asset.
 	 */
 	get providers(): Provider[] { return MAP_FILTERED_BY_KEYS(PROVIDERS, this.providerIds); }
 	set providers(value: Provider[]) { this.providerIds = value?.map(p => p.id) ?? []; }

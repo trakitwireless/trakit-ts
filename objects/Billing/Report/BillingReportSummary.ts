@@ -28,8 +28,7 @@ export class BillingReportSummary
 	 */
 	targetId: ulong = NaN;
 	/**
-	 * The target company to which this summary instance belongs.
-	 * {@link Company.id}
+	 * The target {@link Company} to which this summary instance belongs.
 	 */
 	get target(): Company { return COMPANIES.get(this.targetId) as Company; }
 	/**
@@ -38,8 +37,7 @@ export class BillingReportSummary
 	 */
 	parentId: ulong = NaN;
 	/**
-	 * The target company's parent.
-	 * {@link Company.id}
+	 * The target {@link Company}'s parent.
 	 */
 	get parent(): Company { return COMPANIES.get(this.parentId) as Company; }
 	/**

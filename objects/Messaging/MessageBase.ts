@@ -27,8 +27,7 @@ export abstract class MessageBase
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this memo belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this memo belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -70,8 +69,7 @@ export abstract class MessageBase
 	 */
 	assetId: ulong = NaN;
 	/**
-	 * The asset to which this message relates.
-	 * {@link Asset.id}
+	 * The {@link Asset} to which this message relates.
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**

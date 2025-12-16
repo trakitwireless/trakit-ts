@@ -33,8 +33,7 @@ export class ReportResult
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this report belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this report belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

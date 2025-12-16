@@ -26,8 +26,7 @@ export abstract class BillableBase
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * Unique identifier of the Company that owns this hosting rule.
-	 * {@link Company.id}
+	 * Unique identifier of the {@link Company} that owns this hosting rule.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -36,8 +35,7 @@ export abstract class BillableBase
 	 */
 	profileId: ulong = NaN;
 	/**
-	 * Unique identifier of this rule's billing profile.
-	 * {@link BillingProfile.id}
+	 * Unique identifier of this rule's {@link BillingProfile}.
 	 */
 	get profile(): BillingProfile { return BILLING_PROFILES.get(this.profileId) as BillingProfile; }
 	/**

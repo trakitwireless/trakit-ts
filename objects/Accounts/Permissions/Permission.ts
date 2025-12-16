@@ -1,12 +1,12 @@
-﻿import { codified, JsonObject, nothing, ulong } from '../../API/Types';
-import { PermissionType } from './PermissionType';
-import { PermissionLevel } from './PermissionLevel';
-import { PermissionMethod } from './PermissionMethod';
-import { ISerializable } from '../../API/Interfaces/ISerializable';
+﻿import { ID, JSON_NUMBER } from '../../API/Functions';
 import { IBelongCompany } from '../../API/Interfaces/IBelongCompany';
+import { ISerializable } from '../../API/Interfaces/ISerializable';
+import { codified, JsonObject, nothing, ulong } from '../../API/Types';
 import { Company } from '../../Companies/Company';
 import { COMPANIES } from '../../storage';
-import { ID, IS_NUMBER, JSON_NUMBER } from '../../API/Functions';
+import { PermissionLevel } from './PermissionLevel';
+import { PermissionMethod } from './PermissionMethod';
+import { PermissionType } from './PermissionType';
 
 /**
  * A defined permission for {@link User}s, {@link UserGroup}s, and {@link Machine}s.
@@ -28,12 +28,11 @@ export class Permission
 		);
 	}
 	/**
-	 * The {@link Company} that this permission targets.
-	 * {@link Company.id}
+	 * The {@link Company.id} that this permission targets.
 	 */
 	companyId: ulong;
 	/**
-	 * The company to which this contact belongs
+	 * The {@link Company} that this permission targets.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

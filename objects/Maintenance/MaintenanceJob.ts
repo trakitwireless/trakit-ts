@@ -39,7 +39,6 @@ export class MaintenanceJob
 	assetId: ulong = NaN;
 	/**
 	 * The Vehicle or Trailer to which this job belongs
-	 * {@link Asset.id}
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	/**
@@ -48,8 +47,7 @@ export class MaintenanceJob
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this Vehicle or Trailer belongs
-	 * {@link Company.id}
+	 * The {@link Company} to which this Vehicle or Trailer belongs
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -120,8 +118,7 @@ export class MaintenanceJob
 	 */
 	pictureIds: ulong[] = [];
 	/**
-	 * Images taken while performing the work for reference.
-	 * {@link Picture.id}
+	 * {@link Picture}s taken while performing the work for reference.
 	 */
 	get pictures(): Picture[] { return MAP_FILTERED_BY_KEYS(PICTURES, this.pictureIds); }
 	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }

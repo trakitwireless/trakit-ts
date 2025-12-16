@@ -30,8 +30,7 @@ export class DispatchJob
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this job belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this job belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -43,7 +42,6 @@ export class DispatchJob
 	/**
 	 * The {@link Asset} to which this job belongs.
 	 * This value is null when unassigned.
-	 * {@link Asset.id}
 	 */
 	get asset(): Asset { return ASSETS.get(this.assetId) as Asset; }
 	set asset(value: Asset) { this.assetId = value?.id || NaN; }

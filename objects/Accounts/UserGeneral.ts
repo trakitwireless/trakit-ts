@@ -32,8 +32,7 @@ export class UserGeneral
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this user belongs.
-	 * {@link Company}
+	 * The {@link Company} to which this user belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -54,8 +53,7 @@ export class UserGeneral
 	 */
 	contactId: ulong = NaN;
 	/**
-	 * Contact information for this user.
-	 * {@link Contact.id}
+	 * {@link Contact} information for this user.
 	 */
 	get contact(): Contact { return CONTACTS.get(this.contactId) as Contact; }
 	set contact(value: Contact) { this.contactId = value.id; }

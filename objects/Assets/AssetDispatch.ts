@@ -35,8 +35,7 @@ export class AssetDispatch
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this asset belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this asset belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**

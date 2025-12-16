@@ -35,8 +35,7 @@ export class Place
 	 */
 	companyId: ulong = NaN;
 	/**
-	 * The company to which this POI belongs.
-	 * {@link Company.id}
+	 * The {@link Company} to which this POI belongs.
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
@@ -57,8 +56,7 @@ export class Place
 	 */
 	iconId: ulong = NaN;
 	/**
-	 * The icon used to display this POI in lists and on the map.
-	 * {@link Icon.id}
+	 * The {@link Icon} used to display this POI in lists and on the map.
 	 */
 	get icon(): Icon { return ICONS.get(this.iconId) as Icon; }
 	set icon(value: Icon) { this.iconId = value?.id ?? NaN; }
