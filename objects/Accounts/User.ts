@@ -137,6 +137,10 @@ export class User
 	get permissions(): Permission[] { return this.advanced.permissions; }
 	set permissions(value: Permission[]) { this.advanced.permissions = value; }
 
+#auth
+
+
+
 	override toJSON() {
 		return {
 			...this.general.toJSON(),
