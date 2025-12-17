@@ -5,9 +5,9 @@
  * Last updated on Thu Feb 27 2025 11:59:01 
  * @copyright Trak-iT Wireless Inc. 2025
  */
-import { Contact } from "./Accounts/Contact";
-import { Machine } from "./Accounts/Machine";
-import { NotificationMethod } from "./Accounts/NotificationMethod";
+import { Contact } from "./objects/Accounts/Contact";
+import { Machine } from "./objects/Accounts/Machine";
+import { NotificationMethod } from "./objects/Accounts/NotificationMethod";
 import {
 	compute,
 	computeAll,
@@ -32,34 +32,34 @@ import {
 	hasSimple,
 	IMPLIED_PERMS,
 	LABEL_BASED_PERMS,
-} from "./Accounts/Permissions/Authorizer";
-import { Permission } from "./Accounts/Permissions/Permission";
-import { PermissionEscalation } from "./Accounts/Permissions/PermissionEscalation";
-import { PermissionEscalationState } from "./Accounts/Permissions/PermissionEscalationState";
-import { PermissionEscalationType } from "./Accounts/Permissions/PermissionEscalationType";
-import { PermissionLevel } from "./Accounts/Permissions/PermissionLevel";
-import { PermissionMethod } from "./Accounts/Permissions/PermissionMethod";
-import { PermissionType } from "./Accounts/Permissions/PermissionType";
-import { Session } from "./Accounts/Session";
-import { SessionStatus } from "./Accounts/SessionStatus";
-import { SystemsOfUnits } from "./Accounts/SystemsOfUnits";
-import { User } from "./Accounts/User";
-import { UserAdvanced } from "./Accounts/UserAdvanced";
-import { UserGeneral } from "./Accounts/UserGeneral";
-import { UserGroup } from "./Accounts/UserGroup";
-import { UserNotifications } from "./Accounts/UserNotifications";
-import { ARRAY_EXCEPT } from "./API/Arrays";
-import { Base } from "./API/Base";
-import { BaseComponent } from "./API/BaseComponent";
-import { BaseCompound } from "./API/BaseCompound";
-import { CODIFY, HIGHLIGHT, } from "./API/Codifier";
-import { FREEZE, KEYS } from "./API/Constants";
-import { CONVERT, } from "./API/Conversion";
-import { PASSWORD_DECODE, PASSWORD_ENCODE } from "./API/Encoding";
+} from "./objects/Accounts/Permissions/Authorizer";
+import { Permission } from "./objects/Accounts/Permissions/Permission";
+import { PermissionEscalation } from "./objects/Accounts/Permissions/PermissionEscalation";
+import { PermissionEscalationState } from "./objects/Accounts/Permissions/PermissionEscalationState";
+import { PermissionEscalationType } from "./objects/Accounts/Permissions/PermissionEscalationType";
+import { PermissionLevel } from "./objects/Accounts/Permissions/PermissionLevel";
+import { PermissionMethod } from "./objects/Accounts/Permissions/PermissionMethod";
+import { PermissionType } from "./objects/Accounts/Permissions/PermissionType";
+import { Session } from "./objects/Accounts/Session";
+import { SessionStatus } from "./objects/Accounts/SessionStatus";
+import { SystemsOfUnits } from "./objects/Accounts/SystemsOfUnits";
+import { User } from "./objects/Accounts/User";
+import { UserAdvanced } from "./objects/Accounts/UserAdvanced";
+import { UserGeneral } from "./objects/Accounts/UserGeneral";
+import { UserGroup } from "./objects/Accounts/UserGroup";
+import { UserNotifications } from "./objects/Accounts/UserNotifications";
+import { ARRAY_EXCEPT } from "./objects/API/Arrays";
+import { Base } from "./objects/API/Base";
+import { BaseComponent } from "./objects/API/BaseComponent";
+import { BaseCompound } from "./objects/API/BaseCompound";
+import { CODIFY, HIGHLIGHT, } from "./objects/API/Codifier";
+import { FREEZE, KEYS } from "./objects/API/Constants";
+import { CONVERT, } from "./objects/API/Conversion";
+import { PASSWORD_DECODE, PASSWORD_ENCODE } from "./objects/API/Encoding";
 import {
 	FILESIZE_HELPER,
 	NUMBER_GROUPS,
-} from "./API/Files";
+} from "./objects/API/Files";
 import {
 	CAPITALIZE,
 	CLIP,
@@ -77,7 +77,7 @@ import {
 	PYTHAGORA,
 	ROUND_TO,
 	SINGULARIZE,
-} from "./API/Functions";
+} from "./objects/API/Functions";
 import {
 	EARTH_RADIUS,
 	GEOFENCE_AREA,
@@ -96,11 +96,11 @@ import {
 	ROUTE_ENCODE,
 	ROUTE_LENGTH,
 	ROUTE_PEUCKER,
-} from "./API/Geography/Functions";
-import { LatLng, } from "./API/Geography/LatLng";
-import { LatLngBounds, } from "./API/Geography/LatLngBounds";
-import { Position, } from "./API/Geography/Position";
-import { StreetAddress, } from "./API/Geography/StreetAddress";
+} from "./objects/API/Geography/Functions";
+import { LatLng, } from "./objects/API/Geography/LatLng";
+import { LatLngBounds, } from "./objects/API/Geography/LatLngBounds";
+import { Position, } from "./objects/API/Geography/Position";
+import { StreetAddress, } from "./objects/API/Geography/StreetAddress";
 import {
 	PATH_LENGTH,
 	//POINT_FARTHEST,
@@ -117,23 +117,23 @@ import {
 	RADIAL_BADOIU_CLARKSON,
 	RADIAL_CIRCUMFERENCE,
 	RADIAL_OVERLAP_RECTANGLE,
-} from "./API/Geometry/Functions";
-import { Point, } from "./API/Geometry/Point";
-import { Radial } from "./API/Geometry/Radial";
-import { Rectangle, } from "./API/Geometry/Rectangle";
-import { Size, } from "./API/Geometry/Size";
-import { GUID, } from "./API/Guid";
-import { IDeserializable } from "./API/Interfaces/IDeserializable";
-import { IRequestable } from "./API/Interfaces/IRequestable";
-import { ISerializable } from "./API/Interfaces/ISerializable";
-import { SearchPattern, } from "./API/SearchPattern";
+} from "./objects/API/Geometry/Functions";
+import { Point, } from "./objects/API/Geometry/Point";
+import { Radial } from "./objects/API/Geometry/Radial";
+import { Rectangle, } from "./objects/API/Geometry/Rectangle";
+import { Size, } from "./objects/API/Geometry/Size";
+import { GUID, } from "./objects/API/Guid";
+import { IDeserializable } from "./objects/API/Interfaces/IDeserializable";
+import { IRequestable } from "./objects/API/Interfaces/IRequestable";
+import { ISerializable } from "./objects/API/Interfaces/ISerializable";
+import { SearchPattern, } from "./objects/API/SearchPattern";
 import {
 	TIMESPAN_PARSE,
 	TIMESPAN_STRINGIFY,
 	TimeSpan,
-} from "./API/TimeSpan";
-import { Timezone, } from "./API/Timezone";
-import { TIMEZONE_FIND, } from "./API/Timezones";
+} from "./objects/API/TimeSpan";
+import { Timezone, } from "./objects/API/Timezone";
+import { TIMEZONE_FIND, } from "./objects/API/Timezones";
 import {
 	byte,
 	codified,
@@ -161,142 +161,142 @@ import {
 	ulong,
 	url,
 	ushort
-} from "./API/Types";
-import { Asset } from "./Assets/Asset";
-import { AssetAdvanced } from "./Assets/AssetAdvanced";
-import { AssetAttribute } from "./Assets/AssetAttribute";
-import { AssetDispatch } from "./Assets/AssetDispatch";
-import { AssetGeneral } from "./Assets/AssetGeneral";
-import { AssetPlaceStatus } from "./Assets/AssetPlaceStatus";
-import { AssetPlaceStatusType } from "./Assets/AssetPlaceStatusType";
-import { AssetType } from "./Assets/AssetType";
-import { Behaviour } from "./Behaviours/Behaviour";
-import { BehaviourLog } from "./Behaviours/BehaviourLog";
-import { BehaviourLogType } from "./Behaviours/BehaviourLogType";
-import { BehaviourParameter } from "./Behaviours/BehaviourParameter";
-import { BehaviourParameterType } from "./Behaviours/BehaviourParameterType";
-import { BehaviourScript } from "./Behaviours/BehaviourScript";
-import { BillingCurrency } from "./Billing/BillingCurrency";
-import { BillingCycle } from "./Billing/BillingCycle";
-import { BillingProfile } from "./Billing/BillingProfile";
-import { BillableHostingLicense } from "./Billing/Hosting/BillableHostingLicense";
-import { BillableHostingLicenseType } from "./Billing/Hosting/BillableHostingLicenseType";
-import { BillableHostingRule } from "./Billing/Hosting/BillableHostingRule";
-import { BillableHostingType } from "./Billing/Hosting/BillableHostingType";
-import { BillingReport } from "./Billing/Report/BillingReport";
-import { BillingReportBreakdown } from "./Billing/Report/BillingReportBreakdown";
-import { BillingReportHostingSummary } from "./Billing/Report/BillingReportHostingSummary";
-import { BillingReportLicenseBreakdown } from "./Billing/Report/BillingReportLicenseBreakdown";
-import { BillingReportServiceBreakdown } from "./Billing/Report/BillingReportServiceBreakdown";
-import { BillingReportStatus } from "./Billing/Report/BillingReportStatus";
-import { BillingReportSummary } from "./Billing/Report/BillingReportSummary";
-import { ColourStyle } from "./Companies/ColourStyle";
-import { Company } from "./Companies/Company";
-import { CompanyDirectory } from "./Companies/CompanyDirectory";
-import { CompanyGeneral } from "./Companies/CompanyGeneral";
-import { CompanyPolicy } from "./Companies/CompanyPolicy";
-import { CompanyReseller } from "./Companies/CompanyReseller";
-import { CompanyStyle } from "./Companies/CompanyStyle";
-import { LabelStyle } from "./Companies/LabelStyle";
-import { NotificationServerEmail } from "./Companies/NotificationServerEmail";
-import { NotificationServerSms } from "./Companies/NotificationServerSms";
-import { PasswordExpiryMode } from "./Companies/PasswordExpiryMode";
-import { PasswordPolicy } from "./Companies/PasswordPolicy";
-import { SessionMultiUser } from "./Companies/SessionMultiUser";
-import { SessionPolicy } from "./Companies/SessionPolicy";
-import { DispatchDirection } from "./Dispatch/DispatchDirection";
-import { DispatchJob } from "./Dispatch/DispatchJob";
-import { DispatchJobPriority } from "./Dispatch/DispatchJobPriority";
-import { DispatchStep } from "./Dispatch/DispatchStep";
-import { DispatchStepState } from "./Dispatch/DispatchStepState";
-import { DispatchStepStatus } from "./Dispatch/DispatchStepStatus";
-import { DispatchTask } from "./Dispatch/DispatchTask";
-import { DispatchTaskStatus } from "./Dispatch/DispatchTaskStatus";
-import { Document } from "./Hosting/Document";
-import { FormFieldAttachments } from "./Hosting/Fields/FormFieldAttachments";
-import { FormFieldBase } from "./Hosting/Fields/FormFieldBase";
-import "./Hosting/Fields/FormFieldBase_fromJSON";  // Initializes FormFieldBase.fromJSON
-import { FormFieldBoolean } from "./Hosting/Fields/FormFieldBoolean";
-import { FormFieldChoice } from "./Hosting/Fields/FormFieldChoice";
-import { FormFieldDate } from "./Hosting/Fields/FormFieldDate";
-import { FormFieldNumeric } from "./Hosting/Fields/FormFieldNumeric";
-import { FormFieldNumericSize } from "./Hosting/Fields/FormFieldNumericSize";
-import { FormFieldSignature } from "./Hosting/Fields/FormFieldSignature";
-import { FormFieldText } from "./Hosting/Fields/FormFieldText";
-import { FormFieldTime } from "./Hosting/Fields/FormFieldTime";
-import { FormFieldTimezone } from "./Hosting/Fields/FormFieldTimezone";
-import { FormFieldType } from "./Hosting/FormFieldType";
-import { FormResult } from "./Hosting/FormResult";
-import { FormTemplate } from "./Hosting/FormTemplate";
-import { Dashcam } from "./Images/Dashcam";
-import { DashcamBase } from "./Images/DashcamBase";
-import { DashcamLive } from "./Images/DashcamLive";
-import { DashcamMediaType } from "./Images/DashcamMediaType";
-import { Icon } from "./Images/Icon";
-import { IconGlyph } from "./Images/IconGlyph";
-import { IconLabel } from "./Images/IconLabel";
-import { IconLayer } from "./Images/IconLayer";
-import { Picture } from "./Images/Picture";
-import { MaintenanceInterval } from "./Maintenance/MaintenanceInterval";
-import { MaintenanceJob } from "./Maintenance/MaintenanceJob";
-import { MaintenanceJobStatus } from "./Maintenance/MaintenanceJobStatus";
-import { MaintenanceSchedule } from "./Maintenance/MaintenanceSchedule";
-import { AlertPriority } from "./Messaging/AlertPriority";
-import { AssetAlert } from "./Messaging/AssetAlert";
-import { AssetMessage } from "./Messaging/AssetMessage";
-import { MessageFolder } from "./Messaging/MessageFolder";
-import { MessageStatus } from "./Messaging/MessageStatus";
-import { MessageType } from "./Messaging/MessageType";
-import { Place } from "./Places/Place";
-import { PlaceType } from "./Places/PlaceType";
-import { ProviderConfig } from "./Providers/Config/ProviderConfig";
-import { ProviderRegistration } from "./Providers/Config/ProviderRegistration";
-import { ProviderScript } from "./Providers/Config/ProviderScript";
-import { ProviderScriptBlock } from "./Providers/Config/ProviderScriptBlock";
-import { ProviderScriptParameter } from "./Providers/Config/ProviderScriptParameter";
-import { ProviderScriptParameterType } from "./Providers/Config/ProviderScriptParameterType";
-import { ProviderConfiguration } from "./Providers/Configuration/ProviderConfiguration";
-import { ProviderConfigurationNode } from "./Providers/Configuration/ProviderConfigurationNode";
-import { ProviderConfigurationType } from "./Providers/Configuration/ProviderConfigurationType";
-import { ProviderGeofenceBase } from "./Providers/Configuration/ProviderGeofenceBase";
-import "./Providers/Configuration/ProviderGeofenceBase_fromJSON";
-import { ProviderGeofenceCircular } from "./Providers/Configuration/ProviderGeofenceCircular";
-import { ProviderGeofencePoint } from "./Providers/Configuration/ProviderGeofencePoint";
-import { ProviderGeofencePolygon } from "./Providers/Configuration/ProviderGeofencePolygon";
-import { ProviderGeofenceRectangle } from "./Providers/Configuration/ProviderGeofenceRectangle";
-import { Provider } from "./Providers/Provider";
-import { ProviderAdvanced } from "./Providers/ProviderAdvanced";
-import { ProviderCommand } from "./Providers/ProviderCommand";
-import { ProviderCommandStatus } from "./Providers/ProviderCommandStatus";
-import { ProviderCommandType } from "./Providers/ProviderCommandType";
-import { ProviderControl } from "./Providers/ProviderControl";
-import { ProviderData } from "./Providers/ProviderData";
-import { ProviderGeneral } from "./Providers/ProviderGeneral";
-import { ProviderType } from "./Providers/ProviderType";
-import { ReportBreakdown } from "./Reports/ReportBreakdown";
-import "./Reports/ReportBreakdown_fromJSON";
-import { ReportBreakdownJob } from "./Reports/ReportBreakdownJob";
-import { ReportBreakdownMessage } from "./Reports/ReportBreakdownMessage";
-import { ReportBreakdownTask } from "./Reports/ReportBreakdownTask";
-import { ReportFilterMode } from "./Reports/ReportFilterMode";
-import { ReportNotifications } from "./Reports/ReportNotifications";
-import { ReportOptions } from "./Reports/ReportOptions";
-import { ReportParameter } from "./Reports/ReportParameter";
-import { ReportParameterType } from "./Reports/ReportParameterType";
-import { ReportRecurrence } from "./Reports/ReportRecurrence";
-import { ReportRecurrenceType } from "./Reports/ReportRecurrenceType";
-import { ReportResult } from "./Reports/ReportResult";
-import { ReportResultData } from "./Reports/ReportResultData";
-import { ReportSchedule } from "./Reports/ReportSchedule";
-import { ReportScorecard } from "./Reports/ReportScorecard";
-import { ReportScorecardParameter } from "./Reports/ReportScorecardParameter";
-import { ReportScorecardRules } from "./Reports/ReportScorecardRules";
-import { ReportStatus } from "./Reports/ReportStatus";
-import { ReportSummary } from "./Reports/ReportSummary";
-import { ReportSummaryReason } from "./Reports/ReportSummaryReason";
-import { ReportTemplate } from "./Reports/ReportTemplate";
-import { ReportTotal } from "./Reports/ReportTotal";
-import { ReportType } from "./Reports/ReportType";
+} from "./objects/API/Types";
+import { Asset } from "./objects/Assets/Asset";
+import { AssetAdvanced } from "./objects/Assets/AssetAdvanced";
+import { AssetAttribute } from "./objects/Assets/AssetAttribute";
+import { AssetDispatch } from "./objects/Assets/AssetDispatch";
+import { AssetGeneral } from "./objects/Assets/AssetGeneral";
+import { AssetPlaceStatus } from "./objects/Assets/AssetPlaceStatus";
+import { AssetPlaceStatusType } from "./objects/Assets/AssetPlaceStatusType";
+import { AssetType } from "./objects/Assets/AssetType";
+import { Behaviour } from "./objects/Behaviours/Behaviour";
+import { BehaviourLog } from "./objects/Behaviours/BehaviourLog";
+import { BehaviourLogType } from "./objects/Behaviours/BehaviourLogType";
+import { BehaviourParameter } from "./objects/Behaviours/BehaviourParameter";
+import { BehaviourParameterType } from "./objects/Behaviours/BehaviourParameterType";
+import { BehaviourScript } from "./objects/Behaviours/BehaviourScript";
+import { BillingCurrency } from "./objects/Billing/BillingCurrency";
+import { BillingCycle } from "./objects/Billing/BillingCycle";
+import { BillingProfile } from "./objects/Billing/BillingProfile";
+import { BillableHostingLicense } from "./objects/Billing/Hosting/BillableHostingLicense";
+import { BillableHostingLicenseType } from "./objects/Billing/Hosting/BillableHostingLicenseType";
+import { BillableHostingRule } from "./objects/Billing/Hosting/BillableHostingRule";
+import { BillableHostingType } from "./objects/Billing/Hosting/BillableHostingType";
+import { BillingReport } from "./objects/Billing/Report/BillingReport";
+import { BillingReportBreakdown } from "./objects/Billing/Report/BillingReportBreakdown";
+import { BillingReportHostingSummary } from "./objects/Billing/Report/BillingReportHostingSummary";
+import { BillingReportLicenseBreakdown } from "./objects/Billing/Report/BillingReportLicenseBreakdown";
+import { BillingReportServiceBreakdown } from "./objects/Billing/Report/BillingReportServiceBreakdown";
+import { BillingReportStatus } from "./objects/Billing/Report/BillingReportStatus";
+import { BillingReportSummary } from "./objects/Billing/Report/BillingReportSummary";
+import { ColourStyle } from "./objects/Companies/ColourStyle";
+import { Company } from "./objects/Companies/Company";
+import { CompanyDirectory } from "./objects/Companies/CompanyDirectory";
+import { CompanyGeneral } from "./objects/Companies/CompanyGeneral";
+import { CompanyPolicy } from "./objects/Companies/CompanyPolicy";
+import { CompanyReseller } from "./objects/Companies/CompanyReseller";
+import { CompanyStyle } from "./objects/Companies/CompanyStyle";
+import { LabelStyle } from "./objects/Companies/LabelStyle";
+import { NotificationServerEmail } from "./objects/Companies/NotificationServerEmail";
+import { NotificationServerSms } from "./objects/Companies/NotificationServerSms";
+import { PasswordExpiryMode } from "./objects/Companies/PasswordExpiryMode";
+import { PasswordPolicy } from "./objects/Companies/PasswordPolicy";
+import { SessionMultiUser } from "./objects/Companies/SessionMultiUser";
+import { SessionPolicy } from "./objects/Companies/SessionPolicy";
+import { DispatchDirection } from "./objects/Dispatch/DispatchDirection";
+import { DispatchJob } from "./objects/Dispatch/DispatchJob";
+import { DispatchJobPriority } from "./objects/Dispatch/DispatchJobPriority";
+import { DispatchStep } from "./objects/Dispatch/DispatchStep";
+import { DispatchStepState } from "./objects/Dispatch/DispatchStepState";
+import { DispatchStepStatus } from "./objects/Dispatch/DispatchStepStatus";
+import { DispatchTask } from "./objects/Dispatch/DispatchTask";
+import { DispatchTaskStatus } from "./objects/Dispatch/DispatchTaskStatus";
+import { Document } from "./objects/Hosting/Document";
+import { FormFieldAttachments } from "./objects/Hosting/Fields/FormFieldAttachments";
+import { FormFieldBase } from "./objects/Hosting/Fields/FormFieldBase";
+import "./objects/Hosting/Fields/FormFieldBase_fromJSON";  // Initializes FormFieldBase.fromJSON
+import { FormFieldBoolean } from "./objects/Hosting/Fields/FormFieldBoolean";
+import { FormFieldChoice } from "./objects/Hosting/Fields/FormFieldChoice";
+import { FormFieldDate } from "./objects/Hosting/Fields/FormFieldDate";
+import { FormFieldNumeric } from "./objects/Hosting/Fields/FormFieldNumeric";
+import { FormFieldNumericSize } from "./objects/Hosting/Fields/FormFieldNumericSize";
+import { FormFieldSignature } from "./objects/Hosting/Fields/FormFieldSignature";
+import { FormFieldText } from "./objects/Hosting/Fields/FormFieldText";
+import { FormFieldTime } from "./objects/Hosting/Fields/FormFieldTime";
+import { FormFieldTimezone } from "./objects/Hosting/Fields/FormFieldTimezone";
+import { FormFieldType } from "./objects/Hosting/FormFieldType";
+import { FormResult } from "./objects/Hosting/FormResult";
+import { FormTemplate } from "./objects/Hosting/FormTemplate";
+import { Dashcam } from "./objects/Images/Dashcam";
+import { DashcamBase } from "./objects/Images/DashcamBase";
+import { DashcamLive } from "./objects/Images/DashcamLive";
+import { DashcamMediaType } from "./objects/Images/DashcamMediaType";
+import { Icon } from "./objects/Images/Icon";
+import { IconGlyph } from "./objects/Images/IconGlyph";
+import { IconLabel } from "./objects/Images/IconLabel";
+import { IconLayer } from "./objects/Images/IconLayer";
+import { Picture } from "./objects/Images/Picture";
+import { MaintenanceInterval } from "./objects/Maintenance/MaintenanceInterval";
+import { MaintenanceJob } from "./objects/Maintenance/MaintenanceJob";
+import { MaintenanceJobStatus } from "./objects/Maintenance/MaintenanceJobStatus";
+import { MaintenanceSchedule } from "./objects/Maintenance/MaintenanceSchedule";
+import { AlertPriority } from "./objects/Messaging/AlertPriority";
+import { AssetAlert } from "./objects/Messaging/AssetAlert";
+import { AssetMessage } from "./objects/Messaging/AssetMessage";
+import { MessageFolder } from "./objects/Messaging/MessageFolder";
+import { MessageStatus } from "./objects/Messaging/MessageStatus";
+import { MessageType } from "./objects/Messaging/MessageType";
+import { Place } from "./objects/Places/Place";
+import { PlaceType } from "./objects/Places/PlaceType";
+import { ProviderConfig } from "./objects/Providers/Config/ProviderConfig";
+import { ProviderRegistration } from "./objects/Providers/Config/ProviderRegistration";
+import { ProviderScript } from "./objects/Providers/Config/ProviderScript";
+import { ProviderScriptBlock } from "./objects/Providers/Config/ProviderScriptBlock";
+import { ProviderScriptParameter } from "./objects/Providers/Config/ProviderScriptParameter";
+import { ProviderScriptParameterType } from "./objects/Providers/Config/ProviderScriptParameterType";
+import { ProviderConfiguration } from "./objects/Providers/Configuration/ProviderConfiguration";
+import { ProviderConfigurationNode } from "./objects/Providers/Configuration/ProviderConfigurationNode";
+import { ProviderConfigurationType } from "./objects/Providers/Configuration/ProviderConfigurationType";
+import { ProviderGeofenceBase } from "./objects/Providers/Configuration/ProviderGeofenceBase";
+import "./objects/Providers/Configuration/ProviderGeofenceBase_fromJSON";
+import { ProviderGeofenceCircular } from "./objects/Providers/Configuration/ProviderGeofenceCircular";
+import { ProviderGeofencePoint } from "./objects/Providers/Configuration/ProviderGeofencePoint";
+import { ProviderGeofencePolygon } from "./objects/Providers/Configuration/ProviderGeofencePolygon";
+import { ProviderGeofenceRectangle } from "./objects/Providers/Configuration/ProviderGeofenceRectangle";
+import { Provider } from "./objects/Providers/Provider";
+import { ProviderAdvanced } from "./objects/Providers/ProviderAdvanced";
+import { ProviderCommand } from "./objects/Providers/ProviderCommand";
+import { ProviderCommandStatus } from "./objects/Providers/ProviderCommandStatus";
+import { ProviderCommandType } from "./objects/Providers/ProviderCommandType";
+import { ProviderControl } from "./objects/Providers/ProviderControl";
+import { ProviderData } from "./objects/Providers/ProviderData";
+import { ProviderGeneral } from "./objects/Providers/ProviderGeneral";
+import { ProviderType } from "./objects/Providers/ProviderType";
+import { ReportBreakdown } from "./objects/Reports/ReportBreakdown";
+import "./objects/Reports/ReportBreakdown_fromJSON";
+import { ReportBreakdownJob } from "./objects/Reports/ReportBreakdownJob";
+import { ReportBreakdownMessage } from "./objects/Reports/ReportBreakdownMessage";
+import { ReportBreakdownTask } from "./objects/Reports/ReportBreakdownTask";
+import { ReportFilterMode } from "./objects/Reports/ReportFilterMode";
+import { ReportNotifications } from "./objects/Reports/ReportNotifications";
+import { ReportOptions } from "./objects/Reports/ReportOptions";
+import { ReportParameter } from "./objects/Reports/ReportParameter";
+import { ReportParameterType } from "./objects/Reports/ReportParameterType";
+import { ReportRecurrence } from "./objects/Reports/ReportRecurrence";
+import { ReportRecurrenceType } from "./objects/Reports/ReportRecurrenceType";
+import { ReportResult } from "./objects/Reports/ReportResult";
+import { ReportResultData } from "./objects/Reports/ReportResultData";
+import { ReportSchedule } from "./objects/Reports/ReportSchedule";
+import { ReportScorecard } from "./objects/Reports/ReportScorecard";
+import { ReportScorecardParameter } from "./objects/Reports/ReportScorecardParameter";
+import { ReportScorecardRules } from "./objects/Reports/ReportScorecardRules";
+import { ReportStatus } from "./objects/Reports/ReportStatus";
+import { ReportSummary } from "./objects/Reports/ReportSummary";
+import { ReportSummaryReason } from "./objects/Reports/ReportSummaryReason";
+import { ReportTemplate } from "./objects/Reports/ReportTemplate";
+import { ReportTotal } from "./objects/Reports/ReportTotal";
+import { ReportType } from "./objects/Reports/ReportType";
 import {
 	ASSETS,
 	BEHAVIOUR_LOGS,
@@ -333,7 +333,7 @@ import {
 	REPORT_TEMPLATES,
 	SESSIONS,
 	USERS,
-} from "./storage";
+} from "./objects/storage";
 
 /**
  * Version number for this release.

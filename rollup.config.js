@@ -87,14 +87,14 @@ const obfuscate = {
 
 export default [
 	{
-		input: 'objects/index.ts',
+		input: './index.ts',
 		output: [
 			// {
-			//   file: '_publish/trakit-objects.js',
+			//   file: './_publish/trakit-objects.js',
 			//   format: 'es',
 			// },
 			{
-				file: '_publish/trakit-objects.min.js',
+				file: './_publish/trakit-objects.min.js',
 				format: 'es',
 				plugins: [terser(obfuscate)]
 			}
