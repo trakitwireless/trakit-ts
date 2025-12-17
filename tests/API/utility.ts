@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { CODIFY, HIGHLIGHT } from '../objects/API/Codifier';
-import { FILESIZE_HELPER, NUMBER_GROUPS } from '../objects/API/Files';
-import { CAPITALIZE, DATE, DOUGLASPEUCKER, ID, IS_AN, IS_NOTHING, PLURALIZE, ROUND_TO, SINGULARIZE } from '../objects/API/Functions';
-import { PATH_ORTHOGONAL } from '../objects/API/Geometry/Functions';
-import { Point } from '../objects/API/Geometry/Point';
-import { GUID } from '../objects/API/Guid';
-import { TIMEZONE_FIND, } from '../objects/API/Timezones';
+import { CODIFY, HIGHLIGHT } from '../../objects/API/Codifier';
+import { FILESIZE_HELPER, NUMBER_GROUPS } from '../../objects/API/Files';
+import { CAPITALIZE, DATE, DOUGLASPEUCKER, ID, IS_AN, IS_NOTHING, PLURALIZE, ROUND_TO, SINGULARIZE } from '../../objects/API/Functions';
+import { PATH_ORTHOGONAL } from '../../objects/API/Geometry/Functions';
+import { Point } from '../../objects/API/Geometry/Point';
+import { GUID } from '../../objects/API/Guid';
+import { TIMEZONE_FIND, } from '../../objects/API/Timezones';
 
 describe("capitalize", () => {
 	it("capitalizes first letter", () => {

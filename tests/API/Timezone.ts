@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Timezone } from '../objects/API/Timezone';
+import { Timezone } from '../../objects/API/Timezone';
 
 describe("constructor", function() {
 	it("empty", function() {

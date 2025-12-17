@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON, MAP_TO_JSON_PREDICATE } from "../objects/API/Functions";
+import {
+	JSON_TO_MAP,
+	JSON_TO_MAP_PREDICATE,
+	MAP_TO_JSON,
+	MAP_TO_JSON_PREDICATE
+} from "../../objects/API/Functions";
 
 describe("serialization", () => {
 	const sampleMap = new Map([

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CONVERT } from '../objects/API/Conversion';
+import { CONVERT } from '../../objects/API/Conversion';
 
 describe("convert", () => {
 	// temperature

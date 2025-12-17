@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { TimeSpan, TIMESPAN_PARSE, TIMESPAN_STRINGIFY } from '../objects/API/TimeSpan';
+import { TimeSpan, TIMESPAN_PARSE, TIMESPAN_STRINGIFY } from '../../objects/API/TimeSpan';
 
 describe("TimeSpan", () => {
 	describe("ctor", () => {

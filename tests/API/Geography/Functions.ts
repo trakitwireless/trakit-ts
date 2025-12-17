@@ -5,10 +5,10 @@ import {
 	LATLNG_DISTANCE,
 	LONGITUDE_NORMALIZED,
 	EARTH_RADIUS,
-} from '../objects/API/Geography/Functions';
-import { LatLng } from '../objects/API/Geography/LatLng';
-import { LatLngBounds } from '../objects/API/Geography/LatLngBounds';
-import { Position } from '../objects/API/Geography/Position';
+} from '../../../objects/API/Geography/Functions';
+import { LatLng } from '../../../objects/API/Geography/LatLng';
+import { LatLngBounds } from '../../../objects/API/Geography/LatLngBounds';
+import { Position } from '../../../objects/API/Geography/Position';
 
 describe("LatLng", () => {
 	it("constructor", () => {
