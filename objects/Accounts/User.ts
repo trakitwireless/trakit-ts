@@ -11,9 +11,12 @@ import { Contact } from "./Contact";
 import { Permission } from "./Permissions/Permission";
 import { SystemsOfUnits } from "./SystemsOfUnits";
 import { UserAdvanced } from "./UserAdvanced";
+import { UserAuthentication } from "./UserAuthentication";
 import { UserGeneral } from "./UserGeneral";
 import { UserGroup } from "./UserGroup";
+import { UserMFA } from "./UserMFA";
 import { UserNotifications } from "./UserNotifications";
+import { UserSSO } from "./UserSSO";
 
 /**
  * A grouping of credentials, information, preferences, and permissions for a person or machine to login to the system and access its resources.
@@ -28,6 +31,7 @@ export class User
 		return [
 			this.#general,
 			this.#advanced,
+			this.#authentication,
 		];
 	}
 
@@ -57,11 +61,11 @@ export class User
 	 *  
 	 */
 	get general(): UserGeneral { return this.#general; }
-	/**
-	 * Indicated whether the credentials have expired according to the company's policy.
-	 */
-	get passwordExpired(): boolean { return this.general.passwordExpired; }
-	set passwordExpired(value: boolean) { this.general.passwordExpired = value; }
+	///**
+	// * Indicated whether the credentials have expired according to the company's policy.
+	// */
+	//get passwordExpired(): boolean { return this.general.passwordExpired; }
+	//set passwordExpired(value: boolean) { this.general.passwordExpired = value; }
 	/**
 	 * Indicates whether system access is disabled.
 	 */
@@ -137,22 +141,41 @@ export class User
 	get permissions(): Permission[] { return this.advanced.permissions; }
 	set permissions(value: Permission[]) { this.advanced.permissions = value; }
 
-#auth
-
-
+	#authentication: UserAuthentication = new UserAuthentication;
+	/**
+	 *  
+	 */
+	get authentication(): UserAuthentication { return this.#authentication; }
+	/**
+	 * Indicated whether the credentials have expired according to the company's policy.
+	 */
+	get passwordExpired(): boolean { return this.#authentication.passwordExpired; }
+	set passwordExpired(value: boolean) { this.#authentication.passwordExpired = value; }
+	/**
+	 * Multi-factor authentication details for the user.
+	 */
+	get mfa(): UserMFA[] { return this.#authentication.mfa; }
+	set mfa(value: UserMFA[]) { this.#authentication.mfa = value; }
+	/**
+	 * Single Sign-On details for the user.
+	 */
+	get sso(): UserSSO { return this.#authentication.sso; }
+	set sso(value: UserSSO) { this.#authentication.sso = value; }
 
 	override toJSON() {
 		return {
-			...this.general.toJSON(),
-			...this.advanced.toJSON(),
+			...this.#general.toJSON(),
+			...this.#advanced.toJSON(),
+			...this.#authentication.toJSON(),
 			"v": [...this.v],
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const version = json?.["v"] as int[] || [],
-			general = this.general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
-			advanced = this.advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force);
-		return general || advanced;
+			general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
+			advanced = this.#advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
+			auth = this.#authentication.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
+		return general || advanced || auth;
 	}
 	
 	// IRequestable
