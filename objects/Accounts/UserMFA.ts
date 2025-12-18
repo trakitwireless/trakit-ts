@@ -1,18 +1,14 @@
-﻿import { ID, JSON_NUMBER } from '../API/Functions';
-import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
+﻿import { DATE, JSON_DATE } from '../API/Functions';
 import { ISerializable } from '../API/Interfaces/ISerializable';
-import { codified, JsonObject, nothing, ulong } from '../API/Types';
-import { Company } from '../Companies/Company';
-import { COMPANIES } from '../storage';
-import { PermissionLevel } from './Permissions/PermissionLevel';
-import { PermissionMethod } from './Permissions/PermissionMethod';
-import { PermissionType } from './Permissions/PermissionType';
+import { datetime, JsonObject, nothing } from '../API/Types';
+import { MultiFactorType } from './MultiFactorType';
+import { User } from './User';
 
 /**
- * A defined permission for {@link User}s, {@link UserGroup}s, and {@link Machine}s.
+ * Multi-factor authentication details for a {@link User}.
  */
 export class UserMFA
-	implements IBelongCompany, ISerializable {
+	implements ISerializable {
 	/**
 	 * 
 	 * @param json 
@@ -20,70 +16,64 @@ export class UserMFA
 	 */
 	static fromJSON(json: JsonObject) {
 		return new UserMFA(
-			json["company"] as ulong,
-			json["kind"] as PermissionType,
-			json["level"] as PermissionLevel,
-			json["method"] as PermissionMethod,
-			json["labels"] as string[],
+			json["enabled"] as boolean,
+			json["kind"] as MultiFactorType,
+			json["address"] as string,
+			json["verified"] as boolean,
+			json["setupDate"] as datetime,
+			json["lastAuthentication"] as datetime,
 		);
 	}
+
 	/**
-	 * The {@link Company.id} that this permission targets.
+	 * Indicates whether MFA is enabled for the user.
 	 */
-	companyId: ulong;
+	enabled: boolean;
 	/**
-	 * The {@link Company} that this permission targets.
+	 * The type of MFA configured for the user.
 	 */
-	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
+	kind: MultiFactorType;
 	/**
-	 * The type of permission.
+	 *	Phone number or email address associated with the MFA method.
 	 */
-	kind: PermissionType;
+	address: string;
 	/**
-	 * The kind of permission.
-	 * @deprecated Use {@link kind} instead.
+	 * Indicates if MFA setup has been completed and verified.
 	 */
-	get type(): string { return this.kind.toString(); }
-	set type(value: string) {
-		const kind = (PermissionType as any)[value];
-		if (!kind) throw new Error("Unknown PermissionType");
-		this.kind = kind;
-	}
-		
+	verified: boolean;
 	/**
-	 * The level of access being defined.
+	 * The date when MFA was set up.
 	 */
-	level: PermissionLevel;
+	setupDate: Date;
 	/**
-	 * The way the access is used.
+	 * The last time the user authenticated using MFA.
 	 */
-	method: PermissionMethod;
-	/**
-	 * Codified names of {@link LabelStyle}s.  If list is empty, this permission applies for all labels.
-	 */
-	labels: codified[];
+	lastAuthentication: Date;
 
 	constructor(
-		company?: ulong | nothing,
-		kind?: PermissionType | nothing,
-		level: PermissionLevel | nothing = PermissionLevel.read,
-		method: PermissionMethod | nothing = PermissionMethod.grant,
-		labels?: codified[] | nothing,
+		enabled?: boolean | nothing,
+		kind?: MultiFactorType | nothing,
+		address?: string | nothing,
+		verified?: boolean | nothing,
+		setupDate?: Date | datetime | nothing,
+		lastAuthentication?: Date | datetime | nothing,
 	) {
-		this.companyId = ID(company);
-		this.kind = PermissionType[kind as PermissionType];
-		this.level = PermissionLevel[level as PermissionLevel] || PermissionLevel.read;
-		this.method = PermissionMethod[method as PermissionMethod] || PermissionMethod.grant;
-		this.labels = labels || [];
+		this.enabled = !!enabled;
+		this.kind = MultiFactorType[kind as MultiFactorType];
+		this.address = address || "";
+		this.verified = !!verified;
+		this.setupDate = DATE(setupDate);
+		this.lastAuthentication = DATE(lastAuthentication);
 	}
 
 	toJSON() {
 		return {
-			"company": JSON_NUMBER(this.companyId),
-			"kind": PermissionType[this.kind] || null,
-			"level": PermissionLevel[this.level] || null,
-			"method": PermissionMethod[this.method] || null,
-			"labels": [...this.labels],
+			"enabled": !!this.enabled,
+			"kind": MultiFactorType[this.kind] || null,
+			"address": this.address ?? "",
+			"verified": !!this.verified,
+			"setupDate": JSON_DATE(this.setupDate),
+			"lastAuthentication": JSON_DATE(this.lastAuthentication),
 		};
 	}
 }

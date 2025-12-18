@@ -1,19 +1,13 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { CODIFY } from "../API/Codifier";
-import { ID, JSON_TO_MAP_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from "../API/Functions";
+import { ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { IEnabled } from "../API/Interfaces/IEnabled";
-import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
-import { Timezone } from "../API/Timezone";
-import { TIMEZONE_FIND } from "../API/Timezones";
-import { JsonObject, codified, datetimetemplate, email, int, nothing, ulong } from "../API/Types";
+import { JsonObject, email, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES, CONTACTS } from "../storage";
-import { Contact } from "./Contact";
-import { SystemsOfUnits } from "./SystemsOfUnits";
+import { COMPANIES } from "../storage";
 import { User } from "./User";
-import { UserNotifications } from "./UserNotifications";
+import { UserMFA } from "./UserMFA";
+import { UserSSO } from "./UserSSO";
 
 /**
  * Credentials, information, and preferences about a user.
