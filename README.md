@@ -15,7 +15,7 @@ npm i rollup rollup-plugin-typescript2 @rollup/plugin-terser
 ```
 After those have been installed, build the project normally.
 ```
-rollup --config objects/rollup.config.js
+rollup --config rollup.config.js
 ```
 
 ## Questions and Feedback

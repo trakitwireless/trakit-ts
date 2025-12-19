@@ -1,7 +1,7 @@
 {
   "name": "@trakit/objects",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "main": "./_publish/trakit-objects.min.js",
   "types": "./_publish/index.d.ts",
   "scripts": {
@@ -16,6 +16,11 @@
   ],
   "author": "Alex Lein",
   "license": "AGPL-3.0-only",
+  "files": [
+	"_publish/",
+	"LICENSE.md",
+	"README.md"
+  ],
   "bugs": {
     "url": "https://github.com/trakitwireless/trakit-ts-objects/issues"
   },
@@ -25,6 +30,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^4.35.0",
     "rollup-plugin-typescript2": "^0.36.0",
+    "tsx": "^4.21.0",
     "vitest": "^4.0.7"
   }
 }

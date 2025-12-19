@@ -2,7 +2,7 @@
  * Trak-iT API Object Model.
  * {@link https://github.com/trakitwireless/trakit-ts-objects|Object definition.}
  * All of the Trak-iT APIs use the same object definitions. Use this package in your TypeScript or JavaScript project.
- * Last updated on Thu Feb 27 2025 11:59:01 
+ * Last updated on Friday December 19, 2025
  * @copyright Trak-iT Wireless Inc. 2025
  */
 import { Contact } from "./objects/Accounts/Contact";
@@ -338,7 +338,7 @@ import {
 /**
  * Version number for this release.
  */
-export const version = 5.04;
+export const version = 5.06;
 
 /**
  * The names of all main object types in the Trak-iT Object Model.
@@ -358,6 +358,7 @@ export type SyncName =
 	| "User"
 	| "UserGeneral"
 	| "UserAdvanced"
+	//| "UserAuthentication"
 	| "UserGroup"
 	// Assets
 	| "Asset"

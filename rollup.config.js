@@ -101,11 +101,11 @@ export default [
 		],
 		plugins: [typescript({
 			tsconfig: './tsconfig.json',
-			tsconfigOverride: {
-				compilerOptions: {
-					declaration: false,
-				}
-			}
+			//tsconfigOverride: {
+			//	compilerOptions: {
+			//		declaration: false,
+			//	}
+			//}
 		})],
 	}
 ];
