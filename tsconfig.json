@@ -16,6 +16,6 @@
 		"strictNullChecks": true,
 	},
 	"include": [
-		"./index.ts"
+		"./objects/index.ts"
 	]
 }
