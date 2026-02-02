@@ -1,9 +1,9 @@
 {
   "name": "@trakit/objects",
   "type": "module",
-  "version": "0.0.8",
-  "main": "./_publish/trakit-objects.min.js",
-  "types": "./_publish/index.d.ts",
+  "version": "0.0.9",
+  "main": "./trakit-objects.min.js",
+  "types": "./index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,19 +11,19 @@
     "type": "git",
     "url": "git+https://github.com/trakitwireless/trakit-ts-objects.git"
   },
+  "files": [
+	"/*.js",
+	"/*/*.js",
+	"/*.d.ts",
+	"/*/*.d.ts",
+	"LICENSE.md",
+	"README.md"
+  ],
   "keywords": [
     "trakit"
   ],
   "author": "Alex Lein",
   "license": "AGPL-3.0-only",
-  "files": [
-	"*.js",
-	"*/*.js",
-	"*.d.ts",
-	"*/*.d.ts",
-	"LICENSE.md",
-	"README.md"
-  ],
   "bugs": {
     "url": "https://github.com/trakitwireless/trakit-ts-objects/issues"
   },
