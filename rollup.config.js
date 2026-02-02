@@ -1,5 +1,6 @@
 import typescript from 'rollup-plugin-typescript2';
 import terser from '@rollup/plugin-terser';
+//import json from '@rollup/plugin-json';
 
 const obfuscate = {
 	ecma: 2020,
@@ -84,6 +85,9 @@ const obfuscate = {
 	//	semicolons: false,
 	//},
 };
+const jsonOptions = {
+	preferConst: true,
+};
 
 export default [
 	{
@@ -96,16 +100,22 @@ export default [
 			{
 				file: './_publish/trakit-objects.min.js',
 				format: 'es',
-				plugins: [terser(obfuscate)]
+				plugins: [
+					//json(jsonOptions),
+					terser(obfuscate),
+				]
 			}
 		],
-		plugins: [typescript({
-			tsconfig: './tsconfig.json',
-			//tsconfigOverride: {
-			//	compilerOptions: {
-			//		declaration: false,
-			//	}
-			//}
-		})],
+		plugins: [
+			//json(jsonOptions),
+			typescript({
+				tsconfig: './tsconfig.json',
+				//tsconfigOverride: {
+				//	compilerOptions: {
+				//		declaration: false,
+				//	}
+				//}
+			}),
+		],
 	}
 ];
