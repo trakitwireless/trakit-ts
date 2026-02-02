@@ -3,7 +3,11 @@
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleResolution": "bundler",
-		"declaration": true, // Optionally generate types
+		"declaration": true,
+		"declarationMap": true,
+		"declarationDir": "./_publish",
+		"emitDeclarationOnly": false,
+		"rootDir": "./objects",
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"isolatedModules": true,
@@ -14,6 +18,8 @@
 		"noImplicitOverride": true,
 		"noImplicitUseStrict": false,
 		"strictNullChecks": true,
+		"skipLibCheck": true,
+		"paths": {},
 	},
 	"include": [
 		"./objects/index.ts"

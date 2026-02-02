@@ -1,7 +1,7 @@
 {
   "name": "@trakit/objects",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "main": "./_publish/trakit-objects.min.js",
   "types": "./_publish/index.d.ts",
   "scripts": {
@@ -17,7 +17,10 @@
   "author": "Alex Lein",
   "license": "AGPL-3.0-only",
   "files": [
-	"_publish/",
+	"*.js",
+	"*/*.js",
+	"*.d.ts",
+	"*/*.d.ts",
 	"LICENSE.md",
 	"README.md"
   ],

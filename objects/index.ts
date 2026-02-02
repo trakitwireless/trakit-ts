@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Trak-iT API Object Model.
  * {@link https://github.com/trakitwireless/trakit-ts-objects|Object definition.}
  * All of the Trak-iT APIs use the same object definitions. Use this package in your TypeScript or JavaScript project.
@@ -338,7 +338,7 @@ import {
 /**
  * Version number for this release.
  */
-export const version = 5.06;
+export const version = '0.0.7';
 
 /**
  * The names of all main object types in the Trak-iT Object Model.
