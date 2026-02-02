@@ -1,7 +1,7 @@
 {
   "name": "@trakit/objects",
   "type": "module",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "./trakit-objects.min.js",
   "types": "./index.d.ts",
   "scripts": {
@@ -12,12 +12,10 @@
     "url": "git+https://github.com/trakitwireless/trakit-ts-objects.git"
   },
   "files": [
-	"/*.js",
-	"/*/*.js",
-	"/*.d.ts",
-	"/*/*.d.ts",
-	"LICENSE.md",
-	"README.md"
+	"LICENSE",
+	"README.md",
+	"**/*.js",
+	"**/*.d.ts"
   ],
   "keywords": [
     "trakit"

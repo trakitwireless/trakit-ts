@@ -11,7 +11,7 @@ if ((Test-Path $packageFile) -and (Test-Path $indexFile)) {
 	$pkg = Get-Content $packageFile | ConvertFrom-Json
 	$ver = $pkg.version
 	$indexContent = Get-Content $indexFile
-	$newIndexContent = $indexContent -replace 'export const version = ".*";', "export const version = '$ver';"
+	$newIndexContent = $indexContent -replace 'export const version = [^;]+;', "export const version = '$ver';"
 	Set-Content $indexFile $newIndexContent
 }
 
@@ -21,7 +21,7 @@ npx rollup --config rollup.config.js
 # Copy package.json, README.md, LICENSE if they exist
 Copy-Item "$packageFile" "$publishDir\package.json" -Force
 if (Test-Path "$root\README.md") { Copy-Item "$root\README.md" "$publishDir\README.md" -Force }
-if (Test-Path "$root\LICENSE.md") { Copy-Item "$root\LICENSE.md" "$publishDir\LICENSE.md" -Force }
+if (Test-Path "$root\LICENSE") { Copy-Item "$root\LICENSE" "$publishDir\LICENSE" -Force }
 
 # Change to _publish directory and publish
 Push-Location $publishDir
