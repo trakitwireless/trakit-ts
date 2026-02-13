@@ -1,7 +1,7 @@
 {
   "name": "@trakit/objects",
   "type": "module",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "./trakit-objects.min.js",
   "types": "./index.d.ts",
   "scripts": {
