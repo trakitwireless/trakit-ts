@@ -123,9 +123,25 @@ import { Radial } from "./API/Geometry/Radial";
 import { Rectangle, } from "./API/Geometry/Rectangle";
 import { Size, } from "./API/Geometry/Size";
 import { GUID, } from "./API/Guid";
+import { IAmCompany } from "./API/Interfaces/IAmCompany";
+import { IBelongAsset } from "./API/Interfaces/IBelongAsset";
+import { IBelongBillingProfile } from "./API/Interfaces/IBelongBillingProfile";
+import { IBelongCompany } from "./API/Interfaces/IBelongCompany";
 import { IDeserializable } from "./API/Interfaces/IDeserializable";
+import { IEnabled } from "./API/Interfaces/IEnabled";
+import { IFileSize } from "./API/Interfaces/IFileSize";
+import { IGlobal } from "./API/Interfaces/IGlobal";
+import { IHavePermissions } from "./API/Interfaces/IHavePermissions";
+import { IHavePreferences } from "./API/Interfaces/IHavePreferences";
+import { IIconic } from "./API/Interfaces/IIconic";
+import { IIdUlong } from "./API/Interfaces/IIdUlong";
+import { ILabelled } from "./API/Interfaces/ILabelled";
+import { INamed } from "./API/Interfaces/INamed";
+import { IPictured } from "./API/Interfaces/IPictured";
 import { IRequestable } from "./API/Interfaces/IRequestable";
 import { ISerializable } from "./API/Interfaces/ISerializable";
+import { ISuspendable } from "./API/Interfaces/ISuspendable";
+import { IVisual } from "./API/Interfaces/IVisual";
 import { SearchPattern, } from "./API/SearchPattern";
 import {
 	TIMESPAN_PARSE,
@@ -580,9 +596,27 @@ export type {
 	timespan,
 	url,
 	//#endregion strings
-	IRequestable,
+	IAmCompany,
+	//IAuditable,
+	//IAuditableUpdated,
+	IBelongBillingProfile,
+	IBelongCompany,
+	IBelongAsset,
 	IDeserializable,
+	IEnabled,
+	IFileSize,
+	IGlobal,
+	IHavePermissions,
+	IHavePreferences,
+	IIconic,
+	IIdUlong,
+	ILabelled,
+	INamed,
+	IPictured,
+	IRequestable,
 	ISerializable,
+	ISuspendable,
+	IVisual,
 };
 
 /**
