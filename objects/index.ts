@@ -354,7 +354,7 @@ import {
 /**
  * Version number for this release.
  */
-export const version = '0.0.10';
+export const version = '0.0.11';
 
 /**
  * The names of all main object types in the Trak-iT Object Model.

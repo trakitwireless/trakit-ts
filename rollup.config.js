@@ -100,6 +100,7 @@ export default [
 			{
 				file: './_publish/trakit-objects.min.js',
 				format: 'es',
+				exports: 'named',
 				plugins: [
 					//json(jsonOptions),
 					terser(obfuscate),
