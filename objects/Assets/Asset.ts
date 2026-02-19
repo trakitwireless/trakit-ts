@@ -1,7 +1,6 @@
 import { Contact } from "../Accounts/Contact";
 import { BaseComponent } from "../API/BaseComponent";
 import { BaseCompound } from "../API/BaseCompound";
-import { IS_AN } from "../API/Functions";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
@@ -33,9 +32,9 @@ export class Asset
 	 */
 	get pieces(): BaseComponent[] {
 		return [
-			this._general,
-			this._advanced,
-			this._dispatch,
+			this.#general,
+			this.#advanced,
+			this.#dispatch,
 		];
 	}
 
@@ -43,86 +42,86 @@ export class Asset
 	 * Unique identifier of this asset.
 	 */
 	get id(): ulong {
-		return this._general.id
-			?? this._advanced.id
-			?? this._dispatch.id;
+		return this.#general.id
+			?? this.#advanced.id
+			?? this.#dispatch.id;
 	}
 	/**
 	 * The company to which this asset belongs.
 	 * {@link Company.id}
 	 */
 	get companyId(): ulong {
-		return this._general.companyId
-			?? this._advanced.companyId
-			?? this._dispatch.companyId;
+		return this.#general.companyId
+			?? this.#advanced.companyId
+			?? this.#dispatch.companyId;
 	}
 	/**
 	 * The {@link Company} to which this asset belongs.
 	 */
 	get company(): Company {
-		return this._general.company
-			?? this._advanced.company
-			?? this._dispatch.company;
+		return this.#general.company
+			?? this.#advanced.company
+			?? this.#dispatch.company;
 	}
 	/**
 	 * Type of asset.
 	 */
-	get kind(): AssetType { return this._general.kind; }
+	get kind(): AssetType { return this.#general.kind; }
 
 	//#region AssetGeneral
-	protected _general: AssetGeneral = new AssetGeneral;
+	#general: AssetGeneral;
 	/**
 	 *  
 	 */
-	get general(): AssetGeneral { return this._general; }
+	get general(): AssetGeneral { return this.#general; }
 	/**
 	 * This thing's name.
 	 */
-	get name(): string { return this._general.name; }
-	set name(value: string) { this._general.name = value; }
+	get name(): string { return this.#general.name; }
+	set name(value: string) { this.#general.name = value; }
 	/**
 	 * Notes about it.
 	 */
-	get notes(): string { return this._general.notes; }
-	set notes(value: string) { this._general.notes = value; }
+	get notes(): string { return this.#general.notes; }
+	set notes(value: string) { this.#general.notes = value; }
 	/**
 	 * The icon that represents this asset on the map and in lists.
 	 * {@link Icon.id}
 	 */
-	get iconId(): ulong { return this._general.iconId; }
-	set iconId(value: ulong) { this._general.iconId = value; }
+	get iconId(): ulong { return this.#general.iconId; }
+	set iconId(value: ulong) { this.#general.iconId = value; }
 	/**
 	 * The {@link Icon} that represents this asset on the map and in lists.
 	 */
-	get icon(): Icon { return this._general.icon; }
-	set icon(value: Icon) { this._general.icon = value; }
+	get icon(): Icon { return this.#general.icon; }
+	set icon(value: Icon) { this.#general.icon = value; }
 	/**
 	 * Codified label names.
 	 * {@link LabelStyle.code}
 	 */
-	get labels(): codified[] { return this._general.labels; }
-	set labels(value: codified[]) { this._general.labels = value; }
+	get labels(): codified[] { return this.#general.labels; }
+	set labels(value: codified[]) { this.#general.labels = value; }
 	/**
 	 * A list of photos of this thing.
 	 * {@link Picture.id}
 	 */
-	get pictureIds(): ulong[] { return this._general.pictureIds; }
-	set pictureIds(value: ulong[]) { this._general.pictureIds = value; }
+	get pictureIds(): ulong[] { return this.#general.pictureIds; }
+	set pictureIds(value: ulong[]) { this.#general.pictureIds = value; }
 	/**
 	 * A list of {@link Picture}s of this thing.
 	 */
-	get pictures(): Picture[] { return this._general.pictures; }
-	set pictures(value: Picture[]) { this._general.pictures = value; }
+	get pictures(): Picture[] { return this.#general.pictures; }
+	set pictures(value: Picture[]) { this.#general.pictures = value; }
 	/**
 	 * The fall-back address which is used to send Messages if the asset is a Person and has no Contact phone or email.
 	 */
-	get messagingAddress(): string { return this._general.messagingAddress; }
-	set messagingAddress(value: string) { this._general.messagingAddress = value; }
+	get messagingAddress(): string { return this.#general.messagingAddress; }
+	set messagingAddress(value: string) { this.#general.messagingAddress = value; }
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
 	 */
-	get references(): Map<string, string> { return this._general.references; }
-	set references(value: Map<string, string>) { this._general.references = value; }
+	get references(): Map<string, string> { return this.#general.references; }
+	set references(value: Map<string, string>) { this.#general.references = value; }
 	//#endregion AssetGeneral
 	//#region PersonGeneral
 	/**
@@ -177,56 +176,56 @@ export class Asset
 	//#endregion TrailerGeneral
 
 	//#region AssetAdvanced
-	protected _advanced: AssetAdvanced = new AssetAdvanced;
+	#advanced: AssetAdvanced;
 	/**
 	 *  
 	 */
-	get advanced(): AssetAdvanced { return this._advanced; }
+	get advanced(): AssetAdvanced { return this.#advanced; }
 	/**
 	 * The things GPS coordinates including speed, bearing, and street information.
 	 */
-	get position(): Position | null { return this._advanced.position; }
-	set position(value: Position | null) { this._advanced.position = value; }
+	get position(): Position | null { return this.#advanced.position; }
+	set position(value: Position | null) { this.#advanced.position = value; }
 	/**
 	 * The cumulative distance travelled in kilometres.
 	 */
-	get odometer(): double { return this._advanced.odometer; }
-	set odometer(value: double) { this._advanced.odometer = value; }
+	get odometer(): double { return this.#advanced.odometer; }
+	set odometer(value: double) { this.#advanced.odometer = value; }
 	/**
 	 * The codified status tag names.
 	 */
-	get tags(): codified[] { return this._advanced.tags; }
-	set tags(value: codified[]) { this._advanced.tags = value; }
+	get tags(): codified[] { return this.#advanced.tags; }
+	set tags(value: codified[]) { this.#advanced.tags = value; }
 	/**
 	 * A list of attributes given to this asset by the connection device such as wiring state, VBus, etc.
 	 */
-	get attributes(): Map<codified, AssetAttribute> { return this._advanced.attributes; }
-	set attributes(value: Map<codified, AssetAttribute>) { this._advanced.attributes = value; }
+	get attributes(): Map<codified, AssetAttribute> { return this.#advanced.attributes; }
+	set attributes(value: Map<codified, AssetAttribute>) { this.#advanced.attributes = value; }
 	/**
 	 * The list of devices providing events for this asset.
 	 */
-	get providerIds(): string[] { return this._advanced.providerIds; }
+	get providerIds(): string[] { return this.#advanced.providerIds; }
 	/**
 	 * The list of devices providing events for this asset.
 	 */
-	get providers(): Provider[] { return this._advanced.providers; }
+	get providers(): Provider[] { return this.#advanced.providers; }
 	/**
 	 * A list of assets related to this one; like a Person for a Vehicle (driver).
 	 * {@link Asset.id}
 	 */
-	get relationshipIds(): ulong[] { return this._advanced.relationshipIds; }
-	set relationshipIds(value: ulong[]) { this._advanced.relationshipIds = value; }
+	get relationshipIds(): ulong[] { return this.#advanced.relationshipIds; }
+	set relationshipIds(value: ulong[]) { this.#advanced.relationshipIds = value; }
 	/**
 	 * A list of {@link Asset}s related to this one; like a Person for a Vehicle (driver).
 	 */
-	get relationships(): Asset[] { return this._advanced.relationships; }
-	set relationships(value: Asset[]) { this._advanced.relationships = value; }
+	get relationships(): Asset[] { return this.#advanced.relationships; }
+	set relationships(value: Asset[]) { this.#advanced.relationships = value; }
 	/**
 	 * The current state of this asset's interaction with known Places.
 	 * {@link Place.id}
 	 */
-	get places(): Map<ulong, AssetPlaceStatus> { return this._advanced.places; }
-	set places(value: Map<ulong, AssetPlaceStatus>) { this._advanced.places = value; }
+	get places(): Map<ulong, AssetPlaceStatus> { return this.#advanced.places; }
+	set places(value: Map<ulong, AssetPlaceStatus>) { this.#advanced.places = value; }
 	//#endregion AssetAdvanced
 	//#region VehicleAdvanced
 	/**
@@ -237,32 +236,35 @@ export class Asset
 	//#endregion VehicleAdvanced
 	
 	//#region AssetDispatch
-	protected _dispatch: AssetDispatch = new AssetDispatch;
+	#dispatch: AssetDispatch;
 	/**
 	 *  
 	 */
-	get dispatch(): AssetDispatch { return this._dispatch; }
+	get dispatch(): AssetDispatch { return this.#dispatch; }
 	//#endregion AssetDispatch
 
 	constructor(json?: JsonObject | nothing) {
 		super();
+		this.#general = new AssetGeneral;
+		this.#advanced = new AssetAdvanced;
+		this.#dispatch = new AssetDispatch;
 		if (json) this.fromJSON(json);
 	}
 	override toJSON() {
-		return this._general.suspended
-			? this._general.toJSON()
+		return this.#general.suspended
+			? this.#general.toJSON()
 			: {
-				...this._general.toJSON(),
-				...this._advanced.toJSON(),
-				...this._dispatch.toJSON(),
+				...this.#general.toJSON(),
+				...this.#advanced.toJSON(),
+				...this.#dispatch.toJSON(),
 				"v": [...this.v],
 			};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const version = json?.["v"] as int[],
-			general = this._general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
-			advanced = this._advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
-			dispatch = this._dispatch.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
+			general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
+			advanced = this.#advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
+			dispatch = this.#dispatch.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
 		return general || advanced || dispatch;
 	}
 
@@ -276,9 +278,9 @@ export class Asset
 	/**
 	 * Indicates whether this object is suspended from event processing.
 	 */
-	get suspended(): boolean { return this._general.suspended; }
+	get suspended(): boolean { return this.#general.suspended; }
 	/**
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
-	get since(): Date { return this._general.since; }
+	get since(): Date { return this.#general.since; }
 }

@@ -29,9 +29,9 @@ export class User
 	 */
 	get pieces(): BaseComponent[] {
 		return [
-			this._general,
-			this._advanced,
-			this._authentication,
+			this.#general,
+			this.#advanced,
+			this.#authentication,
 		];
 	}
 
@@ -56,11 +56,11 @@ export class User
 	 */
 	get company(): Company { return this.general.company; }
 
-	protected _general: UserGeneral = new UserGeneral;
+	#general: UserGeneral;
 	/**
 	 *  
 	 */
-	get general(): UserGeneral { return this._general; }
+	get general(): UserGeneral { return this.#general; }
 	///**
 	// * Indicated whether the credentials have expired according to the company's policy.
 	// */
@@ -119,11 +119,11 @@ export class User
 	get notify(): UserNotifications[] { return this.general.notify; }
 	set notify(value: UserNotifications[]) { this.general.notify = value; }
 
-	protected _advanced: UserAdvanced = new UserAdvanced;
+	#advanced: UserAdvanced;
 	/**
 	 *  
 	 */
-	get advanced(): UserAdvanced { return this._advanced; }
+	get advanced(): UserAdvanced { return this.#advanced; }
 	/**
 	 * A list of {@link UserGroup}s to which this user belongs.
 	 * {@link UserGroup.id}
@@ -141,44 +141,47 @@ export class User
 	get permissions(): Permission[] { return this.advanced.permissions; }
 	set permissions(value: Permission[]) { this.advanced.permissions = value; }
 
-	protected _authentication: UserAuthentication = new UserAuthentication;
+	#authentication: UserAuthentication;
 	/**
 	 *  
 	 */
-	get authentication(): UserAuthentication { return this._authentication; }
+	get authentication(): UserAuthentication { return this.#authentication; }
 	/**
 	 * Indicated whether the credentials have expired according to the company's policy.
 	 */
-	get passwordExpired(): boolean { return this._authentication.passwordExpired; }
-	set passwordExpired(value: boolean) { this._authentication.passwordExpired = value; }
+	get passwordExpired(): boolean { return this.#authentication.passwordExpired; }
+	set passwordExpired(value: boolean) { this.#authentication.passwordExpired = value; }
 	/**
 	 * Multi-factor authentication details for the user.
 	 */
-	get mfa(): UserMFA[] { return this._authentication.mfa; }
-	set mfa(value: UserMFA[]) { this._authentication.mfa = value; }
+	get mfa(): UserMFA[] { return this.#authentication.mfa; }
+	set mfa(value: UserMFA[]) { this.#authentication.mfa = value; }
 	/**
 	 * Single Sign-On details for the user.
 	 */
-	get sso(): UserSSO { return this._authentication.sso; }
-	set sso(value: UserSSO) { this._authentication.sso = value; }
+	get sso(): UserSSO { return this.#authentication.sso; }
+	set sso(value: UserSSO) { this.#authentication.sso = value; }
 
 	constructor(json?: JsonObject | nothing) {
 		super();
+		this.#general = new UserGeneral;
+		this.#advanced = new UserAdvanced;
+		this.#authentication = new UserAuthentication;
 		if (json) this.fromJSON(json);
 	}
 	override toJSON() {
 		return {
-			...this._general.toJSON(),
-			...this._advanced.toJSON(),
-			...this._authentication.toJSON(),
+			...this.#general.toJSON(),
+			...this.#advanced.toJSON(),
+			...this.#authentication.toJSON(),
 			"v": [...this.v],
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const version = json?.["v"] as int[] || [],
-			general = this._general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
-			advanced = this._advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
-			auth = this._authentication.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
+			general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
+			advanced = this.#advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
+			auth = this.#authentication.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
 		return general || advanced || auth;
 	}
 	
