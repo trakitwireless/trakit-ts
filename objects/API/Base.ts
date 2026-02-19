@@ -6,15 +6,6 @@ import { JsonObject, nothing } from './Types';
  */
 export abstract class Base
     implements IDeserializable {
-    
-    /**
-     * Almost all objects can be constructed using a simple JSON object.
-     * @param json 
-     */
-    constructor(json?: JsonObject | nothing) {
-        if (json) this.fromJSON(json);
-    }
-
     /**
      * Updates this class from the given input.
      * @param json      A JSON value used to update this class.
