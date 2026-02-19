@@ -1,4 +1,4 @@
-﻿import { JsonObject, int } from '../API/Types';
+﻿import { JsonObject, int, nothing } from '../API/Types';
 import { AlertPriority } from './AlertPriority';
 import { MessageBase } from './MessageBase';
 
@@ -12,6 +12,10 @@ export class AssetAlert
 	 */
 	priority: AlertPriority = AlertPriority.normal;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			...super.toJSON(),

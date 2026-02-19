@@ -67,6 +67,11 @@ export class BehaviourScript
 	 */
 	graphic: codified = "";
 
+	constructor(json?: JsonObject) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+
 	override toJSON() {
 		return {
 			"id": this.id || null,

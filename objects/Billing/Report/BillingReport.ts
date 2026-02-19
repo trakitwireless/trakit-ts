@@ -95,6 +95,11 @@ export class BillingReport
 	 */
 	breakdown: BillingReportBreakdown[] = [];
 
+	constructor(json?: JsonObject) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+
 	override toJSON() {
 		return {
 			"id": this.id || null,

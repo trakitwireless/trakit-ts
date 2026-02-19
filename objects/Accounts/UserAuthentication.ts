@@ -2,7 +2,7 @@ import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { JsonObject, email, int, ulong } from "../API/Types";
+import { JsonObject, email, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { User } from "./User";
@@ -42,6 +42,10 @@ export class UserAuthentication
 	 */
 	sso: UserSSO = new UserSSO;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"login": this.login.toLowerCase(),

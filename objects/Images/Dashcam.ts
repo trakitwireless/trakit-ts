@@ -1,7 +1,7 @@
 import { FLOAT } from "../API/Constants";
 import { DATE, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { TimeSpan } from "../API/TimeSpan";
-import { datetime, guid, JsonObject, single } from "../API/Types";
+import { datetime, guid, JsonObject, nothing, single } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
 
@@ -40,17 +40,9 @@ export class Dashcam extends DashcamBase {
 	 */
 	eventName!: string;
 
-	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const changed = super.fromJSON(json, force) || !!json;
-		if (json) {
-			this.guid = (json["guid"] as guid) || "";
-			this.kind = DashcamMediaType[json["kind"] as DashcamMediaType] || DashcamMediaType.unknown;
-			this.fps = FLOAT(json["fps"] as any);
-			this.start = DATE(json["start"] as datetime);
-			this.end = DATE(json["end"] as datetime);
-			this.eventName = (json["eventName"] as string) || "";
-		}
-		return changed;
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
 	}
 	override toJSON() {
 		return {
@@ -62,6 +54,18 @@ export class Dashcam extends DashcamBase {
 			end: JSON_DATE(this.end),
 			eventName: this.eventName || "",
 		};
+	}
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
+		const changed = super.fromJSON(json, force) || !!json;
+		if (json) {
+			this.guid = (json["guid"] as guid) || "";
+			this.kind = DashcamMediaType[json["kind"] as DashcamMediaType] || DashcamMediaType.unknown;
+			this.fps = FLOAT(json["fps"] as any);
+			this.start = DATE(json["start"] as datetime);
+			this.end = DATE(json["end"] as datetime);
+			this.eventName = (json["eventName"] as string) || "";
+		}
+		return changed;
 	}
 	
 	// IRequestable

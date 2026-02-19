@@ -12,7 +12,7 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { JsonObject, codified, colour, double, int, ulong } from "../API/Types";
+import { JsonObject, codified, colour, double, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -101,6 +101,10 @@ export class Place
 	 */
 	points: LatLng[] | null = null;
 	
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

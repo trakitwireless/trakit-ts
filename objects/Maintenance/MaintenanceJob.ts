@@ -9,7 +9,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { TimeSpan } from "../API/TimeSpan";
-import { datetime, double, int, JsonObject, timespan, ulong } from "../API/Types";
+import { datetime, double, int, JsonObject, nothing, timespan, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Picture } from "../Images/Picture";
@@ -123,6 +123,10 @@ export class MaintenanceJob
 	get pictures(): Picture[] { return MAP_FILTERED_BY_KEYS(PICTURES, this.pictureIds); }
 	set pictures(values: Picture[]) { this.pictureIds = values?.map(ARRAY_TO_IDS) ?? []; }
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

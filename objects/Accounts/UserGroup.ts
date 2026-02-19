@@ -4,7 +4,7 @@ import { ID, IS_AN } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { JsonObject, int, ulong } from "../API/Types";
+import { JsonObject, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { Permission } from "./Permissions/Permission";
@@ -42,6 +42,10 @@ export class UserGroup
 	 */
 	permissions: Permission[] = [];
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id,

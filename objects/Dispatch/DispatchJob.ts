@@ -6,7 +6,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, datetime, int, JsonObject, ulong } from "../API/Types";
+import { codified, datetime, int, JsonObject, nothing, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { FormResult } from "../Hosting/FormResult";
@@ -92,6 +92,10 @@ export class DispatchJob
 	 */
 	driver: string = "";
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { ulong, JsonObject, datetime, int } from "../API/Types";
+import { ulong, JsonObject, datetime, int, nothing } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 
@@ -56,6 +56,10 @@ export class Document
 	 */
 	references: Map<string, string> = new Map;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

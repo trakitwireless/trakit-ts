@@ -1,7 +1,7 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
 import { ID, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON, MAP_TO_JSON_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { JsonObject, int, ipv4, ulong } from "../API/Types";
+import { JsonObject, int, ipv4, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { ProviderData } from "./ProviderData";
@@ -40,6 +40,10 @@ export class ProviderAdvanced
 	 */
 	snf: Map<string, string> = new Map;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

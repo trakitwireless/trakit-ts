@@ -12,6 +12,10 @@ export class BillableHostingRule
 	 */
 	service: BillableHostingType = BillableHostingType.asset;
 
+	constructor(json?: JsonObject) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			...super.toJSON(),

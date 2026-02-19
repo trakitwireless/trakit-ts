@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
-import { JsonObject, byte, codified, datetime, email, int, ulong } from "../API/Types";
+import { JsonObject, byte, codified, datetime, email, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, REPORT_SCHEDULES, REPORT_TEMPLATES } from "../storage";
 import { ReportOptions } from './ReportOptions';
@@ -130,7 +130,11 @@ export class ReportResult
 	 */
 	error: string = "";
 
-	toJSON() {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
 			"company": JSON_NUMBER(this.companyId),
@@ -155,7 +159,7 @@ export class ReportResult
 			"error": this.error || "",
 		};
 	}
-	fromJSON(json: JsonObject, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

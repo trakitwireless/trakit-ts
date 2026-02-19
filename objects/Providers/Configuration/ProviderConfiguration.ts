@@ -3,7 +3,7 @@ import { ID, IS_AN, JSON_TO_MAP, MAP_TO_JSON } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
-import { JsonObject, int, ulong } from "../../API/Types";
+import { JsonObject, int, nothing, ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES, PROVIDER_CONFIGURATION_TYPES } from "../../storage";
 import { ProviderConfigurationType } from "./ProviderConfigurationType";
@@ -54,6 +54,10 @@ export class ProviderConfiguration
 	 */
 	geofences: ulong[] = [];
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id,

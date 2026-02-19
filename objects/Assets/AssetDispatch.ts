@@ -4,7 +4,7 @@ import { DATE, ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { JsonObject, datetime, int, ulong } from "../API/Types";
+import { JsonObject, datetime, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { DispatchDirection } from "../Dispatch/DispatchDirection";
 import { DispatchJob } from "../Dispatch/DispatchJob";
@@ -57,7 +57,11 @@ export class AssetDispatch
 	 */
 	lastDispatched: Date = DATE();
 
-	override toJSON(): JsonObject  {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": this.id || null,
 			"v": [...this.v],

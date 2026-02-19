@@ -10,7 +10,7 @@ import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { JsonObject, codified, colour, double, int, ulong, ushort } from "../API/Types";
+import { JsonObject, codified, colour, double, int, nothing, ulong, ushort } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
@@ -244,6 +244,10 @@ export class Asset
 	get dispatch(): AssetDispatch { return this._dispatch; }
 	//#endregion AssetDispatch
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return this._general.suspended
 			? this._general.toJSON()

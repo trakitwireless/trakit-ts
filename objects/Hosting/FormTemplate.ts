@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
-import { codified, colour, ulong, JsonObject, int } from "../API/Types";
+import { codified, colour, ulong, JsonObject, int, nothing } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
@@ -75,6 +75,10 @@ export class FormTemplate
 	 */
 	getKey() { return this.id; }
 	
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),

@@ -6,7 +6,7 @@ import { IBelongCompany } from '../API/Interfaces/IBelongCompany';
 import { IIdUlong } from '../API/Interfaces/IIdUlong';
 import { INamed } from '../API/Interfaces/INamed';
 import { MAP_FILTERED_BY_COMPANY } from '../API/Maps';
-import { JsonObject, codified, int, ulong } from '../API/Types';
+import { JsonObject, codified, int, nothing, ulong } from '../API/Types';
 import { Picture } from '../Images/Picture';
 import { CONTACTS, PICTURES } from '../storage';
 import { CompanyDirectory } from './CompanyDirectory';
@@ -136,9 +136,10 @@ export class Company
 	 */
 	reseller: CompanyReseller | null = null;
 
-	/**
-	 * 
-	 */
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			...this._general?.toJSON(),

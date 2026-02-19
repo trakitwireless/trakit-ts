@@ -2,7 +2,7 @@ import { BaseComponent } from "../../API/BaseComponent";
 import { ID, IS_AN, JSON_NUMBER, MAP_TO_JSON } from "../../API/Functions";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
-import { JsonObject, int, uint, ulong } from "../../API/Types";
+import { JsonObject, int, nothing, uint, ulong } from "../../API/Types";
 import { PlaceType } from "../../Places/PlaceType";
 import { ProviderType } from "../ProviderType";
 import { ProviderConfigurationNode } from "./ProviderConfigurationNode";
@@ -48,6 +48,10 @@ export class ProviderConfigurationType
 	 */
 	geofenceTypes: PlaceType[] = [];
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id,

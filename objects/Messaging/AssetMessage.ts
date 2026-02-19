@@ -1,4 +1,4 @@
-﻿import { email, int, JsonObject } from '../API/Types';
+﻿import { email, int, JsonObject, nothing } from '../API/Types';
 import { MessageBase } from './MessageBase';
 import { MessageFolder } from './MessageFolder';
 
@@ -21,6 +21,10 @@ export class AssetMessage
 	 */
 	readBy: email = "";
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			...super.toJSON(),

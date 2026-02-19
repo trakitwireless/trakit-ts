@@ -9,7 +9,7 @@ import { IHavePreferences, } from '../API/Interfaces/IHavePreferences';
 import { MAP_FILTERED_BY_KEYS } from '../API/Maps';
 import { Timezone } from '../API/Timezone';
 import { TIMEZONE_FIND } from '../API/Timezones';
-import { codified, datetime, int, ipv4, JsonObject, ulong, url } from '../API/Types'; // JsonObject already present, no change needed
+import { codified, datetime, int, ipv4, JsonObject, nothing, ulong, url } from '../API/Types'; // JsonObject already present, no change needed
 import { Company } from '../Companies/Company';
 import { COMPANIES, GROUPS } from '../storage';
 import { Permission } from './Permissions/Permission';
@@ -113,6 +113,10 @@ export class Machine
 	 */
 	insecure: boolean = false;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"key": this.key,

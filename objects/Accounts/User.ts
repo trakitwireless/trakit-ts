@@ -162,6 +162,10 @@ export class User
 	get sso(): UserSSO { return this._authentication.sso; }
 	set sso(value: UserSSO) { this._authentication.sso = value; }
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			...this._general.toJSON(),

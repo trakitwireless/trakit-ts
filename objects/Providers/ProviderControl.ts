@@ -1,7 +1,7 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
 import { ID, JSON_NUMBER, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
-import { JsonObject, int, ulong } from "../API/Types";
+import { JsonObject, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { ProviderCommand } from "./ProviderCommand";
@@ -33,6 +33,10 @@ export class ProviderControl
 	 */
 	commands: Map<ProviderCommandType, ProviderCommand> = new Map;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

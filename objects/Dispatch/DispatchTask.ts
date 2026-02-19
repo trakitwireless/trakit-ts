@@ -130,6 +130,10 @@ export class DispatchTask
 	 */
 	updatedUtc: Date = DATE();
 
+	constructor(json?: JsonObject) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

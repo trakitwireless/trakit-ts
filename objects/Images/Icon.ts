@@ -6,7 +6,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { JsonObject, int, ulong } from "../API/Types";
+import { JsonObject, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { IconGlyph } from "./IconGlyph";
@@ -66,7 +66,11 @@ export class Icon
 	 */
 	glyphs: IconGlyph[] = [];
 
-	override toJSON(): JsonObject {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": this.id || null,
 			"v": [...this.v],

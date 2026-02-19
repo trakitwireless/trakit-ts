@@ -6,7 +6,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { ILabelled } from "../API/Interfaces/ILabelled";
 import { INamed } from "../API/Interfaces/INamed";
-import { codified, ulong, JsonObject, datetime, int } from "../API/Types";
+import { codified, ulong, JsonObject, datetime, int, nothing } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, COMPANIES, FORM_TEMPLATES } from "../storage";
@@ -85,6 +85,10 @@ export class FormResult
 	 */
 	getKey() { return this.id; }
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id,

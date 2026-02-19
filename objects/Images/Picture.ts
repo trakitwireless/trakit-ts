@@ -9,7 +9,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { uint, ulong, JsonObject, int } from "../API/Types";
+import { uint, ulong, JsonObject, int, nothing } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 
@@ -61,6 +61,10 @@ export class Picture
 	 */
 	uses: uint = NaN;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

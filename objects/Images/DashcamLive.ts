@@ -1,5 +1,5 @@
 import { DATE, JSON_DATE, JSON_NUMBER } from "../API/Functions";
-import { datetime, JsonObject } from "../API/Types";
+import { datetime, JsonObject, nothing } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
 
@@ -14,14 +14,11 @@ export class DashcamLive extends DashcamBase {
 	/**
 	 * Timestamp of this live camera image.
 	 */
-	dts!: Date;
+	dts: Date = DATE();
 
-	override fromJSON(json: JsonObject, force?: boolean): boolean {
-		const changed = super.fromJSON(json, force) || !!json;
-		if (json) {
-			this.dts = DATE(json["dts"] as datetime);
-		}
-		return changed;
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
 	}
 	override toJSON() {
 		return {
@@ -29,6 +26,13 @@ export class DashcamLive extends DashcamBase {
 			"kind": DashcamMediaType.image,
 			"dts": JSON_DATE(this.dts),
 		};
+	}
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
+		const changed = super.fromJSON(json, force) || !!json;
+		if (json) {
+			this.dts = DATE(json["dts"] as datetime);
+		}
+		return changed;
 	}
 
 	// IRequestable

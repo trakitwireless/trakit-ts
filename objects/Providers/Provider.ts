@@ -3,7 +3,7 @@ import { BaseCompound } from "../API/BaseCompound";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { JsonObject, int, ipv4, phone, ulong } from "../API/Types";
+import { JsonObject, int, ipv4, nothing, phone, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ProviderConfig } from "./Config/ProviderConfig";
@@ -163,6 +163,10 @@ export class Provider
 	get commands(): Map<ProviderCommandType, ProviderCommand> { return this._control.commands; }
 	set commands(value: Map<ProviderCommandType, ProviderCommand>) { this._control.commands = value; }
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return this.suspended
 			? this._general.toJSON()

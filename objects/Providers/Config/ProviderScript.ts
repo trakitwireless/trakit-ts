@@ -6,7 +6,7 @@ import { IGlobal } from "../../API/Interfaces/IGlobal";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { IVisual } from "../../API/Interfaces/IVisual";
-import { JsonObject, codified, colour, int, ulong } from "../../API/Types";
+import { JsonObject, codified, colour, int, nothing, ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES } from "../../storage";
 import { ProviderType } from "../ProviderType";
@@ -73,7 +73,11 @@ export class ProviderScript
 	 */
 	parameters: Map<string, ProviderScriptParameter> = new Map;
 
-	toJSON() {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
@@ -89,7 +93,7 @@ export class ProviderScript
 			"parameters": MAP_TO_JSON(this.parameters),
 		};
 	}
-	fromJSON(json: JsonObject, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

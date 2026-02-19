@@ -4,7 +4,7 @@ import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { email, ulong, JsonObject, int } from "../API/Types";
+import { email, ulong, JsonObject, int, nothing } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, REPORT_TEMPLATES } from "../storage";
 import { ReportNotifications } from "./ReportNotifications";
@@ -71,6 +71,10 @@ export class ReportSchedule
 	 */
 	notify: ReportNotifications | null = null;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

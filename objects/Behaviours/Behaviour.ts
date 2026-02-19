@@ -64,6 +64,11 @@ export class Behaviour
 	 */
 	parameters: Map<string, BehaviourParameter> = new Map;
 
+	constructor(json?: JsonObject) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+
 	override toJSON() {
 		return {
 			"id": this.id || null,

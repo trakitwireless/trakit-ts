@@ -7,7 +7,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { codified, datetime, email, int, JsonObject, phone, ulong, url } from "../API/Types";
+import { codified, datetime, email, int, JsonObject, nothing, phone, ulong, url } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Picture } from "../Images/Picture";
 import { COMPANIES, PICTURES } from "../storage";
@@ -173,6 +173,10 @@ export class Contact
 	}
 	//#endregion Legacy/Deprecated
 	
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

@@ -4,7 +4,7 @@ import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { JsonObject, int, ulong } from "../API/Types";
+import { JsonObject, int, nothing, ulong } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 
@@ -41,6 +41,10 @@ export class CompanyGeneral
 	 */
 	references: Map<string, string> = new Map;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),

@@ -4,7 +4,7 @@ import { ID } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { email, int, JsonObject, ulong } from "../API/Types";
+import { email, int, JsonObject, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, GROUPS } from "../storage";
 import { Permission } from "./Permissions/Permission";
@@ -46,6 +46,10 @@ export class UserAdvanced
 	 */
 	permissions: Permission[] = [];
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"login": this.login.toLowerCase(),

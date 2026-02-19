@@ -3,7 +3,7 @@ import { DATE, ID, JSON_DATE, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON, PHONE_PARSE
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
-import { JsonObject, datetime, int, phone, ulong } from "../API/Types";
+import { JsonObject, datetime, int, nothing, phone, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { ASSETS, COMPANIES, PROVIDER_CONFIGS, PROVIDER_CONFIGURATIONS } from "../storage";
@@ -90,6 +90,10 @@ export class ProviderGeneral
 	 */
 	sim: string = "";
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

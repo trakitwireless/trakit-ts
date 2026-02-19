@@ -3,7 +3,7 @@ import { DATE, ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_T
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { JsonObject, codified, colour, datetime, int, ulong } from "../API/Types";
+import { JsonObject, codified, colour, datetime, int, nothing, ulong } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { ColourStyle } from "./ColourStyle";
 import { Company } from "./Company";
@@ -122,6 +122,10 @@ export class CompanyReseller
 	 */
 	recoverIsHtml: boolean = false;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),

@@ -87,6 +87,11 @@ export class BillingProfile
 	 */
 	googleServicesEnabled: boolean = false;
 
+	constructor(json?: JsonObject) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+
 	override toJSON() {
 		return {
 			"id": this.id || null,

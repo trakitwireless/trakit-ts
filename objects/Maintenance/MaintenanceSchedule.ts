@@ -7,7 +7,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
 import { SearchPattern } from "../API/SearchPattern";
 import { TimeSpan } from "../API/TimeSpan";
-import { codified, colour, double, email, int, JsonObject, timespan, uint, ulong } from "../API/Types";
+import { codified, colour, double, email, int, JsonObject, nothing, timespan, uint, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { MaintenanceInterval } from "./MaintenanceInterval";
@@ -105,6 +105,10 @@ export class MaintenanceSchedule
 	 */
 	reference: string = "";
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"id": this.id || null,

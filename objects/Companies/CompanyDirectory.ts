@@ -3,7 +3,7 @@ import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functio
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { JsonObject, codified, int, ulong } from "../API/Types";
+import { JsonObject, codified, int, nothing, ulong } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 
@@ -32,11 +32,11 @@ export class CompanyDirectory
 	 */
 	employees: Map<codified, ulong[]> = new Map;
 
-	/**
-	 * 
-	 * @returns 
-	 */
-	toJSON() {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
 			"v": [...this.v],
@@ -44,10 +44,6 @@ export class CompanyDirectory
 			"directory": MAP_TO_JSON(this.employees),
 		};
 	}
-	/**
-	 * 
-	 * @param json 
-	 */
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {

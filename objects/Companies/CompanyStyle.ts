@@ -4,7 +4,7 @@ import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../A
 import { IAmCompany } from "../API/Interfaces/IAmCompany";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
-import { JsonObject, codified, int, ulong } from "../API/Types";
+import { JsonObject, codified, int, nothing, ulong } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
 import { LabelStyle } from "./LabelStyle";
@@ -38,7 +38,11 @@ export class CompanyStyle
 	 */
 	tags: Map<codified, LabelStyle> = new Map;
 
-	toJSON() {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
 			"v": [...this.v],

@@ -7,7 +7,7 @@ import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
-import { JsonObject, codified, double, int, ulong } from "../API/Types";
+import { JsonObject, codified, double, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, COMPANIES, PROVIDERS } from "../storage";
@@ -81,6 +81,10 @@ export class AssetAdvanced
 	engineHours: double = NaN;
 	//#endregion VehicleAdvanced
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		const json: JsonObject = {
 			"id": this.id || null,

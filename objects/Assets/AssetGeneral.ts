@@ -125,7 +125,11 @@ export class AssetGeneral
 	serial: string = "";
 	//#endregion TrailerGeneral
 
-	override toJSON(): JsonObject {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": this.id || null,
 			"v": [...this.v],

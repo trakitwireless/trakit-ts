@@ -12,6 +12,10 @@ export class BillableHostingLicense
 	 */
 	kind: BillableHostingLicenseType = BillableHostingLicenseType.bewhere;
 
+	constructor(json?: JsonObject) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			...super.toJSON(),

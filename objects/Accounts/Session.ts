@@ -72,6 +72,21 @@ export class Session
 	constructor(json?: JsonObject | nothing) {
 		if (json) this.fromJSON(json);
 	}
+	toJSON(): JsonObject {
+		return {
+			"handle": this.handle || "",
+			"company": this.companyId || null,
+			"login": this.login || "",
+			"status": SessionStatus[this.status] || SessionStatus.notFound,
+			"userAgent": this.userAgent || "",
+			"ipAddress": this.ipAddress || "",
+			"created": this.created.toISOString(),
+			"expires": this.expiry.toISOString(),
+			"lastActivity": this.lastActivity.toISOString(),
+			"lastCommand": this.lastCommand || "",
+			"sockets": this.sockets || 0,
+		};
+	}
 	fromJSON(json: JsonObject, force?: boolean): boolean {
 		if (json) {
 			this.handle = json["handle"] as string || "";
@@ -87,25 +102,6 @@ export class Session
 			this.sockets = ID(json["sockets"] as ulong) || 0;
 		}
 		return !!json;
-	}
-
-	/**
-	 * 
-	 */
-	toJSON() {
-		return {
-			"handle": this.handle || "",
-			"company": this.companyId || null,
-			"login": this.login || "",
-			"status": SessionStatus[this.status] || SessionStatus.notFound,
-			"userAgent": this.userAgent || "",
-			"ipAddress": this.ipAddress || "",
-			"created": this.created.toISOString(),
-			"expires": this.expiry.toISOString(),
-			"lastActivity": this.lastActivity.toISOString(),
-			"lastCommand": this.lastCommand || "",
-			"sockets": this.sockets || 0,
-		};
 	}
 
 	// IRequestable

@@ -4,7 +4,7 @@ import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
 import { SearchPattern } from "../../API/SearchPattern";
-import { JsonObject, int, ulong } from "../../API/Types";
+import { JsonObject, int, nothing, ulong } from "../../API/Types";
 import { Company } from "../../Companies/Company";
 import { COMPANIES, PROVIDER_SCRIPTS } from "../../storage";
 import { ProviderScript } from "./ProviderScript";
@@ -58,7 +58,11 @@ export class ProviderConfig
 	 */
 	geofences: SearchPattern[] | null = null;
 
-	toJSON() {
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
+	override toJSON() {
 		return {
 			"id": JSON_NUMBER(this.id),
 			"v": [...this.v],
@@ -70,7 +74,7 @@ export class ProviderConfig
 			"geofences": SearchPattern.stringify(this.geofences),
 		};
 	}
-	fromJSON(json: JsonObject, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);

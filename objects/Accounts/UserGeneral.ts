@@ -7,7 +7,7 @@ import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { TIMEZONE_FIND } from "../API/Timezones";
-import { JsonObject, codified, datetimetemplate, email, int, ulong } from "../API/Types";
+import { JsonObject, codified, datetimetemplate, email, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES, CONTACTS } from "../storage";
 import { Contact } from "./Contact";
@@ -85,6 +85,10 @@ export class UserGeneral
 	 */
 	notify: UserNotifications[] = [];
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	override toJSON() {
 		return {
 			"login": this.login.toLowerCase(),

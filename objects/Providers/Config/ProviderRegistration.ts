@@ -5,7 +5,7 @@ import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { INamed } from "../../API/Interfaces/INamed";
 import { IRequestable } from "../../API/Interfaces/IRequestable";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
-import { email, phone, ulong, JsonObject, datetime } from "../../API/Types";
+import { email, phone, ulong, JsonObject, datetime, nothing } from "../../API/Types";
 import { User } from "../../Accounts/User";
 import { Asset } from "../../Assets/Asset";
 import { Company } from "../../Companies/Company";
@@ -104,6 +104,10 @@ export class ProviderRegistration
 	 */
 	phoneNumber: phone = NaN;
 
+	constructor(json?: JsonObject | nothing) {
+		super();
+		if (json) this.fromJSON(json);
+	}
 	toJSON() {
 		return {
 			"code": this.code || null,
@@ -122,7 +126,7 @@ export class ProviderRegistration
 			"phoneNumber": this.phoneNumber || null,
 		};
 	}
-	fromJSON(json: JsonObject, force?: boolean): boolean {
+	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		if (!IS_AN(ID(this.code))) this.code = json["code"] as string;
 		this.companyId = ID(json["company"]);
 		this.name = json["name"] as string || "";
