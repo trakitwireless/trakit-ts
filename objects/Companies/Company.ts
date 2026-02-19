@@ -29,11 +29,11 @@ export class Company
 	 */
 	override get pieces(): BaseComponent[] {
 		return [
-			this.#general,
+			this._general,
 			null as unknown as BaseComponent,	// reserved for future use
-			this.#directory,
-			this.#style,
-			this.#policy,
+			this._directory,
+			this._style,
+			this._policy,
 			this.reseller as BaseComponent,
 		];
 	}
@@ -42,20 +42,20 @@ export class Company
 	 * {@link Asset.id}
 	 */
 	get id(): ulong {
-		return this.#general.id
-			?? this.#directory.id
-			?? this.#policy.id
-			?? this.#style.id
+		return this._general.id
+			?? this._directory.id
+			?? this._policy.id
+			?? this._style.id
 			?? this.reseller?.id;
 	}
 	/**
 	 * The parent organization for this {@link Company}.
 	 */
 	get parent(): Company {
-		return this.#general.parent
-			?? this.#directory.parent
-			?? this.#policy.parent
-			?? this.#style.parent
+		return this._general.parent
+			?? this._directory.parent
+			?? this._policy.parent
+			?? this._style.parent
 			?? this.reseller?.parent;
 	}
 	set parent(value: Company) { this.parentId = value?.id ?? NaN; }
@@ -64,72 +64,72 @@ export class Company
 	 */
 	get parentId(): number { return this.parent?.id ?? NaN; }
 	set parentId(value: number) {
-		this.#general.parentId = value;
-		this.#directory.parentId = value;
-		this.#policy.parentId = value;
-		this.#style.parentId = value;
+		this._general.parentId = value;
+		this._directory.parentId = value;
+		this._policy.parentId = value;
+		this._style.parentId = value;
 		if (this.reseller) this.reseller.parentId = value;
 	}
 	
 	/**
 	 *  
 	 */
-	#general: CompanyGeneral = new CompanyGeneral;
+	protected _general: CompanyGeneral = new CompanyGeneral;
 	/**
 	 * The organizational name.
 	 */
-	get name(): string { return this.#general.name; }
-	set name(value: string) { this.#general.name = value; }
+	get name(): string { return this._general.name; }
+	set name(value: string) { this._general.name = value; }
 	/**
 	 * Notes.
 	 */
-	get notes(): string { return this.#general.notes; }
-	set notes(value: string) { this.#general.notes = value; }
+	get notes(): string { return this._general.notes; }
+	set notes(value: string) { this._general.notes = value; }
 	/**
 	 * Name/value collections of custom fields used to refer to external systems.
 	 */
-	get references(): Map<string, string> { return this.#general.references; }
-	set references(value: Map<string, string>) { this.#general.references = value; }
+	get references(): Map<string, string> { return this._general.references; }
+	set references(value: Map<string, string>) { this._general.references = value; }
 
 	/**
 	 *  
 	 */
-	#directory: CompanyDirectory = new CompanyDirectory;
+	protected _directory: CompanyDirectory = new CompanyDirectory;
 	/**
 	 * The list of Contacts from this and other companies broken down by contact role.
 	 */
-	get employees(): Map<string, ulong[]> { return this.#directory.employees; }
-	set employees(value: Map<string, ulong[]>) { this.#directory.employees = value; }
+	get employees(): Map<string, ulong[]> { return this._directory.employees; }
+	set employees(value: Map<string, ulong[]>) { this._directory.employees = value; }
 
 	/**
 	 *  
 	 */
-	#policy: CompanyPolicy = new CompanyPolicy;
+	protected _policy: CompanyPolicy = new CompanyPolicy;
 	/**
 	 * The session lifetime policy.
 	 */
-	get sessionPolicy(): SessionPolicy { return this.#policy.sessionPolicy; }
-	set sessionPolicy(value: SessionPolicy) { this.#policy.sessionPolicy = value; }
+	get sessionPolicy(): SessionPolicy { return this._policy.sessionPolicy; }
+	set sessionPolicy(value: SessionPolicy) { this._policy.sessionPolicy = value; }
 	/**
 	 * The password complexity and expiry policy.
 	 */
-	get passwordPolicy(): PasswordPolicy { return this.#policy.passwordPolicy; }
-	set passwordPolicy(value: PasswordPolicy) { this.#policy.passwordPolicy = value; }
+	get passwordPolicy(): PasswordPolicy { return this._policy.passwordPolicy; }
+	set passwordPolicy(value: PasswordPolicy) { this._policy.passwordPolicy = value; }
 
 	/**
 	 *  
 	 */
-	#style: CompanyStyle = new CompanyStyle;
+	protected _style: CompanyStyle = new CompanyStyle;
 	/**
 	 * The styles for labels added to Assets, Places, and other things.
 	 */
-	get labels(): Map<codified, LabelStyle> { return this.#style.labels }
-	set labels(value: Map<codified, LabelStyle>) { this.#style.labels = value; }
+	get labels(): Map<codified, LabelStyle> { return this._style.labels }
+	set labels(value: Map<codified, LabelStyle>) { this._style.labels = value; }
 	/**
 	 * The styles for status tags added to Assets.
 	 */
-	get tags(): Map<codified, LabelStyle> { return this.#style.tags; }
-	set tags(value: Map<codified, LabelStyle>) { this.#style.tags = value; }
+	get tags(): Map<codified, LabelStyle> { return this._style.tags; }
+	set tags(value: Map<codified, LabelStyle>) { this._style.tags = value; }
 	
 	/**
 	 * If this company is a reseller, then they have their own theme, support and billing information.
@@ -141,10 +141,10 @@ export class Company
 	 */
 	override toJSON() {
 		return {
-			...this.#general?.toJSON(),
-			...this.#directory?.toJSON(),
-			...this.#style?.toJSON(),
-			...this.#policy?.toJSON(),
+			...this._general?.toJSON(),
+			...this._directory?.toJSON(),
+			...this._style?.toJSON(),
+			...this._policy?.toJSON(),
 			...this.reseller?.toJSON(),
 			"v": [...this.v],
 		};
@@ -155,11 +155,11 @@ export class Company
 	 */
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const versions = json?.["v"] as int[] || [],
-			general = this.#general.fromJSON({ ...json, "v": versions.slice(0, 1) }, force),
+			general = this._general.fromJSON({ ...json, "v": versions.slice(0, 1) }, force),
 			//reserved = this.reserved.fromJSON({ ...json, "v": versions.slice(1, 2) }, force),
-			directory = this.#directory.fromJSON({ ...json, "v": versions.slice(2, 3) }, force),
-			styles = this.#style.fromJSON({ ...json, "v": versions.slice(3, 4) }, force),
-			policies = this.#policy.fromJSON({ ...json, "v": versions.slice(4, 5) }, force);
+			directory = this._directory.fromJSON({ ...json, "v": versions.slice(2, 3) }, force),
+			styles = this._style.fromJSON({ ...json, "v": versions.slice(3, 4) }, force),
+			policies = this._policy.fromJSON({ ...json, "v": versions.slice(4, 5) }, force);
 		let reseller;
 		if (versions[5] > 0) {
 			reseller = !this.reseller;
