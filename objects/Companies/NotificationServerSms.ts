@@ -1,4 +1,4 @@
-﻿import { ID, JSON_NUMBER, MAP_TO_JSON, JSON_TO_MAP } from "../API/Functions";
+﻿import { ID, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { JsonObject, ulong, ushort } from "../API/Types";
 
@@ -13,19 +13,19 @@ export class NotificationServerSms
 	 */
 	static fromJSON(json: JsonObject) {
 		return new NotificationServerSms(
-			json["notifyLimit"] as ushort,
-			JSON_TO_MAP(json["phoneNumbers"] as object || {}),
+			json?.notifyLimit as ushort,
+			JSON_TO_MAP(json?.phoneNumbers as object || {}),
 		);
 	}
 	
 	/**
 	 * A per-number/per-day limit on the amount of Notifications sent.
 	 */
-	notifyLimit: ushort = NaN;
+	notifyLimit: ushort;
 	/**
 	 * All phone numbers listed by the country (using two-digit ISO 3166-1 alpha-2 country codes) they each serve.
 	 */
-	phoneNumbers: Map<string, ulong[]> = new Map;
+	phoneNumbers: Map<string, ulong[]>;
 
 	constructor(
 		notifyLimit?: ushort,

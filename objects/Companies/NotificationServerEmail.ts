@@ -1,6 +1,6 @@
 ﻿import { ID, JSON_NUMBER } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { colour, email, JsonObject, uint, ushort } from "../API/Types";
+import { email, JsonObject, uint, ushort } from "../API/Types";
 
 /**
  * The types of email protocols supported for incoming mail servers.
@@ -36,18 +36,18 @@ export class NotificationServerEmail
 	 */
 	static fromJSON(json: JsonObject) {
 		return new NotificationServerEmail(
-			json["incomingType"] as IncomingEmailServerType,
-			json["incomingAddress"] as string,
-			json["incomingPort"] as ushort,
-			json["incomingLogin"] as string,
-			json["incomingSecure"] as boolean,
-			json["incomingMessageNumber"] as uint,
-			json["outgoingType"] as OutgoingEmailServerType,
-			json["outgoingAddress"] as email,
-			json["outgoingPort"] as ushort,
-			json["outgoingLogin"] as string,
-			json["outgoingSecure"] as boolean,
-			json["outgoingReplyTo"] as email,
+			json?.incomingType as IncomingEmailServerType,
+			json?.incomingAddress as string,
+			json?.incomingPort as ushort,
+			json?.incomingLogin as string,
+			json?.incomingSecure as boolean,
+			json?.incomingMessageNumber as uint,
+			json?.outgoingType as OutgoingEmailServerType,
+			json?.outgoingAddress as email,
+			json?.outgoingPort as ushort,
+			json?.outgoingLogin as string,
+			json?.outgoingSecure as boolean,
+			json?.outgoingReplyTo as email,
 		);
 	}
 	
@@ -58,24 +58,23 @@ export class NotificationServerEmail
 	/**
 	 * The domain or IP address of the incoming email server.
 	 */
-	incomingAddress: string = "";
+	incomingAddress: string;
 	/**
 	 * The port number of the incoming email server.
 	 */
-	incomingPort: ushort = NaN;
+	incomingPort: ushort;
 	/**
 	 * The username used to login to the incoming email server.
 	 */
-	incomingLogin: string = "";
+	incomingLogin: string;
 	/**
 	 * Is the incoming email server using a secure SSL/TLS connection (it should).
 	 */
-	incomingSecure: boolean = false;
+	incomingSecure: boolean;
 	/**
-	 * Is the incoming email server 		/**
 	 * IMAP message sequence number so only recent messages are retrieved.
 	 */
-	incomingMessageNumber: uint = NaN;
+	incomingMessageNumber: uint;
 	/**
 	 * The type of outgoing protocol to use (only SMTP).
 	 */
@@ -83,24 +82,23 @@ export class NotificationServerEmail
 	/**
 	 * The domain or IP address of the outgoing email server.
 	 */
-	outgoingAddress: string = "";
+	outgoingAddress: string;
 	/**
 	 * The port number of the outgoing email server.
 	 */
-	outgoingPort: ushort = NaN;
+	outgoingPort: ushort;
 	/**
 	 * The username used to login to the outgoing email server.
 	 */
-	outgoingLogin: string = "";
+	outgoingLogin: string;
 	/**
 	 * Is the outgoing email server using a secure SSL/TLS connection (it should).
 	 */
-	outgoingSecure: boolean = false;
+	outgoingSecure: boolean;
 	/**
-	 * Is the outgoing email server 		/**
 	 * An optional field which can be set as the "sent from" and/or "reply-to" address.
 	 */
-	outgoingReplyTo: email = "";
+	outgoingReplyTo: email;
 
 	constructor(
 		incomingType?: IncomingEmailServerType,
