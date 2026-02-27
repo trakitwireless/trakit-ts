@@ -7,6 +7,7 @@ import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
 import { Timezone } from "../API/Timezone";
 import { codified, datetimetemplate, email, int, JsonObject, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
+import { SESSIONS } from "../storage";
 import { Contact } from "./Contact";
 import { Permission } from "./Permissions/Permission";
 import { SystemsOfUnits } from "./SystemsOfUnits";
@@ -200,5 +201,12 @@ export class User
 		return this.nickname
 			|| this.contact?.name
 			|| this.login;
+	}
+	/**
+	 * Retrieves all sessions associated with the user.
+	 * @returns An array of sessions for the user.
+	 */
+	getSessions() {
+		return [...SESSIONS.values().filter(s => s.login === this.login)];
 	}
 }

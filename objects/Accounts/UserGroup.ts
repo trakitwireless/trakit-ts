@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { JsonObject, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../storage";
+import { COMPANIES, MACHINES, USERS } from "../storage";
 import { Permission } from "./Permissions/Permission";
 
 /**
@@ -73,4 +73,19 @@ export class UserGroup
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	/**
+	 * Gets the users that are members of this group.
+	 * @returns An array of users belonging to this group.
+	 */
+	getUsers() {
+		return [...USERS.values().filter(u => u.groupIds?.includes(this.id) ?? false)];
+	}
+	/**
+	 * Gets the machines that are members of this group.
+	 * @returns An array of machines belonging to this group.
+	 */
+	getMachines() {
+		return [...MACHINES.values().filter(m => m.groupIds?.includes(this.id) ?? false)];
+	}
 }
