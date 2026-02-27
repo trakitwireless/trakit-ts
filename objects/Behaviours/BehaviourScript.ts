@@ -6,9 +6,11 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
 import { SearchPattern } from "../API/SearchPattern";
-import { JsonObject, codified, colour, int, ulong } from "../API/Types";
+import { codified, colour, int, JsonObject, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../storage";
+import { BEHAVIOUR_LOGS, BEHAVIOURS, COMPANIES } from "../storage";
+import { Behaviour } from "./Behaviour";
+import { BehaviourLog } from "./BehaviourLog";
 import { BehaviourParameter } from "./BehaviourParameter";
 
 /**
@@ -111,4 +113,19 @@ export class BehaviourScript
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	/**
+	 * Gets the list of {@link Behaviour}s related to this script.
+	 * @returns An array of {@link Behaviour} objects.
+	 */
+	getBehaviours() {
+		return [...BEHAVIOURS.values().filter(b => b.scriptId === this.id)];
+	}
+	/**
+	 * Gets the list of {@link BehaviourLog}s related to this script.
+	 * @returns An array of {@link BehaviourLog} objects.
+	 */
+	getBehaviourLogs() {
+		return [...BEHAVIOUR_LOGS.values().filter(l => l.scriptId === this.id)];
+	}
 }

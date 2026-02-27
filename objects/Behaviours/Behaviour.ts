@@ -6,7 +6,8 @@ import { INamed } from "../API/Interfaces/INamed";
 import { SearchPattern } from "../API/SearchPattern";
 import { JsonObject, byte, int, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { BEHAVIOUR_SCRIPTS, COMPANIES } from "../storage";
+import { BEHAVIOUR_LOGS, BEHAVIOUR_SCRIPTS, COMPANIES } from "../storage";
+import { BehaviourLog } from "./BehaviourLog";
 import { BehaviourParameter } from "./BehaviourParameter";
 import { BehaviourScript } from "./BehaviourScript";
 
@@ -104,4 +105,12 @@ export class Behaviour
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	/**
+	 * Gets the list of {@link BehaviourLog}s related to this behaviour.
+	 * @returns An array of {@link BehaviourLog} objects.
+	 */
+	getBehaviourLogs() {
+		return [...BEHAVIOUR_LOGS.values().filter(l => l.behaviourId === this.id)];
+	}
 }

@@ -11,6 +11,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { JsonObject, codified, colour, double, int, nothing, ulong, ushort } from "../API/Types";
+import { BehaviourLog } from "../Behaviours/BehaviourLog";
 import { Company } from "../Companies/Company";
 import { DispatchJob } from "../Dispatch/DispatchJob";
 import { DispatchTask } from "../Dispatch/DispatchTask";
@@ -21,7 +22,7 @@ import { MaintenanceJob } from "../Maintenance/MaintenanceJob";
 import { AssetMessage } from "../Messaging/AssetMessage";
 import { Place } from "../Places/Place";
 import { Provider } from "../Providers/Provider";
-import { DISPATCH_JOBS, DISPATCH_TASKS, FORM_RESULTS, MAINTENANCE_JOBS, MESSAGES, PICTURES, PLACES } from "../storage";
+import { BEHAVIOUR_LOGS, DISPATCH_JOBS, DISPATCH_TASKS, FORM_RESULTS, MAINTENANCE_JOBS, MESSAGES, PICTURES, PLACES } from "../storage";
 import { AssetAdvanced } from "./AssetAdvanced";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetDispatch } from "./AssetDispatch";
@@ -345,5 +346,12 @@ export class Asset
 				?? [] as ulong[]
 			)
 		).map(id => PICTURES.get(id));
+	}
+	/**
+	 * Gets the list of {@link BehaviourLog}s related to this asset.
+	 * @returns An array of {@link BehaviourLog} objects.
+	 */
+	getBehaviourLogs() {
+		return [...BEHAVIOUR_LOGS.values().filter(l => l.assetId === this.id)];
 	}
 }
