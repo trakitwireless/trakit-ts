@@ -1,4 +1,4 @@
-import { DATE, ID, JSON_DATE, JSON_NUMBER, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { byte, datetime, ulong, ushort, JsonObject } from "../API/Types";
 import { ReportRecurrenceType } from "./ReportRecurrenceType";
@@ -125,5 +125,52 @@ export class ReportRecurrence
 			"lastStartDate": JSON_DATE(this.lastStartDate),
 			"lastEndDate": JSON_DATE(this.lastEndDate),
 		}
+	}
+	/**
+	 * Calculates the next recurring date range for the schedule.
+	 * Returns an array of zero or two Dates.
+	 * If the schedule will not allow the template to run again, the array is empty.
+	 * Otherwise, the first element is the next starting date, and the second element is the ending date.
+	 * @returns 
+	 */
+	calculateNextRange() {
+		var iter = this.iterations,
+			validEnding = IS_AN(this.end.valueOf()),
+			start = DATE(this.start),
+			end = DATE(start);
+		switch (this.kind) {
+			case ReportRecurrenceType.once:
+				if (validEnding && iter === 0) end = DATE(this.end);
+				break;
+			case ReportRecurrenceType.annually:
+				start.setFullYear(iter + start.getFullYear());
+				end.setFullYear(1 + start.getFullYear());
+				break;
+			case ReportRecurrenceType.quarterly:
+				start.setMonth((iter * 3) + start.getMonth());
+				end.setMonth(3 + start.getMonth());
+				break;
+			case ReportRecurrenceType.monthly:
+				start.setMonth(iter + start.getMonth());
+				end.setMonth(1 + start.getMonth());
+				break;
+			case ReportRecurrenceType.weekly:
+				if (this.weekday < 7) {
+					start.setDate((iter * 7) + start.getDate());
+					while (this.weekday !== start.getDay()) start.setDate(1 + start.getDate());
+					end.setDate(7 + start.getDate());
+				}
+				break;
+			case ReportRecurrenceType.daily:
+				if (this.weekdays.indexOf(true) > -1) {
+					start.setDate(start.getDate() + iter);
+					while (!this.weekdays[start.getDay()]) start.setDate(1 + start.getDate());
+					end.setDate(1 + start.getDate());
+				}
+				break;
+		}
+		return (!validEnding || this.end >= end) && end > start
+			? [start, end]
+			: [];
 	}
 }

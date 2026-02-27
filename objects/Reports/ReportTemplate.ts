@@ -6,8 +6,10 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IVisual } from "../API/Interfaces/IVisual";
 import { JsonObject, codified, colour, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../storage";
+import { COMPANIES, REPORT_RESULTS, REPORT_SCHEDULES } from "../storage";
 import { ReportOptions } from "./ReportOptions";
+import { ReportResult } from "./ReportResult";
+import { ReportSchedule } from "./ReportSchedule";
 import { ReportType } from "./ReportType";
 
 /**
@@ -98,4 +100,19 @@ export class ReportTemplate
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	/**
+	 * Retrieves the {@link ReportResult}s using this template.
+	 * @returns 
+	 */
+	getReportResults() {
+		return [...REPORT_RESULTS.values().filter(result => result.templateId === this.id)];
+	}
+	/**
+	 * Retrieves the {@link ReportSchedule}s for this template.
+	 * @returns 
+	 */
+	getReportSchedules() {
+		return [...REPORT_SCHEDULES.values().filter(schedule => schedule.templateId === this.id)];
+	}
 }

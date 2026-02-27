@@ -1,9 +1,12 @@
 ﻿import { Contact } from "../Accounts/Contact";
+import { User } from "../Accounts/User";
 import { UserGeneral } from "../Accounts/UserGeneral";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { SearchPattern } from "../API/SearchPattern";
-import { email, nothing, JsonObject } from "../API/Types";
+import { email, JsonObject, nothing } from "../API/Types";
+import { Asset } from "../Assets/Asset";
 import { AssetGeneral } from "../Assets/AssetGeneral";
+import { ASSETS, USERS } from "../storage";
 
 /**
  * A group of users and targeted assets which receive report notifications.
@@ -47,5 +50,20 @@ export class ReportNotifications
 			"users": [...(this.users || [])],
 			"assets": SearchPattern.stringify(this.assets),
 		};
+	}
+
+	///**
+	// * Returns a list of {@link Asset}s who will receive notification of new report results (for themselves only) from this schedule.
+	// * @returns 
+	// */
+	//getAssets() {
+	//	return [...ASSETS.values().filter(asset => asset.isMatch(this.assets))];
+	//}
+	/**
+	 * Returns a list of {@link User}s who will receive notification of new report results from this schedule.
+	 * @returns 
+	 */
+	getUsers() {
+		return [...USERS.values().filter(user => this.users.includes(user.login))];
 	}
 }

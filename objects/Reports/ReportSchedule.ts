@@ -6,11 +6,12 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { email, ulong, JsonObject, int, nothing } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES, REPORT_TEMPLATES } from "../storage";
+import { COMPANIES, REPORT_RESULTS, REPORT_TEMPLATES } from "../storage";
 import { ReportNotifications } from "./ReportNotifications";
 import { ReportOptions } from "./ReportOptions";
 import { ReportRecurrence } from "./ReportRecurrence";
 import { ReportTemplate } from "./ReportTemplate";
+import { ReportResult } from "./ReportResult";
 
 /**
  * Determines when and how often a report schedule runs automatically.
@@ -118,4 +119,8 @@ export class ReportSchedule
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	getReportResults() {
+		return [...REPORT_RESULTS.values().filter(result => result.scheduleId === this.id)];
+	}
 }
