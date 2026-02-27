@@ -1,5 +1,8 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { BaseCompound } from "../API/BaseCompound";
+import { FLOAT, FLOOR, MAX } from "../API/Constants";
+import { PASSWORD_DECODE } from "../API/Encoding";
+import { ID, IS_NOTHING } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
@@ -203,4 +206,34 @@ export class Provider
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
 	get since(): Date { return this.#general.since; }
+
+	/**
+	 * Returns the number of cameras this provider has.
+	 * @returns 
+	 */
+	dashcamCount() {
+		let count = 0;
+		this.attributes.get("CAMERA")?.forEach((_, key) => {
+			count = MAX(count, FLOOR(FLOAT(key.split("IMAGE_")[1])));
+		});
+		return count
+			|| ID(this.information.get("TOTAL_CAMERAS"))
+			|| 0;
+	}
+	/**
+	 * Encodes a new password for this Provider.
+	 * @param value 
+	 */
+	encodePassword(value: string) {
+		this.password = IS_NOTHING(value)
+			? ""
+			: PASSWORD_DECODE(String(value));
+	}
+	/**
+	 * Decodes this Provider's password to a human readable version.
+	 * @returns 
+	 */
+	decodePassword() {
+		return PASSWORD_DECODE(this.password || "");
+	}
 }
