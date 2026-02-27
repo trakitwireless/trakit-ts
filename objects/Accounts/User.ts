@@ -190,4 +190,15 @@ export class User
 	 * The {@link login} is the key.
 	 */
 	getKey() { return this.login; }
+
+	/**
+	 * A human friendly name for the user, used when displaying the user in the UI.
+	 * Falls back to the {@link login} if no {@link nickname} or {@link contact} name is available.
+	 * @returns 
+	 */
+	getName() {
+		return this.nickname
+			|| this.contact?.name
+			|| this.login;
+	}
 }
