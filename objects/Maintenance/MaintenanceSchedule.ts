@@ -1,6 +1,6 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -8,6 +8,7 @@ import { IVisual } from "../API/Interfaces/IVisual";
 import { SearchPattern } from "../API/SearchPattern";
 import { TimeSpan } from "../API/TimeSpan";
 import { codified, colour, double, email, int, JsonObject, nothing, timespan, uint, ulong } from "../API/Types";
+import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 import { MaintenanceInterval } from "./MaintenanceInterval";
@@ -165,4 +166,52 @@ export class MaintenanceSchedule
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+
+	/**
+	 * Tries to predict the next lapse for the given asset based on the date, odometer, and engine hours of the last completed job.
+	 * @param asset 
+	 * @returns 
+	 */
+	predictAsset(asset: Asset | ulong) {
+		const interval = this.intervals.get((asset as Asset)?.id ?? asset);
+		if (interval) {
+			return [
+				interval.predictByDate(this.recurDays),
+				interval.predictByOdometer(this.recurDistance),
+				interval.predictByEngineHours(this.recurEngineHours),
+			].reduce((prev, next) => !IS_AN(prev.valueOf()) || next > prev ? next : prev, DATE());
+		}
+		return null;
+	}
+	/**
+	 * Tries to predict the next lapse for this interval based on the date.
+	 * @param asset 
+	 * @returns 
+	 */
+	predictAssetByDate(asset: Asset | ulong) {
+		return this.intervals.get((asset as Asset)?.id ?? asset)
+			?.predictByDate(this.recurDays)
+			|| null;
+	}
+	/**
+	 * Tries to predict the next lapse for this interval by averaging the odometer.
+	 * @param asset 
+	 * @returns 
+	 */
+	predictAssetByOdometer(asset: Asset | ulong) {
+		return this.intervals.get((asset as Asset)?.id ?? asset)
+			?.predictByOdometer(this.recurDistance)
+			|| null;
+	}
+	/**
+	 * Tries to predict the next lapse for this interval by averaging the engine hours.
+	 * @param asset 
+	 * @returns 
+	 */
+	predictAssetByEngineHours(asset: Asset | ulong) {
+		return this.intervals.get((asset as Asset)?.id ?? asset)
+			?.predictByEngineHours(this.recurEngineHours)
+			|| null;
+	}
 }
