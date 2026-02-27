@@ -5,6 +5,7 @@ import { FLOAT } from "../API/Constants";
 import { ID, IS_AN } from "../API/Functions";
 import { ROUTE_DECODE, ROUTE_ENCODE } from "../API/Geography/Functions";
 import { LatLng } from "../API/Geography/LatLng";
+import { LatLngBounds } from "../API/Geography/LatLngBounds";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -13,10 +14,11 @@ import { INamed } from "../API/Interfaces/INamed";
 import { IPictured } from "../API/Interfaces/IPictured";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { JsonObject, codified, colour, double, int, nothing, ulong } from "../API/Types";
+import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
-import { COMPANIES, ICONS, PICTURES } from "../storage";
+import { ASSETS, COMPANIES, ICONS, PICTURES } from "../storage";
 import { PlaceType } from "./PlaceType";
 
 /**
@@ -136,9 +138,9 @@ export class Place
 			this.notes = json["notes"] as string || "";
 			this.address = json["address"] as string || "";
 			this.kind = PlaceType[json["kind"] as PlaceType] || PlaceType.point;
-			this.labels = (json["labels"]as codified[] || []).map(CODIFY);
+			this.labels = (json["labels"] as codified[] || []).map(CODIFY);
 			this.colour = json["colour"] as string || "";
-			this.pictureIds = (json["pictures"]as ulong[] || []).map(ID);
+			this.pictureIds = (json["pictures"] as ulong[] || []).map(ID);
 			this.reference = json["reference"] as string || "";
 			this.anchor = json["anchor"]
 				? LatLng.fromJSON(json["anchor"] as JsonObject)
@@ -160,4 +162,30 @@ export class Place
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	/**
+	 * Gets all {@link Asset}s that are interacting with this place.
+	 * @returns 
+	 */
+	getAssets() {
+		return [...ASSETS.values().filter(asset => asset.places.has(this.id))]
+	}
+	/**
+	 * Returns a valid {@link LatLngBounds} that contains the shape of this place.
+	 * @returns 
+	 */
+	getBounds() {
+		switch (this.kind) {
+			case PlaceType.rectangle:
+			case PlaceType.polygon:
+				return new LatLngBounds(
+					(this.points as LatLng[])
+						.concat(this.anchor ?? [])
+				);
+			//case PlaceType.point:
+			//case PlaceType.radial:
+			default:
+				return (this.anchor as LatLng).toBounds(this.radius || 0);
+		}
+	}
 }
