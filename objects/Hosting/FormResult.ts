@@ -9,7 +9,7 @@ import { INamed } from "../API/Interfaces/INamed";
 import { codified, ulong, JsonObject, datetime, int, nothing } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
-import { ASSETS, COMPANIES, FORM_TEMPLATES } from "../storage";
+import { ASSETS, COMPANIES, DISPATCH_JOBS, FORM_TEMPLATES } from "../storage";
 import { FormTemplate } from "./FormTemplate";
 
 /**
@@ -79,12 +79,6 @@ export class FormResult
 	 */
 	driver: string = "";
 
-	// IRequestable
-	/**
-	 * The {@link id} is the key.
-	 */
-	getKey() { return this.id; }
-
 	constructor(json?: JsonObject | nothing) {
 		super();
 		if (json) this.fromJSON(json);
@@ -123,5 +117,19 @@ export class FormResult
 			this.driver = json["driver"] as string || "";
 		}
 		return update;
+	}
+
+	// IRequestable
+	/**
+	 * The {@link id} is the key.
+	 */
+	getKey() { return this.id; }
+	
+	/**
+	 * Returns all {@link DispatchJob}s which have this document attached.
+	 * @returns 
+	 */
+	getDispatchJobs() {
+		return [...DISPATCH_JOBS.values().filter(job => job.attachmentIds.includes(this.id))];
 	}
 }

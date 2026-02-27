@@ -10,8 +10,9 @@ import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
 import { codified, datetime, int, JsonObject, nothing, ulong } from "../API/Types";
 import { Asset } from "../Assets/Asset";
 import { Company } from "../Companies/Company";
+import { Document } from "../Hosting/Document";
 import { FormResult } from "../Hosting/FormResult";
-import { ASSETS, COMPANIES, FORM_RESULTS } from "../storage";
+import { ASSETS, COMPANIES, DOCUMENTS, FORM_RESULTS } from "../storage";
 import { DispatchJobPriority } from "./DispatchJobPriority";
 import { DispatchStep } from "./DispatchStep";
 import { DispatchStepStatus } from "./DispatchStepStatus";
@@ -84,6 +85,15 @@ export class DispatchJob
 	get forms(): FormResult[] { return MAP_FILTERED_BY_KEYS(FORM_RESULTS, this.formIds); }
 	set forms(value: FormResult[]) { this.formIds = value?.map(ARRAY_TO_IDS) ?? []; }
 	/**
+	 * A list of hosted {@link Document} identifiers attached to this task.
+	 */
+	attachmentIds: ulong[] = [];
+	/**
+	 * A list of hosted {@link Document} identifiers attached to this task.
+	 */
+	get attachments(): Document[] { return MAP_FILTERED_BY_KEYS(DOCUMENTS, this.attachmentIds); }
+	set attachments(value: Document[]) { this.attachmentIds = value?.map(ARRAY_TO_IDS) ?? []; }
+	/**
 	 * The importance of this job when scheduling for an asset.
 	 */
 	priority: DispatchJobPriority = DispatchJobPriority.medium;
@@ -127,6 +137,7 @@ export class DispatchJob
 			"labels": [...this.labels],
 			"tags": this.tags || [],
 			"forms": [...this.formIds],
+			"attachments": [...this.attachmentIds],
 			"steps": (this.steps || []).map(ARRAY_TO_JSON),
 		};
 	}
@@ -146,6 +157,7 @@ export class DispatchJob
 			this.labels = [...(json["labels"] as codified[] || [])];
 			this.tags = [...(json["tags"] as codified[] || [])];
 			this.formIds = (json["forms"] as ulong[] || []).map(ID);
+			this.attachmentIds = (json["attachments"] as ulong[] || []).map(ID);
 			this.steps = ((json["steps"] || []) as any[]).map(s => new DispatchStep(s));
 		}
 		return update;

@@ -6,7 +6,7 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
 import { ulong, JsonObject, datetime, int, nothing } from "../API/Types";
 import { Company } from "../Companies/Company";
-import { COMPANIES } from "../storage";
+import { COMPANIES, DISPATCH_JOBS, DISPATCH_TASKS } from "../storage";
 
 /**
  * A file stored temporarily by the system.
@@ -95,4 +95,19 @@ export class Document
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	/**
+	 * Returns all {@link DispatchTask}s which have this document attached.
+	 * @returns 
+	 */
+	getDispatchTasks() {
+		return [...DISPATCH_TASKS.values().filter(task => task.attachmentIds.includes(this.id))];
+	}
+	/**
+	 * Returns all {@link DispatchJob}s which have this document attached.
+	 * @returns 
+	 */
+	getDispatchJobs() {
+		return [...DISPATCH_JOBS.values().filter(job => job.attachmentIds.includes(this.id))];
+	}
 }
