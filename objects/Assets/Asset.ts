@@ -1,4 +1,5 @@
 import { Contact } from "../Accounts/Contact";
+import { ARRAY_UNIQUE } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { BaseCompound } from "../API/BaseCompound";
 import { Position } from "../API/Geography/Position";
@@ -11,9 +12,16 @@ import { IPictured } from "../API/Interfaces/IPictured";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
 import { JsonObject, codified, colour, double, int, nothing, ulong, ushort } from "../API/Types";
 import { Company } from "../Companies/Company";
+import { DispatchJob } from "../Dispatch/DispatchJob";
+import { DispatchTask } from "../Dispatch/DispatchTask";
+import { FormResult } from "../Hosting/FormResult";
 import { Icon } from "../Images/Icon";
 import { Picture } from "../Images/Picture";
+import { MaintenanceJob } from "../Maintenance/MaintenanceJob";
+import { AssetMessage } from "../Messaging/AssetMessage";
+import { Place } from "../Places/Place";
 import { Provider } from "../Providers/Provider";
+import { DISPATCH_JOBS, DISPATCH_TASKS, FORM_RESULTS, MAINTENANCE_JOBS, MESSAGES, PICTURES, PLACES } from "../storage";
 import { AssetAdvanced } from "./AssetAdvanced";
 import { AssetAttribute } from "./AssetAttribute";
 import { AssetDispatch } from "./AssetDispatch";
@@ -283,4 +291,59 @@ export class Asset
 	 * Timestamp from the action that deleted or suspended this object.
 	 */
 	get since(): Date { return this.#general.since; }
+
+	/**
+	 * Gets the list of {@link Place}s where the asset is currently interacting.
+	 * @returns An array of {@link Place} objects.
+	 */
+	getPlaces() {
+		return [...this.places.keys().map(id => PLACES.get(id))];
+	}
+	/**
+	 * Gets the list of {@link AssetMessage}s sent to or from this asset.
+	 * @returns An array of {@link AssetMessage} objects.
+	 */
+	getMessages() {
+		return [...MESSAGES.values().filter(m => m.assetId === this.id)];
+	}
+	/**
+	 * Gets the list of {@link DispatchTask}s and jobs related to this asset.
+	 * @returns An array of {@link DispatchTask} objects.
+	 */
+	getDispatchTasks() {
+		return [...DISPATCH_TASKS.values().filter(t => t.assetId === this.id)];
+	}
+	/**
+	 * Gets the list of {@link DispatchJob}s related to this asset.
+	 * @returns An array of {@link DispatchJob} objects.
+	 */
+	getDispatchJobs() {
+		return [...DISPATCH_JOBS.values().filter(j => j.assetId === this.id)];
+	}
+	/**
+	 * Gets the list of {@link MaintenanceJob}s related to this asset.
+	 * @returns An array of {@link MaintenanceJob} objects.
+	 */
+	getMaintenanceJobs() {
+		return [...MAINTENANCE_JOBS.values().filter(j => j.assetId === this.id)];
+	}
+	/**
+	 * Gets the list of {@link FormResult}s related to this asset.
+	 * @returns An array of {@link FormResult} objects.
+	 */
+	getFormResults() {
+		return [...FORM_RESULTS.values().filter(r => r.assetId === this.id)];
+	}
+	/**
+	 * Gets the list of {@link Picture}s related to this asset.
+	 * @returns An array of {@link Picture} objects.
+	 */
+	getPictures() {
+		return ARRAY_UNIQUE(
+			this.pictureIds.concat(
+				this.contact?.pictureIds
+				?? [] as ulong[]
+			)
+		).map(id => PICTURES.get(id));
+	}
 }
