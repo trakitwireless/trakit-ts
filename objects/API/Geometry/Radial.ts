@@ -70,7 +70,7 @@ export class Radial
 	 * Creates a literal of this {@link Radial}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): IRadial {
+	toJSON(): IRadial & JsonObject {
 		return {
 			"x": this.x,
 			"y": this.y,

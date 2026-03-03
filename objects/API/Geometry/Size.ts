@@ -48,7 +48,7 @@ export class Size
 	 * Creates a literal of this {@link Size}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): ISize {
+	toJSON(): ISize & JsonObject {
 		return {
 			"width": this.width,
 			"height": this.height

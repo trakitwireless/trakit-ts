@@ -55,7 +55,7 @@ export class Point
 	 * Creates a literal of this {@link Point}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): IPoint {
+	toJSON(): IPoint & JsonObject {
 		return {
 			"x": this.x,
 			"y": this.y

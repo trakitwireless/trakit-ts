@@ -65,7 +65,7 @@ export class LatLng
 		this.lat = LATITUDE_NORMALIZED(lat);
 		this.lng = LONGITUDE_NORMALIZED(lng);
 	}
-	
+
 	/**
 	 * Returns a string representation of this {@link LatLng}.
 	 * @param delimiter	The boundary is delimited by a comma (,) by default, but you can override with your own value.
@@ -81,7 +81,7 @@ export class LatLng
 	 * Creates a literal of this {@link LatLng}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): ILatLng {
+	toJSON(): ILatLng & JsonObject {
 		return this.isValid()
 			? {
 				"lat": ROUND_TO(this.lat, DEFAULT_PRECISION),
@@ -109,7 +109,7 @@ export class LatLng
 			&& IS_AN(this.lng)
 			&& !this.isEqual(LatLng.INVALID);
 	}
-	
+
 	/**
 	 * Calculates the distance across the surface of the globe to another coordinate
 	 * @param pin	

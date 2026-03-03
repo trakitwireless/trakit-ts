@@ -32,7 +32,7 @@ export class Position
 			json?.streetAddress as IStreetAddress | JsonObject
 		);
 	}
-	
+
 	/**
 	 * Speed
 	 */
@@ -120,7 +120,7 @@ export class Position
 	 * Creates a literal of this {@link Position}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	override toJSON(): IPosition {
+	override toJSON(): IPosition & JsonObject {
 		return {
 			...super.toJSON(),
 			"dts": this.dts || "",
@@ -131,7 +131,7 @@ export class Position
 			"accuracy": JSON_NUMBER(this.accuracy),
 			"address": this.address,
 			"streetAddress": this.streetAddress?.toJSON() || null,
-		};
+		} as IPosition & JsonObject;
 	}
 
 	/**

@@ -81,7 +81,7 @@ export class LatLngBounds
 	 * Creates a literal of this {@link LatLngBounds}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON() {
+	toJSON(): ILatLngBounds & JsonObject {
 		this.validate();
 		return {
 			"north": this.north,

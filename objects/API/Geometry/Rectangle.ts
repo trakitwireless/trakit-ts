@@ -22,6 +22,7 @@ import {
 import { Point, } from './Point';
 import { Radial, } from './Radial';
 import { Size, } from './Size';
+import { JsonObject } from '../Types';
 
 /**
  * A four-sided box on a flat surface.
@@ -116,7 +117,7 @@ export class Rectangle implements IRectangle {
 	 * Creates a literal of this {@link Rectangle}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): IRectangle {
+	toJSON(): IRectangle & JsonObject {
 		this.validate();
 		return {
 			"top": this.top,
@@ -178,7 +179,7 @@ export class Rectangle implements IRectangle {
 			|| rect.bottom < this.top
 		);
 	}
-	
+
 	/**
 	 * Validates the boundary and creates a duplicate of this {@link Rectangle}.
 	 */

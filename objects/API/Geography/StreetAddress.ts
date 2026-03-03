@@ -98,7 +98,7 @@ export class StreetAddress
 	 * Creates a literal of this {@link StreetAddress}.
 	 * Used internally by {@link JSON.stringify}.
 	 */
-	toJSON(): IStreetAddress {
+	toJSON(): IStreetAddress & JsonObject {
 		return {
 			"number": this.number,
 			"street": this.street,
@@ -108,6 +108,6 @@ export class StreetAddress
 			"country": this.country,
 			"postal": this.postal,
 			"isToll": this.isToll,
-		}
+		};
 	}
 }

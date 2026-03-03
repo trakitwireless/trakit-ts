@@ -19,7 +19,7 @@ export class IconLabel
 			json?.colour as colour,
 		);
 	}
-	
+
 	/**
 	 * The offset from the lat/long in pixels.
 	 */
@@ -46,7 +46,7 @@ export class IconLabel
 	toJSON(): JsonObject {
 		return {
 			"align": this.align || "",
-			"anchor": this.anchor.toJSON() as any as JsonObject,
+			"anchor": this.anchor.toJSON(),
 			"colour": this.colour || "",
 		};
 	}
