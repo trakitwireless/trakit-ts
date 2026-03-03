@@ -66,7 +66,7 @@ export class CompanyStyle
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
-	
+
 	// IBelongCompany
 	set companyId(value: number) { this.parentId = value; }
 	get companyId(): number { return this.parentId; }
@@ -81,5 +81,5 @@ export class CompanyStyle
  * @returns 
  */
 function OBJECT_TO_LABELSTYLE(key: string, value: any): [codified, LabelStyle] {
-	return [CODIFY(key), new LabelStyle(value)];
+	return [CODIFY(key), LabelStyle.fromJSON(value)];
 }
