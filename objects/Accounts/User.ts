@@ -17,6 +17,7 @@ import { UserGeneral } from "./UserGeneral";
 import { UserGroup } from "./UserGroup";
 import { UserMFA } from "./UserMFA";
 import { UserNotifications } from "./UserNotifications";
+import { UserSetting } from "./UserSetting";
 import { UserSSO } from "./UserSSO";
 
 /**
@@ -33,6 +34,7 @@ export class User
 			this.#general,
 			this.#advanced,
 			this.#authentication,
+			this.#settings,
 		];
 	}
 
@@ -41,84 +43,78 @@ export class User
 	 * {@link User.login}
 	 */
 	get login(): email {
-		return this.general.login
-			?? this.advanced.login;
+		return this.#general.login
+			?? this.#advanced.login
+			?? this.#authentication.login
+			?? this.#settings.login;
 	}
 	/**
 	 * The company to which this user belongs.
 	 * {@link Company.id}
 	 */
 	get companyId(): ulong {
-		return this.general.companyId
-			?? this.advanced.companyId;
+		return this.#general.companyId
+			?? this.#advanced.companyId
+			?? this.#authentication.companyId
+			?? this.#settings.companyId;
 	}
 	/**
 	 * The {@link Company} to which this user belongs.
 	 */
-	get company(): Company { return this.general.company; }
+	get company(): Company { return this.#general.company; }
 
 	#general: UserGeneral;
 	/**
 	 *  
 	 */
 	get general(): UserGeneral { return this.#general; }
-	///**
-	// * Indicated whether the credentials have expired according to the company's policy.
-	// */
-	//get passwordExpired(): boolean { return this.general.passwordExpired; }
-	//set passwordExpired(value: boolean) { this.general.passwordExpired = value; }
 	/**
 	 * Indicates whether system access is disabled.
 	 */
-	get enabled(): boolean { return this.general.enabled; }
-	set enabled(value: boolean) { this.general.enabled = value; }
+	get enabled(): boolean { return this.#general.enabled; }
+	set enabled(value: boolean) { this.#general.enabled = value; }
 	/**
 	 * Human friendly name for these credentials
 	 */
-	get nickname(): string { return this.general.nickname; }
-	set nickname(value: string) { this.general.nickname = value; }
+	get nickname(): string { return this.#general.nickname; }
+	set nickname(value: string) { this.#general.nickname = value; }
 	/**
 	 * Contact information for this user.
 	 * {@link Contact.id}
 	 */
-	get contactId(): ulong { return this.general.contactId; }
-	set contactId(value: ulong | nothing) { this.general.contactId = value || NaN; }
+	get contactId(): ulong { return this.#general.contactId; }
+	set contactId(value: ulong | nothing) { this.#general.contactId = value || NaN; }
 	/**
 	 * {@link Contact} information for this user.
 	 */
-	get contact(): Contact { return this.general.contact; }
-	set contact(value: Contact | nothing) { this.general.contactId = value?.id || NaN; }
+	get contact(): Contact { return this.#general.contact; }
+	set contact(value: Contact | nothing) { this.#general.contactId = value?.id || NaN; }
 	/**
 	 * The user's local timezone.
 	 */
-	get timezone(): Timezone { return this.general.timezone; }
-	set timezone(value: Timezone) { this.general.timezone = value; }
+	get timezone(): Timezone { return this.#general.timezone; }
+	set timezone(value: Timezone) { this.#general.timezone = value; }
 	/**
 	 * Preferred region/language for the UI and notifications.
 	 * Valid formats use &lt;ISO 639-1&gt;&lt;dash&gt;&lt;ISO 3166-2&gt; such as "fr-CA" or "en-US".
 	 */
-	get language(): codified { return this.general.language; }
-	set language(value: codified) { this.general.language = value; }
+	get language(): codified { return this.#general.language; }
+	set language(value: codified) { this.#general.language = value; }
 	/**
 	 * The format strings defining the preferred way to display ambiguous values.
 	 */
-	get formats(): Map<codified, datetimetemplate> { return this.general.formats; }
-	set formats(value: Map<codified, datetimetemplate>) { this.general.formats = value; }
+	get formats(): Map<codified, datetimetemplate> { return this.#general.formats; }
+	set formats(value: Map<codified, datetimetemplate>) { this.#general.formats = value; }
 	/**
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
 	 */
-	get measurements(): Map<codified, SystemsOfUnits> { return this.general.measurements; }
-	set measurements(value: Map<codified, SystemsOfUnits>) { this.general.measurements = value; }
-	/**
-	 * Additional options which do not fit in with the formats or measurements preferences.
-	 */
-	get options(): Map<codified, string> { return this.general.options; }
-	set options(value: Map<codified, string>) { this.general.options = value; }
+	get measurements(): Map<codified, SystemsOfUnits> { return this.#general.measurements; }
+	set measurements(value: Map<codified, SystemsOfUnits>) { this.#general.measurements = value; }
 	/**
 	 * Definition of how and when to send alerts to the user.
 	 */
-	get notify(): UserNotifications[] { return this.general.notify; }
-	set notify(value: UserNotifications[]) { this.general.notify = value; }
+	get notify(): UserNotifications[] { return this.#general.notify; }
+	set notify(value: UserNotifications[]) { this.#general.notify = value; }
 
 	#advanced: UserAdvanced;
 	/**
@@ -129,18 +125,18 @@ export class User
 	 * A list of {@link UserGroup}s to which this user belongs.
 	 * {@link UserGroup.id}
 	 */
-	get groupIds(): ulong[] { return this.advanced.groupIds; }
-	set groupIds(value: ulong[]) { this.advanced.groupIds = value; }
+	get groupIds(): ulong[] { return this.#advanced.groupIds; }
+	set groupIds(value: ulong[]) { this.#advanced.groupIds = value; }
 	/**
 	 * A list of groups to which this user belongs.
 	 */
-	get groups(): UserGroup[] { return this.advanced.groups; }
-	set groups(value: UserGroup[]) { this.advanced.groups = value; }
+	get groups(): UserGroup[] { return this.#advanced.groups; }
+	set groups(value: UserGroup[]) { this.#advanced.groups = value; }
 	/**
 	 * Individual permission rules which override the group rules.
 	 */
-	get permissions(): Permission[] { return this.advanced.permissions; }
-	set permissions(value: Permission[]) { this.advanced.permissions = value; }
+	get permissions(): Permission[] { return this.#advanced.permissions; }
+	set permissions(value: Permission[]) { this.#advanced.permissions = value; }
 
 	#authentication: UserAuthentication;
 	/**
@@ -163,11 +159,19 @@ export class User
 	get sso(): UserSSO { return this.#authentication.sso; }
 	set sso(value: UserSSO) { this.#authentication.sso = value; }
 
+	#settings: UserSetting;
+	/**
+	 * Additional options which do not fit in with the formats or measurements preferences.
+	 */
+	get options(): Map<codified, string> { return this.#settings.options; }
+	set options(value: Map<codified, string>) { this.#settings.options = value; }
+
 	constructor(json?: JsonObject | nothing) {
 		super();
 		this.#general = new UserGeneral;
 		this.#advanced = new UserAdvanced;
 		this.#authentication = new UserAuthentication;
+		this.#settings = new UserSetting;
 		if (json) this.fromJSON(json);
 	}
 	override toJSON() {
@@ -175,6 +179,7 @@ export class User
 			...this.#general.toJSON(),
 			...this.#advanced.toJSON(),
 			...this.#authentication.toJSON(),
+			...this.#settings.toJSON(),
 			"v": [...this.v],
 		};
 	}
@@ -182,10 +187,11 @@ export class User
 		const version = json?.["v"] as int[] || [],
 			general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
 			advanced = this.#advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
-			auth = this.#authentication.fromJSON({ ...json, "v": version.slice(2, 3) }, force);
-		return general || advanced || auth;
+			auth = this.#authentication.fromJSON({ ...json, "v": version.slice(2, 3) }, force),
+			settings = this.#settings.fromJSON({ ...json, "v": version.slice(3, 4) }, force);
+		return general || advanced || auth || settings;
 	}
-	
+
 	// IRequestable
 	/**
 	 * The {@link login} is the key.
