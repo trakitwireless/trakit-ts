@@ -4,7 +4,7 @@ import { codified } from '../Types';
 
 /**
  * This interface exists so that I can work with Machine and UserGeneral objects the same way.
-*/
+ */
 export interface IHavePreferences {
 	/**
 	 * The local timezone for this object.
@@ -23,8 +23,4 @@ export interface IHavePreferences {
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
 	 */
 	measurements: Map<codified, SystemsOfUnits>;
-	/**
-	 * Additional options which do not fit in with the formats or measurements preferences.
-	 */
-	options: Map<codified, string>;
 }

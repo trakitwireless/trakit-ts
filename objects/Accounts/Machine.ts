@@ -75,10 +75,6 @@ export class Machine
 	 * Preferred way of displaying ambiguous numbers in the context of measurements.
 	 */
 	measurements: Map<string, SystemsOfUnits> = new Map;
-	/**
-	 * Additional options which do not fit in with the formats or measurements preferences.
-	 */
-	options: Map<string, string> = new Map;
 
 	/**
 	 * A list of groups to which this machine account belongs.
@@ -131,7 +127,6 @@ export class Machine
 			"language": this.language,
 			"formats": MAP_TO_JSON(this.formats),
 			"measurements": MAP_TO_JSON(this.measurements),
-			"options": MAP_TO_JSON(this.options),
 			"groups": [...this.groupIds],
 			"permissions": this.permissions?.map(ARRAY_TO_JSON) ?? [],
 			"services": [...this.services],
@@ -157,7 +152,6 @@ export class Machine
 			this.language = json["language"] as codified || '';
 			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] as object || {});
 			this.measurements = JSON_TO_MAP_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] as object || {});
 			this.groupIds = (json["groups"] as ulong[] || []).map(ID);
 			this.permissions = (json["permissions"] as JsonObject[] || []).map(Permission.fromJSON);
 			this.services = json["services"] as url[] || [];
@@ -167,7 +161,7 @@ export class Machine
 		}
 		return update;
 	}
-	
+
 	// IRequestable
 	/**
 	 * The {@link key} is the key (how about that).

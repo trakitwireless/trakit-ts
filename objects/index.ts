@@ -45,9 +45,11 @@ import { SessionStatus } from "./Accounts/SessionStatus";
 import { SystemsOfUnits } from "./Accounts/SystemsOfUnits";
 import { User } from "./Accounts/User";
 import { UserAdvanced } from "./Accounts/UserAdvanced";
+import { UserAuthentication } from "./Accounts/UserAuthentication";
 import { UserGeneral } from "./Accounts/UserGeneral";
 import { UserGroup } from "./Accounts/UserGroup";
 import { UserNotifications } from "./Accounts/UserNotifications";
+import { UserSetting } from "./Accounts/UserSetting";
 import { ARRAY_EXCEPT } from "./API/Arrays";
 import { Base } from "./API/Base";
 import { BaseComponent } from "./API/BaseComponent";
@@ -374,7 +376,8 @@ export type SyncName =
 	| "User"
 	| "UserGeneral"
 	| "UserAdvanced"
-	//| "UserAuthentication"
+	| "UserAuthentication"
+	| "UserSetting"
 	| "UserGroup"
 	// Assets
 	| "Asset"
@@ -442,6 +445,8 @@ export const classes: { [key in SyncName]: { new(): IRequestable } } = {
 	"User": User,
 	"UserGeneral": UserGeneral,
 	"UserAdvanced": UserAdvanced,
+	"UserAuthentication": UserAuthentication,
+	"UserSetting": UserSetting,
 	"UserGroup": UserGroup,
 	// Assets
 	"Asset": Asset,
@@ -510,6 +515,8 @@ export const storage: { [key in SyncName]: Map<ulong | guid | email | codified |
 	"User": USERS,
 	"UserGeneral": USERS,
 	"UserAdvanced": USERS,
+	"UserAuthentication": USERS,
+	"UserSetting": USERS,
 	"UserGroup": GROUPS,
 	// Assets
 	"Asset": ASSETS,
@@ -787,13 +794,13 @@ export const authorizer = {
 	findComplex,
 	hasAnyComplex,
 	findAnyComplex,
-    
+
 	// Escalations
 	findAllEscalations,
 	findEscalations,
 	findAllLabelEscalations,
 	findLabelEscalation,
-    
+
 	// exposed properties
 	/**
 	 * A list of {@link PermissionType}s which are implied for each user's own company.
