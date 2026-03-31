@@ -36,10 +36,6 @@ export class UserGeneral
 	 */
 	get company(): Company { return COMPANIES.get(this.companyId) as Company; }
 	/**
-	 * Indicated whether the credentials have expired according to the company's policy.
-	 */
-	passwordExpired: boolean = false;
-	/**
 	 * Indicates whether system access is disabled.
 	 */
 	enabled: boolean = false;
@@ -76,11 +72,6 @@ export class UserGeneral
 	 */
 	measurements: Map<codified, SystemsOfUnits> = new Map;
 	/**
-	 * Additional options which do not fit in with the formats or measurements preferences.
-
-	 */
-	options: Map<codified, string> = new Map;
-	/**
 	 * Definition of how and when to send alerts to the user.
 	 */
 	notify: UserNotifications[] = [];
@@ -97,12 +88,10 @@ export class UserGeneral
 			"nickname": this.nickname,
 			"enabled": !!this.enabled,
 			"contact": !!this.contactId,
-			"passwordExpired": !!this.passwordExpired,
 			"timezone": this.timezone?.code ?? Timezone.utc.code,
 			"language": this.language,
 			"formats": MAP_TO_JSON(this.formats),
 			"measurements": MAP_TO_JSON(this.measurements),
-			"options": MAP_TO_JSON(this.options),
 			"notify": this.notify.map(ARRAY_TO_JSON),
 		};
 	}
@@ -114,12 +103,10 @@ export class UserGeneral
 			this.nickname = json["nickname"] as string || "";
 			this.enabled = !!json["enabled"];
 			this.contactId = ID(json["contact"]);
-			this.passwordExpired = !!json["passwordExpired"];
 			this.timezone = TIMEZONE_FIND(json["timezone"] as codified || "") || Timezone.utc;
 			this.language = json["language"] as codified || "";
 			this.formats = JSON_TO_MAP_KEY_CODIFIED(json["formats"] as object || {});
 			this.measurements = JSON_TO_MAP_PREDICATE(json["measurements"] as object || {}, (k, v) => [CODIFY(k), SystemsOfUnits[v as SystemsOfUnits] ?? SystemsOfUnits.metric]);
-			this.options = JSON_TO_MAP_KEY_CODIFIED(json["options"] as object || {});
 			this.notify = (json["notify"] as JsonObject[] || []).map((notify: any) => UserNotifications.fromJSON(notify));
 		}
 		return update;
