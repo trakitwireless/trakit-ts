@@ -356,7 +356,7 @@ import {
 /**
  * Version number for this release.
  */
-export const version = '0.0.22';
+export const version = '0.0.24';
 
 /**
  * The names of all main object types in the Trak-iT Object Model.
@@ -832,6 +832,8 @@ export {
 	User,
 	UserGeneral,
 	UserAdvanced,
+	UserAuthentication,
+	UserSetting,
 	UserGroup,
 	UserNotifications,
 };
