@@ -170,6 +170,7 @@ export class AssetGeneral
 		if (update) {
 			this.id = ID(json["id"]);
 			this.companyId = ID(json["company"]);
+			this.kind = AssetType[json["kind"] as keyof typeof AssetType] || this.kind;
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
 			this.suspended = !!json["suspended"];
