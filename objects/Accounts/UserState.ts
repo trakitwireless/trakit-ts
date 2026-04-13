@@ -9,7 +9,7 @@ import { User } from "./User";
 /**
  * Contains often changing details for a {@link User} such as UI preferences and options.
  */
-export class UserSetting
+export class UserState
 	extends BaseComponent
 	implements IBelongCompany {
 	/**

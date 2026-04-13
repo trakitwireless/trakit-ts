@@ -17,7 +17,7 @@ import { UserGeneral } from "./UserGeneral";
 import { UserGroup } from "./UserGroup";
 import { UserMFA } from "./UserMFA";
 import { UserNotifications } from "./UserNotifications";
-import { UserSetting } from "./UserSetting";
+import { UserState } from "./UserState";
 import { UserSSO } from "./UserSSO";
 
 /**
@@ -34,7 +34,7 @@ export class User
 			this.#general,
 			this.#advanced,
 			this.#authentication,
-			this.#settings,
+			this.#state,
 		];
 	}
 
@@ -46,7 +46,7 @@ export class User
 		return this.#general.login
 			?? this.#advanced.login
 			?? this.#authentication.login
-			?? this.#settings.login;
+			?? this.#state.login;
 	}
 	/**
 	 * The company to which this user belongs.
@@ -56,12 +56,17 @@ export class User
 		return this.#general.companyId
 			?? this.#advanced.companyId
 			?? this.#authentication.companyId
-			?? this.#settings.companyId;
+			?? this.#state.companyId;
 	}
 	/**
 	 * The {@link Company} to which this user belongs.
 	 */
-	get company(): Company { return this.#general.company; }
+	get company(): Company {
+		return this.#general.company
+			?? this.#advanced.company
+			?? this.#authentication.company
+			?? this.#state.company;
+	}
 
 	#general: UserGeneral;
 	/**
@@ -159,19 +164,19 @@ export class User
 	get sso(): UserSSO { return this.#authentication.sso; }
 	set sso(value: UserSSO) { this.#authentication.sso = value; }
 
-	#settings: UserSetting;
+	#state: UserState;
 	/**
 	 * Additional options which do not fit in with the formats or measurements preferences.
 	 */
-	get options(): Map<codified, string> { return this.#settings.options; }
-	set options(value: Map<codified, string>) { this.#settings.options = value; }
+	get options(): Map<codified, string> { return this.#state.options; }
+	set options(value: Map<codified, string>) { this.#state.options = value; }
 
 	constructor(json?: JsonObject | nothing) {
 		super();
 		this.#general = new UserGeneral;
 		this.#advanced = new UserAdvanced;
 		this.#authentication = new UserAuthentication;
-		this.#settings = new UserSetting;
+		this.#state = new UserState;
 		if (json) this.fromJSON(json);
 	}
 	override toJSON() {
@@ -179,7 +184,7 @@ export class User
 			...this.#general.toJSON(),
 			...this.#advanced.toJSON(),
 			...this.#authentication.toJSON(),
-			...this.#settings.toJSON(),
+			...this.#state.toJSON(),
 			"v": [...this.v],
 		};
 	}
@@ -188,8 +193,8 @@ export class User
 			general = this.#general.fromJSON({ ...json, "v": version.slice(0, 1) }, force),
 			advanced = this.#advanced.fromJSON({ ...json, "v": version.slice(1, 2) }, force),
 			auth = this.#authentication.fromJSON({ ...json, "v": version.slice(2, 3) }, force),
-			settings = this.#settings.fromJSON({ ...json, "v": version.slice(3, 4) }, force);
-		return general || advanced || auth || settings;
+			state = this.#state.fromJSON({ ...json, "v": version.slice(3, 4) }, force);
+		return general || advanced || auth || state;
 	}
 
 	// IRequestable

@@ -49,7 +49,7 @@ import { UserAuthentication } from "./Accounts/UserAuthentication";
 import { UserGeneral } from "./Accounts/UserGeneral";
 import { UserGroup } from "./Accounts/UserGroup";
 import { UserNotifications } from "./Accounts/UserNotifications";
-import { UserSetting } from "./Accounts/UserSetting";
+import { UserState } from "./Accounts/UserState";
 import { ARRAY_EXCEPT } from "./API/Arrays";
 import { Base } from "./API/Base";
 import { BaseComponent } from "./API/BaseComponent";
@@ -377,7 +377,7 @@ export type SyncName =
 	| "UserGeneral"
 	| "UserAdvanced"
 	| "UserAuthentication"
-	| "UserSetting"
+	| "UserState"
 	| "UserGroup"
 	// Assets
 	| "Asset"
@@ -446,7 +446,7 @@ export const classes: { [key in SyncName]: { new(): IRequestable } } = {
 	"UserGeneral": UserGeneral,
 	"UserAdvanced": UserAdvanced,
 	"UserAuthentication": UserAuthentication,
-	"UserSetting": UserSetting,
+	"UserState": UserState,
 	"UserGroup": UserGroup,
 	// Assets
 	"Asset": Asset,
@@ -516,7 +516,7 @@ export const storage: { [key in SyncName]: Map<ulong | guid | email | codified |
 	"UserGeneral": USERS,
 	"UserAdvanced": USERS,
 	"UserAuthentication": USERS,
-	"UserSetting": USERS,
+	"UserState": USERS,
 	"UserGroup": GROUPS,
 	// Assets
 	"Asset": ASSETS,
@@ -833,7 +833,7 @@ export {
 	UserGeneral,
 	UserAdvanced,
 	UserAuthentication,
-	UserSetting,
+	UserState,
 	UserGroup,
 	UserNotifications,
 };
