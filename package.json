@@ -1,7 +1,7 @@
 {
   "name": "@trakit/objects",
   "type": "module",
-  "version": "0.0.26",
+  "version": "0.0.28",
   "main": "./trakit-objects.min.js",
   "types": "./index.d.ts",
   "scripts": {
@@ -12,10 +12,10 @@
     "url": "git+https://github.com/trakitwireless/trakit-ts-objects.git"
   },
   "files": [
-	"LICENSE",
-	"README.md",
-	"**/*.js",
-	"**/*.d.ts"
+    "LICENSE",
+    "README.md",
+    "**/*.js",
+    "**/*.d.ts"
   ],
   "keywords": [
     "trakit"
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^4.35.0",
-    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-typescript2": "^0.37.0",
     "tsx": "^4.21.0",
     "vitest": "^4.0.7"
   }
