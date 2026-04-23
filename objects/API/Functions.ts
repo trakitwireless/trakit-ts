@@ -1,15 +1,15 @@
-﻿import { FILTER_BY_BOOLEAN_ARRAY } from "./Arrays";
+﻿import { SyncName } from "../index";
+import { FILTER_BY_BOOLEAN_ARRAY } from "./Arrays";
+import { BaseComponent } from "./BaseComponent";
 import { CODIFY } from "./Codifier";
 import {
-	ABS,
 	INT,
-	KEYS,
 	MAX,
 	MIN,
 	OBJECT,
 	POW,
 	ROUND,
-	SQRT,
+	SQRT
 } from "./Constants";
 import { ISerializable } from "./Interfaces/ISerializable";
 import { MERGE_INTERNAL } from "./Objects";
@@ -75,6 +75,45 @@ export function IS_AN(value: any): value is number {
 }
 
 /**
+ * Some objects are made up of the pieces of many objects.
+ * {@link Asset}
+ * {@link Company}
+ * {@link Provider}
+ * {@link User}
+ */
+export const COMPOUNDS = [
+	"AssetGeneral",
+	"AssetAdvanced",
+	"AssetDispatch",
+	"CompanyGeneral",
+	"CompanyDirectory",
+	"CompanyPolicy",
+	"CompanyStyle",
+	"CompanyReseller",
+	"UserGeneral",
+	"UserAdvanced",
+	"UserAuthentication",
+	"UserState",
+	"ProviderGeneral",
+	"ProviderAdvanced",
+	"ProviderControl",
+] as SyncName[];
+/**
+
+* Checks to see if the given value is a compound component or not.
+ * @param value 
+ * @returns 
+ */
+export function IS_COMPOUNDED(value: BaseComponent | object | SyncName): boolean {
+	return value instanceof BaseComponent
+		|| COMPOUNDS.includes(
+			typeof value === 'function'
+				? value.constructor.name as SyncName
+				: value?.toString() as SyncName
+		);
+}
+
+/**
  * Rounds a number to the desired number of decimal places. Using a negative places value will round to the nearest ten.
  * @param number The number to be rounded
  * @param places The number of decimal places.  Default is 0.
@@ -137,7 +176,7 @@ export function DOUGLASPEUCKER_INTERNAL<TCoord>(
 ): boolean[] {
 	// references the indexes in the source array that should be kept
 	const keepers: boolean[] = new Array(source.length);
-	
+
 	// the queue is initially populated with just the first and last index of the source
 	let checkers = [
 		0,
