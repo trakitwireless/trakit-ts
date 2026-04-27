@@ -1,5 +1,5 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
-import { ID, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON, MAP_TO_JSON_PREDICATE } from "../API/Functions";
+import { ID, JSON_NUMBER, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON, MAP_TO_JSON_PREDICATE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { JsonObject, int, ipv4, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -48,7 +48,7 @@ export class ProviderAdvanced
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"lastIP": this.lastIP || "",
 			"attributes": MAP_TO_JSON_PREDICATE(
 				this.attributes,

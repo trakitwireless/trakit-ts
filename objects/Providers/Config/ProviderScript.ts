@@ -1,6 +1,6 @@
 import { ARRAY_TO_JSON } from "../../API/Arrays";
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../../API/Interfaces/IGlobal";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
@@ -81,7 +81,7 @@ export class ProviderScript
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"fill": this.fill || "",
@@ -89,7 +89,7 @@ export class ProviderScript
 			"graphic": this.graphic || "",
 			"global": !!this.global,
 			"kind": ProviderType[this.kind] || ProviderType.unknown,
-			"blocks": this.blocks.map(ARRAY_TO_JSON),
+			"blocks": this.blocks?.map(ARRAY_TO_JSON) ?? [],
 			"parameters": MAP_TO_JSON(this.parameters),
 		};
 	}
@@ -100,7 +100,6 @@ export class ProviderScript
 			this.companyId = ID(json["company"]);
 			this.name = json["name"] as string || "";
 			this.notes = json["notes"] as string || "";
-
 			this.fill = json["fill"] as string || "";
 			this.stroke = json["stroke"] as string || "";
 			this.graphic = json["graphic"] as string || "";

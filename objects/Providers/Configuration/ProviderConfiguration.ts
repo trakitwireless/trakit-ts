@@ -1,5 +1,5 @@
 import { BaseComponent } from "../../API/BaseComponent";
-import { ID, IS_AN, JSON_TO_MAP, MAP_TO_JSON } from "../../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON } from "../../API/Functions";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../../API/Interfaces/IIdUlong";
 import { INamed } from "../../API/Interfaces/INamed";
@@ -61,13 +61,13 @@ export class ProviderConfiguration
 	override toJSON() {
 		return {
 			"id": this.id,
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"v": [...this.v],
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"type": this.typeId || null,
 			"scriptParameters": MAP_TO_JSON(this.scriptParameters),
-			"geofences": this.geofences || "",
+			"geofences": this.geofences || [],
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
@@ -79,7 +79,7 @@ export class ProviderConfiguration
 			this.notes = json["notes"] as string || "";
 			this.typeId = ID(json["type"]);
 			this.scriptParameters = JSON_TO_MAP(json["scriptParameters"] as object || {});
-			this.geofences = json["geofences"] as ulong[] || [];
+			this.geofences = (json["geofences"] as ulong[] || []).map(ID);
 		}
 		return update;
 	}
