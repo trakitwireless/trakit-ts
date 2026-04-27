@@ -1,6 +1,6 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { ID } from "../API/Functions";
+import { ID, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { JsonObject, email, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -14,7 +14,7 @@ import { UserSSO } from "./UserSSO";
  */
 export class UserAuthentication
 	extends BaseComponent
-	implements  IBelongCompany{
+	implements IBelongCompany {
 	/**
 	 * The unique public email address used to access the system.
 	 * {@link User.login}
@@ -50,7 +50,7 @@ export class UserAuthentication
 		return {
 			"login": this.login.toLowerCase(),
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"passwordExpired": !!this.passwordExpired,
 			"mfa": this.mfa?.map(ARRAY_TO_JSON) || null,
 			"sso": this.sso?.toJSON() || null,

@@ -1,7 +1,7 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { ID, JSON_TO_MAP_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from "../API/Functions";
+import { ID, JSON_NUMBER, JSON_TO_MAP_KEY_CODIFIED, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IEnabled } from "../API/Interfaces/IEnabled";
 import { IHavePreferences } from "../API/Interfaces/IHavePreferences";
@@ -84,7 +84,7 @@ export class UserGeneral
 		return {
 			"login": this.login.toLowerCase(),
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"nickname": this.nickname,
 			"enabled": !!this.enabled,
 			"contact": !!this.contactId,

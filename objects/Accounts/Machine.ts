@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from '../API/Arrays';
 import { BaseComponent, } from '../API/BaseComponent';
 import { CODIFY } from '../API/Codifier';
-import { DATE, ID, JSON_DATE, JSON_TO_MAP_PREDICATE, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from '../API/Functions';
+import { DATE, ID, JSON_DATE, JSON_NUMBER, JSON_TO_MAP_KEY_CODIFIED, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from '../API/Functions';
 import { IBelongCompany, } from '../API/Interfaces/IBelongCompany';
 import { IEnabled, } from '../API/Interfaces/IEnabled';
 import { IHavePermissions, } from '../API/Interfaces/IHavePermissions';
@@ -117,7 +117,7 @@ export class Machine
 		return {
 			"key": this.key,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"nickname": this.nickname,
 			"notes": this.notes,
 			"enabled": !!this.enabled,

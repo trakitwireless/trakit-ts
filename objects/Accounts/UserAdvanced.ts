@@ -1,6 +1,6 @@
 ﻿import { ARRAY_TO_IDS, ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { ID } from "../API/Functions";
+import { ID, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IHavePermissions } from "../API/Interfaces/IHavePermissions";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
@@ -54,7 +54,7 @@ export class UserAdvanced
 		return {
 			"login": this.login.toLowerCase(),
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"groups": [...this.groupIds],
 			"permissions": this.permissions.map(ARRAY_TO_JSON),
 		};
@@ -69,7 +69,7 @@ export class UserAdvanced
 		}
 		return update;
 	}
-	
+
 	// IRequestable
 	/**
 	 * The {@link login} is the key.

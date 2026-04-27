@@ -1,6 +1,6 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -50,7 +50,7 @@ export class UserGroup
 		return {
 			"id": this.id,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"permissions": this.permissions?.map(ARRAY_TO_JSON) ?? [],

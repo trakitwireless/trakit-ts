@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { DATE, ID, IS_AN, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -172,7 +172,7 @@ export class Contact
 			: this.urls.delete(CONTACT_KEY_WWW);
 	}
 	//#endregion Legacy/Deprecated
-	
+
 	constructor(json?: JsonObject | nothing) {
 		super();
 		if (json) this.fromJSON(json);
@@ -181,7 +181,7 @@ export class Contact
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"otherNames": MAP_TO_JSON(this.otherNames),

@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from "../API/Functions";
+import { ID, JSON_NUMBER, JSON_TO_MAP_KEY_CODIFIED, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { JsonObject, codified, email, int, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -39,7 +39,7 @@ export class UserState
 		return {
 			"login": this.login.toLowerCase(),
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"options": MAP_TO_JSON(this.options),
 		};
 	}
