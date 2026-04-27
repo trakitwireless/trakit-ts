@@ -102,7 +102,9 @@ export class AssetAttribute
 			"name": this.name,
 			"simple": this.simple,
 			"complex": this.complex,
-			"raw": this.raw || IS_AN(this.raw) || typeof this.raw === "string"
+			"raw": this.raw
+				|| IS_AN(this.raw)
+				|| typeof this.raw === "string"
 				? this.raw
 				: null,
 			"provider": this.providerId || "",

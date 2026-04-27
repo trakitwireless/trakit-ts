@@ -123,7 +123,7 @@ export class Position
 	override toJSON(): IPosition & JsonObject {
 		return {
 			...super.toJSON(),
-			"dts": this.dts || "",
+			"dts": JSON_DATE(this.date),
 			"speed": JSON_NUMBER(this.speed),
 			"speedLimit": JSON_NUMBER(this.speedLimit as number),
 			"bearing": JSON_NUMBER(this.bearing),

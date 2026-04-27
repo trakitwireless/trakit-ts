@@ -1,7 +1,7 @@
 import { Contact } from "../Accounts/Contact";
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIconic } from "../API/Interfaces/IIconic";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -133,11 +133,11 @@ export class AssetGeneral
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"kind": AssetType[this.kind] || null,
 			"name": this.name || "",
 			"notes": this.notes || "",
-			"icon": this.iconId,
+			"icon": JSON_NUMBER(this.iconId),
 			"labels": [...this.labels],
 			...(
 				this.suspended
@@ -150,7 +150,7 @@ export class AssetGeneral
 						"messagingAddress": this.messagingAddress,
 						"pictures": [...this.pictureIds],
 						// person
-						"contact": this.contactId,
+						"contact": JSON_NUMBER(this.contactId),
 						// vehicle
 						"vin": this.vin || "",
 						"plate": this.plate || "",

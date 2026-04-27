@@ -1,7 +1,7 @@
 ﻿import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IPosition } from "../API/Geography/Interfaces";
 import { Position } from "../API/Geography/Position";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -89,7 +89,7 @@ export class AssetAdvanced
 		const json: JsonObject = {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"position": (this.position?.toJSON() || null) as JsonObject | null,
 			"odometer": this.odometer || 0,
 			"tags": [...this.tags],
