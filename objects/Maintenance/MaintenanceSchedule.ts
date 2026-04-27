@@ -1,6 +1,6 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { DATE, ID, IS_AN, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER, JSON_TO_MAP_PREDICATE, MAP_TO_JSON } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -114,7 +114,7 @@ export class MaintenanceSchedule
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"notify": [...this.notify],
@@ -124,7 +124,7 @@ export class MaintenanceSchedule
 			"graphic": this.graphic || "",
 			"garage": this.garage || "",
 			"cost": this.cost || 0,
-			"duration": this.duration.toString(),
+			"duration": this.duration?.toString() ?? null,
 			"reference": this.reference || "",
 			"predictionDays": this.predictionDays || DEFAULT_PREDICTION_DAYS,
 			"recurDays": this.recurDays || null,
