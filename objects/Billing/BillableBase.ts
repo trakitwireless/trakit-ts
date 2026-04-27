@@ -73,8 +73,8 @@ export abstract class BillableBase
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
-			"profile": this.profileId,
+			"company": JSON_NUMBER(this.companyId),
+			"profile": JSON_NUMBER(this.profileId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"reference": this.reference || "",
@@ -100,7 +100,7 @@ export abstract class BillableBase
 		}
 		return update;
 	}
-	
+
 	// IRequestable
 	/**
 	 * The {@link id} is the key.

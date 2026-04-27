@@ -1,6 +1,6 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -96,16 +96,16 @@ export class BillingProfile
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
-			"target": this.targetId,
-			"billee": this.billeeId,
+			"company": JSON_NUMBER(this.companyId),
+			"target": JSON_NUMBER(this.targetId),
+			"billee": JSON_NUMBER(this.billeeId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"messages": this.messages?.map(ARRAY_TO_JSON) ?? [],
 			"cycle": BillingCycle[this.cycle] || BillingCycle.monthly,
 			"currency": BillingCurrency[this.currency] || BillingCurrency.CAD,
-			"cycleStart": IS_AN(this.cycleStart.valueOf()) ? this.cycleStart.toISOString() : null,
-			"cycleEnd": IS_AN(this.cycleStart.valueOf()) ? this.cycleEnd.toISOString() : null,
+			"cycleStart": JSON_DATE(this.cycleStart),
+			"cycleEnd": JSON_DATE(this.cycleEnd),
 			"cyclePostDated": !!this.cyclePostDated,
 			"googleServicesEnabled": !!this.googleServicesEnabled,
 		};
@@ -124,7 +124,7 @@ export class BillingProfile
 			this.cycleStart = DATE(json["cycleStart"] as datetime);
 			this.cycleEnd = DATE(json["cycleEnd"] as datetime);
 			this.cyclePostDated = !!json["cyclePostDated"];
-			this.currency = BillingCurrency[json["cycle"] as BillingCurrency] || BillingCurrency.CAD;
+			this.currency = BillingCurrency[json["currency"] as BillingCurrency] || BillingCurrency.CAD;
 			this.googleServicesEnabled = !!json["googleServicesEnabled"];
 		}
 		return update;

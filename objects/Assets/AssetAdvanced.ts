@@ -98,7 +98,7 @@ export class AssetAdvanced
 			"relationships": [...this.relationshipIds],
 			"places": MAP_TO_JSON(this.places),
 		};
-		if (IS_AN(this.engineHours)) (json as JsonObject)["engineHours"] = this.engineHours;
+		if (IS_AN(this.engineHours)) json["engineHours"] = this.engineHours;
 		return json;
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
