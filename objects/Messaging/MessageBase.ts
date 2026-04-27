@@ -1,6 +1,6 @@
 import { User } from "../Accounts/User";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, IS_AN } from "../API/Functions";
+import { DATE, JSON_DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -87,18 +87,18 @@ export abstract class MessageBase
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"status": MessageStatus[this.status] || MessageStatus.created,
-			"kind": MessageType[this.kind]||MessageType.unknown,
-			"to": this.to|| "",
-			"from": this.from|| "",
-			"body": this.body|| "",
+			"kind": MessageType[this.kind] || MessageType.unknown,
+			"to": this.to || "",
+			"from": this.from || "",
+			"body": this.body || "",
 			"processed": JSON_DATE(this.processed),
 			"delivered": JSON_DATE(this.delivered),
-			"subject": this.subject|| "",
-			"asset": this.assetId,
+			"subject": this.subject || "",
+			"asset": this.assetId || 0,
 			"user": this.userLogin || "",
-		}
+		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
 		const update = this.updateVersion(json?.["v"] as int[]) || !!(force && json);

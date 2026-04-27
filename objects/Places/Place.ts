@@ -2,7 +2,7 @@ import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
 import { FLOAT } from "../API/Constants";
-import { ID, IS_AN } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { ROUTE_DECODE, ROUTE_ENCODE } from "../API/Geography/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { LatLngBounds } from "../API/Geography/LatLngBounds";
@@ -87,7 +87,7 @@ export class Place
 	 * A custom field used to refer to an external system.
 	 */
 	reference: string = "";
-	
+
 	/**
 	 * A central point of the shape.
 	 * This is the exact centre of a {@link PlaceType.radial} and {@link PlaceType.point} shaped places, and the location of the pin on the map for all types.
@@ -102,7 +102,7 @@ export class Place
 	 * A list of points forming a non-self-intersecting polygon.
 	 */
 	points: LatLng[] | null = null;
-	
+
 	constructor(json?: JsonObject | nothing) {
 		super();
 		if (json) this.fromJSON(json);
@@ -111,8 +111,8 @@ export class Place
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
-			"icon": this.iconId,
+			"company": JSON_NUMBER(this.companyId),
+			"icon": JSON_NUMBER(this.iconId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"address": this.address || "",
@@ -123,7 +123,7 @@ export class Place
 			"reference": this.reference || "",
 			"anchor": this.anchor?.toJSON() ?? null,
 			"radius": this.radius || null,
-			"shape": this.points?.length as number > 0
+			"shape": this.points?.length
 				? ROUTE_ENCODE(this.points || [])
 				: null
 		};
@@ -156,7 +156,7 @@ export class Place
 		}
 		return update;
 	}
-	
+
 	// IRequestable
 	/**
 	 * The {@link id} is the key.
