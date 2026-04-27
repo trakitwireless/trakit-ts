@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, MAP_TO_JSON, JSON_TO_MAP_KEY_ULONG } from "../API/Functions";
+import { DATE, JSON_DATE, ID, MAP_TO_JSON, JSON_TO_MAP_KEY_ULONG, JSON_NUMBER } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -86,7 +86,7 @@ export class FormResult
 	override toJSON() {
 		return {
 			"id": this.id,
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"v": [...this.v],
 			"template": this.templateId || null,
 			"asset": this.assetId || null,
@@ -124,7 +124,7 @@ export class FormResult
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
-	
+
 	/**
 	 * Returns all {@link DispatchJob}s which have this document attached.
 	 * @returns 

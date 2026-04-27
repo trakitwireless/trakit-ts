@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_TO_MAP } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER, JSON_TO_MAP } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -64,7 +64,7 @@ export class Document
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"src": this.src || "",
@@ -89,7 +89,7 @@ export class Document
 		}
 		return update;
 	}
-	
+
 	// IRequestable
 	/**
 	 * The {@link id} is the key.

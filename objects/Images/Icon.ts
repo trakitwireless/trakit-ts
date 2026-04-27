@@ -1,7 +1,7 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { CODIFY } from "../API/Codifier";
-import { ID } from "../API/Functions";
+import { ID, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IGlobal } from "../API/Interfaces/IGlobal";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -74,7 +74,7 @@ export class Icon
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"category": this.category || "",
 			"name": this.name || "",
 			"notes": this.notes || "",

@@ -1,15 +1,14 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { ID, IS_AN } from "../API/Functions";
+import { ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IRectangle } from "../API/Geometry/Interfaces";
-import { Point } from "../API/Geometry/Point";
 import { Rectangle } from "../API/Geometry/Rectangle";
 import { Size } from "../API/Geometry/Size";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IFileSize } from "../API/Interfaces/IFileSize";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
-import { uint, ulong, JsonObject, int, nothing } from "../API/Types";
+import { JsonObject, int, nothing, uint, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
 import { COMPANIES } from "../storage";
 
@@ -69,14 +68,14 @@ export class Picture
 		return {
 			"id": this.id || null,
 			"v": [...this.v],
-			"company": this.companyId,
+			"company": JSON_NUMBER(this.companyId),
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"src": this.src || "",
-			"size": this.size.toJSON(),
-			"focals": this.focals.map(ARRAY_TO_JSON),
-			"bytes": !IS_AN(this.bytes) ? null : this.bytes,
-			"uses": !IS_AN(this.uses) ? null : this.uses,
+			"size": this.size?.toJSON() ?? null,
+			"focals": this.focals?.map(ARRAY_TO_JSON) ?? [],
+			"bytes": JSON_NUMBER(this.bytes),
+			"uses": JSON_NUMBER(this.uses),
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
