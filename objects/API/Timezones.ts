@@ -5,7 +5,7 @@ import { codified } from './Types';
 /**
  * A list of all supported system timezones.
  */
-const TIMEZONES: Timezone[] = [
+export const TIMEZONES: Timezone[] = [
 	new Timezone("dateline-standard-time", "International Date Line West (UTC-12:00)", -720, false),
 	new Timezone("utc-11", "Coordinated Universal Time-11 (UTC-11:00)", -660, false),
 	new Timezone("aleutian-standard-time", "Aleutian Islands (UTC-10:00)", -600, true),

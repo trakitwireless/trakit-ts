@@ -152,7 +152,7 @@ import {
 	TimeSpan,
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
-import { TIMEZONE_FIND, } from "./API/Timezones";
+import { TIMEZONE_FIND, TIMEZONES } from "./API/Timezones";
 import {
 	byte,
 	codified,
@@ -652,6 +652,10 @@ export const utility = {
 	singularize: SINGULARIZE,
 	stringifyTime: TIMESPAN_STRINGIFY,
 };
+/**
+ * A list of all supported timezones.
+ */
+export const timezones = TIMEZONES;
 /**
  * A group of functions for converting between different measurement systems.
  */
