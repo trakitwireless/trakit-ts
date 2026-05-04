@@ -1,6 +1,6 @@
 ﻿import { CODIFY } from './Codifier';
 import { Timezone } from './Timezone';
-import { codified } from './Types';
+import { codified, nothing } from './Types';
 
 /**
  * A list of all supported system timezones.
@@ -153,7 +153,7 @@ export const TIMEZONES: Timezone[] = [
  * 
  * @param code 
  */
-export function TIMEZONE_FIND(code: codified): Timezone | undefined {
-	code = CODIFY(code);
+export function TIMEZONE_FIND(code: codified | nothing): Timezone | undefined {
+	code = CODIFY(code || "");
 	return TIMEZONES.find(tz => tz.code === code);
 }
