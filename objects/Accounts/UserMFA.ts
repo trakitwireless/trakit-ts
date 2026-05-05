@@ -1,7 +1,7 @@
 ﻿import { DATE, JSON_DATE } from '../API/Functions';
 import { ISerializable } from '../API/Interfaces/ISerializable';
 import { datetime, JsonObject, nothing } from '../API/Types';
-import { MultiFactorType } from './MultiFactorType';
+import { MultiFactorType } from '../Companies/MultiFactorType';
 import { User } from './User';
 
 /**
