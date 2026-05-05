@@ -6,8 +6,10 @@ import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { JsonObject, int, nothing, ulong } from "../API/Types";
 import { COMPANIES } from "../storage";
 import { Company } from "./Company";
+import { MultiFactorPolicy } from "./MultiFactorPolicy";
 import { PasswordPolicy } from "./PasswordPolicy";
 import { SessionPolicy } from "./SessionPolicy";
+import { SsoPolicy } from "./SsoPolicy";
 
 /**
  * The password and session lifetime policies for this Company.
@@ -37,6 +39,14 @@ export class CompanyPolicy
 	 * The password complexity and expiry policy.
 	 */
 	passwordPolicy: PasswordPolicy = new PasswordPolicy;
+	/**
+	 * The multi-factor authentication policy.
+	 */
+	multiFactorPolicy: MultiFactorPolicy = new MultiFactorPolicy;
+	/**
+	 * The single sign-on (SSO) policy.
+	 */
+	ssoPolicy: SsoPolicy = new SsoPolicy;
 
 	constructor(json?: JsonObject | nothing) {
 		super();
@@ -49,6 +59,8 @@ export class CompanyPolicy
 			"parent": this.parentId,
 			"sessionPolicy": this.sessionPolicy?.toJSON() ?? null,
 			"passwordPolicy": this.passwordPolicy?.toJSON() ?? null,
+			"multiFactorPolicy": this.multiFactorPolicy?.toJSON() ?? null,
+			"ssoPolicy": this.ssoPolicy?.toJSON() ?? null,
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {
@@ -58,6 +70,8 @@ export class CompanyPolicy
 			this.parentId = ID(json["parent"]);
 			this.sessionPolicy = SessionPolicy.fromJSON(json["sessionPolicy"] as JsonObject);
 			this.passwordPolicy = PasswordPolicy.fromJSON(json["passwordPolicy"] as JsonObject);
+			this.multiFactorPolicy = MultiFactorPolicy.fromJSON(json["multiFactorPolicy"] as JsonObject);
+			this.ssoPolicy = SsoPolicy.fromJSON(json["ssoPolicy"] as JsonObject);
 		}
 		return update;
 	}
