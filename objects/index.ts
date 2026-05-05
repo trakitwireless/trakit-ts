@@ -217,12 +217,18 @@ import { CompanyPolicy } from "./Companies/CompanyPolicy";
 import { CompanyReseller } from "./Companies/CompanyReseller";
 import { CompanyStyle } from "./Companies/CompanyStyle";
 import { LabelStyle } from "./Companies/LabelStyle";
+import { MultiFactorEnforcement } from "./Companies/MultiFactorEnforcement";
+import { MultiFactorPolicy } from "./Companies/MultiFactorPolicy";
+import { MultiFactorType } from "./Companies/MultiFactorType";
 import { NotificationServerEmail } from "./Companies/NotificationServerEmail";
 import { NotificationServerSms } from "./Companies/NotificationServerSms";
 import { PasswordExpiryMode } from "./Companies/PasswordExpiryMode";
 import { PasswordPolicy } from "./Companies/PasswordPolicy";
 import { SessionMultiUser } from "./Companies/SessionMultiUser";
 import { SessionPolicy } from "./Companies/SessionPolicy";
+import { SsoEnforcement } from "./Companies/SsoEnforcement";
+import { SsoIdentityProvider } from "./Companies/SsoIdentityProvider";
+import { SsoPolicy } from "./Companies/SsoPolicy";
 import { DispatchDirection } from "./Dispatch/DispatchDirection";
 import { DispatchJob } from "./Dispatch/DispatchJob";
 import { DispatchJobPriority } from "./Dispatch/DispatchJobPriority";
@@ -357,7 +363,7 @@ import {
 /**
  * Version number for this release.
  */
-export const version = '0.0.32';
+export const version = '0.0.33';
 
 /**
  * The names of all main object types in the Trak-iT Object Model.
@@ -765,12 +771,18 @@ export {
 	CompanyReseller,
 	CompanyStyle,
 	LabelStyle,
+	MultiFactorPolicy,
+	MultiFactorEnforcement,
+	MultiFactorType,
 	NotificationServerEmail,
 	NotificationServerSms,
 	PasswordExpiryMode,
 	PasswordPolicy,
 	SessionMultiUser,
-	SessionPolicy
+	SessionPolicy,
+	SsoPolicy,
+	SsoEnforcement,
+	SsoIdentityProvider,
 };
 //#endregion Company
 //#region Accounts
