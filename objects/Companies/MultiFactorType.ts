@@ -1,4 +1,4 @@
-﻿import { Company } from '../Companies/Company';
+﻿import { Company } from './Company';
 
 /**
  * Types of multi-factor authentication implementations for a {@link Company}.

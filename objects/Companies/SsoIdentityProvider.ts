@@ -1,7 +1,7 @@
 ﻿/**
  * Supported SSO Identity Providers.
  */
-export enum SSOIdentityProvider {
+export enum SsoIdentityProvider {
 	/**
 	 * Google Identity Provider.
 	 */
