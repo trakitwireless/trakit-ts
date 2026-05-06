@@ -1,5 +1,7 @@
 ﻿import { BaseComponent } from "../API/BaseComponent";
+import { FLOAT } from "../API/Constants";
 import { ID, JSON_NUMBER, JSON_TO_MAP, JSON_TO_MAP_PREDICATE, MAP_TO_JSON, MAP_TO_JSON_PREDICATE } from "../API/Functions";
+import { ILatLng } from "../API/Geography/Interfaces";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { JsonObject, int, ipv4, nothing, ulong } from "../API/Types";
 import { Company } from "../Companies/Company";
@@ -86,4 +88,33 @@ export class ProviderAdvanced
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
+
+	/**
+	 * The latest date/time stamp among all the {@link attributes}.
+	 */
+	getLatest(): Date {
+		let latest = NaN;
+		for (const group of this.attributes.values()) {
+			for (const data of group.values()) {
+				if (!(data.dts.valueOf() < latest)) {
+					latest = data.dts.valueOf();
+				}
+			}
+		}
+		return new Date(latest);
+	}
+	/**
+	 * The latest latitude and longitude from the "gps" group of {@link attributes}.
+	 */
+	getLatLng(): ILatLng | nothing {
+		const gps = this.attributes.get("GPS");
+		if (gps) {
+			const lat = FLOAT(gps.get("GPS_LATITUDE")?.value);
+			const lng = FLOAT(gps.get("GPS_LONGITUDE")?.value);
+			const accuracy = FLOAT(gps.get("GPS_ACCURACY")?.value);
+			if (!isNaN(lat) && !isNaN(lng)) {
+				return { lat, lng, accuracy } as ILatLng;
+			}
+		}
+	}
 }

@@ -22,15 +22,15 @@ export class ProviderData
 	/**
 	 * The value of the data given like true, 17.3, "asdf", etc...
 	 */
-	value: any = null;
+	value: any;
 	/**
 	 * Date/time stamp from when the device recorded (or reported) the data.
 	 */
-	dts: Date = DATE();
+	dts: Date;
 	/**
 	 * The relevant unit for the data provided like Km/h, degrees, volts, RPM, etc...
 	 */
-	unit: string = "";
+	unit: string;
 
 	constructor(
 		value?: any,
@@ -44,7 +44,9 @@ export class ProviderData
 
 	toJSON() {
 		return {
-			"value": IS_NOTHING(this.value) ? null : this.value,
+			"value": IS_NOTHING(this.value)
+				? null
+				: (this.value.toJSON?.() ?? this.value),
 			"dts": JSON_DATE(this.dts),
 			"unit": this.unit || "",
 		};

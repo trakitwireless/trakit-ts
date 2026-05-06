@@ -64,7 +64,6 @@ import {
 } from "./API/Files";
 import {
 	CAPITALIZE,
-	CLIP,
 	DATE,
 	DOUGLASPEUCKER,
 	ID,
@@ -100,6 +99,12 @@ import {
 	ROUTE_LENGTH,
 	ROUTE_PEUCKER,
 } from "./API/Geography/Functions";
+import {
+	ILatLng,
+	ILatLngBounds,
+	IPosition,
+	IStreetAddress
+} from "./API/Geography/Interfaces";
 import { LatLng, } from "./API/Geography/LatLng";
 import { LatLngBounds, } from "./API/Geography/LatLngBounds";
 import { Position, } from "./API/Geography/Position";
@@ -121,6 +126,12 @@ import {
 	RADIAL_CIRCUMFERENCE,
 	RADIAL_OVERLAP_RECTANGLE,
 } from "./API/Geometry/Functions";
+import {
+	IPoint,
+	IRadial,
+	IRectangle,
+	ISize
+} from "./API/Geometry/Interfaces";
 import { Point, } from "./API/Geometry/Point";
 import { Radial } from "./API/Geometry/Radial";
 import { Rectangle, } from "./API/Geometry/Rectangle";
@@ -147,9 +158,9 @@ import { ISuspendable } from "./API/Interfaces/ISuspendable";
 import { IVisual } from "./API/Interfaces/IVisual";
 import { SearchPattern, } from "./API/SearchPattern";
 import {
+	TimeSpan,
 	TIMESPAN_PARSE,
 	TIMESPAN_STRINGIFY,
-	TimeSpan,
 } from "./API/TimeSpan";
 import { Timezone, } from "./API/Timezone";
 import { TIMEZONE_FIND, TIMEZONES } from "./API/Timezones";
@@ -240,7 +251,7 @@ import { DispatchTaskStatus } from "./Dispatch/DispatchTaskStatus";
 import { Document } from "./Hosting/Document";
 import { FormFieldAttachments } from "./Hosting/Fields/FormFieldAttachments";
 import { FormFieldBase } from "./Hosting/Fields/FormFieldBase";
-import "./Hosting/Fields/FormFieldBase_fromJSON";  // Initializes FormFieldBase.fromJSON
+import "./Hosting/Fields/FormFieldBase_fromJSON";	// Initializes FormFieldBase.fromJSON
 import { FormFieldBoolean } from "./Hosting/Fields/FormFieldBoolean";
 import { FormFieldChoice } from "./Hosting/Fields/FormFieldChoice";
 import { FormFieldDate } from "./Hosting/Fields/FormFieldDate";
@@ -716,11 +727,17 @@ export const geometry = {
 	radialSmallest: RADIAL_BADOIU_CLARKSON,
 	radialOverlapsRectangle: RADIAL_OVERLAP_RECTANGLE,
 };
+export type {
+	IPoint,
+	IRadial,
+	IRectangle,
+	ISize,
+};
 export {
 	Point,
 	Radial,
 	Rectangle,
-	Size
+	Size,
 };
 //#endregion Drawing and trigonometry
 //#region Coordinates and geography
@@ -753,11 +770,17 @@ export const geography = {
 
 	//	radialArea: SPHERECAP_AREA,
 };
+export type {
+	ILatLng,
+	ILatLngBounds,
+	IPosition,
+	IStreetAddress,
+};
 export {
 	LatLng,
 	LatLngBounds,
 	Position,
-	StreetAddress
+	StreetAddress,
 };
 //#endregion Coordinates and geography
 
@@ -771,8 +794,8 @@ export {
 	CompanyReseller,
 	CompanyStyle,
 	LabelStyle,
-	MultiFactorPolicy,
 	MultiFactorEnforcement,
+	MultiFactorPolicy,
 	MultiFactorType,
 	NotificationServerEmail,
 	NotificationServerSms,
@@ -780,9 +803,9 @@ export {
 	PasswordPolicy,
 	SessionMultiUser,
 	SessionPolicy,
-	SsoPolicy,
 	SsoEnforcement,
 	SsoIdentityProvider,
+	SsoPolicy
 };
 //#endregion Company
 //#region Accounts
