@@ -15,8 +15,10 @@ import { CompanyPolicy } from './CompanyPolicy';
 import { CompanyReseller } from './CompanyReseller';
 import { CompanyStyle } from './CompanyStyle';
 import { LabelStyle } from './LabelStyle';
+import { MultiFactorPolicy } from './MultiFactorPolicy';
 import { PasswordPolicy } from './PasswordPolicy';
 import { SessionPolicy } from './SessionPolicy';
+import { SsoPolicy } from './SsoPolicy';
 
 /**
  * The full company object which contains all fields.
@@ -70,7 +72,7 @@ export class Company
 		this.#style.parentId = value;
 		if (this.reseller) this.reseller.parentId = value;
 	}
-	
+
 	/**
 	 *  
 	 */
@@ -115,6 +117,16 @@ export class Company
 	 */
 	get passwordPolicy(): PasswordPolicy { return this.#policy.passwordPolicy; }
 	set passwordPolicy(value: PasswordPolicy) { this.#policy.passwordPolicy = value; }
+	/**
+	 * The multi-factor authentication policy.
+	 */
+	get multiFactorPolicy(): MultiFactorPolicy { return this.#policy.multiFactorPolicy; }
+	set multiFactorPolicy(value: MultiFactorPolicy) { this.#policy.multiFactorPolicy = value; }
+	/**
+	 * The single sign-on (SSO) policy.
+	 */
+	get ssoPolicy(): SsoPolicy { return this.#policy.ssoPolicy; }
+	set ssoPolicy(value: SsoPolicy) { this.#policy.ssoPolicy = value; }
 
 	/**
 	 *  
@@ -130,7 +142,7 @@ export class Company
 	 */
 	get tags(): Map<codified, LabelStyle> { return this.#style.tags; }
 	set tags(value: Map<codified, LabelStyle>) { this.#style.tags = value; }
-	
+
 	/**
 	 * If this company is a reseller, then they have their own theme, support and billing information.
 	 */
@@ -188,7 +200,7 @@ export class Company
 	 * The {@link id} is the key.
 	 */
 	getKey() { return this.id; }
-	
+
 	// IBelongCompany
 	set companyId(value: number) { this.parentId = value; }
 	get companyId(): number { return this.parentId; }
