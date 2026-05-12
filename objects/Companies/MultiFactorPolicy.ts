@@ -17,10 +17,10 @@ export class MultiFactorPolicy
 	 */
 	static fromJSON(json: JsonObject) {
 		return new MultiFactorPolicy(
-			json["enforcement"] as MultiFactorEnforcement,
-			json["kinds"] as MultiFactorType[],
-			json["length"] as int,
-			json["timeout"] as TimeSpan | timespan | number,
+			json?.["enforcement"] as MultiFactorEnforcement,
+			json?.["kinds"] as MultiFactorType[],
+			json?.["length"] as int,
+			json?.["timeout"] as TimeSpan | timespan | number,
 		);
 	}
 

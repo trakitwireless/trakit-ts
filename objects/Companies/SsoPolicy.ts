@@ -15,10 +15,10 @@ export class SsoPolicy
 	 */
 	static fromJSON(json: JsonObject) {
 		return new SsoPolicy(
-			json["enforcement"] as SsoEnforcement,
-			json["allowedIDPs"] as SsoIdentityProvider[],
-			json["sessionTimeout"] as timespan | number,
-			json["allowFallback"] as boolean,
+			json?.["enforcement"] as SsoEnforcement,
+			json?.["allowedIDPs"] as SsoIdentityProvider[],
+			json?.["sessionTimeout"] as timespan | number,
+			json?.["allowFallback"] as boolean,
 		);
 	}
 

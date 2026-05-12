@@ -14,12 +14,12 @@ export class SessionPolicy
 	 */
 	static fromJSON(json: JsonObject) {
 		return new SessionPolicy(
-			json["applications"] as string[],
-			json["ipv4Ranges"] as ipv4[],
-			json["multiUser"] as SessionMultiUser,
-			json["idleAllowed"] as boolean,
-			json["expireTimeout"] as ushort,
-			json["maxSessions"] as byte,
+			json?.["applications"] as string[],
+			json?.["ipv4Ranges"] as ipv4[],
+			json?.["multiUser"] as SessionMultiUser,
+			json?.["idleAllowed"] as boolean,
+			json?.["expireTimeout"] as ushort,
+			json?.["maxSessions"] as byte,
 		);
 	}
 
@@ -32,7 +32,6 @@ export class SessionPolicy
 	 */
 	ipv4Ranges: ipv4[];
 	/**
-	 * Restrict session creation to only the provided IPv4 ranges (		/**
 	 * Defines the behaviour of the system when a user creates multiple sessions.
 	 */
 	multiUser: SessionMultiUser;

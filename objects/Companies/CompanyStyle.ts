@@ -56,8 +56,8 @@ export class CompanyStyle
 		if (update) {
 			if (!IS_AN(this.id)) this.id = ID(json["id"]);
 			this.parentId = ID(json["parent"]);
-			this.labels = JSON_TO_MAP_PREDICATE(json["labels"] as object, OBJECT_TO_LABELSTYLE);
-			this.tags = JSON_TO_MAP_PREDICATE(json["tags"] as object, OBJECT_TO_LABELSTYLE);
+			this.labels = JSON_TO_MAP_PREDICATE(json["labels"] as object || {}, OBJECT_TO_LABELSTYLE);
+			this.tags = JSON_TO_MAP_PREDICATE(json["tags"] as object || {}, OBJECT_TO_LABELSTYLE);
 		}
 		return update;
 	}

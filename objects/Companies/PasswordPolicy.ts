@@ -14,13 +14,13 @@ export class PasswordPolicy
 	 */
 	static fromJSON(json: JsonObject) {
 		return new PasswordPolicy(
-			json["minimumLength"] as byte,
-			json["includeLetters"] as boolean,
-			json["includeNumbers"] as boolean,
-			json["includeUpperLower"] as boolean,
-			json["includeSpecial"] as boolean,
-			json["expireMode"] as PasswordExpiryMode,
-			json["expireThreshold"] as byte,
+			json?.["minimumLength"] as byte,
+			json?.["includeLetters"] as boolean,
+			json?.["includeNumbers"] as boolean,
+			json?.["includeUpperLower"] as boolean,
+			json?.["includeSpecial"] as boolean,
+			json?.["expireMode"] as PasswordExpiryMode,
+			json?.["expireThreshold"] as byte,
 		);
 	}
 

@@ -165,8 +165,8 @@ export class CompanyReseller
 			this.graphics = JSON_TO_MAP(json["graphics"] as object || {});
 			this.gamut = JSON_TO_MAP_PREDICATE(json["gamut"] as object || {}, (k, v) => [k, ColourStyle.fromJSON(v)]);
 			this.languages = [...(json["languages"] as codified[] || [])];
-			this.notifyEmail = NotificationServerEmail.fromJSON(json["notifyEmail"] as JsonObject);
-			this.notifySms = NotificationServerSms.fromJSON(json["notifySms"] as JsonObject);
+			this.notifyEmail = NotificationServerEmail.fromJSON(json["notifyEmail"] as JsonObject || {});
+			this.notifySms = NotificationServerSms.fromJSON(json["notifySms"] as JsonObject || {});
 			this.termsPreamble = json["termsPreamble"] as string || "";
 			this.termsUpdated = DATE(json["termsUpdated"] as datetime);
 			this.recoverSubject = json["recoverSubject"] as string || "";
