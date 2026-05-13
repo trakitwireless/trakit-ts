@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { Point } from '../../../objects/API/Geometry/Point';
+import { Point } from '../../../src/API/Geometry/Point';
 
 describe("Point", () => {
 	let object1: Point;

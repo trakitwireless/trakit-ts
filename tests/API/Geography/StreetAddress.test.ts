@@ -5,10 +5,10 @@ import {
 	LATLNG_DISTANCE,
 	LONGITUDE_NORMALIZED,
 	EARTH_RADIUS,
-} from '../../../objects/API/Geography/Functions';
-import { LatLng } from '../../../objects/API/Geography/LatLng';
-import { LatLngBounds } from '../../../objects/API/Geography/LatLngBounds';
-import { Position } from '../../../objects/API/Geography/Position';
+} from '../../../src/API/Geography/Functions';
+import { LatLng } from '../../../src/API/Geography/LatLng';
+import { LatLngBounds } from '../../../src/API/Geography/LatLngBounds';
+import { Position } from '../../../src/API/Geography/Position';
 
 //describe("StreetAddress", () => {
 //	it("constructor", () => {

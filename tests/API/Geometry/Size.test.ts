@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { Point } from '../../../objects/API/Geometry/Point';
-import { Radial } from '../../../objects/API/Geometry/Radial';
-import { Rectangle } from '../../../objects/API/Geometry/Rectangle';
-import { Size } from '../../../objects/API/Geometry/Size';
-import { PATH_LENGTH, PATH_ORTHOGONAL, PATH_PEUCKER, POINT_ANGLE, POINT_DISTANCE, POINT_VECTOR, POLY_AREA, POLY_CONTAINS, POLY_PEUCKER, POLY_WRAPPER, RADIAL_AREA, RADIAL_BADOIU_CLARKSON, RADIAL_CIRCUMFERENCE, RADIAL_OVERLAP_RECTANGLE } from '../../../objects/API/Geometry/Functions';
-import { PYTHAGORA } from '../../../objects/API/Functions';
+import { Point } from '../../../src/API/Geometry/Point';
+import { Radial } from '../../../src/API/Geometry/Radial';
+import { Rectangle } from '../../../src/API/Geometry/Rectangle';
+import { Size } from '../../../src/API/Geometry/Size';
+import { PATH_LENGTH, PATH_ORTHOGONAL, PATH_PEUCKER, POINT_ANGLE, POINT_DISTANCE, POINT_VECTOR, POLY_AREA, POLY_CONTAINS, POLY_PEUCKER, POLY_WRAPPER, RADIAL_AREA, RADIAL_BADOIU_CLARKSON, RADIAL_CIRCUMFERENCE, RADIAL_OVERLAP_RECTANGLE } from '../../../src/API/Geometry/Functions';
+import { PYTHAGORA } from '../../../src/API/Functions';
 
 describe("Size", () => {
 	const object1 = new Size(1, 2);

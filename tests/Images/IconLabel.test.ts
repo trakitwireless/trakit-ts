@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Point } from '../../objects/API/Geometry/Point';
-import { IconLabel } from '../../objects/Images/IconLabel';
+import { Point } from '../../src/API/Geometry/Point';
+import { IconLabel } from '../../src/Images/IconLabel';
 
 describe("IconLabel", () => {
 	it("constructor", () => {

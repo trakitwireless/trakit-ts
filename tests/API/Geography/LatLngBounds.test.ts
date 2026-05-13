@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { LatLng } from '../../../objects/API/Geography/LatLng';
-import { LatLngBounds } from '../../../objects/API/Geography/LatLngBounds';
+import { LatLng } from '../../../src/API/Geography/LatLng';
+import { LatLngBounds } from '../../../src/API/Geography/LatLngBounds';
 
 describe("LatLngBounds", () => {
 	it("constructor", () => {

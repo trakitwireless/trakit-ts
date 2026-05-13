@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PASSWORD_DECODE, PASSWORD_ENCODE } from '../../objects/API/Encoding';
+import { PASSWORD_DECODE, PASSWORD_ENCODE } from '../../src/API/Encoding';
 
 describe("toPassword", () => {
 	it("handles blanks", () => {

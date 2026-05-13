@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { PYTHAGORA } from '../../../objects/API/Functions';
-import { PATH_LENGTH, PATH_ORTHOGONAL, PATH_PEUCKER, POINT_ANGLE, POINT_DISTANCE, POINT_VECTOR, POLY_AREA, POLY_CONTAINS, POLY_PEUCKER, POLY_WRAPPER, RADIAL_AREA, RADIAL_BADOIU_CLARKSON, RADIAL_CIRCUMFERENCE, RADIAL_OVERLAP_RECTANGLE } from '../../../objects/API/Geometry/Functions';
-import { Point } from '../../../objects/API/Geometry/Point';
-import { Radial } from '../../../objects/API/Geometry/Radial';
-import { Rectangle } from '../../../objects/API/Geometry/Rectangle';
+import { PYTHAGORA } from '../../../src/API/Functions';
+import { PATH_LENGTH, PATH_ORTHOGONAL, PATH_PEUCKER, POINT_ANGLE, POINT_DISTANCE, POINT_VECTOR, POLY_AREA, POLY_CONTAINS, POLY_PEUCKER, POLY_WRAPPER, RADIAL_AREA, RADIAL_BADOIU_CLARKSON, RADIAL_CIRCUMFERENCE, RADIAL_OVERLAP_RECTANGLE } from '../../../src/API/Geometry/Functions';
+import { Point } from '../../../src/API/Geometry/Point';
+import { Radial } from '../../../src/API/Geometry/Radial';
+import { Rectangle } from '../../../src/API/Geometry/Rectangle';
 
 describe("pathLength", () => {
 	it("lines", () => {

@@ -5,8 +5,8 @@ import {
 	LATLNG_ANGLE,
 	LATLNG_DISTANCE,
 	LONGITUDE_NORMALIZED,
-} from '../../../objects/API/Geography/Functions';
-import { LatLng } from '../../../objects/API/Geography/LatLng';
+} from '../../../src/API/Geography/Functions';
+import { LatLng } from '../../../src/API/Geography/LatLng';
 
 describe("clampLat", () => {
 	it("latitudes parse normally", () => {

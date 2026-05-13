@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Position } from '../../../objects/API/Geography/Position';
+import { Position } from '../../../src/API/Geography/Position';
 
 describe("Position", () => {
 	it("constructor", () => {

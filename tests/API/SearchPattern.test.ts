@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { CODIFY } from '../../objects/API/Codifier';
-import { NUMBER_GROUPS } from '../../objects/API/Files';
-import { ID, IS_AN, IS_NOTHING, ROUND_TO } from '../../objects/API/Functions';
-import { GUID } from '../../objects/API/Guid';
-import { SearchPattern } from '../../objects/API/SearchPattern';
-import { TIMESPAN_PARSE, TIMESPAN_STRINGIFY } from '../../objects/API/TimeSpan';
+import { CODIFY } from '../../src/API/Codifier';
+import { NUMBER_GROUPS } from '../../src/API/Files';
+import { ID, IS_AN, IS_NOTHING, ROUND_TO } from '../../src/API/Functions';
+import { GUID } from '../../src/API/Guid';
+import { SearchPattern } from '../../src/API/SearchPattern';
+import { TIMESPAN_PARSE, TIMESPAN_STRINGIFY } from '../../src/API/TimeSpan';
 
 describe("SearchPattern", function () {
 	describe("constructor", function () {

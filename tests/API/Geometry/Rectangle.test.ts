@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { Point } from '../../../objects/API/Geometry/Point';
-import { Radial } from '../../../objects/API/Geometry/Radial';
-import { Rectangle } from '../../../objects/API/Geometry/Rectangle';
-import { Size } from '../../../objects/API/Geometry/Size';
+import { Point } from '../../../src/API/Geometry/Point';
+import { Radial } from '../../../src/API/Geometry/Radial';
+import { Rectangle } from '../../../src/API/Geometry/Rectangle';
+import { Size } from '../../../src/API/Geometry/Size';
 
 describe("Rectangle", () => {
 	it("constructor", () => {

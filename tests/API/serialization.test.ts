@@ -4,7 +4,7 @@ import {
 	JSON_TO_MAP_PREDICATE,
 	MAP_TO_JSON,
 	MAP_TO_JSON_PREDICATE
-} from "../../objects/API/Functions";
+} from "../../src/API/Functions";
 
 describe("serialization", () => {
 	const sampleMap = new Map([
