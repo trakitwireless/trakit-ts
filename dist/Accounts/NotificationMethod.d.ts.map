@@ -1,1 +1,1 @@
-{"version":3,"file":"NotificationMethod.d.ts","sourceRoot":"","sources":["../../objects/Accounts/NotificationMethod.ts"],"names":[],"mappings":"AACA;;GAEG;AACH,oBAAY,kBAAkB;IAC7B;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,GAAG,QAAQ;IACX;;OAEG;IACH,KAAK,UAAU;CACf"}
+{"version":3,"file":"NotificationMethod.d.ts","sourceRoot":"","sources":["../../src/Accounts/NotificationMethod.ts"],"names":[],"mappings":"AACA;;GAEG;AACH,oBAAY,kBAAkB;IAC7B;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,GAAG,QAAQ;IACX;;OAEG;IACH,KAAK,UAAU;CACf"}

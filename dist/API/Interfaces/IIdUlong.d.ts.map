@@ -1,1 +1,1 @@
-{"version":3,"file":"IIdUlong.d.ts","sourceRoot":"","sources":["../../../objects/API/Interfaces/IIdUlong.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,UAAU,CAAC;AAEjC;;EAEE;AACF,MAAM,WAAW,QAAQ;IACxB;;OAEG;IACH,EAAE,EAAE,KAAK,CAAC;CACV"}
+{"version":3,"file":"IIdUlong.d.ts","sourceRoot":"","sources":["../../../src/API/Interfaces/IIdUlong.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,UAAU,CAAC;AAEjC;;EAEE;AACF,MAAM,WAAW,QAAQ;IACxB;;OAEG;IACH,EAAE,EAAE,KAAK,CAAC;CACV"}

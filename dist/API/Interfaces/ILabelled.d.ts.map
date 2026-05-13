@@ -1,1 +1,1 @@
-{"version":3,"file":"ILabelled.d.ts","sourceRoot":"","sources":["../../../objects/API/Interfaces/ILabelled.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,UAAU,CAAC;AAEpC;;EAEE;AACF,MAAM,WAAW,SAAS;IACzB;;OAEG;IACH,MAAM,EAAE,QAAQ,EAAE,CAAC;CACnB"}
+{"version":3,"file":"ILabelled.d.ts","sourceRoot":"","sources":["../../../src/API/Interfaces/ILabelled.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,UAAU,CAAC;AAEpC;;EAEE;AACF,MAAM,WAAW,SAAS;IACzB;;OAEG;IACH,MAAM,EAAE,QAAQ,EAAE,CAAC;CACnB"}

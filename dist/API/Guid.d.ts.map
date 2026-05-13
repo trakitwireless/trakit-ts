@@ -1,1 +1,1 @@
-{"version":3,"file":"Guid.d.ts","sourceRoot":"","sources":["../../objects/API/Guid.ts"],"names":[],"mappings":"AA4CA;;GAEG;AACH,wBAAgB,IAAI,WAenB"}
+{"version":3,"file":"Guid.d.ts","sourceRoot":"","sources":["../../src/API/Guid.ts"],"names":[],"mappings":"AA4CA;;GAEG;AACH,wBAAgB,IAAI,WAenB"}

@@ -214,7 +214,7 @@ import { ReportType } from "./Reports/ReportType";
 /**
  * Version number for this release.
  */
-export declare const version = "0.0.37";
+export declare const version = "0.1.0";
 /**
  * The names of all main object types in the Trak-iT Object Model.
  */

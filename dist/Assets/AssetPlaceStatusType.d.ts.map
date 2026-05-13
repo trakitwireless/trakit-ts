@@ -1,1 +1,1 @@
-{"version":3,"file":"AssetPlaceStatusType.d.ts","sourceRoot":"","sources":["../../objects/Assets/AssetPlaceStatusType.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,oBAAY,oBAAoB;IAC/B;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,MAAM,WAAW;IACjB;;OAEG;IACH,IAAI,SAAS;CACb"}
+{"version":3,"file":"AssetPlaceStatusType.d.ts","sourceRoot":"","sources":["../../src/Assets/AssetPlaceStatusType.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,oBAAY,oBAAoB;IAC/B;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,MAAM,WAAW;IACjB;;OAEG;IACH,IAAI,SAAS;CACb"}

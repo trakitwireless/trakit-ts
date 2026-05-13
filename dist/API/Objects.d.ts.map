@@ -1,1 +1,1 @@
-{"version":3,"file":"Objects.d.ts","sourceRoot":"","sources":["../../objects/API/Objects.ts"],"names":[],"mappings":"AA8CA;;;GAGG;AACH,wBAAgB,cAAc,CAAC,KAAK,EAAE,GAAG,GAAG,GAAG,CA2B9C"}
+{"version":3,"file":"Objects.d.ts","sourceRoot":"","sources":["../../src/API/Objects.ts"],"names":[],"mappings":"AA8CA;;;GAGG;AACH,wBAAgB,cAAc,CAAC,KAAK,EAAE,GAAG,GAAG,GAAG,CA2B9C"}

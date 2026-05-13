@@ -1,1 +1,1 @@
-{"version":3,"file":"ISuspendable.d.ts","sourceRoot":"","sources":["../../../objects/API/Interfaces/ISuspendable.ts"],"names":[],"mappings":"AAEA;;;EAGE;AACF,MAAM,WAAW,YAAY;IAC5B;;;OAGG;IACH,SAAS,CAAC,EAAE,OAAO,CAAC;IACpB;;;OAGG;IACH,KAAK,CAAC,EAAE,IAAI,CAAC;CACb"}
+{"version":3,"file":"ISuspendable.d.ts","sourceRoot":"","sources":["../../../src/API/Interfaces/ISuspendable.ts"],"names":[],"mappings":"AAEA;;;EAGE;AACF,MAAM,WAAW,YAAY;IAC5B;;;OAGG;IACH,SAAS,CAAC,EAAE,OAAO,CAAC;IACpB;;;OAGG;IACH,KAAK,CAAC,EAAE,IAAI,CAAC;CACb"}

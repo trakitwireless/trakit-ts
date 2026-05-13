@@ -1,1 +1,1 @@
-{"version":3,"file":"DashcamMediaType.d.ts","sourceRoot":"","sources":["../../objects/Images/DashcamMediaType.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,oBAAY,gBAAgB;IAC3B;;OAEG;IACH,OAAO,YAAY;IACnB;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,KAAK,UAAU;CACf"}
+{"version":3,"file":"DashcamMediaType.d.ts","sourceRoot":"","sources":["../../src/Images/DashcamMediaType.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,oBAAY,gBAAgB;IAC3B;;OAEG;IACH,OAAO,YAAY;IACnB;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,KAAK,UAAU;CACf"}

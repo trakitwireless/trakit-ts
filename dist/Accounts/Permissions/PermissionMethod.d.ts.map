@@ -1,1 +1,1 @@
-{"version":3,"file":"PermissionMethod.d.ts","sourceRoot":"","sources":["../../../objects/Accounts/Permissions/PermissionMethod.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,oBAAY,gBAAgB;IAC3B;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,MAAM,WAAW;CACjB"}
+{"version":3,"file":"PermissionMethod.d.ts","sourceRoot":"","sources":["../../../src/Accounts/Permissions/PermissionMethod.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,oBAAY,gBAAgB;IAC3B;;OAEG;IACH,KAAK,UAAU;IACf;;OAEG;IACH,MAAM,WAAW;CACjB"}
