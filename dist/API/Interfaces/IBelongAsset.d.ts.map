@@ -1,0 +1,1 @@
+{"version":3,"file":"IBelongAsset.d.ts","sourceRoot":"","sources":["../../../objects/API/Interfaces/IBelongAsset.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,oBAAoB,CAAC;AAC3C,OAAO,EAAE,KAAK,EAAE,MAAM,UAAU,CAAC;AAEjC;;EAEE;AACF,MAAM,WAAW,YAAY;IAC5B;;OAEG;IACH,OAAO,EAAE,KAAK,CAAC;IACf;;OAEG;IACH,IAAI,KAAK,IAAI,KAAK,CAAC;CACnB"}

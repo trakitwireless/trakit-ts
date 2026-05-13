@@ -1,0 +1,1 @@
+{"version":3,"file":"BaseCompound.d.ts","sourceRoot":"","sources":["../../objects/API/BaseCompound.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,aAAa,EAAE,MAAM,iBAAiB,CAAC;AAChD,OAAO,EAAE,GAAG,EAAE,MAAM,SAAS,CAAC;AAE9B;;;;;;GAMG;AACH,8BAAsB,YACrB,SAAQ,aAAa;IACrB;;OAEG;IACH,QAAQ,KAAK,MAAM,IAAI,aAAa,EAAE,CAAC;IAEvC;;OAEG;IACH,IAAa,CAAC,IAAI,GAAG,EAAE,CAAgD;CAEvE"}
