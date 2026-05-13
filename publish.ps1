@@ -3,13 +3,13 @@
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $publishDir = Join-Path $root 'dist'
-$indexFile = Join-Path $root 'objects\index.ts'
+$indexFile = Join-Path $root 'src\index.ts'
 $packageFile = Join-Path $root 'package.json'
 
 # Increment version in package.json and update index.ts
 if ((Test-Path $packageFile) -and (Test-Path $indexFile)) {
 	$packageContent = Get-Content $packageFile
-	$regex = [regex]'"version":\s*"(\d+)\.(\d+)\.(\d+)"'
+	$regex = [regex]'"version":\s*"(-?\d+)\.(-?\d+)\.(-?\d+)"'
 	$match = $regex.Match($packageContent)
 	if ($match.Success) {
 		$major = [int]$match.Groups[1].Value
