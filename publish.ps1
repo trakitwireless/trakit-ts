@@ -1,8 +1,8 @@
-# Copy package.json, README.md, and LICENSE.md to _publish, then publish from _publish
+# Copy package.json, README.md, and LICENSE.md to dist, then publish from dist
 # Usage: powershell -ExecutionPolicy Bypass -File publish.ps1
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$publishDir = Join-Path $root '_publish'
+$publishDir = Join-Path $root 'dist'
 $indexFile = Join-Path $root 'objects\index.ts'
 $packageFile = Join-Path $root 'package.json'
 
@@ -37,7 +37,7 @@ Copy-Item "$packageFile" "$publishDir\package.json" -Force
 if (Test-Path "$root\README.md") { Copy-Item "$root\README.md" "$publishDir\README.md" -Force }
 if (Test-Path "$root\LICENSE") { Copy-Item "$root\LICENSE" "$publishDir\LICENSE" -Force }
 
-# Change to _publish directory and publish
+# Change to dist directory and publish
 Push-Location $publishDir
 npm publish
 Pop-Location

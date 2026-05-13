@@ -5,13 +5,13 @@
 		"moduleResolution": "bundler",
 		"declaration": true,
 		"declarationMap": true,
-		"declarationDir": "./_publish",
+		"declarationDir": "./dist",
 		"emitDeclarationOnly": false,
 		"rootDir": "./objects",
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"isolatedModules": true,
-		"outDir": "./_publish", // Output directory
+		"outDir": "./dist", // Output directory
 		"sourceMap": true,
 		"strict": true,
 		"noImplicitAny": true,

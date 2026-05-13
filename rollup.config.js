@@ -94,11 +94,11 @@ export default [
 		input: './objects/index.ts',
 		output: [
 			// {
-			//   file: './_publish/trakit-objects.js',
+			//   file: './dist/trakit-objects.js',
 			//   format: 'es',
 			// },
 			{
-				file: './_publish/trakit-objects.min.js',
+				file: './dist/trakit-objects.min.js',
 				format: 'es',
 				exports: 'named',
 				plugins: [
