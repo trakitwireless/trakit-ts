@@ -91,7 +91,7 @@ const jsonOptions = {
 
 export default [
 	{
-		input: './objects/index.ts',
+		input: './src/index.ts',
 		output: [
 			// {
 			//   file: './dist/trakit-objects.js',
