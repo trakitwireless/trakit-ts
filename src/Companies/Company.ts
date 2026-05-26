@@ -41,7 +41,6 @@ export class Company
 	}
 	/**
 	 * Unique identifier of this Company.
-	 * {@link Asset.id}
 	 */
 	get id(): ulong {
 		return this.#general.id
