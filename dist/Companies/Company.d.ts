@@ -24,7 +24,6 @@ export declare class Company extends BaseCompound implements IIdUlong, INamed, I
     get pieces(): BaseComponent[];
     /**
      * Unique identifier of this Company.
-     * {@link Asset.id}
      */
     get id(): ulong;
     /**
