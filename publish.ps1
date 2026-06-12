@@ -39,5 +39,5 @@ if (Test-Path "$root\LICENSE") { Copy-Item "$root\LICENSE" "$publishDir\LICENSE"
 
 # Change to dist directory and publish
 Push-Location $publishDir
-npm publish
+npm publish --access=public
 Pop-Location
