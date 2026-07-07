@@ -103,4 +103,8 @@ export enum ProviderType {
 	 * Teltonika device protocols
 	 */
 	teltonika = "teltonika",
+	/**
+	 * Queclink device protocols
+	 */
+	queclink = "queclink",
 }
