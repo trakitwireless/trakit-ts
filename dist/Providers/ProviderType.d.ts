@@ -102,6 +102,10 @@ export declare enum ProviderType {
     /**
      * Teltonika device protocols
      */
-    teltonika = "teltonika"
+    teltonika = "teltonika",
+    /**
+     * Queclink device protocols
+     */
+    queclink = "queclink"
 }
 //# sourceMappingURL=ProviderType.d.ts.map
