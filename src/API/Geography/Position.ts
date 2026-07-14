@@ -56,7 +56,7 @@ export class Position
 	/**
 	 * The Date/Time of the GPS reading
 	 */
-	get dts(): string { return this.date.toISOString(); }
+	get dts(): string { return this.date.toJSON() ?? ""; }
 	/**
 	 * A better description of the current road-segment
 	 */

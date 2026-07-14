@@ -80,9 +80,9 @@ export class Session
 			"status": SessionStatus[this.status] || SessionStatus.notFound,
 			"userAgent": this.userAgent || "",
 			"ipAddress": this.ipAddress || "",
-			"created": this.created.toISOString(),
-			"expires": this.expiry.toISOString(),
-			"lastActivity": this.lastActivity.toISOString(),
+			"created": this.created.toJSON(),
+			"expires": this.expiry.toJSON(),
+			"lastActivity": this.lastActivity.toJSON(),
 			"lastCommand": this.lastCommand || "",
 			"sockets": this.sockets || 0,
 		};

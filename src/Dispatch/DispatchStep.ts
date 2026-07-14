@@ -156,7 +156,7 @@ export class DispatchStep
 			"id": this.id || null,
 			"address": this.address || "",
 			"duration": this.duration.toString() ?? null,
-			"eta": this.eta.toISOString(),
+			"eta": this.eta.toJSON(),
 			"latlng": this.latlng?.toJSON() ?? null,
 			"name": this.name || "",
 			"notes": this.notes || "",

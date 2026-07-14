@@ -144,7 +144,7 @@ export class CompanyReseller
 			"notifyEmail": this.notifyEmail.toJSON(),
 			"notifySms": this.notifySms.toJSON(),
 			"termsPreamble": this.termsPreamble || "",
-			"termsUpdated": this.termsUpdated.valueOf() ? this.termsUpdated.toISOString() : null,
+			"termsUpdated": this.termsUpdated.toJSON(),
 			"recoverSubject": this.recoverSubject || "",
 			"recoverBody": this.recoverBody || "",
 			"recoverIsHtml": !!this.recoverIsHtml,
