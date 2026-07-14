@@ -480,15 +480,6 @@ export function STRING_TO_ENUM<T extends { [key: string]: T }>(
 }
 
 /**
- * Serializes a {@link Date} to an ISO string, or null (for use in {@link ISerializable.toJSON}).
- * @param date 
- */
-export function JSON_DATE(date: Date | nothing): string | null {
-	return IS_AN(date?.valueOf())
-		? date.toISOString()
-		: null;
-}
-/**
  * Serializes a {@link Number} as itself, or null instead of {@link NaN} (for use in {@link ISerializable.toJSON}).
  * @param date 
  */
