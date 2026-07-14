@@ -150,7 +150,7 @@ export declare class CompanyReseller extends BaseComponent implements IIdUlong, 
             phoneNumbers: JsonObject;
         };
         termsPreamble: string;
-        termsUpdated: string | null;
+        termsUpdated: string;
         recoverSubject: string;
         recoverBody: string;
         recoverIsHtml: boolean;
