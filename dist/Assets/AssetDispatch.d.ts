@@ -61,7 +61,7 @@ export declare class AssetDispatch extends BaseComponent implements IIdUlong, IB
             job: number | null;
             step: number | null;
         }[];
-        lastDispatched: string | null;
+        lastDispatched: string;
     };
     fromJSON(json: JsonObject, force?: boolean): boolean;
     /**

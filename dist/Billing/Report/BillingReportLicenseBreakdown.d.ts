@@ -68,8 +68,8 @@ export declare class BillingReportLicenseBreakdown implements INamed, ISerializa
         kind: ProviderType;
         name: string;
         notes: string;
-        created: string | null;
-        deleted: string | null;
+        created: string;
+        deleted: string;
         phoneNumber: number | null;
         firmware: string;
         billableDays: number | null;

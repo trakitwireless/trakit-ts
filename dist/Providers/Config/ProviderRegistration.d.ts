@@ -105,9 +105,9 @@ export declare class ProviderRegistration extends Base implements IRequestable, 
         user: string;
         config: number | null;
         kind: ProviderType;
-        since: string | null;
-        completed: string | null;
-        expires: string | null;
+        since: string;
+        completed: string;
+        expires: string;
         identifier: string;
         asset: number | null;
         phoneNumber: number | null;

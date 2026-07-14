@@ -92,8 +92,8 @@ export declare class BillingProfile extends BaseComponent implements IIdUlong, I
         messages: any[];
         cycle: BillingCycle;
         currency: BillingCurrency;
-        cycleStart: string | null;
-        cycleEnd: string | null;
+        cycleStart: string;
+        cycleEnd: string;
         cyclePostDated: boolean;
         googleServicesEnabled: boolean;
     };

@@ -83,7 +83,7 @@ export declare class BehaviourLog extends BaseComponent implements IIdUlong, IBe
         behaviour: number | null;
         script: number | null;
         kind: BehaviourLogType;
-        dts: string | null;
+        dts: string;
         message: string;
         line: number;
         character: number;

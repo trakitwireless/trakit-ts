@@ -83,7 +83,7 @@ export declare class ProviderGeneral extends BaseComponent implements INamed, IB
     constructor(json?: JsonObject | nothing);
     toJSON(): {
         suspended: boolean;
-        since: string | null;
+        since: string;
         id: string | null;
         v: number[];
         company: number | null;

@@ -21,7 +21,7 @@ export declare class DispatchStepState implements ISerializable {
     latlng: LatLng | null;
     constructor(updated?: Date | number | datetime | nothing, latlng?: ILatLng | JsonObject | nothing);
     toJSON(): {
-        updated: string | null;
+        updated: string;
         latlng: (ILatLng & JsonObject) | null;
     };
 }

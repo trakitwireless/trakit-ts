@@ -106,8 +106,8 @@ export declare class Machine extends BaseComponent implements IEnabled, IBelongC
         nickname: string;
         notes: string;
         enabled: boolean;
-        notBefore: string | null;
-        notAfter: string | null;
+        notBefore: string;
+        notAfter: string;
         timezone: string;
         language: string;
         formats: JsonObject;

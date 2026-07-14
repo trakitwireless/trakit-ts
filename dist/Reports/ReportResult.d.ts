@@ -146,8 +146,8 @@ export declare class ReportResult extends BaseComponent implements IIdUlong, INa
         archive: boolean;
         timezone: string;
         runBy: string;
-        created: string | null;
-        completed: string | null;
+        created: string;
+        completed: string;
         status: ReportStatus;
         progress: number;
         bounds: (import("..").ILatLngBounds & JsonObject) | null;

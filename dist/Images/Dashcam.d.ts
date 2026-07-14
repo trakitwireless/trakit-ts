@@ -41,8 +41,8 @@ export declare class Dashcam extends DashcamBase {
         guid: string;
         kind: DashcamMediaType;
         fps: number | null;
-        start: string | null;
-        end: string | null;
+        start: string;
+        end: string;
         eventName: string;
         bytes: number | null;
         size: import("..").ISize & JsonObject;

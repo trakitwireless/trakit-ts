@@ -31,7 +31,7 @@ export declare class UserSSO implements ISerializable {
     toJSON(): {
         enabled: boolean;
         provider: SsoIdentityProvider;
-        lastAuthentication: string | null;
+        lastAuthentication: string;
         externalId: string | null;
     };
 }

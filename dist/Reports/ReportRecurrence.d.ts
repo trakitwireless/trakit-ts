@@ -42,14 +42,14 @@ export declare class ReportRecurrence implements ISerializable {
         kind: ReportRecurrenceType;
         weekdays: string;
         weekday: number | null;
-        start: string | null;
-        end: string | null;
+        start: string;
+        end: string;
         iterations: number | null;
         lastResult: number | null;
-        nextStartDate: string | null;
-        nextEndDate: string | null;
-        lastStartDate: string | null;
-        lastEndDate: string | null;
+        nextStartDate: string;
+        nextEndDate: string;
+        lastStartDate: string;
+        lastEndDate: string;
     };
     /**
      * Calculates the next recurring date range for the schedule.

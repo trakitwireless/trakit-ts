@@ -24,7 +24,7 @@ export declare class ProviderData implements ISerializable {
     constructor(value?: any, dts?: Date | number | datetime, unit?: string);
     toJSON(): {
         value: any;
-        dts: string | null;
+        dts: string;
         unit: string;
     };
 }

@@ -96,8 +96,8 @@ export declare class BillingReport extends BaseComponent implements IIdUlong, IN
         profile: number | null;
         name: string;
         notes: string;
-        startDate: string | null;
-        endDate: string | null;
+        startDate: string;
+        endDate: string;
         total: number;
         currency: BillingCurrency;
         status: BillingReportStatus;

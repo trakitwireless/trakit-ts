@@ -41,7 +41,7 @@ export declare class MaintenanceInterval implements IBelongAsset, ISerializable 
     constructor(asset?: ulong, date?: Date | number | datetime, odometer?: double, engineHours?: double, lastJob?: ulong);
     toJSON(): {
         asset: number | null;
-        date: string | null;
+        date: string;
         odometer: number;
         engineHours: number;
         lastJob: number | null;

@@ -102,7 +102,7 @@ export declare class DispatchJob extends BaseComponent implements IIdUlong, ILab
         company: number | null;
         v: number[];
         driver: string;
-        created: string | null;
+        created: string;
         name: string;
         instructions: string;
         priority: DispatchJobPriority;

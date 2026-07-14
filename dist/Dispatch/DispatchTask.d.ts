@@ -134,18 +134,18 @@ export declare class DispatchTask extends BaseComponent implements IIdUlong, IBe
         address: string;
         latlng: import("..").ILatLng & JsonObject;
         status: DispatchTaskStatus;
-        created: string | null;
-        eta: string | null;
+        created: string;
+        eta: string;
         duration: string;
-        arrived: string | null;
-        completed: string | null;
+        arrived: string;
+        completed: string;
         instructions: string;
         signature: boolean;
         signatory: string;
         notes: string;
         attachments: number[];
         updatedBy: string;
-        updatedUtc: string | null;
+        updatedUtc: string;
     };
     fromJSON(json: JsonObject, force?: boolean): boolean;
     /**

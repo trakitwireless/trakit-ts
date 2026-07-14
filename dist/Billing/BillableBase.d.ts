@@ -71,8 +71,8 @@ export declare abstract class BillableBase extends BaseComponent implements IIdU
         notes: string;
         reference: string;
         sku: string;
-        start: string | null;
-        end: string | null;
+        start: string;
+        end: string;
         amount: number | null;
     };
     fromJSON(json: JsonObject, force?: boolean): boolean;

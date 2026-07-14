@@ -25,8 +25,8 @@ export declare class AssetPlaceStatus implements ISerializable {
     constructor(kind?: AssetPlaceStatusType, enter?: Date | number | datetime, latest?: Date | number | datetime);
     toJSON(): {
         kind: AssetPlaceStatusType;
-        enter: string | null;
-        latest: string | null;
+        enter: string;
+        latest: string;
     };
 }
 //# sourceMappingURL=AssetPlaceStatus.d.ts.map

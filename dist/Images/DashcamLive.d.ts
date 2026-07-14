@@ -16,7 +16,7 @@ export declare class DashcamLive extends DashcamBase {
     constructor(json?: JsonObject | nothing);
     toJSON(): {
         kind: DashcamMediaType;
-        dts: string | null;
+        dts: string;
         bytes: number | null;
         size: import("..").ISize & JsonObject;
         provider: string;

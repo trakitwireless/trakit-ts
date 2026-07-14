@@ -1,6 +1,6 @@
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, ulong, JsonObject } from "../API/Types";
+import { datetime, JsonObject, ulong } from "../API/Types";
 import { Provider } from "../Providers/Provider";
 import { Asset } from "./Asset";
 /**
@@ -65,7 +65,7 @@ export declare class AssetAttribute implements ISerializable, IBelongAsset {
         raw: any;
         provider: string;
         asset: number | null;
-        dts: string | null;
+        dts: string;
         global: boolean;
     };
 }

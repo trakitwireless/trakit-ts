@@ -85,8 +85,8 @@ export declare abstract class MessageBase extends BaseComponent implements IIdUl
         to: string;
         from: string;
         body: string;
-        processed: string | null;
-        delivered: string | null;
+        processed: string;
+        delivered: string;
         subject: string;
         asset: number;
         user: string;

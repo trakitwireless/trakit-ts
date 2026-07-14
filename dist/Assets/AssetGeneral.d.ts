@@ -113,7 +113,7 @@ export declare class AssetGeneral extends BaseComponent implements IIdUlong, INa
     constructor(json?: JsonObject | nothing);
     toJSON(): {
         suspended: boolean;
-        since: string | null;
+        since: string;
         id: number | null;
         v: number[];
         company: number | null;

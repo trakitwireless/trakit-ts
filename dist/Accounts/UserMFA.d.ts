@@ -41,8 +41,8 @@ export declare class UserMFA implements ISerializable {
         kind: MultiFactorType;
         address: string;
         verified: boolean;
-        setupDate: string | null;
-        lastAuthentication: string | null;
+        setupDate: string;
+        lastAuthentication: string;
     };
 }
 //# sourceMappingURL=UserMFA.d.ts.map

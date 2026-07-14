@@ -30,8 +30,8 @@ export declare class ProviderCommand implements ISerializable {
     toJSON(): {
         status: ProviderCommandStatus;
         parameters: string[];
-        created: string | null;
-        processed: string | null;
+        created: string;
+        processed: string;
     };
 }
 //# sourceMappingURL=ProviderCommand.d.ts.map

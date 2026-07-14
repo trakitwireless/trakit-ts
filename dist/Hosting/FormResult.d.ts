@@ -84,7 +84,7 @@ export declare class FormResult extends BaseComponent implements IIdUlong, IName
         notes: string;
         labels: string[];
         fields: JsonObject;
-        completed: string | null;
+        completed: string;
         latlng: (import("..").ILatLng & JsonObject) | null;
         driver: string | null;
     };

@@ -116,8 +116,8 @@ export declare class MaintenanceJob extends BaseComponent implements IIdUlong, I
         name: string;
         notes: string;
         status: MaintenanceJobStatus;
-        created: string | null;
-        completed: string | null;
+        created: string;
+        completed: string;
         odometer: number;
         engineHours: number;
         garage: string;

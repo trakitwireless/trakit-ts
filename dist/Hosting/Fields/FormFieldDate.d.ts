@@ -19,8 +19,8 @@ export declare class FormFieldDate extends FormFieldBase {
     maximum: Date;
     constructor(id?: ulong | nothing, name?: string | nothing, kind?: FormFieldType | nothing, minimum?: Date | number | datetime | nothing, maximum?: Date | number | datetime | nothing, notes?: string | nothing, required?: boolean | nothing, value?: string | nothing, editable?: boolean | nothing);
     toJSON(): {
-        minimum: string | null;
-        maximum: string | null;
+        minimum: string;
+        maximum: string;
     };
     isValid(value: string): boolean;
 }

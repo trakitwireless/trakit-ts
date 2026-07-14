@@ -60,7 +60,7 @@ export declare class Document extends BaseComponent implements IIdUlong, INamed,
         src: string;
         mime: string;
         bytes: number;
-        expiry: string | null;
+        expiry: string;
         references: Map<string, any>;
     };
     fromJSON(json: JsonObject, force?: boolean): boolean;

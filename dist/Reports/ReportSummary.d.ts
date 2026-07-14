@@ -78,15 +78,15 @@ export declare class ReportSummary implements ISerializable, IBelongAsset {
         stateDetail: string;
         instance: number | null;
         instancesCount: number | null;
-        startingUtc: string | null;
+        startingUtc: string;
         startingReason: ReportSummaryReason;
-        endingUtc: string | null;
+        endingUtc: string;
         endingReason: ReportSummaryReason;
         distance: number | null;
         polyline: any[];
         firstState: {
             suspended: boolean;
-            since: string | null;
+            since: string;
             id: number | null;
             v: number[];
             company: number | null;
@@ -118,7 +118,7 @@ export declare class ReportSummary implements ISerializable, IBelongAsset {
         } | null;
         lastState: {
             suspended: boolean;
-            since: string | null;
+            since: string;
             id: number | null;
             v: number[];
             company: number | null;
