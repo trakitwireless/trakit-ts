@@ -1,4 +1,4 @@
-import { DATE, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, JSON_NUMBER } from "../API/Functions";
 import { datetime, JsonObject, nothing } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
 import { DashcamMediaType } from "./DashcamMediaType";
@@ -24,7 +24,7 @@ export class DashcamLive extends DashcamBase {
 		return {
 			...super.toJSON(),
 			"kind": DashcamMediaType.image,
-			"dts": JSON_DATE(this.dts),
+			"dts": this.dts.toJSON(),
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {

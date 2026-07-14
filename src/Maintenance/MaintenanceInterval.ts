@@ -1,5 +1,5 @@
 import { FLOAT } from "../API/Constants";
-import { DATE, ID, IS_AN, JSON_DATE } from "../API/Functions";
+import { DATE, ID, IS_AN } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { datetime, double, JsonObject, ulong } from "../API/Types";
@@ -69,7 +69,7 @@ export class MaintenanceInterval
 	toJSON() {
 		return {
 			"asset": this.assetId || null,
-			"date": JSON_DATE(this.date),
+			"date": this.date.toJSON(),
 			"odometer": this.odometer || 0,
 			"engineHours": this.engineHours || 0,
 			"lastJob": this.lastJobId || null

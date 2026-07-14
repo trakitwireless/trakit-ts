@@ -1,5 +1,5 @@
 
-import { DATE, JSON_DATE } from "../API/Functions";
+import { DATE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { datetime, JsonObject } from "../API/Types";
 import { ProviderCommandStatus } from "./ProviderCommandStatus";
@@ -55,8 +55,8 @@ export class ProviderCommand
 		return {
 			"status": ProviderCommandStatus[this.status] || ProviderCommandStatus.created,
 			"parameters": [...(this.parameters || [])],
-			"created": JSON_DATE(this.created),
-			"processed": JSON_DATE(this.processed),
+			"created": this.created.toJSON(),
+			"processed": this.processed.toJSON(),
 		};
 	}
 }

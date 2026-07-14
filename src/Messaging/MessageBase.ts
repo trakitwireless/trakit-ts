@@ -1,6 +1,6 @@
 import { User } from "../Accounts/User";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -93,8 +93,8 @@ export abstract class MessageBase
 			"to": this.to || "",
 			"from": this.from || "",
 			"body": this.body || "",
-			"processed": JSON_DATE(this.processed),
-			"delivered": JSON_DATE(this.delivered),
+			"processed": this.processed.toJSON(),
+			"delivered": this.delivered.toJSON(),
 			"subject": this.subject || "",
 			"asset": this.assetId || 0,
 			"user": this.userLogin || "",

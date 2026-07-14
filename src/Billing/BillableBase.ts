@@ -1,6 +1,6 @@
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongBillingProfile } from "../API/Interfaces/IBelongBillingProfile";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -79,8 +79,8 @@ export abstract class BillableBase
 			"notes": this.notes || "",
 			"reference": this.reference || "",
 			"sku": this.sku || "",
-			"start": JSON_DATE(this.start),
-			"end": JSON_DATE(this.end),
+			"start": this.start.toJSON(),
+			"end": this.end.toJSON(),
 			"amount": JSON_NUMBER(this.amount),
 		};
 	}

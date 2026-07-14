@@ -1,6 +1,6 @@
 import { CODIFY } from '../Codifier';
 import { FLOAT } from '../Constants';
-import { DATE, JSON_DATE, JSON_NUMBER, IS_NUMBER } from '../Functions';
+import { DATE, JSON_NUMBER, IS_NUMBER } from '../Functions';
 import { datetime, JsonObject, nothing } from '../Types';
 import { LONGITUDE_NORMALIZED } from './Functions';
 import { IPosition, IStreetAddress } from './Interfaces';
@@ -111,7 +111,7 @@ export class Position
 			+ this.bearing + delimiter
 			+ this.accuracy + delimiter
 			+ this.altitude + delimiter
-			+ JSON_DATE(this.date) + delimiter
+			+ this.date.toJSON() + delimiter
 			+ this.speedLimit
 			+ ")"
 			+ (this.streetAddress?.toString() ?? this.address);
@@ -123,7 +123,7 @@ export class Position
 	override toJSON(): IPosition & JsonObject {
 		return {
 			...super.toJSON(),
-			"dts": JSON_DATE(this.date),
+			"dts": this.date.toJSON(),
 			"speed": JSON_NUMBER(this.speed),
 			"speedLimit": JSON_NUMBER(this.speedLimit as number),
 			"bearing": JSON_NUMBER(this.bearing),

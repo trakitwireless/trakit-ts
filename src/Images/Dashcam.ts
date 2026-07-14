@@ -1,5 +1,5 @@
 import { FLOAT } from "../API/Constants";
-import { DATE, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, JSON_NUMBER } from "../API/Functions";
 import { TimeSpan } from "../API/TimeSpan";
 import { datetime, guid, JsonObject, nothing, single } from "../API/Types";
 import { DashcamBase } from "./DashcamBase";
@@ -50,8 +50,8 @@ export class Dashcam extends DashcamBase {
 			guid: this.guid || "",
 			kind: DashcamMediaType[this.kind] || DashcamMediaType.unknown,
 			fps: JSON_NUMBER(this.fps),
-			start: JSON_DATE(this.start),
-			end: JSON_DATE(this.end),
+			start: this.start.toJSON(),
+			end: this.end.toJSON(),
 			eventName: this.eventName || "",
 		};
 	}

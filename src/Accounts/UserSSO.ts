@@ -1,4 +1,4 @@
-﻿import { DATE, JSON_DATE } from '../API/Functions';
+﻿import { DATE } from '../API/Functions';
 import { ISerializable } from '../API/Interfaces/ISerializable';
 import { datetime, JsonObject, nothing } from '../API/Types';
 import { SsoIdentityProvider } from '../Companies/SsoIdentityProvider';
@@ -56,7 +56,7 @@ export class UserSSO
 		return {
 			"enabled": !!this.enabled,
 			"provider": SsoIdentityProvider[this.provider] || null,
-			"lastAuthentication": JSON_DATE(this.lastAuthentication),
+			"lastAuthentication": this.lastAuthentication.toJSON(),
 			"externalId": this.externalId || null,
 		};
 	}

@@ -1,5 +1,5 @@
 import { Base } from "../../API/Base";
-import { DATE, ID, IS_AN, JSON_DATE, PHONE_PARSE } from "../../API/Functions";
+import { DATE, ID, IS_AN, PHONE_PARSE } from "../../API/Functions";
 import { IBelongAsset } from "../../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../../API/Interfaces/IBelongCompany";
 import { INamed } from "../../API/Interfaces/INamed";
@@ -118,9 +118,9 @@ export class ProviderRegistration
 			"user": this.userLogin || "",
 			"config": this.configId || null,
 			"kind": ProviderType[this.kind] || ProviderType.unknown,
-			"since": JSON_DATE(this.since),
-			"completed": JSON_DATE(this.completed),
-			"expires": JSON_DATE(this.expires),
+			"since": this.since.toJSON(),
+			"completed": this.completed.toJSON(),
+			"expires": this.expires.toJSON(),
 			"identifier": this.identifier || "",
 			"asset": this.assetId || null,
 			"phoneNumber": this.phoneNumber || null,

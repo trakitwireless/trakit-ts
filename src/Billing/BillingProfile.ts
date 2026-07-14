@@ -1,6 +1,6 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { INamed } from "../API/Interfaces/INamed";
@@ -104,8 +104,8 @@ export class BillingProfile
 			"messages": this.messages?.map(ARRAY_TO_JSON) ?? [],
 			"cycle": BillingCycle[this.cycle] || BillingCycle.monthly,
 			"currency": BillingCurrency[this.currency] || BillingCurrency.CAD,
-			"cycleStart": JSON_DATE(this.cycleStart),
-			"cycleEnd": JSON_DATE(this.cycleEnd),
+			"cycleStart": this.cycleStart.toJSON(),
+			"cycleEnd": this.cycleEnd.toJSON(),
 			"cyclePostDated": !!this.cyclePostDated,
 			"googleServicesEnabled": !!this.googleServicesEnabled,
 		};

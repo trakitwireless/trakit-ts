@@ -1,4 +1,4 @@
-import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER, WEEKDAYS, WEEKDAYS_JSON, WEEKDAYS_PARSE } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { byte, datetime, ulong, ushort, JsonObject } from "../API/Types";
 import { ReportRecurrenceType } from "./ReportRecurrenceType";
@@ -116,14 +116,14 @@ export class ReportRecurrence
 			"kind": ReportRecurrenceType[this.kind] || ReportRecurrenceType.once,
 			"weekdays": WEEKDAYS_JSON(this.weekdays),
 			"weekday": JSON_NUMBER(this.weekday),
-			"start": JSON_DATE(this.start),
-			"end": JSON_DATE(this.end),
+			"start": this.start.toJSON(),
+			"end": this.end.toJSON(),
 			"iterations": JSON_NUMBER(this.iterations),
 			"lastResult": JSON_NUMBER(this.lastResult),
-			"nextStartDate": JSON_DATE(this.nextStartDate),
-			"nextEndDate": JSON_DATE(this.nextEndDate),
-			"lastStartDate": JSON_DATE(this.lastStartDate),
-			"lastEndDate": JSON_DATE(this.lastEndDate),
+			"nextStartDate": this.nextStartDate.toJSON(),
+			"nextEndDate": this.nextEndDate.toJSON(),
+			"lastStartDate": this.lastStartDate.toJSON(),
+			"lastEndDate": this.lastEndDate.toJSON(),
 		}
 	}
 	/**

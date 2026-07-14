@@ -1,4 +1,4 @@
-﻿import { DATE, JSON_DATE } from '../API/Functions';
+﻿import { DATE } from '../API/Functions';
 import { ISerializable } from '../API/Interfaces/ISerializable';
 import { datetime, JsonObject, nothing } from '../API/Types';
 import { MultiFactorType } from '../Companies/MultiFactorType';
@@ -72,8 +72,8 @@ export class UserMFA
 			"kind": MultiFactorType[this.kind] || null,
 			"address": this.address ?? "",
 			"verified": !!this.verified,
-			"setupDate": JSON_DATE(this.setupDate),
-			"lastAuthentication": JSON_DATE(this.lastAuthentication),
+			"setupDate": this.setupDate.toJSON(),
+			"lastAuthentication": this.lastAuthentication.toJSON(),
 		};
 	}
 }

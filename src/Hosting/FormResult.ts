@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, JSON_DATE, ID, MAP_TO_JSON, JSON_TO_MAP_KEY_ULONG, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, MAP_TO_JSON, JSON_TO_MAP_KEY_ULONG, JSON_NUMBER } from "../API/Functions";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -94,7 +94,7 @@ export class FormResult
 			"notes": this.notes || "",
 			"labels": [...this.labels],
 			"fields": MAP_TO_JSON(this.fields),
-			"completed": JSON_DATE(this.completed),
+			"completed": this.completed.toJSON(),
 			"latlng": this.latlng?.toJSON() ?? null,
 			"driver": this.driver || null,
 		};

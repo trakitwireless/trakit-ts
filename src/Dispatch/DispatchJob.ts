@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS, ARRAY_TO_JSON } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_TO_MAP, MAP_TO_JSON } from "../API/Functions";
 import { LatLngBounds } from "../API/Geography/LatLngBounds";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
@@ -129,7 +129,7 @@ export class DispatchJob
 			"company": this.companyId || null,
 			"v": [...this.v],
 			"driver": this.driver || "",
-			"created": JSON_DATE(this.created),
+			"created": this.created.toJSON(),
 			"name": this.name || "",
 			"instructions": this.instructions || "",
 			"priority": this.priority || DispatchJobPriority.standby,

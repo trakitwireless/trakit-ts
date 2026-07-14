@@ -1,6 +1,6 @@
 import { ARRAY_TO_JSON } from "../API/Arrays";
 import { FLOAT } from "../API/Constants";
-import { DATE, ID, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, JSON_NUMBER } from "../API/Functions";
 import { ILatLng } from "../API/Geography/Interfaces";
 import { LatLng } from "../API/Geography/LatLng";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
@@ -133,9 +133,9 @@ export class ReportSummary
 			"stateDetail": this.stateDetail || "",
 			"instance": JSON_NUMBER(this.instance),
 			"instancesCount": JSON_NUMBER(this.instancesCount),
-			"startingUtc": JSON_DATE(this.startingUtc),
+			"startingUtc": this.startingUtc.toJSON(),
 			"startingReason": ReportSummaryReason[this.startingReason] || ReportSummaryReason.outsideRange,
-			"endingUtc": JSON_DATE(this.endingUtc),
+			"endingUtc": this.endingUtc.toJSON(),
 			"endingReason": ReportSummaryReason[this.endingReason] || ReportSummaryReason.outsideRange,
 			"distance": JSON_NUMBER(this.distance),
 			"polyline": this.polyline.map(ARRAY_TO_JSON),

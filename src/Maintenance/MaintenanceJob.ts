@@ -1,7 +1,7 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
 import { FLOAT } from "../API/Constants";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -137,8 +137,8 @@ export class MaintenanceJob
 			"name": this.name || "",
 			"notes": this.notes || "",
 			"status": this.status,
-			"created": JSON_DATE(this.created),
-			"completed": JSON_DATE(this.completed),
+			"created": this.created.toJSON(),
+			"completed": this.completed.toJSON(),
 			"odometer": this.odometer,
 			"engineHours": this.engineHours,
 			"garage": this.garage,

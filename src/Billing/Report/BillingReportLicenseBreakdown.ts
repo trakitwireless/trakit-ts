@@ -1,5 +1,5 @@
 import { FLOAT } from "../../API/Constants";
-import { DATE, JSON_DATE, JSON_NUMBER, PHONE_PARSE } from "../../API/Functions";
+import { DATE, JSON_NUMBER, PHONE_PARSE } from "../../API/Functions";
 import { INamed } from "../../API/Interfaces/INamed";
 import { ISerializable } from "../../API/Interfaces/ISerializable";
 import { datetime, double, JsonObject, phone, ulong } from "../../API/Types";
@@ -115,8 +115,8 @@ export class BillingReportLicenseBreakdown
 			"kind": ProviderType[this.kind] ?? ProviderType.unknown,
 			"name": this.name || "",
 			"notes": this.notes || "",
-			"created": JSON_DATE(this.created),
-			"deleted": JSON_DATE(this.deleted),
+			"created": this.created.toJSON(),
+			"deleted": this.deleted.toJSON(),
 			"phoneNumber": JSON_NUMBER(this.phoneNumber),
 			"firmware": this.firmware || "",
 			"billableDays": JSON_NUMBER(this.billableDays),

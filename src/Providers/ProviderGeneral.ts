@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, JSON_DATE, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON, PHONE_PARSE } from "../API/Functions";
+import { DATE, ID, JSON_NUMBER, JSON_TO_MAP, MAP_TO_JSON, PHONE_PARSE } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { INamed } from "../API/Interfaces/INamed";
 import { ISuspendable } from "../API/Interfaces/ISuspendable";
@@ -107,7 +107,7 @@ export class ProviderGeneral
 				this.suspended
 					? {
 						"suspended": true,
-						"since": JSON_DATE(this.since),
+						"since": this.since.toJSON(),
 					}
 					: {
 						"asset": JSON_NUMBER(this.assetId),

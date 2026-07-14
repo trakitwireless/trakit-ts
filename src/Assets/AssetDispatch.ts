@@ -1,6 +1,6 @@
 import { ARRAY_TO_IDS } from "../API/Arrays";
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, JSON_NUMBER } from "../API/Functions";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
 import { MAP_FILTERED_BY_KEYS } from "../API/Maps";
@@ -69,7 +69,7 @@ export class AssetDispatch
 			"jobs": [...this.jobIds],
 			//"tasks": [...this.taskIds],
 			"directions": this.directions.map(d => d.toJSON()),
-			"lastDispatched": JSON_DATE(this.lastDispatched),
+			"lastDispatched": this.lastDispatched.toJSON(),
 		};
 	}
 	override fromJSON(json: JsonObject, force?: boolean): boolean {

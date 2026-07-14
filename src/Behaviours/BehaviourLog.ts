@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_DATE } from "../API/Functions";
+import { DATE, ID, IS_AN } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -94,7 +94,7 @@ export class BehaviourLog
 			"behaviour": this.behaviourId || null,
 			"script": this.scriptId || null,
 			"kind": BehaviourLogType[this.kind] || BehaviourLogType.log,
-			"dts": JSON_DATE(this.dts),
+			"dts": this.dts.toJSON(),
 			"message": this.message || "",
 			"line": this.line || -1,
 			"character": this.character || -1,

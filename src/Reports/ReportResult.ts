@@ -1,5 +1,5 @@
 import { BaseComponent } from "../API/BaseComponent";
-import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { LatLngBounds } from "../API/Geography/LatLngBounds";
 import { IBelongCompany } from "../API/Interfaces/IBelongCompany";
 import { IIdUlong } from "../API/Interfaces/IIdUlong";
@@ -147,8 +147,8 @@ export class ReportResult
 			"archive": !!this.archive,
 			"timezone": this.timezone?.code ?? "",
 			"runBy": this.runBy || "",
-			"created": JSON_DATE(this.created),
-			"completed": JSON_DATE(this.completed),
+			"created": this.created.toJSON(),
+			"completed": this.completed.toJSON(),
 			"status": ReportStatus[this.status] || ReportStatus.created,
 			"progress": this.progress || 0,
 			"bounds": this.bounds?.toJSON() ?? null,

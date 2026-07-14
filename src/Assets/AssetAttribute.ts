@@ -1,7 +1,7 @@
-import { DATE, ID, IS_AN, JSON_DATE, JSON_NUMBER } from "../API/Functions";
+import { DATE, ID, IS_AN, JSON_NUMBER } from "../API/Functions";
 import { IBelongAsset } from "../API/Interfaces/IBelongAsset";
 import { ISerializable } from "../API/Interfaces/ISerializable";
-import { datetime, ulong, JsonObject } from "../API/Types";
+import { datetime, JsonObject, ulong } from "../API/Types";
 import { Provider } from "../Providers/Provider";
 import { ASSETS, PROVIDERS } from "../storage";
 import { Asset } from "./Asset";
@@ -109,7 +109,7 @@ export class AssetAttribute
 				: null,
 			"provider": this.providerId || "",
 			"asset": JSON_NUMBER(this.assetId),
-			"dts": JSON_DATE(this.dts),
+			"dts": this.dts.toJSON(),
 			"global": !!this.global,
 		};
 	}

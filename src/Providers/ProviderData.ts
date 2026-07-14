@@ -1,4 +1,4 @@
-import { DATE, IS_NOTHING, JSON_DATE } from "../API/Functions";
+import { DATE, IS_NOTHING } from "../API/Functions";
 import { ISerializable } from "../API/Interfaces/ISerializable";
 import { datetime, JsonObject } from "../API/Types";
 
@@ -47,7 +47,7 @@ export class ProviderData
 			"value": IS_NOTHING(this.value)
 				? null
 				: (this.value.toJSON?.() ?? this.value),
-			"dts": JSON_DATE(this.dts),
+			"dts": this.dts.toJSON(),
 			"unit": this.unit || "",
 		};
 	}
